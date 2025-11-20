@@ -24,11 +24,79 @@
 \newtheorem*{theorem}{定理}
 \newtheorem*{corollary}{推论}
 \theoremstyle{definition}
-\newtheorem*{remark}{注}
-\newtheorem*{example}{例}
+\newtheorem{remark}{注}[chapter]
+\newtheorem{example}{例}
 
 \newenvironment{proof*}{\begin{proof}[\textbf{\emph{证明.}}]}{\end{proof}}
 \newenvironment{solution}{\begin{proof}[\textbf{\emph{解.}}]}{\end{proof}}
+
+\iffalse
+% 普通集合 { ... }
+\DeclarePairedDelimiterX{\@set}[1]{\{}{\}}{
+    \,#1\,
+}
+% 条件式集合 { x ; x > 0 }
+\DeclarePairedDelimiterX{\@setc}[2]{\{}{\}}{
+    \,#1 \;;\; #2\,
+}
+\fi
+\makeatletter
+\newcommand{\set}{
+    \@ifstar\set@star\set@nostar
+}
+% --------- 无 * ---------
+\newcommand{\set@nostar}{
+    \@ifnextchar[\set@nostar@opt\set@nostar@noopt
+}
+% --------- 无 * 无 [] ---------
+\newcommand{\set@nostar@noopt}[1]{
+    \@ifnextchar\bgroup{\set@nostar@noopt@two{#1}}{\set@nostar@noopt@one{#1}}
+}
+\newcommand{\set@nostar@noopt@one}[1]{
+    \{\,#1\,\}
+}
+\newcommand{\set@nostar@noopt@two}[2]{
+    \{\,#1 \;;\; #2\,\}
+}
+% --------- 无 * 有 [] ---------
+\def\set@nostar@opt[#1]#2{
+  \set@LR{#1}
+  \@ifnextchar\bgroup{\set@nostar@opt@two{#2}}{\set@nostar@opt@one{#2}}
+}
+\def\set@LR#1{
+    \def\set@L{\{}
+    \def\set@R{\}}
+    \ifx#1\big
+        \def\set@L{\bigl\{}
+        \def\set@R{\bigr\}}
+    \else\ifx#1\Big
+        \def\set@L{\Bigl\{}
+        \def\set@R{\Bigr\}}
+    \else\ifx#1\bigg
+        \def\set@L{\biggl\{}
+        \def\set@R{\biggr\}}
+    \else\ifx#1\Bigg
+        \def\set@L{\Biggl\{}
+        \def\set@R{\Biggr\}}
+    \fi\fi\fi\fi
+}
+\def\set@nostar@opt@one#1{
+  \set@L\,#1\,\set@R
+}
+\def\set@nostar@opt@two#1#2{
+  \set@L\,#1 \;;\; #2\,\set@R
+}
+% --------- 有 * ---------
+\newcommand{\set@star}[1]{
+  \@ifnextchar\bgroup{\set@star@two{#1}}{\set@star@one{#1}}
+}
+\newcommand{\set@star@one}[1]{
+  \left\{\,#1\,\right\}
+}
+\newcommand{\set@star@two}[2]{
+  \left\{\,#1 \;;\; #2\,\right\}
+}
+\makeatother
 
 \newcommand{\power}{\mathcal P} % 幂集
 \newcommand{\e}{\mathrm e} % 自然常数
@@ -37,7 +105,7 @@
 \newcommand{\N}{\mathbb N} % 自然数集
 \newcommand{\Q}{\mathbb Q} % 有理数集
 \newcommand{\R}{\mathbb R} % 实数集
-\newcommand{\exR}{\overline{\mathbb R}} % 广义实数集
+\newcommand{\exR}{\bar{\mathbb R}} % 广义实数集
 \newcommand{\C}{\mathbb C} % 复数集
 \newcommand{\topo}{\mathcal T} % 拓扑
 \newcommand{\nbr}{\mathcal N} % 邻域族
