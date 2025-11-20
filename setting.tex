@@ -1,0 +1,204 @@
+\usepackage{geometry}
+\usepackage{amsthm}
+\usepackage{amsmath,mathtools}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{float}
+\usepackage{multirow}
+
+\ctexset{
+    chapter = {
+        name   = {},
+        number = {第\arabic{chapter}章}
+    }
+}
+
+\theoremstyle{plain}
+\newtheorem*{definition}{定义}
+\newtheorem*{axiom}{公理}
+\newtheorem*{proposition}{命题}
+\newtheorem*{theorem}{定理}
+\newtheorem*{corollary}{推论}
+\theoremstyle{definition}
+\newtheorem*{remark}{注}
+\newtheorem*{example}{例}
+
+\newenvironment{proof*}{\begin{proof}[\textbf{\emph{证明.}}]}{\end{proof}}
+\newenvironment{solution}{\begin{proof}[\textbf{\emph{解.}}]}{\end{proof}}
+
+\newcommand{\power}{\mathcal P} % 幂集
+\newcommand{\e}{\mathrm e} % 自然常数
+\newcommand{\ii}{\mathrm i} % 虚数单位
+\newcommand{\K}{\mathbb K} % 数域
+\newcommand{\N}{\mathbb N} % 自然数集
+\newcommand{\Q}{\mathbb Q} % 有理数集
+\newcommand{\R}{\mathbb R} % 实数集
+\newcommand{\exR}{\overline{\mathbb R}} % 广义实数集
+\newcommand{\C}{\mathbb C} % 复数集
+\newcommand{\topo}{\mathcal T} % 拓扑
+\newcommand{\nbr}{\mathcal N} % 邻域族
+\newcommand{\onbr}{\mathcal O} % 开邻域族
+\newcommand{\cnbr}{\mathcal F} % 闭邻域族
+\newcommand{\basis}{\mathcal B} % 拓扑基
+\newcommand{\subbasis}{\mathcal S} % 拓扑子基
+\newcommand{\oball}{\mathbb B} % 开球
+\newcommand{\cball}{\overline{\mathbb B}} % 闭球
+\newcommand{\borel}{\mathcal B} % Borel sigma-代数
+\newcommand{\lbg}{\mathcal L} % Lebesgue sigma-代数
+\newcommand{\dd}{\mathop{}\!\mathrm d} % 微分算子
+\newcommand{\mat}{\bm} % 矩阵和向量
+\newcommand{\E}{\mathbb E} % 期望
+\newcommand{\PP}{\mathbb P} % 概率
+\newcommand{\pto}{\xlongrightarrow{p}} % 依概率收敛
+\newcommand{\dto}{\xlongrightarrow{d}} % 依分布收敛
+
+\renewcommand{\implies}{\Longrightarrow} % 蕴含
+\renewcommand{\impliedby}{\Longleftarrow} % 被蕴含
+\renewcommand{\iff}{\Longleftrightarrow} % 等价
+
+\DeclareMathOperator{\im}{\mathrm{im}} % 像
+\DeclareMathOperator{\range}{\mathrm{ran}} % 值域
+\DeclareMathOperator{\id}{\mathrm{id}} % 恒同映射
+\DeclareMathOperator{\diam}{\mathrm{diam}} % 集合的直径
+\DeclareMathOperator{\vol}{\mathrm{vol}} % 体积
+\DeclareMathOperator{\supp}{\mathrm{supp}} % 支撑集
+\DeclareMathOperator{\spaN}{\mathrm{span}} % 张成
+\DeclareMathOperator{\nullity}{\mathrm{null}} % 零化度
+\DeclareMathOperator{\rank}{\mathrm{rk}} % 秩
+\DeclareMathOperator{\trace}{\mathrm{tr}} % 迹
+\DeclareMathOperator{\adj}{\mathrm{adj}} % 伴随
+\DeclareMathOperator{\spec}{\mathrm{spec}} % 谱
+\DeclareMathOperator{\var}{\mathrm{var}} % 方差
+\DeclareMathOperator{\cov}{\mathrm{cov}} % 协方差
+\DeclareMathOperator*{\overlim}{\overline{\lim}} % 上极限
+\DeclareMathOperator*{\underlim}{\underline{\lim}} % 下极限
+
+%====================================
+% ElegantBook 风格封面，重写 maketitle
+%====================================
+% 需要的宏包
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+% 颜色
+\definecolor{structurecolor}{RGB}{60,113,183}
+\definecolor{main}{RGB}{0,166,82}
+\definecolor{second}{RGB}{255,134,24}
+\definecolor{third}{RGB}{0,174,247}
+\colorlet{coverlinecolor}{second}
+\definecolor{darkgray}{gray}{0.30}
+
+% 中文字体
+\ifcsname heiti\endcsname
+    \newcommand{\cbfseries}{\heiti}
+\else
+    \newcommand{\cbfseries}{\bfseries}
+\fi
+\ifcsname kaishu\endcsname
+    \newcommand{\citshape}{\kaishu}
+    \newcommand{\cnormal}{\kaishu}
+\else
+    \newcommand{\citshape}{\itshape}
+    \newcommand{\cnormal}{\normalfont}
+\fi
+
+% 标签文字
+\newcommand{\authorname}{\citshape 作者：}
+\newcommand{\institutename}{\citshape 组织：}
+\newcommand{\datename}{\citshape 时间：}
+\newcommand{\versionname}{\citshape 版本：}
+
+\makeatletter
+
+% 对外接口命令
+\newcommand{\subtitle}[1]{\gdef\@subtitle{#1}}
+\newcommand{\institute}[1]{\gdef\@institute{#1}}
+\newcommand{\logo}[1]{\gdef\@logo{#1}}
+\newcommand{\cover}[1]{\gdef\@cover{#1}}
+\newcommand{\extrainfo}[1]{\gdef\@extrainfo{#1}}
+\newcommand{\version}[1]{\gdef\@version{#1}}
+\newcommand\bioinfo[2]{\gdef\@bioinfo{{\citshape #1}：#2}}
+
+% 重写 maketitle
+\renewcommand{\maketitle}{
+    \hypersetup{pageanchor=false}
+    % \pagenumbering{Alph}
+    \begin{titlepage}
+        \newgeometry{margin=0in}
+        \parindent=0pt
+
+        % 顶部封面图
+        \ifcsname @cover\endcsname
+            \includegraphics[width=\linewidth]{\@cover}
+        \else
+            \@empty
+        \fi
+
+        % 彩色横条
+        % \setlength{\fboxsep}{0pt}
+        % \colorbox{coverlinecolor}{\makebox[\linewidth][c]{\shortstack[c]{\vspace{0.5in}}}}
+
+        % 标题
+        \vfill
+        \vskip 15ex % \vskip-2ex
+        \hspace{2em}
+        \parbox{0.8\textwidth}{
+            \bfseries\Huge
+            \ifcsname @title\endcsname \cnormal\@title \fi
+            \par
+        }
+
+        % 副标题 + 信息
+        \vfill
+        % \vspace{-1.0cm}
+        \hspace{2.5em}
+        \begin{minipage}[c]{0.67\linewidth}
+            \color{darkgray}
+            {\bfseries\Large
+            \ifcsname @subtitle\endcsname \cnormal\@subtitle\\[2ex] \fi}
+            \color{gray}
+            % \normalsize
+            {\renewcommand{\arraystretch}{1.2}
+            \begin{tabular}{l}
+                % \ifcsname @author\endcsname \authorname \@author\\ \fi
+                \ifx\@author\empty\else \authorname\cnormal\@author\\ \fi
+                \ifcsname @institute\endcsname \institutename\cnormal\@institute\\ \fi
+                % \ifcsname @date\endcsname \@date\\ \fi
+                \ifx\@date\empty\else \datename\cnormal\@date\\ \fi
+                \ifcsname @version\endcsname \versionname\cnormal\@version\\ \fi
+                \ifcsname @bioinfo\endcsname \cnormal\@bioinfo\\ \fi
+            \end{tabular}}
+        \end{minipage}
+
+        % 右下角 logo
+        \begin{minipage}[c]{0.27\linewidth}
+            \begin{tikzpicture}[remember picture,overlay]
+                \node[opacity=0.8,
+                    anchor=south east,
+                    outer sep=0pt,
+                    inner sep=0pt] at
+                    ($(current page.south east)+(-0.8in,1.5in)$)
+                    {\ifcsname @logo\endcsname \includegraphics[width=4.2cm]{\@logo} \fi};
+            \end{tikzpicture}
+        \end{minipage}
+
+        % 底部说明文字
+        \vfill
+        \begin{center}
+            \parbox[t]{0.7\textwidth}{\centering\citshape
+                \ifcsname @extrainfo\endcsname \@extrainfo \fi
+            }
+        \end{center}
+        \vfill
+    \end{titlepage}
+    \restoregeometry
+    \thispagestyle{empty}
+}
+
+\makeatother
