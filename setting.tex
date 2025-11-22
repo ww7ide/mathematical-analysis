@@ -16,7 +16,7 @@
         number = {第\arabic{chapter}章}
     }
 }
-\newcommand{\s}{\ }
+\setcounter{secnumdepth}{1}
 
 \theoremstyle{plain}
 \newtheorem{definition}{定义}[section]
@@ -27,21 +27,28 @@
 \theoremstyle{definition}
 \newtheorem{remark}{注}[section]
 \newtheorem{example}{例}[section]
+\newtheorem{exercises}{}[section]
+\renewcommand{\theexercises}{\arabic{exercises}}
 
-\newenvironment{proof*}{\begin{proof}[\textbf{\emph{证明.}}]}{\end{proof}}
-\newenvironment{solution}{\begin{proof}[\textbf{\emph{解.}}]}{\end{proof}}
+\renewenvironment{cases}{%
+  \left\{\begin{matrix}
+}{%
+  \end{matrix}\right.
+}
 
-\iffalse
-% 普通集合 { ... }
-\DeclarePairedDelimiterX{\@set}[1]{\{}{\}}{
-    \,#1\,
-}
-% 条件式集合 { x ; x > 0 }
-\DeclarePairedDelimiterX{\@setc}[2]{\{}{\}}{
-    \,#1 \;;\; #2\,
-}
-\fi
 \makeatletter
+\renewenvironment{proof}[1][\proofname]{
+    \par
+    \pushQED{\qed}
+    \normalfont
+    \topsep6\p@\@plus6\p@\relax
+    \trivlist
+    \item[\hskip\labelsep{\bfseries#1}\@addpunct{.}]
+    \ignorespaces
+}{
+    \popQED\endtrivlist\@endpefalse
+}
+
 \newcommand{\set}{
     \@ifstar\set@star\set@nostar
 }
@@ -110,22 +117,20 @@
 \newcommand{\N}{\mathbb N} % 自然数集
 \newcommand{\Q}{\mathbb Q} % 有理数集
 \newcommand{\R}{\mathbb R} % 实数集
-\newcommand{\exR}{\bar{\mathbb R}} % 广义实数集
 \newcommand{\C}{\mathbb C} % 复数集
+\newcommand{\E}{\mathbb E} % 期望
+\newcommand{\PP}{\mathbb P} % 概率
 \newcommand{\topo}{\mathcal T} % 拓扑
 \newcommand{\nbr}{\mathcal N} % 邻域族
 \newcommand{\onbr}{\mathcal O} % 开邻域族
 \newcommand{\cnbr}{\mathcal F} % 闭邻域族
 \newcommand{\basis}{\mathcal B} % 拓扑基
 \newcommand{\subbasis}{\mathcal S} % 拓扑子基
-\newcommand{\oball}{\mathbb B} % 开球
-\newcommand{\cball}{\bar{\mathbb B}} % 闭球
+\newcommand{\ball}{\mathbb B} % 开球
 \newcommand{\borel}{\mathcal B} % Borel sigma-代数
 \newcommand{\lbg}{\mathcal L} % Lebesgue sigma-代数
 \newcommand{\dd}{\mathop{}\!\mathrm d} % 微分算子
 \newcommand{\mat}{\bm} % 矩阵和向量
-\newcommand{\E}{\mathbb E} % 期望
-\newcommand{\PP}{\mathbb P} % 概率
 \newcommand{\pto}{\xlongrightarrow{p}} % 依概率收敛
 \newcommand{\dto}{\xlongrightarrow{d}} % 依分布收敛
 
@@ -139,7 +144,6 @@
 \DeclareMathOperator{\diam}{\mathrm{diam}} % 集合的直径
 \DeclareMathOperator{\vol}{\mathrm{vol}} % 体积
 \DeclareMathOperator{\supp}{\mathrm{supp}} % 支撑集
-\DeclareMathOperator{\spaN}{\mathrm{span}} % 张成
 \DeclareMathOperator{\nullity}{\mathrm{null}} % 零化度
 \DeclareMathOperator{\rank}{\mathrm{rk}} % 秩
 \DeclareMathOperator{\trace}{\mathrm{tr}} % 迹
@@ -149,6 +153,11 @@
 \DeclareMathOperator{\cov}{\mathrm{cov}} % 协方差
 \DeclareMathOperator*{\overlim}{\overline{\lim}} % 上极限
 \DeclareMathOperator*{\underlim}{\underline{\lim}} % 下极限
+
+\let\oldRe\Re
+\let\Re\relax
+\DeclareMathOperator{\Re}{\oldRe} % 实部
+\DeclareMathOperator{\Span}{\mathrm{span}} % 张成
 
 %====================================
 % ElegantBook 风格封面，重写 maketitle

@@ -22,21 +22,21 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 在本节中, 我们考虑定义在自然数集上的函数, 因此这类函数只会取到可数多个值. 对这样的函数 $\varphi \colon \N \to X$, 我们特别关心的是它在 ``当 $n$ 趋于无穷大时'' 各个取值 $\varphi(n)$ 的行为. 由于我们实际上只能对 $\varphi$ 进行有限次求值, 也就是说, 我们永远不可能真正 ``到达无穷大'', 因此必须发展出一些方法, 使我们能够对 ``靠近无穷远处'' 的无穷多个函数值建立命题并加以证明. 这样的方法就构成了收敛序列的理论, 本节将对其进行介绍.
 
-\subsection*{序列}
+\subsection{序列}
 
 \begin{definition}[序列]
     设 $X$ 是集合. 称函数
-    \[
+    $$
     \varphi \colon \N \to X
-    \]
+    $$
     是 $X$ 中的序列, 记作
-    \[
+    $$
     (x_n)\ ,\quad (x_n)_{n \in \N}\quad \text{或}\quad (x_0, x_1, x_2, \dots)\ ,
-    \]
+    $$
     并称
-    \[
+    $$
     x_n \coloneqq \varphi(n)
-    \]
+    $$
     是序列的第 $n$ 项.
 \end{definition}
 
@@ -47,23 +47,23 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \begin{remark}
     \begin{enumerate}
         \item 区分序列 $(x_n)$ 和它的像 $\set{x_n}{n \in \N}$ 是很重要的. 例如, 若对于任意 $n$ 有 $x_n = x$, 也就是说 $(x_n)$ 是一个常数列, 此时 $(x_n) = (x, x, x, \dots)$, 而 $\set{x_n}{n \in \N}$ 是单点集 $\set{x}$.
-        \item 设 $(x_n)$ 是 $X$ 中的序列, $E$ 是某个性质. 称 $E$ 对 $(x_n)$ 的几乎所有项都成立, 若存在 $m \in \N$ 使得对所有 $n \geq m$ 命题 $E(x_n)$ 都为真. 也就是说, 除了至多有限多个 $x_n$ 以外, $E$ 对其余所有 $x_n$ 都成立. 当然, $E$ 也可以对若干个 (甚至全部) $n < m$ 的项成立. 若存在 $N \subseteq \N$ 满足 $|N| = \aleph_0$ 且 $E(x_n)$ 对所有 $n \in N$ 都成立, 则称 $E$ 对 $(x_n)$ 的无穷多项都成立. 例如, 实数列
-        \[
+        \item 设 $(x_n)$ 是 $X$ 中的序列, $E$ 是某个性质. 称 $E$ 对 $(x_n)$ 的几乎所有项都成立, 若存在 $m \in \N$ 使得当 $n \geq m$ 时命题 $E(x_n)$ 都成立. 也就是说, 除了至多有限多个 $x_n$ 以外, $E$ 对其余所有 $x_n$ 都成立. 当然, $E$ 也可以对若干个 (甚至全部) $n < m$ 的项成立. 若存在 $N \subseteq \N$ 满足 $|N| = \aleph_0$ 且 $E(x_n)$ 对所有 $n \in N$ 都成立, 则称 $E$ 对 $(x_n)$ 的无穷多项都成立. 例如, 实数列
+        $$
         \Bigl(-5, 4, -3, 2, -1, 0, -\frac{1}{2}, \frac{1}{3}, -\frac{1}{4}, \frac{1}{5}, \dots, -\frac{1}{2n}, \frac{1}{2n+1}, \dots\Bigr)
-        \]
+        $$
         有无穷多个正项, 无穷多个负项, 并且对于几乎所有项都有其绝对值小于 $1$.
         \item 对于任意 $m \in \N^\ast$, 函数
-        \[
+        $$
         \psi \colon m + \N \to X
-        \]
+        $$
         也称为 $X$ 中的序列。也就是说,
-        \[
+        $$
         (x_j)_{j \geq m} = (x_m, x_{m+1}, x_{m+2}, \dots)
-        \]
+        $$
         是 $X$ 中的序列, 尽管其下标不是从 $0$ 开始. 这种约定是合理的, 因为通过映射
-        \[
+        $$
         \N \to m + \N\ ,\quad n \mapsto m + n
-        \]
+        $$
         对下标进行 ``重新编号'' 之后, 这个 ``平移后的序列'' $(x_j)_{j \geq m}$ 就可以与通常意义下的序列 $(x_{m+k})_{k \in N} \in X^{\N}$ 对应起来.
     \end{enumerate}
 \end{remark}
@@ -90,81 +90,352 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 首先我们要意识到, ``距离'' 这一概念居于核心地位. 在数域 $\K$ 中, 我们可以借助绝对值函数来确定两点之间的距离. 若要研究某个任意集合 $X$ 中序列的收敛性, 我们首先需要在 $X$ 上赋予一种结构, 使得可以在 $X$ 的任意两个元素之间定义 ``距离''.
 
-\subsection*{度量空间}
+\subsection{度量空间}
 
 \begin{axiom}[度量]
     设 $X$ 是集合, 其上定义了函数
-    \[
+    $$
     d \colon X \times X \to \R\ .
-    \]
+    $$
     若对于任意 $x,y,z \in X$ 都有
     \begin{enumerate}
-        \item\label{axiom:metric-1} $d(x,y) = 0$ 当且仅当 $x = y$.
-        \item\label{axiom:metric-2} $d(x,y) = d(y,x)$.
-        \item\label{axiom:metric-3} $d(x,y) \leq d(x,z) + d(z,y)$.
+        \item (同一性) $d(x,y) = 0$ 当且仅当 $x = y$.
+        \item (对称性) $d(x,y) = d(y,x)$.
+        \item (三角不等式) $d(x,y) \leq d(x,z) + d(z,y)$.
     \end{enumerate}
     则称 $d$ 是 $X$ 上的度量. 进一步, 称 $(X,d)$ 是度量空间. 最后, 称 $d(x,y)$ 是度量空间 $X$ 中点 $x$ 和 $y$ 之间的距离.
 \end{axiom}
 
-公理 \ref{axiom:metric-1}-\ref{axiom:metric-3} 显然是对 ``距离函数'' 非常自然的要求. 举例来说, 公理 \ref{axiom:metric-3} 可以被看作这样一条规则的公理化表述: ``从 $x$ 到 $y$ 的 `直达路径' 比先从 $x$ 到 $z$ 再从 $z$ 到 $y$ 的路径更短''.
+公理 1-3 显然是对 ``距离函数'' 非常自然的要求. 举例来说, 公理 3 可以被看作这样一条规则的公理化表述: ``从 $x$ 到 $y$ 的 `直达路径' 比先从 $x$ 到 $z$ 再从 $z$ 到 $y$ 的路径更短''. 而对距离非负的要求, 由公理 1-3 便可得到.
+
+\begin{proposition}[度量的非负性]
+    设 $(X,d)$ 是度量空间. 则
+    $$
+    d(x,y) \geq 0\ ,\quad x,y \in X\ .
+    $$
+\end{proposition}
+
+\begin{proof}
+    设 $x,y \in X$. 由度量的性质可得
+    $$
+    0 = d(x,x) \leq d(x,y) + d(y,x) = d(x,y) + d(x,y) = 2d(x,y)\ .
+    $$
+\end{proof}
 
 \begin{definition}[开球和闭球]
     设 $(X,d)$ 是度量空间, $a \in X$, $r > 0$. 称集合
-    \[
-    \oball(a,r) \coloneqq \set{x \in X}{d(x,a) < r}
-    \]
+    $$
+    \ball(a,r) \coloneqq \set{x \in X}{d(x,a) < r}
+    $$
     是以 $a$ 为中心, $r$ 为半径的开球. 并称集合
-    \[
-    \cball(a,r) \coloneqq \set{x \in X}{d(x,a) \leq r}
-    \]
+    $$
+    \bar\ball(a,r) \coloneqq \set{x \in X}{d(x,a) \leq r}
+    $$
     是以 $a$ 为中心, $r$ 为半径的闭球.
 \end{definition}
 
-\begin{example}
+\begin{example}\label{ex:metric}
     \begin{enumerate}
-        \item\label{ex:k-natural-metric} 函数
-        \[
+        \item 函数
+        $$
         \abs{\,\cdot\,} \colon \K \times \K \to \R\ ,\quad (x,y) \mapsto \abs{x - y}
-        \]
+        $$
         是 $\K$ 上的度量, 称为自然度量. 除非另有说明, 否则默认 $\K$ 配备该度量, 并将其视为一个度量空间.
         \item 设 $(X,d)$ 是度量空间, $Y$ 是 $X$ 的非空子集. 则把 $d$ 限制在 $Y \times Y$ 上所得的函数
-        \[
+        $$
         d_Y \coloneqq d\vert_{Y \times Y}
-        \]
+        $$
         是 $Y$ 上的度量, 称为诱导度量. 进一步, 称 $(Y, d_Y)$ 是 $(X,d)$ 的子空间. 在不会引起混淆的情况下, 我们往往直接写 $d$, 而不特别区分 $d_Y$.
-        \item $\C$ 的任意非空子集, 在从 $\C$ 的自然度量诱导出来的度量之下, 都是度量空间. 以这种方式在 $\R$ 上得到的度量, 正好就是在 \ref{ex:k-natural-metric} 中定义的那个自然度量.
+        \item $\C$ 的任意非空子集, 在从 $\C$ 的自然度量诱导出来的度量之下, 都是度量空间. 以这种方式在 $\R$ 上得到的度量, 正好就是在例 \ref{ex:metric}.1 中定义的那个自然度量.
         \item 设 $X$ 是非空集合. 则函数
-        \[
+        $$
         d \colon X \times X \to \R\ ,\quad (x,y) \mapsto
         \begin{cases}
-            1\ , &x \neq y\ ,\\
-            0\ , &x = y\ ,
+            & 1\ , & x \neq y\ , \\
+            & 0\ , & x = y\ ,
         \end{cases}
-        \]
+        $$
         是 $X$ 上的度量, 称为离散度量.
         \item 设 $(X_j, d_j),\ 1 \leq j \leq m$ 是度量空间, $X \coloneqq X_1 \times \dots \times X_m$. 则函数
-        \[
-        d(x,y) \coloneqq \max_{1 \leq j \leq m} d_j(x_j, y_j)
-        \]
-        其中 $x \coloneqq (x_1, \dots, x_m) \in X$ 且 $y \coloneqq (y_1, \dots, y_m) \in X$ 是 $X$ 上的度量, 称为积度量. 进一步, 称 $(X,d)$ 是 $(X_j, d_j),\ 1 \leq j \leq m$ 的积空间. 可以验证, 对于任意 $a \coloneqq (a_1, \ldots, a_m) \in X$ 以及 $r > 0$, 都有
-        \[
-        \oball_X(a,r) = \prod_{j=1}^m \oball_{X_j}(a_j, r)\ ,\quad \cball_X(a,r) = \prod_{j=1}^m \cball_{X_j}(a_j, r)\ .
-        \]
+        $$
+        d(x,y) \coloneqq \max_{1 \leq j \leq m} d_j(x_j, y_j)\ ,\quad x \coloneqq (x_1, \dots, x_m) \in X\ ,\quad y \coloneqq (y_1, \dots, y_m) \in X
+        $$
+        是 $X$ 上的度量, 称为积度量. 进一步, 称 $(X,d)$ 是 $(X_j, d_j),\ 1 \leq j \leq m$ 的积空间. 可以验证, 对于任意 $a \coloneqq (a_1, \ldots, a_m) \in X$ 以及 $r > 0$, 都有
+        $$
+        \ball_X(a,r) = \prod_{j=1}^m \ball_{X_j}(a_j, r)\ ,\quad \bar\ball_X(a,r) = \prod_{j=1}^m \bar\ball_{X_j}(a_j, r)\ .
+        $$
     \end{enumerate}
 \end{example}
+
+\begin{proof}
+    1. 由命题 \ref{prop:abs-in-Q} 可以直接验证 $\abs{\,\cdot\,}$ 满足度量公理.
+\end{proof}
 
 度量公理的一个重要结论是反三角不等式 (见推论 \ref{cor:reversed-triangle-inequality}).
 
 \begin{proposition}[反三角不等式]
     设 $(X,d)$ 是度量空间. 则
-    \[
+    $$
     d(x,y) \geq \abs{d(x,z) - d(z,y)}\ ,\quad x,y,z \in X\ .
-    \]
+    $$
 \end{proposition}
 
+\begin{proof}
+    设 $x,y,z \in X$. 由 $d(x,z) \leq d(x,y) + d(y,z)$ 可得
+    $$
+    d(x,y) \geq d(x,z) - d(z,y)\ ,
+    $$
+    交换 $x$ 和 $y$ 可得
+    $$
+    d(x,y) = d(y,x) \geq d(y,z) - d(z,x) = -\bigl(d(x,z) - d(z,y)\bigr)\ ,
+    $$
+    即 $d(x,y) \geq \abs{d(x,z) - d(z,y)}$.
+\end{proof}
+
 \begin{definition}[邻域]
-    设 $X$ 是度量空间, $U \subseteq X$, $a \in X$. 若存在 $r > 0$ 使得 $\oball(a,r) \subseteq U$, 则称 $U$ 是 $a$ 的邻域. 进一步, 将 $a$ 的邻域的全体记作
-    \[
+    设 $X$ 是度量空间, $U \subseteq X$, $a \in X$. 若存在 $r > 0$ 使得 $\ball(a,r) \subseteq U$, 则称 $U$ 是 $a$ 的邻域. 进一步, 将 $a$ 的邻域的全体记作
+    $$
     \nbr(a) \coloneqq \set{U \subseteq X}{U\ \text{是}\ a\ \text{的邻域}}\ .
-    \]
+    $$
 \end{definition}
+
+\begin{example}
+    设 $X$ 是度量空间, $a \in X$.
+    \begin{enumerate}
+        \item 对于每个 $\varepsilon > 0$, $\ball(a, \varepsilon)$ 和 $\bar\ball(a, \varepsilon)$ 都是 $a$ 的邻域, 称为 $a$ 的开 $\varepsilon$-邻域 和闭 $\varepsilon$-邻域.
+        \item 显然 $X \in \nbr(a)$. 若 $U_1, U_2 \in \nbr(a)$, 则 $U_1 \cap U_2$ 和 $U_1 \cup U_2$ 也是 $a$ 的邻域. 任意包含了 $a$ 的邻域的集合同样是 $a$ 的邻域.
+        \item 设 $X \coloneqq [0,1]$ 配备了在 $\R$ 上诱导的度量. 则 $[1/2, 1]$ 是 $1$ 的邻域, 但不是 $1/2$ 的邻域.
+    \end{enumerate}
+\end{example}
+
+\begin{proof}
+    2. 设 $U_1, U_2 \in \nbr(a)$. 故存在 $r_1, r_2 > 0$ 使得 $\ball(a, r_1) \in U_1$  和 $\ball(a, r_2) \in U_2$. 令 $r = \min\set{r_1, r_2}$, 于是
+    $$
+    \ball(a,r) \subseteq U_1 \cap U_2 \subseteq U_1 \cup U_2\ ,
+    $$
+    即 $U_1 \cap U_2$ 和 $U_1 \cup U_2$ 是 $a$ 的邻域.
+\end{proof}
+
+\begin{center}
+    \kaishu 在本节的其余部分里, 设 $X \coloneqq (X,d)$ 是度量空间, $(x_n)$ 是 $X$ 中的序列.
+\end{center}
+
+\subsection{聚点}
+
+\begin{definition}[聚点]
+    称 $a \in X$ 是 $(x_n)$ 的聚点, 若 $a$ 的每个邻域都包含了 $(x_n)$ 的无穷多项.
+\end{definition}
+
+在讨论一些具体例子之前, 先给出下面这个关于聚点的刻画会对之后的讨论很有帮助.
+
+\begin{proposition}\label{prop:cluster-points-charact}
+    以下命题是等价的.
+    \begin{enumerate}
+        \item $a$ 是 $(x_n)$ 的聚点.
+        \item 对于任意 $U \in \nbr(a)$ 和 $m \in \N$, 存在 $n \geq m$ 使得 $x_n \in U$.
+        \item 对于任意 $\varepsilon > 0$ 和 $m \in \N$, 存在 $n \geq m$ 使得 $x_n \in \ball(a, \varepsilon)$.
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    由聚点的定义可以直接得到.
+\end{proof}
+
+\begin{example}
+    \begin{enumerate}
+        \item 实数列 $\bigl((-1)^n\bigr)$ 有两个聚点, $1$ 和 $-1$.
+        \item 复数列 $(\ii^n)$ 有四个聚点, $\pm 1$ 和 $\pm \ii$.
+        \item 常序列 $(x,x,x,\dots)$ 有唯一的聚点 $x$.
+        \item 自然数序列 $(n)$ 没有聚点.
+        \item 设 $\varphi \colon \N \to \Q$ 是双射 (由命题 \ref{prop:Q-is-countable} 可知这样的函数存在). 定义序列 $(x_n)$, 其中 $x_n \coloneqq \varphi(n),\ n \in \N$. 则每个实数都是 $(x_n)$ 的聚点.
+    \end{enumerate}
+\end{example}
+
+\begin{proof}
+    5. 假设 $a \in \R$ 不是 $(x_n)$ 的聚点. 由命题 \ref{prop:cluster-points-charact} 可知, 存在 $\varepsilon > 0$ 和 $m \in \N$, 使得
+    $$
+    x_n \notin \ball(a, \varepsilon) = (a - \varepsilon, a + \varepsilon)\ ,\quad n \geq m\ .
+    $$
+    这意味着区间 $(a - \varepsilon, a + \varepsilon)$ 仅包含了有限多个有理数, 这与命题 \ref{prop:Q-density-in-R} 矛盾.
+\end{proof}
+
+\subsection{收敛}
+
+\begin{definition}[收敛]
+    称序列 $(x_n)$ 收敛, 若存在 $a \in X$ 使得 $a$ 的任意邻域都包含了 $(x_n)$ 的几乎所有项. 记作
+    $$
+    \lim_{n \to \infty} x_n = a\quad \text{或}\quad x_n \to a\ (n \to \infty)\ ,
+    $$
+    并称当 $n$ 趋于无穷大时, $(x_n)$ 收敛到 $a$ 或以 $a$ 为极限. 若 $(x_n)$ 不收敛, 则称 $(x_n)$ 发散.
+\end{definition}
+
+这个定义中最核心的部分是要求: 极限的每个邻域都包含该序列的几乎所有项. 在 $X = \K$ 的情形下, 这一要求正对应于那种 $x_n$ 到 $a$ 的距离 ``变得任意小'' 的几何直觉. 如果 $a$ 是 $(x_n)$ 的聚点且 $U$ 是 $a$ 的邻域, 那么当然, $U$ 会包含序列的无穷多项, 但同时也有可能序列的无穷多项也不落在 $U$ 中.
+
+下一个命题是对收敛的等价刻画.
+
+\begin{proposition}
+    以下命题是等价的.
+    \begin{enumerate}
+        \item $\lim x_n = a$.
+        \item 对于任意 $U \in \nbr(a)$, 存在 $N \in \N$ 使得当 $n \geq N$ 时 $x_n \in U$.
+        \item 对于任意 $\varepsilon > 0$, 存在 $N \in \N$ 使得当 $n \geq N$ 时 $x_n \in \ball(a, \varepsilon)$.
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    由收敛的定义可以直接得到.
+\end{proof}
+
+下面这些例子都比较简单. 对于更复杂的例子, 我们需要第 4 节发展出的那些方法.
+
+\begin{example}
+    \begin{enumerate}
+        \item 设实数列 $(1/n)_{n \in \N^\ast}$, 则 $\lim 1/n = 0$.
+        \item 设复数列 $(z_n)$, 其中
+        $$
+        z_n \coloneqq \frac{n+2}{n+1} + \ii \frac{2n}{n+2}\ ,
+        $$
+        则 $\lim z_n = 1 + 2\ii$.
+        \item 常序列 $(a,a,a,\dots)$ 收敛到 $a$.
+        \item 实数列 $\bigl((-1)^n\bigr)$ 发散.
+        \item 设 $X$ 是度量空间 $(X_j, d_j),\ 1 \leq j \leq m$ 的积空间. 则序列 $(x_n) = \bigl((x_n^1, \dots, x_n^m)\bigr)$ 收敛到点 $a \coloneqq (a^1, \dots, a^m) \in X$ 当且仅当对于每个 $j \in \set{1, \dots, m}$ 都有序列 $(x_n^j)$ 收敛到点 $a^j \in X_j$.
+    \end{enumerate}
+\end{example}
+
+\begin{proof}
+    1. 任取 $\varepsilon > 0$. 由推论 \ref{cor:archimedean-property-cor} 可知, 存在 $N \in \N^\ast$ 使得 $1/N < \varepsilon$, 于是
+    $$
+    \frac{1}{n} \leq \frac{1}{N} < \varepsilon\ ,\quad n \geq N\ ,
+    $$
+    即当 $n \geq N$ 时 $1/n \in \ball(0, \varepsilon)$.
+
+    2. 任取 $\varepsilon > 0$. 由推论 \ref{cor:archimedean-property-cor} 可知, 存在 $N \in \N$ 使得 $1/N < \varepsilon / 8$, 此时有
+    $$
+    \left(\frac{n+2}{n+1} - 1\right)^2 = \left(\frac{1}{n+1}\right)^2 < \frac{1}{N^2} < \frac{\varepsilon^2}{64} < \frac{\varepsilon^2}{2}\ ,\quad n \geq N\ ,
+    $$
+    和
+    $$
+    \left(\frac{2n}{n+2} - 2\right)^2 = \left(\frac{4}{n+2}\right)^2 < \frac{16}{N^2} < \frac{\varepsilon^2}{4} < \frac{\varepsilon^2}{2}\ ,\quad n \geq N\ ,
+    $$
+    于是
+    \begin{align*}
+        \abs{z_n - (1 + 2\ii)} &= \abs*{\frac{1}{n+1} - \ii \frac{4}{n+2}} \\
+        &= \sqrt{\left(\frac{1}{n+1}\right)^2 + \left(-\frac{4}{n+2}\right)^2} < \sqrt{\frac{\varepsilon^2}{2} + \frac{\varepsilon^2}{2}} < \varepsilon\ ,\quad n \geq N\ ,
+    \end{align*}
+    即当 $n \geq N$ 时 $z_n \in \ball\bigl((1 + 2\ii), \varepsilon\bigr)$.
+\end{proof}
+
+\subsection{有界集合}
+
+\begin{example}\label{ex:bounded-sets}
+    
+\end{example}
+
+\subsection{极限的唯一性}
+
+\subsection{子序列}
+
+\subsection{练习}
+
+\begin{exercises}
+    设 $d$ 是 $\K$ 上的离散度量, $X \coloneqq (\K,d)$.
+    \begin{enumerate}
+        \item 设 $a \in X$ 和 $r > 0$, 给出 $\ball_X(a,r)$ 和 $\bar\ball_X(a,r)$ 的具体描述.
+        \item 描述 $X$ 中任意序列的聚点.
+        \item 设 $a \in X$, 描述 $X$ 中所有收敛到 $a$ 的序列.
+    \end{enumerate}
+\end{exercises}
+
+\begin{exercises}
+    证明例 \ref{ex:metric}.5 的断言.
+\end{exercises}
+
+\begin{exercises}
+    证明序列 $(z_n)_{n \geq 1}$ 其中 $z_n \coloneqq (1 - 1/n)(1 + \ii)$ 收敛到 $1 + \ii$.
+\end{exercises}
+
+\begin{exercises}
+    证明例 \ref{ex:bounded-sets} 的断言.
+\end{exercises}
+
+\begin{exercises}
+    找出复数列 $(z_n)$ 在下列情况下的全部聚点.
+    \begin{enumerate}
+        \item $z_n \coloneqq \bigl((1+\ii) / \sqrt{2}\bigr)^n$.
+        \item $z_n \coloneqq \bigl(1 + (-1)^n\bigr) (n+1) n^{-1} + (-1)^n$.
+        \item $z_n \coloneqq (-1)^n n / (n+1)$.
+    \end{enumerate}
+\end{exercises}
+
+\begin{exercises}
+    对每个 $n \in \N$, 定义
+    $$
+    a_n \coloneqq n + \frac{1}{k} - \frac{k^2 + k - 2}{2}\ ,
+    $$
+    其中 $k \in \N^\ast$ 满足
+    $$
+    k^2 + k - 2 \leq 2n \leq k^2 + 3k - 2\ .
+    $$
+    证明 $(a_n)$ 是良定义的并找出其所有的聚点. (提示: 先把该数列的前几项具体算出来, 以便更好的把握整个数列的行为.)
+\end{exercises}
+
+\begin{exercises}
+    对每个 $m,n \in \N^\ast$, 定义
+    $$
+    d(m,n) \coloneqq
+    \begin{cases}
+    & (m+n) / mn\ , & m \neq n\ , \\
+    & 0\ ,          & m = n\ ,
+    \end{cases}
+    $$
+    证明 $(\N^\ast, d)$ 是度量空间, 对 $n \in \N^\ast$ 描述 $A_n \coloneqq \bar\ball(n, 1 + 1/n)$.
+\end{exercises}
+
+\begin{exercises}
+    设 $X \coloneqq \set{z \in \C}{\abs{z} \leq 3}$ 并配备自然度量. 描述 $\bar\ball_X(0,3)$ 和 $\bar\ball_X(2,4)$, 并证明 $\bar\ball_X(0,3) \subset \bar\ball_X(2,4)$.
+\end{exercises}
+
+\begin{exercises}[度量的等价]
+    集合 $X$ 上的度量 $d_1$ 和 $d_2$ 被称为等价度量, 若对于每个 $x \in X$ 和 $\varepsilon > 0$, 存在 $r_1, r_2 > 0$ 使得
+    $$
+    \ball_1(x, r_1) \subseteq \ball_2(x, \varepsilon)\ ,\quad \ball_2(x, r_2) \subseteq \ball_1(x, \varepsilon)\ ,
+    $$
+    其中 $\ball_j$ 是 $(X,d_j),\ j = 1,2$ 中的开球. 现在, 设 $(X,d)$ 是度量空间,
+    $$
+    \delta(x,y) \coloneqq \frac{d(x,y)}{1 + d(x,y)}\ ,\quad x,y \in X\ .
+    $$
+    证明 $d$ 和 $\delta$ 是 $X$ 上的等价度量. (提示: 函数 $t \mapsto t/(1+t)$ 是递增的.)
+\end{exercises}
+
+\begin{exercises}
+    设 $X \coloneqq (0,1)$. 证明以下命题.
+    \begin{enumerate}
+        \item $d(x,y) \coloneqq \abs{(1/x) - (1/y)}$ 是 $X$ 上的度量.
+        \item 自然度量和 $d$ 是等价的.
+        \item 在 $\R$ 上不存在这样一个度量: 它与自然度量等价, 并且在 $X$ 上诱导出的度量是 $d$.
+    \end{enumerate}
+\end{exercises}
+
+\begin{exercises}
+    设 $(X_j, d_j),\ 1 \leq j \leq n$ 是度量空间, $X \coloneqq X_1 \times \dots \times X_n$ 且 $d$ 是 $X$ 上的积度量. 证明
+    $$
+    \delta(x,y) \coloneqq \sum_{j=1}^n d_j(x_j, y_j)\ ,\quad x \coloneqq (x_1, \dots, x_m) \in X\ ,\quad y \coloneqq (y_1, \dots, y_m) \in X
+    $$
+    是 $X$ 上的度量且与 $d$ 等价.
+\end{exercises}
+
+\begin{exercises}[SNCF-度量]
+    对于每个 $z,w \in \C$, 定义
+    $$
+    \delta(z,w) \coloneqq
+    \begin{cases}
+        & \abs{z-w}\ ,         & \text{若存在}\ \lambda > 0\ \text{使得}\ z = \lambda w\ , \\
+        & \abs{z} + \abs{w}\ , & \text{其余情况}\ .
+    \end{cases}
+    $$
+    证明 $\delta$ 是 $\C$ 上的度量, 称为 SNCF-度量.
+\end{exercises}
+
+\begin{exercises}
+    设 $(x_n)$ 是 $\C$ 中的序列且对于任意 $n \in \N$ 有 $\Re x_n = 0$. 证明, 若 $(x_n)$ 收敛到 $x$, 则 $\Re x = 0$.
+\end{exercises}
