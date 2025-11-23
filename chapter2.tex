@@ -92,21 +92,21 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 \subsection{度量空间}
 
-\begin{axiom}[度量]
+\begin{axiom}[度量]\label{axiom:metric}
     设 $X$ 是集合, 其上定义了函数
     $$
     d \colon X \times X \to \R\ .
     $$
     若对于任意 $x,y,z \in X$ 都有
     \begin{enumerate}
-        \item[$(\mathrm M_1)$]\label{axi:metric-1} (同一性) $d(x,y) = 0$ 当且仅当 $x = y$.
+        \item[$(\mathrm M_1)$] (同一性) $d(x,y) = 0$ 当且仅当 $x = y$.
         \item[$(\mathrm M_2)$] (对称性) $d(x,y) = d(y,x)$.
-        \item[$(\mathrm M_2)$]\label{axi:metric-3} (三角不等式) $d(x,y) \leq d(x,z) + d(z,y)$.
+        \item[$(\mathrm M_3)$] (三角不等式) $d(x,y) \leq d(x,z) + d(z,y)$.
     \end{enumerate}
     则称 $d$ 是 $X$ 上的度量. 进一步, 称 $(X,d)$ 是度量空间. 最后, 称 $d(x,y)$ 是度量空间 $X$ 中点 $x$ 和 $y$ 之间的距离.
 \end{axiom}
 
-\hyperref[axi:metric-1]{$(\mathrm M_1)$}-\hyperref[axi:metric-3]{$(\mathrm M_3)$} 显然是对 ``距离函数'' 非常自然的要求. 举例来说, \hyperref[axi:metric-3]{$(\mathrm M_3)$} 可以被看作这样一条规则的公理化表述: ``从 $x$ 到 $y$ 的 `直达路径' 比先从 $x$ 到 $z$ 再从 $z$ 到 $y$ 的路径更短''.
+\hyperref[axiom:metric]{$(\mathrm M_1)$}-\hyperref[axiom:metric]{$(\mathrm M_3)$} 显然是对 ``距离函数'' 非常自然的要求. 举例来说, \hyperref[axiom:metric]{$(\mathrm M_3)$} 可以被看作这样一条规则的公理化表述: ``从 $x$ 到 $y$ 的 `直达路径' 比先从 $x$ 到 $z$ 再从 $z$ 到 $y$ 的路径更短''.
 
 \begin{proposition}[度量的非负性]
     设 $(X,d)$ 是度量空间. 则
@@ -448,7 +448,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     $$
     \set{m \in \N}{m \geq n_{k-1}\ \text{且}\ x_m \in \ball(a, 1/k)} \neq \varnothing\ ,\quad k \in \N^\ast\ ,
     $$
-    由 \hyperref[well-ordering-principle]{良序原理} 可知, 对于每个 $k \in \N^\ast$, $n_k$ 是良定义的. 于是 $(n_k)$ 是良定义且严格递增的. 任取 $\varepsilon > 0$, 由推论 \ref{cor:archimedean-property-cor} 可知, 存在 $K \in \N$ 使得 $1/K < \varepsilon$, 由 $n_k$ 的定义可知
+    由 \hyperref[prop:well-ordering-principle]{良序原理} 可知, 对于每个 $k \in \N^\ast$, $n_k$ 是良定义的. 于是 $(n_k)$ 是良定义且严格递增的. 任取 $\varepsilon > 0$, 由推论 \ref{cor:archimedean-property-cor} 可知, 存在 $K \in \N$ 使得 $1/K < \varepsilon$, 由 $n_k$ 的定义可知
     $$
     x_{n_k} \in \ball(a, 1/k) \subseteq \ball(a, \varepsilon)\ ,\quad k \geq K\ ,
     $$
