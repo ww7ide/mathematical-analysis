@@ -30,13 +30,13 @@
 \newtheorem{exercises}{}[section]
 \renewcommand{\theexercises}{\arabic{exercises}}
 
-\renewenvironment{cases}{%
-  \left\{\begin{matrix}
-}{%
-  \end{matrix}\right.
+\makeatletter
+\renewenvironment{cases}{
+    \left\{\begin{matrix}
+}{
+    \end{matrix}\right.
 }
 
-\makeatletter
 \renewenvironment{proof}[1][\proofname]{
     \par
     \pushQED{\qed}

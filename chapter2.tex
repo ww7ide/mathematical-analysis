@@ -31,7 +31,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     $$
     是 $X$ 中的序列, 记作
     $$
-    (x_n)\ ,\quad (x_n)_{n \in \N}\quad \text{或}\quad (x_0, x_1, x_2, \dots)\ ,
+    (x_n)\ ,\quad (x_n)_{n \in \N}\quad \text{或}\quad (x_0, x_1, x_2, \ldots)\ ,
     $$
     并称
     $$
@@ -46,10 +46,10 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 \begin{remark}
     \begin{enumerate}
-        \item 区分序列 $(x_n)$ 和它的像 $\set{x_n}{n \in \N}$ 是很重要的. 例如, 若对于任意 $n$ 有 $x_n = x$, 也就是说 $(x_n)$ 是一个常数列, 此时 $(x_n) = (x, x, x, \dots)$, 而 $\set{x_n}{n \in \N}$ 是单点集 $\set{x}$.
+        \item 区分序列 $(x_n)$ 和它的像 $\set{x_n}{n \in \N}$ 是很重要的. 例如, 若对于任意 $n$ 有 $x_n = x$, 也就是说 $(x_n)$ 是一个常数列, 此时 $(x_n) = (x, x, x, \ldots)$, 而 $\set{x_n}{n \in \N}$ 是单点集 $\{x\}$.
         \item 设 $(x_n)$ 是 $X$ 中的序列, $E$ 是某个性质. 称 $E$ 对 $(x_n)$ 的几乎所有项都成立, 若存在 $m \in \N$ 使得当 $n \geq m$ 时命题 $E(x_n)$ 都成立. 也就是说, 除了至多有限多个 $x_n$ 以外, $E$ 对其余所有 $x_n$ 都成立. 当然, $E$ 也可以对若干个 (甚至全部) $n < m$ 的项成立. 若存在 $N \subseteq \N$ 满足 $|N| = \aleph_0$ 且 $E(x_n)$ 对所有 $n \in N$ 都成立, 则称 $E$ 对 $(x_n)$ 的无穷多项都成立. 例如, 实数列
         $$
-        \Bigl(-5, 4, -3, 2, -1, 0, -\frac{1}{2}, \frac{1}{3}, -\frac{1}{4}, \frac{1}{5}, \dots, -\frac{1}{2n}, \frac{1}{2n+1}, \dots\Bigr)
+        \Bigl(-5, 4, -3, 2, -1, 0, -\frac{1}{2}, \frac{1}{3}, -\frac{1}{4}, \frac{1}{5}, \ldots, -\frac{1}{2n}, \frac{1}{2n+1}, \ldots\Bigr)
         $$
         有无穷多个正项, 无穷多个负项, 并且对于几乎所有项都有其绝对值小于 $1$.
         \item 对于任意 $m \in \N^\ast$, 函数
@@ -58,7 +58,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         $$
         也称为 $X$ 中的序列。也就是说,
         $$
-        (x_j)_{j \geq m} = (x_m, x_{m+1}, x_{m+2}, \dots)
+        (x_j)_{j \geq m} = (x_m, x_{m+1}, x_{m+2}, \ldots)
         $$
         是 $X$ 中的序列, 尽管其下标不是从 $0$ 开始. 这种约定是合理的, 因为通过映射
         $$
@@ -99,14 +99,14 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     $$
     若对于任意 $x,y,z \in X$ 都有
     \begin{enumerate}
-        \item (同一性) $d(x,y) = 0$ 当且仅当 $x = y$.
-        \item (对称性) $d(x,y) = d(y,x)$.
-        \item (三角不等式) $d(x,y) \leq d(x,z) + d(z,y)$.
+        \item[$(\mathrm M_1)$]\label{axi:metric-1} (同一性) $d(x,y) = 0$ 当且仅当 $x = y$.
+        \item[$(\mathrm M_2)$] (对称性) $d(x,y) = d(y,x)$.
+        \item[$(\mathrm M_2)$]\label{axi:metric-3} (三角不等式) $d(x,y) \leq d(x,z) + d(z,y)$.
     \end{enumerate}
     则称 $d$ 是 $X$ 上的度量. 进一步, 称 $(X,d)$ 是度量空间. 最后, 称 $d(x,y)$ 是度量空间 $X$ 中点 $x$ 和 $y$ 之间的距离.
 \end{axiom}
 
-公理 1-3 显然是对 ``距离函数'' 非常自然的要求. 举例来说, 公理 3 可以被看作这样一条规则的公理化表述: ``从 $x$ 到 $y$ 的 `直达路径' 比先从 $x$ 到 $z$ 再从 $z$ 到 $y$ 的路径更短''. 而对距离非负的要求, 由公理 1-3 便可得到.
+\hyperref[axi:metric-1]{$(\mathrm M_1)$}-\hyperref[axi:metric-3]{$(\mathrm M_3)$} 显然是对 ``距离函数'' 非常自然的要求. 举例来说, \hyperref[axi:metric-3]{$(\mathrm M_3)$} 可以被看作这样一条规则的公理化表述: ``从 $x$ 到 $y$ 的 `直达路径' 比先从 $x$ 到 $z$ 再从 $z$ 到 $y$ 的路径更短''.
 
 \begin{proposition}[度量的非负性]
     设 $(X,d)$ 是度量空间. 则
@@ -138,7 +138,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \begin{enumerate}
         \item 函数
         $$
-        \abs{\,\cdot\,} \colon \K \times \K \to \R\ ,\quad (x,y) \mapsto \abs{x - y}
+        |\cdot| \colon \K \times \K \to \R\ ,\quad (x,y) \mapsto |x - y|
         $$
         是 $\K$ 上的度量, 称为自然度量. 除非另有说明, 否则默认 $\K$ 配备该度量, 并将其视为一个度量空间.
         \item 设 $(X,d)$ 是度量空间, $Y$ 是 $X$ 的非空子集. 则把 $d$ 限制在 $Y \times Y$ 上所得的函数
@@ -156,9 +156,9 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \end{cases}
         $$
         是 $X$ 上的度量, 称为离散度量.
-        \item 设 $(X_j, d_j),\ 1 \leq j \leq m$ 是度量空间, $X \coloneqq X_1 \times \dots \times X_m$. 则函数
+        \item 设 $(X_j, d_j),\ 1 \leq j \leq m$ 是度量空间, $X \coloneqq X_1 \times \cdots \times X_m$. 则函数
         $$
-        d(x,y) \coloneqq \max_{1 \leq j \leq m} d_j(x_j, y_j)\ ,\quad x \coloneqq (x_1, \dots, x_m) \in X\ ,\quad y \coloneqq (y_1, \dots, y_m) \in X
+        d(x,y) \coloneqq \max_{1 \leq j \leq m} d_j(x_j, y_j)\ ,\quad x \coloneqq (x_1, \ldots, x_m) \in X\ ,\quad y \coloneqq (y_1, \ldots, y_m) \in X
         $$
         是 $X$ 上的度量, 称为积度量. 进一步, 称 $(X,d)$ 是 $(X_j, d_j),\ 1 \leq j \leq m$ 的积空间. 可以验证, 对于任意 $a \coloneqq (a_1, \ldots, a_m) \in X$ 以及 $r > 0$, 都有
         $$
@@ -168,15 +168,15 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{example}
 
 \begin{proof}
-    1. 由命题 \ref{prop:abs-in-Q} 可以直接验证 $\abs{\,\cdot\,}$ 满足度量公理.
+    1. 由命题 \ref{prop:abs-in-Q} 可以直接验证 $|\cdot|$ 满足度量公理.
 \end{proof}
 
-度量公理的一个重要结论是反三角不等式 (见推论 \ref{cor:reversed-triangle-inequality}).
+度量公理的一个重要结论是反三角不等式 (见推论 \ref{cor:reversed-triangle-inequality-in-Q}).
 
-\begin{proposition}[反三角不等式]
+\begin{proposition}[反三角不等式]\label{prop:reversed-triangle-inequality-in-metric-space}
     设 $(X,d)$ 是度量空间. 则
     $$
-    d(x,y) \geq \abs{d(x,z) - d(z,y)}\ ,\quad x,y,z \in X\ .
+    d(x,y) \geq |d(x,z) - d(z,y)|\ ,\quad x,y,z \in X\ .
     $$
 \end{proposition}
 
@@ -189,7 +189,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     $$
     d(x,y) = d(y,x) \geq d(y,z) - d(z,x) = -\bigl(d(x,z) - d(z,y)\bigr)\ ,
     $$
-    即 $d(x,y) \geq \abs{d(x,z) - d(z,y)}$.
+    即 $d(x,y) \geq |d(x,z) - d(z,y)|$.
 \end{proof}
 
 \begin{definition}[邻域]
@@ -209,7 +209,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{example}
 
 \begin{proof}
-    2. 设 $U_1, U_2 \in \nbr(a)$. 故存在 $r_1, r_2 > 0$ 使得 $\ball(a, r_1) \in U_1$  和 $\ball(a, r_2) \in U_2$. 令 $r = \min\set{r_1, r_2}$, 于是
+    2. 设 $U_1, U_2 \in \nbr(a)$. 故存在 $r_1, r_2 > 0$ 使得 $\ball(a, r_1) \in U_1$  和 $\ball(a, r_2) \in U_2$. 令 $r = \min\{r_1, r_2\}$, 于是
     $$
     \ball(a,r) \subseteq U_1 \cap U_2 \subseteq U_1 \cup U_2\ ,
     $$
@@ -245,7 +245,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \begin{enumerate}
         \item 实数列 $\bigl((-1)^n\bigr)$ 有两个聚点, $1$ 和 $-1$.
         \item 复数列 $(\ii^n)$ 有四个聚点, $\pm 1$ 和 $\pm \ii$.
-        \item 常序列 $(x,x,x,\dots)$ 有唯一的聚点 $x$.
+        \item 常序列 $(x,x,x,\ldots)$ 有唯一的聚点 $x$.
         \item 自然数序列 $(n)$ 没有聚点.
         \item 设 $\varphi \colon \N \to \Q$ 是双射 (由命题 \ref{prop:Q-is-countable} 可知这样的函数存在). 定义序列 $(x_n)$, 其中 $x_n \coloneqq \varphi(n),\ n \in \N$. 则每个实数都是 $(x_n)$ 的聚点.
     \end{enumerate}
@@ -288,7 +288,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 下面这些例子都比较简单. 对于更复杂的例子, 我们需要第 4 节发展出的那些方法.
 
-\begin{example}
+\begin{example}\label{ex:ez-convergent-sequence}
     \begin{enumerate}
         \item 设实数列 $(1/n)_{n \in \N^\ast}$, 则 $\lim 1/n = 0$.
         \item 设复数列 $(z_n)$, 其中
@@ -296,9 +296,9 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         z_n \coloneqq \frac{n+2}{n+1} + \ii \frac{2n}{n+2}\ ,
         $$
         则 $\lim z_n = 1 + 2\ii$.
-        \item 常序列 $(a,a,a,\dots)$ 收敛到 $a$.
+        \item 常序列 $(a,a,a,\ldots)$ 收敛到 $a$.
         \item 实数列 $\bigl((-1)^n\bigr)$ 发散.
-        \item 设 $X$ 是度量空间 $(X_j, d_j),\ 1 \leq j \leq m$ 的积空间. 则序列 $(x_n) = \bigl((x_n^1, \dots, x_n^m)\bigr)$ 收敛到点 $a \coloneqq (a^1, \dots, a^m) \in X$ 当且仅当对于每个 $j \in \set{1, \dots, m}$ 都有序列 $(x_n^j)$ 收敛到点 $a^j \in X_j$.
+        \item 设 $X$ 是度量空间 $(X_j, d_j),\ 1 \leq j \leq m$ 的积空间. 则序列 $(x_n) = \bigl((x_n^1, \ldots, x_n^m)\bigr)$ 收敛到点 $a \coloneqq (a^1, \ldots, a^m) \in X$ 当且仅当对于每个 $j \in \{1, \ldots, m\}$ 都有序列 $(x_n^j)$ 收敛到点 $a^j \in X_j$.
     \end{enumerate}
 \end{example}
 
@@ -319,21 +319,143 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     $$
     于是
     \begin{align*}
-        \abs{z_n - (1 + 2\ii)} &= \abs*{\frac{1}{n+1} - \ii \frac{4}{n+2}} \\
+        |z_n - (1 + 2\ii)| &= \abs*{\frac{1}{n+1} - \ii \frac{4}{n+2}} \\
         &= \sqrt{\left(\frac{1}{n+1}\right)^2 + \left(-\frac{4}{n+2}\right)^2} < \sqrt{\frac{\varepsilon^2}{2} + \frac{\varepsilon^2}{2}} < \varepsilon\ ,\quad n \geq N\ ,
     \end{align*}
     即当 $n \geq N$ 时 $z_n \in \ball\bigl((1 + 2\ii), \varepsilon\bigr)$.
+
+    5. $\implies$. 设 $(x_n)$ 收敛到点 $a$. 则任取 $\varepsilon > 0$, 存在 $N \in \N$ 使得
+    $$
+    x_n = (x_n^1, \ldots, x_n^m) \in \ball_X(a, \varepsilon) = \prod_{j=1}^m \ball_{X_j}(a^j, \varepsilon)\ ,\quad n \geq N\ ,
+    $$
+    即当 $n \geq N$ 时, 对于每个 $j$ 都有 $x_n^j \in \ball_{X_j}(a^j, \varepsilon)$.
+
+    $\impliedby$. 设对于每个 $j$ 都有 $(x_n^j)$ 收敛到点 $a^j$. 任取 $\varepsilon > 0$, 对于每个 $j$ 都存在 $N_j \in \N$ 使得当 $n \geq N_j$ 时 $x_n^j \in \ball_{X_j}(a^j, \varepsilon)$. 令 $N = \max_{1 \leq j \leq m} N_j$, 于是
+    $$
+    (x_n^1, \ldots, x_n^m) = x_n \in \prod_{j=1}^m \ball_{X_j}(a^j, \varepsilon) = \ball_X(a, \varepsilon)\ ,\quad n \geq N\ .
+    $$
 \end{proof}
 
 \subsection{有界集合}
 
+\begin{definition}[有界性]
+    称集合 $Y \subseteq X$ 在 $X$ 中 $d$-有界或有界, 若存在 $M > 0$ 使得对于任意 $x,y \in Y$ 都有 $d(x,y) \leq M$. 进一步, 称
+    $$
+    \diam Y \coloneqq \sup_{x,y \in Y} d(x,y)
+    $$
+    是 $Y$ 的直径. 最后, 称序列 $(x_n)$ 有界, 若它的像 $\set{x_n}{n \in \N}$ 有界.
+\end{definition}
+
 \begin{example}\label{ex:bounded-sets}
-    
+    \begin{enumerate}
+        \item 对于任意 $a \in X$ 和 $r > 0$, $\ball(a,r)$ 和 $\bar\ball(a,r)$ 在 $X$ 中有界.
+        \item 有界集合的每个子集都是有界的. 有界集合的有限并是有界的.
+        \item 集合 $Y \subseteq X$ 在 $X$ 中有界, 当且仅当存在 $x \in X$ 和 $r > 0$ 使得 $Y \subseteq \ball_X(x,r)$. 若 $Y \neq \varnothing$, 则存在 $x \in Y$ 也满足该性质.
+        \item 有界区间是有界的.
+        \item 集合 $Y \subseteq \K$ 有界, 当且仅当存在 $M > 0$ 使得对于任意 $y \in Y$ 都有 $|y| \leq M$.
+    \end{enumerate}
 \end{example}
+
+\begin{proposition}[有界性]
+    收敛序列必有界.
+\end{proposition}
+
+\begin{proof}
+    设序列 $(x_n)$ 收敛到点 $a$. 则存在 $N \in \N$ 使得对于任意 $n \geq N$ 有 $x_n \in \ball(a,1)$. 由三角不等式可得
+    $$
+    d(x_n, x_m) \leq d(x_n, a) + d(a, x_m) < 2\ ,\quad m,n \geq N\ .
+    $$
+    令 $M = \max_{m,n < N} d(x_n, x_m)$, 有
+    $$
+    d(x_n, x_m) \leq M\ ,\quad m,n < N\ .
+    $$
+    于是对于任意 $m,n \in \N$ 都有 $d(x_n, x_m) \leq M + 2$.
+\end{proof}
 
 \subsection{极限的唯一性}
 
+\begin{proposition}\label{prop:limit-point-is-unique-cluster-point}
+    设序列 $(x_n)$ 收敛到点 $a$. 则 $a$ 是 $(x_n)$ 唯一的聚点.
+\end{proposition}
+
+\begin{proof}
+    显然 $a$ 是 $(x_n)$ 的聚点, 现证明唯一性. 假设 $b$ 是 $(x_n)$ 的聚点且 $a \neq b$. 取 $\varepsilon = d(a,b) / 2$, 则存在 $N \in \N$ 使得当 $n \geq N$ 时 $x_n \in \ball(a, \varepsilon)$. 而 $b$ 是 $(x_n)$ 的聚点, 故存在 $m \geq N$ 使得 $x_m \in \ball(b, \varepsilon)$. 由命题 \ref{prop:reversed-triangle-inequality-in-metric-space} 可知
+    $$
+    d(a, x_m) \geq |d(a, b) - d(b, x_m)| > 2\varepsilon - \varepsilon = \varepsilon\ ,
+    $$
+    即 $x_m \notin \ball(a, \varepsilon)$, 矛盾, 因此 $b$ 不是 $(x_n)$ 的聚点.
+\end{proof}
+
+\begin{remark}
+    命题 \ref{prop:limit-point-is-unique-cluster-point} 的逆命题不成立, 也就是说, 存在发散但具有唯一聚点的序列. 例如, $(1/2, 2, 1/3, 3, 1/4, 4, \ldots)$.
+\end{remark}
+
+\begin{corollary}[唯一性]
+    收敛序列的极限唯一.
+\end{corollary}
+
+\begin{proof}
+    由命题 \ref{prop:limit-point-is-unique-cluster-point} 可以直接得到.
+\end{proof}
+
 \subsection{子序列}
+
+\begin{definition}[子序列]
+    设 $\varphi = (x_n)$ 是 $X$ 中的序列, $\psi \colon \N \to \N$ 是严格递增函数. 称 $\varphi \circ \psi$ 是 $\varphi$ 的子序列, 记作
+    $$
+    (x_{n_k})\quad \text{或}\quad (x_{n_k})_{{k \in \N}}\ ,
+    $$
+    其中 $n_k \coloneqq \psi(k)$.
+\end{definition}
+
+因为 $\psi$ 是严格递增的, 故 $n_0 < n_1 < n_2 < \cdots$.
+
+\begin{example}
+    数列 $\bigl((-1)^n\bigr)_{n \in \N}$ 有两个常子数列, $\bigl((-1)^{2k}\bigr)_{k \in \N} = (1,1,1,\ldots)$ 和 $\bigl((-1)^{2k+1}\bigr)_{k \in \N} = (-1,-1,-1,\ldots)$.
+\end{example}
+
+\begin{proposition}\label{prop:convergent-sequence-to-subsequence}
+    若序列 $(x_n)$ 收敛到点 $a$, 则 $(x_n)$ 的每个子序列 $(x_{n_k})$ 也收敛且以 $a$ 为极限.
+\end{proposition}
+
+\begin{proof}
+    任取 $U \in \nbr(a)$. 则存在 $N \in \N$ 使得当 $n \geq N$ 时 $x_n \in U$. 由子序列的定义可知, 对于任意 $k \in \N$ 有 $n_k \geq k$, 因此当 $k \geq N$ 时 $n_k \geq N$, 于是 $x_{n_k} \in U$. 即 $(x_{n_k})$ 收敛到 $a$.
+\end{proof}
+
+\begin{example}
+    当 $m \geq 2$ 时,
+    $$
+    \lim_{k \to \infty} \frac{1}{k^m} = 0\quad \text{且}\quad \lim_{k \to \infty} \frac{1}{m^k} = 0\ .
+    $$
+\end{example}
+
+\begin{proof}
+    令 $\psi_1(k) \coloneqq k^m$, $\psi_2(k) \coloneqq m^k$. 由于 $\psi_i \colon \N^\ast \to \N^\ast,\ i = 1,2$ 是单调递增的, 因此 $(k^{-m})$ 和 $(m^{-k})$ 是 $(1/n)$ 的子序列. 于是由例 \ref{ex:ez-convergent-sequence}.1 和 命题 \ref{prop:convergent-sequence-to-subsequence} 可得.
+\end{proof}
+
+下面的命题是对聚点的进一步刻画.
+
+\begin{proposition}
+    点 $a$ 是序列 $(x_n)$ 的聚点, 当且仅当存在 $(x_n)$ 的子序列 $(x_{n_k})$ 收敛到 $a$.
+\end{proposition}
+
+\begin{proof}
+    $\implies$. 设 $a$ 是 $(x_n)$ 的聚点. 下面递归构造序列 $(n_k)$,
+    $$
+    n_0 \coloneqq 0\ ,\quad n_k \coloneqq \min\set{m \in \N}{m > n_{k-1}\ \text{且}\ x_m \in \ball(a, 1/k)}\ ,\quad k \in \N^\ast\ .
+    $$
+    由于 $a$ 是 $(x_n)$ 的聚点, 故
+    $$
+    \set{m \in \N}{m \geq n_{k-1}\ \text{且}\ x_m \in \ball(a, 1/k)} \neq \varnothing\ ,\quad k \in \N^\ast\ ,
+    $$
+    由 \hyperref[well-ordering-principle]{良序原理} 可知, 对于每个 $k \in \N^\ast$, $n_k$ 是良定义的. 于是 $(n_k)$ 是良定义且严格递增的. 任取 $\varepsilon > 0$, 由推论 \ref{cor:archimedean-property-cor} 可知, 存在 $K \in \N$ 使得 $1/K < \varepsilon$, 由 $n_k$ 的定义可知
+    $$
+    x_{n_k} \in \ball(a, 1/k) \subseteq \ball(a, \varepsilon)\ ,\quad k \geq K\ ,
+    $$
+    即 $(x_{n_k})$ 收敛到 $a$.
+
+    $\impliedby$. 设 $(x_n)$ 的子序列 $(x_{n_k})$ 收敛到 $a$. 任取 $U \in \nbr(a)$, $m \in \N$. 存在 $K \in \N$ 使得当 $k \geq \max\{m,K\}$ 时 $x_{n_k} \in U$, 因此 $a$ 是 $(x_n)$ 的聚点.
+\end{proof}
 
 \subsection{练习}
 
@@ -392,7 +514,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{exercises}
 
 \begin{exercises}
-    设 $X \coloneqq \set{z \in \C}{\abs{z} \leq 3}$ 并配备自然度量. 描述 $\bar\ball_X(0,3)$ 和 $\bar\ball_X(2,4)$, 并证明 $\bar\ball_X(0,3) \subset \bar\ball_X(2,4)$.
+    设 $X \coloneqq \set{z \in \C}{|z| \leq 3}$ 并配备自然度量. 描述 $\bar\ball_X(0,3)$ 和 $\bar\ball_X(2,4)$, 并证明 $\bar\ball_X(2,4) \subset \bar\ball_X(0,3)$.
 \end{exercises}
 
 \begin{exercises}[度量的等价]
@@ -410,16 +532,16 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \begin{exercises}
     设 $X \coloneqq (0,1)$. 证明以下命题.
     \begin{enumerate}
-        \item $d(x,y) \coloneqq \abs{(1/x) - (1/y)}$ 是 $X$ 上的度量.
+        \item $d(x,y) \coloneqq |(1/x) - (1/y)|$ 是 $X$ 上的度量.
         \item 自然度量和 $d$ 是等价的.
         \item 在 $\R$ 上不存在这样一个度量: 它与自然度量等价, 并且在 $X$ 上诱导出的度量是 $d$.
     \end{enumerate}
 \end{exercises}
 
 \begin{exercises}
-    设 $(X_j, d_j),\ 1 \leq j \leq n$ 是度量空间, $X \coloneqq X_1 \times \dots \times X_n$ 且 $d$ 是 $X$ 上的积度量. 证明
+    设 $(X_j, d_j),\ 1 \leq j \leq n$ 是度量空间, $X \coloneqq X_1 \times \cdots \times X_n$ 且 $d$ 是 $X$ 上的积度量. 证明
     $$
-    \delta(x,y) \coloneqq \sum_{j=1}^n d_j(x_j, y_j)\ ,\quad x \coloneqq (x_1, \dots, x_m) \in X\ ,\quad y \coloneqq (y_1, \dots, y_m) \in X
+    \delta(x,y) \coloneqq \sum_{j=1}^n d_j(x_j, y_j)\ ,\quad x \coloneqq (x_1, \ldots, x_m) \in X\ ,\quad y \coloneqq (y_1, \ldots, y_m) \in X
     $$
     是 $X$ 上的度量且与 $d$ 等价.
 \end{exercises}
@@ -429,8 +551,8 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     $$
     \delta(z,w) \coloneqq
     \begin{cases}
-        & \abs{z-w}\ ,         & \text{若存在}\ \lambda > 0\ \text{使得}\ z = \lambda w\ , \\
-        & \abs{z} + \abs{w}\ , & \text{其余情况}\ .
+        & |z-w\ ,      & \text{若存在}\ \lambda > 0\ \text{使得}\ z = \lambda w\ , \\
+        & |z| + |w|\ , & \text{其余情况}\ .
     \end{cases}
     $$
     证明 $\delta$ 是 $\C$ 上的度量, 称为 SNCF-度量.
