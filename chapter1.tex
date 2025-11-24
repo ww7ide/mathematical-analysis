@@ -1,73 +1,298 @@
 \chapter{预备知识}
 
 \section{逻辑基础}
+
+\newpage
+
 \section{集合}
+
+\newpage
+
 \section{函数}
+
+\newpage
+
 \section{关系与运算}
 
+\newpage
+
 \section{自然数}
+
 \subsection{Peano 公理}
+
 \subsection{自然数的计算}
+
+\begin{theorem}\label{thm:the-arithmetic-of-natural-numbers}
+    
+\end{theorem}
+
 \subsection{除法}
+
 \subsection{数学归纳法}
+
 \begin{proposition}[良序原理]\label{prop:well-ordering-principle}
     
 \end{proposition}
+
 \subsection{递归定义}
 
+\newpage
+
 \section{可数性}
+
+\newpage
+
 \section{群与同态}
+
+在定理 \ref{thm:the-arithmetic-of-natural-numbers} 中, 我们在 $m \leq n$ 的前提下, 定义了两个自然数 $m$ 和 $n$ 的差 $n-m$. 同时, 在 $m$ 是 $n$ 约数的前提下, 我们也定义了两个自然数 $m$ 和 $n$ 的商 $n/m$. 在这两种情形中, 对 $m$ 和 $n$ 加上的这些限制正是为了保证所得的差和商仍然是自然数. 如果我们希望对任意自然数 $m$ 和 $n$ 定义 ``差'' $n-m$ 或 ``商'' $n/m$, 那么就必须离开自然数这一范围. 在第 9-11 节中, 我们将构造新类型的数, 把自然数集扩展到更大的数系之中, 在这些数系里, 这些运算可以 (几乎) 不受限制地使用.
+
+当然, 这些新的数系必须被构造得仍然满足加法与乘法的通常法则. 为此, 脱离对某个具体数系的依赖, 而对这些运算法则本身进行研究是极其有用的. 这样的研究也为我们提供了进一步的训练: 如何从给定的定义和公理中, 以逻辑方式推演出命题.
+
+对这里以及接下来几节中所出现问题的深入讨论, 严格来说属于代数学的范畴而非分析学, 因此我们在这里的叙述会相对简略, 只证明其中少数最重要的定理. 我们的目标是: 能够识别那些一次又一次以不同形式出现的一般代数结构. 从少量公理出发推导出大量算术运算法则, 使我们得以在本来杂乱庞大的公式和结论中建立起某种秩序, 并将注意力集中在真正本质的内容上. 从这些公理推出的命题, 只要公理成立, 那么它们就成立, 而与所处的具体背景无关. 已经证明过一次的结论, 就不必在每一个特殊情形中重新证明.
+
+在本节以及接下来的各节中, 我们只给出少数几个具体的例子. 我们的主要目的是提供一套语言, 并希望读者在后面的章节中能够体会到这套语言的用处, 同时也能看到这套形式主义背后真正的数学内容.
+
+\subsection{群}
+
+\begin{axiom}[群]
+    设 $G$ 是非空集合, 其上定义了运算
+    $$
+    \odot \colon G \times G \to G\ ,\quad (g,h) \mapsto g \odot h\ .
+    $$
+    若
+    \begin{enumerate}[label={$(\mathrm G_{\arabic*})$}]
+        \item $\odot$ 具有结合律.
+        \item $\odot$ 具有单位元 $e$.
+        \item 每个 $g \in G$ 都有逆元 $h \in G$ 使得 $g \odot h = h \odot g = e$.
+    \end{enumerate}
+    则称 $(G, \odot)$ 是群.
+\end{axiom}
+
+\begin{definition}[Abel 群]
+    称群 $(G, \odot)$ 是交换群或 Abel 群, 若 $\odot$ 具有交换律.
+\end{definition}
+
+\subsection{子群}
+
+\subsection{陪集}
+
+\subsection{同态}
+
+\subsection{同构}
+
+\newpage
+
 \section{环、域与多项式}
 
+本节中, 我们考虑在其上定义了两种运算的集合. 在这里我们假定: 对于其中一种运算, 这个集合构成一个 Abel 群, 并且这两种运算满足某种合适的 ``分配律''. 由此发展出 ``环'' 和 ``域'' 的概念, 它们把运算法则加以形式化. 作为环的特别重要的例子, 我们将考察幂级数环以及单变量 (和多变量) 多项式环, 并推导它们的一些基本性质. 多项式函数在运算上相对容易处理, 在分析中也具有重要地位, 因为 ``复杂函数可以被多项式任意逼近'', 这一说法我们将在后文中以更精确的形式加以表述.
+
+\subsection{环}
+
+\begin{axiom}[环]
+    设 $R$ 是非空集合, 其上定义了加法运算
+    $$
+    + \colon R \times R \to R\ ,\quad (a,b) \mapsto a + b\ ,
+    $$
+    和乘法运算
+    $$
+    \cdot \colon R \times R \to R\ ,\quad (a,b) \mapsto a \cdot b\ .
+    $$
+    若
+    \begin{enumerate}[label={$(\mathrm R_{\arabic*})$}]
+        \item $(R,+)$ 是 Abel 群.
+        \item $\cdot$ 具有结合律.
+        \item $\cdot$ 对 $+$ 具有分配律:
+        $$
+        (a + b) \cdot c = a \cdot c + b \cdot c\ ,\quad c \cdot (a + b) = c \cdot a + c \cdot b\ ,\quad a,b,c \in R\ .
+        $$
+    \end{enumerate}
+    则称 $(R, +, \cdot)$ 是环.
+\end{axiom}
+
+\begin{definition}[交换环]
+    称环 $(R, +, \cdot)$ 是交换环, 若 $\cdot$ 具有交换律.
+\end{definition}
+
+\begin{definition}[单位环]
+    称环 $(R, +, \cdot)$ 是单位环, 若 $\cdot$ 具有单位元.
+\end{definition}
+
+\subsection{二项式定理}
+
+\subsection{多项式定理}
+
+\subsection{域}
+
+\begin{axiom}
+    设 $K$ 是非空集合, 其上定义了加法运算
+    $$
+    + \colon K \times K \to K\ ,\quad (a,b) \mapsto a + b\ ,
+    $$
+    和乘法运算
+    $$
+    \cdot \colon K \times K \to K\ ,\quad (a,b) \mapsto a \cdot b\ .
+    $$
+    若
+    \begin{enumerate}[label={$(\mathrm F_{\arabic*})$}]
+        \item $(K, +, \cdot)$ 是具有单位元的交换环.
+        \item 加法单位元 $0$ 不等于乘法单位元 $1$.
+        \item 每个 $a \in K \setminus \{0\}$ 都有逆元 $b \in K \setminus \{0\}$ 使得 $a \cdot b = b \cdot a = 1$.
+    \end{enumerate}
+    则称 $(K, +, \cdot)$ 是域.
+\end{axiom}
+
+\subsection{有序域}
+
+\subsection{形式幂级数}
+
+\subsection{多项式}
+
+\subsection{多项式函数}
+
+\subsection{多项式的除法}
+
+\subsection{线性因子}
+
+\subsection{多变量多项式}
+
+\newpage
+
 \section{有理数}
+
 \subsection{整数}
+
 \subsection{有理数}
+
 \begin{proposition}\label{prop:Q-is-countable}
     
 \end{proposition}
+
 \subsection{多项式的有理零点}
+
 \subsection{平方根}
 
+\newpage
+
 \section{实数}
+
 \subsection{序完备性}
+
 \subsection{Dedekind 对实数的构造}
+
 \subsection{$\R$ 上的自然序结构}
+
 \subsection{扩展实数线}
+
 \subsection{上确界与下确界的刻画}
+
 \subsection{Archimedes 公理}
+
 \begin{corollary}\label{cor:archimedean-property-cor}
     
 \end{corollary}
+
 \subsection{有理数在 $\R$ 中的稠密性}
+
 \begin{proposition}\label{prop:Q-density-in-R}
     
 \end{proposition}
+
 \subsection{$n$ 次方根}
+
 \subsection{无理数在 $\R$ 中的稠密性}
+
 \subsection{区间}
 
+\newpage
+
 \section{复数}
+
 \subsection{复数的构造}
+
 \subsection{基本性质}
+
 \subsection{复数的运算}
+
 \begin{proposition}\label{prop:abs-in-Q}
     
 \end{proposition}
+
 \begin{corollary}[反三角不等式]\label{cor:reversed-triangle-inequality-in-Q}
     
 \end{corollary}
+
 \subsection{$\K$ 中的球}
 
+\newpage
+
 \section{向量空间、仿射空间与代数}
+
+线性代数无疑是所有数学研究领域中最为肥沃的一支, 并且为数学各个分支中许多影响深远的理论奠定了基础. 尤其是, 线性代数是分析学的主要工具之一, 因此本节将介绍其基本概念, 并配以例子加以说明. 我们的目标依然是: 能够识别那些在后续章节中以不同形式频繁出现的简单代数结构. 若要作更深入的研究, 读者可参阅线性代数的丰富文献, 例如: [Art91]、[Gab96]、[Koe83]、[Wal82] 和 [Wal85].
+
+在下文中, $K$ 表示一个任意的域.
+
 \subsection{向量空间}
+
+\begin{axiom}[向量空间]
+    设 $V$ 是非空集合, 其上定义了 ``内'' 运算向量加法
+    $$
+    \oplus \colon V \times V \to V\ ,\quad (v,w) \mapsto v \oplus w\ ,
+    $$
+    和 ``外'' 运算标量乘法
+    $$
+    \cdot \colon K \times V \to V\ ,\quad (\lambda, v) \mapsto \lambda \cdot v\ .
+    $$
+    若对于任意 $\lambda, \mu \in K$ 和 $v,w \in V$ 都有
+    \begin{enumerate}[label={$(\mathrm{VS}_{\arabic*})$}]
+        \item $(V, \oplus)$ 是 Abel 群.
+        \item 域乘法单位元 $1 \in K$ 是 $\cdot$ 的单位元:
+        $$
+        1\cdot v = v\ .
+        $$
+        \item $\cdot$ 对 $\oplus$ 具有分配律:
+        $$
+        \lambda \cdot (v \oplus w) = \lambda \cdot v \oplus \lambda \cdot w\ .
+        $$
+        \item $\cdot$ 对域加法 $+$ 具有分配律:
+        $$
+        (\lambda + \mu) \cdot v = \lambda \cdot v + \mu \cdot v\ .
+        $$
+        \item $\cdot$ 和域乘法 $\times$ 具有结合律:
+        $$
+        \lambda \cdot (\mu \cdot v) = (\lambda \times \mu) \cdot v\ .
+        $$
+    \end{enumerate}
+    则称 $(V, \oplus, \cdot)$ 是域 $K$ 上的向量空间或 $K$-向量空间.
+\end{axiom}
+
 \subsection{线性映射}
+
 \begin{example}\label{ex:vector-spaces}
     
 \end{example}
+
 \subsection{向量空间的基}
+
 \subsection{仿射空间}
+
 \subsection{仿射映射}
+
 \subsection{多项式插值}
+
 \subsection{代数}
+
+\begin{axiom}[代数]
+    设 $\mathcal A$ 是 $K$-向量空间, 其上定义了运算
+    $$
+    \odot \colon \mathcal A \times \mathcal A \to \mathcal A\ ,\quad (a,b) \mapsto a \odot b\ .
+    $$
+    若
+    \begin{enumerate}[label={$(\mathrm A_{\arabic*})$}]
+        \item $(\mathcal A, +, \odot)$ 是环.
+        \item
+    \end{enumerate}
+\end{axiom}
+
 \subsection{差分算子与求和公式}
+
 \subsection{Newton 插值多项式}
