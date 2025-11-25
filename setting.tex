@@ -19,14 +19,15 @@
 \setcounter{secnumdepth}{1}
 
 \theoremstyle{plain}
-\newtheorem{definition}{定义}[section]
-\newtheorem{axiom}[definition]{公理}
-\newtheorem{proposition}{命题}[section]
-\newtheorem{theorem}[proposition]{定理}
-\newtheorem{corollary}[proposition]{推论}
+\newtheorem{definition}{定义}[section] % def
+\newtheorem{axiom}[definition]{公理} % ax
+\newtheorem{proposition}{命题}[section] % prop
+\newtheorem{lemma}[proposition]{引理} % lem
+\newtheorem{theorem}[proposition]{定理} % thm
+\newtheorem{corollary}[proposition]{推论} % cor
 \theoremstyle{definition}
-\newtheorem{remark}{注}[section]
-\newtheorem{example}{例}[section]
+\newtheorem{remark}[proposition]{注} % rem
+\newtheorem{example}[proposition]{例} % ex
 \newtheorem{exercises}{}[section]
 \renewcommand{\theexercises}{\arabic{exercises}}
 

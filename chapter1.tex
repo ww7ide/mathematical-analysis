@@ -42,6 +42,10 @@
 
 \subsection{运算}
 
+\begin{example}\label{ex:plus-on-function-spaces}
+    
+\end{example}
+
 \newpage
 
 \section{自然数}
@@ -114,6 +118,10 @@
 
 \subsection{同态}
 
+\begin{remark}\label{rem:group-homo}
+    
+\end{remark}
+
 \subsection{同构}
 
 \newpage
@@ -152,6 +160,10 @@
 \begin{definition}[单位环]
     称环 $(R, +, \times)$ 是单位环, 若 $\times$ 具有单位元.
 \end{definition}
+
+\begin{example}\label{ex:rings}
+    
+\end{example}
 
 \subsection{二项式定理}
 
@@ -306,8 +318,46 @@
 
 \subsection{线性映射}
 
+\begin{definition}[线性映射]
+    设 $V$ 和 $W$ 是 $K$-向量空间. 则称函数 $T \colon V \to W$ 是 $K$-线性映射或 $K$-线性的, 若
+    $$
+    T(\lambda v + \mu w) = \lambda T v + \mu T w\ ,\quad \lambda, \mu \in K\ ,\quad v,w \in V\ .
+    $$
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 对于线性映射 $T \colon V \to W$, 当 $v \in V$ 时, 在不会引起混淆的情况下, 通常把 $T(v)$ 记作 $T v$.
+        \item 向量空间同态 $T \colon V \to W$, 特别的, 还是群同态 $T \colon (V,+) \to (W,+)$. 因此, $T0 = 0$ 且对于任意 $v \in V$ 都有 $T(-v) = -Tv$. $T$ 的核或零空间就是这个群同态的核, 即
+        $$
+        \ker T = \set{v \in V}{Tv = 0} = T^{-1} 0\ .
+        $$
+        因此, $T$ 是单射当且仅当其核是平凡的, 即 $\ker T = \{0\}$ (见注 \ref{rem:group-homo} 的 1 和 4).
+    \end{enumerate}
+\end{remark}
+
 \begin{example}\label{ex:vector-spaces}
-    
+    设 $V$ 和 $W$ 是 $K$-向量空间.
+    \begin{enumerate}
+        \item 一个零或平凡 (向量) 空间只包含一个向量 $0$, 通常直接记作 $0$. 任何其他向量空间都是非平凡的.
+        \item 设 $U$ 是 $V$ 的非空子集. 若
+        \begin{enumerate}[label={$(\mathrm{SS}_{\arabic*})$}]
+            \item $U$ 对向量加法封闭, 即 $U + U \subseteq U$.
+            \item $U$ 对标量乘法封闭, 即 $K \cdot U \subseteq U$.
+        \end{enumerate}
+        则称 $U$ 是 $V$ 的子空间.
+        \item
+        \item
+        \item 设 $X$ 是集合. 则 $V^X$ 在定义如下运算 (见例 \ref{ex:plus-on-function-spaces}) 后是 $K$-向量空间.
+        $$
+        (f+g)(x) \coloneqq f(x) + g(x)\ ,\quad (\lambda \cdot f)(x) \coloneqq \lambda \cdot f(x)\ ,\quad x \in X\ ,\quad \lambda \in K\ ,\quad f,g \in V^X\ .
+        $$
+        特别的, 对于 $m \in \N^\ast$, $K^m$ 在定义如下运算后是 $K$-向量空间.
+        $$
+        x + y \coloneqq (x_1 + y_1, \ldots, x_m + y_m)\ ,\quad \lambda \cdot x \coloneqq (\lambda \cdot x_1, \ldots, \lambda \cdot x_m)\ ,\quad \lambda \in K\ ,\quad x,y \in K^m\ .
+        $$
+        显然, $K^1$ 和 $K$ (作为 $K$-向量空间) 是相同的.
+    \end{enumerate}
 \end{example}
 
 \subsection{向量空间的基}
@@ -321,7 +371,7 @@
 \subsection{代数}
 
 \begin{axiom}[代数]
-    设 $A$ 是 $K$-向量空间, 其上定义了运算
+    设 $A$ 是 $K$-向量空间, 其上定义了向量乘法
     $$
     \otimes \colon A \times A \to A\ ,\quad (a,b) \mapsto a \otimes b\ .
     $$
@@ -335,6 +385,18 @@
     \end{enumerate}
     则称 $(A, \oplus, \cdot, \otimes)$ 是域 $K$ 上的代数或 $K$-代数.
 \end{axiom}
+
+\begin{example}\label{ex:algebras}
+    \begin{enumerate}
+        \item 设 $B$ 是 $A$ 的非空子集. 若
+        \begin{enumerate}[label={$(\mathrm{SA}_{\arabic*})$}]
+            \item $B$ 是 $A$ 的子空间.
+            \item $B$ 对向量乘法封闭, 即 $B \otimes B \subseteq B$.
+        \end{enumerate}
+        则称 $B$ 是 $A$ 的子代数.
+        \item 设 $X$ 是非空集合. 则 $K^X$ 在定义例 \ref{ex:rings}.2 和例 \ref{ex:vector-spaces}.5 的运算后是具有单位元的交换 $K$-代数.
+    \end{enumerate}
+\end{example}
 
 \subsection{差分算子与求和公式}
 

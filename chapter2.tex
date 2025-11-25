@@ -1,12 +1,12 @@
-\chapter{收敛}
+\chapter{收敛性}
 
 从本章开始, 我们终于进入分析的领域. 数学的这一分支在很大程度上是建立在 ``收敛'' 这一概念之上的. 借助收敛, 我们在某种意义上得以把无穷多个数 (或向量) ``加'' 在一起. 能够处理这样的无限运算, 正是分析与代数之间本质区别之所在.
 
-试图把关于数列收敛的朴素想法加以公理化, 会自然地引出 ``距离''、``点的邻域'' 以及 ``度量空间'' 等概念——这正是第 1 节的主题. 在数列这一特殊情形中, 我们可以利用数域 $\K$ 的向量空间结构, 对这种情形下各种证明的分析表明: 只要有某种类似 ``绝对值'' 的概念可用, 其中大多数证明都可以推广到向量空间中的向量序列. 于是我们很自然地被引向去定义 ``赋范向量空间''——度量空间中一个尤其重要的类别.
+试图把关于数列收敛的朴素想法加以公理化, 会自然地引出 ``距离''、``点的邻域'' 以及 ``度量空间'' 等概念---这正是第 1 节的主题. 在数列这一特殊情形中, 我们可以利用数域 $\K$ 的向量空间结构, 对这种情形下各种证明的分析表明: 只要有某种类似 ``绝对值'' 的概念可用, 其中大多数证明都可以推广到向量空间中的向量序列. 于是我们很自然地被引向去定义 ``赋范向量空间''---度量空间中一个尤其重要的类别.
 
 在所有赋范向量空间中, 内积空间由于其结构更为丰富而显得格外重要, 并且它们的几何性质与我们熟悉的平面 Euclidean 几何非常相似. 事实上, 在初等分析中, 最重要的一类内积空间就是 $m$-维 Euclidean 空间 $\R^m$ 和 $\C^m$.
 
-在第 4 和第 5 节中, 我们回到最简单的情形, 也就是在 $\R$ 中的收敛问题. 借助实数的序结构, 尤其是 $\R$ 的序完备性, 我们推导出第一批 ``具体的收敛判别准则''. 这些准则使我们能够求出许多重要数列的极限. 除此之外, 我们还将从 $\R$ 的序完备性出发, 得到一个根本性的存在性原理——Bolzano-Weierstrass 定理.
+在第 4 和第 5 节中, 我们回到最简单的情形, 也就是在 $\R$ 中的收敛问题. 借助实数的序结构, 尤其是 $\R$ 的序完备性, 我们推导出第一批 ``具体的收敛判别准则''. 这些准则使我们能够求出许多重要数列的极限. 除此之外, 我们还将从 $\R$ 的序完备性出发, 得到一个根本性的存在性原理---Bolzano-Weierstrass 定理.
 
 第 6 节专门讨论度量空间中的 ``完备性'' 概念. 将这一概念限制到赋范向量空间, 就得到了 ``Banach 空间'' 的定义. 这类空间最基本的例子就是 $\K^m$, 但我们还将说明: 有界函数构成的函数空间也是 Banach 空间.
 
@@ -18,7 +18,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 在所有收敛级数当中, 绝对收敛的级数具有尤为重要的地位. 绝对收敛往往比较容易判别, 这类级数在运算与处理上也相对简单. 此外, 在实际应用中许多重要的级数都是绝对收敛的. 对于本章最后一节将要引入和研究的幂级数, 这一点尤为明显. 其中最重要的例子是指数级数, 它的重要性将在后续章节中逐渐显现出来.
 
-\section{收敛序列}
+\section{序列的收敛性}
 
 在本节中, 我们考虑定义在自然数集上的函数, 因此这类函数只会取到可数多个值. 对这样的函数 $\varphi \colon \N \to X$, 我们特别关心的是它在 ``当 $n$ 趋于无穷大时'' 各个取值 $\varphi(n)$ 的行为. 由于我们实际上只能对 $\varphi$ 进行有限次求值, 也就是说, 我们永远不可能真正 ``到达无穷大'', 因此必须发展出一些方法, 使我们能够对 ``靠近无穷远处'' 的无穷多个函数值建立命题并加以证明. 这样的方法就构成了收敛序列的理论, 本节将对其进行介绍.
 
@@ -41,12 +41,12 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{definition}
 
 \begin{definition}[数列]
-    $\K$ 中的序列称为数列. 进一步, 将 $\K$ 中的所有序列, 即 $\K^\N$ 记作 $s$ 或 $s(\K)$, 于是 $s$ 构成了 $\K$-向量空间 (见例 \ref{ex:vector-spaces}.5). 最后, $\R$ 中的序列称为实数列, $\C$ 中的序列称为复数列.
+    $\K$ 中的序列称为数列. 进一步, 将 $\K$ 中的所有数列, 即 $\K^\N$ 记作 $s$ 或 $s(\K)$, 于是 $s$ 构成了 $\K$-向量空间 (见例 \ref{ex:vector-spaces}.5). 最后, $\R$ 中的数列称为实数列, $\C$ 中的数列称为复数列.
 \end{definition}
 
 \begin{remark}
     \begin{enumerate}
-        \item 区分序列 $(x_n)$ 和它的像 $\set{x_n}{n \in \N}$ 是很重要的. 例如, 若对于任意 $n$ 有 $x_n = x$, 也就是说 $(x_n)$ 是一个常数列, 此时 $(x_n) = (x, x, x, \ldots)$, 而 $\set{x_n}{n \in \N}$ 是单点集 $\{x\}$.
+        \item 区分序列 $(x_n)$ 和它的像 $\set{x_n}{n \in \N}$ 是很重要的. 例如, 若对于任意 $n$ 有 $x_n = x$, 也就是说 $(x_n)$ 是一个常序列, 此时 $(x_n) = (x, x, x, \ldots)$, 而 $\set{x_n}{n \in \N}$ 是单点集 $\{x\}$.
         \item 设 $(x_n)$ 是 $X$ 中的序列, $E$ 是某个性质. 称 $E$ 对 $(x_n)$ 的几乎所有项都成立, 若存在 $m \in \N$ 使得当 $n \geq m$ 时命题 $E(x_n)$ 都成立. 也就是说, 除了至多有限多个 $x_n$ 以外, $E$ 对其余所有 $x_n$ 都成立. 当然, $E$ 也可以对若干个 (甚至全部) $n < m$ 的项成立. 若存在 $N \subseteq \N$ 满足 $|N| = \aleph_0$ 且 $E(x_n)$ 对所有 $n \in N$ 都成立, 则称 $E$ 对 $(x_n)$ 的无穷多项都成立. 例如, 实数列
         $$
         \Bigl(-5, 4, -3, 2, -1, 0, -\frac{1}{2}, \frac{1}{3}, -\frac{1}{4}, \frac{1}{5}, \ldots, -\frac{1}{2n}, \frac{1}{2n+1}, \ldots\Bigr)
@@ -259,7 +259,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     这意味着区间 $(a - \varepsilon, a + \varepsilon)$ 仅包含了有限多个有理数, 这与命题 \ref{prop:Q-density-in-R} 矛盾.
 \end{proof}
 
-\subsection{收敛}
+\subsection{收敛性}
 
 \begin{definition}[收敛]
     称序列 $(x_n)$ 收敛, 若存在 $a \in X$ 使得 $a$ 的任意邻域都包含了 $(x_n)$ 的几乎所有项. 记作
@@ -273,7 +273,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 下一个命题是对收敛的等价刻画.
 
-\begin{proposition}
+\begin{proposition}\label{prop:convergent-sequence-charact}
     以下命题是等价的.
     \begin{enumerate}
         \item $\lim x_n = a$.
@@ -356,7 +356,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \end{enumerate}
 \end{example}
 
-\begin{proposition}[有界性]
+\begin{proposition}[有界性]\label{prop:convergent-sequence-is-bounded}
     收敛序列必有界.
 \end{proposition}
 
@@ -411,7 +411,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 因为 $\psi$ 是严格递增的, 故 $n_0 < n_1 < n_2 < \cdots$.
 
 \begin{example}
-    数列 $\bigl((-1)^n\bigr)_{n \in \N}$ 有两个常子数列, $\bigl((-1)^{2k}\bigr)_{k \in \N} = (1,1,1,\ldots)$ 和 $\bigl((-1)^{2k+1}\bigr)_{k \in \N} = (-1,-1,-1,\ldots)$.
+    数列 $\bigl((-1)^n\bigr)_{n \in \N}$ 有两个子数列, $\bigl((-1)^{2k}\bigr)_{k \in \N} = (1,1,1,\ldots)$ 和 $\bigl((-1)^{2k+1}\bigr)_{k \in \N} = (-1,-1,-1,\ldots)$.
 \end{example}
 
 \begin{proposition}\label{prop:convergent-sequence-to-subsequence}
@@ -430,7 +430,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{example}
 
 \begin{proof}
-    令 $\psi_1(k) \coloneqq k^m$, $\psi_2(k) \coloneqq m^k$. 由于 $\psi_i \colon \N^\ast \to \N^\ast,\ i = 1,2$ 是单调递增的, 因此 $(k^{-m})$ 和 $(m^{-k})$ 是 $(1/n)$ 的子序列. 于是由例 \ref{ex:ez-convergent-sequence}.1 和 命题 \ref{prop:convergent-sequence-to-subsequence} 可得.
+    令 $\psi_1(k) \coloneqq k^m$, $\psi_2(k) \coloneqq m^k$. 由于 $\psi_i \colon \N^\ast \to \N^\ast,\ i = 1,2$ 是严格递增的, 因此 $(k^{-m})$ 和 $(m^{-k})$ 是 $(1/n)$ 的子数列. 于是由例 \ref{ex:ez-convergent-sequence}.1 和 命题 \ref{prop:convergent-sequence-to-subsequence} 可得.
 \end{proof}
 
 下面的命题是对聚点的进一步刻画.
@@ -473,7 +473,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{exercises}
 
 \begin{exercises}
-    证明序列 $(z_n)_{n \geq 1}$ 其中 $z_n \coloneqq (1 - 1/n)(1 + \ii)$ 收敛到 $1 + \ii$.
+    证明数列 $(z_n)_{n \geq 1}$ 其中 $z_n \coloneqq (1 - 1/n)(1 + \ii)$ 收敛到 $1 + \ii$.
 \end{exercises}
 
 \begin{exercises}
@@ -559,9 +559,106 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{exercises}
 
 \begin{exercises}
-    设 $(x_n)$ 是 $\C$ 中的序列且对于任意 $n \in \N$ 有 $\Re x_n = 0$. 证明, 若 $(x_n)$ 收敛到 $x$, 则 $\Re x = 0$.
+    设 $(x_n)$ 是 $\C$ 中的数列且对于任意 $n \in \N$ 有 $\Re x_n = 0$. 证明, 若 $(x_n)$ 收敛到 $x$, 则 $\Re x = 0$.
 \end{exercises}
 
 \newpage
 
 \section{实数列与复数列}
+
+在本节中, 我们要推导出关于收敛数列计算的最重要的法则. 如果我们把这些数列看作向量空间 $s = s(\K) = \K^\N$ 中的向量, 那么这些法则将证明所有收敛数列构成了 $s$ 的子空间. 在实数列的情形下, 我们将利用 $\R$ 的序结构来推导比较审敛法, 而这是研究 $s(\R)$ 中数列收敛性的主要工具.
+
+\subsection{零序列}
+
+\begin{definition}[零序列]
+    称 $\K$ 中的数列 $(x_n)$ 是零序列, 若 $(x_n)$ 收敛到 $0$. 进一步, 将 $\K$ 中的所有零序列记作
+    $$
+    c_0 \coloneqq c_0(\K) \coloneqq \set{(x_n) \in s}{(x_n)\ \text{收敛且}\ \lim x_n = 0}\ .
+    $$
+\end{definition}
+
+\begin{remark}
+    设 $(x_n)$ 是 $\K$ 中的数列, $a \in \K$.
+    \begin{enumerate}
+        \item $(x_n)$ 是零序列, 当且仅当其绝对值数列 $(|x_n|)$ 是 $\R$ 中的零序列.
+        \item $(x_n)$ 收敛到 $a$, 当且仅当 ``平移后的数列'' $(x_n - a)$  是零序列.
+        \item 若存在 $\R$ 中的零序列 $(r_n)$ 使得对几乎所有 $n \in \N$ 都有 $|x_n| \leq r_n$, 则 $(x_n)$ 是零序列.
+    \end{enumerate}
+\end{remark}
+
+\begin{proof}
+    1. 由零序列的定义可以直接得到.
+
+    2. 由命题 \ref{prop:convergent-sequence-charact} 可以直接得到.
+
+    3. 任取 $\varepsilon > 0$. 由假设可知存在 $M,N \in \N$ 使得当 $n \geq M$ 时 $|x_n| \leq r_n$, 当 $n \geq N$ 时 $|r_n| < \varepsilon$. 于是当 $n \geq \max\{M,N\}$ 时 $|x_n| \leq r_n \leq |r_n| < \varepsilon$.
+\end{proof}
+
+\subsection{基本法则}
+
+\begin{proposition}\label{prop:addition-scalar-multiplication-in-c}
+    设 $(x_n)$ 和 $(y_n)$ 是 $\K$ 中的收敛数列且 $\lim x_n = a$, $\lim y_n = b$, $\alpha \in \K$. 则
+    \begin{enumerate}
+        \item 数列 $(x_n + y_n)$ 收敛且 $\lim (x_n + y_n) = a + b$.
+        \item 数列 $(\alpha x_n)$ 收敛且 $\lim \alpha x_n = \alpha a$.
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    任取 $\varepsilon > 0$.
+
+    1. 存在 $M,N \in \N$ 使得当 $n \geq M$ 时 $|x_n - a| < \varepsilon/2$, 当 $n \geq N$ 时 $|y_n - b| < \varepsilon/2$. 于是
+    $$
+    |(x_n + y_n) - (a + b)| \leq |x_n - a| + |y_n - b| < \frac{\varepsilon}{2}+ \frac{\varepsilon}{2} = \varepsilon\ ,\quad n \geq \max\{M,N\}\ .
+    $$
+
+    2. 若 $\alpha = 0$ 显然成立, 假设 $\alpha \neq 0$. 则存在 $N \in \N$ 使得当 $n \geq N$ 时 $|x_n - a| < \varepsilon / |\alpha|$. 于是
+    $$
+    |\alpha x_n - \alpha a| = |\alpha||x_n - a| < |\alpha| \frac{\varepsilon}{|\alpha|} = \varepsilon\ ,\quad n \geq N\ .
+    $$
+\end{proof}
+
+\begin{remark}\label{rem:c-is-vector-space}
+    将 $\K$ 中的所有收敛数列记作
+    $$
+    c \coloneqq c(\K) \coloneqq \set{(x_n) \in s}{(x_n)\ \text{收敛}}\ .
+    $$
+    于是, 由命题 \ref{prop:addition-scalar-multiplication-in-c} 可以得到: $c$ 是 $s$ 的子空间且函数
+    $$
+    \lim \colon c \to \K\ ,\quad (x_n) \mapsto \lim x_n
+    $$
+    是线性的. 显然 $\ker \lim = c_0$, 于是, 由例 \ref{ex:vector-spaces}.3 可知, $c_0$ 是 $c$ 的子空间.
+\end{remark}
+
+下面的命题表明, 对于收敛数列, 我们可以 ``逐项'' 相乘.
+
+\begin{proposition}\label{prop:multiplication-in-c}
+    设 $(x_n)$ 和 $(y_n)$ 是 $\K$ 中的数列.
+    \begin{enumerate}
+        \item 若 $(x_n)$ 是零序列且 $(y_n)$ 有界, 则 $(x_n y_n)$ 是零序列.
+        \item 若 $\lim x_n = a$, $\lim y_n = b$, 则 $\lim x_n y_n = ab$.
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    1. 由于 $(y_n)$ 有界, 故存在 $M > 0$ 使得对于任意 $n \in \N$ 都有 $|y_n| \leq M$. 任取 $\varepsilon > 0$. 由于 $(x_n)$ 是零序列, 故存在 $N \in \N$ 使得当 $n \geq N$ 时 $|x_n| < \varepsilon / M$. 于是
+    $$
+    |x_n y_n| = |x_n| |y_n| < \frac{\varepsilon}{M} M = \varepsilon\ ,\quad n \geq N\ .
+    $$
+    2. 由于 $(x_n)$ 收敛到 $a$, 故 $(x_n - a)$ 是零序列. 由命题 \ref{prop:convergent-sequence-is-bounded} 可知, $(y_n)$ 有界. 于是由 1 可得 $\bigl((x_n - a)y_n\bigr)$ 是零序列, 同理可得 $\bigl(a(y_n - b)\bigr)$ 是零序列. 由命题 \ref{prop:addition-scalar-multiplication-in-c} 可知
+    $$
+    \lim (x_n y_n - ab) = \lim \bigl((x_n - a)y_n + a(y_n - b)\bigr) = 0\ ,
+    $$
+    于是 $(x_n y_n)$ 收敛到 $ab$.
+\end{proof}
+
+\begin{example}
+    \begin{enumerate}
+        \item 命题 \ref{prop:multiplication-in-c}.1 中, 关于序列 $(y_n)$ 有界的假设不能去除.
+        \item 由例 \ref{ex:algebras}.2 可知 $s$ 是 $\K$-代数. 于是, 结合注 \ref{rem:c-is-vector-space} 和命题 \ref{prop:multiplication-in-c}.2 可以得到: $c$ 是 $s$ 的子代数且函数
+        $$
+        \lim \colon c \to \K\ ,\quad (x_n) \mapsto \lim x_n
+        $$
+        是代数同态. 最后, 由命题 \ref{prop:convergent-sequence-is-bounded} 和命题 \ref{prop:multiplication-in-c}.1 可知 $c_0$ 也是 $c$ 的理想.
+    \end{enumerate}
+\end{example}
