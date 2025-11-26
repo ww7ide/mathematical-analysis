@@ -551,7 +551,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     $$
     \delta(z,w) \coloneqq
     \begin{cases}
-        & |z-w\ ,      & \text{若存在}\ \lambda > 0\ \text{使得}\ z = \lambda w\ , \\
+        & |z-w|\ ,     & \text{若存在}\ \lambda > 0\ \text{使得}\ z = \lambda w\ , \\
         & |z| + |w|\ , & \text{其余情况}\ .
     \end{cases}
     $$
@@ -577,7 +577,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     $$
 \end{definition}
 
-\begin{remark}
+\begin{remark}\label{rem:null-sequences}
     设 $(x_n)$ 是 $\K$ 中的数列, $a \in \K$.
     \begin{enumerate}
         \item $(x_n)$ 是零序列, 当且仅当其绝对值数列 $(|x_n|)$ 是 $\R$ 中的零序列.
@@ -652,7 +652,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     于是 $(x_n y_n)$ 收敛到 $ab$.
 \end{proof}
 
-\begin{example}
+\begin{remark}\label{rem:c-is-algebra}
     \begin{enumerate}
         \item 命题 \ref{prop:multiplication-in-c}.1 中, 关于序列 $(y_n)$ 有界的假设不能去除.
         \item 由例 \ref{ex:algebras}.2 可知 $s$ 是 $\K$-代数. 于是, 结合注 \ref{rem:c-is-vector-space} 和命题 \ref{prop:multiplication-in-c}.2 可以得到: $c$ 是 $s$ 的子代数且函数
@@ -661,4 +661,171 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         $$
         是代数同态. 最后, 由命题 \ref{prop:convergent-sequence-is-bounded} 和命题 \ref{prop:multiplication-in-c}.1 可知 $c_0$ 也是 $c$ 的理想.
     \end{enumerate}
-\end{example}
+\end{remark}
+
+\begin{proof}
+    1. 设 $x_n \coloneqq 1/n$, $y_n \coloneqq n^2$. 则 $(x_n)$ 是零序列, 但 $(x_n y_n)$ 发散.
+\end{proof}
+
+下面的命题和注 \ref{rem:c-is-algebra}.2 表明, 商数列的极限是分子的极限除以分母的极限, 若这些极限存在的话.
+
+\begin{proposition}
+    设 $(x_n)$ 是 $\K$ 中的收敛数列且 $\lim x_n = a \neq 0$. 则 $(x_n)$ 的几乎所有项都非零且 $\lim 1/x_n = 1/a$.
+\end{proposition}
+
+\begin{proof}
+    存在 $N \in \N$ 使得当 $n \geq N$ 时 $|x_n - a| < |a|/2$. 由反三角不等式可得
+    $$
+    |a| - |x_n| \leq \abs[\big]{|a| - |x_n|} \leq |x_n - a| < \frac{|a|}{2}\ ,\quad n \geq N\ ,
+    $$
+    即当 $n \geq N$ 时 $|x_n| > |a|/2 > 0$, 即 $(x_n)$ 的几乎所有项都非零. 而
+    $$
+    \abs[\Big]{\frac{1}{x_n} - \frac{1}{a}} = \frac{|x_n - a|}{|a| |x_n|} < \frac{2}{|a|^2} |x_n - a|\ ,\quad n \geq N\ ,
+    $$
+    由于 $(x_n)$ 收敛到 $a$, 因此 $(x_n - a)$ 是零序列, 进一步, $2|x_n - a| / |a|^2$ 是零序列. 于是由注 \ref{rem:null-sequences}.3 可得 $(1/x_n - 1/a)$ 是零序列, 故 $\lim 1/x_n = 1/a$.
+\end{proof}
+
+\subsection{比较审敛法}
+
+接下来我们将研究收敛实数列与 $\R$ 的序结构之间的关系. 我们将推导出夹逼定理---这是一种简单但非常有效的判定实数列极限的方法.
+
+\begin{proposition}[保序性]\label{prop:limits-preserve-order}
+    设 $(x_n)$ 和 $(y_n)$ 是 $\R$ 中的收敛数列且有无穷多项 $n \in \N$ 使得 $x_n \leq y_n$. 则
+    $$
+    \lim x_n < \lim y_n\ .
+    $$
+\end{proposition}
+
+\begin{proof}
+    设 $\lim x_n = a$, $\lim y_n = b$. 假设 $a > b$. 令 $\varepsilon = a-b$, 故存在 $M,N \in \N$ 使得当 $n \geq M$ 时 $x_n > a - \varepsilon / 2$, $n \geq N$ 时 $y_n < b + \varepsilon / 2$, 故存在 $n \geq \max\{M,N\}$ 使得
+    $$
+    a - \varepsilon / 2 < x_n \leq y_n < b + \varepsilon / 2\ ,
+    $$
+    于是 $\varepsilon = a - b < \varepsilon$, 矛盾.
+\end{proof}
+
+\begin{remark}
+    命题 \ref{prop:limits-preserve-order} 在严格不等于下不成立, 即若有无穷多项 $n \in \N$ 使得 $x_n < y_n$ 并不蕴含 $\lim x_n < \lim y_n$.
+\end{remark}
+
+\begin{proof}
+    设 $x_n \coloneqq -1/n$, $y_n \coloneqq 1/n$. 则对于所有 $n \in \N^\ast$ 都有 $x_n < y_n$, 但 $\lim x_n = \lim y_n = 0$.
+\end{proof}
+
+\begin{proposition}[夹逼定理]
+    设 $(x_n)$, $(y_n)$ 和 $(z_n)$ 是实数列且对于几乎所有 $n \in \N$ 都有 $x_n \leq y_n \leq z_n$. 若 $\lim x_n = \lim z_n = a$, 则 $\lim y_n = a$.
+\end{proposition}
+
+\subsection{复数列}
+
+\subsection{练习}
+
+\begin{exercises}
+    判断下列 $\R$ 中的数列 $(x_n)$ 是否收敛. 若收敛计算其极限.
+    \begin{enumerate}
+        \item $x_n \coloneqq \sqrt{n+1} - \sqrt{n}$.
+        \item $x_n \coloneqq (-1)^n \sqrt{n} (\sqrt{n+1} - \sqrt{n})$.
+        \item $\displaystyle x_n \coloneqq \frac{1 + 2 + 3 + \cdots + n}{n+2} - \frac{n}{2}$.
+        \item $\displaystyle x_n \coloneqq \frac{(2 - 1 / \sqrt{n})^{10} - (1 + 1 / n^2)^{10}}{1 - 1 / n^2 - 1 / \sqrt{n}}$.
+        \item $x_n \coloneqq (100 + 1/n)^2$.
+    \end{enumerate}
+\end{exercises}
+
+\begin{proof}
+    1. 收敛到 $0$.
+
+    2. 发散.
+
+    3. 收敛到 $- 1/2$.
+
+    4. 收敛到 $2^{10} - 1$.
+
+    5. 收敛到 $100^2$.
+\end{proof}
+
+\begin{exercises}
+    使用 $(1+1)^n$ 的二项式展开, 证明 $(n^3 / 2^n)$ 是零序列.
+\end{exercises}
+
+\begin{proof}
+    注意到
+    $$
+    0 \leq \frac{n^3}{2^n} = \frac{n^3}{\sum_{k=0}^n \binom{n}{k}} \leq \frac{n^3}{\binom{n}{4}}\ ,\quad n \geq 4\ .
+    $$
+    而当 $n \geq 6$ 时 $n - 3 \geq n/2$, 于是
+    $$
+    \binom{n}{4} = \frac{n(n-1)(n-2)(n-3)}{24} \geq \frac{(n/2)^4}{24}\ ,\quad n \geq 6\ ,
+    $$
+    因此
+    $$
+    \frac{n^3}{\binom{n}{4}} \leq \frac{n^3}{(n/2)^4 / 24} = \frac{384}{n} \to 0\ .
+    $$
+    故由夹逼定理可知 $n^3 / 2^n \to 0$.
+\end{proof}
+
+\begin{exercises}[保号性]
+    设实数列 $(x_n)$ 有正极限. 证明该数列的几乎所有项都为正.
+\end{exercises}
+
+\begin{proof}
+    设 $\lim x_n = a$. 故存在 $N \in \N$ 使得当 $n \geq N$ 时 $|x_n - a| < a/2$, 于是
+    $$
+    -\frac{a}{2} < x_n - a < \frac{a}{2}\ ,\quad n \geq N\ ,
+    $$
+    即当 $n \geq N$ 时 $x_n > a/2 > 0$.
+\end{proof}
+
+\begin{exercises}
+    设 $(x_j)$ 是 $\K$ 中的收敛数列且以 $a$ 为极限. 证明
+    $$
+    \lim_{n \to \infty} \frac{1}{n} \sum_{j=1}^n x_j = a\ .
+    $$
+\end{exercises}
+
+\begin{proof}
+    只用证
+    $$
+    \abs[\bigg]{\frac{1}{n} \sum_{j=1}^n x_j - a} \to 0\ .
+    $$
+    注意到
+    $$
+    0 \leq \abs[\bigg]{\frac{1}{n} \sum_{j=1}^n x_j - a} = \abs[\bigg]{\frac{1}{n} \sum_{j=1}^n (x_j - a)} \leq \frac{1}{n} \sum_{j=1}^n |x_j - a|\ ,
+    $$
+    任取 $\varepsilon > 0$. 由于 $\lim x_j = a$, 故存在 $N \in \N^\ast$ 使得当 $j \geq N$ 时 $|x_j - a| < \varepsilon$, 于是
+    $$
+    \frac{1}{n} \sum_{j=1}^n |x_j - a| = \frac{1}{n} \sum_{j=1}^{N-1} |x_j - a| + \frac{1}{n} \sum_{j=N}^n |x_j - a|\ .
+    $$
+    令
+    $$
+    A_n \coloneqq \frac{1}{n} \sum_{j=1}^{N-1} |x_j - a|\ ,\quad B_n \coloneqq \frac{1}{n} \sum_{j=N}^n |x_j - a|\ .
+    $$
+    由于 $\sum_{j=1}^{N-1} |x_j - a|$ 是一个固定的有限和, 因此 $\lim A_n = 0$. 而
+    $$
+    |B_n| = \frac{1}{n} \sum_{j=N}^n |x_j - a| < \frac{1}{n} \sum_{j=N}^n \varepsilon = \frac{n - N + 1}{n} \varepsilon \leq \varepsilon\ ,\quad n \geq N\ ,
+    $$
+    因此 $\lim B_n = 0$. 于是
+    $$
+    \frac{1}{n} \sum_{j=1}^n |x_j - a| = A_n + B_n \to 0\ ,
+    $$
+    故由夹逼定理可知
+    $$
+    \abs[\bigg]{\frac{1}{n} \sum_{j=1}^n x_j - a} \to 0\ .
+    $$
+\end{proof}
+
+\begin{exercises}
+    设 $\K^m\ (m \in \N^\ast)$ 是配备积度量 (见例 \ref{ex:metric}.5) 的度量空间,
+    $$
+    s(\K^m) \coloneqq (\K^m)^\N\ ,\quad c(\K^m) \coloneqq \set{(x_n) \in s(\K^m)}{(x_n)\ \text{收敛}}\ .
+    $$
+    证明
+    \begin{enumerate}
+        \item $c(\K^m)$ 是 $s(\K^m)$ 的子空间.
+        \item 函数
+        $$
+        \lim \colon c(\K^m) \to \K^m\ ,\quad (x_n) \mapsto \lim x_n
+        $$
+        是线性的.
+        \item 设 $(\lambda_n) \in c(\K)$, $(x_n) \in c(\K^m)$ 且 $\lim \lambda_n = \alpha$, $\lim x_n = a$. 则 $\lim \lambda_n x_n = \alpha a \in \K^m$ (提示: 例 \ref{ex:ez-convergent-sequence}.5).
+    \end{enumerate}
+\end{exercises}

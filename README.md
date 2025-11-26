@@ -7,24 +7,27 @@
 ```
 Section 1 Convergence of Sequences
 
-          Sequences
+          Sequences                      11 19, 25
           Metric Spaces
 
-          Cluster Points
+          Cluster Points                 11 20, 25
           Convergence
           Bounded Sets
 
-          Uniqueness of the Limit
+          Uniqueness of the Limit        11 21, 25
           Subsequences
 
+          Exercises                      11 22, 25
+          Exercises                      11 23, 25
 Section 2 Real and Complex Sequences
 
-          Null Sequences
+          Null Sequences                 11 24, 25
           Elementary Rules
           The Comparison Test
 
-          Complex Sequences
+          Complex Sequences              11 25, 25
 
+          Exercises                      11 26, 25
 Section 3 Normed Vector Spaces
 
           Norms
