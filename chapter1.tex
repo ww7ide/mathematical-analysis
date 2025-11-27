@@ -42,7 +42,7 @@
 
 \subsection{运算}
 
-\begin{example}\label{ex:plus-on-function-spaces}
+\begin{example}\label{eg:plus-on-function-spaces}
     设 $\circledast$ 是集合 $Y$ 上的运算, $X$ 是非空集合. 则我们通过 $\circledast$ 在 $\Funct(X,Y)$ 上诱导运算
     $$
     (f \odot g)(x) \coloneqq f(x) \circledast g(x)\ ,\quad x \in X\ .
@@ -169,7 +169,7 @@
     称环 $(R, +, \times)$ 是单位环, 若 $\times$ 具有单位元.
 \end{definition}
 
-\begin{example}\label{ex:rings}
+\begin{example}\label{eg:rings}
     
 \end{example}
 
@@ -217,6 +217,25 @@
 \subsection{线性因子}
 
 \subsection{多变量多项式}
+
+\subsection{练习}
+
+\begin{exercises}\label{ex:difference-of-powers-formula}
+    设 $a$ 和 $b$ 是单位环的可交换元, $n \in \N$. 证明
+    \begin{enumerate}
+        \item $a^{n+1} - b^{n+1} = (a-b) \sum_{j=0}^n a^j b^{n-j}$.
+        \item $a^{n+1} - 1 = (a-1) \sum_{j=0}^n a^j$.
+    \end{enumerate}
+\end{exercises}
+
+\begin{exercises}\label{ex:inequality-on-ordered-ﬁeld}
+    设 $K$ 是有序域, $a,b,c,d \in K$.
+    \begin{enumerate}
+        \item 证明不等式 $\displaystyle \frac{|a+b|}{1 + |a+b|} \leq \frac{|a|}{1 + |a|} + \frac{|b|}{1 + |b|}$.
+        \item 证明, 若 $b>0$, $d>0$ 且 $\displaystyle \frac{a}{b} < \frac{c}{d}$, 则 $\displaystyle \frac{a}{b} < \frac{a+c}{b+d} < \frac{c}{d}$.
+        \item 证明, 若 $a,b \in K^\ast$, 则 $\displaystyle \abs[\Big]{\frac{a}{b} + \frac{b}{a}} \geq 2$.
+    \end{enumerate}
+\end{exercises}
 
 \newpage
 
@@ -368,7 +387,7 @@
     \end{enumerate}
 \end{remark}
 
-\begin{example}\label{ex:vector-spaces}
+\begin{example}\label{eg:vector-spaces}
     设 $V$ 和 $W$ 是 $K$-向量空间.
     \begin{enumerate}
         \item 一个零或平凡 (向量) 空间只包含一个向量 $0$, 通常直接记作 $0$. 任何其他向量空间都是非平凡的.
@@ -380,7 +399,7 @@
         则称 $U$ 是 $V$ 的子空间.
         \item 设 $T \colon V \to W$ 是线性映射. 则 $\ker T$ 是 $V$ 的子空间, $\im T$ 是 $W$ 的子空间. 若 $T$ 是单射, 则 $T^{-1} \in \Hom(\im T, V)$.
         \item 当把域上的运算视为向量空间上的运算时, $K$ 自身就是以 $K$ 为数域的向量空间.
-        \item 设 $X$ 是集合. 则 $V^X$ 在定义如下运算 (见例 \ref{ex:plus-on-function-spaces}) 后是 $K$-向量空间.
+        \item 设 $X$ 是集合. 则 $V^X$ 在定义如下运算 (见例 \ref{eg:plus-on-function-spaces}) 后是 $K$-向量空间.
         $$
         (f+g)(x) \coloneqq f(x) + g(x)\ ,\quad (\lambda \cdot f)(x) \coloneqq \lambda \cdot f(x)\ ,\quad x \in X\ ,\quad \lambda \in K\ ,\quad f,g \in V^X\ .
         $$
@@ -418,7 +437,7 @@
     则称 $(A, \oplus, \cdot, \otimes)$ 是域 $K$ 上的代数或 $K$-代数.
 \end{axiom}
 
-\begin{example}\label{ex:algebras}
+\begin{example}\label{eg:algebras}
     \begin{enumerate}
         \item 设 $B$ 是 $A$ 的非空子集. 若
         \begin{enumerate}[label={$(\mathrm{SA}_{\arabic*})$}]
@@ -426,7 +445,7 @@
             \item $B$ 对向量乘法封闭, 即 $B \otimes B \subseteq B$.
         \end{enumerate}
         则称 $B$ 是 $A$ 的子代数.
-        \item 设 $X$ 是非空集合. 则 $K^X$ 在定义例 \ref{ex:rings}.2 和例 \ref{ex:vector-spaces}.5 的运算后是具有单位元的交换 $K$-代数.
+        \item 设 $X$ 是非空集合. 则 $K^X$ 在定义例 \ref{eg:rings}.2 和例 \ref{eg:vector-spaces}.5 的运算后是具有单位元的交换 $K$-代数.
     \end{enumerate}
 \end{example}
 

@@ -2,6 +2,32 @@
 
 ## Chapter 1 Foundations
 
+```
+Section 1  Fundamentals of Logic
+Section 2  Sets
+Section 3  Functions
+Section 4  Relations and Operations
+Section 5  The Natural Numbers
+Section 6  Countability
+Section 7  Groups and Homomorphisms
+Section 8  Rings, Fields and Polynomials
+           Rings
+           The Binomial Theorem
+           The Multinomial Theorem
+           Fields
+           Ordered Fields
+           Formal Power Series
+           Polynomials
+           Polynomial Functions
+           Division of Polynomials
+           Linear Factors
+           Polynomials in Several Indeterminates
+Section 9  The Rational Numbers
+Section 10 The Real Numbers
+Section 11 The Complex Numbers
+Section 12 Vector Spaces, Aﬃne Spaces and Algebras
+```
+
 ## Chapter 2 Convergence (5 Weeks)
 
 ```
@@ -28,6 +54,7 @@ Section 2 Real and Complex Sequences
           Complex Sequences              11 25, 25
 
           Exercises                      11 26, 25
+          Exercises                      11 27, 25
 Section 3 Normed Vector Spaces
 
           Norms

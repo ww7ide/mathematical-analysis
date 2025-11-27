@@ -18,6 +18,8 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 在所有收敛级数当中, 绝对收敛的级数具有尤为重要的地位. 绝对收敛往往比较容易判别, 这类级数在运算与处理上也相对简单. 此外, 在实际应用中许多重要的级数都是绝对收敛的. 对于本章最后一节将要引入和研究的幂级数, 这一点尤为明显. 其中最重要的例子是指数级数, 它的重要性将在后续章节中逐渐显现出来.
 
+\newpage
+
 \section{序列的收敛性}
 
 在本节中, 我们考虑定义在自然数集上的函数, 因此这类函数只会取到可数多个值. 对这样的函数 $\varphi \colon \N \to X$, 我们特别关心的是它在 ``当 $n$ 趋于无穷大时'' 各个取值 $\varphi(n)$ 的行为. 由于我们实际上只能对 $\varphi$ 进行有限次求值, 也就是说, 我们永远不可能真正 ``到达无穷大'', 因此必须发展出一些方法, 使我们能够对 ``靠近无穷远处'' 的无穷多个函数值建立命题并加以证明. 这样的方法就构成了收敛序列的理论, 本节将对其进行介绍.
@@ -41,7 +43,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{definition}
 
 \begin{definition}[数列]
-    $\K$ 中的序列称为数列. 进一步, 将 $\K$ 中的所有数列, 即 $\K^\N$ 记作 $s$ 或 $s(\K)$, 于是 $s$ 构成了 $\K$-向量空间 (见例 \ref{ex:vector-spaces}.5). 最后, $\R$ 中的数列称为实数列, $\C$ 中的数列称为复数列.
+    $\K$ 中的序列称为数列. 进一步, 将 $\K$ 中的所有数列, 即 $\K^\N$ 记作 $s$ 或 $s(\K)$, 于是 $s$ 构成了 $\K$-向量空间 (见例 \ref{eg:vector-spaces}.5). 最后, $\R$ 中的数列称为实数列, $\C$ 中的数列称为复数列.
 \end{definition}
 
 \begin{remark}
@@ -92,7 +94,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 \subsection{度量空间}
 
-\begin{axiom}[度量]\label{axiom:metric}
+\begin{axiom}[度量]\label{ax:metric}
     设 $X$ 是集合, 其上定义了函数
     $$
     d \colon X \times X \to \R\ .
@@ -106,7 +108,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     则称 $d$ 是 $X$ 上的度量. 进一步, 称 $(X,d)$ 是度量空间. 最后, 称 $d(x,y)$ 是度量空间 $X$ 中点 $x$ 和 $y$ 之间的距离.
 \end{axiom}
 
-\hyperref[axiom:metric]{$(\mathrm M_1)$}-\hyperref[axiom:metric]{$(\mathrm M_3)$} 显然是对 ``距离函数'' 非常自然的要求. 举例来说, \hyperref[axiom:metric]{$(\mathrm M_3)$} 可以被看作这样一条规则的公理化表述: ``从 $x$ 到 $y$ 的 `直达路径' 比先从 $x$ 到 $z$ 再从 $z$ 到 $y$ 的路径更短''.
+\hyperref[ax:metric]{$(\mathrm M_1)$}-\hyperref[ax:metric]{$(\mathrm M_3)$} 显然是对 ``距离函数'' 非常自然的要求. 举例来说, \hyperref[ax:metric]{$(\mathrm M_3)$} 可以被看作这样一条规则的公理化表述: ``从 $x$ 到 $y$ 的 `直达路径' 比先从 $x$ 到 $z$ 再从 $z$ 到 $y$ 的路径更短''.
 
 \begin{proposition}[度量的非负性]
     设 $(X,d)$ 是度量空间. 则
@@ -134,7 +136,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     是以 $a$ 为中心, $r$ 为半径的闭球.
 \end{definition}
 
-\begin{example}\label{ex:metric}
+\begin{example}\label{eg:metric}
     \begin{enumerate}
         \item 函数
         $$
@@ -146,7 +148,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         d_Y \coloneqq d\vert_{Y \times Y}
         $$
         是 $Y$ 上的度量, 称为诱导度量. 进一步, 称 $(Y, d_Y)$ 是 $(X,d)$ 的子空间. 在不会引起混淆的情况下, 我们往往直接写 $d$, 而不特别区分 $d_Y$.
-        \item $\C$ 的任意非空子集, 在从 $\C$ 的自然度量诱导出来的度量之下, 都是度量空间. 以这种方式在 $\R$ 上得到的度量, 正好就是在例 \ref{ex:metric}.1 中定义的那个自然度量.
+        \item $\C$ 的任意非空子集, 在从 $\C$ 的自然度量诱导出来的度量之下, 都是度量空间. 以这种方式在 $\R$ 上得到的度量, 正好就是在例 \ref{eg:metric}.1 中定义的那个自然度量.
         \item 设 $X$ 是非空集合. 则函数
         $$
         d \colon X \times X \to \R\ ,\quad (x,y) \mapsto
@@ -288,7 +290,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 下面这些例子都比较简单. 对于更复杂的例子, 我们需要第 4 节发展出的那些方法.
 
-\begin{example}\label{ex:ez-convergent-sequence}
+\begin{example}\label{eg:ez-convergent-sequence}
     \begin{enumerate}
         \item 设实数列 $(1/n)_{n \in \N^\ast}$, 则 $\lim 1/n = 0$.
         \item 设复数列 $(z_n)$, 其中
@@ -346,7 +348,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     是 $Y$ 的直径. 最后, 称序列 $(x_n)$ 有界, 若它的像 $\set{x_n}{n \in \N}$ 有界.
 \end{definition}
 
-\begin{example}\label{ex:bounded-sets}
+\begin{example}\label{eg:bounded-sets}
     \begin{enumerate}
         \item 对于任意 $a \in X$ 和 $r > 0$, $\ball(a,r)$ 和 $\bar\ball(a,r)$ 在 $X$ 中有界.
         \item 有界集合的每个子集都是有界的. 有界集合的有限并是有界的.
@@ -430,7 +432,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{example}
 
 \begin{proof}
-    令 $\psi_1(k) \coloneqq k^m$, $\psi_2(k) \coloneqq m^k$. 由于 $\psi_i \colon \N^\ast \to \N^\ast,\ i = 1,2$ 是严格递增的, 因此 $(k^{-m})$ 和 $(m^{-k})$ 是 $(1/n)$ 的子数列. 于是由例 \ref{ex:ez-convergent-sequence}.1 和 命题 \ref{prop:convergent-sequence-to-subsequence} 可得.
+    令 $\psi_1(k) \coloneqq k^m$, $\psi_2(k) \coloneqq m^k$. 由于 $\psi_i \colon \N^\ast \to \N^\ast,\ i = 1,2$ 是严格递增的, 因此 $(k^{-m})$ 和 $(m^{-k})$ 是 $(1/n)$ 的子数列. 于是由例 \ref{eg:ez-convergent-sequence}.1 和 命题 \ref{prop:convergent-sequence-to-subsequence} 可得.
 \end{proof}
 
 下面的命题是对聚点的进一步刻画.
@@ -469,7 +471,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{exercises}
 
 \begin{exercises}
-    证明例 \ref{ex:metric}.5 的断言.
+    证明例 \ref{eg:metric}.5 的断言.
 \end{exercises}
 
 \begin{exercises}
@@ -477,7 +479,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{exercises}
 
 \begin{exercises}
-    证明例 \ref{ex:bounded-sets} 的断言.
+    证明例 \ref{eg:bounded-sets} 的断言.
 \end{exercises}
 
 \begin{exercises}
@@ -627,7 +629,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     $$
     \lim \colon c \to \K\ ,\quad (x_n) \mapsto \lim x_n
     $$
-    是线性的. 显然 $\ker \lim = c_0$, 于是, 由例 \ref{ex:vector-spaces}.3 可知, $c_0$ 是 $c$ 的子空间.
+    是线性的. 显然 $\ker \lim = c_0$, 于是, 由例 \ref{eg:vector-spaces}.3 可知, $c_0$ 是 $c$ 的子空间.
 \end{remark}
 
 下面的命题表明, 对于收敛数列, 我们可以 ``逐项'' 相乘.
@@ -655,7 +657,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \begin{remark}\label{rem:c-is-algebra}
     \begin{enumerate}
         \item 命题 \ref{prop:multiplication-in-c}.1 中, 关于序列 $(y_n)$ 有界的假设不能去除.
-        \item 由例 \ref{ex:algebras}.2 可知 $s$ 是 $\K$-代数. 于是, 结合注 \ref{rem:c-is-vector-space} 和命题 \ref{prop:multiplication-in-c}.2 可以得到: $c$ 是 $s$ 的子代数且函数
+        \item 由例 \ref{eg:algebras}.2 可知 $s$ 是 $\K$-代数. 于是, 结合注 \ref{rem:c-is-vector-space} 和命题 \ref{prop:multiplication-in-c}.2 可以得到: $c$ 是 $s$ 的子代数且函数
         $$
         \lim \colon c \to \K\ ,\quad (x_n) \mapsto \lim x_n
         $$
@@ -669,7 +671,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 下面的命题和注 \ref{rem:c-is-algebra}.2 表明, 商数列的极限是分子的极限除以分母的极限, 若这些极限存在的话.
 
-\begin{proposition}
+\begin{proposition}\label{prop:division-in-c}
     设 $(x_n)$ 是 $\K$ 中的收敛数列且 $\lim x_n = a \neq 0$. 则 $(x_n)$ 的几乎所有项都非零且 $\lim 1/x_n = 1/a$.
 \end{proposition}
 
@@ -726,6 +728,99 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 \subsection{复数列}
 
+若 $(x_n)$ 是 $\R$ 中的收敛数列且 $\lim x_n = a$, 则 $\lim |x_n| = |a|$. 实际上, 若 $(x_n)$ 是无穷小量, 则是注 \ref{rem:null-sequences}.1 的情况. 若 $a > 0$, 则 $(x_n)$ 的几乎所有项都为正 (见练习 2.2.\ref{ex:limits-preserve-sign}), 于是 $\lim |x_n| = \lim x_n = a = |a|$. 最后, 若 $a < 0$, 则 $(x_n)$ 的几乎所有项都为负, 于是
+$$
+\lim |x_n| = \lim (-x_n) = - \lim x_n = -a = |a|\ .
+$$
+
+下面的命题表明这对复数列同样成立.
+
+\begin{proposition}
+    设 $(x_n)$ 是 $\K$ 中的收敛数列且 $\lim x_n = a$. 则 $(|x_n|)$ 收敛且 $\lim |x_n| = |a|$.
+\end{proposition}
+
+\begin{proof}
+    任取 $\varepsilon > 0$. 故存在 $N \in \N$ 使得
+    $$
+    \abs[\big]{|x_n| - |a|} \leq |x_n - a| < \varepsilon\ ,\quad n \geq N\ ,
+    $$
+    因此 $(|x_n|)$ 收敛到 $|a|$.
+\end{proof}
+
+$\C$ 中的收敛数列可以用其对应的实部与虚部的收敛性来刻画.
+
+\begin{proposition}\label{prop:convergence-of-real-and-imaginary-parts}
+    设 $(x_n)$ 是 $\C$ 中的数列. 以下命题是等价的.
+    \begin{enumerate}
+        \item $(x_n)$ 收敛.
+        \item $(\Re x_n)$ 和 $(\Im x_n)$ 收敛.
+    \end{enumerate}
+    此时有,
+    $$
+    \lim x_n = \lim \Re x_n + \ii \lim \Im x_n\ .
+    $$
+\end{proposition}
+
+\begin{proof}
+    1. $\implies$ 2. 设 $\lim x_n = x$. 任取 $\varepsilon > 0$. 故存在 $N \in \N$ 使得
+    $$
+    |\Re x_n - \Re x| = |\Re(x_n - x)| \leq |x_n - x| < \varepsilon\ ,\quad n \geq N\ ,
+    $$
+    因此 $(\Re x_n)$ 收敛到 $\Re x$. 同理可得 $(\Im x_n)$ 收敛到 $\Im x$.
+
+    2. $\implies$ 1. 设 $\lim \Re x_n = a$, $\lim \Im x_n = b$. 任取 $\varepsilon > 0$. 故存在 $M,N \in \N$ 使得当 $n \geq M$ 时 $|\Re x_n - a| < \varepsilon / \sqrt{2}$, 当 $n \geq N$ 时 $|\Im x_n - b| < \varepsilon / \sqrt{2}$, 于是
+    \begin{align*}
+        |x_n - (a + \ii b)| &= |(\Re x_n - a) + \ii (\Im x_n - b)| \\
+        &= \sqrt{(\Re x_n - a)^2 + (\Im x_n - b)^2} < \sqrt{\frac{\varepsilon^2}{2} + \frac{\varepsilon^2}{2}} = \varepsilon\ ,\quad n \geq \max\{M,N\}\ ,
+    \end{align*}
+    因此 $x_n$ 收敛到 $a + \ii b$.
+\end{proof}
+
+我们用一些例子来说明上述命题, 以此结束本节.
+
+\begin{example}
+    \begin{enumerate}
+        \item $\displaystyle \lim_{n \to \infty} \frac{n+1}{n+2} = 1$.
+        \item $\displaystyle \lim_{n \to \infty} \Bigr(\frac{3n}{(2n+1)^2} + \ii \frac{2n^2}{n^2 + 1}\Bigl) = 2 \ii$.
+        \item $\displaystyle \Bigl(\frac{\ii^n}{1 + \ii n}\Bigr)$ 是 $\C$ 中的无穷小量.
+    \end{enumerate}
+\end{example}
+
+\begin{proof}
+    1. 由于 $\lim 1/(n+2) = 0$, 于是由命题 \ref{prop:addition-scalar-multiplication-in-c} 可知
+    $$
+    \lim \frac{n+1}{n+2} = \lim \Bigl(1 - \frac{1}{n+2}\Bigr) = 1 - \lim \frac{1}{n+2} = 1\ .
+    $$
+
+    2. 令
+    $$
+    x_n \coloneqq \frac{3n}{(2n+1)^2} + \ii \frac{2n^2}{n^2 + 1}\ .
+    $$
+    其中
+    $$
+    \Re x_n = \frac{3n}{(2n+1)^2} = \frac{3/n}{(2+1/n)^2}\ ,
+    $$
+    由于 $\lim(2 + 1/n) = 2$, 于是由命题 \ref{prop:multiplication-in-c} 可知 $\lim(2 + 1/n)^2 = 4$, 而 $(3/n)$ 是无穷小量, 因此由命题 \ref{prop:multiplication-in-c} 和命题 \ref{prop:division-in-c} 可知 $\lim \Re x_n = 0$.
+    $$
+    \Im x_n = \frac{2n^2}{n^2 + 1} = \frac{2}{1 + 1/n^2}\ ,
+    $$
+    而 $\lim (1 + 1/n^2) = 1$, 于是由命题 \ref{prop:addition-scalar-multiplication-in-c} 和命题 \ref{prop:division-in-c} 可知 $\lim \Im x_n = 2$. 最后由 \ref{prop:convergence-of-real-and-imaginary-parts} 可得 $\lim x_n = 2 \ii$.
+
+    3. 令
+    $$
+    x_n \coloneqq \frac{\ii^n}{1 + \ii n} = \frac{1}{n} \frac{\ii^n}{\ii + 1/n}\ .
+    $$
+    注意到
+    $$
+    \abs[\Big]{\ii + \frac{1}{n}} = \sqrt{1 + \frac{1}{n^2}} \geq 1\ ,\quad n \in \N^\ast\ ,
+    $$
+    于是
+    $$
+    \abs[\Big]{\frac{\ii^n}{\ii + 1/n}} = \frac{|\ii^n|}{|\ii + 1/n|} = \frac{1}{|\ii + 1/n|} \leq 1\ ,\quad n \in \N^\ast\ ,
+    $$
+    因此 $\bigl(\ii^n/(\ii + 1/n)\bigr)$ 有界, 由命题 \ref{prop:multiplication-in-c} 可知 $(x_n)$ 是无穷小量.
+\end{proof}
+
 \subsection{练习}
 
 \begin{exercises}
@@ -771,7 +866,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     故由夹逼定理可知 $n^3 / 2^n \to 0$.
 \end{proof}
 
-\begin{exercises}[保号性]
+\begin{exercises}[保号性]\label{ex:limits-preserve-sign}
     设实数列 $(x_n)$ 有正极限. 证明该数列的几乎所有项都为正.
 \end{exercises}
 
@@ -822,7 +917,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{proof}
 
 \begin{exercises}
-    设 $\K^m\ (m \in \N^\ast)$ 是配备积度量 (见例 \ref{ex:metric}.5) 的度量空间,
+    设 $\K^m\ (m \in \N^\ast)$ 是配备积度量 (见例 \ref{eg:metric}.5) 的度量空间,
     $$
     s(\K^m) \coloneqq (\K^m)^\N\ ,\quad c(\K^m) \coloneqq \set{(x_n) \in s(\K^m)}{(x_n)\ \text{收敛}}\ .
     $$
@@ -834,6 +929,101 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \lim \colon c(\K^m) \to \K^m\ ,\quad (x_n) \mapsto \lim x_n
         $$
         是线性的.
-        \item 设 $(\lambda_n) \in c(\K)$, $(x_n) \in c(\K^m)$ 且 $\lim \lambda_n = \alpha$, $\lim x_n = a$. 则 $\lim \lambda_n x_n = \alpha a \in \K^m$ (提示: 例 \ref{ex:ez-convergent-sequence}.5).
+        \item 设 $(\lambda_n) \in c(\K)$, $(x_n) \in c(\K^m)$ 且 $\lim \lambda_n = \alpha$, $\lim x_n = a$. 则 $\lim \lambda_n x_n = \alpha a \in \K^m$ (提示: 例 \ref{eg:ez-convergent-sequence}.5).
     \end{enumerate}
 \end{exercises}
+
+\begin{proof}
+    1. 和 2. 设 $(x_n), (y_n) \in c(\K^m)$ 且 $\lim x_n = a$, $\lim y_n = b$, $\alpha \in \K^m$. 故对于每个 $j \in \{1, \ldots, m\}$ 都有 $(x_n^j)$ 收敛到 $a^j$ 和 $(y_n^j)$ 收敛到 $b^j$. 而在 $\K$ 上时, 对于每个 $j \in \{1, \ldots, m\}$ 都有 $(x_n^j + y_n^j)$ 收敛到 $a^j + b^j$, 因此 $(x_n + y_n)$ 收敛到 $a + b$. 同理可得 $(\alpha x_n)$ 收敛到 $\alpha a$. 这说明了 $c(\K^m)$ 是 $s(\K^m)$ 的子空间且 $\lim$ 是线性的.
+
+    3. 对于每个 $j \in \{1, \ldots, m\}$ 都有 $(x_n^j)$ 收敛到 $a^j$. 而在 $\K$ 上时, 对于每个 $j \in \{1, \ldots, m\}$ 都有 $(\lambda_n x_n^j)$ 收敛到 $\alpha a^j$, 因此 $\lambda_n x_n$ 收敛到 $(\alpha a^1, \ldots, \alpha a^m) = \alpha a$.
+\end{proof}
+
+\begin{exercises}
+    设 $(x_n)$ 是 $\K$ 中的收敛数列且以 $a$ 为极限, $p,q \in \K[X]$ 且 $q(a) \neq 0$. 证明对于有理函数 $r \coloneqq p/q$, 有
+    $$
+    \lim_{n \to \infty} r(x_n) = r(a)\ .
+    $$
+    特别的, 对于每个多项式 $p$, 数列 $\bigl(p(x_n)\bigr)$ 都收敛到 $p(a)$.
+\end{exercises}
+
+\begin{exercises}
+    设 $(x_n)$ 是 $(0, \infty)$ 中的收敛数列且以 $x \in (0, \infty)$ 为极限. 证明
+    $$
+    \lim_{n \to \infty} (x_n)^r = x^r\quad (r \in \Q)\ .
+    $$
+    (提示: 当 $r = 1/q$ 时, 令 $y_n \coloneqq (x_n)^r$, $y \coloneqq x^r$. 则
+    $$
+    x_n - x = (y_n - y) \sum_{k=0}^{q-1} y_n^k y^{q-1-k}\ ,
+    $$
+    见练习 1.8.\ref{ex:difference-of-powers-formula}.)
+\end{exercises}
+
+\begin{proof}
+    $r = 0$ 时, 显然成立. 令 $r = p/q\ (p \in \Z^\ast, q \in \N^\ast)$. 令 $y_n \coloneqq x_n^{1/q}$, $y \coloneqq x^{1/q}$, 于是
+    $$
+    x_n - x = y_n^q - y^q = (y_n - y) \sum_{k=0}^{q-1} y_n^k y^{q-1-k}\ ,
+    $$
+    令
+    $$
+    A_n \coloneqq \sum_{k=0}^{q-1} y_n^k y^{q-1-k} = \sum_{k=0}^{q-1} x_n^{k/q} x^{(q-1-k)/q}\ ,
+    $$
+    其中对于每个 $k \in \{0, \ldots, q-1\}$ 都有 $x_n^{k/q} x^{(q-1-k)/q} > 0$, 因此
+    $$
+    A_n > x^{(q-1)/q} > 0\ ,\quad n \in \N\ ,
+    $$
+    故数列 $(1 / A_n)$ 有界. 注意到 $(x_n - x)$ 是无穷小量, 而
+    $$
+    y_n - y = (x_n - x) \frac{1}{A_n}\ ,
+    $$
+    因此 $(y_n - y)$ 也是无穷小量, 即 $x_n^{1/q}$ 收敛到 $x^{1/q}$. 当 $p > 0$ 时,
+    $$
+    \lim_{n \to \infty} x_n^p = \lim_{n \to \infty} x_n \cdots x_n = x \cdots x = x^p\ .
+    $$
+    当 $p < 0$ 时, 令 $s \coloneqq -p$, 于是
+    $$
+    \lim_{n \to \infty} x_n^p = \lim_{n \to \infty} \frac{1}{x_n^s} = \lim_{n \to \infty} \frac{1}{x_n} \cdots \frac{1}{x_n} = \frac{1}{x} \cdots \frac{1}{x} = \frac{1}{x^s} = x^p\ .
+    $$
+    最后可得,
+    $$
+    \lim_{n \to \infty} x_n^r = \lim_{n \to \infty} x_n^{p/q} = \lim_{n \to \infty} (x_n^{1/q})^p = (x^{1/q})^p = x^r\ .
+    $$
+\end{proof}
+
+\begin{exercises}\label{ex:null-sequences-always-smaller}
+    设 $(x_n)$ 是 $(0, \infty)$ 中的数列. 证明 $(1 / x_n)$ 是无穷小量, 当且仅当对于每个 $K > 0$ 都存在 $N \in \N$ 使得当 $n \geq N$ 时 $x_n > K$.
+\end{exercises}
+
+\begin{proof}
+    $\implies$. 设 $(1 / x_n)$ 是无穷小量. 任取 $K > 0$. 故存在 $N \in \N$ 使得
+    $$
+    \abs[\Big]{\frac{1}{x_n}} = \frac{1}{x_n} < \frac{1}{K}\ ,\quad n \geq N\ ,
+    $$
+    即当 $n \geq N$ 时 $x_n > K$.
+
+    $\impliedby$. 设对于每个 $K > 0$ 都存在 $N \in \N$ 使得当 $n \geq N$ 时 $x_n > K$. 任取 $\varepsilon > 0$. 故存在 $N \in \N$ 使得当 $n \geq N$ 时 $x_n > 1 / \varepsilon$, 即
+    $$
+    \frac{1}{x_n} = \abs[\Big]{\frac{1}{x_n}} < \varepsilon\ ,\quad n \geq N\ ,
+    $$
+    故 $(1 / x_n)$ 是无穷小量.
+\end{proof}
+
+\begin{exercises}
+    设 $(a_n)$ 是 $(0, \infty)$ 中的数列,
+    $$
+    x_n \coloneqq \sum_{k=0}^n (a_k + 1 / a_k)\ ,\quad n \in \N\ .
+    $$
+    证明 $(1 / x_n)$ 是无穷小量. (提示: 当 $a>0$ 时 $a + 1/a \geq 2$ (见练习 1.8.\ref{ex:inequality-on-ordered-ﬁeld}), 然后利用练习 2.2.\ref{ex:null-sequences-always-smaller}.)
+\end{exercises}
+
+\begin{proof}
+    任取 $K > 0$. 显然 $(x_n)$ 也是 $(0, \infty)$ 中的数列. 注意到,
+    $$
+    x_n = \sum_{k=0}^n (a_k + 1 / a_k) \geq \sum_{k=0}^n 2 = 2n + 2\ ,\quad n \in \N\ ,
+    $$
+    由 Archimedes 公理可知, 存在 $N \in \N$ 使得 $2N + 2 > K$, 于是当 $n \geq N$ 时 $x_n \geq 2n + 2 > K$, 于是 $(1 / x_n)$ 是无穷小量.
+\end{proof}
+
+\newpage
+
+\section{赋范向量空间}

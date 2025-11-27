@@ -2,13 +2,9 @@
 \usepackage{amsthm}
 \usepackage{amsmath,mathtools}
 \usepackage{amssymb}
-\usepackage{mathrsfs}
 \usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{tikz}
-\usepackage{pgfplots}
-\usepackage{float}
-\usepackage{multirow}
 
 \ctexset{
     chapter = {
@@ -27,17 +23,22 @@
 \newtheorem{corollary}[proposition]{推论} % cor
 \theoremstyle{definition}
 \newtheorem{remark}[proposition]{注} % rem
-\newtheorem{example}[proposition]{例} % ex
-\newtheorem{exercises}{}[section]
-\renewcommand{\theexercises}{\arabic{exercises}}
+\newtheorem{example}[proposition]{例} % eg
+\newtheorem{exercises}{}[section] % ex
+\renewcommand{\theexercises}{\arabic{exercises}} % exercises 计数器
 
 \makeatletter
+%====================================
+% 用矩阵实现 cases
+%====================================
 \renewenvironment{cases}{
     \left\{\begin{matrix}
 }{
     \end{matrix}\right.
 }
-
+%====================================
+% 修改 proof 的 “证明” 字体样式
+%====================================
 \renewenvironment{proof}[1][\proofname]{
     \par
     \pushQED{\qed}
@@ -49,7 +50,9 @@
 }{
     \popQED\endtrivlist\@endpefalse
 }
-
+%====================================
+% set 集合指令
+%====================================
 \newcommand{\set}{
     \@ifstar\set@star\set@nostar
 }
@@ -107,42 +110,35 @@
 }
 \makeatother
 
-\DeclarePairedDelimiterX{\abs}[1]{\lvert}{\rvert}{
-    #1
-}
-
-\newcommand{\power}{\mathcal P} % 幂集
 \newcommand{\e}{\mathrm e} % 自然常数
 \newcommand{\ii}{\mathrm i} % 虚数单位
+\newcommand{\dd}{\mathop{}\!\mathrm d} % 微分算子
 \newcommand{\K}{\mathbb K} % 数域
 \newcommand{\N}{\mathbb N} % 自然数集
 \newcommand{\Z}{\mathbb Z} % 整数集
 \newcommand{\Q}{\mathbb Q} % 有理数集
 \newcommand{\R}{\mathbb R} % 实数集
 \newcommand{\C}{\mathbb C} % 复数集
+\newcommand{\ball}{\mathbb B} % 开球
 \newcommand{\E}{\mathbb E} % 期望
 \newcommand{\PP}{\mathbb P} % 概率
+\newcommand{\power}{\mathcal P} % 幂集
 \newcommand{\topo}{\mathcal T} % 拓扑
 \newcommand{\nbr}{\mathcal N} % 邻域族
 \newcommand{\onbr}{\mathcal O} % 开邻域族
 \newcommand{\cnbr}{\mathcal F} % 闭邻域族
 \newcommand{\basis}{\mathcal B} % 拓扑基
 \newcommand{\subbasis}{\mathcal S} % 拓扑子基
-\newcommand{\ball}{\mathbb B} % 开球
 \newcommand{\borel}{\mathcal B} % Borel sigma-代数
 \newcommand{\lbg}{\mathcal L} % Lebesgue sigma-代数
-\newcommand{\dd}{\mathop{}\!\mathrm d} % 微分算子
 \newcommand{\mat}{\bm} % 矩阵和向量
 \newcommand{\pto}{\xlongrightarrow{p}} % 依概率收敛
 \newcommand{\dto}{\xlongrightarrow{d}} % 依分布收敛
-
 \newcommand{\Funct}{\mathrm{Funct}} % 函数集合
 \newcommand{\Hom}{\mathrm{Hom}} % 同态
-
 \renewcommand{\implies}{\Longrightarrow} % 蕴含
 \renewcommand{\impliedby}{\Longleftarrow} % 被蕴含
 \renewcommand{\iff}{\Longleftrightarrow} % 等价
-
 \DeclareMathOperator{\im}{\mathrm{im}} % 像
 \DeclareMathOperator{\range}{\mathrm{ran}} % 值域
 \DeclareMathOperator{\id}{\mathrm{id}} % 恒同映射
@@ -156,9 +152,6 @@
 \DeclareMathOperator{\spec}{\mathrm{spec}} % 谱
 \DeclareMathOperator{\var}{\mathrm{var}} % 方差
 \DeclareMathOperator{\cov}{\mathrm{cov}} % 协方差
-\DeclareMathOperator*{\overlim}{\overline{\lim}} % 上极限
-\DeclareMathOperator*{\underlim}{\underline{\lim}} % 下极限
-
 \let\oldRe\Re
 \let\Re\relax
 \DeclareMathOperator{\Re}{\oldRe} % 实部
@@ -166,6 +159,11 @@
 \let\Im\relax
 \DeclareMathOperator{\Im}{\oldIm} % 虚部
 \DeclareMathOperator{\Span}{\mathrm{span}} % 张成
+\DeclareMathOperator*{\overlim}{\overline{\lim}} % 上极限
+\DeclareMathOperator*{\underlim}{\underline{\lim}} % 下极限
+\DeclarePairedDelimiterX{\abs}[1]{\lvert}{\rvert}{
+    #1
+}
 
 %====================================
 % ElegantBook 风格封面，重写 maketitle
