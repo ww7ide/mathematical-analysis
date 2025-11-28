@@ -32,7 +32,6 @@ Section 12 Vector Spaces, Aﬃne Spaces and Algebras
 
 ```
 Section 1 Convergence of Sequences
-
           Sequences                      11 19, 25
           Metric Spaces
 
@@ -45,8 +44,8 @@ Section 1 Convergence of Sequences
 
           Exercises                      11 22, 25
           Exercises                      11 23, 25
-Section 2 Real and Complex Sequences
 
+Section 2 Real and Complex Sequences
           Null Sequences                 11 24, 25
           Elementary Rules
           The Comparison Test
@@ -55,9 +54,9 @@ Section 2 Real and Complex Sequences
 
           Exercises                      11 26, 25
           Exercises                      11 27, 25
-Section 3 Normed Vector Spaces
 
-          Norms
+Section 3 Normed Vector Spaces
+          Norms                          11 28, 25
           Balls
           Bounded Sets
           Examples

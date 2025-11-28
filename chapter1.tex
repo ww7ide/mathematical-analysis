@@ -42,7 +42,11 @@
 
 \subsection{运算}
 
-\begin{example}\label{eg:plus-on-function-spaces}
+\begin{proposition}\label{prop:identity-element-is-unique}
+    对于给定的运算, 至多存在一个单位元.
+\end{proposition}
+
+\begin{example}\label{eg:operations-on-function-spaces}
     设 $\circledast$ 是集合 $Y$ 上的运算, $X$ 是非空集合. 则我们通过 $\circledast$ 在 $\Funct(X,Y)$ 上诱导运算
     $$
     (f \odot g)(x) \coloneqq f(x) \circledast g(x)\ ,\quad x \in X\ .
@@ -76,6 +80,22 @@
 
 \subsection{递归定义}
 
+\begin{proposition}
+    
+\end{proposition}
+
+\begin{example}
+    
+\end{example}
+
+\begin{remark}
+    
+\end{remark}
+
+\begin{example}\label{eg:recursive-definition-for-power-and-factorial}
+    
+\end{example}
+
 \newpage
 
 \section{可数性}
@@ -92,7 +112,7 @@
 
 \section{群与同态}
 
-在定理 \ref{thm:the-arithmetic-of-natural-numbers} 中, 我们在 $m \leq n$ 的前提下, 定义了两个自然数 $m$ 和 $n$ 的差 $n-m$. 同时, 在 $m$ 是 $n$ 约数的前提下, 我们也定义了两个自然数 $m$ 和 $n$ 的商 $n/m$. 在这两种情形中, 对 $m$ 和 $n$ 加上的这些限制正是为了保证所得的差和商仍然是自然数. 如果我们希望对任意自然数 $m$ 和 $n$ 定义 ``差'' $n-m$ 或 ``商'' $n/m$, 那么就必须离开自然数这一范围. 在第 9-11 节中, 我们将构造新类型的数, 把自然数集扩展到更大的数系之中, 在这些数系里, 这些运算可以 (几乎) 不受限制地使用.
+在定理 \ref{thm:the-arithmetic-of-natural-numbers} 中, 我们在 $m \leq n$ 的前提下, 定义了两个自然数 $m$ 和 $n$ 的差 $n-m$. 同时, 在 $m$ 是 $n$ 约数的前提下, 我们也定义了两个自然数 $m$ 和 $n$ 的商 $n/m$. 在这两种情形中, 对 $m$ 和 $n$ 加上的这些限制正是为了保证所得的差和商仍然是自然数. 如果我们希望对任意自然数 $m$ 和 $n$ 定义 ``差'' $n-m$ 或 ``商'' $n/m$, 那么就必须离开自然数这一范围. 在第 9--11 节中, 我们将构造新类型的数, 把自然数集扩展到更大的数系之中, 在这些数系里, 这些运算可以 (几乎) 不受限制地使用.
 
 当然, 这些新的数系必须被构造得仍然满足加法与乘法的通常法则. 为此, 脱离对某个具体数系的依赖, 而对这些运算法则本身进行研究是极其有用的. 这样的研究也为我们提供了进一步的训练: 如何从给定的定义和公理中, 以逻辑方式推演出命题.
 
@@ -120,6 +140,10 @@
     称群 $(G, \odot)$ 是交换群或 Abel 群, 若 $\odot$ 具有交换律.
 \end{definition}
 
+\begin{remark}\label{rem:group's-property}
+    
+\end{remark}
+
 \subsection{子群}
 
 \subsection{陪集}
@@ -140,7 +164,7 @@
 
 \subsection{环}
 
-\begin{axiom}[环]
+\begin{axiom}[环]\label{ax:ring}
     设 $R$ 是非空集合, 其上定义了加法运算
     $$
     + \colon R \times R \to R\ ,\quad (a,b) \mapsto a + b\ ,
@@ -161,22 +185,95 @@
     则称 $(R, +, \times)$ 是环.
 \end{axiom}
 
+在这里, 我们采用通常的约定, 即乘法优先于加法. 例如, $a \times b + c$ 的意思是 $(a \times b) + c$ (也就是说, 先进行乘法 $d \coloneqq a \times b$, 再计算加法 $d+c$), 而不是 $a \times (b+c)$. 另外, 在不会引起混淆的情况下, 我们通常将 $a \times b$ 简写为 $ab$.
+
 \begin{definition}[交换环]
-    称环 $(R, +, \times)$ 是交换环, 若 $\times$ 具有交换律.
+    称环 $(R, +, \cdot)$ 是交换环, 若 $\cdot$ 具有交换律. 在这种情况下, 分配律 \hyperref[ax:ring]{$(\mathrm R_3)$} 可以简化为
+    $$
+    (a + b)c = ac + bc\ ,\quad a,b,c \in R\ .
+    $$
 \end{definition}
 
-\begin{definition}[单位环]
-    称环 $(R, +, \times)$ 是单位环, 若 $\times$ 具有单位元.
+\begin{definition}[含幺环]
+    称环 $(R, +, \cdot)$ 是含幺环, 若 $\cdot$ 具有单位元. 并将该单位元记作 $1_R$ 或 $1$, 称为 $R$ 的幺元或乘法单位元.
 \end{definition}
+
+当加法和乘法运算在上下文中明确时, 我们把 $(R, +, \cdot)$ 简写为 $R$.
+
+\begin{remark}\label{rem:arithmetic-rules-in-rings}
+    设 $R \coloneqq (R, +, \cdot)$ 是环.
+    \begin{enumerate}
+        \item 环 $R$ 的加法群 $(R,+)$ 的单位元, 如例 \ref{eg:recursive-definition-for-power-and-factorial} 中一样, 记作 $0_R$ 或 $0$, 称为 $R$ 的零元或加法单位元. 根据命题 \ref{prop:identity-element-is-unique} 可知, 若 $0_R$ 或 $1_R$ 存在, 则唯一.
+        \item 由注 \ref{rem:group's-property}.4 可知, 对于每个 $a \in R$ 都有 $-(-a) = a$.
+        \item 对于每一对 $a,b \in R$, 由注 \ref{rem:group's-property}.3 可知, 方程 $a + x = b$ 在 $R$ 中有唯一的解 $x$, 即 $x = b - a \coloneqq b + (-a)$ (读作 $b$ 减 $a$), 称为 $a$ 与 $b$ 的差.
+        \item 对于任意 $a \in R$, 有 $0a = a0 = 0$ 且 $-0 = 0$. 进一步, 令 $a \neq 0$, 若存在非零元 $b \in R$ 使得 $ab = 0$ 或 $ba = 0$, 则称 $a$ 是 $R$ 的零因子. 若 $R$ 是交换环且没有零因子, 即 $ab = 0$ 蕴含 $a = 0$ 或 $b = 0$, 则称 $R$ 是整环.
+        \item 对于任意 $a,b \in R$, 有 $-ab \coloneqq -(ab) = a(-b) = (-a)b$ 且 $(-a)(-b) = ab$.
+        \item 若 $R$ 是含幺环, 则对于任意 $a \in R$ 都有 $(-1)a = -a$.
+        \item 由例 \ref{eg:recursive-definition-for-power-and-factorial} 可知, 对于任意 $n \in \N$ 和 $a \in R$, $n \cdot a = na$ 是良定义的且本例中的运算法则都成立. 特别的, $0_\N \cdot a \coloneqq 0_R$. 又由注 \ref{rem:arithmetic-rules-in-rings}.4 有 $0_R \cdot a = 0_R$, 因此把 $0_\N$ 和 $0_R$ 的下标省略也不会产生歧义. 类似的, 若 $R$ 是含幺环, 则 $1_\N \cdot a = 1_R \cdot a = a$.
+    \end{enumerate}
+\end{remark}
 
 \begin{example}\label{eg:rings}
-    
+    \begin{enumerate}
+        \item 平凡环只含有一个元素 $0$, 并且通常也记作 $0$. 含有超过一个元素的环称为非平凡环. 平凡环显然是含幺的交换环. 若 $R$ 是含幺环, 于是对于每个 $a \in R$ 都有 $1_R \cdot a = a$, 则 $R$ 是平凡的当且仅当 $1_R = 0_R$.
+        \item 设 $R$ 是环, $X$ 是非空集合. 则 $R^X$ 在定义如下运算后是环.
+        $$
+        (f+g)(x) \coloneqq f(x) + g(x)\ ,\quad (f g)(x) \coloneqq f(x) g(x)\ ,\quad x \in X\ ,\quad f,g \in R^X\ .
+        $$
+        若 $R$ 交换环或含幺环, 则 $R^X$ 也是 (见例 \ref{eg:operations-on-function-spaces}). 特别的, 当 $m \geq 2$ 时, 环 $R$ 的直积 $R^m$ 在定义如下运算后是环, 称为积环.
+        $$
+        a + b \coloneqq (a_1 + b_1, \ldots, a_m + b_m)\ ,\quad a b \coloneqq (a_1 b_1, \ldots, a_m b_m)\ ,\quad a,b \in R^m\ .
+        $$
+        若 $R$ 是非平凡的含幺环且 $X$ 有至少两个元素, 则 $R^X$ 有零因子.
+        \item 设 $S$ 是环 $R$ 的非空子集. 若
+        \begin{enumerate}[label={$(\mathrm{SR}_{\arabic*})$}]
+            \item $S$ 是 $(R,+)$ 的子群.
+            \item $S$ 对乘法封闭, 即 $S \cdot S \subseteq S$.
+        \end{enumerate}
+        则称 $S$ 是 $R$ 的子环. 显然, $0 = \{0\}$ 和 $R$ 都是 $R$ 的子环. 即使 $R$ 是含幺环, 但 $S$ 却不一定含有幺元 (见例 \ref{eg:rings}.5). 不过, 若 $1_R \in S$, 则 $1_R$ 是 $S$ 的幺元. 当然, 若 $R$ 是交换环, 则 $S$ 也是, 但反过来一般不成立.
+        \item 子环的交仍然是子环.
+        \item 设 $R$ 是非平凡的含幺环,
+        $$
+        S \coloneqq \set{g \in R^\N}{\text{对于几乎所有}\ n \in \N\ \text{都有}\ g(n) = 0\ \text{(即除有限多个外)}}\ .
+        $$
+        则 $S$ 是 $R^\N$ 的子环且不含幺元.
+        \item 设 $X$ 是集合, 在 $\power(X)$ 上定义对称差
+        $$
+        A \vartriangle B \coloneqq (A \cup B) \setminus (A \cap B) = (A \setminus B) \cup (B \setminus A)\ ,\quad A,B \in \power(X)\ .
+        $$
+        则 $\bigl(\power(X), \vartriangle, \cap\bigr)$ 是含幺的交换环.
+    \end{enumerate}
 \end{example}
+
+\begin{definition}[环同态与环同构]
+    设 $R$ 和 $R'$ 是环. 称函数 $\varphi \colon R \to R'$ 是环同态, 若
+    $$
+    \varphi(a+b) = \varphi(a) + \varphi(b)\ ,\quad \varphi(ab) = \varphi(a) \varphi(b)\ ,\quad a,b \in R\ .
+    $$
+    进一步, 若 $\varphi$ 是双射, 则称 $\varphi$ 是环同构, 并称 $R$ 和 $R'$ 同构. 特别的, 若 $R = R'$, 则称环同态是环自同态, 环同构是环自同构.
+\end{definition}
+
+\begin{remark}\label{rem:ring-homomorphism}
+    \begin{enumerate}
+        \item 环同态 $\varphi \colon R \to R'$, 特别的, 还是群同态 $\varphi \colon (R,+) \to (R',+)$. $\varphi$ 的核就是这个群同态的核, 即
+        $$
+        \ker \varphi \coloneqq \set{a \in R}{\varphi(a) = 0} = \varphi^{-1}(0)\ .
+        $$
+        \item 零函数
+        $$
+        \varphi \colon R \to R'\ ,\quad a \mapsto 0_{R'}
+        $$
+        是同态且 $\ker \varphi = R$.
+        \item 设 $R$ 和 $R'$ 是含幺环, $\varphi \colon R \to R'$ 是同态. 正如注 \ref{rem:ring-homomorphism}.2 所示, $\varphi(1_R) = 1_{R'}$ 不一定成立. 这一问题可以看作是, 由于环对乘法这一运算并不构成群所导致的.
+    \end{enumerate}
+\end{remark}
 
 \subsection{二项式定理}
 
+接下来, 我们将证明环公理 \hyperref[ax:ring]{$(\mathrm R_1)$}--\hyperref[ax:ring]{$(\mathrm R_3)$} 除了得到注 \ref{rem:arithmetic-rules-in-rings} 的结论外还有其他重要的结果.
+
 \begin{theorem}[二项式定理]
-    设 $a$ 和 $b$ 是单位环 $R$ 的两个可交换元 (即, $ab = ba$). 则
+    设 $a$ 和 $b$ 是含幺环 $R$ 的两个可交换元 (即 $ab = ba$). 则
     $$
     (a + b)^n = \sum_{k = 0}^n \binom{n}{k} a^k b^{n - k}\ ,\quad n \in \N\ .
     $$
@@ -186,7 +283,7 @@
 
 \subsection{域}
 
-\begin{axiom}
+\begin{axiom}[域]
     设 $K$ 是非空集合, 其上定义了加法运算
     $$
     + \colon K \times K \to K\ ,\quad (a,b) \mapsto a + b\ ,
@@ -197,9 +294,8 @@
     $$
     若
     \begin{enumerate}[label={$(\mathrm F_{\arabic*})$}]
-        \item $(K, +, \times)$ 是具有单位元的交换环.
-        \item 加法单位元 $0$ 不等于乘法单位元 $1$.
-        \item 每个 $a \in K \setminus \{0\}$ 都有逆元 $b \in K \setminus \{0\}$ 使得 $a \times b = b \times a = 1$.
+        \item $(K, +, \times)$ 是含幺的交换环.
+        \item $(K \setminus \{0\}, \times)$ 是 Abel 群.
     \end{enumerate}
     则称 $(K, +, \times)$ 是域.
 \end{axiom}
@@ -207,6 +303,24 @@
 \subsection{有序域}
 
 \subsection{形式幂级数}
+
+\begin{definition}[形式幂级数]
+    设 $R$ 是非平凡的含幺环. 在 $R^\N$ 上定义加法运算
+    $$
+    (p + q)_n \coloneqq p_n + q_n\ ,\quad n \in \N\ ,\quad p,q \in R^\N\ ,
+    $$
+    并通过卷积定义乘法运算
+    $$
+    (p \cdot q)_n \coloneqq \sum_{j=0}^n p_j q_{n-j} = p_0 q_n + p_1 q_{n-1} + \cdots + p_n q_0\ ,\quad n \in \N\ ,\quad p,q \in R^\N\ ,
+    $$
+    其中 $p_n \coloneqq p(n)$ 称为 $p$ 的第 $n$ 项系数. 在这种情况下, 称 $p \in R^\N$ 是 $R$ 上的形式幂级数, 并记 $R[\![X]\!] \coloneqq (R^\N, +, \cdot)$.
+\end{definition}
+
+下面的命题表明 $R[\![X]\!]$ 是环. 注意, 这个环与例 \ref{eg:rings}.2 中介绍的函数环 $R^\N$ 并不相同.
+
+\begin{proposition}
+    $R[\![X]\!]$ 是含幺环, 称为 $R$ 上的形式幂级数环. 若 $R$ 是交换环, 则 $R[\![X]\!]$ 也是.
+\end{proposition}
 
 \subsection{多项式}
 
@@ -221,7 +335,7 @@
 \subsection{练习}
 
 \begin{exercises}\label{ex:difference-of-powers-formula}
-    设 $a$ 和 $b$ 是单位环的可交换元, $n \in \N$. 证明
+    设 $a$ 和 $b$ 是含幺环的可交换元, $n \in \N$. 证明
     \begin{enumerate}
         \item $a^{n+1} - b^{n+1} = (a-b) \sum_{j=0}^n a^j b^{n-j}$.
         \item $a^{n+1} - 1 = (a-1) \sum_{j=0}^n a^j$.
@@ -393,19 +507,22 @@
         \item 一个零或平凡 (向量) 空间只包含一个向量 $0$, 通常直接记作 $0$. 任何其他向量空间都是非平凡的.
         \item 设 $U$ 是 $V$ 的非空子集. 若
         \begin{enumerate}[label={$(\mathrm{SS}_{\arabic*})$}]
-            \item $U$ 对向量加法封闭, 即 $U + U \subseteq U$.
+            \item $U$ 是 $(V,+)$ 的子群.
             \item $U$ 对标量乘法封闭, 即 $K \cdot U \subseteq U$.
         \end{enumerate}
-        则称 $U$ 是 $V$ 的子空间.
+        则称 $U$ 是 $V$ 的子空间. 容易验证, $U$ 是 $V$ 的子空间, 当且仅当 $U$ 对 $V$ 的两种运算都封闭, 即
+        $$
+        U + U \subseteq U\ ,\quad K \cdot U \subseteq U\ .
+        $$
         \item 设 $T \colon V \to W$ 是线性映射. 则 $\ker T$ 是 $V$ 的子空间, $\im T$ 是 $W$ 的子空间. 若 $T$ 是单射, 则 $T^{-1} \in \Hom(\im T, V)$.
         \item 当把域上的运算视为向量空间上的运算时, $K$ 自身就是以 $K$ 为数域的向量空间.
-        \item 设 $X$ 是集合. 则 $V^X$ 在定义如下运算 (见例 \ref{eg:plus-on-function-spaces}) 后是 $K$-向量空间.
+        \item 设 $X$ 是集合. 则 $V^X$ 在定义如下运算 (见例 \ref{eg:operations-on-function-spaces}) 后是 $K$-向量空间.
         $$
-        (f+g)(x) \coloneqq f(x) + g(x)\ ,\quad (\lambda \cdot f)(x) \coloneqq \lambda \cdot f(x)\ ,\quad x \in X\ ,\quad \lambda \in K\ ,\quad f,g \in V^X\ .
+        (f+g)(x) \coloneqq f(x) + g(x)\ ,\quad (\lambda f)(x) \coloneqq \lambda f(x)\ ,\quad x \in X\ ,\quad \lambda \in K\ ,\quad f,g \in V^X\ .
         $$
         特别的, $K^m\ (m \in \N^\ast)$ 在定义如下运算后是 $K$-向量空间.
         $$
-        x + y \coloneqq (x_1 + y_1, \ldots, x_m + y_m)\ ,\quad \lambda \cdot x \coloneqq (\lambda \cdot x_1, \ldots, \lambda \cdot x_m)\ ,\quad \lambda \in K\ ,\quad x,y \in K^m\ .
+        x + y \coloneqq (x_1 + y_1, \ldots, x_m + y_m)\ ,\quad \lambda x \coloneqq (\lambda x_1, \ldots, \lambda x_m)\ ,\quad \lambda \in K\ ,\quad x,y \in K^m\ .
         $$
         显然, $K^1$ 和 $K$ (作为 $K$-向量空间) 是相同的.
     \end{enumerate}
@@ -439,13 +556,13 @@
 
 \begin{example}\label{eg:algebras}
     \begin{enumerate}
-        \item 设 $B$ 是 $A$ 的非空子集. 若
+        \item 设 $B$ 是 $K$-代数 $A$ 的非空子集. 若
         \begin{enumerate}[label={$(\mathrm{SA}_{\arabic*})$}]
             \item $B$ 是 $A$ 的子空间.
             \item $B$ 对向量乘法封闭, 即 $B \otimes B \subseteq B$.
         \end{enumerate}
         则称 $B$ 是 $A$ 的子代数.
-        \item 设 $X$ 是非空集合. 则 $K^X$ 在定义例 \ref{eg:rings}.2 和例 \ref{eg:vector-spaces}.5 的运算后是具有单位元的交换 $K$-代数.
+        \item 设 $X$ 是非空集合. 则 $K^X$ 在定义例 \ref{eg:rings}.2 和例 \ref{eg:vector-spaces}.5 的运算后是含幺的交换 $K$-代数.
     \end{enumerate}
 \end{example}
 
