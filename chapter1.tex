@@ -220,7 +220,7 @@
         $$
         (f+g)(x) \coloneqq f(x) + g(x)\ ,\quad (f g)(x) \coloneqq f(x) g(x)\ ,\quad x \in X\ ,\quad f,g \in R^X\ .
         $$
-        若 $R$ 交换环或含幺环, 则 $R^X$ 也是 (见例 \ref{eg:operations-on-function-spaces}). 特别的, 当 $m \geq 2$ 时, 环 $R$ 的直积 $R^m$ 在定义如下运算后是环, 称为积环.
+        若 $R$ 是交换环或含幺环, 则 $R^X$ 也是 (见例 \ref{eg:operations-on-function-spaces}). 特别的, 当 $m \geq 2$ 时, 环 $R$ 的直积 $R^m$ 在定义如下运算后是环.
         $$
         a + b \coloneqq (a_1 + b_1, \ldots, a_m + b_m)\ ,\quad a b \coloneqq (a_1 b_1, \ldots, a_m b_m)\ ,\quad a,b \in R^m\ .
         $$
@@ -230,7 +230,7 @@
             \item $S$ 是 $(R,+)$ 的子群.
             \item $S$ 对乘法封闭, 即 $S \cdot S \subseteq S$.
         \end{enumerate}
-        则称 $S$ 是 $R$ 的子环. 显然, $0 = \{0\}$ 和 $R$ 都是 $R$ 的子环. 即使 $R$ 是含幺环, 但 $S$ 却不一定含有幺元 (见例 \ref{eg:rings}.5). 不过, 若 $1_R \in S$, 则 $1_R$ 是 $S$ 的幺元. 当然, 若 $R$ 是交换环, 则 $S$ 也是, 但反过来一般不成立.
+        则称 $S$ 是 $R$ 的子环. 显然, $0 = \{0\}$ 和 $R$ 都是 $R$ 的子环. 即便 $R$ 是含幺环, $S$ 却不一定含有幺元 (见例 \ref{eg:rings}.5). 不过, 若 $1_R \in S$, 则 $1_R$ 是 $S$ 的幺元. 当然, 若 $R$ 是交换环, 则 $S$ 也是, 但反过来一般不成立.
         \item 子环的交仍然是子环.
         \item 设 $R$ 是非平凡的含幺环,
         $$
@@ -245,12 +245,16 @@
     \end{enumerate}
 \end{example}
 
-\begin{definition}[环同态与环同构]
-    设 $R$ 和 $R'$ 是环. 称函数 $\varphi \colon R \to R'$ 是环同态, 若
+\begin{definition}[环同态]
+    设 $R$ 和 $R'$ 是环. 称函数 $\varphi \colon R \to R'$ 是环同态, 若 $\varphi$ 与环运算相容, 即
     $$
     \varphi(a+b) = \varphi(a) + \varphi(b)\ ,\quad \varphi(ab) = \varphi(a) \varphi(b)\ ,\quad a,b \in R\ .
     $$
-    进一步, 若 $\varphi$ 是双射, 则称 $\varphi$ 是环同构, 并称 $R$ 和 $R'$ 同构. 特别的, 若 $R = R'$, 则称环同态是环自同态, 环同构是环自同构.
+    特别的, 若 $R = R'$, 则称 $\varphi$ 是环自同态.
+\end{definition}
+
+\begin{definition}[环同构]
+    设 $\varphi \colon R \to R'$ 环同态. 若 $\varphi$ 是双射, 则称 $\varphi$ 是环同构, 并称 $R$ 和 $R'$ 同构. 特别的, 若 $R = R'$, 则称 $\varphi$ 是环自同构.
 \end{definition}
 
 \begin{remark}\label{rem:ring-homomorphism}
@@ -447,7 +451,7 @@
 \subsection{向量空间}
 
 \begin{axiom}[向量空间]
-    设 $V$ 是非空集合, 其上定义了 ``内'' 运算向量加法
+    设 $(K, +, \times)$ 是域, $V$ 是非空集合, 其上定义了 ``内'' 运算向量加法
     $$
     \oplus \colon V \times V \to V\ ,\quad (v,w) \mapsto v \oplus w\ ,
     $$
@@ -461,19 +465,19 @@
     \end{enumerate}
     且对于任意 $\lambda, \mu \in K$ 和 $v,w \in V$ 都有
     \begin{enumerate}[label={$(\mathrm{VS}_{\arabic*})$},start=2]
-        \item 域乘法单位元 $1 \in K$ 是 $\cdot$ 的单位元:
+        \item $1_K$ 是 $\cdot$ 的单位元:
         $$
-        1\cdot v = v\ .
+        1_K \cdot v = v\ .
         $$
         \item $\cdot$ 对 $\oplus$ 具有分配律:
         $$
         \lambda \cdot (v \oplus w) = \lambda \cdot v \oplus \lambda \cdot w\ .
         $$
-        \item $\cdot$ 对域加法 $+$ 具有分配律:
+        \item $\cdot$ 对 $+$ 具有分配律:
         $$
         (\lambda + \mu) \cdot v = \lambda \cdot v + \mu \cdot v\ .
         $$
-        \item $\cdot$ 和域乘法 $\times$ 相容:
+        \item $\cdot$ 和 $\times$ 相容:
         $$
         \lambda \cdot (\mu \cdot v) = (\lambda \times \mu) \cdot v\ .
         $$
@@ -484,10 +488,19 @@
 \subsection{线性映射}
 
 \begin{definition}[线性映射]
-    设 $V$ 和 $W$ 是 $K$-向量空间. 则称函数 $T \colon V \to W$ 是 $K$-线性映射或 $K$-线性的, 若
+    设 $V$ 和 $W$ 是 $K$-向量空间. 称函数 $T \colon V \to W$ 是 $K$-线性映射或 $K$-线性的, 若 $T$ 与向量空间运算相容, 即
     $$
     T(\lambda v + \mu w) = \lambda T v + \mu T w\ ,\quad \lambda, \mu \in K\ ,\quad v,w \in V\ .
     $$
+\end{definition}
+
+\begin{definition}[向量空间同态]
+    设 $V$ 和 $W$ 是向量空间. 称线性映射 $T \colon V \to W$ 是向量空间同态, 并将从 $V$ 到 $W$ 的所有线性映射记作 $\Hom(V,W)$. 
+    特别的, 若 $V = W$, 则称 $T$ 是向量空间自同态, 并将 $V$ 上的所有向量空间自同态记作 $\End(V) \coloneqq \Hom(V,V)$.
+\end{definition}
+
+\begin{definition}[向量空间同构]
+    设 $T \colon V \to W$ 是向量空间同态. 若 $T$ 是双射, 则称 $T$ 是向量空间同构, 并称 $V$ 和 $W$ 同构, 记作 $V \cong W$. 特别的, 若 $V = W$, 则称 $T$ 是向量空间自同构.
 \end{definition}
 
 \begin{remark}
@@ -539,14 +552,14 @@
 \subsection{代数}
 
 \begin{axiom}[代数]
-    设 $A$ 是 $K$-向量空间, 其上定义了向量乘法
+    设 $(A, \oplus, \cdot)$ 是 $K$-向量空间, 其上定义了向量乘法
     $$
     \otimes \colon A \times A \to A\ ,\quad (a,b) \mapsto a \otimes b\ .
     $$
     若
     \begin{enumerate}[label={$(\mathrm A_{\arabic*})$}]
         \item $(A, \oplus, \otimes)$ 是环.
-        \item $\otimes$ 和标量乘法 $\cdot$ 相容:
+        \item $\otimes$ 和 $\cdot$ 相容:
         $$
         \lambda \cdot (v \otimes w) = (\lambda \cdot v) \otimes w = v \otimes (\lambda \cdot w)\ ,\quad \lambda \in K\ ,\quad v,w \in A\ .
         $$
