@@ -4,7 +4,7 @@
 
 试图把关于数列收敛的朴素想法加以公理化, 会自然地引出 ``距离''、``点的邻域'' 以及 ``度量空间'' 等概念---这正是第 1 节的主题. 在数列这一特殊情形中, 我们可以利用数域 $\K$ 的向量空间结构, 对这种情形下各种证明的分析表明: 只要有某种类似 ``绝对值'' 的概念可用, 其中大多数证明都可以推广到向量空间中的向量序列. 于是我们很自然地被引向去定义 ``赋范向量空间''---度量空间中一个尤其重要的类别.
 
-在所有赋范向量空间中, 内积空间由于其结构更为丰富而显得格外重要, 并且它们的几何性质与我们熟悉的平面 Euclidean 几何非常相似. 事实上, 在初等分析中, 最重要的一类内积空间就是 $m$-维 Euclidean 空间 $\R^m$ 和 $\C^m$.
+在所有赋范向量空间中, 内积空间由于其结构更为丰富而显得格外重要, 并且它们的几何性质与我们熟悉的平面 Euclid 几何非常相似. 事实上, 在初等分析中, 最重要的一类内积空间就是 $m$-维 Euclid 空间 $\R^m$ 和 $\C^m$.
 
 在第 4 和第 5 节中, 我们回到最简单的情形, 也就是在 $\R$ 中的收敛问题. 借助实数的序结构, 尤其是 $\R$ 的序完备性, 我们推导出第一批 ``具体的收敛判别准则''. 这些准则使我们能够求出许多重要数列的极限. 除此之外, 我们还将从 $\R$ 的序完备性出发, 得到一个根本性的存在性原理---Bolzano-Weierstrass 定理.
 
@@ -74,18 +74,13 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 \begin{center}
 \begin{tikzpicture}
-    % 轴
     \draw[->] (-0.5,0) -- (4,0) node[right]{$\R$};
     \draw[->] (0,-0.5) -- (0,4) node[above]{$\ii \R$};
-    % z1 在原点
     \fill (0,0) circle (1.5pt) node[below right]{$z_1$};
-    % 序列点 z2, z3, z4, ...
     \fill (1.75,1.75) circle (1.5pt) node[below right]{$z_2$};
     \fill (2.1,2.1) circle (1.5pt) node[below right]{$z_3$};
     \fill (2.4,2.4) circle (1.5pt) node[below right]{$z_4$};
-    % 中间的若干点（不标记）
     \foreach \x/\y in {2.6/2.6,2.7/2.7,3.2/3.2,3.3/3.3} \fill (\x,\y) circle (1pt);
-    % 极限点 z
     \fill (3.5,3.5) circle (1.5pt) node[below right]{$z$};
 \end{tikzpicture}
 \end{center}
@@ -97,11 +92,11 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \begin{axiom}[度量]\label{ax:metric}
     设 $X$ 是集合, 其上定义了函数
     $$
-    d \colon X \times X \to \R\ .
+    d \colon X \times X \to \R\ ,\quad (x,y) \mapsto d(x,y)\ .
     $$
     若对于任意 $x,y,z \in X$ 都有
     \begin{enumerate}[label={$(\mathrm M_{\arabic*})$}]
-        \item (同一性) $d(x,y) = 0$ 当且仅当 $x = y$.
+        \item (正定性) $d(x,y) \geq 0$, 其中 $d(x,y) = 0$ 当且仅当 $x = y$.
         \item (对称性) $d(x,y) = d(y,x)$.
         \item (三角不等式) $d(x,y) \leq d(x,z) + d(z,y)$.
     \end{enumerate}
@@ -112,28 +107,14 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 \hyperref[ax:metric]{$(\mathrm M_1)$}-\hyperref[ax:metric]{$(\mathrm M_3)$} 显然是对 ``距离函数'' 非常自然的要求. 举例来说, \hyperref[ax:metric]{$(\mathrm M_3)$} 可以被看作这样一条规则的公理化表述: ``从 $x$ 到 $y$ 的 `直达路径' 比先从 $x$ 到 $z$ 再从 $z$ 到 $y$ 的路径更短''.
 
-\begin{proposition}[度量的非负性]
-    设 $(X,d)$ 是度量空间. 则
-    $$
-    d(x,y) \geq 0\ ,\quad x,y \in X\ .
-    $$
-\end{proposition}
-
-\begin{proof}
-    设 $x,y \in X$. 由度量的性质可得
-    $$
-    0 = d(x,x) \leq d(x,y) + d(y,x) = d(x,y) + d(x,y) = 2d(x,y)\ .
-    $$
-\end{proof}
-
 \begin{definition}[开球和闭球]
     设 $(X,d)$ 是度量空间, $a \in X$, $r > 0$. 称集合
     $$
-    \ball(a,r) \coloneqq \set{x \in X}{d(x,a) < r}
+    \B(a,r) \coloneqq \set{x \in X}{d(x,a) < r}
     $$
     是以 $a$ 为中心, $r$ 为半径的开球. 并称集合
     $$
-    \bar\ball(a,r) \coloneqq \set{x \in X}{d(x,a) \leq r}
+    \bar\B(a,r) \coloneqq \set{x \in X}{d(x,a) \leq r}
     $$
     是以 $a$ 为中心, $r$ 为半径的闭球.
 \end{definition}
@@ -142,14 +123,17 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \begin{enumerate}
         \item 函数
         $$
-        |\cdot| \colon \K \times \K \to \R\ ,\quad (x,y) \mapsto |x - y|
+        |\!\cdot\!| \colon \K \times \K \to \R\ ,\quad (x,y) \mapsto |x - y|
         $$
-        是 $\K$ 上的度量, 称为自然度量. 除非另有说明, 否则默认 $\K$ 配备该度量, 并将其视为一个度量空间.
-        \item 设 $(X,d)$ 是度量空间, $Y$ 是 $X$ 的非空子集. 则把 $d$ 限制在 $Y \times Y$ 上所得的函数
-        $$
-        d_Y \coloneqq d\vert_{Y \times Y}
-        $$
-        是 $Y$ 上的度量, 称为诱导度量. 进一步, 称 $(Y, d_Y)$ 是 $(X,d)$ 的子空间. 在不会引起混淆的情况下, 我们往往直接写 $d$, 而不特别区分 $d_Y$.
+        是 $\K$ 上的度量, 称为自然度量.
+    \end{enumerate}
+
+    \begin{center}
+        \kaishu 除非另有说明, 否则默认 $\K$ 是赋予了自然度量的度量空间.
+    \end{center}
+
+    \begin{enumerate}[start=2]
+        \item 设 $(X,d)$ 是度量空间, $Y$ 是 $X$ 的非空子集. 则 $d$ 在 $Y \times Y$ 上的限制 $d_Y \coloneqq d|_{Y \times Y}$ 是 $Y$ 上的度量, 称为诱导度量. 进一步, 称 $(Y, d_Y)$ 是 $(X,d)$ 的子空间. 在不会引起混淆的情况下, 我们往往直接写 $d$, 而不特别区分 $d_Y$.
         \item $\C$ 的任意非空子集, 在从 $\C$ 的自然度量诱导出来的度量之下, 都是度量空间. 以这种方式在 $\R$ 上得到的度量, 正好就是在例 \ref{eg:metric}.1 中定义的那个自然度量.
         \item 设 $X$ 是非空集合. 则函数
         $$
@@ -162,17 +146,17 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         是 $X$ 上的度量, 称为离散度量.
         \item 设 $(X_j, d_j),\ 1 \leq j \leq m$ 是度量空间, $X \coloneqq X_1 \times \cdots \times X_m$. 则函数
         $$
-        d(x,y) \coloneqq \max_{1 \leq j \leq m} d_j(x_j, y_j)\ ,\quad x \coloneqq (x_1, \ldots, x_m) \in X\ ,\quad y \coloneqq (y_1, \ldots, y_m) \in X
+        d(x,y) \coloneqq \max_{1 \leq j \leq m} d_j(x_j, y_j)\ ,\quad x,y \in X
         $$
-        是 $X$ 上的度量, 称为积度量. 进一步, 称 $(X,d)$ 是 $(X_j, d_j),\ 1 \leq j \leq m$ 的积空间. 可以验证, 对于任意 $a \coloneqq (a_1, \ldots, a_m) \in X$ 以及 $r > 0$, 都有
+        是 $X$ 上的度量, 称为积度量. 进一步, 称 $(X,d)$ 是 $(X_j, d_j)$ 的积空间. 可以验证, 对于任意 $a \in X$ 和 $r > 0$ 都有
         $$
-        \ball_X(a,r) = \prod_{j=1}^m \ball_{X_j}(a_j, r)\ ,\quad \bar\ball_X(a,r) = \prod_{j=1}^m \bar\ball_{X_j}(a_j, r)\ .
+        \B_X(a,r) = \prod_{j=1}^m \B_{X_j}(a_j, r)\ ,\quad \bar\B_X(a,r) = \prod_{j=1}^m \bar\B_{X_j}(a_j, r)\ .
         $$
     \end{enumerate}
 \end{example}
 
 \begin{proof}
-    1. 由命题 \ref{prop:abs-in-Q} 可以直接验证 $|\cdot|$ 满足度量公理.
+    1. 由命题 \ref{prop:abs-in-Q} 可以直接验证 $|\!\cdot\!|$ 满足度量公理.
 \end{proof}
 
 度量公理的一个重要结论是反三角不等式 (见推论 \ref{cor:reversed-triangle-inequality-in-Q}).
@@ -197,7 +181,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{proof}
 
 \begin{definition}[邻域]
-    设 $X$ 是度量空间, $U \subseteq X$, $a \in X$. 若存在 $r > 0$ 使得 $\ball(a,r) \subseteq U$, 则称 $U$ 是 $a$ 的邻域. 进一步, 将 $a$ 的邻域的全体记作
+    设 $X$ 是度量空间, $U \subseteq X$, $a \in X$. 若存在 $r > 0$ 使得 $\B(a,r) \subseteq U$, 则称 $U$ 是 $a$ 的邻域. 进一步, 将 $a$ 的邻域的全体记作
     $$
     \nbr(a) \coloneqq \set{U \subseteq X}{U\ \text{是}\ a\ \text{的邻域}}\ .
     $$
@@ -206,16 +190,16 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \begin{example}
     设 $X$ 是度量空间, $a \in X$.
     \begin{enumerate}
-        \item 对于每个 $\varepsilon > 0$, $\ball(a, \varepsilon)$ 和 $\bar\ball(a, \varepsilon)$ 都是 $a$ 的邻域, 称为 $a$ 的开 $\varepsilon$-邻域 和闭 $\varepsilon$-邻域.
+        \item 对于每个 $\varepsilon > 0$, $\B(a, \varepsilon)$ 和 $\bar\B(a, \varepsilon)$ 都是 $a$ 的邻域, 称为 $a$ 的开 $\varepsilon$-邻域 和闭 $\varepsilon$-邻域.
         \item 显然 $X \in \nbr(a)$. 若 $U_1, U_2 \in \nbr(a)$, 则 $U_1 \cap U_2$ 和 $U_1 \cup U_2$ 也是 $a$ 的邻域. 任意包含了 $a$ 的邻域的集合同样是 $a$ 的邻域.
-        \item 设 $X \coloneqq [0,1]$ 配备了在 $\R$ 上诱导的度量. 则 $[1/2, 1]$ 是 $1$ 的邻域, 但不是 $1/2$ 的邻域.
+        \item 设 $X \coloneqq [0,1]$ 赋予了在 $\R$ 上诱导的度量. 则 $[1/2, 1]$ 是 $1$ 的邻域, 但不是 $1/2$ 的邻域.
     \end{enumerate}
 \end{example}
 
 \begin{proof}
-    2. 设 $U_1, U_2 \in \nbr(a)$. 故存在 $r_1, r_2 > 0$ 使得 $\ball(a, r_1) \in U_1$  和 $\ball(a, r_2) \in U_2$. 令 $r = \min\{r_1, r_2\}$, 于是
+    2. 设 $U_1, U_2 \in \nbr(a)$. 故存在 $r_1, r_2 > 0$ 使得 $\B(a, r_1) \in U_1$  和 $\B(a, r_2) \in U_2$. 令 $r = \min\{r_1, r_2\}$, 于是
     $$
-    \ball(a,r) \subseteq U_1 \cap U_2 \subseteq U_1 \cup U_2\ ,
+    \B(a,r) \subseteq U_1 \cap U_2 \subseteq U_1 \cup U_2\ ,
     $$
     即 $U_1 \cap U_2$ 和 $U_1 \cup U_2$ 是 $a$ 的邻域.
 \end{proof}
@@ -237,7 +221,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \begin{enumerate}
         \item $a$ 是 $(x_n)$ 的聚点.
         \item 对于任意 $U \in \nbr(a)$ 和 $m \in \N$, 存在 $n \geq m$ 使得 $x_n \in U$.
-        \item 对于任意 $\varepsilon > 0$ 和 $m \in \N$, 存在 $n \geq m$ 使得 $x_n \in \ball(a, \varepsilon)$.
+        \item 对于任意 $\varepsilon > 0$ 和 $m \in \N$, 存在 $n \geq m$ 使得 $x_n \in \B(a, \varepsilon)$.
     \end{enumerate}
 \end{proposition}
 
@@ -258,7 +242,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \begin{proof}
     5. 假设 $a \in \R$ 不是 $(x_n)$ 的聚点. 由命题 \ref{prop:cluster-points-charact} 可知, 存在 $\varepsilon > 0$ 和 $m \in \N$, 使得
     $$
-    x_n \notin \ball(a, \varepsilon) = (a - \varepsilon, a + \varepsilon)\ ,\quad n \geq m\ .
+    x_n \notin \B(a, \varepsilon) = (a - \varepsilon, a + \varepsilon)\ ,\quad n \geq m\ .
     $$
     这意味着区间 $(a - \varepsilon, a + \varepsilon)$ 仅包含了有限多个有理数, 这与命题 \ref{prop:Q-density-in-R} 矛盾.
 \end{proof}
@@ -282,7 +266,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \begin{enumerate}
         \item $\lim x_n = a$.
         \item 对于任意 $U \in \nbr(a)$, 存在 $N \in \N$ 使得当 $n \geq N$ 时 $x_n \in U$.
-        \item 对于任意 $\varepsilon > 0$, 存在 $N \in \N$ 使得当 $n \geq N$ 时 $x_n \in \ball(a, \varepsilon)$.
+        \item 对于任意 $\varepsilon > 0$, 存在 $N \in \N$ 使得当 $n \geq N$ 时 $x_n \in \B(a, \varepsilon)$.
     \end{enumerate}
 \end{proposition}
 
@@ -311,38 +295,40 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     $$
     \frac{1}{n} \leq \frac{1}{N} < \varepsilon\ ,\quad n \geq N\ ,
     $$
-    即当 $n \geq N$ 时 $1/n \in \ball(0, \varepsilon)$.
+    即当 $n \geq N$ 时 $1/n \in \B(0, \varepsilon)$.
 
     2. 任取 $\varepsilon > 0$. 由推论 \ref{cor:archimedean-property-cor} 可知, 存在 $N \in \N$ 使得 $1/N < \varepsilon / 8$, 此时有
     $$
-    \left(\frac{n+2}{n+1} - 1\right)^2 = \left(\frac{1}{n+1}\right)^2 < \frac{1}{N^2} < \frac{\varepsilon^2}{64} < \frac{\varepsilon^2}{2}\ ,\quad n \geq N\ ,
+    \Bigl(\frac{n+2}{n+1} - 1\Bigr)^2 = \Bigl(\frac{1}{n+1}\Bigr)^2 < \frac{1}{N^2} < \frac{\varepsilon^2}{64} < \frac{\varepsilon^2}{2}\ ,\quad n \geq N\ ,
     $$
     和
     $$
-    \left(\frac{2n}{n+2} - 2\right)^2 = \left(\frac{4}{n+2}\right)^2 < \frac{16}{N^2} < \frac{\varepsilon^2}{4} < \frac{\varepsilon^2}{2}\ ,\quad n \geq N\ ,
+    \Bigl(\frac{2n}{n+2} - 2\Bigr)^2 = \Bigl(\frac{4}{n+2}\Bigr)^2 < \frac{16}{N^2} < \frac{\varepsilon^2}{4} < \frac{\varepsilon^2}{2}\ ,\quad n \geq N\ ,
     $$
     于是
     \begin{align*}
-        |z_n - (1 + 2\ii)| &= \abs*{\frac{1}{n+1} - \ii \frac{4}{n+2}} \\
-        &= \sqrt{\left(\frac{1}{n+1}\right)^2 + \left(-\frac{4}{n+2}\right)^2} < \sqrt{\frac{\varepsilon^2}{2} + \frac{\varepsilon^2}{2}} < \varepsilon\ ,\quad n \geq N\ ,
+        |z_n - (1 + 2\ii)| &= \Bigl|\frac{1}{n+1} - \ii \frac{4}{n+2}\Bigr| \\
+        &= \sqrt{\Bigl(\frac{1}{n+1}\Bigr)^2 + \Bigl(-\frac{4}{n+2}\Bigr)^2} < \sqrt{\frac{\varepsilon^2}{2} + \frac{\varepsilon^2}{2}} < \varepsilon\ ,\quad n \geq N\ ,
     \end{align*}
-    即当 $n \geq N$ 时 $z_n \in \ball\bigl((1 + 2\ii), \varepsilon\bigr)$.
+    即当 $n \geq N$ 时 $z_n \in \B\bigl((1 + 2\ii), \varepsilon\bigr)$.
 
     5. $\implies$. 设 $(x_n)$ 收敛到点 $a$. 则任取 $\varepsilon > 0$, 存在 $N \in \N$ 使得
     $$
-    x_n = (x_n^1, \ldots, x_n^m) \in \ball_X(a, \varepsilon) = \prod_{j=1}^m \ball_{X_j}(a^j, \varepsilon)\ ,\quad n \geq N\ ,
+    x_n = (x_n^1, \ldots, x_n^m) \in \B_X(a, \varepsilon) = \prod_{j=1}^m \B_{X_j}(a^j, \varepsilon)\ ,\quad n \geq N\ ,
     $$
-    即当 $n \geq N$ 时, 对于每个 $j$ 都有 $x_n^j \in \ball_{X_j}(a^j, \varepsilon)$.
+    即当 $n \geq N$ 时, 对于每个 $j$ 都有 $x_n^j \in \B_{X_j}(a^j, \varepsilon)$.
 
-    $\impliedby$. 设对于每个 $j$ 都有 $(x_n^j)$ 收敛到点 $a^j$. 任取 $\varepsilon > 0$, 对于每个 $j$ 都存在 $N_j \in \N$ 使得当 $n \geq N_j$ 时 $x_n^j \in \ball_{X_j}(a^j, \varepsilon)$. 令 $N = \max_{1 \leq j \leq m} N_j$, 于是
+    $\impliedby$. 设对于每个 $j$ 都有 $(x_n^j)$ 收敛到点 $a^j$. 任取 $\varepsilon > 0$, 对于每个 $j$ 都存在 $N_j \in \N$ 使得当 $n \geq N_j$ 时 $x_n^j \in \B_{X_j}(a^j, \varepsilon)$. 令 $N = \max_{1 \leq j \leq m} N_j$, 于是
     $$
-    (x_n^1, \ldots, x_n^m) = x_n \in \prod_{j=1}^m \ball_{X_j}(a^j, \varepsilon) = \ball_X(a, \varepsilon)\ ,\quad n \geq N\ .
+    (x_n^1, \ldots, x_n^m) = x_n \in \prod_{j=1}^m \B_{X_j}(a^j, \varepsilon) = \B_X(a, \varepsilon)\ ,\quad n \geq N\ .
     $$
+
+    (见例 \ref{eg:metric}.5).
 \end{proof}
 
 \subsection{有界集合}
 
-\begin{definition}[有界性]
+\begin{definition}[有界集合]
     称集合 $Y \subseteq X$ 在 $X$ 中 $d$-有界或有界, 若存在 $M > 0$ 使得对于任意 $x,y \in Y$ 都有 $d(x,y) \leq M$. 进一步, 称
     $$
     \diam Y \coloneqq \sup_{x,y \in Y} d(x,y)
@@ -352,9 +338,9 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 \begin{example}\label{eg:bounded-sets}
     \begin{enumerate}
-        \item 对于任意 $a \in X$ 和 $r > 0$, $\ball(a,r)$ 和 $\bar\ball(a,r)$ 在 $X$ 中有界.
+        \item 对于任意 $a \in X$ 和 $r > 0$, $\B(a,r)$ 和 $\bar\B(a,r)$ 在 $X$ 中有界.
         \item 有界集合的每个子集都是有界的. 有界集合的有限并是有界的.
-        \item 集合 $Y \subseteq X$ 在 $X$ 中有界, 当且仅当存在 $x \in X$ 和 $r > 0$ 使得 $Y \subseteq \ball_X(x,r)$. 若 $Y \neq \varnothing$, 则存在 $x \in Y$ 也满足该性质.
+        \item 集合 $Y \subseteq X$ 在 $X$ 中有界, 当且仅当存在 $x \in X$ 和 $r > 0$ 使得 $Y \subseteq \B_X(x,r)$. 若 $Y \neq \varnothing$, 则存在 $x \in Y$ 也满足该性质.
         \item 有界区间是有界的.
         \item 集合 $Y \subseteq \K$ 有界, 当且仅当存在 $M > 0$ 使得对于任意 $y \in Y$ 都有 $|y| \leq M$.
     \end{enumerate}
@@ -365,7 +351,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{proposition}
 
 \begin{proof}
-    设序列 $(x_n)$ 收敛到点 $a$. 则存在 $N \in \N$ 使得对于任意 $n \geq N$ 有 $x_n \in \ball(a,1)$. 由三角不等式可得
+    设序列 $(x_n)$ 收敛到点 $a$. 则存在 $N \in \N$ 使得对于任意 $n \geq N$ 有 $x_n \in \B(a,1)$. 由三角不等式可得
     $$
     d(x_n, x_m) \leq d(x_n, a) + d(a, x_m) < 2\ ,\quad m,n \geq N\ .
     $$
@@ -383,11 +369,11 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{proposition}
 
 \begin{proof}
-    显然 $a$ 是 $(x_n)$ 的聚点, 现证明唯一性. 假设 $b$ 是 $(x_n)$ 的聚点且 $a \neq b$. 取 $\varepsilon = d(a,b) / 2$, 则存在 $N \in \N$ 使得当 $n \geq N$ 时 $x_n \in \ball(a, \varepsilon)$. 而 $b$ 是 $(x_n)$ 的聚点, 故存在 $m \geq N$ 使得 $x_m \in \ball(b, \varepsilon)$. 由命题 \ref{prop:reversed-triangle-inequality-in-metric-space} 可知
+    显然 $a$ 是 $(x_n)$ 的聚点, 现证明唯一性. 假设 $b$ 是 $(x_n)$ 的聚点且 $a \neq b$. 取 $\varepsilon = d(a,b) / 2$, 则存在 $N \in \N$ 使得当 $n \geq N$ 时 $x_n \in \B(a, \varepsilon)$. 而 $b$ 是 $(x_n)$ 的聚点, 故存在 $m \geq N$ 使得 $x_m \in \B(b, \varepsilon)$. 由命题 \ref{prop:reversed-triangle-inequality-in-metric-space} 可知
     $$
     d(a, x_m) \geq |d(a, b) - d(b, x_m)| > 2\varepsilon - \varepsilon = \varepsilon\ ,
     $$
-    即 $x_m \notin \ball(a, \varepsilon)$, 矛盾, 因此 $b$ 不是 $(x_n)$ 的聚点.
+    即 $x_m \notin \B(a, \varepsilon)$, 矛盾, 因此 $b$ 不是 $(x_n)$ 的聚点.
 \end{proof}
 
 \begin{remark}
@@ -446,15 +432,15 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \begin{proof}
     $\implies$. 设 $a$ 是 $(x_n)$ 的聚点. 下面递归构造序列 $(n_k)$,
     $$
-    n_0 \coloneqq 0\ ,\quad n_k \coloneqq \min\set{m \in \N}{m > n_{k-1}\ \text{且}\ x_m \in \ball(a, 1/k)}\ ,\quad k \in \N^\ast\ .
+    n_0 \coloneqq 0\ ,\quad n_k \coloneqq \min\set{m \in \N}{m > n_{k-1}\ \text{且}\ x_m \in \B(a, 1/k)}\ ,\quad k \in \N^\ast\ .
     $$
     由于 $a$ 是 $(x_n)$ 的聚点, 故
     $$
-    \set{m \in \N}{m \geq n_{k-1}\ \text{且}\ x_m \in \ball(a, 1/k)} \neq \varnothing\ ,\quad k \in \N^\ast\ ,
+    \set{m \in \N}{m \geq n_{k-1}\ \text{且}\ x_m \in \B(a, 1/k)} \neq \varnothing\ ,\quad k \in \N^\ast\ ,
     $$
     由良序原理可知, 对于每个 $k \in \N^\ast$, $n_k$ 是良定义的. 于是 $(n_k)$ 是良定义且严格递增的. 任取 $\varepsilon > 0$, 由推论 \ref{cor:archimedean-property-cor} 可知, 存在 $K \in \N$ 使得 $1/K < \varepsilon$, 由 $n_k$ 的定义可知
     $$
-    x_{n_k} \in \ball(a, 1/k) \subseteq \ball(a, \varepsilon)\ ,\quad k \geq K\ ,
+    x_{n_k} \in \B(a, 1/k) \subseteq \B(a, \varepsilon)\ ,\quad k \geq K\ ,
     $$
     即 $(x_{n_k})$ 收敛到 $a$.
 
@@ -466,7 +452,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \begin{exercises}
     设 $d$ 是 $\K$ 上的离散度量, $X \coloneqq (\K,d)$.
     \begin{enumerate}
-        \item 设 $a \in X$ 和 $r > 0$, 给出 $\ball_X(a,r)$ 和 $\bar\ball_X(a,r)$ 的具体描述.
+        \item 设 $a \in X$ 和 $r > 0$, 给出 $\B_X(a,r)$ 和 $\bar\B_X(a,r)$ 的具体描述.
         \item 描述 $X$ 中任意序列的聚点.
         \item 设 $a \in X$, 描述 $X$ 中所有收敛到 $a$ 的序列.
     \end{enumerate}
@@ -514,19 +500,19 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     & 0\ ,          & m = n\ ,
     \end{cases}
     $$
-    证明 $(\N^\ast, d)$ 是度量空间, 对 $n \in \N^\ast$ 描述 $A_n \coloneqq \bar\ball(n, 1 + 1/n)$.
+    证明 $(\N^\ast, d)$ 是度量空间, 对 $n \in \N^\ast$ 描述 $A_n \coloneqq \bar\B(n, 1 + 1/n)$.
 \end{exercises}
 
 \begin{exercises}
-    设 $X \coloneqq \set{z \in \C}{|z| \leq 3}$ 并配备自然度量. 描述 $\bar\ball_X(0,3)$ 和 $\bar\ball_X(2,4)$, 并证明 $\bar\ball_X(2,4) \subset \bar\ball_X(0,3)$.
+    设 $X \coloneqq \set{z \in \C}{|z| \leq 3}$ 赋予了自然度量. 描述 $\bar\B_X(0,3)$ 和 $\bar\B_X(2,4)$, 并证明 $\bar\B_X(2,4) \subset \bar\B_X(0,3)$.
 \end{exercises}
 
 \begin{exercises}[度量的等价]
     集合 $X$ 上的度量 $d_1$ 和 $d_2$ 被称为等价度量, 若对于每个 $x \in X$ 和 $\varepsilon > 0$, 存在 $r_1, r_2 > 0$ 使得
     $$
-    \ball_1(x, r_1) \subseteq \ball_2(x, \varepsilon)\ ,\quad \ball_2(x, r_2) \subseteq \ball_1(x, \varepsilon)\ ,
+    \B_1(x, r_1) \subseteq \B_2(x, \varepsilon)\ ,\quad \B_2(x, r_2) \subseteq \B_1(x, \varepsilon)\ ,
     $$
-    其中 $\ball_j$ 是 $(X,d_j),\ j = 1,2$ 中的开球. 现在, 设 $(X,d)$ 是度量空间,
+    其中 $\B_j$ 是 $(X,d_j),\ j = 1,2$ 中的开球. 现在, 设 $(X,d)$ 是度量空间,
     $$
     \delta(x,y) \coloneqq \frac{d(x,y)}{1 + d(x,y)}\ ,\quad x,y \in X\ .
     $$
@@ -545,7 +531,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \begin{exercises}
     设 $(X_j, d_j),\ 1 \leq j \leq n$ 是度量空间, $X \coloneqq X_1 \times \cdots \times X_n$ 且 $d$ 是 $X$ 上的积度量. 证明
     $$
-    \delta(x,y) \coloneqq \sum_{j=1}^n d_j(x_j, y_j)\ ,\quad x \coloneqq (x_1, \ldots, x_m) \in X\ ,\quad y \coloneqq (y_1, \ldots, y_m) \in X
+    \delta(x,y) \coloneqq \sum_{j=1}^n d_j(x_j, y_j)\ ,\quad x,y \in X
     $$
     是 $X$ 上的度量且与 $d$ 等价.
 \end{exercises}
@@ -618,7 +604,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
     2. 若 $\alpha = 0$ 显然成立, 假设 $\alpha \neq 0$. 则存在 $N \in \N$ 使得当 $n \geq N$ 时 $|x_n - a| < \varepsilon / |\alpha|$. 于是
     $$
-    |\alpha x_n - \alpha a| = |\alpha||x_n - a| < |\alpha| \frac{\varepsilon}{|\alpha|} = \varepsilon\ ,\quad n \geq N\ .
+    |\alpha x_n - \alpha a| = |\alpha|\,|x_n - a| < |\alpha| \frac{\varepsilon}{|\alpha|} = \varepsilon\ ,\quad n \geq N\ .
     $$
 \end{proof}
 
@@ -647,7 +633,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \begin{proof}
     1. 由于 $(y_n)$ 有界, 故存在 $M > 0$ 使得对于任意 $n \in \N$ 都有 $|y_n| \leq M$. 任取 $\varepsilon > 0$. 由于 $(x_n)$ 是无穷小量, 故存在 $N \in \N$ 使得当 $n \geq N$ 时 $|x_n| < \varepsilon / M$. 于是
     $$
-    |x_n y_n| = |x_n| |y_n| < \frac{\varepsilon}{M} M = \varepsilon\ ,\quad n \geq N\ .
+    |x_n y_n| = |x_n|\,|y_n| < \frac{\varepsilon}{M} M = \varepsilon\ ,\quad n \geq N\ .
     $$
     2. 由于 $(x_n)$ 收敛到 $a$, 故 $(x_n - a)$ 是无穷小量. 由命题 \ref{prop:convergent-sequence-is-bounded} 可知, $(y_n)$ 有界. 于是由 1 可得 $\bigl((x_n - a)y_n\bigr)$ 是无穷小量, 同理可得 $\bigl(a(y_n - b)\bigr)$ 是无穷小量. 由命题 \ref{prop:addition-scalar-multiplication-in-c} 可知
     $$
@@ -680,11 +666,11 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \begin{proof}
     存在 $N \in \N$ 使得当 $n \geq N$ 时 $|x_n - a| < |a|/2$. 由反三角不等式可得
     $$
-    |a| - |x_n| \leq \abs[\big]{|a| - |x_n|} \leq |x_n - a| < \frac{|a|}{2}\ ,\quad n \geq N\ ,
+    |a| - |x_n| \leq \bigl||a| - |x_n|\bigr| \leq |x_n - a| < \frac{|a|}{2}\ ,\quad n \geq N\ ,
     $$
     即当 $n \geq N$ 时 $|x_n| > |a|/2 > 0$, 即 $(x_n)$ 的几乎所有项都非零. 而
     $$
-    \abs[\Big]{\frac{1}{x_n} - \frac{1}{a}} = \frac{|x_n - a|}{|a| |x_n|} < \frac{2}{|a|^2} |x_n - a|\ ,\quad n \geq N\ ,
+    \Bigl|\frac{1}{x_n} - \frac{1}{a}\Bigr| = \frac{|x_n - a|}{|a|\,|x_n|} < \frac{2}{|a|^2} |x_n - a|\ ,\quad n \geq N\ ,
     $$
     由于 $(x_n)$ 收敛到 $a$, 因此 $(x_n - a)$ 是无穷小量, 进一步, $2|x_n - a| / |a|^2$ 是无穷小量. 于是由注 \ref{rem:null-sequences}.3 可得 $(1/x_n - 1/a)$ 是无穷小量, 故 $\lim 1/x_n = 1/a$.
 \end{proof}
@@ -737,14 +723,14 @@ $$
 
 下面的命题表明这对复数列同样成立.
 
-\begin{proposition}
+\begin{proposition}\label{prop:sequence-convergence-then-abs-convergence}
     设 $(x_n)$ 是 $\K$ 中的收敛数列且 $\lim x_n = a$. 则 $(|x_n|)$ 收敛且 $\lim |x_n| = |a|$.
 \end{proposition}
 
 \begin{proof}
     任取 $\varepsilon > 0$. 故存在 $N \in \N$ 使得
     $$
-    \abs[\big]{|x_n| - |a|} \leq |x_n - a| < \varepsilon\ ,\quad n \geq N\ ,
+    \bigl||x_n| - |a|\bigr| \leq |x_n - a| < \varepsilon\ ,\quad n \geq N\ ,
     $$
     因此 $(|x_n|)$ 收敛到 $|a|$.
 \end{proof}
@@ -814,11 +800,11 @@ $\C$ 中的收敛数列可以用其对应的实部与虚部的收敛性来刻画
     $$
     注意到
     $$
-    \abs[\Big]{\ii + \frac{1}{n}} = \sqrt{1 + \frac{1}{n^2}} \geq 1\ ,\quad n \in \N^\ast\ ,
+    \Bigl|\ii + \frac{1}{n}\Bigr| = \sqrt{1 + \frac{1}{n^2}} \geq 1\ ,\quad n \in \N^\ast\ ,
     $$
     于是
     $$
-    \abs[\Big]{\frac{\ii^n}{\ii + 1/n}} = \frac{|\ii^n|}{|\ii + 1/n|} = \frac{1}{|\ii + 1/n|} \leq 1\ ,\quad n \in \N^\ast\ ,
+    \Bigl|\frac{\ii^n}{\ii + 1/n}\Bigr| = \frac{|\ii^n|}{|\ii + 1/n|} = \frac{1}{|\ii + 1/n|} \leq 1\ ,\quad n \in \N^\ast\ ,
     $$
     因此 $\bigl(\ii^n/(\ii + 1/n)\bigr)$ 有界, 由命题 \ref{prop:multiplication-in-c} 可知 $(x_n)$ 是无穷小量.
 \end{proof}
@@ -890,11 +876,11 @@ $\C$ 中的收敛数列可以用其对应的实部与虚部的收敛性来刻画
 \begin{proof}
     只用证
     $$
-    \abs[\bigg]{\frac{1}{n} \sum_{j=1}^n x_j - a} \to 0\ .
+    \biggl|\frac{1}{n} \sum_{j=1}^n x_j - a\biggr| \to 0\ .
     $$
     注意到
     $$
-    0 \leq \abs[\bigg]{\frac{1}{n} \sum_{j=1}^n x_j - a} = \abs[\bigg]{\frac{1}{n} \sum_{j=1}^n (x_j - a)} \leq \frac{1}{n} \sum_{j=1}^n |x_j - a|\ ,
+    0 \leq \biggl|\frac{1}{n} \sum_{j=1}^n x_j - a\biggr| = \biggl|\frac{1}{n} \sum_{j=1}^n (x_j - a)\biggr| \leq \frac{1}{n} \sum_{j=1}^n |x_j - a|\ ,
     $$
     任取 $\varepsilon > 0$. 由于 $\lim x_j = a$, 故存在 $N \in \N^\ast$ 使得当 $j \geq N$ 时 $|x_j - a| < \varepsilon$, 于是
     $$
@@ -914,12 +900,12 @@ $\C$ 中的收敛数列可以用其对应的实部与虚部的收敛性来刻画
     $$
     故由夹逼定理可知
     $$
-    \abs[\bigg]{\frac{1}{n} \sum_{j=1}^n x_j - a} \to 0\ .
+    \biggl|\frac{1}{n} \sum_{j=1}^n x_j - a\biggr| \to 0\ .
     $$
 \end{proof}
 
 \begin{exercises}
-    设 $\K^m\ (m \in \N^\ast)$ 是配备积度量 (见例 \ref{eg:metric}.5) 的度量空间,
+    设 $\K^m\ (m \in \N^\ast)$ 是赋予了积度量 (见例 \ref{eg:metric}.5) 的度量空间,
     $$
     s(\K^m) \coloneqq (\K^m)^\N\ ,\quad c(\K^m) \coloneqq \set{(x_n) \in s(\K^m)}{(x_n)\ \text{收敛}}\ .
     $$
@@ -999,13 +985,13 @@ $\C$ 中的收敛数列可以用其对应的实部与虚部的收敛性来刻画
 \begin{proof}
     $\implies$. 设 $(1 / x_n)$ 是无穷小量. 任取 $K > 0$. 故存在 $N \in \N$ 使得
     $$
-    \abs[\Big]{\frac{1}{x_n}} = \frac{1}{x_n} < \frac{1}{K}\ ,\quad n \geq N\ ,
+    \Bigl|\frac{1}{x_n}\Bigr| = \frac{1}{x_n} < \frac{1}{K}\ ,\quad n \geq N\ ,
     $$
     即当 $n \geq N$ 时 $x_n > K$.
 
     $\impliedby$. 设对于每个 $K > 0$ 都存在 $N \in \N$ 使得当 $n \geq N$ 时 $x_n > K$. 任取 $\varepsilon > 0$. 故存在 $N \in \N$ 使得当 $n \geq N$ 时 $x_n > 1 / \varepsilon$, 即
     $$
-    \frac{1}{x_n} = \abs[\Big]{\frac{1}{x_n}} < \varepsilon\ ,\quad n \geq N\ ,
+    \frac{1}{x_n} = \Bigl|\frac{1}{x_n}\Bigr| < \varepsilon\ ,\quad n \geq N\ ,
     $$
     故 $(1 / x_n)$ 是无穷小量.
 \end{proof}
@@ -1029,3 +1015,143 @@ $\C$ 中的收敛数列可以用其对应的实部与虚部的收敛性来刻画
 \newpage
 
 \section{赋范向量空间}
+
+本节我们将考察向量空间上的度量. 当然, 我们希望这些度量与向量空间的结构是相容的, 因此我们先从向量空间 $\R^2$ 入手, 在这个空间里我们已经有了距离的概念. 具体地说, 如果我们用 $\|x\|$ 表示 $\R^2$ 中向量 $x$ 的长度, 那么两点 $x,y \in \R^2$ 之间的距离就是 $\|x-y\|$. 我们将在之后看到, 这确实在 $\R^2$ 上定义了一个度量 (见注 \ref{rem:norms}.1). 除了与度量之间的这种关系外, 函数 $x \mapsto \|x\|$ 对于向量空间结构还满足一些特殊的性质:
+
+首先我们注意到, $\R^2$ 中任一向量的长度都是非负的, 也就是说, 对于任意 $x \in \R^2$ 都有 $\|x\| \geq 0$, 并且长度为零的向量仅有零向量.
+
+对于 $x \in \R^2$ 和 $\alpha > 0$, 我们可以把 $\alpha x$ 看作是将向量 $x$ 按比例 $\alpha$ 拉伸 (或压缩) 得到的向量. 如果 $\alpha < 0$, 那么 $\alpha x$ 可以理解为先按比例 $-\alpha$ 对 $x$ 进行拉伸 (或压缩), 再把方向反转得到的向量.
+\begin{center}
+\begin{tikzpicture}
+    \draw (0,-0.1) -- (0,0.1) node[above]{$0$};
+    \draw[->] (0,0) -- (4,0) node[above]{$-2x$};
+    \draw[->] (0,0) -- (-2,0) node[above]{$x$};
+    \draw[->] (0,0) -- (-5,0) node[above]{$5x/2$};
+\end{tikzpicture}
+\end{center}
+在这两种情形中, 向量 $\alpha x$ 的长度 $\|\alpha x\| = |\alpha|\,\|x\|$.
+
+最终, 对于 $\R^2$ 中的任意向量 $x,y$, 我们有三角不等式 $\|x+y\| \leq \|x\| + \|y\|$.
+
+\begin{center}
+\begin{tikzpicture}
+    \draw[->] (0,0) -- (1,3) node at (0.1,1.6){$x$};
+    \draw[->] (1,3) -- (6,1) node at (3.5,2.4){$y$};
+    \draw[->] (0,0) -- (6,1) node at (3,0.1){$x+y$};
+\end{tikzpicture}
+\end{center}
+
+这三个性质足以保证 $\|x-y\|$ 是 $\R^2$ 上的度量. 由于它们也很容易推广到一般的向量空间, 因此我们就很自然地得到如下对赋范向量空间的定义.
+
+\subsection{范数}
+
+\begin{axiom}[范数]\label{ax:norm}
+    设 $E$ 是 $\K$-向量空间, 其上定义了函数
+    $$
+    \|\!\cdot\!\| \colon E \to \R\ ,\quad x \mapsto \|x\|\ .
+    $$
+    若对于任意 $\lambda \in \K$ 和 $x,y \in E$ 都有
+    \begin{enumerate}[label={$(\mathrm N_{\arabic*})$}]
+        \item (正定性) $\|x\| \geq 0$, 其中 $\|x\| = 0$ 当且仅当 $x = 0$.
+        \item (绝对齐次性) $\|\lambda x\| = |\lambda|\,\|x\|$.
+        \item (三角不等式) $\|x + y\| \leq \|x\| + \|y\|$.
+    \end{enumerate}
+    则称 $\|\!\cdot\!\|$ 是 $E$ 上的范数. 进一步, 称 $(E, \|\!\cdot\!\|)$ 是赋范向量空间.
+\end{axiom}
+
+当范数在上下文中明确时, 我们把 $(E, \|\!\cdot\!\|)$ 简写为 $E$.
+
+\begin{remark}\label{rem:norms}
+    设 $(E, \|\!\cdot\!\|)$ 是赋范向量空间.
+    \begin{enumerate}
+        \item 函数
+        $$
+        d \colon E \times E \to \R\ ,\quad (x,y) \mapsto \|x - y\|
+        $$
+        是 $E$ 上的度量, 称为范数诱导的度量. 因此任意赋范向量空间都是度量空间.
+        \item 范数满足反三角不等式,
+        $$
+        \|x - y\| \geq \bigl|\|x\| - \|y\|\bigr|\ ,\quad x,y \in E\ .
+        $$
+        \item 因为注 \ref{rem:norms}.1, 故第 1 节中关于度量空间的全部命题同样对 $E$ 成立. 特别的, ``邻域'', ``聚点'' 和 ``收敛性'' 在 $E$ 上是良定义的. 例如, $E$ 中的序列 $(x_n)$ 收敛到 $x$ 的含义是:
+        $$
+        x_n \to x \iff \forall \varepsilon > 0,\ \exists N \in \N,\ \forall n \geq N : \|x_n - x\| < \varepsilon.
+        $$
+        此外, 回顾第 2 节可以发现, 只要某个命题的证明中没有用到 $\K$ 的域结构或序结构, 那么该命题同样适用于 $E$ 中的序列. 特别的, 注 \ref{rem:null-sequences}, 命题 \ref{prop:addition-scalar-multiplication-in-c} 和命题 \ref{prop:sequence-convergence-then-abs-convergence} 在任意赋范向量空间中都成立.
+    \end{enumerate}
+\end{remark}
+
+\begin{proof}
+    1. \hyperref[ax:metric]{$(\mathrm M_1)$} 和 \hyperref[ax:metric]{$(\mathrm M_2)$} 可由 \hyperref[ax:norm]{$(\mathrm N_1)$} 和 \hyperref[ax:norm]{$(\mathrm N_2)$} 直接得到. 而由 \hyperref[ax:norm]{$(\mathrm N_3)$} 可得
+    $$
+    d(x,y) = \|x - y\| = \|x - z + z - y\| \leq \|x - z\| + \|z - y\| = d(x,z) + d(z,y)\ ,\quad x,y,z \in E\ ,
+    $$
+    因此 \hyperref[ax:metric]{$(\mathrm M_3)$} 也成立.
+
+    2. 由命题 \ref{prop:reversed-triangle-inequality-in-metric-space} 可知, 对于该范数诱导的度量满足反三角不等式. 因此
+    $$
+    \|x - y\| = d(x,y) \geq |d(x,0) - d(0,y)| = \bigl|\|x\| - \|y\|\bigr|\ .
+    $$
+\end{proof}
+
+\subsection{球}
+
+\begin{definition}[开球和闭球]
+    设 $a \in E$, $r > 0$. 称
+    $$
+    \B(a,r) \coloneqq \set{x \in E}{\|x - a\| < r}\quad \text{和}\quad \bar\B(a,r) \coloneqq \set{x \in E}{\|x - a\| \leq r}
+    $$
+    是以 $a$ 为中心, $r$ 为半径的开球和闭球. 特别的, 称
+    $$
+    \B \coloneqq \B(0,1) = \set{x \in E}{\|x\| < 1}\quad \text{和}\quad \bar\B \coloneqq \bar\B(0,1) = \set{x \in E}{\|x\| \leq 1}
+    $$
+    是 $E$ 中的单位开球和单位闭球. 并记
+    $$
+    r\B \coloneqq \B(0,r)\ ,\quad r\bar\B \coloneqq \bar\B(0,r)\ ,\quad a + r\B \coloneqq \B(a,r)\ ,\quad a + r\bar\B \coloneqq \bar\B(a,r)\ .
+    $$
+\end{definition}
+
+注意, 当度量 $d$ 是由范数诱导得到的时, 该定义与度量空间 $(E,d)$ 中开球和闭球的定义是一致的.
+
+\subsection{有界集合}
+
+\begin{definition}[有界集合]
+    称集合 $X \subseteq E$ 在 $E$ 中有界 (或范数有界), 若 $X$ 在范数诱导的度量空间中有界.
+\end{definition}
+
+\begin{remark}
+    设 $(E, \|\!\cdot\!\|)$ 是赋范向量空间.
+    \begin{enumerate}
+        \item $X \subseteq E$ 有界, 当且仅当存在 $r > 0$ 使得 $X \subseteq r\B$, 即对于任意 $x \in X$ 都有 $\|x\| < r$.
+        \item 若 $X$ 和 $Y$ 是 $E$ 的有界非空子集, 则 $X \cup Y$, $X + Y$ 和 $\lambda X\ (\lambda \in \K)$ 也是有界的.
+        \item 例 \ref{eg:metric}.4 表明, 在每个向量空间 $V$ 上, 都存在度量使得 $V$ 有界. 但是, 若 $V$ 不是零空间, 则 \hyperref[ax:norm]{$(\mathrm N_2)$} 蕴含了在 $V$ 上不存在具有这种性质的范数.
+    \end{enumerate}
+\end{remark}
+
+\subsection{例子}
+
+现在我们为第 1.12 节中介绍的那些向量空间定义合适的范数.
+
+\begin{example}
+    \begin{enumerate}
+        \item 绝对值 $|\!\cdot\!|$ 是向量空间 $\K$ 上的范数.
+    \end{enumerate}
+
+    \begin{center}
+        \kaishu 除非另有说明, 否则默认 $\K$ 是赋予了上述范数的赋范向量空间.
+    \end{center}
+
+    \begin{enumerate}[start=2]
+        \item 设 $F$ 是赋范向量空间 $(E, \|\!\cdot\!\|)$ 的子空间. 则 $\|\!\cdot\!\|$ 在 $F$ 上的限制 $\|\!\cdot\!\|_F \coloneqq \|\!\cdot\!\|\big|_F$ 是 $F$ 上的范数. 因此 $F$ 在该诱导范数 $\|\!\cdot\!\|_F$ 下是赋范向量空间. 在不会引起混淆的情况下, 我们使用 $\|\!\cdot\!\|$ 来表示 $F$ 上的这个诱导范数.
+        \item 设 $(E_j, \|\!\cdot\!\|_j),\ 1 \leq j \leq m$ 是赋范向量空间, $E \coloneqq E_1 \times \cdots \times E_m$. 则函数
+        $$
+        \|x\|_\infty \coloneqq \max_{1 \leq j \leq m} \|x_j\|_j\ ,\quad x \in E
+        $$
+        是积向量空间 $E$ 上的范数, 称为积范数. 当 $d_j$ 是 $\|\!\cdot\!\|_j$ 在 $E_j$ 上诱导的度量时, 则 $\|\!\cdot\!\|_\infty$ 在 $E$ 上诱导的度量与例 \ref{eg:metric}.5 中的积度量是一致的.
+        \item $\K^m\ (m \in \N^\ast)$ 在定义如下最大范数后是赋范向量空间,
+        $$
+        |x|_\infty \coloneqq \max_{1 \leq j \leq m} |x_j|\ ,\quad x \in \K^m\ .
+        $$
+        当 $m=1$ 时, $(\K^1, |\!\cdot\!|_\infty) = (\K,  |\!\cdot\!|) = \K$.
+    \end{enumerate}
+\end{example}

@@ -61,7 +61,7 @@ Section 3 Normed Vector Spaces
           Bounded Sets
           Examples
 
-          The Space of Bounded Functions
+          The Space of Bounded Functions 11 29, 25
           Inner Product Spaces
 
           The Cauchy-Schwarz Inequality

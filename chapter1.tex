@@ -216,11 +216,11 @@
 \begin{example}\label{eg:rings}
     \begin{enumerate}
         \item 平凡环只含有一个元素 $0$, 并且通常也记作 $0$. 含有超过一个元素的环称为非平凡环. 平凡环显然是含幺的交换环. 若 $R$ 是含幺环, 于是对于每个 $a \in R$ 都有 $1_R \cdot a = a$, 则 $R$ 是平凡的当且仅当 $1_R = 0_R$.
-        \item 设 $R$ 是环, $X$ 是非空集合. 则 $R^X$ 在定义如下运算后是环.
+        \item 设 $R$ 是环, $X$ 是非空集合. 则 $R^X$ 在定义如下运算后是环,
         $$
         (f+g)(x) \coloneqq f(x) + g(x)\ ,\quad (f g)(x) \coloneqq f(x) g(x)\ ,\quad x \in X\ ,\quad f,g \in R^X\ .
         $$
-        若 $R$ 是交换环或含幺环, 则 $R^X$ 也是 (见例 \ref{eg:operations-on-function-spaces}). 特别的, 当 $m \geq 2$ 时, 环 $R$ 的直积 $R^m$ 在定义如下运算后是环.
+        若 $R$ 是交换环或含幺环, 则 $R^X$ 也是 (见例 \ref{eg:operations-on-function-spaces}). 特别的, 当 $m \geq 2$ 时, 环 $R$ 的直积 $R^m$ 在定义如下运算后是环,
         $$
         a + b \coloneqq (a_1 + b_1, \ldots, a_m + b_m)\ ,\quad a b \coloneqq (a_1 b_1, \ldots, a_m b_m)\ ,\quad a,b \in R^m\ .
         $$
@@ -254,7 +254,7 @@
 \end{definition}
 
 \begin{definition}[环同构]
-    设 $\varphi \colon R \to R'$ 环同态. 若 $\varphi$ 是双射, 则称 $\varphi$ 是环同构, 并称 $R$ 和 $R'$ 同构. 特别的, 若 $R = R'$, 则称 $\varphi$ 是环自同构.
+    设 $\varphi \colon R \to R'$ 是环同态. 若 $\varphi$ 是双射, 则称 $\varphi$ 是环同构, 并称 $R$ 和 $R'$ 同构. 特别的, 若 $R = R'$, 则称 $\varphi$ 是环自同构.
 \end{definition}
 
 \begin{remark}\label{rem:ring-homomorphism}
@@ -351,7 +351,7 @@
     \begin{enumerate}
         \item 证明不等式 $\displaystyle \frac{|a+b|}{1 + |a+b|} \leq \frac{|a|}{1 + |a|} + \frac{|b|}{1 + |b|}$.
         \item 证明, 若 $b>0$, $d>0$ 且 $\displaystyle \frac{a}{b} < \frac{c}{d}$, 则 $\displaystyle \frac{a}{b} < \frac{a+c}{b+d} < \frac{c}{d}$.
-        \item 证明, 若 $a,b \in K^\ast$, 则 $\displaystyle \abs[\Big]{\frac{a}{b} + \frac{b}{a}} \geq 2$.
+        \item 证明, 若 $a,b \in K^\ast$, 则 $\displaystyle \Bigl|\frac{a}{b} + \frac{b}{a}\Bigr| \geq 2$.
     \end{enumerate}
 \end{exercises}
 
@@ -423,7 +423,7 @@
 \begin{proposition}\label{prop:abs-in-Q}
     设 $z,w \in \C$.
     \begin{enumerate}
-        \item $|zw| = |z| |w|$.
+        \item $|zw| = |z|\,|w|$.
         \item 对于任意 $z \in \R$ 都有 $|z|_\C = |z|_\R$.
         \item $|\Re z| \leq |z|$, $|\Im z| \leq |z|$, $|z| = |\overline z|$.
         \item $|z| = 0$ 当且仅当 $z = 0$.
@@ -434,7 +434,7 @@
 
 \begin{corollary}[反三角不等式]\label{cor:reversed-triangle-inequality-in-Q}
     $$
-    |z - w| \geq \abs[\big]{|z| - |w|}\ ,\quad z,w \in \C\ .
+    |z - w| \geq \bigl||z| - |w|\bigr|\ ,\quad z,w \in \C\ .
     $$
 \end{corollary}
 
@@ -495,13 +495,15 @@
 \end{definition}
 
 \begin{definition}[向量空间同态]
-    设 $V$ 和 $W$ 是向量空间. 称线性映射 $T \colon V \to W$ 是向量空间同态, 并将从 $V$ 到 $W$ 的所有线性映射记作 $\Hom(V,W)$. 
+    设 $V$ 和 $W$ 是 $K$-向量空间. 称线性映射 $T \colon V \to W$ 是向量空间同态, 并将从 $V$ 到 $W$ 的所有线性映射记作 $\Hom(V,W)$. 
     特别的, 若 $V = W$, 则称 $T$ 是向量空间自同态, 并将 $V$ 上的所有向量空间自同态记作 $\End(V) \coloneqq \Hom(V,V)$.
 \end{definition}
 
 \begin{definition}[向量空间同构]
     设 $T \colon V \to W$ 是向量空间同态. 若 $T$ 是双射, 则称 $T$ 是向量空间同构, 并称 $V$ 和 $W$ 同构, 记作 $V \cong W$. 特别的, 若 $V = W$, 则称 $T$ 是向量空间自同构.
 \end{definition}
+
+当我们说 ``$V$ 和 $W$ 是向量空间且 $T \colon V \to W$ 是线性函数'' 时, 总是默认 $V$ 和 $W$ 是定义在同一个域上的向量空间.
 
 \begin{remark}
     \begin{enumerate}
@@ -511,6 +513,8 @@
         \ker T = \set{v \in V}{Tv = 0} = T^{-1} 0\ .
         $$
         因此, $T$ 是单射当且仅当其核是平凡的, 即 $\ker T = \{0\}$ (见注 \ref{rem:group-homo} 的 1 和 4).
+        \item 设 $U$, $V$ 和 $W$ 是 $K$-向量空间. 则对于任意 $S \in \Hom(U,V)$ 和 $T \in \Hom(V,W)$ 都有 $T \circ S \in \Hom(U,W)$.
+        \item $V$ 的自同构集合 $\Aut(V)$, 即所有从 $V$ 到自身的双射的线性映射所构成的集合, 是 $V$ 的置换群的子群, 称为 $V$ 的自同构群.
     \end{enumerate}
 \end{remark}
 
@@ -529,11 +533,11 @@
         $$
         \item 设 $T \colon V \to W$ 是线性映射. 则 $\ker T$ 是 $V$ 的子空间, $\im T$ 是 $W$ 的子空间. 若 $T$ 是单射, 则 $T^{-1} \in \Hom(\im T, V)$.
         \item 当把域上的运算视为向量空间上的运算时, $K$ 自身就是以 $K$ 为数域的向量空间.
-        \item 设 $X$ 是集合. 则 $V^X$ 在定义如下运算 (见例 \ref{eg:operations-on-function-spaces}) 后是 $K$-向量空间.
+        \item 设 $X$ 是集合. 则 $V^X$ 在定义如下运算 (见例 \ref{eg:operations-on-function-spaces}) 后是 $K$-向量空间,
         $$
         (f+g)(x) \coloneqq f(x) + g(x)\ ,\quad (\lambda f)(x) \coloneqq \lambda f(x)\ ,\quad x \in X\ ,\quad \lambda \in K\ ,\quad f,g \in V^X\ .
         $$
-        特别的, $K^m\ (m \in \N^\ast)$ 在定义如下运算后是 $K$-向量空间.
+        特别的, $K^m\ (m \in \N^\ast)$ 在定义如下运算后是 $K$-向量空间,
         $$
         x + y \coloneqq (x_1 + y_1, \ldots, x_m + y_m)\ ,\quad \lambda x \coloneqq (\lambda x_1, \ldots, \lambda x_m)\ ,\quad \lambda \in K\ ,\quad x,y \in K^m\ .
         $$
