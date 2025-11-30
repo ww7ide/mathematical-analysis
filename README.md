@@ -64,7 +64,7 @@ Section 3 Normed Vector Spaces
           The Space of Bounded Functions 11 29, 25
           Inner Product Spaces
 
-          The Cauchy-Schwarz Inequality
+          The Cauchy-Schwarz Inequality  11 30, 25
 
           Euclidean Spaces
           Equivalent Norms

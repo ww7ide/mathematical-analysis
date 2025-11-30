@@ -876,11 +876,11 @@ $\C$ 中的收敛数列可以用其对应的实部与虚部的收敛性来刻画
 \begin{proof}
     只用证
     $$
-    \biggl|\frac{1}{n} \sum_{j=1}^n x_j - a\biggr| \to 0\ .
+    \Bigl|\frac{1}{n} \sum_{j=1}^n x_j - a\Bigr| \to 0\ .
     $$
     注意到
     $$
-    0 \leq \biggl|\frac{1}{n} \sum_{j=1}^n x_j - a\biggr| = \biggl|\frac{1}{n} \sum_{j=1}^n (x_j - a)\biggr| \leq \frac{1}{n} \sum_{j=1}^n |x_j - a|\ ,
+    0 \leq \Bigl|\frac{1}{n} \sum_{j=1}^n x_j - a\Bigr| = \Bigl|\frac{1}{n} \sum_{j=1}^n (x_j - a)\Bigr| \leq \frac{1}{n} \sum_{j=1}^n |x_j - a|\ ,
     $$
     任取 $\varepsilon > 0$. 由于 $\lim x_j = a$, 故存在 $N \in \N^\ast$ 使得当 $j \geq N$ 时 $|x_j - a| < \varepsilon$, 于是
     $$
@@ -900,7 +900,7 @@ $\C$ 中的收敛数列可以用其对应的实部与虚部的收敛性来刻画
     $$
     故由夹逼定理可知
     $$
-    \biggl|\frac{1}{n} \sum_{j=1}^n x_j - a\biggr| \to 0\ .
+    \Bigl|\frac{1}{n} \sum_{j=1}^n x_j - a\Bigr| \to 0\ .
     $$
 \end{proof}
 
@@ -1119,7 +1119,7 @@ $\C$ 中的收敛数列可以用其对应的实部与虚部的收敛性来刻画
     称集合 $X \subseteq E$ 在 $E$ 中有界 (或范数有界), 若 $X$ 在范数诱导的度量空间中有界.
 \end{definition}
 
-\begin{remark}
+\begin{remark}\label{rem:bounded-set-in-normed-vector-spaces}
     设 $(E, \|\!\cdot\!\|)$ 是赋范向量空间.
     \begin{enumerate}
         \item $X \subseteq E$ 有界, 当且仅当存在 $r > 0$ 使得 $X \subseteq r\B$, 即对于任意 $x \in X$ 都有 $\|x\| < r$.
@@ -1130,9 +1130,9 @@ $\C$ 中的收敛数列可以用其对应的实部与虚部的收敛性来刻画
 
 \subsection{例子}
 
-现在我们为第 1.12 节中介绍的那些向量空间定义合适的范数.
+现在我们为第 1 章的第 12 节中介绍的那些向量空间定义合适的范数.
 
-\begin{example}
+\begin{example}\label{eg:norms}
     \begin{enumerate}
         \item 绝对值 $|\!\cdot\!|$ 是向量空间 $\K$ 上的范数.
     \end{enumerate}
@@ -1155,3 +1155,162 @@ $\C$ 中的收敛数列可以用其对应的实部与虚部的收敛性来刻画
         当 $m=1$ 时, $(\K^1, |\!\cdot\!|_\infty) = (\K,  |\!\cdot\!|) = \K$.
     \end{enumerate}
 \end{example}
+
+\begin{proof}
+    3. 显然 \hyperref[ax:norm]{$(\mathrm N_1)$} 成立.
+    $$
+    \|\lambda x\|_\infty = \max_{1 \leq j \leq m} \|\lambda x_j\|_j = \max_{1 \leq j \leq m} |\lambda|\,\|x_j\|_j = |\lambda|\,\|x\|_\infty\ ,\quad \lambda \in \K\ ,\quad x \in E\ ,
+    $$
+    因此 \hyperref[ax:norm]{$(\mathrm N_2)$} 成立.
+    $$
+    \|x + y\|_\infty = \max_{1 \leq j \leq m} \|x_j + y_j\|_j \leq \max_{1 \leq j \leq m} (\|x_j\|_j + \|y_j\|_j) \leq \|x\|_\infty + \|y\|_\infty\ ,\quad x,y \in E\ ,
+    $$
+    最后 \hyperref[ax:norm]{$(\mathrm N_3)$} 成立. 令 $d$ 是 $\|\!\cdot\!\|_\infty$ 在 $E$ 上诱导的度量, 于是
+    $$
+    d(x,y) = \|x - y\|_\infty = \max_{1 \leq j \leq m} \|x_j - y_j\|_j = \max_{1 \leq j \leq m} d_j(x_j, y_j)\ ,\quad x,y \in E\ ,
+    $$
+    因此 $d$ 与积度量是一致的.
+
+    4. 这是 3. 的特殊情况.
+\end{proof}
+
+\subsection{有界函数空间}
+
+\begin{definition}[有界函数]
+    设 $X$ 是非空集合, $(E, \|\!\cdot\!\|)$ 是赋范向量空间. 称函数 $u \in E^X$ 有界, 若 $u$ 的像在 $E$ 中有界.
+\end{definition}
+
+\begin{remark}\label{rem:bounded-and-not-bounded-functions}
+    定义
+    $$
+    \|u\|_\infty \coloneqq \sup_{x \in X} \|u(x)\| \in \R \cup \{\infty\}\ ,\quad u \in E^X\ .
+    $$
+    \begin{enumerate}
+        \item 设 $u \in E^X$. 以下命题是等价的.
+        \begin{enumerate}
+            \item $u$ 有界.
+            \item $u(X)$ 在 $E$ 中有界.
+            \item 存在 $r > 0$ 使得对于任意 $x \in X$ 都有 $\|u(x)\| \leq r$.
+            \item $\|u\|_\infty < \infty$.
+        \end{enumerate}
+        \item 显然 $\id \in \K^\K$ 是无界的, 因为 $\|\!\id\!\|_\infty = \infty$.
+    \end{enumerate}
+\end{remark}
+
+注 \ref{rem:bounded-and-not-bounded-functions}.2 表明, 当 $E$ 不是平凡向量空间时, $\|\!\cdot\!\|_\infty$ 未必是向量空间 $E^X$ 上的范数. 因此我们应该做出如下定义.
+
+\begin{definition}[有界函数空间]
+    称
+    $$
+    B(X,E) \coloneqq \set{u \in E^X}{u\ \text{有界}}\ ,
+    $$
+    是从 $X$ 到 $E$ 的有界函数空间.
+\end{definition}
+
+\begin{proposition}
+    $B(X,E)$ 是 $E^X$ 的子空间且 $\|\!\cdot\!\|_\infty$ 是 $B(X,E)$ 上的范数, 称为上确界范数.
+\end{proposition}
+
+\begin{proof}
+    由注 \ref{rem:bounded-set-in-normed-vector-spaces}.2 可知 $B(X,E)$ 是 $E^X$ 的子空间. 由注 \ref{rem:bounded-and-not-bounded-functions}.1 可知 $\|\!\cdot\!\|_\infty$ 是良定义的,
+    $$
+    \|u\|_\infty = \sup_{x \in X} \|u(x)\| \geq 0\ ,\quad u \in B(X,E)\ ,
+    $$
+    且 $u = 0$ 当且仅当对于任意 $x \in X$ 都有 $u(x) = 0$, 即 $\|u\|_\infty = 0$, 于是 \hyperref[ax:norm]{$(\mathrm N_1)$} 成立.
+    $$
+    \|\lambda u\|_\infty = \sup_{x \in X} \|\lambda u(x)\| = \sup_{x \in X} |\lambda|\,\|u(x)\| = |\lambda|\,\|u\|_\infty\ ,\quad \lambda \in \K\ ,\quad u \in B(X,E)\ ,
+    $$
+    因此 \hyperref[ax:norm]{$(\mathrm N_2)$} 成立.
+    $$
+    \|u + v\|_\infty = \sup_{x \in X} \|u(x) + v(x)\| \leq \sup_{x \in X} (\|u(x)\| + \|v(x)\|) \leq \|u\|_\infty + \|v\|_\infty\ ,\quad u,v \in B(X,E)\ ,
+    $$
+    最后 \hyperref[ax:norm]{$(\mathrm N_3)$} 成立.
+\end{proof}
+
+\begin{center}
+    \kaishu 除非另有说明, 否则默认 $B(X,E)$ 是从 $X$ 到 $E$ 且赋予上确界范数 $\|\!\cdot\!\|_\infty$ 的有界函数空间.
+\end{center}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 若 $X \coloneqq \N$, 则 $B(X,E)$ 是 $E$ 中有界序列的赋范向量空间. 特别的, 若 $E \coloneqq \K$, 则称
+        $$
+        \ell_\infty \coloneqq \ell_\infty(\K) \coloneqq B(\N, \K)
+        $$
+        是赋予了上确界范数
+        $$
+        \|(x_n)\|_\infty = \sup_{n \in \N} |x_n|\ ,\quad (x_n) \in \ell_\infty
+        $$
+        的有界数列的赋范向量空间.
+        \item 由命题 \ref{prop:convergent-sequence-is-bounded} 可知, 任意收敛序列都是有界的, 于是由注 \ref{rem:c-is-vector-space} 可得 $c_0$ 和 $c$ 是 $\ell_\infty$ 的子空间. 因此 $c_0$ 和 $c$ 赋予上确界范数后是赋范向量空间, 且作为子空间有 $c_0 \subseteq c \subseteq \ell_\infty$.
+        \item 设 $X = \{1, \ldots, m\}\ (m \in \N^\ast)$. 则
+        $$
+        \bigl(B(X,E), \|\!\cdot\!\|_\infty\bigr) = (E^m, \|\!\cdot\!\|_\infty)\ ,
+        $$
+        其中等式左边的 $\|\!\cdot\!\|_\infty$ 是上确界范数, 等式右边的 $\|\!\cdot\!\|_\infty$ 是例 \ref{eg:norms}.3 的积范数. 因此上确界范数的记号和积范数的记号是一致的, 而不会产生歧义.
+    \end{enumerate}
+\end{remark}
+
+\subsection{内积空间}
+
+现在我们考虑赋范向量空间 $(\R^2, |\!\cdot\!|_\infty)$. 于是 $\R^2$ 中的单位球为
+$$
+\B_{\R^2} = \set{x \in \R^2}{|x|_\infty \leq 1} = \set{x \in \R^2}{-1 \leq x_1, x_2 \leq 1}\ ,
+$$
+因此, $\B_{\R^2}$ 是平面上的一个正方形, 其边长为 $2$, 中心在 $0$.
+\begin{center}
+\begin{tikzpicture}
+    \filldraw[fill=gray!20,draw=black] (-1,-1) rectangle (1,1);
+    \draw[->] (-1.7,0) -- (1.7,0) node[right]{$\mathbb R$};
+    \draw[->] (0,-1.7) -- (0,1.7) node[above]{$\mathbb R$};
+    \node[above left]  at (0, 1) {$1$};
+    \node[below left]  at (0,-1) {$-1$};
+    \node[below right] at ( 1,0) {$1$};
+    \node[below left]  at (-1,0) {$-1$};
+\end{tikzpicture}
+\end{center}
+在任意赋范向量空间 $(E, \|\!\cdot\!\|)$ 中, 称集合 $\set{x \in E}{\|x\| = 1}$ 是 $(E, \|\!\cdot\!\|)$ 中的单位球面, 也就是单位球的 ``边界''. 对我们的空间 $(\R^2, |\!\cdot\!|_\infty)$ 来说, 这个单位球面就是图中那个正方形的边界. 单位球面上的每一个点到原点的距离都是 $1$. 当然, 这里的距离是用 $|\!\cdot\!|_\infty$ 的诱导度量来定义的, 因此这里的 ``球'' 和 ``球面'' 的几何外观可能与我们以往的经验不太一样. 在学校, 我们学到: 若点到原点的距离按 Pythagoras 定理定义为 ``各坐标平方和的平方根'' (见第 1 章的第 11 节关于 $\B_\C$ 的内容), 那么在平面上得到的就是 ``圆'' 的形状. 我们希望把这种距离的想法推广到 $\K^m$ 上, 通过在 $\K^m$ 上定义一个新的范数---Euclid 范数, 这个范数在历史上和实际应用中都很重要. 为了做到这一点, 我们需要先做一些准备工作.
+
+\begin{axiom}[内积]\label{ax:inner-product}
+    设 $E$ 是 $\K$-向量空间, 其上定义了函数
+    $$
+    \langle \cdot, \cdot \rangle \colon E \times E \to \K\ ,\quad (x,y) \mapsto \langle x,y \rangle\ .
+    $$
+    若对于任意 $\lambda, \mu \in \K$ 和 $x,y,z \in E$ 都有
+    \begin{enumerate}[label={$(\mathrm{IP}_{\arabic*})$}]
+        \item (共轭对称性) $\langle x,y \rangle = \overline{\langle y,x \rangle}$.
+        \item (对第一个参数线性) $\langle \lambda x + \mu y, z\rangle = \lambda \langle x,z \rangle + \mu \langle y,z \rangle$.
+        \item (正定性) $\langle x,x \rangle \geq 0$, 其中 $\langle x,x \rangle = 0$ 当且仅当 $x = 0$.
+    \end{enumerate}
+    则称 $\langle \cdot, \cdot \rangle$ 是 $E$ 上的内积. 进一步, 称 $\bigl(E, \langle \cdot, \cdot \rangle\bigr)$ 是内积空间.
+\end{axiom}
+
+当内积在上下文中明确时, 我们把 $\bigl(E, \langle \cdot, \cdot \rangle\bigr)$ 简写为 $E$.
+
+\begin{remark}
+    \begin{enumerate}
+        \item 当 $\K = \R$ 时, \hyperref[ax:inner-product]{$(\mathrm{IP}_1)$} 可以写为
+        $$
+        \langle x,y \rangle = \langle y,x \rangle\ ,\quad x,y \in E\ ,
+        $$
+        也就是说当 $E$ 是实向量空间时, 函数 $\langle \cdot, \cdot \rangle$ 是对称的. 当 $\K = \C$ 时, 若 \hyperref[ax:inner-product]{$(\mathrm{IP}_1)$} 成立, 则称函数 $\langle \cdot, \cdot \rangle$ 是 Hermite 的.
+        \item 由 \hyperref[ax:inner-product]{$(\mathrm{IP}_1)$} 和 \hyperref[ax:inner-product]{$(\mathrm{IP}_2)$} 可得
+        $$
+        \langle x, \lambda y + \mu z \rangle = \overline\lambda \langle x,y \rangle + \overline\mu \langle x,z \rangle\ ,\quad \lambda,\mu \in \K\ ,\quad x,y,z \in E\ ,
+        $$
+        即对于每个固定的 $x \in E$, 称函数 $\langle x, \cdot \rangle \colon E \to \K$ 是共轭线性的. 同时 \hyperref[ax:inner-product]{$(\mathrm{IP}_2)$} 表明对于每个固定的 $x \in E$, 函数 $\langle \cdot, x \rangle \colon E \to \K$ 是线性的, 此时称 $\langle \cdot, \cdot \rangle$ 是半双线性形式. 当 $\K = \R$ 时, $\langle \cdot, x \rangle$ 和 $\langle x, \cdot \rangle$ 都是线性的, 此时称 $\langle \cdot, \cdot \rangle$ 是双线性形式. 最后 \hyperref[ax:inner-product]{$(\mathrm{IP}_3)$} 表明 $\langle \cdot, \cdot \rangle$ 是正定的. 在这样的定义下, 我们说: 当 $E$ 是复向量空间时, 内积是 $E$ 上正定且 Hermite 的半双线性形式. 当 $E$ 是实向量空间时, 内积是 $E$ 上正定且对称的双线性形式.
+        \item 对于任意 $ x,y \in E$ 都有
+        $$
+        \langle x \pm y, x \pm y \rangle = \langle x,x \rangle \pm 2\Re\langle x,y \rangle + \langle y,y \rangle\ .
+        $$
+        \item 对于所有 $x \in E$ 都有 $\langle x,0 \rangle = \langle 0,x \rangle = 0$.
+    \end{enumerate}
+\end{remark}
+
+容易验证
+$$
+\langle x,y \rangle \coloneqq \sum_{j=1}^m x_j \overline y_j\ ,\quad x,y \in \K^m\ (m \in \N^\ast)
+$$
+是 $\K^m$ 上的内积, 称为 $\K^m$ 上的 Euclid 内积.
+
+\subsection{Cauchy-Schwarz 不等式}
