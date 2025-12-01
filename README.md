@@ -66,7 +66,7 @@ Section 3 Normed Vector Spaces
 
           The Cauchy-Schwarz Inequality  11 30, 25
 
-          Euclidean Spaces
+          Euclidean Spaces               12  1, 25
           Equivalent Norms
           Convergence in Product Spaces
 

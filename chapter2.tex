@@ -43,7 +43,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{definition}
 
 \begin{definition}[数列]
-    $\K$ 中的序列称为数列. 进一步, 将 $\K$ 中的所有数列, 即 $\K^\N$ 记作 $s$ 或 $s(\K)$, 于是 $s$ 构成了 $\K$-向量空间 (见例 \ref{eg:vector-spaces}.5). 最后, $\R$ 中的数列称为实数列, $\C$ 中的数列称为复数列.
+    $\K$ 中的序列称为数列. 进一步, 将 $\K$ 中的所有数列记作 $s \coloneqq s(\K) \coloneqq \K^\N$, 于是 $s$ 构成了 $\K$-向量空间 (见例 \ref{eg:vector-spaces}.5). 最后, $\R$ 中的数列称为实数列, $\C$ 中的数列称为复数列.
 \end{definition}
 
 \begin{remark}
@@ -70,12 +70,12 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \end{enumerate}
 \end{remark}
 
-如果把复数列 $(z_n)_{n \geq 1}$ 的前几项画在复平面上, 其中 $z_n \coloneqq (1 - 1/n)(1 + \ii)$, 就会发现: 当 $n$ 增大时, 这些点 $z_n$ 会 ``任意接近'' $z \coloneqq 1 + \ii$. 换句话说, 随着 $n$ 的增大, $z_n$ 到 $z$ 的距离会变得 ``任意小''. 本节的目标, 就是把我们对于这类数列收敛的直观几何想法加以公理化, 使之能够推广应用到向量空间中的序列, 以及更抽象的集合中的序列上.
+如果把复数列 $(z_n)_{n \geq 1}$ 的前几项画在复平面上, 其中 $z_n \coloneqq (1 - 1/n)(1 + i)$, 就会发现: 当 $n$ 增大时, 这些点 $z_n$ 会 ``任意接近'' $z \coloneqq 1 + i$. 换句话说, 随着 $n$ 的增大, $z_n$ 到 $z$ 的距离会变得 ``任意小''. 本节的目标, 就是把我们对于这类数列收敛的直观几何想法加以公理化, 使之能够推广应用到向量空间中的序列, 以及更抽象的集合中的序列上.
 
 \begin{center}
 \begin{tikzpicture}
     \draw[->] (-0.5,0) -- (4,0) node[right]{$\R$};
-    \draw[->] (0,-0.5) -- (0,4) node[above]{$\ii \R$};
+    \draw[->] (0,-0.5) -- (0,4) node[above]{$i \, \R$};
     \fill (0,0) circle (1.5pt) node[below right]{$z_1$};
     \fill (1.75,1.75) circle (1.5pt) node[below right]{$z_2$};
     \fill (2.1,2.1) circle (1.5pt) node[below right]{$z_3$};
@@ -232,7 +232,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \begin{example}
     \begin{enumerate}
         \item 实数列 $\bigl((-1)^n\bigr)$ 有两个聚点, $1$ 和 $-1$.
-        \item 复数列 $(\ii^n)$ 有四个聚点, $\pm 1$ 和 $\pm \ii$.
+        \item 复数列 $(i^n)$ 有四个聚点, $\pm 1$ 和 $\pm i$.
         \item 常序列 $(x,x,x,\ldots)$ 有唯一的聚点 $x$.
         \item 自然数序列 $(n)$ 没有聚点.
         \item 设 $\varphi \colon \N \to \Q$ 是双射 (由命题 \ref{prop:Q-is-countable} 可知这样的函数存在). 定义序列 $(x_n)$, 其中 $x_n \coloneqq \varphi(n),\ n \in \N$. 则每个实数都是 $(x_n)$ 的聚点.
@@ -281,9 +281,9 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \item 设实数列 $(1/n)_{n \in \N^\ast}$, 则 $\lim 1/n = 0$.
         \item 设复数列 $(z_n)$, 其中
         $$
-        z_n \coloneqq \frac{n+2}{n+1} + \ii \frac{2n}{n+2}\ ,
+        z_n \coloneqq \frac{n+2}{n+1} + i \, \frac{2n}{n+2}\ ,
         $$
-        则 $\lim z_n = 1 + 2\ii$.
+        则 $\lim z_n = 1 + 2i$.
         \item 常序列 $(a,a,a,\ldots)$ 收敛到 $a$.
         \item 实数列 $\bigl((-1)^n\bigr)$ 发散.
         \item 设 $X$ 是度量空间 $(X_j, d_j),\ 1 \leq j \leq m$ 的积空间. 则序列 $(x_n) = \bigl((x_n^1, \ldots, x_n^m)\bigr)$ 收敛到点 $a \coloneqq (a^1, \ldots, a^m) \in X$ 当且仅当对于每个 $j \in \{1, \ldots, m\}$ 都有序列 $(x_n^j)$ 收敛到点 $a^j \in X_j$.
@@ -307,10 +307,10 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     $$
     于是
     \begin{align*}
-        |z_n - (1 + 2\ii)| &= \Bigl|\frac{1}{n+1} - \ii \frac{4}{n+2}\Bigr| \\
+        |z_n - (1 + 2i)| &= \Bigl|\frac{1}{n+1} - i \, \frac{4}{n+2}\Bigr| \\
         &= \sqrt{\Bigl(\frac{1}{n+1}\Bigr)^2 + \Bigl(-\frac{4}{n+2}\Bigr)^2} < \sqrt{\frac{\varepsilon^2}{2} + \frac{\varepsilon^2}{2}} < \varepsilon\ ,\quad n \geq N\ ,
     \end{align*}
-    即当 $n \geq N$ 时 $z_n \in \B\bigl((1 + 2\ii), \varepsilon\bigr)$.
+    即当 $n \geq N$ 时 $z_n \in \B\bigl((1 + 2i), \varepsilon\bigr)$.
 
     5. $\implies$. 设 $(x_n)$ 收敛到点 $a$. 则任取 $\varepsilon > 0$, 存在 $N \in \N$ 使得
     $$
@@ -463,7 +463,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{exercises}
 
 \begin{exercises}
-    证明数列 $(z_n)_{n \geq 1}$ 其中 $z_n \coloneqq (1 - 1/n)(1 + \ii)$ 收敛到 $1 + \ii$.
+    证明数列 $(z_n)_{n \geq 1}$ 其中 $z_n \coloneqq (1 - 1/n)(1 + i)$ 收敛到 $1 + i$.
 \end{exercises}
 
 \begin{exercises}
@@ -473,7 +473,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \begin{exercises}
     找出复数列 $(z_n)$ 在下列情况下的全部聚点.
     \begin{enumerate}
-        \item $z_n \coloneqq \bigl((1+\ii) / \sqrt{2}\bigr)^n$.
+        \item $z_n \coloneqq \bigl((1+i) \big/ \sqrt{2}\bigr)^n$.
         \item $z_n \coloneqq \bigl(1 + (-1)^n\bigr) (n+1) n^{-1} + (-1)^n$.
         \item $z_n \coloneqq (-1)^n n / (n+1)$.
     \end{enumerate}
@@ -604,7 +604,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
     2. 若 $\alpha = 0$ 显然成立, 假设 $\alpha \neq 0$. 则存在 $N \in \N$ 使得当 $n \geq N$ 时 $|x_n - a| < \varepsilon / |\alpha|$. 于是
     $$
-    |\alpha x_n - \alpha a| = |\alpha|\,|x_n - a| < |\alpha| \frac{\varepsilon}{|\alpha|} = \varepsilon\ ,\quad n \geq N\ .
+    |\alpha x_n - \alpha a| = |\alpha| \, |x_n - a| < |\alpha| \, \frac{\varepsilon}{|\alpha|} = \varepsilon\ ,\quad n \geq N\ .
     $$
 \end{proof}
 
@@ -670,9 +670,9 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     $$
     即当 $n \geq N$ 时 $|x_n| > |a|/2 > 0$, 即 $(x_n)$ 的几乎所有项都非零. 而
     $$
-    \Bigl|\frac{1}{x_n} - \frac{1}{a}\Bigr| = \frac{|x_n - a|}{|a|\,|x_n|} < \frac{2}{|a|^2} |x_n - a|\ ,\quad n \geq N\ ,
+    \Bigl|\frac{1}{x_n} - \frac{1}{a}\Bigr| = \frac{|x_n - a|}{|a|\,|x_n|} < \frac{2}{|a|^2} \, |x_n - a|\ ,\quad n \geq N\ ,
     $$
-    由于 $(x_n)$ 收敛到 $a$, 因此 $(x_n - a)$ 是无穷小量, 进一步, $2|x_n - a| / |a|^2$ 是无穷小量. 于是由注 \ref{rem:null-sequences}.3 可得 $(1/x_n - 1/a)$ 是无穷小量, 故 $\lim 1/x_n = 1/a$.
+    由于 $(x_n)$ 收敛到 $a$, 因此 $(x_n - a)$ 是无穷小量, 进一步, $\bigl(2|x_n - a| \big/ |a|^2\bigr)$ 是无穷小量. 于是由注 \ref{rem:null-sequences}.3 可得 $(1/x_n - 1/a)$ 是无穷小量, 故 $\lim 1/x_n = 1/a$.
 \end{proof}
 
 \subsection{比较审敛法}
@@ -745,7 +745,7 @@ $\C$ 中的收敛数列可以用其对应的实部与虚部的收敛性来刻画
     \end{enumerate}
     此时有,
     $$
-    \lim x_n = \lim \Re x_n + \ii \lim \Im x_n\ .
+    \lim x_n = \lim \Re x_n + i \, \lim \Im x_n\ .
     $$
 \end{proposition}
 
@@ -758,10 +758,10 @@ $\C$ 中的收敛数列可以用其对应的实部与虚部的收敛性来刻画
 
     2. $\implies$ 1. 设 $\lim \Re x_n = a$, $\lim \Im x_n = b$. 任取 $\varepsilon > 0$. 故存在 $M,N \in \N$ 使得当 $n \geq M$ 时 $|\Re x_n - a| < \varepsilon / \sqrt{2}$, 当 $n \geq N$ 时 $|\Im x_n - b| < \varepsilon / \sqrt{2}$, 于是
     \begin{align*}
-        |x_n - (a + \ii b)| &= |(\Re x_n - a) + \ii (\Im x_n - b)| \\
+        |x_n - (a + i \, b)| &= |(\Re x_n - a) + i(\Im x_n - b)| \\
         &= \sqrt{(\Re x_n - a)^2 + (\Im x_n - b)^2} < \sqrt{\frac{\varepsilon^2}{2} + \frac{\varepsilon^2}{2}} = \varepsilon\ ,\quad n \geq \max\{M,N\}\ ,
     \end{align*}
-    因此 $x_n$ 收敛到 $a + \ii b$.
+    因此 $x_n$ 收敛到 $a + i \, b$.
 \end{proof}
 
 我们用一些例子来说明上述命题, 以此结束本节.
@@ -769,8 +769,8 @@ $\C$ 中的收敛数列可以用其对应的实部与虚部的收敛性来刻画
 \begin{example}
     \begin{enumerate}
         \item $\displaystyle \lim_{n \to \infty} \frac{n+1}{n+2} = 1$.
-        \item $\displaystyle \lim_{n \to \infty} \Bigr(\frac{3n}{(2n+1)^2} + \ii \frac{2n^2}{n^2 + 1}\Bigl) = 2 \ii$.
-        \item $\displaystyle \Bigl(\frac{\ii^n}{1 + \ii n}\Bigr)$ 是 $\C$ 中的无穷小量.
+        \item $\displaystyle \lim_{n \to \infty} \Bigr(\frac{3n}{(2n+1)^2} + i \, \frac{2n^2}{n^2 + 1}\Bigl) = 2i$.
+        \item $\displaystyle \Bigl(\frac{i^n}{1 + i \, n}\Bigr)$ 是 $\C$ 中的无穷小量.
     \end{enumerate}
 \end{example}
 
@@ -782,7 +782,7 @@ $\C$ 中的收敛数列可以用其对应的实部与虚部的收敛性来刻画
 
     2. 令
     $$
-    x_n \coloneqq \frac{3n}{(2n+1)^2} + \ii \frac{2n^2}{n^2 + 1}\ .
+    x_n \coloneqq \frac{3n}{(2n+1)^2} + i \, \frac{2n^2}{n^2 + 1}\ .
     $$
     其中
     $$
@@ -792,21 +792,21 @@ $\C$ 中的收敛数列可以用其对应的实部与虚部的收敛性来刻画
     $$
     \Im x_n = \frac{2n^2}{n^2 + 1} = \frac{2}{1 + 1/n^2}\ ,
     $$
-    而 $\lim (1 + 1/n^2) = 1$, 于是由命题 \ref{prop:addition-scalar-multiplication-in-c} 和命题 \ref{prop:division-in-c} 可知 $\lim \Im x_n = 2$. 最后由 \ref{prop:convergence-of-real-and-imaginary-parts} 可得 $\lim x_n = 2 \ii$.
+    而 $\lim (1 + 1/n^2) = 1$, 于是由命题 \ref{prop:addition-scalar-multiplication-in-c} 和命题 \ref{prop:division-in-c} 可知 $\lim \Im x_n = 2$. 最后由 \ref{prop:convergence-of-real-and-imaginary-parts} 可得 $\lim x_n = 2i$.
 
     3. 令
     $$
-    x_n \coloneqq \frac{\ii^n}{1 + \ii n} = \frac{1}{n} \frac{\ii^n}{\ii + 1/n}\ .
+    x_n \coloneqq \frac{i^n}{1 + i \, n} = \frac{1}{n} \, \frac{i^n}{i + 1/n}\ .
     $$
     注意到
     $$
-    \Bigl|\ii + \frac{1}{n}\Bigr| = \sqrt{1 + \frac{1}{n^2}} \geq 1\ ,\quad n \in \N^\ast\ ,
+    \Bigl|i + \frac{1}{n}\Bigr| = \sqrt{1 + \frac{1}{n^2}} \geq 1\ ,\quad n \in \N^\ast\ ,
     $$
     于是
     $$
-    \Bigl|\frac{\ii^n}{\ii + 1/n}\Bigr| = \frac{|\ii^n|}{|\ii + 1/n|} = \frac{1}{|\ii + 1/n|} \leq 1\ ,\quad n \in \N^\ast\ ,
+    \Bigl|\frac{i^n}{i + 1/n}\Bigr| = \frac{|i^n|}{|i + 1/n|} = \frac{1}{|i + 1/n|} \leq 1\ ,\quad n \in \N^\ast\ ,
     $$
-    因此 $\bigl(\ii^n/(\ii + 1/n)\bigr)$ 有界, 由命题 \ref{prop:multiplication-in-c} 可知 $(x_n)$ 是无穷小量.
+    因此 $\bigl(i^n/(i + 1/n)\bigr)$ 有界, 由命题 \ref{prop:multiplication-in-c} 可知 $(x_n)$ 是无穷小量.
 \end{proof}
 
 \subsection{练习}
@@ -1287,7 +1287,7 @@ $$
 
 当内积在上下文中明确时, 我们把 $\bigl(E, \langle \cdot, \cdot \rangle\bigr)$ 简写为 $E$.
 
-\begin{remark}
+\begin{remark}\label{rem:inner-product-property}
     \begin{enumerate}
         \item 当 $\K = \R$ 时, \hyperref[ax:inner-product]{$(\mathrm{IP}_1)$} 可以写为
         $$
@@ -1303,7 +1303,7 @@ $$
         $$
         \langle x \pm y, x \pm y \rangle = \langle x,x \rangle \pm 2\Re\langle x,y \rangle + \langle y,y \rangle\ .
         $$
-        \item 对于所有 $x \in E$ 都有 $\langle x,0 \rangle = \langle 0,x \rangle = 0$.
+        \item 对于任意 $x \in E$ 都有 $\langle x,0 \rangle = \langle 0,x \rangle = 0$.
     \end{enumerate}
 \end{remark}
 
@@ -1314,3 +1314,95 @@ $$
 是 $\K^m$ 上的内积, 称为 $\K^m$ 上的 Euclid 内积.
 
 \subsection{Cauchy-Schwarz 不等式}
+
+在做完上述准备工作之后, 我们现在可以证明关于内积空间最有用的定理之一.
+
+\begin{theorem}[Cauchy-Schwarz 不等式]\label{thm:cauchy-schwarz-inequality}
+    设 $\bigl(E, \langle \cdot, \cdot \rangle\bigr)$ 是内积空间. 则
+    $$
+    |\langle x,y \rangle|^2 \leq \langle x,x \rangle \langle y,y \rangle\ ,\quad x,y \in E\ ,
+    $$
+    其中等号成立当且仅当 $x$ 和 $y$ 线性相关.
+\end{theorem}
+
+\begin{proof}
+    当 $y = 0$ 时, 由注 \ref{rem:inner-product-property}.4 可知定理成立. 设 $y \neq 0$. 对于任意 $\alpha \in \K$ 有
+    $$
+    0 \leq \langle x - \alpha y, x - \alpha y \rangle = \langle x,x \rangle - 2\Re\langle x, \alpha y \rangle + \langle \alpha y, \alpha y \rangle = \langle x,x \rangle - 2\Re \overline\alpha \langle x,y \rangle + |\alpha|^2 \langle y,y \rangle\ ,
+    $$
+    令 $\alpha \coloneqq \langle x,y \rangle / \langle y,y \rangle$, 于是
+    $$
+    0 \leq \langle x,x \rangle - 2\Re \frac{\overline{\langle x,y \rangle}}{\langle y,y \rangle} \langle x,y \rangle + \frac{|\langle x,y \rangle|^2}{\langle y,y \rangle^2} \langle y,y \rangle = \langle x,x \rangle - 2 \, \frac{|\langle x,y \rangle|^2}{\langle y,y \rangle} + \frac{|\langle x,y \rangle|^2}{\langle y,y \rangle} = \langle x,x \rangle - \frac{|\langle x,y \rangle|^2}{\langle y,y \rangle}\ ,
+    $$
+    即
+    $$
+    |\langle x,y \rangle|^2 \leq \langle x,x \rangle \langle y,y \rangle\ ,\quad x,y \in E\ .
+    $$
+
+    设 $x$ 和 $y$ 线性无关. 则对于任意 $\alpha \in \K$ 都有 $x - \alpha y \neq 0$, 于是 $0 < \langle x - \alpha y, x - \alpha y \rangle$, 令 $\alpha \coloneqq \langle x,y \rangle / \langle y,y \rangle$ 可得
+    $$
+    |\langle x,y \rangle|^2 < \langle x,x \rangle \langle y,y \rangle\ ,\quad x,y \in E\ .
+    $$
+
+    设 $x$ 和 $y$ 线性相关. 则存在 $(\alpha,\beta) \in \K^2 \!\setminus\! \{0\}$ 使得 $\alpha x + \beta y = 0$. 假设 $\alpha \neq 0$, 则 $x = -(\beta/\alpha)y$, 于是
+    $$
+    |\langle x,y \rangle|^2 = \biggl|\Bigl\langle -\frac{\beta}{\alpha} y,y \Bigr\rangle\biggr|^2 = \Bigl|\frac{\beta}{\alpha}\Bigr|^2 \langle y,y \rangle^2 = \Bigl\langle -\frac{\beta}{\alpha} y, -\frac{\beta}{\alpha} y \Bigr\rangle \langle y,y \rangle = \langle x,x \rangle \langle y,y \rangle\ ,\quad x,y \in E\ ,
+    $$
+    假设 $\beta \neq 0$, 同理可得.
+\end{proof}
+
+\begin{corollary}[经典 Cauchy-Schwarz 不等式]
+    $$
+    \Bigl|\sum_{j=1}^m \xi_j \overline\eta_j\Bigr|^2 \leq \Bigl(\sum_{j=1}^m |\xi_j|^2\Bigr) \Bigl(\sum_{j=1}^m |\eta_j|^2\Bigr)\ ,\quad \xi_1, \ldots, \xi_m, \eta_1, \ldots, \eta_m \in \K\ .
+    $$
+    其中等号成立当且仅当 $(\xi_1, \ldots, \xi_m)$ 和 $(\eta_1, \ldots, \eta_m)$ 线性相关.
+\end{corollary}
+
+\begin{proof}
+    将定理 \ref{thm:cauchy-schwarz-inequality} 应用到赋予 Euclid 内积的 $\K^m$ 上即可.
+\end{proof}
+
+\begin{theorem}
+    设 $\bigl(E, \langle \cdot, \cdot \rangle\bigr)$ 是内积空间. 则
+    $$
+    \|x\| \coloneqq \sqrt{\langle x,x \rangle}\ ,\quad x \in E
+    $$
+    是 $E$ 上的范数, 称为从内积 $\langle \cdot, \cdot \rangle$ 诱导的范数.
+\end{theorem}
+
+\begin{proof}
+    由于对于任意的 $x \in E$ 都有 $\langle x,x \rangle \geq 0$, 因此 $\|x\| = \sqrt{\langle x,x \rangle} \geq 0$ 是良定义的且 
+    $$
+    \|x\| = 0 \iff \langle x,x \rangle = 0 \iff x = 0\ ,
+    $$
+    于是 \hyperref[ax:norm]{$(\mathrm N_1)$} 成立.
+    $$
+    \|\lambda x\| = \sqrt{\langle \lambda x, \lambda x \rangle} = \sqrt{|\lambda|^2 \, \langle x,x \rangle} = |\lambda| \sqrt{\langle x,x \rangle} = |\lambda| \, \|x\|\ ,\quad \lambda \in \K\ ,\quad x \in E\ ,
+    $$
+    因此 \hyperref[ax:norm]{$(\mathrm N_2)$} 成立. 由 Cauchy-Schwarz 不等式可得
+    $$
+    |\langle x,y \rangle| \leq \sqrt{\langle x,x \rangle \langle y,y \rangle} = \|x\| \, \|y\|\ ,\quad x,y \in E\ ,
+    $$
+    于是
+    \begin{align*}
+        \|x + y\|^2 &= \langle x+y, x+y \rangle \\
+        &= \langle x,x \rangle + 2 \Re\langle x,y \rangle + \langle y,y \rangle \\
+        &\leq \langle x,x \rangle + 2 \, |\langle x,y \rangle| + \langle y,y \rangle \\
+        &\leq \|x\|^2 + 2 \, \|x\| \, \|y\| + \|y\|^2 = (\|x\| + \|y\|)^2\ ,\quad x,y \in E\ ,
+    \end{align*}
+    即 $\|x + y\| \leq \|x\| + \|y\|$, 最后 \hyperref[ax:norm]{$(\mathrm N_3)$} 成立.
+\end{proof}
+
+\begin{center}
+    \kaishu 除非另有说明, 否则默认内积空间 $\bigl(E, \langle \cdot, \cdot \rangle\bigr)$ 是赋予了诱导范数的赋范向量空间.
+\end{center}
+
+利用诱导范数, 我们可以将定理 \ref{thm:cauchy-schwarz-inequality} 的 Cauchy-Schwarz 不等式改写为如下形式.
+
+\begin{corollary}
+    设 $\bigl(E, \langle \cdot, \cdot \rangle\bigr)$ 是内积空间. 则
+    $$
+    |\langle x,y \rangle| \leq \|x\| \, \|y\|\ ,\quad x,y \in E\ ,
+    $$
+    其中等号成立当且仅当 $x$ 和 $y$ 线性相关.
+\end{corollary}
