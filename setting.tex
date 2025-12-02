@@ -50,69 +50,11 @@
 }{
     \popQED\endtrivlist\@endpefalse
 }
-%====================================
-% set 集合指令
-%====================================
-\newcommand{\set}{
-    \@ifstar\set@star\set@nostar
-}
-% --------- 无 * ---------
-\newcommand{\set@nostar}{
-    \@ifnextchar[\set@nostar@opt\set@nostar@noopt
-}
-% --------- 无 * 无 [] ---------
-\newcommand{\set@nostar@noopt}[1]{
-    \@ifnextchar\bgroup{\set@nostar@noopt@two{#1}}{\set@nostar@noopt@one{#1}}
-}
-\newcommand{\set@nostar@noopt@one}[1]{
-    \{\,#1\,\}
-}
-\newcommand{\set@nostar@noopt@two}[2]{
-    \{\,#1 \;;\; #2\,\}
-}
-% --------- 无 * 有 [] ---------
-\def\set@nostar@opt[#1]#2{
-    \set@LR{#1}
-    \@ifnextchar\bgroup{\set@nostar@opt@two{#2}}{\set@nostar@opt@one{#2}}
-}
-\def\set@LR#1{
-    \def\set@L{\{}
-    \def\set@R{\}}
-    \ifx#1\big
-        \def\set@L{\bigl\{}
-        \def\set@R{\bigr\}}
-    \else\ifx#1\Big
-        \def\set@L{\Bigl\{}
-        \def\set@R{\Bigr\}}
-    \else\ifx#1\bigg
-        \def\set@L{\biggl\{}
-        \def\set@R{\biggr\}}
-    \else\ifx#1\Bigg
-        \def\set@L{\Biggl\{}
-        \def\set@R{\Biggr\}}
-    \fi\fi\fi\fi
-}
-\def\set@nostar@opt@one#1{
-    \set@L\,#1\,\set@R
-}
-\def\set@nostar@opt@two#1#2{
-    \set@L\,#1 \;;\; #2\,\set@R
-}
-% --------- 有 * ---------
-\newcommand{\set@star}[1]{
-    \@ifnextchar\bgroup{\set@star@two{#1}}{\set@star@one{#1}}
-}
-\newcommand{\set@star@one}[1]{
-    \left\{\,#1\,\right\}
-}
-\newcommand{\set@star@two}[2]{
-    \left\{\,#1 \;;\; #2\,\right\}
-}
 \makeatother
 
-\newcommand{\e}{\mathrm e} % 自然常数
-\newcommand{\ii}{\mathrm i} % 虚数单位
-\newcommand{\dd}{\mathop{}\!\mathrm d} % 微分算子
+\newcommand{\ee}{e} % 自然常数
+\newcommand{\ii}{i} % 虚数单位
+\newcommand{\dd}{\mathop{}\! d} % 微分算子
 \newcommand{\K}{\mathbb K} % 数域
 \newcommand{\N}{\mathbb N} % 自然数集
 \newcommand{\Z}{\mathbb Z} % 整数集
@@ -129,39 +71,37 @@
 \newcommand{\cnbr}{\mathcal F} % 闭邻域族
 \newcommand{\basis}{\mathcal B} % 拓扑基
 \newcommand{\subbasis}{\mathcal S} % 拓扑子基
-\newcommand{\borel}{\mathcal B} % Borel sigma-代数
-\newcommand{\lbg}{\mathcal L} % Lebesgue sigma-代数
 \newcommand{\mat}{\bm} % 矩阵和向量
 \newcommand{\pto}{\xlongrightarrow{p}} % 依概率收敛
 \newcommand{\dto}{\xlongrightarrow{d}} % 依分布收敛
-\newcommand{\Funct}{\mathrm{Funct}} % 函数集合
-\newcommand{\Hom}{\mathrm{Hom}} % 同态
-\newcommand{\End}{\mathrm{End}} % 自同态
-\newcommand{\Iso}{\mathrm{Iso}} % 同构
-\newcommand{\Aut}{\mathrm{Aut}} % 自同构
 \renewcommand{\implies}{\Longrightarrow} % 蕴含
 \renewcommand{\impliedby}{\Longleftarrow} % 被蕴含
 \renewcommand{\iff}{\Longleftrightarrow} % 等价
-\DeclareMathOperator{\im}{\mathrm{im}} % 像
-\DeclareMathOperator{\range}{\mathrm{ran}} % 值域
-\DeclareMathOperator{\id}{\mathrm{id}} % 恒同映射
-\DeclareMathOperator{\diam}{\mathrm{diam}} % 集合的直径
-\DeclareMathOperator{\vol}{\mathrm{vol}} % 体积
-\DeclareMathOperator{\supp}{\mathrm{supp}} % 支撑集
-\DeclareMathOperator{\nullity}{\mathrm{null}} % 零化度
-\DeclareMathOperator{\rank}{\mathrm{rk}} % 秩
-\DeclareMathOperator{\trace}{\mathrm{tr}} % 迹
-\DeclareMathOperator{\adj}{\mathrm{adj}} % 伴随
-\DeclareMathOperator{\spec}{\mathrm{spec}} % 谱
-\DeclareMathOperator{\var}{\mathrm{var}} % 方差
-\DeclareMathOperator{\cov}{\mathrm{cov}} % 协方差
+\DeclareMathOperator{\im}{im} % 像
+\DeclareMathOperator{\ran}{ran} % 值域
+\DeclareMathOperator{\id}{id} % 恒同映射
+\DeclareMathOperator{\diam}{diam} % 集合的直径
+\DeclareMathOperator{\vol}{vol} % 体积
+\DeclareMathOperator{\supp}{supp} % 支撑集
+\DeclareMathOperator{\nullity}{null} % 零化度
+\DeclareMathOperator{\rank}{rk} % 秩
+\DeclareMathOperator{\trace}{tr} % 迹
+\DeclareMathOperator{\adj}{adj} % 伴随
+\DeclareMathOperator{\spec}{spec} % 谱
+\DeclareMathOperator{\var}{var} % 方差
+\DeclareMathOperator{\cov}{cov} % 协方差
 \let\oldRe\Re
 \let\Re\relax
 \DeclareMathOperator{\Re}{\oldRe} % 实部
 \let\oldIm\Im
 \let\Im\relax
 \DeclareMathOperator{\Im}{\oldIm} % 虚部
-\DeclareMathOperator{\Span}{\mathrm{span}} % 张成
+\DeclareMathOperator{\Funct}{Funct} % 函数集合
+\DeclareMathOperator{\Hom}{Hom} % 同态
+\DeclareMathOperator{\End}{End} % 自同态
+\DeclareMathOperator{\Iso}{Iso} % 同构
+\DeclareMathOperator{\Aut}{Aut} % 自同构
+\DeclareMathOperator{\Span}{span} % 张成
 \DeclareMathOperator*{\overlim}{\overline{\lim}} % 上极限
 \DeclareMathOperator*{\underlim}{\underline{\lim}} % 下极限
 
