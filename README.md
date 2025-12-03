@@ -71,6 +71,7 @@ Section 3 Normed Vector Spaces
           Convergence in Product Spaces
 
           Exercises                      12  2, 25
+          Exercises                      12  3, 25
 
 Section 4 Monotones Sequences 
 Section 5 Infinite Limits
