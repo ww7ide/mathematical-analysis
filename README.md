@@ -72,6 +72,7 @@ Section 3 Normed Vector Spaces
 
           Exercises                      12  2, 25
           Exercises                      12  3, 25
+          Exercises                      12  4, 25
 
 Section 4 Monotones Sequences 
 Section 5 Infinite Limits

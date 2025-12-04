@@ -1,5 +1,11 @@
 .DS_Store
 desktop.ini
+
 *.tex
 *.synctex.gz
-*.png
+
+analysis i.pdf
+analysis ii.pdf
+analysis iii.pdf
+cover.png
+logo.png
