@@ -935,7 +935,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     特别的, 对于每个多项式 \(p\), 数列 \(\bigl(p(x_n)\bigr)\) 都收敛到 \(p(a)\).
 \end{exercise}
 
-\begin{exercise}
+\begin{exercise}\label{ex:sequence-power-equal-limit-power}
     设 \((x_n)\) 是 \((0, \infty)\) 中的收敛数列且以 \(x \in (0, \infty)\) 为极限. 证明
     \[
         \lim_{n \to \infty} (x_n)^r = x^r\quad (r \in \Q)\ .
@@ -1346,7 +1346,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
     设 \(x\) 和 \(y\) 线性相关. 则存在 \((\alpha, \beta) \in \K^2 \!\setminus\! \{0\}\) 使得 \(\alpha x + \beta y = 0\). 假设 \(\alpha \neq 0\), 则 \(x = - (\beta / \alpha) y\), 于是
     \[
-        |\langle x, y \rangle|^2 = \biggl|\Bigl\langle - \frac{\beta}{\alpha} y, y \Bigr\rangle\biggr|^2 = \Bigl|\frac{\beta}{\alpha}\Bigr|^2 \langle y, y \rangle^2 = \Bigl\langle - \frac{\beta}{\alpha} y, - \frac{\beta}{\alpha} y \Bigr\rangle \langle y, y \rangle = \langle x, x \rangle \langle y, y \rangle\ ,\quad x, y \in E\ ,
+        |\langle x, y \rangle|^2 = \Bigl|\Bigl\langle - \frac{\beta}{\alpha} y, y \Bigr\rangle\Bigr|^2 = \Bigl|\frac{\beta}{\alpha}\Bigr|^2 \langle y, y \rangle^2 = \Bigl\langle - \frac{\beta}{\alpha} y, - \frac{\beta}{\alpha} y \Bigr\rangle \langle y, y \rangle = \langle x, x \rangle \langle y, y \rangle\ ,\quad x, y \in E\ ,
     \]
     假设 \(\beta \neq 0\), 同理可得.
 \end{proof}
@@ -1925,4 +1925,133 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 \begin{exercise}
     设 \(E\) 和 \(F\) 是赋范向量空间. 证明 \(B(E, F) \cap \Hom(E, F) = \{0\}\).
+\end{exercise}
+
+\newpage
+
+\section{单调数列}
+
+\(\R\) 中的任意数列, 即 \(s(\R) = \R^\N\) 中的任意元素都是有序集之间的函数. 在本节中, 我们将再次研究这种序结构与数列收敛性之间的关系. 更具体的, 我们将研究在例 \ref{eg:set-functions-monotone-and-bounded} 之前所定义的单调数列的收敛性. 因此, 若对于任意 \(n \in \N\) 都有 \(x_n \leq x_{n + 1}\) 则称数列 \((x_n)\) 是递增的 \footnote{对于递增 (或递减) 数列 \((x_n)\), 我们常记作 \((x_n) \uparrow\) (或 \((x_n) \downarrow\)). 进一步, 若 \((x_n)\) 收敛到 \(x\), 则将 \(x_n \to x\) 记作 \(x_n \uparrow x\) (或 \(x_n \downarrow x\)).}, 若对于任意 \(n \in \N\) 都有 \(x_n \geq x_{n + 1}\) 则称数列 \((x_n)\) 是递减的.
+
+\subsection{有界的单调数列}
+
+由 \(\R\) 的完备性可知, 每个有界的单调数列都是收敛的.
+
+\begin{theorem}[单调有界收敛定理]\label{thm:bounded-monotone-sequences-is-convergent}
+    \(\R\) 中每个递增的 (或递减的) 有界数列 \((x_n)\) 都收敛, 且
+    \[
+        x_n \uparrow \sup\{\, x_n \;;\; n \in \N \,\}\quad \bigl(\text{或}\ x_n \downarrow \inf\{\, x_n \;;\; n \in \N \,\}\bigr)\ .
+    \]
+\end{theorem}
+
+\begin{proof}
+    设 \((x_n)\) 是递增的有界数列. 则 \(X \coloneqq \{\, x_n \;;\; n \in \N \,\}\) 是有界的且非空. 由于 \(\R\) 是序完备的, 因此 \(x \coloneqq \sup X\) 是良定义的. 任取 \(\varepsilon > 0\). 由命题 \ref{prop:supremum-and-infimum-in-R} 可知, 存在 \(N \in \N\) 使得 \(x_N > x - \varepsilon\). 而 \((x_n)\) 是递增的, 因此当 \(n \geq N\) 时 \(x_n \geq x_N > x - \varepsilon\), 于是
+    \[
+        x_n \in (x - \varepsilon, x) \subseteq (x - \varepsilon, x + \varepsilon) = \B(x, \varepsilon)\ ,\quad n \geq N\ .
+    \]
+    故 \(x_n \uparrow x\).
+
+    若 \((x_n)\) 是递减的有界数列, 令 \(x \coloneqq \inf\{\, x_n \;;\; n \in \N \,\}\). 则 \((y_n) \coloneqq (- x_n)\) 是递增的有界数列, 且 \(- x = \sup\{\, y_n \;;\; n \in \N \,\}\). 由上面的结论可知 \(y_n \uparrow - x\), 于是由命题 \ref{prop:addition-scalar-multiplication-in-c} 可知 \(x_n \downarrow x\).
+\end{proof}
+
+在命题 \ref{prop:convergent-sequence-is-bounded} 中我们已经看到, 有界性是数列收敛的必要条件. 但定理 \ref{thm:bounded-monotone-sequences-is-convergent} 表明, 对于单调数列而言, 有界性是其收敛的充分条件. 当然, 收敛数列并不一定是单调的, 例如无穷小量 \((- 1)^n / n\) 就说明了这一点.
+
+\subsection{一些重要极限}
+
+\begin{example}
+    \begin{enumerate}
+        \item 设 \(a \in \K\). 则
+        \[
+            \lim_{n \to \infty} a^n =
+            \begin{cases}
+                & 0\ , & |a| < 1\ , \\
+                & 1\ , & a = 1\ .
+            \end{cases}
+        \]
+        特别的, 若 \(|a| \geq 1\) 且 \(a \neq 1\), 则 \((a^n)\) 发散.
+    \end{enumerate}
+\end{example}
+
+\subsection{练习}
+
+\begin{exercise}
+    设 \(a_1, \ldots, a_k > 0\). 证明
+    \[
+        \lim_{n \to \infty} \sqrt[n]{a_1^n + \cdots + a_k^n} = \max\{a_1, \ldots, a_k\}\ .
+    \]
+\end{exercise}
+
+\begin{proof}
+    令 \(a \coloneqq \max\{a_1, \ldots, a_k\}\). 于是
+    \[
+        a = \sqrt[n]{a^n} \leq \sqrt[n]{a_1^n + \cdots + a_k^n} \leq \sqrt[n]{n a^n} = a \sqrt[n]{n}\ ,\quad n \in \N\ ,
+    \]
+    注意到 \(\sqrt[n]{n} \to 1\), 因此由夹逼定理可知 \(\sqrt[n]{a_1^n + \cdots + a_k^n} \to a\).
+\end{proof}
+
+\begin{exercise}\label{ex:e-limit-variant-1}
+    证明
+    \[
+        \lim_{n \to \infty} \Bigl(1 - \frac{1}{n}\Bigr)^n = \frac{1}{e}\ .
+    \]
+    (提示: 考虑 \(\lim (1 - 1 / n^2)^n = 1\) 并利用命题 \ref{prop:division-in-c}.)
+\end{exercise}
+
+\begin{proof}
+    先证明 \(\lim (1 - 1 / n^2)^n = 1\). 利用二项式定理有
+    \[
+        0 \leq \Bigl|\Bigl(1 - \frac{1}{n^2}\Bigr)^n - 1\Bigr| = \Bigl|\sum_{k = 0}^n \binom{n}{k} \Bigl(- \frac{1}{n^2}\Bigr)^k - 1\Bigr| \leq \sum_{k = 1}^n \binom{n}{k} \frac{1}{n^{2 k}} = \frac{1}{n} + \sum_{k = 2}^n \binom{n}{k} \frac{1}{n^{2 k}}\ ,
+    \]
+    其中
+    \[
+        \sum_{k = 2}^n \binom{n}{k} \frac{1}{n^{2 k}} \leq \sum_{k = 2}^n \frac{n^k}{k!} \frac{1}{n^{2 k}} = \sum_{k = 2}^n \frac{1}{k!\, n^k} \leq \sum_{k = 2}^n \frac{1}{n^2} \leq \frac{1}{n} \to 0\ ,
+    \]
+    于是由夹逼定理可知
+    \[
+    \Bigl|\Bigl(1 - \frac{1}{n^2}\Bigr)^n - 1\Bigr| \to 0\ ,
+    \]
+    即 \((1 - 1 / n^2)^n \to 1\). 由于 \((1 + 1 / n)^n \to e\), 因此 \((1 + 1 / n)^{-n} \to 1 / e\), 于是
+    \[
+        \frac{(1 - 1 / n^2)^n}{(1 + 1 / n)^n} = \Bigl(\frac{n^2 - 1}{n^2}\Bigr)^n \Big/ \Bigl(\frac{n + 1}{n}\Bigr)^n = \Bigl(\frac{n - 1}{n}\Bigr)^n = \Bigl(1 - \frac{1}{n}\Bigr)^n \to \frac{1}{e}\ .
+    \]
+\end{proof}
+
+\begin{exercise}
+    证明
+    \[
+        \lim_{n \to \infty} \Bigl(1 + \frac{r}{n}\Bigr)^n = e^r\quad (r \in \Q).
+    \]
+    (提示: 分别考虑 \(r > 0\) 和 \(r < 0\) 的情况. 并利用练习 \ref{ex:e-limit-variant-1} 和练习 \ref{ex:sequence-power-equal-limit-power}.)
+\end{exercise}
+
+\begin{exercise}[Heron 算法]
+    设 \(a \in (0, \infty)\), 递归定义实数列
+    \[
+        x_0 \geq a\ ,\quad x_{n + 1} \coloneqq \frac{x_n + a / x_n}{2}\ ,\quad n \in \N\ .
+    \]
+    证明 \((x_n)\) 收敛到 \(\sqrt{a}\).
+\end{exercise}
+
+\begin{proof}
+    由算术-几何平均值不等式可得
+    \[
+        x_{n + 1} = \frac{x_n + a / x_n}{2} \geq \sqrt{x_n \frac{a}{x_n}} = \sqrt{a}\ ,\quad n \in \N\ ,
+    \]
+    于是
+    \[
+        x_n - x_{n + 1} = x_n - \frac{x_n + a / x_n}{2} = \frac{x_n - a / x_n}{2} = \frac{x_n^2 - a}{2 x_n} \geq 0\ ,\quad n \in \N^\ast\ ,
+    \]
+    因此 \((x_n)_{n \in \N^\ast}\) 是递减的且显然 \(0\) 是其下界, 故由单调有界收敛定理可知 \((x_n)\) 收敛. 设 \(x_n \to x\). 于是
+    \[
+        x = \lim x_{n + 1} = \lim \frac{x_n + a / x_n}{2} = \frac{x + a / x}{2}\ ,
+    \]
+    解得 \(x = \pm \sqrt{a}\), 而 \(0\) 是下界, 故 \(x_n \to \sqrt{a}\).
+\end{proof}
+
+\begin{exercise}
+    设 \(a, x_0 \in (0, \infty)\), 递归定义实数列
+    \[
+        x_{n + 1} \coloneqq \frac{a}{1 + x_n}\ ,\quad n \in \N\ .
+    \]
+    证明 \((x_n)\) 收敛并计算其极限.
 \end{exercise}

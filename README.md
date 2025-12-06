@@ -78,7 +78,8 @@ Section 4 Monotones Sequences
           Bounded Monotone Sequences     12  5, 25
           Some Important Limits
 
-          Some Important Limits
+          Some Important Limits          12  6, 25
+          Exercises
 
 Section 5 Infinite Limits
 Section 6 Completeness
