@@ -1,0 +1,1928 @@
+\chapter{收敛性}
+
+从本章开始, 我们终于进入分析的领域. 数学的这一分支在很大程度上是建立在 ``收敛'' 这一概念之上的. 借助收敛, 我们在某种意义上得以把无穷多个数 (或向量) ``加'' 在一起. 能够处理这样的无限运算, 正是分析与代数之间本质区别之所在.
+
+试图把关于数列收敛的朴素想法加以公理化, 会自然地引出 ``距离''、``点的邻域'' 以及 ``度量空间'' 等概念---这正是第 1 节的主题. 在数列这一特殊情形中, 我们可以利用数域 \(\K\) 的向量空间结构, 对这种情形下各种证明的分析表明: 只要有某种类似 ``绝对值'' 的概念可用, 其中大多数证明都可以推广到向量空间中的向量序列. 于是我们很自然地被引向去定义 ``赋范向量空间''---度量空间中一个尤其重要的类别.
+
+在所有赋范向量空间中, 内积空间由于其结构更为丰富而显得格外重要, 并且它们的几何性质与我们熟悉的平面 Euclid 几何非常相似. 事实上, 在初等分析中, 最重要的一类内积空间就是 \(m\)-维 Euclid 空间 \(\R^m\) 和 \(\C^m\).
+
+在第 4 和第 5 节中, 我们回到最简单的情形, 也就是在 \(\R\) 中的收敛问题. 借助实数的序结构, 尤其是 \(\R\) 的序完备性, 我们推导出第一批 ``具体的收敛判别准则''. 这些准则使我们能够求出许多重要数列的极限. 除此之外, 我们还将从 \(\R\) 的序完备性出发, 得到一个根本性的存在性原理---Bolzano-Weierstrass 定理.
+
+第 6 节专门讨论度量空间中的 ``完备性'' 概念. 将这一概念限制到赋范向量空间, 就得到了 ``Banach 空间'' 的定义. 这类空间最基本的例子就是 \(\K^m\), 但我们还将说明: 有界函数构成的函数空间也是 Banach 空间.
+
+Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心地位. 即便如此, 它们的结构仍然足够简单, 使得初学者可以在不太费力的情况下, 从理解实数自然过渡到理解 Banach 空间. 再者, 对这些空间的较早引入, 也使得我们在后面章节中能够给出简洁而优美的证明.
+
+为了内容的完整性, 也为了读者整体 (数学) 素养的培养, 我们在第 6 节中给出 Cantor 关于 ``序完备的有序域存在性'' 的证明, 这个证明是通过对 \(\Q\) 进行 ``完备化'' 而得到的.
+
+在本章余下的各节中, 我们将讨论级数的收敛性. 在第 7 节里, 我们会学习级数的基本性质, 并讨论若干最重要的例子. 这样一来, 我们就能够研究实数的十进制表示以及其他形式的表示, 从而证明实数集是不可数集.
+
+在所有收敛级数当中, 绝对收敛的级数具有尤为重要的地位. 绝对收敛往往比较容易判别, 这类级数在运算与处理上也相对简单. 此外, 在实际应用中许多重要的级数都是绝对收敛的. 对于本章最后一节将要引入和研究的幂级数, 这一点尤为明显. 其中最重要的例子是指数级数, 它的重要性将在后续章节中逐渐显现出来.
+
+\newpage
+
+\section{序列的收敛性}
+
+在本节中, 我们考虑定义在自然数集上的函数, 因此这类函数只会取到可数多个值. 对这样的函数 \(\varphi \colon \N \to X\), 我们特别关心的是它在 ``当 \(n\) 趋于无穷大时'' 各个取值 \(\varphi(n)\) 的行为. 由于我们实际上只能对 \(\varphi\) 进行有限次求值, 也就是说, 我们永远不可能真正 ``到达无穷大'', 因此必须发展出一些方法, 使我们能够对 ``靠近无穷远处'' 的无穷多个函数值建立命题并加以证明. 这样的方法就构成了收敛序列的理论, 本节将对其进行介绍.
+
+\subsection{序列}
+
+\begin{definition}[序列]
+    设 \(X\) 是集合. 称函数
+    \[
+        \varphi \colon \N \to X
+    \]
+    是 \(X\) 中的序列, 记作
+    \[
+        (x_n)\ ,\quad (x_n)_{n \in \N}\quad \text{或}\quad (x_0, x_1, x_2, \ldots)\ ,
+    \]
+    并称
+    \[
+        x_n \coloneqq \varphi(n)
+    \]
+    是序列的第 \(n\) 项.
+\end{definition}
+
+\begin{definition}[数列]
+    \(\K\) 中的序列称为数列. 进一步, 将 \(\K\) 中的所有数列记作 \(s \coloneqq s(\K) \coloneqq \K^\N\), 于是 \(s\) 构成了 \(\K\)-向量空间 (见例 \ref{eg:vector-spaces}.5). 最后, \(\R\) 中的数列称为实数列, \(\C\) 中的数列称为复数列.
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 区分序列 \((x_n)\) 和它的像 \(\{\, x_n \;;\; n \in \N \,\}\) 是很重要的. 例如, 若对于任意 \(n\) 有 \(x_n = x\), 也就是说 \((x_n)\) 是一个常序列, 此时 \((x_n) = (x, x, x, \ldots)\), 而 \(\{\, x_n \;;\; n \in \N \,\}\) 是单点集 \(\{x\}\).
+        \item 设 \((x_n)\) 是 \(X\) 中的序列, \(E\) 是某个性质. 称 \(E\) 对 \((x_n)\) 的几乎所有项都成立, 若存在 \(m \in \N\) 使得当 \(n \geq m\) 时命题 \(E(x_n)\) 都成立. 也就是说, 除了至多有限多个 \(x_n\) 以外, \(E\) 对其余所有 \(x_n\) 都成立. 当然, \(E\) 也可以对若干个 (甚至全部) \(n < m\) 的项成立. 若存在 \(N \subseteq \N\) 满足 \(|N| = \aleph_0\) 且 \(E(x_n)\) 对于所有 \(n \in N\) 都成立, 则称 \(E\) 对 \((x_n)\) 的无穷多项都成立. 例如, 实数列
+        \[
+            \Bigl(- 5, 4, - 3, 2, - 1, 0, - \frac{1}{2}, \frac{1}{3}, - \frac{1}{4}, \frac{1}{5}, \ldots, - \frac{1}{2 n}, \frac{1}{2 n + 1}, \ldots\Bigr)
+        \]
+        有无穷多个正项, 无穷多个负项, 并且对于几乎所有项都有其绝对值小于 \(1\).
+        \item 对于任意 \(m \in \N^\ast\), 函数
+        \[
+            \psi \colon m + \N \to X
+        \]
+        也称为 \(X\) 中的序列。也就是说,
+        \[
+            (x_j)_{j \geq m} = (x_m, x_{m + 1}, x_{m + 2}, \ldots)
+        \]
+        是 \(X\) 中的序列, 尽管其下标不是从 \(0\) 开始. 这种约定是合理的, 因为通过映射
+        \[
+            \N \to m + \N\ ,\quad n \mapsto m + n
+        \]
+        对下标进行 ``重新编号'' 之后, 这个 ``平移后的序列'' \((x_j)_{j \geq m}\) 就可以与通常意义下的序列 \((x_{m + k})_{k \in \N} \in X^{\N}\) 对应起来.
+    \end{enumerate}
+\end{remark}
+
+如果把复数列 \((z_n)_{n \geq 1}\) 的前几项画在复平面上, 其中 \(z_n \coloneqq (1 - 1 / n)(1 + i)\), 就会发现: 当 \(n\) 增大时, 这些点 \(z_n\) 会 ``任意接近'' \(z \coloneqq 1 + i\). 换句话说, 随着 \(n\) 的增大, \(z_n\) 到 \(z\) 的距离会变得 ``任意小''. 本节的目标, 就是把我们对于这类数列收敛的直观几何想法加以公理化, 使之能够推广应用到向量空间中的序列, 以及更抽象的集合中的序列上.
+
+\begin{center}
+    \begin{tikzpicture}
+        \draw[->] (-0.5, 0) -- (4, 0) node[right] {\(\R\)};
+        \draw[->] (0, -0.5) -- (0, 4) node[above] {\(i \R\)};
+        \fill (0, 0) circle (1.5pt) node[below right] {\(z_1\)};
+        \fill (1.75, 1.75) circle (1.5pt) node[below right] {\(z_2\)};
+        \fill (2.1, 2.1) circle (1.5pt) node[below right] {\(z_3\)};
+        \fill (2.4, 2.4) circle (1.5pt) node[below right] {\(z_4\)};
+        \foreach \x/\y in {2.6/2.6, 2.7/2.7, 3.2/3.2, 3.3/3.3} \fill (\x, \y) circle (1pt);
+        \fill (3.5, 3.5) circle (1.5pt) node[below right] {\(z\)};
+    \end{tikzpicture}
+\end{center}
+
+首先我们要意识到, ``距离'' 这一概念居于核心地位. 在数域 \(\K\) 中, 我们可以借助绝对值函数来确定两点之间的距离. 若要研究某个任意集合 \(X\) 中序列的收敛性, 我们首先需要在 \(X\) 上赋予一种结构, 使得可以在 \(X\) 的任意两个元素之间定义 ``距离''.
+
+\subsection{度量空间}
+
+\begin{axiom}[度量]\label{ax:metric}
+    设 \(X\) 是集合, 其上定义了函数
+    \[
+        d \colon X \times X \to \R\ ,\quad (x, y) \mapsto d(x, y)\ .
+    \]
+    若对于任意 \(x, y, z \in X\) 都有
+    \begin{enumerate}[label={\((\mathrm M_{\arabic*})\)}]
+        \item (正定性) \(d(x, y) \geq 0\), 其中 \(d(x, y) = 0\) 当且仅当 \(x = y\).
+        \item (对称性) \(d(x, y) = d(y, x)\).
+        \item (三角不等式) \(d(x, y) \leq d(x, z) + d(z, y)\).
+    \end{enumerate}
+    则称 \(d\) 是 \(X\) 上的度量. 进一步, 称 \((X, d)\) 是度量空间.
+\end{axiom}
+
+当度量在上下文中明确时, 我们把 \((X, d)\) 简写为 \(X\). 最后, 我们称 \(d(x, y)\) 是度量空间 \(X\) 中点 \(x\) 和 \(y\) 之间的距离.
+
+\hyperref[ax:metric]{\((\mathrm M_1)\)}-\hyperref[ax:metric]{\((\mathrm M_3)\)} 显然是对 ``距离函数'' 非常自然的要求. 举例来说, \hyperref[ax:metric]{\((\mathrm M_3)\)} 可以被看作这样一条规则的公理化表述: ``从 \(x\) 到 \(y\) 的 `直达路径' 比先从 \(x\) 到 \(z\) 再从 \(z\) 到 \(y\) 的路径更短''.
+
+\begin{definition}[开球和闭球]
+    设 \((X, d)\) 是度量空间, \(a \in X\), \(r > 0\). 称集合
+    \[
+        \B(a, r) \coloneqq \{\, x \in X \;;\; d(x, a) < r \,\}
+    \]
+    是以 \(a\) 为中心, \(r\) 为半径的开球. 并称集合
+    \[
+        \bar \B(a, r) \coloneqq \{\, x \in X \;;\; d(x, a) \leq r \,\}
+    \]
+    是以 \(a\) 为中心, \(r\) 为半径的闭球.
+\end{definition}
+
+\begin{example}\label{eg:metric}
+    \begin{enumerate}
+        \item 函数
+        \[
+            |\!\cdot\!| \colon \K \times \K \to \R\ ,\quad (x, y) \mapsto |x - y|
+        \]
+        是 \(\K\) 上的度量, 称为自然度量.
+    \end{enumerate}
+
+    \begin{center}
+        \kaishu 除非另有说明, 否则默认 \(\K\) 是赋予了自然度量的度量空间.
+    \end{center}
+
+    \begin{enumerate}[start=2]
+        \item 设 \((X, d)\) 是度量空间, \(Y\) 是 \(X\) 的非空子集. 则 \(d\) 在 \(Y \times Y\) 上的限制 \(d_Y \coloneqq d|_{Y \times Y}\) 是 \(Y\) 上的度量, 称为诱导度量. 进一步, 称 \((Y, d_Y)\) 是 \((X, d)\) 的子空间. 在不会引起混淆的情况下, 我们往往直接写 \(d\), 而不特别区分 \(d_Y\).
+        \item \(\C\) 的任意非空子集, 在从 \(\C\) 的自然度量诱导出来的度量之下, 都是度量空间. 以这种方式在 \(\R\) 上得到的度量, 正好就是在例 \ref{eg:metric}.1 中定义的那个自然度量.
+        \item 设 \(X\) 是非空集合. 则函数
+        \[
+            d \colon X \times X \to \R\ ,\quad (x, y) \mapsto
+            \begin{cases}
+                & 1\ , & x \neq y\ , \\
+                & 0\ , & x = y\ ,
+            \end{cases}
+        \]
+        是 \(X\) 上的度量, 称为离散度量.
+        \item 设 \((X_j, d_j),\ 1 \leq j \leq m\) 是度量空间, \(X \coloneqq X_1 \times \cdots \times X_m\). 则函数
+        \[
+            d(x, y) \coloneqq \max_{1 \leq j \leq m} d_j(x_j, y_j)\ ,\quad x, y \in X
+        \]
+        是 \(X\) 上的度量, 称为积度量. 进一步, 称 \((X, d)\) 是 \((X_j, d_j)\) 的积空间. 可以验证, 对于任意 \(a \in X\) 和 \(r > 0\) 都有
+        \[
+            \B_X(a, r) = \prod_{j = 1}^m \B_{X_j}(a_j, r)\ ,\quad \bar \B_X(a, r) = \prod_{j = 1}^m \bar \B_{X_j}(a_j, r)\ .
+        \]
+    \end{enumerate}
+\end{example}
+
+\begin{proof}
+    1. 由命题 \ref{prop:abs-in-Q} 可以直接验证 \(|\!\cdot\!|\) 满足度量公理.
+\end{proof}
+
+度量公理的一个重要结论是反三角不等式 (见推论 \ref{cor:reversed-triangle-inequality-in-Q}).
+
+\begin{proposition}[反三角不等式]\label{prop:reversed-triangle-inequality-in-metric-space}
+    设 \((X, d)\) 是度量空间. 则
+    \[
+        d(x, y) \geq |d(x, z) - d(z, y)|\ ,\quad x, y, z \in X\ .
+    \]
+\end{proposition}
+
+\begin{proof}
+    设 \(x, y, z \in X\). 由 \(d(x, z) \leq d(x, y) + d(y, z)\) 可得
+    \[
+        d(x, y) \geq d(x, z) - d(z, y)\ ,
+    \]
+    交换 \(x\) 和 \(y\) 可得
+    \[
+        d(x, y) = d(y, x) \geq d(y, z) - d(z, x) = -\bigl(d(x, z) - d(z, y)\bigr)\ ,
+    \]
+    即 \(d(x, y) \geq |d(x, z) - d(z, y)|\).
+\end{proof}
+
+\begin{definition}[邻域]
+    设 \(X\) 是度量空间, \(U \subseteq X\), \(a \in X\). 若存在 \(r > 0\) 使得 \(\B(a, r) \subseteq U\), 则称 \(U\) 是 \(a\) 的邻域. 进一步, 将 \(a\) 的邻域的全体记作
+    \[
+    \nbr(a) \coloneqq \{\, U \subseteq X \;;\; U\ \text{是}\ a\ \text{的邻域} \,\}\ .
+    \]
+\end{definition}
+
+\begin{example}
+    设 \(X\) 是度量空间, \(a \in X\).
+    \begin{enumerate}
+        \item 对于每个 \(\varepsilon > 0\), \(\B(a, \varepsilon)\) 和 \(\bar \B(a, \varepsilon)\) 都是 \(a\) 的邻域, 称为 \(a\) 的开 \(\varepsilon\)-邻域 和闭 \(\varepsilon\)-邻域.
+        \item 显然 \(X \in \nbr(a)\). 若 \(U_1, U_2 \in \nbr(a)\), 则 \(U_1 \cap U_2\) 和 \(U_1 \cup U_2\) 也是 \(a\) 的邻域. 任意包含了 \(a\) 的邻域的集合同样是 \(a\) 的邻域.
+        \item 设 \(X \coloneqq [0, 1]\) 赋予了在 \(\R\) 上诱导的度量. 则 \([1 / 2, 1]\) 是 \(1\) 的邻域, 但不是 \(1 / 2\) 的邻域.
+    \end{enumerate}
+\end{example}
+
+\begin{proof}
+    2. 设 \(U_1, U_2 \in \nbr(a)\). 故存在 \(r_1, r_2 > 0\) 使得 \(\B(a, r_1) \in U_1\)  和 \(\B(a, r_2) \in U_2\). 令 \(r = \min\{r_1, r_2\}\), 于是
+    \[
+        \B(a, r) \subseteq U_1 \cap U_2 \subseteq U_1 \cup U_2\ ,
+    \]
+    即 \(U_1 \cap U_2\) 和 \(U_1 \cup U_2\) 是 \(a\) 的邻域.
+\end{proof}
+
+\begin{center}
+    \kaishu 在本节的其余部分里, 设 \(X \coloneqq (X, d)\) 是度量空间, \((x_n)\) 是 \(X\) 中的序列.
+\end{center}
+
+\subsection{聚点}
+
+\begin{definition}[聚点]
+    称 \(a \in X\) 是 \((x_n)\) 的聚点, 若 \(a\) 的每个邻域都包含了 \((x_n)\) 的无穷多项.
+\end{definition}
+
+在讨论一些具体例子之前, 先给出下面这个关于聚点的刻画会对之后的讨论很有帮助.
+
+\begin{proposition}\label{prop:cluster-points-charact}
+    以下命题是等价的.
+    \begin{enumerate}
+        \item \(a\) 是 \((x_n)\) 的聚点.
+        \item 对于任意 \(U \in \nbr(a)\) 和 \(m \in \N\), 存在 \(n \geq m\) 使得 \(x_n \in U\).
+        \item 对于任意 \(\varepsilon > 0\) 和 \(m \in \N\), 存在 \(n \geq m\) 使得 \(x_n \in \B(a, \varepsilon)\).
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    由聚点的定义可以直接得到.
+\end{proof}
+
+\begin{example}
+    \begin{enumerate}
+        \item 实数列 \(\bigl((- 1)^n\bigr)\) 有两个聚点, \(1\) 和 \(- 1\).
+        \item 复数列 \((i^n)\) 有四个聚点, \(\pm 1\) 和 \(\pm i\).
+        \item 常序列 \((x, x, x, \ldots)\) 有唯一的聚点 \(x\).
+        \item 自然数序列 \((n)\) 没有聚点.
+        \item 设 \(\varphi \colon \N \to \Q\) 是双射 (由命题 \ref{prop:Q-is-countable} 可知这样的函数存在). 定义序列 \((x_n)\), 其中 \(x_n \coloneqq \varphi(n),\ n \in \N\). 则每个实数都是 \((x_n)\) 的聚点.
+    \end{enumerate}
+\end{example}
+
+\begin{proof}
+    5. 假设 \(a \in \R\) 不是 \((x_n)\) 的聚点. 由命题 \ref{prop:cluster-points-charact} 可知, 存在 \(\varepsilon > 0\) 和 \(m \in \N\), 使得
+    \[
+        x_n \notin \B(a, \varepsilon) = (a - \varepsilon, a + \varepsilon)\ ,\quad n \geq m\ .
+    \]
+    这意味着区间 \((a - \varepsilon, a + \varepsilon)\) 仅包含了有限多个有理数, 这与命题 \ref{prop:Q-density-in-R} 矛盾.
+\end{proof}
+
+\subsection{收敛性}
+
+\begin{definition}[收敛]
+    称序列 \((x_n)\) 收敛, 若存在 \(a \in X\) 使得 \(a\) 的任意邻域都包含了 \((x_n)\) 的几乎所有项. 记作
+    \[
+        \lim_{n \to \infty} x_n = a\quad \text{或}\quad x_n \to a\quad (n \to \infty)\ ,
+    \]
+    并称当 \(n\) 趋于无穷大时, \((x_n)\) 收敛到 \(a\) 或以 \(a\) 为极限. 若 \((x_n)\) 不收敛, 则称 \((x_n)\) 发散.
+\end{definition}
+
+这个定义中最核心的部分是要求: 极限的每个邻域都包含该序列的几乎所有项. 在 \(X = \K\) 的情形下, 这一要求正对应于那种 \(x_n\) 到 \(a\) 的距离 ``变得任意小'' 的几何直觉. 如果 \(a\) 是 \((x_n)\) 的聚点且 \(U\) 是 \(a\) 的邻域, 那么当然, \(U\) 会包含序列的无穷多项, 但同时也有可能序列的无穷多项也不落在 \(U\) 中.
+
+下一个命题是对收敛的等价刻画.
+
+\begin{proposition}\label{prop:convergent-sequence-charact}
+    以下命题是等价的.
+    \begin{enumerate}
+        \item \(\lim x_n = a\).
+        \item 对于任意 \(U \in \nbr(a)\), 存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(x_n \in U\).
+        \item 对于任意 \(\varepsilon > 0\), 存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(x_n \in \B(a, \varepsilon)\).
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    由收敛的定义可以直接得到.
+\end{proof}
+
+下面这些例子都比较简单. 对于更复杂的例子, 我们需要第 4 节发展出的那些方法.
+
+\begin{example}\label{eg:ez-convergent-sequence}
+    \begin{enumerate}
+        \item 设实数列 \((1 / n)_{n \in \N^\ast}\), 则 \(\lim 1 / n = 0\).
+        \item 设复数列 \((z_n)\), 其中
+        \[
+            z_n \coloneqq \frac{n + 2}{n + 1} + i \frac{2 n}{n + 2}\ ,
+        \]
+        则 \(\lim z_n = 1 + 2 i\).
+        \item 常序列 \((a, a, a, \ldots)\) 收敛到 \(a\).
+        \item 实数列 \(\bigl((- 1)^n\bigr)\) 发散.
+        \item 设 \(X\) 是度量空间 \((X_j, d_j),\ 1 \leq j \leq m\) 的积空间. 则序列 \((x_n) = \bigl((x_n^1, \ldots, x_n^m)\bigr)\) 收敛到点 \(a \coloneqq (a^1, \ldots, a^m) \in X\) 当且仅当对于每个 \(j \in \{1, \ldots, m\}\) 都有序列 \((x_n^j)\) 收敛到点 \(a^j \in X_j\).
+    \end{enumerate}
+\end{example}
+
+\begin{proof}
+    1. 任取 \(\varepsilon > 0\). 由推论 \ref{cor:archimedean-property-cor} 可知, 存在 \(N \in \N^\ast\) 使得 \(1 / N < \varepsilon\), 于是
+    \[
+        \frac{1}{n} \leq \frac{1}{N} < \varepsilon\ ,\quad n \geq N\ ,
+    \]
+    即当 \(n \geq N\) 时 \(1 / n \in \B(0, \varepsilon)\).
+
+    2. 任取 \(\varepsilon > 0\). 由推论 \ref{cor:archimedean-property-cor} 可知, 存在 \(N \in \N\) 使得 \(1 / N < \varepsilon / 8\), 此时有
+    \[
+        \Bigl(\frac{n + 2}{n + 1} - 1\Bigr)^2 = \Bigl(\frac{1}{n + 1}\Bigr)^2 < \frac{1}{N^2} < \frac{\varepsilon^2}{64} < \frac{\varepsilon^2}{2}\ ,\quad n \geq N\ ,
+    \]
+    和
+    \[
+        \Bigl(\frac{2 n}{n + 2} - 2\Bigr)^2 = \Bigl(\frac{4}{n + 2}\Bigr)^2 < \frac{16}{N^2} < \frac{\varepsilon^2}{4} < \frac{\varepsilon^2}{2}\ ,\quad n \geq N\ ,
+    \]
+    于是
+    \begin{align*}
+        |z_n - (1 + 2 i)| &= \Bigl|\frac{1}{n + 1} - i \frac{4}{n + 2}\Bigr| \\
+        &= \sqrt{\Bigl(\frac{1}{n + 1}\Bigr)^2 + \Bigl(- \frac{4}{n + 2}\Bigr)^2} < \sqrt{\frac{\varepsilon^2}{2} + \frac{\varepsilon^2}{2}} < \varepsilon\ ,\quad n \geq N\ ,
+    \end{align*}
+    即当 \(n \geq N\) 时 \(z_n \in \B\bigl((1 + 2 i), \varepsilon\bigr)\).
+
+    5. \(\implies\). 设 \((x_n)\) 收敛到点 \(a\). 则任取 \(\varepsilon > 0\), 存在 \(N \in \N\) 使得
+    \[
+        x_n = (x_n^1, \ldots, x_n^m) \in \B_X(a, \varepsilon) = \prod_{j = 1}^m \B_{X_j}(a^j, \varepsilon)\ ,\quad n \geq N\ ,
+    \]
+    即当 \(n \geq N\) 时, 对于每个 \(j\) 都有 \(x_n^j \in \B_{X_j}(a^j, \varepsilon)\).
+
+    \(\impliedby\). 设对于每个 \(j\) 都有 \((x_n^j)\) 收敛到点 \(a^j\). 任取 \(\varepsilon > 0\), 对于每个 \(j\) 都存在 \(N_j \in \N\) 使得当 \(n \geq N_j\) 时 \(x_n^j \in \B_{X_j}(a^j, \varepsilon)\). 令 \(N = \max_{1 \leq j \leq m} N_j\), 于是
+    \[
+        (x_n^1, \ldots, x_n^m) = x_n \in \prod_{j = 1}^m \B_{X_j}(a^j, \varepsilon) = \B_X(a, \varepsilon)\ ,\quad n \geq N\ .
+    \]
+
+    (见例 \ref{eg:metric}.5).
+\end{proof}
+
+\subsection{有界集合}
+
+\begin{definition}[有界集合]
+    称集合 \(Y \subseteq X\) 在 \(X\) 中 \(d\)-有界或有界, 若存在 \(M > 0\) 使得对于任意 \(x, y \in Y\) 都有 \(d(x, y) \leq M\). 进一步, 称
+    \[
+        \diam Y \coloneqq \sup_{x, y \in Y} d(x, y)
+    \]
+    是 \(Y\) 的直径. 最后, 称序列 \((x_n)\) 有界, 若它的像 \(\{\, x_n \;;\; n \in \N \,\}\) 有界.
+\end{definition}
+
+\begin{example}\label{eg:bounded-sets}
+    \begin{enumerate}
+        \item 对于任意 \(a \in X\) 和 \(r > 0\), \(\B(a, r)\) 和 \(\bar \B(a, r)\) 在 \(X\) 中有界.
+        \item 有界集合的每个子集都是有界的. 有界集合的有限并是有界的.
+        \item 集合 \(Y \subseteq X\) 在 \(X\) 中有界, 当且仅当存在 \(x \in X\) 和 \(r > 0\) 使得 \(Y \subseteq \B_X(x, r)\). 若 \(Y \neq \varnothing\), 则存在 \(x \in Y\) 也满足该性质.
+        \item 有界区间是有界的.
+        \item 集合 \(Y \subseteq \K\) 有界, 当且仅当存在 \(M > 0\) 使得对于任意 \(y \in Y\) 都有 \(|y| \leq M\).
+    \end{enumerate}
+\end{example}
+
+\begin{proposition}[有界性]\label{prop:convergent-sequence-is-bounded}
+    收敛序列必有界.
+\end{proposition}
+
+\begin{proof}
+    设序列 \((x_n)\) 收敛到点 \(a\). 则存在 \(N \in \N\) 使得对于任意 \(n \geq N\) 有 \(x_n \in \B(a, 1)\). 由三角不等式可得
+    \[
+        d(x_n, x_m) \leq d(x_n, a) + d(a, x_m) < 2\ ,\quad m, n \geq N\ .
+    \]
+    令 \(M = \max_{m, n < N} d(x_n, x_m)\), 有
+    \[
+        d(x_n, x_m) \leq M\ ,\quad m, n < N\ .
+    \]
+    于是对于任意 \(m, n \in \N\) 都有 \(d(x_n, x_m) \leq M + 2\).
+\end{proof}
+
+\subsection{极限的唯一性}
+
+\begin{proposition}\label{prop:limit-point-is-unique-cluster-point}
+    设序列 \((x_n)\) 收敛到点 \(a\). 则 \(a\) 是 \((x_n)\) 唯一的聚点.
+\end{proposition}
+
+\begin{proof}
+    显然 \(a\) 是 \((x_n)\) 的聚点, 现证明唯一性. 假设 \(b\) 是 \((x_n)\) 的聚点且 \(a \neq b\). 取 \(\varepsilon = d(a, b) / 2\), 则存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(x_n \in \B(a, \varepsilon)\). 而 \(b\) 是 \((x_n)\) 的聚点, 故存在 \(m \geq N\) 使得 \(x_m \in \B(b, \varepsilon)\). 由命题 \ref{prop:reversed-triangle-inequality-in-metric-space} 可知
+    \[
+        d(a, x_m) \geq |d(a, b) - d(b, x_m)| > 2 \varepsilon - \varepsilon = \varepsilon\ ,
+    \]
+    即 \(x_m \notin \B(a, \varepsilon)\), 矛盾, 因此 \(b\) 不是 \((x_n)\) 的聚点.
+\end{proof}
+
+\begin{remark}
+    命题 \ref{prop:limit-point-is-unique-cluster-point} 的逆命题不成立, 也就是说, 存在发散但具有唯一聚点的序列. 例如, \((\frac{1}{2}, 2, \frac{1}{3}, 3, \frac{1}{4}, 4, \ldots)\).
+\end{remark}
+
+\begin{corollary}[唯一性]
+    收敛序列的极限唯一.
+\end{corollary}
+
+\begin{proof}
+    由命题 \ref{prop:limit-point-is-unique-cluster-point} 可以直接得到.
+\end{proof}
+
+\subsection{子序列}
+
+\begin{definition}[子序列]
+    设 \(\varphi = (x_n)\) 是 \(X\) 中的序列, \(\psi \colon \N \to \N\) 是严格递增函数. 称 \(\varphi \circ \psi\) 是 \(\varphi\) 的子序列, 记作
+    \[
+        (x_{n_k})\quad \text{或}\quad (x_{n_k})_{{k \in \N}}\ ,
+    \]
+    其中 \(n_k \coloneqq \psi(k)\).
+\end{definition}
+
+因为 \(\psi\) 是严格递增的, 故 \(n_0 < n_1 < n_2 < \cdots\).
+
+\begin{example}
+    数列 \(\bigl((- 1)^n\bigr)_{n \in \N}\) 有两个子数列, \(\bigl((- 1)^{2 k}\bigr)_{k \in \N} = (1, 1, 1, \ldots)\) 和 \(\bigl((- 1)^{2 k + 1}\bigr)_{k \in \N} = (- 1, - 1, - 1, \ldots)\).
+\end{example}
+
+\begin{proposition}\label{prop:convergent-sequence-to-subsequence}
+    若序列 \((x_n)\) 收敛到点 \(a\), 则 \((x_n)\) 的每个子序列 \((x_{n_k})\) 也收敛且以 \(a\) 为极限.
+\end{proposition}
+
+\begin{proof}
+    任取 \(U \in \nbr(a)\). 则存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(x_n \in U\). 由子序列的定义可知, 对于任意 \(k \in \N\) 有 \(n_k \geq k\), 因此当 \(k \geq N\) 时 \(n_k \geq N\), 于是 \(x_{n_k} \in U\). 即 \((x_{n_k})\) 收敛到 \(a\).
+\end{proof}
+
+\begin{example}
+    当 \(m \geq 2\) 时,
+    \[
+        \lim_{k \to \infty} \frac{1}{k^m} = 0\quad \text{且}\quad \lim_{k \to \infty} \frac{1}{m^k} = 0\ .
+    \]
+\end{example}
+
+\begin{proof}
+    令 \(\psi_1(k) \coloneqq k^m\), \(\psi_2(k) \coloneqq m^k\). 由于 \(\psi_i \colon \N^\ast \to \N^\ast,\ i = 1, 2\) 是严格递增的, 因此 \((k^{- m})\) 和 \((m^{- k})\) 是 \((1 / n)\) 的子数列. 于是由例 \ref{eg:ez-convergent-sequence}.1 和 命题 \ref{prop:convergent-sequence-to-subsequence} 可得.
+\end{proof}
+
+下面的命题是对聚点的进一步刻画.
+
+\begin{proposition}
+    点 \(a\) 是序列 \((x_n)\) 的聚点, 当且仅当存在 \((x_n)\) 的子序列 \((x_{n_k})\) 收敛到 \(a\).
+\end{proposition}
+
+\begin{proof}
+    \(\implies\). 设 \(a\) 是 \((x_n)\) 的聚点. 下面递归构造序列 \((n_k)\),
+    \[
+        n_0 \coloneqq 0\ ,\quad n_k \coloneqq \min\{\, m \in \N \;;\; m > n_{k - 1}\ \text{且}\ x_m \in \B(a, 1 / k) \,\}\ ,\quad k \in \N^\ast\ .
+    \]
+    由于 \(a\) 是 \((x_n)\) 的聚点, 故
+    \[
+        \{\, m \in \N \;;\; m \geq n_{k - 1}\ \text{且}\ x_m \in \B(a, 1 / k) \,\} \neq \varnothing\ ,\quad k \in \N^\ast\ ,
+    \]
+    由良序原理可知, 对于每个 \(k \in \N^\ast\), \(n_k\) 是良定义的. 于是 \((n_k)\) 是良定义且严格递增的. 任取 \(\varepsilon > 0\), 由推论 \ref{cor:archimedean-property-cor} 可知, 存在 \(K \in \N\) 使得 \(1 / K < \varepsilon\), 由 \(n_k\) 的定义可知
+    \[
+        x_{n_k} \in \B(a, 1 / k) \subseteq \B(a, \varepsilon)\ ,\quad k \geq K\ ,
+    \]
+    即 \((x_{n_k})\) 收敛到 \(a\).
+
+    \(\impliedby\). 设 \((x_n)\) 的子序列 \((x_{n_k})\) 收敛到 \(a\). 任取 \(U \in \nbr(a)\), \(m \in \N\). 存在 \(K \in \N\) 使得当 \(k \geq \max\{m, K\}\) 时 \(x_{n_k} \in U\), 因此 \(a\) 是 \((x_n)\) 的聚点.
+\end{proof}
+
+\subsection{练习}
+
+\begin{exercise}
+    设 \(d\) 是 \(\K\) 上的离散度量, \(X \coloneqq (\K, d)\).
+    \begin{enumerate}
+        \item 设 \(a \in X\) 和 \(r > 0\), 给出 \(\B_X(a, r)\) 和 \(\bar \B_X(a, r)\) 的具体描述.
+        \item 描述 \(X\) 中任意序列的聚点.
+        \item 设 \(a \in X\), 描述 \(X\) 中所有收敛到 \(a\) 的序列.
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+    证明例 \ref{eg:metric}.5 的断言.
+\end{exercise}
+
+\begin{exercise}
+    证明数列 \((z_n)_{n \geq 1}\) 其中 \(z_n \coloneqq (1 - 1 / n)(1 + i)\) 收敛到 \(1 + i\).
+\end{exercise}
+
+\begin{exercise}
+    证明例 \ref{eg:bounded-sets} 的断言.
+\end{exercise}
+
+\begin{exercise}
+    找出复数列 \((z_n)\) 在下列情况下的全部聚点.
+    \begin{enumerate}
+        \item \(z_n \coloneqq \bigl((1 + i) \big/ \sqrt{2}\bigr)^n\).
+        \item \(z_n \coloneqq \bigl(1 + (- 1)^n\bigr) (n + 1) n^{- 1} + (- 1)^n\).
+        \item \(z_n \coloneqq (- 1)^n n / (n + 1)\).
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+    对于每个 \(n \in \N\), 定义
+    \[
+        a_n \coloneqq n + \frac{1}{k} - \frac{k^2 + k - 2}{2}\ ,
+    \]
+    其中 \(k \in \N^\ast\) 满足
+    \[
+        k^2 + k - 2 \leq 2 n \leq k^2 + 3 k - 2\ .
+    \]
+    证明 \((a_n)\) 是良定义的并找出其所有的聚点. (提示: 先把该数列的前几项具体算出来, 以便更好的把握整个数列的行为.)
+\end{exercise}
+
+\begin{exercise}
+    对于每个 \(m, n \in \N^\ast\), 定义
+    \[
+        d(m, n) \coloneqq
+        \begin{cases}
+            & (m + n) / m n\ , & m \neq n\ , \\
+            & 0\ ,             & m = n\ ,
+        \end{cases}
+    \]
+    证明 \((\N^\ast, d)\) 是度量空间, 对 \(n \in \N^\ast\) 描述 \(A_n \coloneqq \bar \B(n, 1 + 1 / n)\).
+\end{exercise}
+
+\begin{exercise}
+    设 \(X \coloneqq \{\, z \in \C \;;\; |z| \leq 3 \,\}\) 赋予了自然度量. 描述 \(\bar \B_X(0, 3)\) 和 \(\bar \B_X(2, 4)\), 并证明 \(\bar \B_X(2, 4) \subset \bar \B_X(0, 3)\).
+\end{exercise}
+
+\begin{exercise}[等价度量]
+    集合 \(X\) 上的度量 \(d_1\) 和 \(d_2\) 被称为等价度量, 若对于每个 \(x \in X\) 和 \(\varepsilon > 0\), 存在 \(r_1, r_2 > 0\) 使得
+    \[
+        \B_1(x, r_1) \subseteq \B_2(x, \varepsilon)\ ,\quad \B_2(x, r_2) \subseteq \B_1(x, \varepsilon)\ ,
+    \]
+    其中 \(\B_j\) 是 \((X, d_j),\ j = 1, 2\) 中的开球. 现在, 设 \((X, d)\) 是度量空间,
+    \[
+        \delta(x, y) \coloneqq \frac{d(x, y)}{1 + d(x, y)}\ ,\quad x, y \in X\ .
+    \]
+    证明 \(d\) 和 \(\delta\) 是 \(X\) 上的等价度量. (提示: 函数 \(t \mapsto t / (1 + t)\) 是递增的.)
+\end{exercise}
+
+\begin{exercise}
+    设 \(X \coloneqq (0, 1)\). 证明以下命题.
+    \begin{enumerate}
+        \item \(d(x, y) \coloneqq |(1 / x) - (1 / y)|\) 是 \(X\) 上的度量.
+        \item 自然度量和 \(d\) 是等价的.
+        \item 在 \(\R\) 上不存在这样一个度量: 它与自然度量等价, 并且在 \(X\) 上诱导出的度量是 \(d\).
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+    设 \((X_j, d_j),\ 1 \leq j \leq n\) 是度量空间, \(X \coloneqq X_1 \times \cdots \times X_n\) 且 \(d\) 是 \(X\) 上的积度量. 证明
+    \[
+        \delta(x, y) \coloneqq \sum_{j = 1}^n d_j(x_j, y_j)\ ,\quad x, y \in X
+    \]
+    是 \(X\) 上的度量且与 \(d\) 等价.
+\end{exercise}
+
+\begin{exercise}[SNCF-度量]
+    对于每个 \(z, w \in \C\), 定义
+    \[
+        \delta(z, w) \coloneqq
+        \begin{cases}
+            & |z - w|\ ,   & \text{若存在}\ \lambda > 0\ \text{使得}\ z = \lambda w\ , \\
+            & |z| + |w|\ , & \text{其余情况}\ .
+        \end{cases}
+    \]
+    证明 \(\delta\) 是 \(\C\) 上的度量, 称为 SNCF-度量.
+\end{exercise}
+
+\begin{exercise}
+    设 \((x_n)\) 是 \(\C\) 中的数列且对于任意 \(n \in \N\) 有 \(\Re x_n = 0\). 证明, 若 \((x_n)\) 收敛到 \(x\), 则 \(\Re x = 0\).
+\end{exercise}
+
+\newpage
+
+\section{实数列与复数列}
+
+在本节中, 我们要推导出关于收敛数列计算的最重要的法则. 如果我们把这些数列看作向量空间 \(s = s(\K) = \K^\N\) 中的向量, 那么这些法则将证明所有收敛数列构成了 \(s\) 的子空间. 在实数列的情形下, 我们将利用 \(\R\) 的序结构来推导比较审敛法, 而这是研究 \(s(\R)\) 中数列收敛性的主要工具.
+
+\subsection{无穷小量}
+
+\begin{definition}[无穷小量]
+    称 \(\K\) 中的数列 \((x_n)\) 是无穷小量, 若 \((x_n)\) 收敛到 \(0\). 进一步, 将 \(\K\) 中的所有无穷小量记作
+    \[
+        c_0 \coloneqq c_0(\K) \coloneqq \{\, (x_n) \in s \;;\; (x_n)\ \text{收敛且}\ \lim x_n = 0 \,\}\ .
+    \]
+\end{definition}
+
+\begin{remark}\label{rem:null-sequences}
+    设 \((x_n)\) 是 \(\K\) 中的数列, \(a \in \K\).
+    \begin{enumerate}
+        \item \((x_n)\) 是无穷小量, 当且仅当其绝对值数列 \((|x_n|)\) 是 \(\R\) 中的无穷小量.
+        \item \((x_n)\) 收敛到 \(a\), 当且仅当 ``平移后的数列'' \((x_n - a)\)  是无穷小量.
+        \item 若存在 \(\R\) 中的无穷小量 \((r_n)\) 使得对于几乎所有 \(n \in \N\) 都有 \(|x_n| \leq r_n\), 则 \((x_n)\) 是无穷小量.
+    \end{enumerate}
+\end{remark}
+
+\begin{proof}
+    1. 由无穷小量的定义可以直接得到.
+
+    2. 由命题 \ref{prop:convergent-sequence-charact} 可以直接得到.
+
+    3. 任取 \(\varepsilon > 0\). 由假设可知存在 \(M, N \in \N\) 使得当 \(n \geq M\) 时 \(|x_n| \leq r_n\), 当 \(n \geq N\) 时 \(|r_n| < \varepsilon\). 于是当 \(n \geq \max\{M, N\}\) 时 \(|x_n| \leq r_n \leq |r_n| < \varepsilon\).
+\end{proof}
+
+\subsection{基本法则}
+
+\begin{proposition}\label{prop:addition-scalar-multiplication-in-c}
+    设 \((x_n)\) 和 \((y_n)\) 是 \(\K\) 中的收敛数列且 \(\lim x_n = a\), \(\lim y_n = b\), \(\alpha \in \K\). 则
+    \begin{enumerate}
+        \item 数列 \((x_n + y_n)\) 收敛且 \(\lim(x_n + y_n) = a + b\).
+        \item 数列 \((\alpha x_n)\) 收敛且 \(\lim \alpha x_n = \alpha a\).
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    任取 \(\varepsilon > 0\).
+
+    1. 存在 \(M, N \in \N\) 使得当 \(n \geq M\) 时 \(|x_n - a| < \varepsilon / 2\), 当 \(n \geq N\) 时 \(|y_n - b| < \varepsilon / 2\). 于是
+    \[
+        |(x_n + y_n) - (a + b)| \leq |x_n - a| + |y_n - b| < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon\ ,\quad n \geq \max\{M, N\}\ .
+    \]
+
+    2. 若 \(\alpha = 0\) 显然成立, 假设 \(\alpha \neq 0\). 则存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(|x_n - a| < \varepsilon / |\alpha|\). 于是
+    \[
+        |\alpha x_n - \alpha a| = |\alpha|\, |x_n - a| < |\alpha| \frac{\varepsilon}{|\alpha|} = \varepsilon\ ,\quad n \geq N\ .
+    \]
+\end{proof}
+
+\begin{remark}\label{rem:c-is-vector-space}
+    将 \(\K\) 中的所有收敛数列记作
+    \[
+        c \coloneqq c(\K) \coloneqq \{\, (x_n) \in s \;;\; (x_n)\ \text{收敛} \,\}\ .
+    \]
+    于是, 由命题 \ref{prop:addition-scalar-multiplication-in-c} 可以得到: \(c\) 是 \(s\) 的子空间且函数
+    \[
+        \lim \colon c \to \K\ ,\quad (x_n) \mapsto \lim x_n
+    \]
+    是线性的. 显然 \(\ker \lim = c_0\), 于是, 由例 \ref{eg:vector-spaces}.3 可知, \(c_0\) 是 \(c\) 的子空间.
+\end{remark}
+
+下面的命题表明, 对于收敛数列, 我们可以 ``逐项'' 相乘.
+
+\begin{proposition}\label{prop:multiplication-in-c}
+    设 \((x_n)\) 和 \((y_n)\) 是 \(\K\) 中的数列.
+    \begin{enumerate}
+        \item 若 \((x_n)\) 是无穷小量且 \((y_n)\) 有界, 则 \((x_n y_n)\) 是无穷小量.
+        \item 若 \(\lim x_n = a\), \(\lim y_n = b\), 则 \(\lim x_n y_n = ab\).
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    1. 由于 \((y_n)\) 有界, 故存在 \(M > 0\) 使得对于任意 \(n \in \N\) 都有 \(|y_n| \leq M\). 任取 \(\varepsilon > 0\). 由于 \((x_n)\) 是无穷小量, 故存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(|x_n| < \varepsilon / M\). 于是
+    \[
+        |x_n y_n| = |x_n|\, |y_n| < \frac{\varepsilon}{M} M = \varepsilon\ ,\quad n \geq N\ .
+    \]
+    2. 由于 \((x_n)\) 收敛到 \(a\), 故 \((x_n - a)\) 是无穷小量. 由命题 \ref{prop:convergent-sequence-is-bounded} 可知, \((y_n)\) 有界. 于是由 1 可得 \(\bigl((x_n - a) y_n\bigr)\) 是无穷小量, 同理可得 \(\bigl(a (y_n - b)\bigr)\) 是无穷小量. 由命题 \ref{prop:addition-scalar-multiplication-in-c} 可知
+    \[
+        \lim(x_n y_n - a b) = \lim\bigl((x_n - a) y_n + a (y_n - b)\bigr) = 0\ ,
+    \]
+    于是 \((x_n y_n)\) 收敛到 \(a b\).
+\end{proof}
+
+\begin{remark}\label{rem:c-is-algebra}
+    \begin{enumerate}
+        \item 命题 \ref{prop:multiplication-in-c}.1 中, 关于序列 \((y_n)\) 有界的假设不能去除.
+        \item 由例 \ref{eg:algebras}.2 可知 \(s\) 是 \(\K\)-代数. 于是, 结合注 \ref{rem:c-is-vector-space} 和命题 \ref{prop:multiplication-in-c}.2 可以得到: \(c\) 是 \(s\) 的子代数且函数
+        \[
+            \lim \colon c \to \K\ ,\quad (x_n) \mapsto \lim x_n
+        \]
+        是代数同态. 最后, 由命题 \ref{prop:convergent-sequence-is-bounded} 和命题 \ref{prop:multiplication-in-c}.1 可知 \(c_0\) 也是 \(c\) 的理想.
+    \end{enumerate}
+\end{remark}
+
+\begin{proof}
+    1. 设 \(x_n \coloneqq 1 / n\), \(y_n \coloneqq n^2\). 则 \((x_n)\) 是无穷小量, 但 \((x_n y_n)\) 发散.
+\end{proof}
+
+下面的命题和注 \ref{rem:c-is-algebra}.2 表明, 商数列的极限是分子的极限除以分母的极限, 若这些极限存在的话.
+
+\begin{proposition}\label{prop:division-in-c}
+    设 \((x_n)\) 是 \(\K\) 中的收敛数列且 \(\lim x_n = a \neq 0\). 则 \((x_n)\) 的几乎所有项都非零且 \(\lim 1 / x_n = 1 / a\).
+\end{proposition}
+
+\begin{proof}
+    存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(|x_n - a| < |a| / 2\). 由反三角不等式可得
+    \[
+        |a| - |x_n| \leq \bigl||a| - |x_n|\bigr| \leq |x_n - a| < \frac{|a|}{2}\ ,\quad n \geq N\ ,
+    \]
+    即当 \(n \geq N\) 时 \(|x_n| > |a| / 2 > 0\), 即 \((x_n)\) 的几乎所有项都非零. 而
+    \[
+        \Bigl|\frac{1}{x_n} - \frac{1}{a}\Bigr| = \frac{|x_n - a|}{|a|\, |x_n|} < \frac{2}{|a|^2} |x_n - a|\ ,\quad n \geq N\ ,
+    \]
+    由于 \((x_n)\) 收敛到 \(a\), 因此 \((x_n - a)\) 是无穷小量, 进一步, \(\bigl(2\, |x_n - a| \big/ |a|^2\bigr)\) 是无穷小量. 于是由注 \ref{rem:null-sequences}.3 可得 \((1 / x_n - 1 / a)\) 是无穷小量, 故 \(\lim 1 / x_n = 1 / a\).
+\end{proof}
+
+\subsection{比较审敛法}
+
+接下来我们将研究收敛实数列与 \(\R\) 的序结构之间的关系. 我们将推导出夹逼定理---这是一种简单但非常有效的判定实数列极限的方法.
+
+\begin{proposition}[保序性]\label{prop:limits-preserve-order}
+    设 \((x_n)\) 和 \((y_n)\) 是 \(\R\) 中的收敛数列且有无穷多项 \(n \in \N\) 使得 \(x_n \leq y_n\). 则
+    \[
+        \lim x_n < \lim y_n\ .
+    \]
+\end{proposition}
+
+\begin{proof}
+    设 \(\lim x_n = a\), \(\lim y_n = b\). 假设 \(a > b\). 令 \(\varepsilon = a - b\), 故存在 \(M, N \in \N\) 使得当 \(n \geq M\) 时 \(x_n > a - \varepsilon / 2\), \(n \geq N\) 时 \(y_n < b + \varepsilon / 2\), 故存在 \(n \geq \max\{M, N\}\) 使得
+    \[
+        a - \varepsilon / 2 < x_n \leq y_n < b + \varepsilon / 2\ ,
+    \]
+    于是 \(\varepsilon = a - b < \varepsilon\), 矛盾.
+\end{proof}
+
+\begin{remark}
+    命题 \ref{prop:limits-preserve-order} 在严格不等于下不成立, 即若有无穷多项 \(n \in \N\) 使得 \(x_n < y_n\) 并不蕴含 \(\lim x_n < \lim y_n\).
+\end{remark}
+
+\begin{proof}
+    设 \(x_n \coloneqq - 1 / n\), \(y_n \coloneqq 1 / n\). 则对于所有 \(n \in \N^\ast\) 都有 \(x_n < y_n\), 但 \(\lim x_n = \lim y_n = 0\).
+\end{proof}
+
+\begin{proposition}[夹逼定理]
+    设 \((x_n)\), \((y_n)\) 和 \((z_n)\) 是实数列且对于几乎所有 \(n \in \N\) 都有 \(x_n \leq y_n \leq z_n\). 若 \(\lim x_n = \lim z_n = a\), 则 \(\lim y_n = a\).
+\end{proposition}
+
+\begin{proof}
+    设 \(M \in \N\) 使得当 \(n \geq M\) 时 \(x_n \leq y_n \leq z_n\). 任取 \(\varepsilon > 0\), 故存在 \(N_1, N_2 \in \N\) 使得当 \(n \geq N_1\) 时 \(a - \varepsilon < x_n\), 当 \(n \geq N_2\) 时 \(z_n < a + \varepsilon\). 于是
+    \[
+        a - \varepsilon < x_n \leq y_n \leq z_n < a + \varepsilon\ ,\quad n \geq \max\{M, N_1, N_2\}\ ,
+    \]
+    即当 \(n \geq \max\{M, N_1, N_2\}\) 时 \(|y_n - a| < \varepsilon\).
+\end{proof}
+
+\subsection{复数列}
+
+若 \((x_n)\) 是 \(\R\) 中的收敛数列且 \(\lim x_n = a\), 则 \(\lim |x_n| = |a|\). 实际上, 若 \((x_n)\) 是无穷小量, 则是注 \ref{rem:null-sequences}.1 的情况. 若 \(a > 0\), 则 \((x_n)\) 的几乎所有项都为正 (见练习 2.2.\ref{ex:limits-preserve-sign}), 于是 \(\lim |x_n| = \lim x_n = a = |a|\). 最后, 若 \(a < 0\), 则 \((x_n)\) 的几乎所有项都为负, 于是
+\[
+    \lim |x_n| = \lim(- x_n) = - \lim x_n = - a = |a|\ .
+\]
+
+下面的命题表明这对复数列同样成立.
+
+\begin{proposition}\label{prop:sequence-convergence-then-abs-convergence}
+    设 \((x_n)\) 是 \(\K\) 中的收敛数列且 \(\lim x_n = a\). 则 \((|x_n|)\) 收敛且 \(\lim |x_n| = |a|\).
+\end{proposition}
+
+\begin{proof}
+    任取 \(\varepsilon > 0\). 故存在 \(N \in \N\) 使得
+    \[
+        \bigl||x_n| - |a|\bigr| \leq |x_n - a| < \varepsilon\ ,\quad n \geq N\ ,
+    \]
+    因此 \((|x_n|)\) 收敛到 \(|a|\).
+\end{proof}
+
+\(\C\) 中的收敛数列可以用其对应的实部与虚部的收敛性来刻画.
+
+\begin{proposition}\label{prop:convergence-of-real-and-imaginary-parts}
+    设 \((x_n)\) 是 \(\C\) 中的数列. 以下命题是等价的.
+    \begin{enumerate}
+        \item \((x_n)\) 收敛.
+        \item \((\Re x_n)\) 和 \((\Im x_n)\) 收敛.
+    \end{enumerate}
+    此时有,
+    \[
+        \lim x_n = \lim \Re x_n + i \lim \Im x_n\ .
+    \]
+\end{proposition}
+
+\begin{proof}
+    1. \(\implies\) 2. 设 \(\lim x_n = x\). 任取 \(\varepsilon > 0\). 故存在 \(N \in \N\) 使得
+    \[
+        |\Re x_n - \Re x| = |\Re(x_n - x)| \leq |x_n - x| < \varepsilon\ ,\quad n \geq N\ ,
+    \]
+    因此 \((\Re x_n)\) 收敛到 \(\Re x\). 同理可得 \((\Im x_n)\) 收敛到 \(\Im x\).
+
+    2. \(\implies\) 1. 设 \(\lim \Re x_n = a\), \(\lim \Im x_n = b\). 任取 \(\varepsilon > 0\). 故存在 \(M, N \in \N\) 使得当 \(n \geq M\) 时 \(|\Re x_n - a| < \varepsilon / \sqrt{2}\), 当 \(n \geq N\) 时 \(|\Im x_n - b| < \varepsilon / \sqrt{2}\), 于是
+    \begin{align*}
+        |x_n - (a + i b)| &= |(\Re x_n - a) + i (\Im x_n - b)| \\
+        &= \sqrt{(\Re x_n - a)^2 + (\Im x_n - b)^2} < \sqrt{\frac{\varepsilon^2}{2} + \frac{\varepsilon^2}{2}} = \varepsilon\ ,\quad n \geq \max\{M, N\}\ ,
+    \end{align*}
+    因此 \(x_n\) 收敛到 \(a + i b\).
+\end{proof}
+
+我们用一些例子来说明上述命题, 以此结束本节.
+
+\begin{example}
+    \begin{enumerate}
+        \item \(\displaystyle \lim_{n \to \infty} \frac{n + 1}{n + 2} = 1\).
+        \item \(\displaystyle \lim_{n \to \infty} \Bigr(\frac{3 n}{(2 n + 1)^2} + i \frac{2 n^2}{n^2 + 1}\Bigl) = 2 i\).
+        \item \(\displaystyle \Bigl(\frac{i^n}{1 + i n}\Bigr)\) 是 \(\C\) 中的无穷小量.
+    \end{enumerate}
+\end{example}
+
+\begin{proof}
+    1. 由于 \(\lim 1 / (n + 2) = 0\), 于是由命题 \ref{prop:addition-scalar-multiplication-in-c} 可知
+    \[
+        \lim \frac{n + 1}{n + 2} = \lim\Bigl(1 - \frac{1}{n + 2}\Bigr) = 1 - \lim \frac{1}{n + 2} = 1\ .
+    \]
+
+    2. 令
+    \[
+        x_n \coloneqq \frac{3 n}{(2 n + 1)^2} + i \frac{2 n^2}{n^2 + 1}\ .
+    \]
+    其中
+    \[
+        \Re x_n = \frac{3 n}{(2 n + 1)^2} = \frac{3 / n}{(2 + 1 / n)^2}\ ,
+    \]
+    由于 \(\lim(2 + 1 / n) = 2\), 于是由命题 \ref{prop:multiplication-in-c} 可知 \(\lim(2 + 1 / n)^2 = 4\), 而 \((3 / n)\) 是无穷小量, 因此由命题 \ref{prop:multiplication-in-c} 和命题 \ref{prop:division-in-c} 可知 \(\lim \Re x_n = 0\).
+    \[
+        \Im x_n = \frac{2 n^2}{n^2 + 1} = \frac{2}{1 + 1 / n^2}\ ,
+    \]
+    而 \(\lim(1 + 1 / n^2) = 1\), 于是由命题 \ref{prop:addition-scalar-multiplication-in-c} 和命题 \ref{prop:division-in-c} 可知 \(\lim \Im x_n = 2\). 最后由 \ref{prop:convergence-of-real-and-imaginary-parts} 可得 \(\lim x_n = 2 i\).
+
+    3. 令
+    \[
+        x_n \coloneqq \frac{i^n}{1 + i n} = \frac{1}{n}\, \frac{i^n}{i + 1 / n}\ .
+    \]
+    注意到
+    \[
+        \Bigl|i + \frac{1}{n}\Bigr| = \sqrt{1 + \frac{1}{n^2}} \geq 1\ ,\quad n \in \N^\ast\ ,
+    \]
+    于是
+    \[
+        \Bigl|\frac{i^n}{i + 1 / n}\Bigr| = \frac{|i^n|}{|i + 1 / n|} = \frac{1}{|i + 1 / n|} \leq 1\ ,\quad n \in \N^\ast\ ,
+    \]
+    因此 \(\bigl(i^n \big/ (i + 1 / n)\bigr)\) 有界, 由命题 \ref{prop:multiplication-in-c} 可知 \((x_n)\) 是无穷小量.
+\end{proof}
+
+\subsection{练习}
+
+\begin{exercise}
+    判断下列 \(\R\) 中的数列 \((x_n)\) 是否收敛. 若收敛计算其极限.
+    \begin{enumerate}
+        \item \(x_n \coloneqq \sqrt{n + 1} - \sqrt{n}\).
+        \item \(x_n \coloneqq (- 1)^n \sqrt{n} (\sqrt{n + 1} - \sqrt{n})\).
+        \item \(\displaystyle x_n \coloneqq \frac{1 + 2 + 3 + \cdots + n}{n + 2} - \frac{n}{2}\).
+        \item \(\displaystyle x_n \coloneqq \frac{(2 - 1 / \sqrt{n})^{10} - (1 + 1 / n^2)^{10}}{1 - 1 / n^2 - 1 / \sqrt{n}}\).
+        \item \(x_n \coloneqq (100 + 1 / n)^2\).
+    \end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    1. 收敛到 \(0\).
+
+    2. 发散.
+
+    3. 收敛到 \(- 1 / 2\).
+
+    4. 收敛到 \(2^{10} - 1\).
+
+    5. 收敛到 \(100^2\).
+\end{proof}
+
+\begin{exercise}
+    使用 \((1 + 1)^n\) 的二项式展开, 证明 \((n^3 / 2^n)\) 是无穷小量.
+\end{exercise}
+
+\begin{proof}
+    注意到
+    \[
+        0 \leq \frac{n^3}{2^n} = \frac{n^3}{\sum_{k = 0}^n \binom{n}{k}} \leq \frac{n^3}{\binom{n}{4}}\ ,\quad n \geq 4\ .
+    \]
+    而当 \(n \geq 6\) 时 \(n - 3 \geq n / 2\), 于是
+    \[
+        \binom{n}{4} = \frac{n (n - 1) (n - 2) (n - 3)}{24} \geq \frac{(n / 2)^4}{24}\ ,\quad n \geq 6\ ,
+    \]
+    因此
+    \[
+        \frac{n^3}{\binom{n}{4}} \leq \frac{n^3}{(n / 2)^4 \big/ 24} = \frac{384}{n} \to 0\ .
+    \]
+    故由夹逼定理可知 \(n^3 / 2^n \to 0\).
+\end{proof}
+
+\begin{exercise}[保号性]\label{ex:limits-preserve-sign}
+    设实数列 \((x_n)\) 有正极限. 证明该数列的几乎所有项都为正.
+\end{exercise}
+
+\begin{proof}
+    设 \(\lim x_n = a\). 故存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(|x_n - a| < a / 2\), 于是
+    \[
+        - \frac{a}{2} < x_n - a < \frac{a}{2}\ ,\quad n \geq N\ ,
+    \]
+    即当 \(n \geq N\) 时 \(x_n > a / 2 > 0\).
+\end{proof}
+
+\begin{exercise}
+    设 \((x_j)\) 是 \(\K\) 中的收敛数列且以 \(a\) 为极限. 证明
+    \[
+        \lim_{n \to \infty} \frac{1}{n} \sum_{j = 1}^n x_j = a\ .
+    \]
+\end{exercise}
+
+\begin{proof}
+    只用证
+    \[
+        \Bigl|\frac{1}{n} \sum_{j = 1}^n x_j - a\Bigr| \to 0\ .
+    \]
+    注意到
+    \[
+        0 \leq \Bigl|\frac{1}{n} \sum_{j = 1}^n x_j - a\Bigr| = \Bigl|\frac{1}{n} \sum_{j = 1}^n (x_j - a)\Bigr| \leq \frac{1}{n} \sum_{j = 1}^n |x_j - a|\ ,
+    \]
+    任取 \(\varepsilon > 0\). 由于 \(\lim x_j = a\), 故存在 \(N \in \N^\ast\) 使得当 \(j \geq N\) 时 \(|x_j - a| < \varepsilon\), 于是
+    \[
+        \frac{1}{n} \sum_{j = 1}^n |x_j - a| = \frac{1}{n} \sum_{j = 1}^{N - 1} |x_j - a| + \frac{1}{n} \sum_{j = N}^n |x_j - a|\ .
+    \]
+    令
+    \[
+        A_n \coloneqq \frac{1}{n} \sum_{j = 1}^{N - 1} |x_j - a|\ ,\quad B_n \coloneqq \frac{1}{n} \sum_{j = N}^n |x_j - a|\ .
+    \]
+    由于 \(\sum_{j = 1}^{N - 1} |x_j - a|\) 是一个固定的有限和, 因此 \(\lim A_n = 0\). 而
+    \[
+        |B_n| = \frac{1}{n} \sum_{j = N}^n |x_j - a| < \frac{1}{n} \sum_{j = N}^n \varepsilon = \frac{n - N + 1}{n} \varepsilon \leq \varepsilon\ ,\quad n \geq N\ ,
+    \]
+    因此 \(\lim B_n = 0\). 于是
+    \[
+        \frac{1}{n} \sum_{j = 1}^n |x_j - a| = A_n + B_n \to 0\ ,
+    \]
+    故由夹逼定理可知
+    \[
+        \Bigl|\frac{1}{n} \sum_{j = 1}^n x_j - a\Bigr| \to 0\ .
+    \]
+\end{proof}
+
+\begin{exercise}
+    设 \(\K^m\ (m \in \N^\ast)\) 是赋予了积度量 (见例 \ref{eg:metric}.5) 的度量空间,
+    \[
+        s(\K^m) \coloneqq (\K^m)^\N\ ,\quad c(\K^m) \coloneqq \{\, (x_n) \in s(\K^m) \;;\; (x_n)\ \text{收敛} \,\}\ .
+    \]
+    证明
+    \begin{enumerate}
+        \item \(c(\K^m)\) 是 \(s(\K^m)\) 的子空间.
+        \item 函数
+        \[
+            \lim \colon c(\K^m) \to \K^m\ ,\quad (x_n) \mapsto \lim x_n
+        \]
+        是线性的.
+        \item 设 \((\lambda_n) \in c(\K)\), \((x_n) \in c(\K^m)\) 且 \(\lim \lambda_n = \alpha\), \(\lim x_n = a\). 则 \(\lim \lambda_n x_n = \alpha a \in \K^m\) (提示: 例 \ref{eg:ez-convergent-sequence}.5).
+    \end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    1. 和 2. 设 \((x_n), (y_n) \in c(\K^m)\) 且 \(\lim x_n = a\), \(\lim y_n = b\), \(\alpha \in \K^m\). 故对于每个 \(j \in \{1, \ldots, m\}\) 都有 \((x_n^j)\) 收敛到 \(a^j\) 和 \((y_n^j)\) 收敛到 \(b^j\). 而在 \(\K\) 上时, 对于每个 \(j \in \{1, \ldots, m\}\) 都有 \((x_n^j + y_n^j)\) 收敛到 \(a^j + b^j\), 因此 \((x_n + y_n)\) 收敛到 \(a + b\). 同理可得 \((\alpha x_n)\) 收敛到 \(\alpha a\). 这说明了 \(c(\K^m)\) 是 \(s(\K^m)\) 的子空间且 \(\lim\) 是线性的.
+
+    3. 对于每个 \(j \in \{1, \ldots, m\}\) 都有 \((x_n^j)\) 收敛到 \(a^j\). 而在 \(\K\) 上时, 对于每个 \(j \in \{1, \ldots, m\}\) 都有 \((\lambda_n x_n^j)\) 收敛到 \(\alpha a^j\), 因此 \(\lambda_n x_n\) 收敛到 \((\alpha a^1, \ldots, \alpha a^m) = \alpha a\).
+\end{proof}
+
+\begin{exercise}
+    设 \((x_n)\) 是 \(\K\) 中的收敛数列且以 \(a\) 为极限, \(p, q \in \K[X]\) 且 \(q(a) \neq 0\). 证明对于有理函数 \(r \coloneqq p / q\), 有
+    \[
+        \lim_{n \to \infty} r(x_n) = r(a)\ .
+    \]
+    特别的, 对于每个多项式 \(p\), 数列 \(\bigl(p(x_n)\bigr)\) 都收敛到 \(p(a)\).
+\end{exercise}
+
+\begin{exercise}
+    设 \((x_n)\) 是 \((0, \infty)\) 中的收敛数列且以 \(x \in (0, \infty)\) 为极限. 证明
+    \[
+        \lim_{n \to \infty} (x_n)^r = x^r\quad (r \in \Q)\ .
+    \]
+    (提示: 当 \(r = 1 / q\) 时, 令 \(y_n \coloneqq (x_n)^r\), \(y \coloneqq x^r\). 则
+    \[
+        x_n - x = (y_n - y) \sum_{k = 0}^{q - 1} y_n^k y^{q - 1 - k}\ ,
+    \]
+    见练习 1.8.\ref{ex:difference-of-powers-formula}.)
+\end{exercise}
+
+\begin{proof}
+    \(r = 0\) 时, 显然成立. 令 \(r = p / q\ (p \in \Z^\ast, q \in \N^\ast)\). 令 \(y_n \coloneqq x_n^{1 / q}\), \(y \coloneqq x^{1 / q}\), 于是
+    \[
+        x_n - x = y_n^q - y^q = (y_n - y) \sum_{k = 0}^{q - 1} y_n^k y^{q - 1 - k}\ ,
+    \]
+    令
+    \[
+        A_n \coloneqq \sum_{k = 0}^{q - 1} y_n^k y^{q - 1 - k} = \sum_{k = 0}^{q - 1} x_n^{k / q} x^{(q - 1 - k) / q}\ ,
+    \]
+    其中对于每个 \(k \in \{0, \ldots, q - 1\}\) 都有 \(x_n^{k / q} x^{(q - 1 - k) / q} > 0\), 因此
+    \[
+        A_n > x^{(q - 1) / q} > 0\ ,\quad n \in \N\ ,
+    \]
+    故数列 \((1 / A_n)\) 有界. 注意到 \((x_n - x)\) 是无穷小量, 而
+    \[
+        y_n - y = (x_n - x) \frac{1}{A_n}\ ,
+    \]
+    因此 \((y_n - y)\) 也是无穷小量, 即 \(x_n^{1 / q}\) 收敛到 \(x^{1 / q}\). 当 \(p > 0\) 时,
+    \[
+        \lim_{n \to \infty} x_n^p = \lim_{n \to \infty} x_n \cdots x_n = x \cdots x = x^p\ .
+    \]
+    当 \(p < 0\) 时, 令 \(s \coloneqq - p\), 于是
+    \[
+        \lim_{n \to \infty} x_n^p = \lim_{n \to \infty} \frac{1}{x_n^s} = \lim_{n \to \infty} \frac{1}{x_n} \cdots \frac{1}{x_n} = \frac{1}{x} \cdots \frac{1}{x} = \frac{1}{x^s} = x^p\ .
+    \]
+    最后可得
+    \[
+        \lim_{n \to \infty} x_n^r = \lim_{n \to \infty} x_n^{p / q} = \lim_{n \to \infty} (x_n^{1 / q})^p = (x^{1 / q})^p = x^r\ .
+    \]
+\end{proof}
+
+\begin{exercise}\label{ex:null-sequences-always-smaller}
+    设 \((x_n)\) 是 \((0, \infty)\) 中的数列. 证明 \((1 / x_n)\) 是无穷小量, 当且仅当对于每个 \(K > 0\) 都存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(x_n > K\).
+\end{exercise}
+
+\begin{proof}
+    \(\implies\). 设 \((1 / x_n)\) 是无穷小量. 任取 \(K > 0\). 故存在 \(N \in \N\) 使得
+    \[
+        \Bigl|\frac{1}{x_n}\Bigr| = \frac{1}{x_n} < \frac{1}{K}\ ,\quad n \geq N\ ,
+    \]
+    即当 \(n \geq N\) 时 \(x_n > K\).
+
+    \(\impliedby\). 设对于每个 \(K > 0\) 都存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(x_n > K\). 任取 \(\varepsilon > 0\). 故存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(x_n > 1 / \varepsilon\), 即
+    \[
+        \frac{1}{x_n} = \Bigl|\frac{1}{x_n}\Bigr| < \varepsilon\ ,\quad n \geq N\ ,
+    \]
+    故 \((1 / x_n)\) 是无穷小量.
+\end{proof}
+
+\begin{exercise}
+    设 \((a_n)\) 是 \((0, \infty)\) 中的数列,
+    \[
+        x_n \coloneqq \sum_{k = 0}^n (a_k + 1 / a_k)\ ,\quad n \in \N\ .
+    \]
+    证明 \((1 / x_n)\) 是无穷小量. (提示: 当 \(a > 0\) 时 \(a + 1 / a \geq 2\) (见练习 1.8.\ref{ex:inequality-on-ordered-ﬁeld}), 然后利用练习 2.2.\ref{ex:null-sequences-always-smaller}.)
+\end{exercise}
+
+\begin{proof}
+    任取 \(K > 0\). 显然 \((x_n)\) 也是 \((0, \infty)\) 中的数列. 注意到,
+    \[
+        x_n = \sum_{k = 0}^n (a_k + 1 / a_k) \geq \sum_{k = 0}^n 2 = 2 n + 2\ ,\quad n \in \N\ ,
+    \]
+    由 Archimedes 公理可知, 存在 \(N \in \N\) 使得 \(2 N + 2 > K\), 于是当 \(n \geq N\) 时 \(x_n \geq 2 n + 2 > K\), 于是 \((1 / x_n)\) 是无穷小量.
+\end{proof}
+
+\newpage
+
+\section{赋范向量空间}
+
+本节我们将考察向量空间上的度量. 当然, 我们希望这些度量与向量空间的结构是相容的, 因此我们先从向量空间 \(\R^2\) 入手, 在这个空间里我们已经有了距离的概念. 具体地说, 如果我们用 \(\|x\|\) 表示 \(\R^2\) 中向量 \(x\) 的长度, 那么两点 \(x, y \in \R^2\) 之间的距离就是 \(\|x - y\|\). 我们将在之后看到, 这确实在 \(\R^2\) 上定义了一个度量 (见注 \ref{rem:norms}.1). 除了与度量之间的这种关系外, 函数 \(x \mapsto \|x\|\) 对于向量空间结构还满足一些特殊的性质:
+
+首先我们注意到, \(\R^2\) 中任一向量的长度都是非负的, 也就是说, 对于任意 \(x \in \R^2\) 都有 \(\|x\| \geq 0\), 并且长度为零的向量仅有零向量.
+
+对于 \(x \in \R^2\) 和 \(\alpha > 0\), 我们可以把 \(\alpha x\) 看作是将向量 \(x\) 按比例 \(\alpha\) 拉伸 (或压缩) 得到的向量. 如果 \(\alpha < 0\), 那么 \(\alpha x\) 可以理解为先按比例 \(- \alpha\) 对 \(x\) 进行拉伸 (或压缩), 再把方向反转得到的向量.
+\begin{center}
+    \begin{tikzpicture}
+        \draw (0, -0.1) -- (0, 0.1) node[above] {\(0\)};
+        \draw[->] (0, 0) -- (4, 0) node[above] {\(- 2 x\)};
+        \draw[->] (0, 0) -- (-2, 0) node[above] {\(x\)};
+        \draw[->] (0, 0) -- (-5, 0) node[above] {\(5 x / 2\)};
+    \end{tikzpicture}
+\end{center}
+在这两种情形中, 向量 \(\alpha x\) 的长度 \(\|\alpha x\| = |\alpha|\, \|x\|\).
+
+最终, 对于 \(\R^2\) 中的任意向量 \(x, y\), 我们有三角不等式 \(\|x + y\| \leq \|x\| + \|y\|\).
+
+\begin{center}
+    \begin{tikzpicture}
+        \draw[->] (0, 0) -- (1, 3) node at (0.1, 1.6) {\(x\)};
+        \draw[->] (1, 3) -- (6, 1) node at (3.5, 2.4) {\(y\)};
+        \draw[->] (0, 0) -- (6, 1) node at (3, 0.1) {\(x + y\)};
+    \end{tikzpicture}
+\end{center}
+
+这三个性质足以保证 \(\|x - y\|\) 是 \(\R^2\) 上的度量. 由于它们也很容易推广到一般的向量空间, 因此我们就很自然地得到如下对赋范向量空间的定义.
+
+\subsection{范数}
+
+\begin{axiom}[范数]\label{ax:norm}
+    设 \(E\) 是 \(\K\)-向量空间, 其上定义了函数
+    \[
+        \|\!\cdot\!\| \colon E \to \R\ ,\quad x \mapsto \|x\|\ .
+    \]
+    若对于任意 \(\lambda \in \K\) 和 \(x, y \in E\) 都有
+    \begin{enumerate}[label={\((\mathrm N_{\arabic*})\)}]
+        \item (正定性) \(\|x\| \geq 0\), 其中 \(\|x\| = 0\) 当且仅当 \(x = 0\).
+        \item (绝对齐次性) \(\|\lambda x\| = |\lambda|\, \|x\|\).
+        \item (三角不等式) \(\|x + y\| \leq \|x\| + \|y\|\).
+    \end{enumerate}
+    则称 \(\|\!\cdot\!\|\) 是 \(E\) 上的范数. 进一步, 称 \((E, \|\!\cdot\!\|)\) 是赋范向量空间.
+\end{axiom}
+
+当范数在上下文中明确时, 我们把 \((E, \|\!\cdot\!\|)\) 简写为 \(E\).
+
+\begin{remark}\label{rem:norms}
+    设 \((E, \|\!\cdot\!\|)\) 是赋范向量空间.
+    \begin{enumerate}
+        \item 函数
+        \[
+            d \colon E \times E \to \R\ ,\quad (x, y) \mapsto \|x - y\|
+        \]
+        是 \(E\) 上的度量, 称为范数诱导的度量. 因此任意赋范向量空间都是度量空间.
+        \item 范数满足反三角不等式,
+        \[
+            \|x - y\| \geq \bigl|\|x\| - \|y\|\bigr|\ ,\quad x, y \in E\ .
+        \]
+        \item 因为注 \ref{rem:norms}.1, 故第 1 节中关于度量空间的全部命题同样对 \(E\) 成立. 特别的, ``邻域'', ``聚点'' 和 ``收敛性'' 在 \(E\) 上是良定义的. 例如, \(E\) 中的序列 \((x_n)\) 收敛到 \(x\) 的含义是:
+        \[
+            x_n \to x \iff \forall \varepsilon > 0,\ \exists N \in \N,\ \forall n \geq N : \|x_n - x\| < \varepsilon.
+        \]
+        此外, 回顾第 2 节可以发现, 只要某个命题的证明中没有用到 \(\K\) 的域结构或序结构, 那么该命题同样适用于 \(E\) 中的序列. 特别的, 注 \ref{rem:null-sequences}, 命题 \ref{prop:addition-scalar-multiplication-in-c} 和命题 \ref{prop:sequence-convergence-then-abs-convergence} 在任意赋范向量空间中都成立.
+    \end{enumerate}
+\end{remark}
+
+\begin{proof}
+    1. \hyperref[ax:metric]{\((\mathrm M_1)\)} 和 \hyperref[ax:metric]{\((\mathrm M_2)\)} 可由 \hyperref[ax:norm]{\((\mathrm N_1)\)} 和 \hyperref[ax:norm]{\((\mathrm N_2)\)} 直接得到. 而由 \hyperref[ax:norm]{\((\mathrm N_3)\)} 可得
+    \[
+        d(x, y) = \|x - y\| = \|x - z + z - y\| \leq \|x - z\| + \|z - y\| = d(x, z) + d(z, y)\ ,\quad x, y, z \in E\ ,
+    \]
+    因此 \hyperref[ax:metric]{\((\mathrm M_3)\)} 也成立.
+
+    2. 由命题 \ref{prop:reversed-triangle-inequality-in-metric-space} 可知, 对于该范数诱导的度量满足反三角不等式. 因此
+    \[
+        \|x - y\| = d(x, y) \geq |d(x, 0) - d(0, y)| = \bigl|\|x\| - \|y\|\bigr|\ .
+    \]
+\end{proof}
+
+\subsection{球}
+
+\begin{definition}[开球和闭球]
+    设 \(a \in E\), \(r > 0\). 称
+    \[
+        \B(a, r) \coloneqq \{\, x \in E \;;\; \|x - a\| < r \,\}\quad \text{和}\quad \bar \B(a, r) \coloneqq \{\, x \in E \;;\; \|x - a\| \leq r \,\}
+    \]
+    是以 \(a\) 为中心, \(r\) 为半径的开球和闭球. 特别的, 称
+    \[
+        \B \coloneqq \B(0, 1) = \{\, x \in E \;;\; \|x\| < 1 \,\}\quad \text{和}\quad \bar \B \coloneqq \bar \B(0, 1) = \{\, x \in E \;;\; \|x\| \leq 1 \,\}
+    \]
+    是 \(E\) 中的单位开球和单位闭球. 并记
+    \[
+        r \B \coloneqq \B(0, r)\ ,\quad r \bar \B \coloneqq \bar \B(0, r)\ ,\quad a + r \B \coloneqq \B(a, r)\ ,\quad a + r \bar \B \coloneqq \bar \B(a, r)\ .
+    \]
+\end{definition}
+
+注意, 当度量 \(d\) 是由范数诱导得到的时, 该定义与度量空间 \((E, d)\) 中开球和闭球的定义是一致的.
+
+\subsection{有界集合}
+
+\begin{definition}[有界集合]
+    称集合 \(X \subseteq E\) 在 \(E\) 中有界 (或范数有界), 若 \(X\) 在范数诱导的度量空间中有界.
+\end{definition}
+
+\begin{remark}\label{rem:bounded-set-in-normed-vector-spaces}
+    设 \((E, \|\!\cdot\!\|)\) 是赋范向量空间.
+    \begin{enumerate}
+        \item \(X \subseteq E\) 有界, 当且仅当存在 \(r > 0\) 使得 \(X \subseteq r \B\), 即对于任意 \(x \in X\) 都有 \(\|x\| < r\).
+        \item 若 \(X\) 和 \(Y\) 是 \(E\) 的有界非空子集, 则 \(X \cup Y\), \(X + Y\) 和 \(\lambda X\ (\lambda \in \K)\) 也是有界的.
+        \item 例 \ref{eg:metric}.4 表明, 在每个向量空间 \(V\) 上, 都存在度量使得 \(V\) 有界. 但是, 若 \(V\) 不是零空间, 则 \hyperref[ax:norm]{\((\mathrm N_2)\)} 蕴含了在 \(V\) 上不存在具有这种性质的范数.
+    \end{enumerate}
+\end{remark}
+
+\subsection{例子}
+
+现在我们为第 1 章的第 12 节中介绍的那些向量空间定义合适的范数.
+
+\begin{example}\label{eg:norms}
+    \begin{enumerate}
+        \item 绝对值 \(|\!\cdot\!|\) 是向量空间 \(\K\) 上的范数.
+    \end{enumerate}
+
+    \begin{center}
+        \kaishu 除非另有说明, 否则默认 \(\K\) 是赋予了上述范数的赋范向量空间.
+    \end{center}
+
+    \begin{enumerate}[start=2]
+        \item 设 \(F\) 是赋范向量空间 \((E, \|\!\cdot\!\|)\) 的子空间. 则 \(\|\!\cdot\!\|\) 在 \(F\) 上的限制 \(\|\!\cdot\!\|_F \coloneqq \|\!\cdot\!\| \big|_F\) 是 \(F\) 上的范数. 因此 \(F\) 在该诱导范数 \(\|\!\cdot\!\|_F\) 下是赋范向量空间. 在不会引起混淆的情况下, 我们使用 \(\|\!\cdot\!\|\) 来表示 \(F\) 上的这个诱导范数.
+        \item 设 \((E_j, \|\!\cdot\!\|_j),\ 1 \leq j \leq m\) 是赋范向量空间, \(E \coloneqq E_1 \times \cdots \times E_m\). 则函数
+        \[
+            \|x\|_\infty \coloneqq \max_{1 \leq j \leq m} \|x_j\|_j\ ,\quad x \in E
+        \]
+        是积向量空间 \(E\) 上的范数, 称为积范数. 当 \(d_j\) 是 \(\|\!\cdot\!\|_j\) 在 \(E_j\) 上诱导的度量时, 则 \(\|\!\cdot\!\|_\infty\) 在 \(E\) 上诱导的度量与例 \ref{eg:metric}.5 中的积度量是一致的.
+        \item \(\K^m\ (m \in \N^\ast)\) 在定义如下最大范数后是赋范向量空间,
+        \[
+            |x|_\infty \coloneqq \max_{1 \leq j \leq m} |x_j|\ ,\quad x \in \K^m\ .
+        \]
+        当 \(m = 1\) 时, \((\K^1, |\!\cdot\!|_\infty) = (\K, |\!\cdot\!|) = \K\).
+    \end{enumerate}
+\end{example}
+
+\begin{proof}
+    3. 显然 \hyperref[ax:norm]{\((\mathrm N_1)\)} 成立.
+    \[
+        \|\lambda x\|_\infty = \max_{1 \leq j \leq m} \|\lambda x_j\|_j = \max_{1 \leq j \leq m} |\lambda|\, \|x_j\|_j = |\lambda|\, \|x\|_\infty\ ,\quad \lambda \in \K\ ,\quad x \in E\ ,
+    \]
+    因此 \hyperref[ax:norm]{\((\mathrm N_2)\)} 成立.
+    \[
+        \|x + y\|_\infty = \max_{1 \leq j \leq m} \|x_j + y_j\|_j \leq \max_{1 \leq j \leq m} (\|x_j\|_j + \|y_j\|_j) \leq \|x\|_\infty + \|y\|_\infty\ ,\quad x, y \in E\ ,
+    \]
+    最后 \hyperref[ax:norm]{\((\mathrm N_3)\)} 成立. 令 \(d\) 是 \(\|\!\cdot\!\|_\infty\) 在 \(E\) 上诱导的度量, 于是
+    \[
+        d(x, y) = \|x - y\|_\infty = \max_{1 \leq j \leq m} \|x_j - y_j\|_j = \max_{1 \leq j \leq m} d_j(x_j, y_j)\ ,\quad x, y \in E\ ,
+    \]
+    因此 \(d\) 与积度量是一致的.
+
+    4. 这是 3. 的特殊情况.
+\end{proof}
+
+\subsection{有界函数空间}
+
+\begin{definition}[有界函数]
+    设 \(X\) 是非空集合, \((E, \|\!\cdot\!\|)\) 是赋范向量空间. 称函数 \(u \in E^X\) 有界, 若 \(u\) 的像在 \(E\) 中有界.
+\end{definition}
+
+\begin{remark}\label{rem:bounded-and-not-bounded-functions}
+    定义
+    \[
+        \|u\|_\infty \coloneqq \sup_{x \in X} \|u(x)\| \in \R \cup \{\infty\}\ ,\quad u \in E^X\ .
+    \]
+    \begin{enumerate}
+        \item 设 \(u \in E^X\). 以下命题是等价的.
+        \begin{enumerate}
+            \item \(u\) 有界.
+            \item \(u(X)\) 在 \(E\) 中有界.
+            \item 存在 \(r > 0\) 使得对于任意 \(x \in X\) 都有 \(\|u(x)\| \leq r\).
+            \item \(\|u\|_\infty < \infty\).
+        \end{enumerate}
+        \item 显然 \(\id \in \K^\K\) 是无界的, 因为 \(\|\!\id\!\|_\infty = \infty\).
+    \end{enumerate}
+\end{remark}
+
+注 \ref{rem:bounded-and-not-bounded-functions}.2 表明, 当 \(E\) 是非平凡向量空间时, \(\|\!\cdot\!\|_\infty\) 未必是向量空间 \(E^X\) 上的范数. 因此我们应该做出如下定义.
+
+\begin{definition}[有界函数空间]
+    称
+    \[
+        B(X, E) \coloneqq \{\, u \in E^X \;;\; u\ \text{有界} \,\}\ ,
+    \]
+    是从 \(X\) 到 \(E\) 的有界函数空间.
+\end{definition}
+
+\begin{proposition}
+    \(B(X, E)\) 是 \(E^X\) 的子空间且 \(\|\!\cdot\!\|_\infty\) 是 \(B(X, E)\) 上的范数, 称为上确界范数.
+\end{proposition}
+
+\begin{proof}
+    由注 \ref{rem:bounded-set-in-normed-vector-spaces}.2 可知 \(B(X, E)\) 是 \(E^X\) 的子空间. 由注 \ref{rem:bounded-and-not-bounded-functions}.1 可知 \(\|\!\cdot\!\|_\infty\) 是良定义的,
+    \[
+        \|u\|_\infty = \sup_{x \in X} \|u(x)\| \geq 0\ ,\quad u \in B(X, E)\ ,
+    \]
+    且 \(u = 0\) 当且仅当对于任意 \(x \in X\) 都有 \(u(x) = 0\), 即 \(\|u\|_\infty = 0\), 于是 \hyperref[ax:norm]{\((\mathrm N_1)\)} 成立.
+    \[
+        \|\lambda u\|_\infty = \sup_{x \in X} \|\lambda u(x)\| = \sup_{x \in X} |\lambda|\, \|u(x)\| = |\lambda|\, \|u\|_\infty\ ,\quad \lambda \in \K\ ,\quad u \in B(X, E)\ ,
+    \]
+    因此 \hyperref[ax:norm]{\((\mathrm N_2)\)} 成立.
+    \[
+        \|u + v\|_\infty = \sup_{x \in X} \|u(x) + v(x)\| \leq \sup_{x \in X} (\|u(x)\| + \|v(x)\|) \leq \|u\|_\infty + \|v\|_\infty\ ,\quad u, v \in B(X, E)\ ,
+    \]
+    最后 \hyperref[ax:norm]{\((\mathrm N_3)\)} 成立.
+\end{proof}
+
+\begin{center}
+    \kaishu 除非另有说明, 否则默认 \(B(X, E)\) 是从 \(X\) 到 \(E\) 且赋予上确界范数 \(\|\!\cdot\!\|_\infty\) 的有界函数空间.
+\end{center}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 若 \(X \coloneqq \N\), 则 \(B(X, E)\) 是 \(E\) 中有界序列的赋范向量空间. 特别的, 若 \(E \coloneqq \K\), 则称
+        \[
+            \ell_\infty \coloneqq \ell_\infty(\K) \coloneqq B(\N, \K)
+        \]
+        是赋予了上确界范数
+        \[
+            \|(x_n)\|_\infty = \sup_{n \in \N} |x_n|\ ,\quad (x_n) \in \ell_\infty
+        \]
+        的有界数列的赋范向量空间.
+        \item 由命题 \ref{prop:convergent-sequence-is-bounded} 可知, 任意收敛序列都是有界的, 于是由注 \ref{rem:c-is-vector-space} 可得 \(c_0\) 和 \(c\) 是 \(\ell_\infty\) 的子空间. 因此 \(c_0\) 和 \(c\) 赋予上确界范数后是赋范向量空间, 且作为子空间有 \(c_0 \subseteq c \subseteq \ell_\infty\).
+        \item 设 \(X = \{1, \ldots, m\}\ (m \in \N^\ast)\). 则
+        \[
+            \bigl(B(X, E), \|\!\cdot\!\|_\infty\bigr) = (E^m, \|\!\cdot\!\|_\infty)\ ,
+        \]
+        其中等式左边的 \(\|\!\cdot\!\|_\infty\) 是上确界范数, 等式右边的 \(\|\!\cdot\!\|_\infty\) 是例 \ref{eg:norms}.3 的积范数. 因此上确界范数的记号和积范数的记号是一致的, 而不会产生歧义.
+    \end{enumerate}
+\end{remark}
+
+\subsection{内积空间}
+
+现在我们考虑赋范向量空间 \((\R^2, |\!\cdot\!|_\infty)\). 于是 \(\R^2\) 中的单位球为
+\[
+    \B_{\R^2} = \{\, x \in \R^2 \;;\; |x|_\infty \leq 1 \,\} = \{\, x \in \R^2 \;;\; -1 \leq x_1, x_2 \leq 1 \,\}\ ,
+\]
+因此, \(\B_{\R^2}\) 是平面上的一个正方形, 其边长为 \(2\), 中心在 \(0\).
+\begin{center}
+    \begin{tikzpicture}[scale=1.2]
+        \filldraw[fill=gray!20, draw=black] (-1, -1) rectangle (1, 1);
+        \draw[->] (-1.7, 0) -- (1.7, 0) node[right] {\(\mathbb R\)};
+        \draw[->] (0, -1.7) -- (0, 1.7) node[above] {\(\mathbb R\)};
+        \node[above left] at (0, 1) {\(1\)};
+        \node[below left] at (0, -1) {\(- 1\)};
+        \node[below right] at (1, 0) {\(1\)};
+        \node[below left] at (-1, 0) {\(- 1\)};
+    \end{tikzpicture}
+\end{center}
+在任意赋范向量空间 \((E, \|\!\cdot\!\|)\) 中, 称集合 \(\{\, x \in E \;;\; \|x\| = 1 \,\}\) 是 \((E, \|\!\cdot\!\|)\) 中的单位球面, 也就是单位球的 ``边界''. 对我们的空间 \((\R^2, |\!\cdot\!|_\infty)\) 来说, 这个单位球面就是图中那个正方形的边界. 单位球面上的每一个点到原点的距离都是 \(1\). 当然, 这里的距离是用 \(|\!\cdot\!|_\infty\) 的诱导度量来定义的, 因此这里的 ``球'' 和 ``球面'' 的几何外观可能与我们以往的经验不太一样. 在学校, 我们学到: 若点到原点的距离按 Pythagoras 定理定义为 ``各坐标平方和的平方根'' (见第 1 章的第 11 节关于 \(\B_\C\) 的内容), 那么在平面上得到的就是 ``圆'' 的形状. 我们希望把这种距离的想法推广到 \(\K^m\) 上, 通过在 \(\K^m\) 上定义一个新的范数---Euclid 范数, 这个范数在历史上和实际应用中都很重要. 为了做到这一点, 我们需要先做一些准备工作.
+
+\begin{axiom}[内积]\label{ax:inner-product}
+    设 \(E\) 是 \(\K\)-向量空间, 其上定义了函数
+    \[
+        \langle \cdot, \cdot \rangle \colon E \times E \to \K\ ,\quad (x, y) \mapsto \langle x, y \rangle\ .
+    \]
+    若对于任意 \(\lambda, \mu \in \K\) 和 \(x, y, z \in E\) 都有
+    \begin{enumerate}[label={\((\mathrm{IP}_{\arabic*})\)}]
+        \item (共轭对称性) \(\langle x, y \rangle = \overline{\langle y, x \rangle}\).
+        \item (对第一个参数线性) \(\langle \lambda x + \mu y, z\rangle = \lambda \langle x, z \rangle + \mu \langle y, z \rangle\).
+        \item (正定性) \(\langle x, x \rangle \geq 0\), 其中 \(\langle x, x \rangle = 0\) 当且仅当 \(x = 0\).
+    \end{enumerate}
+    则称 \(\langle \cdot, \cdot \rangle\) 是 \(E\) 上的内积. 进一步, 称 \(\bigl(E, \langle \cdot, \cdot \rangle\bigr)\) 是内积空间.
+\end{axiom}
+
+当内积在上下文中明确时, 我们把 \(\bigl(E, \langle \cdot, \cdot \rangle\bigr)\) 简写为 \(E\).
+
+\begin{remark}\label{rem:inner-product-property}
+    \begin{enumerate}
+        \item 当 \(\K = \R\) 时, \hyperref[ax:inner-product]{\((\mathrm{IP}_1)\)} 可以写为
+        \[
+            \langle x, y \rangle = \langle y, x \rangle\ ,\quad x, y \in E\ ,
+        \]
+        也就是说当 \(E\) 是实向量空间时, 函数 \(\langle \cdot, \cdot \rangle\) 是对称的. 当 \(\K = \C\) 时, 若 \hyperref[ax:inner-product]{\((\mathrm{IP}_1)\)} 成立, 则称函数 \(\langle \cdot, \cdot \rangle\) 是 Hermite 的.
+        \item 由 \hyperref[ax:inner-product]{\((\mathrm{IP}_1)\)} 和 \hyperref[ax:inner-product]{\((\mathrm{IP}_2)\)} 可得
+        \[
+            \langle x, \lambda y + \mu z \rangle = \overline \lambda \langle x, y \rangle + \overline \mu \langle x, z \rangle\ ,\quad \lambda, \mu \in \K\ ,\quad x, y, z \in E\ ,
+        \]
+        即对于每个固定的 \(x \in E\), 称函数 \(\langle x, \cdot \rangle \colon E \to \K\) 是共轭线性的. 同时 \hyperref[ax:inner-product]{\((\mathrm{IP}_2)\)} 表明对于每个固定的 \(x \in E\), 函数 \(\langle \cdot, x \rangle \colon E \to \K\) 是线性的, 此时称 \(\langle \cdot, \cdot \rangle\) 是半双线性形式. 当 \(\K = \R\) 时, \(\langle \cdot, x \rangle\) 和 \(\langle x, \cdot \rangle\) 都是线性的, 此时称 \(\langle \cdot, \cdot \rangle\) 是双线性形式. 最后 \hyperref[ax:inner-product]{\((\mathrm{IP}_3)\)} 表明 \(\langle \cdot, \cdot \rangle\) 是正定的. 在这样的定义下, 我们说: 当 \(E\) 是复向量空间时, 内积是 \(E\) 上正定且 Hermite 的半双线性形式. 当 \(E\) 是实向量空间时, 内积是 \(E\) 上正定且对称的双线性形式.
+        \item 对于任意 \( x, y \in E\) 都有
+        \[
+            \langle x \pm y, x \pm y \rangle = \langle x, x \rangle \pm 2 \Re \langle x, y \rangle + \langle y, y \rangle\ .
+        \]
+        \item 对于任意 \(x \in E\) 都有 \(\langle x, 0 \rangle = \langle 0, x \rangle = 0\).
+    \end{enumerate}
+\end{remark}
+
+容易验证
+\[
+    \langle x, y \rangle \coloneqq \sum_{j = 1}^m x_j \overline y_j\ ,\quad x, y \in \K^m\quad (m \in \N^\ast)
+\]
+是 \(\K^m\) 上的内积, 称为 \(\K^m\) 上的 Euclid 内积.
+
+\subsection{Cauchy-Schwarz 不等式}
+
+在做完上述准备工作之后, 我们现在可以证明关于内积空间最有用的定理之一.
+
+\begin{theorem}[Cauchy-Schwarz 不等式]\label{thm:cauchy-schwarz-inequality}
+    设 \(\bigl(E, \langle \cdot, \cdot \rangle\bigr)\) 是内积空间. 则
+    \[
+        |\langle x, y \rangle|^2 \leq \langle x, x \rangle \langle y, y \rangle\ ,\quad x, y \in E\ ,
+    \]
+    其中等号成立当且仅当 \(x\) 和 \(y\) 线性相关.
+\end{theorem}
+
+\begin{proof}
+    当 \(y = 0\) 时, 由注 \ref{rem:inner-product-property}.4 可知定理成立. 设 \(y \neq 0\). 对于任意 \(\alpha \in \K\) 有
+    \[
+        0 \leq \langle x - \alpha y, x - \alpha y \rangle = \langle x, x \rangle - 2 \Re \langle x, \alpha y \rangle + \langle \alpha y, \alpha y \rangle = \langle x, x \rangle - 2 \Re \overline \alpha \langle x, y \rangle + |\alpha|^2 \langle y, y \rangle\ ,
+    \]
+    令 \(\alpha \coloneqq \langle x, y \rangle / \langle y, y \rangle\), 于是
+    \[
+        0 \leq \langle x, x \rangle - 2 \Re \frac{\overline{\langle x, y \rangle}}{\langle y, y \rangle} \langle x, y \rangle + \frac{|\langle x, y \rangle|^2}{\langle y, y \rangle^2} \langle y, y \rangle = \langle x, x \rangle - 2 \frac{|\langle x, y \rangle|^2}{\langle y, y \rangle} + \frac{|\langle x, y \rangle|^2}{\langle y, y \rangle} = \langle x, x \rangle - \frac{|\langle x, y \rangle|^2}{\langle y, y \rangle}\ ,
+    \]
+    即
+    \[
+        |\langle x, y \rangle|^2 \leq \langle x, x \rangle \langle y, y \rangle\ ,\quad x, y \in E\ .
+    \]
+
+    设 \(x\) 和 \(y\) 线性无关. 则对于任意 \(\alpha \in \K\) 都有 \(x - \alpha y \neq 0\), 于是 \(0 < \langle x - \alpha y, x - \alpha y \rangle\), 令 \(\alpha \coloneqq \langle x, y \rangle / \langle y, y \rangle\) 可得
+    \[
+        |\langle x, y \rangle|^2 < \langle x, x \rangle \langle y, y \rangle\ ,\quad x, y \in E\ .
+    \]
+
+    设 \(x\) 和 \(y\) 线性相关. 则存在 \((\alpha, \beta) \in \K^2 \!\setminus\! \{0\}\) 使得 \(\alpha x + \beta y = 0\). 假设 \(\alpha \neq 0\), 则 \(x = - (\beta / \alpha) y\), 于是
+    \[
+        |\langle x, y \rangle|^2 = \biggl|\Bigl\langle - \frac{\beta}{\alpha} y, y \Bigr\rangle\biggr|^2 = \Bigl|\frac{\beta}{\alpha}\Bigr|^2 \langle y, y \rangle^2 = \Bigl\langle - \frac{\beta}{\alpha} y, - \frac{\beta}{\alpha} y \Bigr\rangle \langle y, y \rangle = \langle x, x \rangle \langle y, y \rangle\ ,\quad x, y \in E\ ,
+    \]
+    假设 \(\beta \neq 0\), 同理可得.
+\end{proof}
+
+\begin{corollary}[经典 Cauchy-Schwarz 不等式]\label{cor:classic-cauchy-schwarz-inequality}
+    \[
+        \Bigl|\sum_{j = 1}^m \xi_j \overline \eta_j\Bigr|^2 \leq \Bigl(\sum_{j = 1}^m |\xi_j|^2\Bigr) \Bigl(\sum_{j = 1}^m |\eta_j|^2\Bigr)\ ,\quad \xi_1, \ldots, \xi_m, \eta_1, \ldots, \eta_m \in \K\ .
+    \]
+    其中等号成立当且仅当 \((\xi_1, \ldots, \xi_m)\) 和 \((\eta_1, \ldots, \eta_m)\) 线性相关.
+\end{corollary}
+
+\begin{proof}
+    将定理 \ref{thm:cauchy-schwarz-inequality} 应用到赋予 Euclid 内积的 \(\K^m\) 上即可.
+\end{proof}
+
+\begin{theorem}
+    设 \(\bigl(E, \langle \cdot, \cdot \rangle\bigr)\) 是内积空间. 则
+    \[
+        \|x\| \coloneqq \sqrt{\langle x, x \rangle}\ ,\quad x \in E
+    \]
+    是 \(E\) 上的范数, 称为从内积 \(\langle \cdot, \cdot \rangle\) 诱导的范数.
+\end{theorem}
+
+\begin{proof}
+    由于对于任意的 \(x \in E\) 都有 \(\langle x, x \rangle \geq 0\), 因此 \(\|x\| = \sqrt{\langle x, x \rangle} \geq 0\) 是良定义的且 
+    \[
+        \|x\| = 0 \iff \langle x, x \rangle = 0 \iff x = 0\ ,
+    \]
+    于是 \hyperref[ax:norm]{\((\mathrm N_1)\)} 成立.
+    \[
+        \|\lambda x\| = \sqrt{\langle \lambda x, \lambda x \rangle} = \sqrt{|\lambda|^2 \langle x, x \rangle} = |\lambda| \sqrt{\langle x, x \rangle} = |\lambda|\, \|x\|\ ,\quad \lambda \in \K\ ,\quad x \in E\ ,
+    \]
+    因此 \hyperref[ax:norm]{\((\mathrm N_2)\)} 成立. 由 Cauchy-Schwarz 不等式可得
+    \[
+        |\langle x, y \rangle| \leq \sqrt{\langle x, x \rangle \langle y, y \rangle} = \|x\|\, \|y\|\ ,\quad x, y \in E\ ,
+    \]
+    于是
+    \begin{align*}
+        \|x + y\|^2 &= \langle x + y, x + y \rangle \\
+        &= \langle x, x \rangle + 2 \Re \langle x, y \rangle + \langle y, y \rangle \\
+        &\leq \langle x, x \rangle + 2\, |\langle x, y \rangle| + \langle y, y \rangle \\
+        &\leq \|x\|^2 + 2\, \|x\|\, \|y\| + \|y\|^2 = (\|x\| + \|y\|)^2\ ,\quad x, y \in E\ ,
+    \end{align*}
+    即 \(\|x + y\| \leq \|x\| + \|y\|\), 最后 \hyperref[ax:norm]{\((\mathrm N_3)\)} 成立.
+\end{proof}
+
+\begin{center}
+    \kaishu 除非另有说明, 否则默认内积空间 \(\bigl(E, \langle \cdot, \cdot \rangle\bigr)\) 是赋予了诱导范数的赋范向量空间.
+\end{center}
+
+由内积诱导的范数通常也被称为 Hilbert 范数. 利用该范数, 我们可以将定理 \ref{thm:cauchy-schwarz-inequality} 的 Cauchy-Schwarz 不等式改写为如下形式.
+
+\begin{corollary}
+    设 \(\bigl(E, \langle \cdot, \cdot \rangle\bigr)\) 是内积空间. 则
+    \[
+        |\langle x, y \rangle| \leq \|x\|\, \|y\|\ ,\quad x, y \in E\ ,
+    \]
+    其中等号成立当且仅当 \(x\) 和 \(y\) 线性相关.
+\end{corollary}
+
+\subsection{Euclid 空间}
+
+一个特别重要的例子是 \(\K^m\) 上的 Euclid 内积. 由于我们会非常频繁的与该内积打交道, 因此我们做出如下约定会很方便.
+
+\begin{center}
+    \kaishu 除非另有说明, 否则默认赋予 \(\K^m\) Euclid 内积和诱导范数
+    \[
+        |x| \coloneqq \sqrt{\langle x, x \rangle} = \sqrt{\textstyle \sum_{j = 1}^m |x_j|^2}\ ,\quad x \in \K^m\ ,
+    \]
+    称为 Euclid 范数. 在实数的情况, 我们把 \(\langle x, y \rangle\) 记作 \(x \cdot y\).
+\end{center}
+
+现在我们在向量空间 \(\K^m\) 上有了两个范数, 即最大范数
+\[
+    |x|_\infty = \max_{1 \leq j \leq m} |x_j|\ ,\quad x \in \K^m\ ,
+\]
+和 Euclid 范数
+\[
+    |x| = \Bigl(\sum_{j = 1}^m |x_j|^2\Bigr)^{1 / 2}\ ,\quad x \in \K^m\ .
+\]
+我们进一步定义一个新的范数
+\[
+    |x|_1 \coloneqq \sum_{j = 1}^m |x_j|\ ,\quad x \in \K^m\ ,
+\]
+称为 1-范数. 验证这确实给出了一个范数是很容易的, 这里留给读者自己完成. 接下来的命题将通过再次应用 Cauchy-Schwarz 不等式, 证明 Euclid 范数与 \(|\!\cdot\!|_1\) 和 \(|\!\cdot\!|_\infty\) 是 ``可比较的''.
+
+\begin{proposition}\label{prop:Lp-norms-are-equivalent}
+    \[
+        |x|_\infty \leq |x| \leq \sqrt{m}\, |x|_\infty\ ,\quad \frac{1}{\sqrt{m}}\, |x|_1 \leq |x| \leq |x|_1\ ,\quad x \in \K^m\quad (m \in \N^\ast)\ .
+    \]
+\end{proposition}
+
+\begin{proof}
+    显然
+    \[
+        |x|_\infty^2 = \bigl(\max_{1 \leq j \leq m} |x_j|\bigr)^2 = \max_{1 \leq j \leq m} |x_j|^2 \leq \sum_{j = 1}^m |x_j|^2 = |x|^2\ ,
+    \]
+    因此 \(|x|_\infty \leq |x|\). 而
+    \[
+        |x|^2 = \sum_{j = 1}^m |x_j|^2 \leq m \max_{1 \leq j \leq m} |x_j|^2 = m \bigl(\max_{1 \leq j \leq m} |x_j|\bigr)^2 = m\, |x|_\infty^2\ ,
+    \]
+    因此 \(|x| \leq \sqrt{m}\, |x|_\infty\).
+    \[
+        |x|^2 = \sum_{j = 1}^m |x_j|^2 \leq \Bigl(\sum_{j = 1}^m |x_j|\Bigr)^2 = |x|_1^2\ ,
+    \]
+    因此 \(|x| \leq |x|_1\). 由推论 \ref{cor:classic-cauchy-schwarz-inequality} 可得
+    \[
+        |x|_1^2 = \Bigl(\sum_{j = 1}^m 1 \cdot |x_j|\Bigr)^2 \leq \Bigl(\sum_{j = 1}^m 1^2\Bigr) \Bigl(\sum_{j = 1}^m |x_j|^2\Bigr) = m\, |x|^2\ ,
+    \]
+    因此 \(|x|_1 \leq \sqrt{m}\, |x|\).
+\end{proof}
+
+\subsection{等价范数}
+
+\begin{definition}[等价范数]
+    设 \(E\) 是向量空间, \(\|\!\cdot\!\|_1\) 和 \(\|\!\cdot\!\|_2\) 是 \(E\) 上的范数. 若存在 \(K \geq 1\) 使得
+    \[
+        \frac{1}{K} \|x\|_1 \leq \|x\|_2 \leq K\, \|x\|_1\ ,\quad x \in E\ ,
+    \]
+    则称 \(\|\!\cdot\!\|_1\) 和 \(\|\!\cdot\!\|_2\) 等价, 记作 \(\|\!\cdot\!\|_1 \sim \|\!\cdot\!\|_2\).
+\end{definition}
+
+\begin{remark}\label{rem:equivalent-norms}
+    \begin{enumerate}
+        \item 不难验证, \(\sim\) 是给定向量空间的范数集合上的等价关系.
+        \item 命题 \ref{prop:Lp-norms-are-equivalent} 的等价陈述是: 在 \(\K^m\) 上
+        \[
+            |\!\cdot\!|_1 \sim |\!\cdot\!| \sim |\!\cdot\!|_\infty\ .
+        \]
+        \item 为了使命题 \ref{prop:Lp-norms-are-equivalent} 的等价陈述更为清晰, 我们用 \(\B^m\), \(\B_1^m\) 和 \(\B_\infty^m\) 分别表示 \((\R^m, |\!\cdot\!|)\), \((\R^m, |\!\cdot\!|_1)\) 和 \((\R^m, |\!\cdot\!|_\infty)\) 中的单位开球. 则命题 \ref{prop:Lp-norms-are-equivalent} 说
+        \[
+            \B^m \subseteq \B_\infty^m \subseteq \sqrt{m} \B^m\ ,\quad \B_1^m \subseteq \B^m \subseteq \sqrt{m} \B_1^m\ .
+        \]
+        在 \(m = 2\) 时, 这个包含关系如下图所示.
+        \begin{center}
+            \begin{tikzpicture}[scale=1.2]
+                \begin{scope}[xshift=-2.7cm]
+                    % 外圆
+                    \filldraw[fill=gray!20, draw=black] (0, 0) circle ({sqrt(2)});
+                    % 正方形
+                    \filldraw[fill=gray!35, draw=black] (-1, -1) -- (-1, 1) -- (1, 1) -- (1, -1) -- cycle;
+                    % 内圆
+                    \filldraw[fill=gray!50, draw=black] (0, 0) circle (1);
+                    % 坐标轴与刻度
+                    \draw[->] (-2, 0) -- (2, 0);
+                    \draw[->] (0, -2) -- (0, 2);
+                    \draw[thick] ({sqrt(2)}, -0.2) -- ({sqrt(2)}, 0.2);
+                    \node[below] at (1.7, 0) {\(\sqrt{2}\)};
+                \end{scope}
+                \begin{scope}[xshift=2.7cm]
+                    % 外菱形
+                    \filldraw[fill=gray!50, draw=black] (0, {sqrt(2)}) -- ({sqrt(2)}, 0) -- (0, {-sqrt(2)}) -- ({-sqrt(2)}, 0) -- cycle;
+                    % 圆
+                    \filldraw[fill=gray!35, draw=black] (0, 0) circle (1);
+                    % 内菱形
+                    \filldraw[fill=gray!20, draw=black] (0, 1) -- (1, 0) -- (0, -1) -- (-1, 0) -- cycle;
+                    % 坐标轴与刻度
+                    \draw[->] (-2, 0) -- (2, 0);
+                    \draw[->] (0, -2) -- (0, 2);
+                    \draw[thick] ({sqrt(2)}, -0.2) -- ({sqrt(2)}, 0.2);
+                    \node[below] at (1.7, 0) {\(\sqrt{2}\)};
+                \end{scope}
+            \end{tikzpicture}
+        \end{center}
+        注意到
+        \[
+            \B_\infty^m = \underbrace{\B_\infty^1 \times \cdots \times \B_\infty^1}_{m} = (-1, 1)^m\ ,
+        \]
+        但是对于 \(\B^m\) 和 \(\B_1^m\), 则不存在类似的表达方式.
+        \item 设 \(E\) 是向量空间, \(\|\!\cdot\!\|_1\) 和 \(\|\!\cdot\!\|_2\) 是 \(E\) 上的等价范数, 记 \(E_1 \coloneqq (E, \|\!\cdot\!\|_1),\ E_2 \coloneqq (E, \|\!\cdot\!\|_2)\). 则
+        \[
+            \nbr_{E_1}(a) = \nbr_{E_2}(a)\ ,\quad a \in E\ .
+        \]
+        也就是说, \(a\) 的邻域族只依赖于该范数的等价类. 等价的范数会产生同样的邻域族.
+        \item 通过双射
+        \[
+            \C \to \R^2\ ,\quad x + i y \mapsto (x, y)\ ,
+        \]
+        复数集 \(\C \coloneqq \R + i \R\) 可以与 \(\R^2\) 一一对应 (甚至可以与 Abel 群 \((\R^2, +)\) 一一对应, 见注 \ref{rem:complex-numbers-property}.3). 更一般的, 对于 \(\C^m\) 可以通过双射
+        \[
+            \C^m \to \R^{2 m}\ ,\quad (z_1, \ldots, z_m) = (x_1 + i y_1, \ldots, x_m + i y_m) \mapsto (x_1, y_1, \ldots, x_m, y_m)
+        \]
+        与 \(\R^{2 m}\) 一一对应. 在这个典范映射下
+        \[
+            \B_{\C^m} = \B^{2 m} = \B_{\R^{2 m}}\ ,
+        \]
+        进一步
+        \[
+            \nbr_{\C^m} = \nbr_{\R^{2 m}}\ .
+        \]
+        因此, 就拓扑问题而言, 即关于点的邻域的命题, \(\C^m\) 和 \(\R^{2 m}\) 可以视为同一.
+        \item ``聚点'' 和 ``收敛性'' 是拓扑概念, 因为它们是通过邻域来定义的. 因此, 将范数替换为等价的范数后, 它们是不变的.
+    \end{enumerate}
+\end{remark}
+
+\begin{proof}
+    4. 由于 \(\|\!\cdot\!\|_1\) 和 \(\|\!\cdot\!\|_2\) 等价, 故存在 \(K \geq 1\) 使得
+    \[
+        \frac{1}{K} \|x\|_1 \leq \|x\|_2 \leq K\, \|x\|_1\ ,\quad x \in E\ .
+    \]
+    我们先证明
+    \[
+        \B_{E_1}(a, r / K) \subseteq \B_{E_2}(a, r) \subseteq \B_{E_1}(a, K r)\ ,\quad r > 0\ ,\quad a \in E\ .
+    \]
+    任取 \(x \in \B_{E_1}(a, r / K)\), 于是
+    \[
+        \|x - a\|_2 \leq K\, \|x - a\|_1 < K \frac{r}{K} = r\ ,
+    \]
+    因此 \(x \in \B_{E_2}(a, r)\), 故 \(\B_{E_1}(a, r / K) \subseteq \B_{E_2}(a, r)\). 任取 \(x \in \B_{E_2}(a, r)\), 于是
+    \[
+        \|x - a\|_1 \leq K\, \|x - a\|_2 < K r\ ,
+    \]
+    因此 \(x \in \B_{E_1}(a, K r)\), 故 \(\B_{E_2}(a, r) \subseteq \B_{E_1}(a, K r)\).
+
+    设 \(U_1 \in \nbr_{E_1}(a)\). 故存在 \(r > 0\) 使得 \(\B_{E_1}(a, r) \subseteq U_1\), 于是 \(\B_{E_2}(a, r / K) \subseteq \B_{E_1}(a, r) \subseteq U_1\), 因此 \(U_1 \in \nbr_{E_2}(a)\), 这说明 \(\nbr_{E_1}(a) \subseteq \nbr_{E_2}(a)\). 同理可得 \(\nbr_{E_2}(a) \subseteq \nbr_{E_1}(a)\).
+\end{proof}
+
+\subsection{积空间中的收敛性}
+
+作为以上及之前讨论的结果, 我们现在有了一个对 \(\K^m\) 中收敛数列的简单但非常有用的刻画.
+
+\begin{proposition}\label{prop:componentwise-convergence-of-sequence}
+    设 \((x_n) = \bigl((x_n^1, \ldots, x_n^m)\bigr)\) 是 \(\K^m\) 中的序列. 以下命题是等价的.
+    \begin{enumerate}
+        \item \((x_n)\) 收敛到 \(x = (x^1, \ldots, x^m) \in \K^m\).
+        \item 对于每个 \(j \in \{1, \ldots, m\}\) 都有 \((x_n^j)\) 收敛到 \(x^j \in \K\).
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    由例 \ref{eg:ez-convergent-sequence}.5 和注 \ref{rem:equivalent-norms}.6 可以直接得到.
+\end{proof}
+
+命题 \ref{prop:componentwise-convergence-of-sequence} 常被称为序列 \((x_n)\) 的按分量收敛, 因此命题 \ref{prop:componentwise-convergence-of-sequence} 可以稍微不那么精确的表述为: 在 \(\K^m\) 中, 一个序列收敛当且仅当它按分量收敛. 于是, 原则上只研究 \(\K\) 中数列的收敛性就足够了---事实上, 由注 \ref{rem:equivalent-norms}.5, 只研究 \(\R\) 中数列的收敛性就已经足够. 不过, 出于许多原因 (读者在进一步的学习中会自己体会到), 在我们的论述中做出这样的 ``简化'' 几乎得不到什么实质性的好处.
+
+\subsection{练习}
+
+\begin{exercise}
+    设 \(\|\!\cdot\!\|\) 是 \(\K\)-向量空间 \(E\) 上的范数. 证明, 对于每个 \(T \in \Aut(E)\), 函数
+    \[
+        \|x\|_T \coloneqq \|T x\|\ ,\quad x \in E
+    \]
+    是 \(E\) 上的范数. 特别的, 对于每个 \(\alpha \in \K^\ast\), 函数 \(E \to \R,\ x \mapsto \|\alpha x\|\) 是 \(E\) 上的范数.
+\end{exercise}
+
+\begin{proof}
+    设 \(T\) 是 \(E\) 上的自同构, 于是 \(\ker T = \{0\}\). 由于 \(\|\!\cdot\!\|\) 是 \(E\) 上的范数, 因此对于任意 \(x \in E\) 都有 \(\|x\|_T = \|T x\| \geq 0\) 且
+    \[
+        \|x\|_T = 0 \iff \|T x\| = 0 \iff T x = 0 \iff x = 0\ ,
+    \]
+    于是 \((\mathrm N_1)\) 成立.
+    \[
+        \|\lambda x\|_T = \|T \lambda x\| = \|\lambda T x\| = |\lambda|\, \|T x\| = |\lambda|\, \|x\|_T\ ,\quad \lambda \in \K\ ,\quad x \in E\ ,
+    \]
+    因此 \((\mathrm N_2)\) 成立.
+    \[
+        \|x + y\|_T = \|T(x + y)\| = \|T x + T y\| \leq \|T x\| + \|T y\| = \|x\|_T + \|y\|_T\ ,\quad x, y \in E\ ,
+    \]
+    最后 \((\mathrm N_3)\) 成立. 而 \(x \mapsto \|\alpha x\|\) 则是 \(T \coloneqq \alpha \id_E\) 时的特殊情况.
+\end{proof}
+
+\begin{exercise}
+    设赋范向量空间 \((E, \|\!\cdot\!\|)\) 中的序列 \((x_n)\) 收敛到 \(x\). 证明 \([0,\infty)\) 中的数列 \((\|x_n\|)\) 收敛到 \(\|x\|\).
+\end{exercise}
+
+\begin{proof}
+    任取 \(\varepsilon > 0\). 故存在 \(N \in \N^\ast\) 使得当 \(n \geq N\) 时 \(\|x_n - x\| < \varepsilon\). 由反三角不等式可得
+    \[
+        \bigl|\|x_n\| - \|x\|\bigr| \leq \|x_n - x\| < \varepsilon\ ,\quad n \geq N\ ,
+    \]
+    因此 \((\|x_n\|)\) 收敛到 \(\|x\|\).
+\end{proof}
+
+\begin{exercise}
+    证明注 \ref{rem:bounded-and-not-bounded-functions}.1 的断言.
+\end{exercise}
+
+\begin{proof}
+    由有界函数的定义直接可得 (a) 和 (b) 等价. 由有界集合的性质直接可得 (b) 和 (c) 等价. 而 (c) 和 (d) 等价是显然的.
+\end{proof}
+
+\begin{exercise}
+    证明平行四边形恒等式
+    \[
+        2 (\|x\|^2 + \|y\|^2) = \|x + y\|^2 + \|x - y\|^2\ ,\quad x, y \in E
+    \]
+    在内积空间 \(\bigl(E, \langle \cdot, \cdot \rangle\bigr)\) 中成立.
+\end{exercise}
+
+\begin{proof}
+    \begin{align*}
+        \|x + y\|^2 + \|x - y\|^2 &= \langle x + y, x + y \rangle + \langle x - y, x - y \rangle \\
+        &= \langle x, x \rangle + 2 \Re \langle x, y \rangle + \langle y, y \rangle + \langle x, x \rangle - 2 \Re \langle x, y \rangle + \langle y, y \rangle \\
+        &= 2 \langle x, x \rangle + 2 \langle y, y \rangle = 2 (\|x\|^2 + \|y\|^2)\ ,\quad x, y \in E\ .
+    \end{align*}
+\end{proof}
+
+\begin{exercise}
+    设 \(\lambda \in \K^m\). 则当 \(\lambda\) 取何值时,
+    \[
+        \langle \cdot, \cdot \rangle_\lambda \colon \K^m \times \K^m \to \K\ ,\quad (x, y) \mapsto \sum_{j = 1}^m \lambda_j x_j \overline y_j
+    \]
+    是 \(\K^m\) 上的内积.
+\end{exercise}
+
+\begin{proof}
+    假设 \(\langle \cdot, \cdot \rangle_\lambda\) 是 \(\K^m\) 上的内积. 由 \((\mathrm{IP}_1)\) 可知
+    \[
+        \sum_{j = 1}^m \lambda_j x_j \overline y_j = \langle x, y \rangle_\lambda = \overline{\langle y, x \rangle_\lambda} = \overline{\sum_{j = 1}^m \lambda_j y_j \overline x_j} = \sum_{j = 1}^m \overline \lambda_j x_j \overline y_j\ ,\quad x, y \in \K^m\ ,
+    \]
+    因此 \(\lambda \in \R^m\). 由 \((\mathrm{IP}_3)\) 可知
+    \[
+        \langle x, x \rangle_\lambda = \sum_{j = 1}^m \lambda_j x_j \overline x_j = \sum_{j = 1}^m \lambda_j |x_j|^2 \geq 0\ ,\quad x \in \K^m\ ,
+    \]
+    于是对于任意 \(j \in \{1, \ldots, m\}\) 都有 \(\lambda_j \geq 0\), 而由等号成立当且仅当 \(x = 0\) 可得, 对于任意 \(j \in \{1, \ldots, m\}\) 都有 \(\lambda_j \neq 0\). 最后可得 \(\lambda \in (0, \infty)^m\).
+\end{proof}
+
+\begin{exercise}
+    设 \(\bigl(E, \langle \cdot, \cdot \rangle\bigr)\) 是实内积空间. 证明不等式
+    \[
+        (\|x\| + \|y\|) \frac{\langle x, y \rangle}{\|x\|\, \|y\|} \leq \|x + y\| \leq \|x\| + \|y\|\ ,\quad x, y \in E \!\setminus\! \{0\}\ .
+    \]
+    什么时候等号成立? (提示: 将第一个不等式两边同时平方.)
+\end{exercise}
+
+\begin{proof}
+    现在考虑第一个不等式. 当 \(\langle x, y \rangle < 0\) 时. 注意到 \(x, y \neq 0\), 因此 \(\|x\| > 0\) 且 \(\|y\| > 0\), 于是
+    \[
+        (\|x\| + \|y\|) \frac{\langle x, y \rangle}{\|x\|\, \|y\|} < 0 \leq \|x + y\|\ ,
+    \]
+    故不等式成立, 此时无法取得等号. 当 \(\langle x, y \rangle = 0\) 时. 有
+    \[
+        (\|x\| + \|y\|) \frac{\langle x, y \rangle}{\|x\|\, \|y\|} = 0 \leq \|x + y\|\ ,
+    \]
+    故不等式成立, 而等号成立当且仅当
+    \[
+        \|x + y\| = 0 \iff x + y = 0 \iff x = - y\ ,
+    \]
+    注意到 \(y \neq 0\), 于是 \(\langle x, y \rangle = \langle - y, y \rangle = - \langle y, y \rangle < 0\), 这与 \(\langle x, y \rangle = 0\) 矛盾. 因此 \(\langle x, y \rangle = 0\) 时也无法取得等号. 当 \(\langle x, y \rangle > 0\) 时. 将不等式两边同时平方. 利用 Cauchy-Schwarz 不等式有
+    \begin{align*}
+        (\|x\| + \|y\|)^2 \frac{\langle x, y \rangle^2}{\|x\|^2\, \|y\|^2} &= \bigl(\langle x, x \rangle + \langle y, y \rangle + 2 \sqrt{\langle x, x \rangle \langle y, y \rangle}\bigr) \frac{\langle x, y \rangle^2}{\langle x, x \rangle \langle y, y \rangle} \\
+        &= \frac{\langle x, y \rangle^2}{\langle y, y \rangle} + \frac{\langle x, y \rangle^2}{\langle x, x \rangle} + \frac{2 \langle x, y \rangle^2}{\sqrt{\langle x, x \rangle \langle y, y \rangle}} \\
+        &\leq \langle x, x \rangle + \langle y, y \rangle + \frac{2 \langle x, y \rangle^2}{\sqrt{\langle x, x \rangle \langle y, y \rangle}}\ ,
+    \end{align*}
+    注意到 \(\langle x, y \rangle \leq \sqrt{\langle x, x \rangle \langle y, y \rangle}\), 于是
+    \[
+        \langle x, x \rangle + \langle y, y \rangle + \frac{2 \langle x, y \rangle^2}{\sqrt{\langle x, x \rangle \langle y, y \rangle}} \leq \langle x, x \rangle + \langle y, y \rangle + \frac{2 \langle x, y \rangle^2}{\langle x, y \rangle} = \langle x, x \rangle + \langle y, y \rangle + 2 \langle x, y \rangle\ .
+    \]
+    而 \(E\) 是实内积空间, 因此 \(\langle x, y \rangle = \Re \langle x, y \rangle\), 于是
+    \begin{align*}
+        \|x + y\|^2 = \langle x + y, x + y \rangle = \langle x, x \rangle + \langle y, y \rangle + 2 \Re \langle x, y \rangle = \langle x, x \rangle + \langle y, y \rangle + 2 \langle x, y \rangle\ .
+    \end{align*}
+    因此
+    \[
+        (\|x\| + \|y\|)^2 \frac{\langle x, y \rangle^2}{\|x\|^2\, \|y\|^2} \leq \|x + y\|^2 \iff (\|x\| + \|y\|) \frac{\langle x, y \rangle}{\|x\|\, \|y\|} \leq \|x + y\|\ ,
+    \]
+    故不等式成立, 其中等号成立当且仅当 \(x\) 和 \(y\) 线性相关. 于是第一个不等式等号成立当且仅当 \(x\) 和 \(y\) 线性相关且 \(\langle x, y \rangle > 0\).
+
+    而第二个不等式 \(\|x + y\| \leq \|x\| + \|y\|\) 在任意赋范向量空间中都成立且
+    \[
+        \|x + y\| = \|x\| + \|y\| \iff \|x + y\|^2 = (\|x\| + \|y\|)^2\ .
+    \]
+    其中
+    \[
+        \|x + y\|^2 = \langle x + y, x + y \rangle = \langle x, x \rangle + \langle y, y \rangle + 2 \Re \langle x, y \rangle = \langle x, x \rangle + \langle y, y \rangle + 2 \langle x, y \rangle\ ,
+    \]
+    和
+    \[
+        (\|x\| + \|y\|)^2 = \|x\|^2 + \|y\|^2 + 2\, \|x\|\, \|y\| = \langle x, x \rangle + \langle y, y \rangle + 2 \sqrt{\langle x, x \rangle \langle y, y \rangle}\ ,
+    \]
+    因此
+    \[
+        \|x + y\|^2 = (\|x\| + \|y\|)^2 \iff \langle x, y \rangle = \sqrt{\langle x, x \rangle \langle y, y \rangle} \iff x\ \text{和}\ y\ \text{线性相关且}\ \langle x, y \rangle > 0\ .
+    \]
+
+    故整个不等式等号成立当且仅当 \(x\) 和 \(y\) 线性相关且 \(\langle x, y \rangle > 0\).
+\end{proof}
+
+\begin{exercise}\label{ex:closed-sets-in-metric-spaces}
+    设 \(X\) 是度量空间. 称 \(Y \subseteq X\) 是闭集, 若对于 \(Y\) 中的每个序列 \((y_n)\) 都有当 \((y_n)\) 在 \(X\) 中收敛时 \((y_n)\) 也在 \(Y\) 中收敛. 证明 \(c_0\) 是 \(\ell_\infty\) 的闭子空间.
+\end{exercise}
+
+\begin{proof}
+    任取 \((X^n) \in c_0^\N\). 设 \(\lim X^n = (a_k) \in \ell_\infty\). 只用证明 \((a_k) \in c_0\), 即 \((a_k)\) 是无穷小量. 任取 \(\varepsilon > 0\), 故存在 \(N \in \N\) 使得
+    \[
+        \|X^n - (a_k)\|_\infty < \frac{\varepsilon}{2}\ ,\quad n \geq N\ .
+    \]
+    注意到 \((X^n) \in c_0^\N\), 因此对于任意 \(n \in \N\) 都有 \(X^n\) 是无穷小量. 任取 \(n \geq N\), 故存在 \(K \in \N\) 使得当 \(k \geq K\) 时 \(|X_k^n| < \varepsilon / 2\), 于是
+    \begin{align*}
+        \frac{\varepsilon}{2} > \|X^n - (a_k)\|_\infty = \sup_{k \in \N} |X_k^n - a_k| \geq |X_k^n - a_k| \geq |a_k| - |X_k^n| > |a_k| - \frac{\varepsilon}{2}\ ,\quad k \geq K\ ,
+    \end{align*}
+    因此当 \(k \geq K\) 时 \(|a_k| < \varepsilon\), 故 \((a_k)\) 是无穷小量.
+\end{proof}
+
+\begin{exercise}
+    设 \(\|\!\cdot\!\|_1\) 和 \(\|\!\cdot\!\|_2\) 是向量空间 \(E\) 上的等价范数. 定义
+    \[
+        d_j(x, y) \coloneqq \|x - y\|_j\ ,\quad x, y \in E\ ,\quad j = 1, 2\ .
+    \]
+    证明 \(d_1\) 和 \(d_2\) 是 \(E\) 上的等价度量.
+\end{exercise}
+
+\begin{proof}
+    任取 \(x \in E\) 和 \(\varepsilon > 0\). 由于 \(\|\!\cdot\!\|_1\) 和 \(\|\!\cdot\!\|_2\) 是等价范数, 故存在 \(K \geq 1\) 使得
+    \[
+        \frac{1}{K} \|x\|_1 \leq \|x\|_2 \leq K\, \|x\|_1\ ,\quad x \in E\ .
+    \]
+    令 \(r_1 = r_2 \coloneqq \varepsilon / K\). 任取 \(y \in \B_1(x, r_1)\), 于是
+    \[
+        d_2(x, y) = \|x - y\|_2 \leq K\, \|x - y\|_1 < K \frac{\varepsilon}{K} = \varepsilon\ ,
+    \]
+    因此 \(y \in \B_2(x, \varepsilon)\), 故 \(\B_1(x, r_1) \subseteq \B_2(x, \varepsilon)\). 任取 \(y \in \B_2(x, r_2)\), 于是
+    \[
+        d_1(x, y) = \|x - y\|_1 \leq K\, \|x - y\|_2 < K \frac{\varepsilon}{K} = \varepsilon\ ,
+    \]
+    因此 \(y \in \B_1(x, \varepsilon)\), 故 \(\B_2(x, r_2) \subseteq \B_1(x, \varepsilon)\). 这说明 \(d_1\) 和 \(d_2\) 是等价度量.
+\end{proof}
+
+\begin{exercise}
+    设 \((X_j, d_j),\ 1 \leq j \leq m\) 是度量空间, \(X \coloneqq X_1 \times \cdots \times X_m\). 证明函数
+    \[
+        (x, y) \mapsto \Bigl(\sum_{j = 1}^m d_j(x_j, y_j)^2\Bigr)^{1 / 2}\ ,\quad x, y \in X
+    \]
+    是 \(X\) 上与积度量等价的度量.
+\end{exercise}
+
+\begin{proof}
+    设该函数为 \(d_1\), 积度量为 \(d_2\). 任取 \(x \in X\) 和 \(\varepsilon > 0\). 令 \(r_1 \coloneqq \varepsilon\). 任取 \(y \in \B_1(x, r_1)\), 于是
+    \[
+        d_2(x, y)^2 = \bigl(\max_{1 \leq j \leq m} d_j(x_j, y_j)\bigr)^2 = \max_{1 \leq j \leq m} d_j(x_j, y_j)^2 \leq \sum_{j = 1}^m d_j(x_j, y_j)^2 = d_1(x, y)^2 < \varepsilon^2\ ,
+    \]
+    即 \(d_2(x, y) < \varepsilon\), 因此 \(y \in \B_2(x, \varepsilon)\), 故 \(\B_1(x, r_1) \subseteq \B_2(x, \varepsilon)\). 令 \(r_2 \coloneqq \varepsilon / \sqrt{m}\). 任取 \(y \in \B_2(x, r_2)\), 于是
+    \begin{align*}
+        d_1(x, y)^2 = \sum_{j = 1}^m d_j(x_j, y_j)^2 &\leq m \max_{1 \leq j \leq m} d_j(x_j, y_j)^2 \\
+        &= m \bigl(\max_{1 \leq j \leq m} d_j(x_j, y_j)\bigr)^2 = m\, d_2(x, y)^2 < m \frac{\varepsilon^2}{m} = \varepsilon^2\ ,
+    \end{align*}
+    即 \(d_1(x, y) < \varepsilon\), 因此 \(y \in \B_1(x, \varepsilon)\), 故 \(\B_2(x, r_2) \subseteq \B_1(x, \varepsilon)\). 这说明 \(d_1\) 和 \(d_2\) 是等价度量.
+
+    注意到
+    \[
+        \max_{1 \leq j \leq m} d_j(x_j, y_j) \leq \Bigl(\sum_{j = 1}^m d_j(x_j, y_j)^2\Bigr)^{1 / 2} \leq \sqrt{m} \max_{1 \leq j \leq m} d_j(x_j, y_j)\ ,\quad x, y \in X\ ,
+    \]
+    即 \(d_2(x, y) \leq d_1(x, y) \leq \sqrt{m}\, d_2(x, y)\), 这其实与等价范数的形式是一样, 于是我们可以说若存在 \(K \geq 1\) 使得
+    \[
+        \frac{1}{K}\, d_1(x, y) \leq d_2(x, y) \leq K\, d_1(x, y)\ ,\quad x, y \in X\ ,
+    \]
+    则 \(d_1\) 和 \(d_2\) 是等价度量. 注意这仅是充分条件, 并不是必要条件, 也就是说可能存在两个度量等价, 但不满足该不等式.
+\end{proof}
+
+\begin{exercise}\label{ex:orthogonal-in-inner-product-spaces}
+    设 \(\bigl(E, \langle \cdot, \cdot \rangle\bigr)\) 是内积空间, \(x, y \in E\). 若 \(\langle x, y \rangle = 0\), 则称 \(x\) 和 \(y\) 正交, 记作 \(x \perp y\). 称 \(M \subseteq E\) 是正交系, 若对于任意 \(x, y \in M\) 且 \(x \neq y\) 都有 \(x \perp y\). 最后, 称 \(M\) 是标准正交系, 若 \(M\) 是正交系且对于任意 \(x \in M\) 都有 \(\|x\| = 1\).
+
+    设 \(\{x_0, \ldots, x_m\} \subseteq E\) 是正交系且 \(x_j \neq 0\ (0 \leq j \leq m)\). 证明以下命题.
+    \begin{enumerate}
+        \item \(\{x_0, \ldots, x_m\}\) 线性无关.
+        \item (Pythagoras 定理)
+        \[
+            \Bigl\|\sum_{j = 0}^m x_j\Bigr\|^2 = \sum_{j = 0}^m \|x_j\|^2\ .
+        \]
+    \end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    1. 设 \(\lambda_0, \ldots, \lambda_m \in \K\) 使得 \(\sum_{j = 0}^m \lambda_j x_j = 0\). 于是对于任意 \(k \in \{0, \ldots, m\}\) 都有
+    \[
+        \Bigl\langle \sum_{j = 0}^m \lambda_j x_j, x_k \Bigr\rangle = \sum_{j = 0}^m \lambda_j \langle x_j, x_k \rangle = 0\ .
+    \]
+    注意到, 仅当 \(j = k\) 时才有 \(\langle x_j, x_k \rangle \neq 0\), 于是
+    \[
+        \sum_{j = 0}^m \lambda_j \langle x_j, x_k \rangle = \lambda_k \langle x_k, x_k \rangle = 0\ ,
+    \]
+    因此 \(\lambda_k = 0\). 进一步, \(\lambda_0 = \cdots = \lambda_m = 0\). 故 \(\{x_0, \ldots, x_m\}\) 线性无关.
+
+    2. 将等式左边展开, 有
+    \[
+        \Bigl\|\sum_{j = 0}^m x_j\Bigr\|^2 = \Bigl\langle \sum_{j = 0}^m x_j, \sum_{j = 0}^m x_j \Bigr\rangle = \sum_{j = 0}^m \sum_{k = 0}^m \langle x_j, x_k \rangle\ ,
+    \]
+    同样的, 仅当 \(j = k\) 时才有 \(\langle x_j, x_k \rangle \neq 0\), 于是
+    \[
+        \sum_{j = 0}^m \sum_{k = 0}^m \langle x_j, x_k \rangle = \sum_{j = 0}^m \langle x_j, x_j \rangle = \sum_{j = 0}^m \|x_j\|^2\ .
+    \]
+\end{proof}
+
+\begin{exercise}
+    设 \(F\) 是内积空间 \(E\) 的子空间. 证明 \(F\) 的正交补
+    \[
+        F^\perp \coloneqq \{\, x \in E \;;\; x \perp y,\ y \in F \,\}
+    \]
+    是 \(E\) 的闭子空间 (见练习 \ref{ex:closed-sets-in-metric-spaces}).
+\end{exercise}
+
+\begin{proof}
+    设 \(x_1, x_2 \in F^\perp,\ \alpha_1, \alpha_2 \in \K\). 任取 \(y \in F\). 于是
+    \[
+        \langle \alpha_1 x_1 + \alpha_2 x_2, y \rangle = \langle \alpha_1 x_1, y \rangle + \langle \alpha_2 x_2, y \rangle = \alpha_1 \langle x_1, y \rangle + \alpha_2 \langle x_2, y \rangle = 0\ ,
+    \]
+    因此 \(\alpha_1 x_1 + \alpha_2 x_2 \in F^\perp\), 故 \(F^\perp\) 是 \(E\) 的子空间.
+
+    设 \((x_n)\) 是 \(F^\perp\) 中的序列且 \(\lim x_n = x \in E\). 任取 \(y \in F\). 由 Cauchy-Schwarz 不等式可得
+    \[
+        0 \leq |\langle x_n - x, y \rangle| \leq \|x_n - x\|\, \|y\|\ ,\quad n \in \N\ ,
+    \]
+    而 \(\|x_n - x\| \to 0\), 于是由夹逼定理可知 \(|\langle x_n - x, y \rangle| \to 0\). 注意到对于任意 \(n \in \N\) 都有 \(x_n \in F^\perp\), 即 \(\langle x_n, y \rangle = 0\), 于是
+    \[
+        \lim |\langle x_n - x, y \rangle| = \lim |\langle x_n, y \rangle - \langle x, y \rangle| = \lim |\langle x, y \rangle| = |\langle x, y \rangle| = 0\ ,
+    \]
+    因此 \(x \in F^\perp\), 故 \(F^\perp\) 是 \(E\) 的闭集.
+\end{proof}
+
+\begin{exercise}
+    设 \(B = \{u_0, \ldots, u_m\}\) 是内积空间 \(\bigl(E, \langle \cdot, \cdot \rangle\bigr)\) 中的标准正交系, \(F \coloneqq \Span B\). 定义
+    \[
+        p_F \colon E \to F\ ,\quad x \mapsto \sum_{j = 0}^m \langle x, u_j \rangle u_j\ .
+    \]
+    证明以下命题.
+    \begin{enumerate}
+        \item 对于任意 \(x \in E\) 都有 \(x - p_F(x) \in F^\perp\).
+        \item 对于任意 \(x \in E\) 都有 \(\|x - p_F(x)\| = \inf_{y \in F} \|x - y\|\).
+        \item 对于任意 \(x \in E\) 都有 \(\|x - p_F(x)\|^2 = \|x\|^2 - \sum_{j = 0}^m |\langle x, u_j \rangle|^2\).
+        \item \(p_F \in \Hom(E, F)\) 且 \(p_F^2 = p_F\).
+        \item \(\im p_F = F\), \(\ker p_F = F^\perp\) 和 \(E = F \oplus F^\perp\).
+    \end{enumerate}
+    (提示: 要证明 2. 由练习 \ref{ex:orthogonal-in-inner-product-spaces} 和 1. 可知 \(\|x - y\|^2 = \|x - p_F(x)\|^2 + \|p_F(x) - y\|^2\ (y \in F)\).)
+\end{exercise}
+
+\begin{proof}
+    1. 设 \(y \in F\). 由于 \(F = \Span B\), 故存在 \(\lambda_0, \ldots, \lambda_m \in \K\) 使得 
+    \(y = \sum_{j = 0}^m \lambda_j u_j\), 于是
+    \[
+        \bigl\langle x - p_F(x), y \bigr\rangle = \Bigl\langle x - p_F(x), \sum_{j = 0}^m \lambda_j u_j \Bigr\rangle = \sum_{j = 0}^m \overline \lambda_j \bigl\langle x - p_F(x), u_j \bigr\rangle\ .
+    \]
+    而对于任意 \(j \in \{0, \ldots, m\}\) 都有
+    \[
+        \bigl\langle x - p_F(x), u_j \bigr\rangle = \Bigl\langle x - \sum_{k = 0}^m \langle x, u_k \rangle u_k, u_j \Bigr\rangle = \langle x, u_j \rangle - \sum_{k = 0}^m \langle x, u_k \rangle \langle u_k, u_j \rangle\ ,
+    \]
+    注意到, \(B\) 是标准正交系, 因此仅当 \(k = j\) 时才有 \(\langle u_k, u_j \rangle \neq 0\) 且 \(\langle u_k, u_j \rangle = 1\), 故
+    \[
+        \bigl\langle x - p_F(x), u_j \bigr\rangle = \langle x, u_j \rangle - \langle x, u_j \rangle \langle u_j, u_j \rangle = 0\ ,\quad j \in \{0, \ldots, m\}\ .
+    \]
+    因此 \(\bigl\langle x - p_F(x), y \bigr\rangle = 0\), 故 \(x - p_F(x) \in F^\perp\).
+\end{proof}
+
+\begin{exercise}
+    设 \(B = \{u_0, \ldots, u_m\}\) 是内积空间 \(\bigl(E, \langle \cdot, \cdot \rangle\bigr)\) 中的标准正交系, \(F \coloneqq \Span B\). 证明以下命题.
+    \begin{enumerate}
+        \item 对于任意 \(x \in E\) 都有 \(\sum_{j = 0}^m |\langle x, u_j \rangle|^2 \leq \|x\|^2\).
+        \item 对于任意 \(x \in F\) 都有
+        \[
+            x = \sum_{j = 0}^m \langle x, u_j \rangle u_j\quad \text{且}\quad \|x\|^2 = \sum_{j = 0}^m |\langle x, u_j \rangle|^2\ .
+        \]
+    \end{enumerate}
+    (提示: 要证明 1. 使用 Cauchy-Schwarz 不等式.)
+\end{exercise}
+
+\begin{exercise}
+    设 \(\K^{m \times n}\ (m, n \in \N^\ast)\) 是所有定义在 \(\K\) 上的 \(m \times n\) 矩阵的集合, 即
+    \[
+        \K^{m \times n} \coloneqq \Funct\bigl(\{1, \ldots, m\} \times \{1, \ldots, n\}, \K\bigr)\ .
+    \]
+    于是由例 \ref{eg:vector-spaces}.5 可知 \(\K^{m \times n}\) 是向量空间, 因此对于 \(\alpha \in \K\) 和 \(A, B \in \K^{m \times n}\) 有标量乘法 \(\alpha A\) 和矩阵加法 \(A + B\). 证明以下命题.
+    \begin{enumerate}
+        \item 函数
+        \[
+            |A| \coloneqq \Bigl(\sum_{i = 1}^m \sum_{j = 1}^n |a_{ij}|^2\Bigr)^{1 / 2}\ ,\quad A = [a_{ij}] \in \K^{m \times n}
+        \]
+        是 \(\K^{m \times n}\) 上的范数.
+        \item 以下函数定义了等价范数.
+        \begin{enumerate}
+            \item \([a_{ij}] \mapsto \sum_{i = 1}^m \sum_{j = 1}^n |a_{ij}|\).
+            \item \([a_{ij}] \mapsto \max_{1 \leq i \leq m} \sum_{j = 1}^n |a_{ij}|\).
+            \item \([a_{ij}] \mapsto \max_{1 \leq j \leq n} \sum_{i = 1}^m |a_{ij}|\).
+            \item \([a_{ij}] \mapsto \max_{\substack{1 \leq i \leq m\\ 1 \leq j \leq n}} |a_{ij}|\).
+        \end{enumerate}
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+    设 \(E\) 和 \(F\) 是赋范向量空间. 证明 \(B(E, F) \cap \Hom(E, F) = \{0\}\).
+\end{exercise}

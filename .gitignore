@@ -1,12 +1,8 @@
 .DS_Store
 desktop.ini
-*.json
 
-*.tex
 *.synctex.gz
 
 analysis i.pdf
 analysis ii.pdf
 analysis iii.pdf
-cover.png
-logo.png

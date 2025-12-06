@@ -1,0 +1,348 @@
+\usepackage{geometry}
+\usepackage{amsthm}
+\usepackage{amsmath,mathtools}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{tikz}
+
+\newcommand{\ee}{e} % 自然常数
+\newcommand{\ii}{i} % 虚数单位
+\newcommand{\dd}{\mathop{}\! d} % 微分算子
+\newcommand{\K}{\mathbb K} % 数域
+\newcommand{\N}{\mathbb N} % 自然数集
+\newcommand{\Z}{\mathbb Z} % 整数集
+\newcommand{\Q}{\mathbb Q} % 有理数集
+\newcommand{\R}{\mathbb R} % 实数集
+\newcommand{\C}{\mathbb C} % 复数集
+\newcommand{\B}{\mathbb B} % 开球
+\newcommand{\E}{\mathbb E} % 期望
+\newcommand{\PP}{\mathbb P} % 概率
+\newcommand{\power}{\mathcal P} % 幂集
+\newcommand{\topo}{\mathcal T} % 拓扑
+\newcommand{\nbr}{\mathcal N} % 邻域族
+\newcommand{\onbr}{\mathcal O} % 开邻域族
+\newcommand{\cnbr}{\mathcal F} % 闭邻域族
+\newcommand{\basis}{\mathcal B} % 拓扑基
+\newcommand{\subbasis}{\mathcal S} % 拓扑子基
+\newcommand{\mat}{\bm} % 矩阵和向量
+\newcommand{\pto}{\xlongrightarrow{p}} % 依概率收敛
+\newcommand{\dto}{\xlongrightarrow{d}} % 依分布收敛
+\renewcommand{\implies}{\Longrightarrow} % 蕴含
+\renewcommand{\impliedby}{\Longleftarrow} % 被蕴含
+\renewcommand{\iff}{\Longleftrightarrow} % 等价
+\DeclareMathOperator{\im}{im} % 像
+\DeclareMathOperator{\ran}{ran} % 值域
+\DeclareMathOperator{\id}{id} % 恒同映射
+\DeclareMathOperator{\diam}{diam} % 集合的直径
+\DeclareMathOperator{\vol}{vol} % 体积
+\DeclareMathOperator{\supp}{supp} % 支撑集
+\DeclareMathOperator{\nullity}{null} % 零化度
+\DeclareMathOperator{\rank}{rk} % 秩
+\DeclareMathOperator{\trace}{tr} % 迹
+\DeclareMathOperator{\adj}{adj} % 伴随
+\DeclareMathOperator{\spec}{spec} % 谱
+\DeclareMathOperator{\var}{var} % 方差
+\DeclareMathOperator{\cov}{cov} % 协方差
+\let\oldRe\Re
+\let\Re\relax
+\DeclareMathOperator{\Re}{\oldRe} % 实部
+\let\oldIm\Im
+\let\Im\relax
+\DeclareMathOperator{\Im}{\oldIm} % 虚部
+\DeclareMathOperator{\Funct}{Funct} % 函数集合
+\DeclareMathOperator{\Hom}{Hom} % 同态
+\DeclareMathOperator{\End}{End} % 自同态
+\DeclareMathOperator{\Iso}{Iso} % 同构
+\DeclareMathOperator{\Aut}{Aut} % 自同构
+\DeclareMathOperator{\Span}{span} % 张成
+\DeclareMathOperator*{\overlim}{\overline{\lim}} % 上极限
+\DeclareMathOperator*{\underlim}{\underline{\lim}} % 下极限
+\renewenvironment{cases}{
+    \left\{\begin{matrix}
+}{
+    \end{matrix}\right.
+}
+
+%=============================================
+%============== My Elegant Book ==============
+%=============================================
+\makeatletter
+% Global Options =============================
+% 颜色
+\definecolor{structurecolor}{RGB}{60, 113, 183}
+\definecolor{main}{RGB}{0, 166, 82}
+\definecolor{second}{RGB}{255, 134, 24}
+\definecolor{third}{RGB}{0, 174, 247}
+\colorlet{coverlinecolor}{second}
+\definecolor{darkgray}{gray}{0.30}
+\definecolor{winered}{rgb}{0.5,0,0}
+% 中文字体
+\ifcsname heiti\endcsname
+    \newcommand{\cbfseries}{\heiti}
+\else
+    \newcommand{\cbfseries}{\bfseries}
+\fi
+\ifcsname kaishu\endcsname
+    \newcommand{\citshape}{\kaishu}
+    \newcommand{\cnormal}{\kaishu}
+\else
+    \newcommand{\citshape}{\itshape}
+    \newcommand{\cnormal}{\normalfont}
+\fi
+% Page Styles ================================
+\RequirePackage{geometry}
+\geometry{}
+% Chapter Styles =============================
+\ctexset{
+    chapter={
+        name={},
+        number={第\arabic{chapter}章},
+        format=\huge\centering\bfseries\color{structurecolor}
+    },
+    section={
+        format=\Large\centering\bfseries\color{structurecolor}
+    },
+    subsection={
+        format=\large\bfseries\color{structurecolor}
+    }
+}
+\setcounter{secnumdepth}{1}
+% Cover Styles ===============================
+% 需要的宏包
+\RequirePackage{geometry}
+\RequirePackage{hyperref}
+\RequirePackage{tikz}
+\usetikzlibrary{calc}
+% 标签文字
+\newcommand{\authorname}{\citshape 作者：}
+\newcommand{\institutename}{\citshape 组织：}
+\newcommand{\datename}{\citshape 时间：}
+\newcommand{\versionname}{\citshape 版本：}
+% 对外接口命令
+\newcommand{\subtitle}[1]{\gdef\@subtitle{#1}}
+\newcommand{\institute}[1]{\gdef\@institute{#1}}
+\newcommand{\logo}[1]{\gdef\@logo{#1}}
+\newcommand{\cover}[1]{\gdef\@cover{#1}}
+\newcommand{\extrainfo}[1]{\gdef\@extrainfo{#1}}
+\newcommand{\version}[1]{\gdef\@version{#1}}
+\newcommand\bioinfo[2]{\gdef\@bioinfo{{\citshape #1}：#2}}
+% 重写 maketitle
+\renewcommand{\maketitle}{
+    \hypersetup{pageanchor=false}
+    % \pagenumbering{Alph}
+    \begin{titlepage}
+        \newgeometry{margin=0in}
+        \parindent=0pt
+        % 顶部封面图
+        \ifcsname @cover\endcsname
+            \includegraphics[width=\linewidth]{\@cover}
+        \else
+            \@empty
+        \fi
+        % 彩色横条
+        % \setlength{\fboxsep}{0pt}
+        % \colorbox{coverlinecolor}{\makebox[\linewidth][c]{\shortstack[c]{\vspace{0.5in}}}}
+        % 标题
+        \vfill
+        \vskip 15ex % \vskip-2ex
+        \hspace{2em}
+        \parbox{0.8\textwidth}{
+            \bfseries\Huge
+            \ifcsname @title\endcsname \cnormal\@title \fi
+            \par
+        }
+        % 副标题 + 信息
+        \vfill
+        % \vspace{-1.0cm}
+        \hspace{2.5em}
+        \begin{minipage}[c]{0.67\linewidth}
+            \color{darkgray}
+            {\bfseries\Large
+            \ifcsname @subtitle\endcsname \cnormal\@subtitle\\[2ex] \fi}
+            \color{gray}
+            % \normalsize
+            {\renewcommand{\arraystretch}{1.2}
+            \begin{tabular}{l}
+                % \ifcsname @author\endcsname \authorname \@author\\ \fi
+                \ifx\@author\empty\else \authorname\cnormal\@author\\ \fi
+                \ifcsname @institute\endcsname \institutename\cnormal\@institute\\ \fi
+                % \ifcsname @date\endcsname \@date\\ \fi
+                \ifx\@date\empty\else \datename\cnormal\@date\\ \fi
+                \ifcsname @version\endcsname \versionname\cnormal\@version\\ \fi
+                \ifcsname @bioinfo\endcsname \cnormal\@bioinfo\\ \fi
+            \end{tabular}}
+        \end{minipage}
+        % 右下角 logo
+        \begin{minipage}[c]{0.27\linewidth}
+            \begin{tikzpicture}[remember picture,overlay]
+                \node[opacity=0.8,
+                    anchor=south east,
+                    outer sep=0pt,
+                    inner sep=0pt] at
+                    ($(current page.south east)+(-0.8in, 1.5in)$)
+                    {\ifcsname @logo\endcsname \includegraphics[width=4.2cm]{\@logo} \fi};
+            \end{tikzpicture}
+        \end{minipage}
+        % 底部说明文字
+        \vfill
+        \begin{center}
+            \parbox[t]{0.7\textwidth}{\centering\citshape
+                \ifcsname @extrainfo\endcsname \@extrainfo \fi
+            }
+        \end{center}
+        \vfill
+    \end{titlepage}
+    \restoregeometry
+    \thispagestyle{empty}
+}
+% Math Environment Styles ====================
+% 需要的宏包
+\RequirePackage{amsthm}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage[most]{tcolorbox}
+\tcbuselibrary{theorems,skins,breakable}
+\RequirePackage{xcolor}
+% 环境标题名字
+\providecommand{\definitionname}{定义}
+\providecommand{\axiomname}{公理}
+\providecommand{\propositionname}{命题}
+\providecommand{\theoremname}{定理}
+\providecommand{\lemmaname}{引理}
+\providecommand{\corollaryname}{推论}
+\providecommand{\remarkname}{注}
+\providecommand{\examplename}{例}
+% tcolorbox 样式
+\tcbset{
+    eb@common/.style={
+        enhanced,
+        breakable,
+        % sharp corners,
+        boxrule=0.5pt,
+        % boxrule=0pt,
+        coltitle=white,
+        fonttitle=\bfseries,
+        boxsep=1.5mm,
+        top=3.5mm,
+        % top=1mm,
+        bottom=1mm,
+        attach boxed title to top left={
+            yshift=-3mm,
+            xshift=5mm
+            % yshift=-2mm,
+            % xshift=0mm
+        },
+        boxed title style={
+            sharp corners,
+            boxrule=0pt,
+            outer arc=0pt,
+            interior engine=empty
+        },
+        separator sign none,
+        description delimiters none,
+        terminator sign none,
+    },
+    defstyle/.style={
+        eb@common,
+        colframe=main,
+        colback=main!5,
+        colbacktitle=main,
+        fontupper=\itshape,
+        % borderline west={2pt}{0pt}{main},
+    },
+    propstyle/.style={
+        eb@common,
+        colframe=third,
+        colback=third!5,
+        colbacktitle=third,
+        fontupper=\itshape,
+        % borderline west={2pt}{0pt}{third},
+    },
+    thmstyle/.style={
+        eb@common,
+        colframe=second,
+        colback=second!5,
+        colbacktitle=second,
+        fontupper=\itshape,
+        % borderline west={2pt}{0pt}{second},
+    }
+}
+% 内部接口
+\newtcbtheorem[auto counter,number within=section]{eb@definition}
+    {\definitionname}{defstyle}{def}
+\newtcbtheorem[use counter from=eb@definition]{eb@axiom}
+    {\axiomname}{defstyle}{ax}
+\newtcbtheorem[auto counter,number within=section]{eb@proposition}
+    {\propositionname}{propstyle}{prop}
+\newtcbtheorem[use counter from=eb@proposition]{eb@theorem}
+    {\theoremname}{thmstyle}{thm}
+\newtcbtheorem[use counter from=eb@proposition]{eb@lemma}
+    {\lemmaname}{thmstyle}{lem}
+\newtcbtheorem[use counter from=eb@proposition]{eb@corollary}
+    {\corollaryname}{thmstyle}{cor}
+% 外部接口
+\newenvironment{definition}[1][]
+    {\begin{eb@definition}{#1}{}}
+    {\end{eb@definition}}
+\newenvironment{axiom}[1][]
+    {\begin{eb@axiom}{#1}{}}
+    {\end{eb@axiom}}
+\newenvironment{proposition}[1][]
+    {\begin{eb@proposition}{#1}{}}
+    {\end{eb@proposition}}
+\newenvironment{theorem}[1][]
+    {\begin{eb@theorem}{#1}{}}
+    {\end{eb@theorem}}
+\newenvironment{lemma}[1][]
+    {\begin{eb@lemma}{#1}{}}
+    {\end{eb@lemma}}
+\newenvironment{corollary}[1][]
+    {\begin{eb@corollary}{#1}{}}
+    {\end{eb@corollary}}
+\newtheoremstyle{colordef}
+    {3pt}{3pt} % 上下间距
+    {\normalfont}%  正文字体
+    {} % 缩进
+    {\color{main}\bfseries} % 标题字体：这里上色
+    {} % 标题后标点
+    {0.5em} % 标题后空格
+    {\thmname{#1}\thmnumber{#2}\textnormal{\bfseries#3}} % head spec
+\theoremstyle{colordef}
+\newtheorem{remark}{注}[section]
+\newtheorem{example}[remark]{例}
+\newtheorem{exercise}{}[section]
+\renewcommand{\theexercise}{\arabic{exercise}}
+% 证明样式
+\renewenvironment{proof}[1][\proofname]{
+    \par
+    \pushQED{\qed}
+    \normalfont
+    \topsep6\p@\@plus6\p@\relax
+    \trivlist
+    \item[\hskip\labelsep{\bfseries\textcolor{second}{#1}}]
+    % \item[\hskip\labelsep{\bfseries#1}\@addpunct{.}]
+    \ignorespaces
+}{
+    \popQED\endtrivlist\@endpefalse
+}
+% Hyperref Styles ============================
+\RequirePackage{hyperref}
+\hypersetup{
+    breaklinks,
+    unicode,
+    linktoc=all,
+    bookmarksnumbered=true,
+    bookmarksopen=true,
+    % pdfkeywords={ElegantBook},
+    colorlinks,
+    linkcolor=winered,
+    citecolor=winered,
+    urlcolor=winered,
+    plainpages=false,
+    pdfstartview=FitH,
+    pdfborder={0 0 0},
+    % linktocpage
+}
+\makeatother
