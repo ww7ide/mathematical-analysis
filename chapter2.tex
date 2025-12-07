@@ -2,19 +2,19 @@
 
 从本章开始, 我们终于进入分析的领域. 数学的这一分支在很大程度上是建立在 ``收敛'' 这一概念之上的. 借助收敛, 我们在某种意义上得以把无穷多个数 (或向量) ``加'' 在一起. 能够处理这样的无限运算, 正是分析与代数之间本质区别之所在.
 
-试图把关于数列收敛的朴素想法加以公理化, 会自然地引出 ``距离''、``点的邻域'' 以及 ``度量空间'' 等概念---这正是第 1 节的主题. 在数列这一特殊情形中, 我们可以利用数域 \(\K\) 的向量空间结构, 对这种情形下各种证明的分析表明: 只要有某种类似 ``绝对值'' 的概念可用, 其中大多数证明都可以推广到向量空间中的向量序列. 于是我们很自然地被引向去定义 ``赋范向量空间''---度量空间中一个尤其重要的类别.
+试图把关于数列收敛的朴素想法加以公理化, 会自然地引出 ``距离''、``点的邻域'' 以及 ``度量空间'' 等概念---这正是第 2.1 节的主题. 在数列这一特殊情形中, 我们可以利用数域 \(\K\) 的向量空间结构, 对这种情形下各种证明的分析表明: 只要有某种类似 ``绝对值'' 的概念可用, 其中大多数证明都可以推广到向量空间中的向量序列. 于是我们很自然地被引向去定义 ``赋范向量空间''---度量空间中一个尤其重要的类别.
 
 在所有赋范向量空间中, 内积空间由于其结构更为丰富而显得格外重要, 并且它们的几何性质与我们熟悉的平面 Euclid 几何非常相似. 事实上, 在初等分析中, 最重要的一类内积空间就是 \(m\)-维 Euclid 空间 \(\R^m\) 和 \(\C^m\).
 
-在第 4 和第 5 节中, 我们回到最简单的情形, 也就是在 \(\R\) 中的收敛问题. 借助实数的序结构, 尤其是 \(\R\) 的序完备性, 我们推导出第一批 ``具体的收敛判别准则''. 这些准则使我们能够求出许多重要数列的极限. 除此之外, 我们还将从 \(\R\) 的序完备性出发, 得到一个根本性的存在性原理---Bolzano-Weierstrass 定理.
+在第 2.4 和第 2.5 节中, 我们回到最简单的情形, 也就是在 \(\R\) 中的收敛问题. 借助实数的序结构, 尤其是 \(\R\) 的序完备性, 我们推导出第一批 ``具体的收敛判别准则''. 这些准则使我们能够求出许多重要数列的极限. 除此之外, 我们还将从 \(\R\) 的序完备性出发, 得到一个根本性的存在性原理---Bolzano-Weierstrass 定理.
 
-第 6 节专门讨论度量空间中的 ``完备性'' 概念. 将这一概念限制到赋范向量空间, 就得到了 ``Banach 空间'' 的定义. 这类空间最基本的例子就是 \(\K^m\), 但我们还将说明: 有界函数构成的函数空间也是 Banach 空间.
+第 2.6 节专门讨论度量空间中的 ``完备性'' 概念. 将这一概念限制到赋范向量空间, 就得到了 ``Banach 空间'' 的定义. 这类空间最基本的例子就是 \(\K^m\), 但我们还将说明: 有界函数构成的函数空间也是 Banach 空间.
 
 Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心地位. 即便如此, 它们的结构仍然足够简单, 使得初学者可以在不太费力的情况下, 从理解实数自然过渡到理解 Banach 空间. 再者, 对这些空间的较早引入, 也使得我们在后面章节中能够给出简洁而优美的证明.
 
-为了内容的完整性, 也为了读者整体 (数学) 素养的培养, 我们在第 6 节中给出 Cantor 关于 ``序完备的有序域存在性'' 的证明, 这个证明是通过对 \(\Q\) 进行 ``完备化'' 而得到的.
+为了内容的完整性, 也为了读者整体 (数学) 素养的培养, 我们在第 2.6 节中给出 Cantor 关于 ``序完备的有序域存在性'' 的证明, 这个证明是通过对 \(\Q\) 进行 ``完备化'' 而得到的.
 
-在本章余下的各节中, 我们将讨论级数的收敛性. 在第 7 节里, 我们会学习级数的基本性质, 并讨论若干最重要的例子. 这样一来, 我们就能够研究实数的十进制表示以及其他形式的表示, 从而证明实数集是不可数集.
+在本章余下的各节中, 我们将讨论级数的收敛性. 在第 2.7 节里, 我们会学习级数的基本性质, 并讨论若干最重要的例子. 这样一来, 我们就能够研究实数的十进制表示以及其他形式的表示, 从而证明实数集是不可数集.
 
 在所有收敛级数当中, 绝对收敛的级数具有尤为重要的地位. 绝对收敛往往比较容易判别, 这类级数在运算与处理上也相对简单. 此外, 在实际应用中许多重要的级数都是绝对收敛的. 对于本章最后一节将要引入和研究的幂级数, 这一点尤为明显. 其中最重要的例子是指数级数, 它的重要性将在后续章节中逐渐显现出来.
 
@@ -274,7 +274,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     由收敛的定义可以直接得到.
 \end{proof}
 
-下面这些例子都比较简单. 对于更复杂的例子, 我们需要第 4 节发展出的那些方法.
+下面这些例子都比较简单. 对于更复杂的例子, 我们需要第 2.4 节发展出的那些方法.
 
 \begin{example}\label{eg:ez-convergent-sequence}
     \begin{enumerate}
@@ -1073,11 +1073,11 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \[
             \|x - y\| \geq \bigl|\|x\| - \|y\|\bigr|\ ,\quad x, y \in E\ .
         \]
-        \item 因为注 \ref{rem:norms}.1, 故第 1 节中关于度量空间的全部命题同样对 \(E\) 成立. 特别的, ``邻域'', ``聚点'' 和 ``收敛性'' 在 \(E\) 上是良定义的. 例如, \(E\) 中的序列 \((x_n)\) 收敛到 \(x\) 的含义是:
+        \item 因为注 \ref{rem:norms}.1, 故第 2.1 节中关于度量空间的全部命题同样对 \(E\) 成立. 特别的, ``邻域'', ``聚点'' 和 ``收敛性'' 在 \(E\) 上是良定义的. 例如, \(E\) 中的序列 \((x_n)\) 收敛到 \(x\) 的含义是:
         \[
             x_n \to x \iff \forall \varepsilon > 0,\ \exists N \in \N,\ \forall n \geq N : \|x_n - x\| < \varepsilon.
         \]
-        此外, 回顾第 2 节可以发现, 只要某个命题的证明中没有用到 \(\K\) 的域结构或序结构, 那么该命题同样适用于 \(E\) 中的序列. 特别的, 注 \ref{rem:null-sequences}, 命题 \ref{prop:addition-scalar-multiplication-in-c} 和命题 \ref{prop:sequence-convergence-then-abs-convergence} 在任意赋范向量空间中都成立.
+        此外, 回顾第 2.2 节可以发现, 只要某个命题的证明中没有用到 \(\K\) 的域结构或序结构, 那么该命题同样适用于 \(E\) 中的序列. 特别的, 注 \ref{rem:null-sequences}, 命题 \ref{prop:addition-scalar-multiplication-in-c} 和命题 \ref{prop:sequence-convergence-then-abs-convergence} 在任意赋范向量空间中都成立.
     \end{enumerate}
 \end{remark}
 
@@ -1130,7 +1130,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 \subsection{例子}
 
-现在我们为第 1 章的第 12 节中介绍的那些向量空间定义合适的范数.
+现在我们为第 1.12 节中介绍的那些向量空间定义合适的范数.
 
 \begin{example}\label{eg:norms}
     \begin{enumerate}
@@ -1269,7 +1269,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \node[below left] at (-1, 0) {\(- 1\)};
     \end{tikzpicture}
 \end{center}
-在任意赋范向量空间 \((E, \|\!\cdot\!\|)\) 中, 称集合 \(\{\, x \in E \;;\; \|x\| = 1 \,\}\) 是 \((E, \|\!\cdot\!\|)\) 中的单位球面, 也就是单位球的 ``边界''. 对我们的空间 \((\R^2, |\!\cdot\!|_\infty)\) 来说, 这个单位球面就是图中那个正方形的边界. 单位球面上的每一个点到原点的距离都是 \(1\). 当然, 这里的距离是用 \(|\!\cdot\!|_\infty\) 的诱导度量来定义的, 因此这里的 ``球'' 和 ``球面'' 的几何外观可能与我们以往的经验不太一样. 在学校, 我们学到: 若点到原点的距离按 Pythagoras 定理定义为 ``各坐标平方和的平方根'' (见第 1 章的第 11 节关于 \(\B_\C\) 的内容), 那么在平面上得到的就是 ``圆'' 的形状. 我们希望把这种距离的想法推广到 \(\K^m\) 上, 通过在 \(\K^m\) 上定义一个新的范数---Euclid 范数, 这个范数在历史上和实际应用中都很重要. 为了做到这一点, 我们需要先做一些准备工作.
+在任意赋范向量空间 \((E, \|\!\cdot\!\|)\) 中, 称集合 \(\{\, x \in E \;;\; \|x\| = 1 \,\}\) 是 \((E, \|\!\cdot\!\|)\) 中的单位球面, 也就是单位球的 ``边界''. 对我们的空间 \((\R^2, |\!\cdot\!|_\infty)\) 来说, 这个单位球面就是图中那个正方形的边界. 单位球面上的每一个点到原点的距离都是 \(1\). 当然, 这里的距离是用 \(|\!\cdot\!|_\infty\) 的诱导度量来定义的, 因此这里的 ``球'' 和 ``球面'' 的几何外观可能与我们以往的经验不太一样. 在学校, 我们学到: 若点到原点的距离按 Pythagoras 定理定义为 ``各坐标平方和的平方根'' (见第 1.11 节关于 \(\B_\C\) 的内容), 那么在平面上得到的就是 ``圆'' 的形状. 我们希望把这种距离的想法推广到 \(\K^m\) 上, 通过在 \(\K^m\) 上定义一个新的范数---Euclid 范数, 这个范数在历史上和实际应用中都很重要. 为了做到这一点, 我们需要先做一些准备工作.
 
 \begin{axiom}[内积]\label{ax:inner-product}
     设 \(E\) 是 \(\K\)-向量空间, 其上定义了函数
@@ -1998,6 +1998,22 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{exercise}
 
 \begin{proof}
+    考虑 \(\bigl((1 - 1 / n)^n\bigr)\) 的倒数,
+    \[
+        \Bigl(1 - \frac{1}{n}\Bigr)^{- n} = \Bigl(\frac{n}{n - 1}\Bigr)^n = \Bigl(1 + \frac{1}{n - 1}\Bigr)^n\ .
+    \]
+    注意到 \(\bigl(1 + \frac{1}{n - 1}\bigr)^{n - 1} \to e\) 且 \(1 + \frac{1}{n - 1} \to 1\), 于是
+    \[
+        \Bigl(1 + \frac{1}{n - 1}\Bigr)^n = \Bigl(1 + \frac{1}{n - 1}\Bigr)^{n - 1} \Bigl(1 + \frac{1}{n - 1}\Bigr) \to e\ ,
+    \]
+    即 \((1 - 1 / n)^{- n} \to e\), 因此
+    \[
+        \lim_{n \to \infty} \Bigl(1 - \frac{1}{n}\Bigr)^n = \lim_{n \to \infty} \frac{1}{(1 - 1 / n)^{- n}} = \frac{1}{e}\ .
+    \]
+\end{proof}
+
+\iffalse
+\begin{proof}
     先证明 \(\lim (1 - 1 / n^2)^n = 1\). 利用二项式定理有
     \[
         0 \leq \Bigl|\Bigl(1 - \frac{1}{n^2}\Bigr)^n - 1\Bigr| = \Bigl|\sum_{k = 0}^n \binom{n}{k} \Bigl(- \frac{1}{n^2}\Bigr)^k - 1\Bigr| \leq \sum_{k = 1}^n \binom{n}{k} \frac{1}{n^{2 k}} = \frac{1}{n} + \sum_{k = 2}^n \binom{n}{k} \frac{1}{n^{2 k}}\ ,
@@ -2015,6 +2031,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \frac{(1 - 1 / n^2)^n}{(1 + 1 / n)^n} = \Bigl(\frac{n^2 - 1}{n^2}\Bigr)^n \Big/ \Bigl(\frac{n + 1}{n}\Bigr)^n = \Bigl(\frac{n - 1}{n}\Bigr)^n = \Bigl(1 - \frac{1}{n}\Bigr)^n \to \frac{1}{e}\ .
     \]
 \end{proof}
+\fi
 
 \begin{exercise}
     证明
@@ -2024,12 +2041,56 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     (提示: 分别考虑 \(r > 0\) 和 \(r < 0\) 的情况. 并利用练习 \ref{ex:e-limit-variant-1} 和练习 \ref{ex:sequence-power-equal-limit-power}.)
 \end{exercise}
 
+\begin{proof}
+    当 \(r = 0\) 时显然成立. 设 \(r > 0\). 先证明 \(r\) 是正整数的情况. 令 \(r \in \N^\ast\). 对于任意 \(n \in \N^\ast\), 令 \(t_n \coloneqq \max\{\, t \in \N \;;\; t \leq n / r \,\}\), 由良序原理可知 \(t_n\) 是良定义的. 故对于任意 \(n \in \N^\ast\) 都有 \(t_n \leq n / r \leq t_n + 1\), 于是当 \(n \geq r\) 时
+    \[
+        1 + \frac{1}{t_n + 1} \leq 1 + \frac{r}{n} \leq 1 + \frac{1}{t_n}\ ,
+    \]
+    因此
+    \[
+        \Bigl(1 + \frac{1}{t_n + 1}\Bigr)^{t_n} \leq \Bigl(1 + \frac{r}{n}\Bigr)^{t_n} \leq \Bigl(1 + \frac{r}{n}\Bigr)^{n / r} \leq \Bigl(1 + \frac{r}{n}\Bigr)^{t_n + 1} \leq \Bigl(1 + \frac{1}{t_n}\Bigr)^{t_n + 1}\ .
+    \]
+    注意到当 \(n \to \infty\) 时, \(t_n \to \infty\), 于是 \((1 + 1 / t_n)^{t_n} \to e\), 因此
+    \[
+        \Bigl(1 + \frac{1}{t_n}\Bigr)^{t_n + 1} = \Bigl(1 + \frac{1}{t_n}\Bigr)^{t_n} \Bigl(1 + \frac{1}{t_n}\Bigr) \to e\quad \text{且}\quad \Bigl(1 + \frac{1}{t_n + 1}\Bigr)^{t_n} = \frac{\bigl(1 + \frac{1}{t_n + 1}\bigr)^{t_n + 1}}{1 + \frac{1}{t_n + 1}} \to e\ .
+    \]
+    由夹逼定理可知 \((1 + r / n)^{n / r} \to e\), 故
+    \[
+        \lim_{n \to \infty} \Bigl(1 + \frac{r}{n}\Bigr)^n = \lim_{n \to \infty}\Bigl(1 + \frac{r}{n}\Bigr)^{\frac{n}{r} r} = e^r\ .
+    \]
+    令 \(r = p / q\ (p, q \in \N^\ast)\). 注意到 \(\bigl((1 + p / q n)^{q n / p}\bigr)\) 是 \(\bigl((1 + p / n)^{n / p}\bigr)\) 的子数列, 因此
+    \[
+        \lim_{n \to \infty} \Bigl(1 + \frac{r}{n}\Bigr)^n = \lim_{n \to \infty}\Bigl(1 + \frac{p}{q n}\Bigr)^{\frac{q n}{p} \frac{p}{q}} = e^{p / q} = e^r\ .
+    \]
+
+    设 \(r < 0\). 令 \(s = - r > 0\). 于是
+    \[
+        \Bigl(1 + \frac{r}{n}\Bigr)^n = \Bigl(1 - \frac{s}{n}\Bigr)^n\ ,
+    \]
+    考虑 \(\bigl((1 - s / n)^n\bigr)\) 的倒数
+    \[
+        \Bigl(1 - \frac{s}{n}\Bigr)^{- n} = \Bigl(\frac{n}{n - s}\Bigr)^n = \Bigl(1 + \frac{s}{n - s}\Bigr)^n\ .
+    \]
+    注意到 \(\bigl(1 + \frac{s}{n - s}\bigr)^{n - s} \to e^s\) 且 \(\bigl(1 + \frac{s}{n - s}\bigr)^s \to 1\), 于是
+    \[
+        \Bigl(1 + \frac{s}{n - s}\Bigr)^n = \Bigl(1 + \frac{s}{n - s}\Bigr)^{n - s} \Bigl(1 + \frac{s}{n - s}\Bigr)^s \to e^s\ ,
+    \]
+    即 \((1 - s / n)^{- n} \to e^s\), 因此
+    \[
+        \lim_{n \to \infty} \Bigl(1 + \frac{r}{n}\Bigr)^n = \lim_{n \to \infty} \Bigl(1 - \frac{s}{n}\Bigr)^n = \lim_{n \to \infty} \frac{1}{(1 - s / n)^{- n}} = e^{- s} = e^r\ .
+    \]
+\end{proof}
+
 \begin{exercise}[Heron 算法]
     设 \(a \in (0, \infty)\), 递归定义实数列
     \[
         x_0 \geq a\ ,\quad x_{n + 1} \coloneqq \frac{x_n + a / x_n}{2}\ ,\quad n \in \N\ .
     \]
-    证明 \((x_n)\) 收敛到 \(\sqrt{a}\).
+    证明 \((x_n)\) 收敛到 \(\sqrt{a}\) \footnote{这个计算 \(\sqrt{a}\) 的过程被称为 Babylonia 算法或 Heron 算法. 数列 \((x_n)\) 将以极快的速度收敛到 \(\sqrt{a}\). 例如, 若 \(x_0 = a = 4\), 则
+    \[
+        x_1 = 2.5\ ,\quad x_2 = 2.05\ ,\quad x_3 = 2.006\ 09 \ldots\ ,\quad x_4 = 2.000\ 000\ 093 \ldots
+    \]
+    注意到, 若 \(a\) 与 ``初始值'' \(x_0\) 都是有理数, 那么所有的 \(x_n\) 都将会是有理数. 在第 4.4 节, 我们会给出 Heron 算法的几何解释并估计其收敛速度.}.
 \end{exercise}
 
 \begin{proof}
@@ -2052,6 +2113,71 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     设 \(a, x_0 \in (0, \infty)\), 递归定义实数列
     \[
         x_{n + 1} \coloneqq \frac{a}{1 + x_n}\ ,\quad n \in \N\ .
+    \]
+    证明 \((x_n)\) 收敛并计算其极限.
+\end{exercise}
+
+\begin{proof}
+    令 \(M \coloneqq \max\{a, x_0\}\). 于是 \(0 < x_0 \leq M\). 假设 \(0 < x_k \leq M\), 则
+    \[
+        0 < x_{k + 1} = \frac{a}{1 + x_k} < a \leq M\ .
+    \]
+    因此由数学归纳法可得对于任意 \(n \in \N\) 都有 \(0 < x_n \leq M\), 即 \((x_n)\) 有界.
+
+    令 \((y_n) \coloneqq (x_{2 n})\), \((z_n) \coloneqq (x_{2 n + 1})\),
+    \[
+        f(x) \coloneqq \frac{a}{1 + \frac{a}{1 + x}} = \frac{a (1 + x)}{1 + x + a}\ ,\quad x \in \R\ .
+    \]
+    假设 \(x_1 \leq x_2\), 于是
+    \[
+        f(x_2) - f(x_1) = \frac{a (1 + x_2)}{1 + x_2 + a} - \frac{a (1 + x_1)}{1 + x_1 + a} = \frac{a^2 (x_2 - x_1)}{(1 + x_2 + a) (1 + x_1 + a)} \geq 0\ ,
+    \]
+    这说明 \(f\) 是递增的. 我们来考察 \((y_n)\) 的单调性,
+    \[
+        y_1 - y_0 = f(y_0) - y_0 = \frac{a (1 + y_0)}{1 + y_0 + a} - y_0 = \frac{a - y_0 - y_0^2}{1 + y_0 + a}\ ,
+    \]
+    其中 \(a - y_0 - y_0^2\) 的零点是
+    \[
+        L \coloneqq \frac{- 1 + \sqrt{1 + 4 a}}{2}\ ,\quad - L - 1 \coloneqq \frac{- 1 - \sqrt{1 + 4 a}}{2}\ ,
+    \]
+    于是
+    \[
+        y_1 - y_0 = - \frac{(y_0 - L) (y_0 + L + 1)}{1 + y_0 + a}\ .
+    \]
+    当 \(y_0 \geq L\) 时 \(y_1 \leq y_0\), 而 \(f\) 是递增的, 于是 \(y_2 = f(y_1) \leq f(y_0) = y_1\), 归纳可得 \((y_n)\) 是递减的, 因此由单调有界收敛定理可知 \((y_n)\) 收敛. 设 \(y_n \to y\), 于是
+    \[
+        y = \lim y_n = \lim \frac{a (1 + y_n)}{1 + y_n + a} = \frac{a (1 + y)}{1 + y + a}\ ,
+    \]
+    解得 \(y = L\) 或 \(y = - L - 1\), 而 \(- L - 1 < 0\), 因此 \(y = L\). 当 \(y_0 \leq L\) 时, 同理可得 \((y_n)\) 收敛到 \(L\). 对于数列 \((z_n)\), 同理可得 \((z_n)\) 收敛到 \(L\).
+
+    任取 \(\varepsilon > 0\). 由于 \(\lim y_n = \lim z_n = L\), 故存在 \(M, N \in \N\) 使得当 \(n \geq \max\{M, N\}\) 时
+    \[
+        |y_n - L| = |x_{2 n} - L| < \varepsilon\ ,\quad |z_n - L| = |x_{2 n + 1} - L| < \varepsilon\ ,
+    \]
+    即当 \(n \geq 2 \max\{M, N\}\) 时 \(|x_n - L| < \varepsilon\), 故 \((x_n)\) 收敛到 \(L\).
+\end{proof}
+
+\begin{exercise}
+    证明如下数列收敛.
+    \[
+        x_0 > 0\ ,\quad x_1 > 0\ ,\quad x_{n + 2} \coloneqq \sqrt{x_{n + 1} x_n}\ ,\quad n \in \N\ .
+    \]
+\end{exercise}
+
+\begin{exercise}
+    \begin{enumerate}
+        \item 证明如下误差估计.
+        \[
+            0 < e - \sum_{k = 0}^n \frac{1}{k!} < \frac{1}{n n!}\ ,\quad n \in \N^\ast\ .
+        \]
+        \item 使用上面的不等式证明 \(e\) 是无理数.
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+    递归定义实数列
+    \[
+        x_0 \coloneqq 1\ ,\quad x_{n + 1} \coloneqq 1 + \frac{1}{x_n}\ ,\quad n \in \N\ .
     \]
     证明 \((x_n)\) 收敛并计算其极限.
 \end{exercise}

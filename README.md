@@ -81,6 +81,8 @@ Section 4 Monotones Sequences
           Some Important Limits          12  6, 25
           Exercises
 
+          Exercises                      12  7, 25
+
 Section 5 Infinite Limits
 Section 6 Completeness
 Section 7 Series

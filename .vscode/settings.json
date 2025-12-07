@@ -8,7 +8,7 @@
     "editor.fontSize": 18,
     "editor.minimap.renderCharacters": false,
     "editor.minimap.scale": 2,
-    "workbench.colorTheme": "Visual Studio Light",
+    "workbench.colorTheme": "Visual Studio Dark",
     "workbench.iconTheme": "vscode-icons",
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
@@ -17,7 +17,20 @@
     // =============================================
     // LaTeX Workshop ==============================
     // =============================================
+    // 启用公式鼠标悬停预览
+    "latex-workshop.hover.preview.enabled": true,
+    // 设置编译输出目录，避免输出文件污染根目录
+    "latex-workshop.latex.outDir": "%DIR%/build",
     // 设置 vscode 编译 tex 文档时的默认编译链
+    "latex-workshop.latex.recipe.default": "first",
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "latexmk",
+            "tools": [
+                "latexmk"
+            ]
+        }
+    ],
     "latex-workshop.latex.tools": [
         {
             "name": "latexmk",
@@ -33,19 +46,10 @@
             "env": {}
         }
     ],
-    "latex-workshop.latex.recipe.default": "first",
-    "latex-workshop.latex.recipes": [
-        {
-            "name": "latexmk",
-            "tools": [
-                "latexmk"
-            ]
-        }
-    ],
     // tex 文件浏览器
     "latex-workshop.view.pdf.viewer": "tab",
     // 自动编译 tex 文件
-    "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.latex.autoBuild.run": "never",
     // 显示错误
     "latex-workshop.message.error.show": false,
     // 显示警告
@@ -74,7 +78,7 @@
         "*.log",
         "*.fdb_latexmk"
     ],
-    "latex-workshop.latex.autoClean.run": "onBuilt",
+    "latex-workshop.latex.autoClean.run": "onFailed",
     // 用于反向同步的内部查看器的键绑定
     "latex-workshop.view.pdf.internal.synctex.keybinding": "ctrl-click",
     // =============================================

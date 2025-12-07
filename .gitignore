@@ -1,8 +1,11 @@
 .DS_Store
 desktop.ini
 
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
 *.synctex.gz
-
-analysis i.pdf
-analysis ii.pdf
-analysis iii.pdf
+*.toc
+*.xdv
