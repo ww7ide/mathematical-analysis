@@ -126,6 +126,9 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
             |\!\cdot\!| \colon \K \times \K \to \R\ ,\quad (x, y) \mapsto |x - y|
         \]
         是 \(\K\) 上的度量, 称为自然度量.
+        \begin{proof}
+            由命题 \ref{prop:abs-in-Q} 可以直接验证 \(|\!\cdot\!|\) 满足度量公理.
+        \end{proof}
     \end{enumerate}
 
     \begin{center}
@@ -154,10 +157,6 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \]
     \end{enumerate}
 \end{example}
-
-\begin{proof}
-    1. 由命题 \ref{prop:abs-in-Q} 可以直接验证 \(|\!\cdot\!|\) 满足度量公理.
-\end{proof}
 
 度量公理的一个重要结论是反三角不等式 (见推论 \ref{cor:reversed-triangle-inequality-in-Q}).
 
@@ -192,17 +191,16 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \begin{enumerate}
         \item 对于每个 \(\varepsilon > 0\), \(\B(a, \varepsilon)\) 和 \(\bar \B(a, \varepsilon)\) 都是 \(a\) 的邻域, 称为 \(a\) 的开 \(\varepsilon\)-邻域 和闭 \(\varepsilon\)-邻域.
         \item 显然 \(X \in \nbr(a)\). 若 \(U_1, U_2 \in \nbr(a)\), 则 \(U_1 \cap U_2\) 和 \(U_1 \cup U_2\) 也是 \(a\) 的邻域. 任意包含了 \(a\) 的邻域的集合同样是 \(a\) 的邻域.
+        \begin{proof}
+            设 \(U_1, U_2 \in \nbr(a)\). 故存在 \(r_1, r_2 > 0\) 使得 \(\B(a, r_1) \in U_1\)  和 \(\B(a, r_2) \in U_2\). 令 \(r = \min\{r_1, r_2\}\), 于是
+            \[
+                \B(a, r) \subseteq U_1 \cap U_2 \subseteq U_1 \cup U_2\ ,
+            \]
+            即 \(U_1 \cap U_2\) 和 \(U_1 \cup U_2\) 是 \(a\) 的邻域.
+        \end{proof}
         \item 设 \(X \coloneqq [0, 1]\) 赋予了在 \(\R\) 上诱导的度量. 则 \([1 / 2, 1]\) 是 \(1\) 的邻域, 但不是 \(1 / 2\) 的邻域.
     \end{enumerate}
 \end{example}
-
-\begin{proof}
-    2. 设 \(U_1, U_2 \in \nbr(a)\). 故存在 \(r_1, r_2 > 0\) 使得 \(\B(a, r_1) \in U_1\)  和 \(\B(a, r_2) \in U_2\). 令 \(r = \min\{r_1, r_2\}\), 于是
-    \[
-        \B(a, r) \subseteq U_1 \cap U_2 \subseteq U_1 \cup U_2\ ,
-    \]
-    即 \(U_1 \cap U_2\) 和 \(U_1 \cup U_2\) 是 \(a\) 的邻域.
-\end{proof}
 
 \begin{center}
     \kaishu 在本节的其余部分里, 设 \(X \coloneqq (X, d)\) 是度量空间, \((x_n)\) 是 \(X\) 中的序列.
@@ -236,16 +234,15 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \item 常序列 \((x, x, x, \ldots)\) 有唯一的聚点 \(x\).
         \item 自然数序列 \((n)\) 没有聚点.
         \item 设 \(\varphi \colon \N \to \Q\) 是双射 (由命题 \ref{prop:Q-is-countable} 可知这样的函数存在). 定义序列 \((x_n)\), 其中 \(x_n \coloneqq \varphi(n),\ n \in \N\). 则每个实数都是 \((x_n)\) 的聚点.
+        \begin{proof}
+            假设 \(a \in \R\) 不是 \((x_n)\) 的聚点. 由命题 \ref{prop:cluster-points-charact} 可知, 存在 \(\varepsilon > 0\) 和 \(m \in \N\), 使得
+            \[
+                x_n \notin \B(a, \varepsilon) = (a - \varepsilon, a + \varepsilon)\ ,\quad n \geq m\ .
+            \]
+            这意味着区间 \((a - \varepsilon, a + \varepsilon)\) 仅包含了有限多个有理数, 这与命题 \ref{prop:Q-density-in-R} 矛盾.
+        \end{proof}
     \end{enumerate}
 \end{example}
-
-\begin{proof}
-    5. 假设 \(a \in \R\) 不是 \((x_n)\) 的聚点. 由命题 \ref{prop:cluster-points-charact} 可知, 存在 \(\varepsilon > 0\) 和 \(m \in \N\), 使得
-    \[
-        x_n \notin \B(a, \varepsilon) = (a - \varepsilon, a + \varepsilon)\ ,\quad n \geq m\ .
-    \]
-    这意味着区间 \((a - \varepsilon, a + \varepsilon)\) 仅包含了有限多个有理数, 这与命题 \ref{prop:Q-density-in-R} 矛盾.
-\end{proof}
 
 \subsection{收敛性}
 
@@ -279,52 +276,53 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \begin{example}\label{eg:ez-convergent-sequence}
     \begin{enumerate}
         \item 设实数列 \((1 / n)_{n \in \N^\ast}\), 则 \(\lim 1 / n = 0\).
+        \begin{proof}
+            任取 \(\varepsilon > 0\). 由推论 \ref{cor:archimedean-property-cor} 可知, 存在 \(N \in \N^\ast\) 使得 \(1 / N < \varepsilon\), 于是
+            \[
+                \frac{1}{n} \leq \frac{1}{N} < \varepsilon\ ,\quad n \geq N\ ,
+            \]
+            即当 \(n \geq N\) 时 \(1 / n \in \B(0, \varepsilon)\).
+        \end{proof}
         \item 设复数列 \((z_n)\), 其中
         \[
             z_n \coloneqq \frac{n + 2}{n + 1} + i \frac{2 n}{n + 2}\ ,
         \]
         则 \(\lim z_n = 1 + 2 i\).
+        \begin{proof}
+            任取 \(\varepsilon > 0\). 由推论 \ref{cor:archimedean-property-cor} 可知, 存在 \(N \in \N\) 使得 \(1 / N < \varepsilon / 8\), 此时有
+            \[
+                \Bigl(\frac{n + 2}{n + 1} - 1\Bigr)^2 = \Bigl(\frac{1}{n + 1}\Bigr)^2 < \frac{1}{N^2} < \frac{\varepsilon^2}{64} < \frac{\varepsilon^2}{2}\ ,\quad n \geq N\ ,
+            \]
+            和
+            \[
+                \Bigl(\frac{2 n}{n + 2} - 2\Bigr)^2 = \Bigl(\frac{4}{n + 2}\Bigr)^2 < \frac{16}{N^2} < \frac{\varepsilon^2}{4} < \frac{\varepsilon^2}{2}\ ,\quad n \geq N\ ,
+            \]
+            于是
+            \begin{align*}
+                |z_n - (1 + 2 i)| &= \Bigl|\frac{1}{n + 1} - i \frac{4}{n + 2}\Bigr| \\
+                &= \sqrt{\Bigl(\frac{1}{n + 1}\Bigr)^2 + \Bigl(- \frac{4}{n + 2}\Bigr)^2} < \sqrt{\frac{\varepsilon^2}{2} + \frac{\varepsilon^2}{2}} < \varepsilon\ ,\quad n \geq N\ ,
+            \end{align*}
+            即当 \(n \geq N\) 时 \(z_n \in \B\bigl((1 + 2 i), \varepsilon\bigr)\).
+        \end{proof}
         \item 常序列 \((a, a, a, \ldots)\) 收敛到 \(a\).
         \item 实数列 \(\bigl((- 1)^n\bigr)\) 发散.
         \item 设 \(X\) 是度量空间 \((X_j, d_j),\ 1 \leq j \leq m\) 的积空间. 则序列 \((x_n) = \bigl((x_n^1, \ldots, x_n^m)\bigr)\) 收敛到点 \(a \coloneqq (a^1, \ldots, a^m) \in X\) 当且仅当对于每个 \(j \in \{1, \ldots, m\}\) 都有序列 \((x_n^j)\) 收敛到点 \(a^j \in X_j\).
+        \begin{proof}
+            \(\implies\). 设 \((x_n)\) 收敛到点 \(a\). 则任取 \(\varepsilon > 0\), 存在 \(N \in \N\) 使得
+            \[
+                x_n = (x_n^1, \ldots, x_n^m) \in \B_X(a, \varepsilon) = \prod_{j = 1}^m \B_{X_j}(a^j, \varepsilon)\ ,\quad n \geq N\ ,
+            \]
+            即当 \(n \geq N\) 时, 对于每个 \(j\) 都有 \(x_n^j \in \B_{X_j}(a^j, \varepsilon)\).
+
+            \(\impliedby\). 设对于每个 \(j\) 都有 \((x_n^j)\) 收敛到点 \(a^j\). 任取 \(\varepsilon > 0\), 对于每个 \(j\) 都存在 \(N_j \in \N\) 使得当 \(n \geq N_j\) 时 \(x_n^j \in \B_{X_j}(a^j, \varepsilon)\). 令 \(N = \max_{1 \leq j \leq m} N_j\), 于是
+            \[
+                (x_n^1, \ldots, x_n^m) = x_n \in \prod_{j = 1}^m \B_{X_j}(a^j, \varepsilon) = \B_X(a, \varepsilon)\ ,\quad n \geq N\ .
+            \]
+
+            (见例 \ref{eg:metric}.5).
+        \end{proof}
     \end{enumerate}
 \end{example}
-
-\begin{proof}
-    1. 任取 \(\varepsilon > 0\). 由推论 \ref{cor:archimedean-property-cor} 可知, 存在 \(N \in \N^\ast\) 使得 \(1 / N < \varepsilon\), 于是
-    \[
-        \frac{1}{n} \leq \frac{1}{N} < \varepsilon\ ,\quad n \geq N\ ,
-    \]
-    即当 \(n \geq N\) 时 \(1 / n \in \B(0, \varepsilon)\).
-
-    2. 任取 \(\varepsilon > 0\). 由推论 \ref{cor:archimedean-property-cor} 可知, 存在 \(N \in \N\) 使得 \(1 / N < \varepsilon / 8\), 此时有
-    \[
-        \Bigl(\frac{n + 2}{n + 1} - 1\Bigr)^2 = \Bigl(\frac{1}{n + 1}\Bigr)^2 < \frac{1}{N^2} < \frac{\varepsilon^2}{64} < \frac{\varepsilon^2}{2}\ ,\quad n \geq N\ ,
-    \]
-    和
-    \[
-        \Bigl(\frac{2 n}{n + 2} - 2\Bigr)^2 = \Bigl(\frac{4}{n + 2}\Bigr)^2 < \frac{16}{N^2} < \frac{\varepsilon^2}{4} < \frac{\varepsilon^2}{2}\ ,\quad n \geq N\ ,
-    \]
-    于是
-    \begin{align*}
-        |z_n - (1 + 2 i)| &= \Bigl|\frac{1}{n + 1} - i \frac{4}{n + 2}\Bigr| \\
-        &= \sqrt{\Bigl(\frac{1}{n + 1}\Bigr)^2 + \Bigl(- \frac{4}{n + 2}\Bigr)^2} < \sqrt{\frac{\varepsilon^2}{2} + \frac{\varepsilon^2}{2}} < \varepsilon\ ,\quad n \geq N\ ,
-    \end{align*}
-    即当 \(n \geq N\) 时 \(z_n \in \B\bigl((1 + 2 i), \varepsilon\bigr)\).
-
-    5. \(\implies\). 设 \((x_n)\) 收敛到点 \(a\). 则任取 \(\varepsilon > 0\), 存在 \(N \in \N\) 使得
-    \[
-        x_n = (x_n^1, \ldots, x_n^m) \in \B_X(a, \varepsilon) = \prod_{j = 1}^m \B_{X_j}(a^j, \varepsilon)\ ,\quad n \geq N\ ,
-    \]
-    即当 \(n \geq N\) 时, 对于每个 \(j\) 都有 \(x_n^j \in \B_{X_j}(a^j, \varepsilon)\).
-
-    \(\impliedby\). 设对于每个 \(j\) 都有 \((x_n^j)\) 收敛到点 \(a^j\). 任取 \(\varepsilon > 0\), 对于每个 \(j\) 都存在 \(N_j \in \N\) 使得当 \(n \geq N_j\) 时 \(x_n^j \in \B_{X_j}(a^j, \varepsilon)\). 令 \(N = \max_{1 \leq j \leq m} N_j\), 于是
-    \[
-        (x_n^1, \ldots, x_n^m) = x_n \in \prod_{j = 1}^m \B_{X_j}(a^j, \varepsilon) = \B_X(a, \varepsilon)\ ,\quad n \geq N\ .
-    \]
-
-    (见例 \ref{eg:metric}.5).
-\end{proof}
 
 \subsection{有界集合}
 
@@ -571,18 +569,19 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     设 \((x_n)\) 是 \(\K\) 中的数列, \(a \in \K\).
     \begin{enumerate}
         \item \((x_n)\) 是无穷小量, 当且仅当其绝对值数列 \((|x_n|)\) 是 \(\R\) 中的无穷小量.
+        \begin{proof}
+            由无穷小量的定义可以直接得到.
+        \end{proof}
         \item \((x_n)\) 收敛到 \(a\), 当且仅当 ``平移后的数列'' \((x_n - a)\)  是无穷小量.
+        \begin{proof}
+            由命题 \ref{prop:convergent-sequence-charact} 可以直接得到.
+        \end{proof}
         \item 若存在 \(\R\) 中的无穷小量 \((r_n)\) 使得对于几乎所有 \(n \in \N\) 都有 \(|x_n| \leq r_n\), 则 \((x_n)\) 是无穷小量.
+        \begin{proof}
+            任取 \(\varepsilon > 0\). 由假设可知存在 \(M, N \in \N\) 使得当 \(n \geq M\) 时 \(|x_n| \leq r_n\), 当 \(n \geq N\) 时 \(|r_n| < \varepsilon\). 于是当 \(n \geq \max\{M, N\}\) 时 \(|x_n| \leq r_n \leq |r_n| < \varepsilon\).
+        \end{proof}
     \end{enumerate}
 \end{remark}
-
-\begin{proof}
-    1. 由无穷小量的定义可以直接得到.
-
-    2. 由命题 \ref{prop:convergent-sequence-charact} 可以直接得到.
-
-    3. 任取 \(\varepsilon > 0\). 由假设可知存在 \(M, N \in \N\) 使得当 \(n \geq M\) 时 \(|x_n| \leq r_n\), 当 \(n \geq N\) 时 \(|r_n| < \varepsilon\). 于是当 \(n \geq \max\{M, N\}\) 时 \(|x_n| \leq r_n \leq |r_n| < \varepsilon\).
-\end{proof}
 
 \subsection{基本法则}
 
@@ -597,12 +596,12 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \begin{proof}
     任取 \(\varepsilon > 0\).
 
-    1. 存在 \(M, N \in \N\) 使得当 \(n \geq M\) 时 \(|x_n - a| < \varepsilon / 2\), 当 \(n \geq N\) 时 \(|y_n - b| < \varepsilon / 2\). 于是
+    (1). 存在 \(M, N \in \N\) 使得当 \(n \geq M\) 时 \(|x_n - a| < \varepsilon / 2\), 当 \(n \geq N\) 时 \(|y_n - b| < \varepsilon / 2\). 于是
     \[
         |(x_n + y_n) - (a + b)| \leq |x_n - a| + |y_n - b| < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon\ ,\quad n \geq \max\{M, N\}\ .
     \]
 
-    2. 若 \(\alpha = 0\) 显然成立, 假设 \(\alpha \neq 0\). 则存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(|x_n - a| < \varepsilon / |\alpha|\). 于是
+    (2). 若 \(\alpha = 0\) 显然成立, 假设 \(\alpha \neq 0\). 则存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(|x_n - a| < \varepsilon / |\alpha|\). 于是
     \[
         |\alpha x_n - \alpha a| = |\alpha|\, |x_n - a| < |\alpha| \frac{\varepsilon}{|\alpha|} = \varepsilon\ ,\quad n \geq N\ .
     \]
@@ -631,11 +630,12 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{proposition}
 
 \begin{proof}
-    1. 由于 \((y_n)\) 有界, 故存在 \(M > 0\) 使得对于任意 \(n \in \N\) 都有 \(|y_n| \leq M\). 任取 \(\varepsilon > 0\). 由于 \((x_n)\) 是无穷小量, 故存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(|x_n| < \varepsilon / M\). 于是
+    (1). 由于 \((y_n)\) 有界, 故存在 \(M > 0\) 使得对于任意 \(n \in \N\) 都有 \(|y_n| \leq M\). 任取 \(\varepsilon > 0\). 由于 \((x_n)\) 是无穷小量, 故存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(|x_n| < \varepsilon / M\). 于是
     \[
         |x_n y_n| = |x_n|\, |y_n| < \frac{\varepsilon}{M} M = \varepsilon\ ,\quad n \geq N\ .
     \]
-    2. 由于 \((x_n)\) 收敛到 \(a\), 故 \((x_n - a)\) 是无穷小量. 由命题 \ref{prop:convergent-sequence-is-bounded} 可知, \((y_n)\) 有界. 于是由 1 可得 \(\bigl((x_n - a) y_n\bigr)\) 是无穷小量, 同理可得 \(\bigl(a (y_n - b)\bigr)\) 是无穷小量. 由命题 \ref{prop:addition-scalar-multiplication-in-c} 可知
+
+    (2). 由于 \((x_n)\) 收敛到 \(a\), 故 \((x_n - a)\) 是无穷小量. 由命题 \ref{prop:convergent-sequence-is-bounded} 可知, \((y_n)\) 有界. 于是由 1 可得 \(\bigl((x_n - a) y_n\bigr)\) 是无穷小量, 同理可得 \(\bigl(a (y_n - b)\bigr)\) 是无穷小量. 由命题 \ref{prop:addition-scalar-multiplication-in-c} 可知
     \[
         \lim(x_n y_n - a b) = \lim\bigl((x_n - a) y_n + a (y_n - b)\bigr) = 0\ ,
     \]
@@ -645,6 +645,9 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \begin{remark}\label{rem:c-is-algebra}
     \begin{enumerate}
         \item 命题 \ref{prop:multiplication-in-c}.1 中, 关于序列 \((y_n)\) 有界的假设不能去除.
+        \begin{proof}
+            设 \(x_n \coloneqq 1 / n\), \(y_n \coloneqq n^2\). 则 \((x_n)\) 是无穷小量, 但 \((x_n y_n)\) 发散.
+        \end{proof}
         \item 由例 \ref{eg:algebras}.2 可知 \(s\) 是 \(\K\)-代数. 于是, 结合注 \ref{rem:c-is-vector-space} 和命题 \ref{prop:multiplication-in-c}.2 可以得到: \(c\) 是 \(s\) 的子代数且函数
         \[
             \lim \colon c \to \K\ ,\quad (x_n) \mapsto \lim x_n
@@ -652,10 +655,6 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         是代数同态. 最后, 由命题 \ref{prop:convergent-sequence-is-bounded} 和命题 \ref{prop:multiplication-in-c}.1 可知 \(c_0\) 也是 \(c\) 的理想.
     \end{enumerate}
 \end{remark}
-
-\begin{proof}
-    1. 设 \(x_n \coloneqq 1 / n\), \(y_n \coloneqq n^2\). 则 \((x_n)\) 是无穷小量, 但 \((x_n y_n)\) 发散.
-\end{proof}
 
 下面的命题和注 \ref{rem:c-is-algebra}.2 表明, 商数列的极限是分子的极限除以分母的极限, 若这些极限存在的话.
 
@@ -750,13 +749,13 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{proposition}
 
 \begin{proof}
-    1. \(\implies\) 2. 设 \(\lim x_n = x\). 任取 \(\varepsilon > 0\). 故存在 \(N \in \N\) 使得
+    (1) \(\implies\) (2). 设 \(\lim x_n = x\). 任取 \(\varepsilon > 0\). 故存在 \(N \in \N\) 使得
     \[
         |\Re x_n - \Re x| = |\Re(x_n - x)| \leq |x_n - x| < \varepsilon\ ,\quad n \geq N\ ,
     \]
     因此 \((\Re x_n)\) 收敛到 \(\Re x\). 同理可得 \((\Im x_n)\) 收敛到 \(\Im x\).
 
-    2. \(\implies\) 1. 设 \(\lim \Re x_n = a\), \(\lim \Im x_n = b\). 任取 \(\varepsilon > 0\). 故存在 \(M, N \in \N\) 使得当 \(n \geq M\) 时 \(|\Re x_n - a| < \varepsilon / \sqrt{2}\), 当 \(n \geq N\) 时 \(|\Im x_n - b| < \varepsilon / \sqrt{2}\), 于是
+    (2) \(\implies\) (1). 设 \(\lim \Re x_n = a\), \(\lim \Im x_n = b\). 任取 \(\varepsilon > 0\). 故存在 \(M, N \in \N\) 使得当 \(n \geq M\) 时 \(|\Re x_n - a| < \varepsilon / \sqrt{2}\), 当 \(n \geq N\) 时 \(|\Im x_n - b| < \varepsilon / \sqrt{2}\), 于是
     \begin{align*}
         |x_n - (a + i b)| &= |(\Re x_n - a) + i (\Im x_n - b)| \\
         &= \sqrt{(\Re x_n - a)^2 + (\Im x_n - b)^2} < \sqrt{\frac{\varepsilon^2}{2} + \frac{\varepsilon^2}{2}} = \varepsilon\ ,\quad n \geq \max\{M, N\}\ ,
@@ -769,45 +768,46 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \begin{example}
     \begin{enumerate}
         \item \(\displaystyle \lim_{n \to \infty} \frac{n + 1}{n + 2} = 1\).
+        \begin{proof}
+            由于 \(\lim 1 / (n + 2) = 0\), 于是由命题 \ref{prop:addition-scalar-multiplication-in-c} 可知
+            \[
+                \lim \frac{n + 1}{n + 2} = \lim\Bigl(1 - \frac{1}{n + 2}\Bigr) = 1 - \lim \frac{1}{n + 2} = 1\ .
+            \]
+        \end{proof}
         \item \(\displaystyle \lim_{n \to \infty} \Bigr(\frac{3 n}{(2 n + 1)^2} + i \frac{2 n^2}{n^2 + 1}\Bigl) = 2 i\).
+        \begin{proof}
+            令
+            \[
+                x_n \coloneqq \frac{3 n}{(2 n + 1)^2} + i \frac{2 n^2}{n^2 + 1}\ .
+            \]
+            其中
+            \[
+                \Re x_n = \frac{3 n}{(2 n + 1)^2} = \frac{3 / n}{(2 + 1 / n)^2}\ ,
+            \]
+            由于 \(\lim(2 + 1 / n) = 2\), 于是由命题 \ref{prop:multiplication-in-c} 可知 \(\lim(2 + 1 / n)^2 = 4\), 而 \((3 / n)\) 是无穷小量, 因此由命题 \ref{prop:multiplication-in-c} 和命题 \ref{prop:division-in-c} 可知 \(\lim \Re x_n = 0\).
+            \[
+                \Im x_n = \frac{2 n^2}{n^2 + 1} = \frac{2}{1 + 1 / n^2}\ ,
+            \]
+            而 \(\lim(1 + 1 / n^2) = 1\), 于是由命题 \ref{prop:addition-scalar-multiplication-in-c} 和命题 \ref{prop:division-in-c} 可知 \(\lim \Im x_n = 2\). 最后由 \ref{prop:convergence-of-real-and-imaginary-parts} 可得 \(\lim x_n = 2 i\).
+        \end{proof}
         \item \(\displaystyle \Bigl(\frac{i^n}{1 + i n}\Bigr)\) 是 \(\C\) 中的无穷小量.
+        \begin{proof}
+            令
+            \[
+                x_n \coloneqq \frac{i^n}{1 + i n} = \frac{1}{n}\, \frac{i^n}{i + 1 / n}\ .
+            \]
+            注意到
+            \[
+                \Bigl|i + \frac{1}{n}\Bigr| = \sqrt{1 + \frac{1}{n^2}} \geq 1\ ,\quad n \in \N^\ast\ ,
+            \]
+            于是
+            \[
+                \Bigl|\frac{i^n}{i + 1 / n}\Bigr| = \frac{|i^n|}{|i + 1 / n|} = \frac{1}{|i + 1 / n|} \leq 1\ ,\quad n \in \N^\ast\ ,
+            \]
+            因此 \(\bigl(i^n \big/ (i + 1 / n)\bigr)\) 有界, 由命题 \ref{prop:multiplication-in-c} 可知 \((x_n)\) 是无穷小量.
+        \end{proof}
     \end{enumerate}
 \end{example}
-
-\begin{proof}
-    1. 由于 \(\lim 1 / (n + 2) = 0\), 于是由命题 \ref{prop:addition-scalar-multiplication-in-c} 可知
-    \[
-        \lim \frac{n + 1}{n + 2} = \lim\Bigl(1 - \frac{1}{n + 2}\Bigr) = 1 - \lim \frac{1}{n + 2} = 1\ .
-    \]
-
-    2. 令
-    \[
-        x_n \coloneqq \frac{3 n}{(2 n + 1)^2} + i \frac{2 n^2}{n^2 + 1}\ .
-    \]
-    其中
-    \[
-        \Re x_n = \frac{3 n}{(2 n + 1)^2} = \frac{3 / n}{(2 + 1 / n)^2}\ ,
-    \]
-    由于 \(\lim(2 + 1 / n) = 2\), 于是由命题 \ref{prop:multiplication-in-c} 可知 \(\lim(2 + 1 / n)^2 = 4\), 而 \((3 / n)\) 是无穷小量, 因此由命题 \ref{prop:multiplication-in-c} 和命题 \ref{prop:division-in-c} 可知 \(\lim \Re x_n = 0\).
-    \[
-        \Im x_n = \frac{2 n^2}{n^2 + 1} = \frac{2}{1 + 1 / n^2}\ ,
-    \]
-    而 \(\lim(1 + 1 / n^2) = 1\), 于是由命题 \ref{prop:addition-scalar-multiplication-in-c} 和命题 \ref{prop:division-in-c} 可知 \(\lim \Im x_n = 2\). 最后由 \ref{prop:convergence-of-real-and-imaginary-parts} 可得 \(\lim x_n = 2 i\).
-
-    3. 令
-    \[
-        x_n \coloneqq \frac{i^n}{1 + i n} = \frac{1}{n}\, \frac{i^n}{i + 1 / n}\ .
-    \]
-    注意到
-    \[
-        \Bigl|i + \frac{1}{n}\Bigr| = \sqrt{1 + \frac{1}{n^2}} \geq 1\ ,\quad n \in \N^\ast\ ,
-    \]
-    于是
-    \[
-        \Bigl|\frac{i^n}{i + 1 / n}\Bigr| = \frac{|i^n|}{|i + 1 / n|} = \frac{1}{|i + 1 / n|} \leq 1\ ,\quad n \in \N^\ast\ ,
-    \]
-    因此 \(\bigl(i^n \big/ (i + 1 / n)\bigr)\) 有界, 由命题 \ref{prop:multiplication-in-c} 可知 \((x_n)\) 是无穷小量.
-\end{proof}
 
 \subsection{练习}
 
@@ -823,15 +823,15 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{exercise}
 
 \begin{proof}
-    1. 收敛到 \(0\).
+    (1). 收敛到 \(0\).
 
-    2. 发散.
+    (2). 发散.
 
-    3. 收敛到 \(- 1 / 2\).
+    (3). 收敛到 \(- 1 / 2\).
 
-    4. 收敛到 \(2^{10} - 1\).
+    (4). 收敛到 \(2^{10} - 1\).
 
-    5. 收敛到 \(100^2\).
+    (5). 收敛到 \(100^2\).
 \end{proof}
 
 \begin{exercise}
@@ -922,9 +922,9 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{exercise}
 
 \begin{proof}
-    1. 和 2. 设 \((x_n), (y_n) \in c(\K^m)\) 且 \(\lim x_n = a\), \(\lim y_n = b\), \(\alpha \in \K^m\). 故对于每个 \(j \in \{1, \ldots, m\}\) 都有 \((x_n^j)\) 收敛到 \(a^j\) 和 \((y_n^j)\) 收敛到 \(b^j\). 而在 \(\K\) 上时, 对于每个 \(j \in \{1, \ldots, m\}\) 都有 \((x_n^j + y_n^j)\) 收敛到 \(a^j + b^j\), 因此 \((x_n + y_n)\) 收敛到 \(a + b\). 同理可得 \((\alpha x_n)\) 收敛到 \(\alpha a\). 这说明了 \(c(\K^m)\) 是 \(s(\K^m)\) 的子空间且 \(\lim\) 是线性的.
+    (1) 和 (2). 设 \((x_n), (y_n) \in c(\K^m)\) 且 \(\lim x_n = a\), \(\lim y_n = b\), \(\alpha \in \K^m\). 故对于每个 \(j \in \{1, \ldots, m\}\) 都有 \((x_n^j)\) 收敛到 \(a^j\) 和 \((y_n^j)\) 收敛到 \(b^j\). 而在 \(\K\) 上时, 对于每个 \(j \in \{1, \ldots, m\}\) 都有 \((x_n^j + y_n^j)\) 收敛到 \(a^j + b^j\), 因此 \((x_n + y_n)\) 收敛到 \(a + b\). 同理可得 \((\alpha x_n)\) 收敛到 \(\alpha a\). 这说明了 \(c(\K^m)\) 是 \(s(\K^m)\) 的子空间且 \(\lim\) 是线性的.
 
-    3. 对于每个 \(j \in \{1, \ldots, m\}\) 都有 \((x_n^j)\) 收敛到 \(a^j\). 而在 \(\K\) 上时, 对于每个 \(j \in \{1, \ldots, m\}\) 都有 \((\lambda_n x_n^j)\) 收敛到 \(\alpha a^j\), 因此 \(\lambda_n x_n\) 收敛到 \((\alpha a^1, \ldots, \alpha a^m) = \alpha a\).
+    (3). 对于每个 \(j \in \{1, \ldots, m\}\) 都有 \((x_n^j)\) 收敛到 \(a^j\). 而在 \(\K\) 上时, 对于每个 \(j \in \{1, \ldots, m\}\) 都有 \((\lambda_n x_n^j)\) 收敛到 \(\alpha a^j\), 因此 \(\lambda_n x_n\) 收敛到 \((\alpha a^1, \ldots, \alpha a^m) = \alpha a\).
 \end{proof}
 
 \begin{exercise}
@@ -964,10 +964,13 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \[
         y_n - y = (x_n - x) \frac{1}{A_n}\ ,
     \]
-    因此 \((y_n - y)\) 也是无穷小量, 即 \(x_n^{1 / q}\) 收敛到 \(x^{1 / q}\). 当 \(p > 0\) 时,
+    因此 \((y_n - y)\) 也是无穷小量, 即 \(x_n^{1 / q}\) 收敛到 \(x^{1 / q}\).
+    
+    当 \(p > 0\) 时,
     \[
         \lim_{n \to \infty} x_n^p = \lim_{n \to \infty} x_n \cdots x_n = x \cdots x = x^p\ .
     \]
+
     当 \(p < 0\) 时, 令 \(s \coloneqq - p\), 于是
     \[
         \lim_{n \to \infty} x_n^p = \lim_{n \to \infty} \frac{1}{x_n^s} = \lim_{n \to \infty} \frac{1}{x_n} \cdots \frac{1}{x_n} = \frac{1}{x} \cdots \frac{1}{x} = \frac{1}{x^s} = x^p\ .
@@ -1069,10 +1072,23 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
             d \colon E \times E \to \R\ ,\quad (x, y) \mapsto \|x - y\|
         \]
         是 \(E\) 上的度量, 称为范数诱导的度量. 因此任意赋范向量空间都是度量空间.
+        \begin{proof}
+            \hyperref[ax:metric]{\((\mathrm M_1)\)} 和 \hyperref[ax:metric]{\((\mathrm M_2)\)} 可由 \hyperref[ax:norm]{\((\mathrm N_1)\)} 和 \hyperref[ax:norm]{\((\mathrm N_2)\)} 直接得到. 而由 \hyperref[ax:norm]{\((\mathrm N_3)\)} 可得
+            \[
+                d(x, y) = \|x - y\| = \|x - z + z - y\| \leq \|x - z\| + \|z - y\| = d(x, z) + d(z, y)\ ,\quad x, y, z \in E\ ,
+            \]
+            因此 \hyperref[ax:metric]{\((\mathrm M_3)\)} 也成立.
+        \end{proof}
         \item 范数满足反三角不等式,
         \[
             \|x - y\| \geq \bigl|\|x\| - \|y\|\bigr|\ ,\quad x, y \in E\ .
         \]
+        \begin{proof}
+            由命题 \ref{prop:reversed-triangle-inequality-in-metric-space} 可知, 对于该范数诱导的度量满足反三角不等式. 因此
+            \[
+                \|x - y\| = d(x, y) \geq |d(x, 0) - d(0, y)| = \bigl|\|x\| - \|y\|\bigr|\ ,\quad x, y \in E\ .
+            \]
+        \end{proof}
         \item 因为注 \ref{rem:norms}.1, 故第 2.1 节中关于度量空间的全部命题同样对 \(E\) 成立. 特别的, ``邻域'', ``聚点'' 和 ``收敛性'' 在 \(E\) 上是良定义的. 例如, \(E\) 中的序列 \((x_n)\) 收敛到 \(x\) 的含义是:
         \[
             x_n \to x \iff \forall \varepsilon > 0,\ \exists N \in \N,\ \forall n \geq N : \|x_n - x\| < \varepsilon.
@@ -1080,19 +1096,6 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         此外, 回顾第 2.2 节可以发现, 只要某个命题的证明中没有用到 \(\K\) 的域结构或序结构, 那么该命题同样适用于 \(E\) 中的序列. 特别的, 注 \ref{rem:null-sequences}, 命题 \ref{prop:addition-scalar-multiplication-in-c} 和命题 \ref{prop:sequence-convergence-then-abs-convergence} 在任意赋范向量空间中都成立.
     \end{enumerate}
 \end{remark}
-
-\begin{proof}
-    1. \hyperref[ax:metric]{\((\mathrm M_1)\)} 和 \hyperref[ax:metric]{\((\mathrm M_2)\)} 可由 \hyperref[ax:norm]{\((\mathrm N_1)\)} 和 \hyperref[ax:norm]{\((\mathrm N_2)\)} 直接得到. 而由 \hyperref[ax:norm]{\((\mathrm N_3)\)} 可得
-    \[
-        d(x, y) = \|x - y\| = \|x - z + z - y\| \leq \|x - z\| + \|z - y\| = d(x, z) + d(z, y)\ ,\quad x, y, z \in E\ ,
-    \]
-    因此 \hyperref[ax:metric]{\((\mathrm M_3)\)} 也成立.
-
-    2. 由命题 \ref{prop:reversed-triangle-inequality-in-metric-space} 可知, 对于该范数诱导的度量满足反三角不等式. 因此
-    \[
-        \|x - y\| = d(x, y) \geq |d(x, 0) - d(0, y)| = \bigl|\|x\| - \|y\|\bigr|\ .
-    \]
-\end{proof}
 
 \subsection{球}
 
@@ -1148,31 +1151,31 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
             \|x\|_\infty \coloneqq \max_{1 \leq j \leq m} \|x_j\|_j\ ,\quad x \in E
         \]
         是积向量空间 \(E\) 上的范数, 称为积范数. 当 \(d_j\) 是 \(\|\!\cdot\!\|_j\) 在 \(E_j\) 上诱导的度量时, 则 \(\|\!\cdot\!\|_\infty\) 在 \(E\) 上诱导的度量与例 \ref{eg:metric}.5 中的积度量是一致的.
+        \begin{proof}
+            显然 \hyperref[ax:norm]{\((\mathrm N_1)\)} 成立.
+            \[
+                \|\lambda x\|_\infty = \max_{1 \leq j \leq m} \|\lambda x_j\|_j = \max_{1 \leq j \leq m} |\lambda|\, \|x_j\|_j = |\lambda|\, \|x\|_\infty\ ,\quad \lambda \in \K\ ,\quad x \in E\ ,
+            \]
+            因此 \hyperref[ax:norm]{\((\mathrm N_2)\)} 成立.
+            \[
+                \|x + y\|_\infty = \max_{1 \leq j \leq m} \|x_j + y_j\|_j \leq \max_{1 \leq j \leq m} (\|x_j\|_j + \|y_j\|_j) \leq \|x\|_\infty + \|y\|_\infty\ ,\quad x, y \in E\ ,
+            \]
+            最后 \hyperref[ax:norm]{\((\mathrm N_3)\)} 成立. 令 \(d\) 是 \(\|\!\cdot\!\|_\infty\) 在 \(E\) 上诱导的度量, 于是
+            \[
+                d(x, y) = \|x - y\|_\infty = \max_{1 \leq j \leq m} \|x_j - y_j\|_j = \max_{1 \leq j \leq m} d_j(x_j, y_j)\ ,\quad x, y \in E\ ,
+            \]
+            因此 \(d\) 与积度量是一致的.
+        \end{proof}
         \item \(\K^m\ (m \in \N^\ast)\) 在定义如下最大范数后是赋范向量空间,
         \[
             |x|_\infty \coloneqq \max_{1 \leq j \leq m} |x_j|\ ,\quad x \in \K^m\ .
         \]
         当 \(m = 1\) 时, \((\K^1, |\!\cdot\!|_\infty) = (\K, |\!\cdot\!|) = \K\).
+        \begin{proof}
+            这是 (3) 的特殊情况.
+        \end{proof}
     \end{enumerate}
 \end{example}
-
-\begin{proof}
-    3. 显然 \hyperref[ax:norm]{\((\mathrm N_1)\)} 成立.
-    \[
-        \|\lambda x\|_\infty = \max_{1 \leq j \leq m} \|\lambda x_j\|_j = \max_{1 \leq j \leq m} |\lambda|\, \|x_j\|_j = |\lambda|\, \|x\|_\infty\ ,\quad \lambda \in \K\ ,\quad x \in E\ ,
-    \]
-    因此 \hyperref[ax:norm]{\((\mathrm N_2)\)} 成立.
-    \[
-        \|x + y\|_\infty = \max_{1 \leq j \leq m} \|x_j + y_j\|_j \leq \max_{1 \leq j \leq m} (\|x_j\|_j + \|y_j\|_j) \leq \|x\|_\infty + \|y\|_\infty\ ,\quad x, y \in E\ ,
-    \]
-    最后 \hyperref[ax:norm]{\((\mathrm N_3)\)} 成立. 令 \(d\) 是 \(\|\!\cdot\!\|_\infty\) 在 \(E\) 上诱导的度量, 于是
-    \[
-        d(x, y) = \|x - y\|_\infty = \max_{1 \leq j \leq m} \|x_j - y_j\|_j = \max_{1 \leq j \leq m} d_j(x_j, y_j)\ ,\quad x, y \in E\ ,
-    \]
-    因此 \(d\) 与积度量是一致的.
-
-    4. 这是 3. 的特殊情况.
-\end{proof}
 
 \subsection{有界函数空间}
 
@@ -1521,6 +1524,27 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
             \nbr_{E_1}(a) = \nbr_{E_2}(a)\ ,\quad a \in E\ .
         \]
         也就是说, \(a\) 的邻域族只依赖于该范数的等价类. 等价的范数会产生同样的邻域族.
+        \begin{proof}
+            由于 \(\|\!\cdot\!\|_1\) 和 \(\|\!\cdot\!\|_2\) 等价, 故存在 \(K \geq 1\) 使得
+            \[
+                \frac{1}{K} \|x\|_1 \leq \|x\|_2 \leq K\, \|x\|_1\ ,\quad x \in E\ .
+            \]
+            我们先证明
+            \[
+                \B_{E_1}(a, r / K) \subseteq \B_{E_2}(a, r) \subseteq \B_{E_1}(a, K r)\ ,\quad r > 0\ ,\quad a \in E\ .
+            \]
+            任取 \(x \in \B_{E_1}(a, r / K)\), 于是
+            \[
+                \|x - a\|_2 \leq K\, \|x - a\|_1 < K \frac{r}{K} = r\ ,
+            \]
+            因此 \(x \in \B_{E_2}(a, r)\), 故 \(\B_{E_1}(a, r / K) \subseteq \B_{E_2}(a, r)\). 任取 \(x \in \B_{E_2}(a, r)\), 于是
+            \[
+                \|x - a\|_1 \leq K\, \|x - a\|_2 < K r\ ,
+            \]
+            因此 \(x \in \B_{E_1}(a, K r)\), 故 \(\B_{E_2}(a, r) \subseteq \B_{E_1}(a, K r)\).
+
+            设 \(U_1 \in \nbr_{E_1}(a)\). 故存在 \(r > 0\) 使得 \(\B_{E_1}(a, r) \subseteq U_1\), 于是 \(\B_{E_2}(a, r / K) \subseteq \B_{E_1}(a, r) \subseteq U_1\), 因此 \(U_1 \in \nbr_{E_2}(a)\), 这说明 \(\nbr_{E_1}(a) \subseteq \nbr_{E_2}(a)\). 同理可得 \(\nbr_{E_2}(a) \subseteq \nbr_{E_1}(a)\).
+        \end{proof}
         \item 通过双射
         \[
             \C \to \R^2\ ,\quad x + i y \mapsto (x, y)\ ,
@@ -1541,28 +1565,6 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \item ``聚点'' 和 ``收敛性'' 是拓扑概念, 因为它们是通过邻域来定义的. 因此, 将范数替换为等价的范数后, 它们是不变的.
     \end{enumerate}
 \end{remark}
-
-\begin{proof}
-    4. 由于 \(\|\!\cdot\!\|_1\) 和 \(\|\!\cdot\!\|_2\) 等价, 故存在 \(K \geq 1\) 使得
-    \[
-        \frac{1}{K} \|x\|_1 \leq \|x\|_2 \leq K\, \|x\|_1\ ,\quad x \in E\ .
-    \]
-    我们先证明
-    \[
-        \B_{E_1}(a, r / K) \subseteq \B_{E_2}(a, r) \subseteq \B_{E_1}(a, K r)\ ,\quad r > 0\ ,\quad a \in E\ .
-    \]
-    任取 \(x \in \B_{E_1}(a, r / K)\), 于是
-    \[
-        \|x - a\|_2 \leq K\, \|x - a\|_1 < K \frac{r}{K} = r\ ,
-    \]
-    因此 \(x \in \B_{E_2}(a, r)\), 故 \(\B_{E_1}(a, r / K) \subseteq \B_{E_2}(a, r)\). 任取 \(x \in \B_{E_2}(a, r)\), 于是
-    \[
-        \|x - a\|_1 \leq K\, \|x - a\|_2 < K r\ ,
-    \]
-    因此 \(x \in \B_{E_1}(a, K r)\), 故 \(\B_{E_2}(a, r) \subseteq \B_{E_1}(a, K r)\).
-
-    设 \(U_1 \in \nbr_{E_1}(a)\). 故存在 \(r > 0\) 使得 \(\B_{E_1}(a, r) \subseteq U_1\), 于是 \(\B_{E_2}(a, r / K) \subseteq \B_{E_1}(a, r) \subseteq U_1\), 因此 \(U_1 \in \nbr_{E_2}(a)\), 这说明 \(\nbr_{E_1}(a) \subseteq \nbr_{E_2}(a)\). 同理可得 \(\nbr_{E_2}(a) \subseteq \nbr_{E_1}(a)\).
-\end{proof}
 
 \subsection{积空间中的收敛性}
 
@@ -1810,7 +1812,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{exercise}
 
 \begin{proof}
-    1. 设 \(\lambda_0, \ldots, \lambda_m \in \K\) 使得 \(\sum_{j = 0}^m \lambda_j x_j = 0\). 于是对于任意 \(k \in \{0, \ldots, m\}\) 都有
+    (1). 设 \(\lambda_0, \ldots, \lambda_m \in \K\) 使得 \(\sum_{j = 0}^m \lambda_j x_j = 0\). 于是对于任意 \(k \in \{0, \ldots, m\}\) 都有
     \[
         \Bigl\langle \sum_{j = 0}^m \lambda_j x_j, x_k \Bigr\rangle = \sum_{j = 0}^m \lambda_j \langle x_j, x_k \rangle = 0\ .
     \]
@@ -1820,7 +1822,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \]
     因此 \(\lambda_k = 0\). 进一步, \(\lambda_0 = \cdots = \lambda_m = 0\). 故 \(\{x_0, \ldots, x_m\}\) 线性无关.
 
-    2. 将等式左边展开, 有
+    (2). 将等式左边展开, 有
     \[
         \Bigl\|\sum_{j = 0}^m x_j\Bigr\|^2 = \Bigl\langle \sum_{j = 0}^m x_j, \sum_{j = 0}^m x_j \Bigr\rangle = \sum_{j = 0}^m \sum_{k = 0}^m \langle x_j, x_k \rangle\ ,
     \]
@@ -1869,11 +1871,11 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \item \(p_F \in \Hom(E, F)\) 且 \(p_F^2 = p_F\).
         \item \(\im p_F = F\), \(\ker p_F = F^\perp\) 和 \(E = F \oplus F^\perp\).
     \end{enumerate}
-    (提示: 要证明 2. 由练习 \ref{ex:orthogonal-in-inner-product-spaces} 和 1. 可知 \(\|x - y\|^2 = \|x - p_F(x)\|^2 + \|p_F(x) - y\|^2\ (y \in F)\).)
+    (提示: 要证明 (2) 由练习 \ref{ex:orthogonal-in-inner-product-spaces} 和 (1) 可知 \(\|x - y\|^2 = \|x - p_F(x)\|^2 + \|p_F(x) - y\|^2\ (y \in F)\).)
 \end{exercise}
 
 \begin{proof}
-    1. 设 \(y \in F\). 由于 \(F = \Span B\), 故存在 \(\lambda_0, \ldots, \lambda_m \in \K\) 使得 
+    (1). 设 \(y \in F\). 由于 \(F = \Span B\), 故存在 \(\lambda_0, \ldots, \lambda_m \in \K\) 使得 
     \(y = \sum_{j = 0}^m \lambda_j u_j\), 于是
     \[
         \bigl\langle x - p_F(x), y \bigr\rangle = \Bigl\langle x - p_F(x), \sum_{j = 0}^m \lambda_j u_j \Bigr\rangle = \sum_{j = 0}^m \overline \lambda_j \bigl\langle x - p_F(x), u_j \bigr\rangle\ .
@@ -1898,7 +1900,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
             x = \sum_{j = 0}^m \langle x, u_j \rangle u_j\quad \text{且}\quad \|x\|^2 = \sum_{j = 0}^m |\langle x, u_j \rangle|^2\ .
         \]
     \end{enumerate}
-    (提示: 要证明 1. 使用 Cauchy-Schwarz 不等式.)
+    (提示: 要证明 (1) 使用 Cauchy-Schwarz 不等式.)
 \end{exercise}
 
 \begin{exercise}
@@ -1969,6 +1971,24 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
             \end{cases}
         \]
         特别的, 若 \(|a| \geq 1\) 且 \(a \neq 1\), 则 \((a^n)\) 发散.
+        \begin{proof}
+            若 \((a^n)\) 收敛, 则由命题 \ref{prop:addition-scalar-multiplication-in-c} 可知
+            \[
+                \lim_{n \to \infty} a^n = \lim_{n \to \infty} a^{n + 1} = a \lim_{n \to \infty} a^n\ ,
+            \]
+            因此 \(a^n \to 0\) 或 \(a = 1\).
+
+            设 \(|a| < 1\). 则 \(\bigl(|a^n|\bigr) = \bigl(|a|^n\bigr)\) 是递减且有界的, 于是由定理 \ref{thm:bounded-monotone-sequences-is-convergent} 和上面的结论可知 \(\bigl(|a^n|\bigr)\) 是无穷小量, 因此 \(a^n \to 0\).
+
+            设 \(a = 1\). 则对于任意 \(n \in \N\) 都有 \(a^n = 1\), 因此 \(a^n \to 1\).
+
+            设 \(|a| \geq 1\) 且 \(a \neq 1\). 假设 \((a^n)\) 收敛, 则由上面的结论可知 \(\bigl(|a^n|\bigr)\) 是无穷小量, 但是对于任意 \(n \in \N\) 都有 \(|a^n| = |a|^n \geq 1\), 矛盾. 故 \((a^n)\) 发散.
+        \end{proof}
+        \item 设 \(k \in \N\), \(a \in \C\) 且 \(|a| > 1\). 则
+        \[
+            \lim_{n \to \infty} \frac{n^k}{a^n} = 0\ ,
+        \]
+        即当 \(|a| > 1\) 时, 函数 \(n \mapsto a^n\) 的增长速度快于任意幂函数 \(n \mapsto n^k\).
     \end{enumerate}
 \end{example}
 
@@ -2036,7 +2056,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \begin{exercise}
     证明
     \[
-        \lim_{n \to \infty} \Bigl(1 + \frac{r}{n}\Bigr)^n = e^r\quad (r \in \Q).
+        \lim_{n \to \infty} \Bigl(1 + \frac{r}{n}\Bigr)^n = e^r\quad (r \in \Q)\ .
     \]
     (提示: 分别考虑 \(r > 0\) 和 \(r < 0\) 的情况. 并利用练习 \ref{ex:e-limit-variant-1} 和练习 \ref{ex:sequence-power-equal-limit-power}.)
 \end{exercise}
@@ -2126,7 +2146,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
     令 \((y_n) \coloneqq (x_{2 n})\), \((z_n) \coloneqq (x_{2 n + 1})\),
     \[
-        f(x) \coloneqq \frac{a}{1 + \frac{a}{1 + x}} = \frac{a (1 + x)}{1 + x + a}\ ,\quad x \in \R\ .
+        f(x) \coloneqq \frac{a}{1 + \frac{a}{1 + x}} = \frac{a (1 + x)}{1 + x + a}\ ,\quad x \in (0, \infty)\ .
     \]
     假设 \(x_1 \leq x_2\), 于是
     \[
@@ -2146,9 +2166,9 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \]
     当 \(y_0 \geq L\) 时 \(y_1 \leq y_0\), 而 \(f\) 是递增的, 于是 \(y_2 = f(y_1) \leq f(y_0) = y_1\), 归纳可得 \((y_n)\) 是递减的, 因此由单调有界收敛定理可知 \((y_n)\) 收敛. 设 \(y_n \to y\), 于是
     \[
-        y = \lim y_n = \lim \frac{a (1 + y_n)}{1 + y_n + a} = \frac{a (1 + y)}{1 + y + a}\ ,
+        y = \lim y_{n + 1} = \lim \frac{a (1 + y_n)}{1 + y_n + a} = \frac{a (1 + y)}{1 + y + a}\ ,
     \]
-    解得 \(y = L\) 或 \(y = - L - 1\), 而 \(- L - 1 < 0\), 因此 \(y = L\). 当 \(y_0 \leq L\) 时, 同理可得 \((y_n)\) 收敛到 \(L\). 对于数列 \((z_n)\), 同理可得 \((z_n)\) 收敛到 \(L\).
+    解得 \(y = L\) 或 \(y = - L - 1\), 而 \(- L - 1 < 0\), 因此 \(y = L\). 当 \(y_0 \leq L\) 时, 同理可得 \((y_n)\) 收敛到 \(L\). 类似的, 可得 \((z_n)\) 收敛到 \(L\).
 
     任取 \(\varepsilon > 0\). 由于 \(\lim y_n = \lim z_n = L\), 故存在 \(M, N \in \N\) 使得当 \(n \geq \max\{M, N\}\) 时
     \[
@@ -2158,11 +2178,39 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{proof}
 
 \begin{exercise}
-    证明如下数列收敛.
+    证明如下数列的收敛性.
     \[
         x_0 > 0\ ,\quad x_1 > 0\ ,\quad x_{n + 2} \coloneqq \sqrt{x_{n + 1} x_n}\ ,\quad n \in \N\ .
     \]
 \end{exercise}
+
+\begin{proof}
+    设 \(x_0 \leq x_1\). 于是
+    \[
+        x_0 = \sqrt{x_0 x_0} \leq x_2 = \sqrt{x_1 x_0} \leq \sqrt{x_1 x_1} = x_1
+    \]
+    且
+    \[
+        x_2 = \sqrt{x_2 x_2} \leq x_3 = \sqrt{x_2 x_1} \leq \sqrt{x_1 x_1} = x_1\ ,
+    \]
+    即 \(x_0 \leq x_2 \leq x_3 \leq x_1\). 假设 \(x_0 \leq x_{2 k} \leq x_{2 k + 2} \leq x_{2 k + 3} \leq x_{2 k + 1} \leq x_1\), 则
+    \[
+        x_{2 k + 2} = \sqrt{x_{2 k + 2} x_{2 k + 2}} \leq x_{2 k + 4} = \sqrt{x_{2 k + 3} x_{2 k + 2}} \leq \sqrt{x_{2 k + 3} x_{2 k + 3}} = x_{2 k + 3}
+    \]
+    且
+    \[
+        x_{2 k + 4} = \sqrt{x_{2 k + 4} x_{2 k + 4}} \leq x_{2 k + 5} = \sqrt{x_{2 k + 4} x_{2 k + 3}} \leq \sqrt{x_{2 k + 3} x_{2 k + 3}} = x_{2 k + 3}\ ,
+    \]
+    即 \(x_0 \leq x_{2 k + 2} \leq x_{2 k + 4} \leq x_{2 k + 5} \leq x_{2 k + 3} \leq x_1\). 因此由数学归纳法可得
+    \[
+        x_0 \leq x_{2 n} \leq x_{2 n + 2} \leq x_{2 n + 3} \leq x_{2 n + 1} \leq x_1\ ,\quad n \in \N\ ,
+    \]
+    这说明 \((x_{2 n})\) 是递增且有界的, 而 \((x_{2 n + 1})\) 是递减且有界的. 由单调有界收敛定理可得 \((x_{2 n})\) 和 \((x_{2 n + 1})\) 收敛. 设 \(x_{2 n} \to L_e\), \(x_{2 n + 1} \to L_o\). 于是
+    \[
+        L_e = \lim x_{2 n + 2} = \lim \sqrt{x_{2 n + 1} x_{2 n}} = \sqrt{L_o L_e}\ ,
+    \]
+    注意到 \(\inf_{n \in \N} x_n = x_0 > 0\), 因此 \(L_e > 0\) 且 \(L_o > 0\), 这说明 \(L_e = L_o\), 故 \((x_n)\) 收敛. 当 \(x_0 \geq x_1\) 时, 同理可得 \((x_n)\) 收敛.
+\end{proof}
 
 \begin{exercise}
     \begin{enumerate}
@@ -2170,14 +2218,57 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \[
             0 < e - \sum_{k = 0}^n \frac{1}{k!} < \frac{1}{n n!}\ ,\quad n \in \N^\ast\ .
         \]
-        \item 使用上面的不等式证明 \(e\) 是无理数.
+        \item 利用上面的不等式证明 \(e\) 是无理数.
     \end{enumerate}
+    (提示: (1). 令 \(y_m \coloneqq \sum_{k = n + 1}^{n + m} 1 / k!\ (n \in \N^\ast)\). 证明 \(y_m \to e - \sum_{k = 0}^n 1 / k!\) 和 \((m + n)!\, y_m < \sum_{k = 1}^m (n + 1)^{1 - k}\). (2). 用反证法.)
 \end{exercise}
 
-\begin{exercise}
+\begin{exercise}\label{ex:fibonacci-numbers-rate-limit}
     递归定义实数列
     \[
         x_0 \coloneqq 1\ ,\quad x_{n + 1} \coloneqq 1 + \frac{1}{x_n}\ ,\quad n \in \N\ .
     \]
     证明 \((x_n)\) 收敛并计算其极限.
+\end{exercise}
+
+\begin{proof}
+    显然 \(1 \leq x_0 \leq 2\). 假设 \(1 \leq x_k \leq 2\), 则
+    \[
+        1 \leq x_{k + 1} = 1 + \frac{1}{x_k} \leq 1 + 1 = 2\ .
+    \]
+    因此由数学归纳法可得对于任意 \(n \in \N\) 都有 \(1 \leq x_n \leq 2\), 即 \((x_n)\) 有界.
+
+    令 \((y_n) \coloneqq (x_{2 n})\), \((z_n) \coloneqq (x_{2 n + 1})\),
+    \[
+        f(x) \coloneqq 1 + \frac{1}{1 + \frac{1}{x}} = 1 + \frac{x}{x + 1}\ ,\quad (1, \infty)\ .
+    \]
+    假设 \(x_1 \leq x_2\), 于是
+    \[
+        f(x_2) - f(x_1) = 1 + \frac{x_2}{x_2 + 1} - 1 - \frac{x_1}{x_1 + 1} = \frac{x_2 - x_1}{(x_2 + 1) (x_1 + 1)} \geq 0\ ,
+    \]
+    因此 \(f\) 是递增的. 下面考察 \((y_n)\) 的单调性, 注意到 \(y_0 = x_0 = 1\) 而 \(y_1 = f(y_0) = 3 / 2\), 故 \(y_0 \leq y_1\), 而 \(f\) 是递增的, 于是 \(y_1 = f(y_0) \leq f(y_1) = y_2\), 归纳可得 \((y_n)\) 是递增的, 因此由单调有界收敛定理可知 \((y_n)\) 收敛. 设 \(y_n \to y\), 于是
+    \[
+        y = \lim y_{n + 1} = \lim \Bigl(1 + \frac{y_n}{y_n + 1}\Bigr) = 1 + \frac{y}{y + 1}\ ,
+    \]
+    解得 \(y = (1 \pm \sqrt{5}) / 2\), 而 \((y_n)\) 下界为 \(1\), 故 \(y = (1 + \sqrt{5}) / 2\). 类似的, 可得 \((z_n)\) 收敛到 \((1 + \sqrt{5}) / 2\). 于是 \((x_n)\) 收敛到 \((1 + \sqrt{5}) / 2\).
+\end{proof}
+
+\begin{exercise}
+    递归定义实数列
+    \[
+        f_0 \coloneqq 0\ ,\quad f_1 \coloneqq 1\ ,\quad f_{n + 1} \coloneqq f_n + f_{n - 1}\ ,\quad n \in \N^\ast\ ,
+    \]
+    称 \(f_n\) 是 Fibonacci 数. 证明
+    \[
+        \lim_{n \to \infty} \frac{f_{n + 1}}{f_n} = g\ ,
+    \]
+    其中 \(g\) 是练习 \ref{ex:fibonacci-numbers-rate-limit} 中数列的极限.
+\end{exercise}
+
+\begin{exercise}
+    设
+    \[
+        x_0 \coloneqq 5\ ,\quad x_1 \coloneqq 1\ ,\quad x_{n + 1} \coloneqq \frac{2}{3} x_n + \frac{1}{3} x_{n - 1}\ ,\quad n \in \N^\ast\ .
+    \]
+    证明 \((x_n)\) 收敛并计算其极限. (提示: 求出 \(x_n - x_{n + 1}\) 的表达式.)
 \end{exercise}
