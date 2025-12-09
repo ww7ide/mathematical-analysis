@@ -681,12 +681,12 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \begin{proposition}[保序性]\label{prop:limits-preserve-order}
     设 \((x_n)\) 和 \((y_n)\) 是 \(\R\) 中的收敛数列且有无穷多项 \(n \in \N\) 使得 \(x_n \leq y_n\). 则
     \[
-        \lim x_n < \lim y_n\ .
+        \lim x_n \leq \lim y_n\ .
     \]
 \end{proposition}
 
 \begin{proof}
-    设 \(\lim x_n = a\), \(\lim y_n = b\). 假设 \(a > b\). 令 \(\varepsilon = a - b\), 故存在 \(M, N \in \N\) 使得当 \(n \geq M\) 时 \(x_n > a - \varepsilon / 2\), \(n \geq N\) 时 \(y_n < b + \varepsilon / 2\), 故存在 \(n \geq \max\{M, N\}\) 使得
+    设 \(\lim x_n = a\), \(\lim y_n = b\). 假设 \(a > b\). 令 \(\varepsilon \coloneqq a - b\), 故存在 \(M, N \in \N\) 使得当 \(n \geq M\) 时 \(x_n > a - \varepsilon / 2\), 当 \(n \geq N\) 时 \(y_n < b + \varepsilon / 2\), 故存在 \(n \geq \max\{M, N\}\) 使得
     \[
         a - \varepsilon / 2 < x_n \leq y_n < b + \varepsilon / 2\ ,
     \]
@@ -1933,7 +1933,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 \section{单调数列}
 
-\(\R\) 中的任意数列, 即 \(s(\R) = \R^\N\) 中的任意元素都是有序集之间的函数. 在本节中, 我们将再次研究这种序结构与数列收敛性之间的关系. 更具体的, 我们将研究在例 \ref{eg:set-functions-monotone-and-bounded} 之前所定义的单调数列的收敛性. 因此, 若对于任意 \(n \in \N\) 都有 \(x_n \leq x_{n + 1}\) 则称数列 \((x_n)\) 是递增的 \footnote{对于递增 (或递减) 数列 \((x_n)\), 我们常记作 \((x_n) \uparrow\) (或 \((x_n) \downarrow\)). 进一步, 若 \((x_n)\) 收敛到 \(x\), 则将 \(x_n \to x\) 记作 \(x_n \uparrow x\) (或 \(x_n \downarrow x\)).}, 若对于任意 \(n \in \N\) 都有 \(x_n \geq x_{n + 1}\) 则称数列 \((x_n)\) 是递减的.
+\(\R\) 中的任意数列, 即 \(s(\R) = \R^\N\) 中的任意元素都是有序集之间的函数. 在本节中, 我们将再次研究这种序结构与数列收敛性之间的关系. 更具体的, 我们将研究在例 \ref{eg:set-functions-monotone-and-bounded} 之前所定义的单调数列的收敛性. 因此, 若对于任意 \(n \in \N\) 都有 \(x_n \leq x_{n + 1}\) 则称数列 \((x_n)\) 是递增的\footnote{对于递增 (或递减) 数列 \((x_n)\), 我们常记作 \((x_n) \uparrow\) (或 \((x_n) \downarrow\)). 进一步, 若 \((x_n)\) 收敛到 \(x\), 则将 \(x_n \to x\) 记作 \(x_n \uparrow x\) (或 \(x_n \downarrow x\)).}, 若对于任意 \(n \in \N\) 都有 \(x_n \geq x_{n + 1}\) 则称数列 \((x_n)\) 是递减的.
 
 \subsection{有界的单调数列}
 
@@ -1978,18 +1978,131 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
             \]
             因此 \(a^n \to 0\) 或 \(a = 1\).
 
-            设 \(|a| < 1\). 则 \(\bigl(|a^n|\bigr) = \bigl(|a|^n\bigr)\) 是递减且有界的, 于是由定理 \ref{thm:bounded-monotone-sequences-is-convergent} 和上面的结论可知 \(\bigl(|a^n|\bigr)\) 是无穷小量, 因此 \(a^n \to 0\).
+            设 \(|a| < 1\). 则数列 \(\bigl(|a^n|\bigr) = \bigl(|a|^n\bigr)\) 是递减且有界的, 于是由定理 \ref{thm:bounded-monotone-sequences-is-convergent} 和上面的结论可知 \(\bigl(|a^n|\bigr)\) 是无穷小量, 因此 \(a^n \to 0\).
 
             设 \(a = 1\). 则对于任意 \(n \in \N\) 都有 \(a^n = 1\), 因此 \(a^n \to 1\).
 
             设 \(|a| \geq 1\) 且 \(a \neq 1\). 假设 \((a^n)\) 收敛, 则由上面的结论可知 \(\bigl(|a^n|\bigr)\) 是无穷小量, 但是对于任意 \(n \in \N\) 都有 \(|a^n| = |a|^n \geq 1\), 矛盾. 故 \((a^n)\) 发散.
         \end{proof}
-        \item 设 \(k \in \N\), \(a \in \C\) 且 \(|a| > 1\). 则
+        \item 设 \(k \in \N\), \(a \in \C\) 且 \(|a| > 1\). 则函数 \(n \mapsto a^n\) 的增长速度快于任意的幂函数 \(n \mapsto n^k\), 即
         \[
-            \lim_{n \to \infty} \frac{n^k}{a^n} = 0\ ,
+            \lim_{n \to \infty} \frac{n^k}{a^n} = 0\ .
         \]
-        即当 \(|a| > 1\) 时, 函数 \(n \mapsto a^n\) 的增长速度快于任意幂函数 \(n \mapsto n^k\).
+        \begin{proof}
+            令 \(\alpha \coloneqq 1 / |a| \in (0, 1)\), \(x_n \coloneqq n^k \alpha^n\). 于是
+            \[
+                \frac{x_{n + 1}}{x_n} = \frac{(n + 1)^k \alpha^{n + 1}}{n^k \alpha^n} = \Bigl(1 + \frac{1}{n}\Bigr)^k \alpha\ ,\quad n \in \N^\ast\ ,
+            \]
+            因此 \(x_{n + 1} / x_n \downarrow \alpha\). 固定 \(\beta \in (\alpha, 1)\), 则存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(x_{n + 1} / x_n < \beta\), 于是
+            \[
+                x_{N + 1} < \beta x_N\ ,\quad x_{N + 2} < \beta x_{N + 1} < \beta^2 x_N\ ,\quad \ldots
+            \]
+            归纳可得当 \(n \geq N\) 时 \(x_n < \beta^{n - N} x_N\), 于是
+            \[
+                \Bigl|\frac{n^k}{a^n}\Bigr| = x_n < \beta^{n - N} x_N = \frac{x_N}{\beta_N} \beta^n\ ,\quad n \geq N\ .
+            \]
+            因此由 (1) 和注 \ref{rem:null-sequences}(3) 可知 \((n^k / a^n)\) 是无穷小量.
+        \end{proof}
+        \item 设 \(a \in \C\). 则阶乘函数 \(n \mapsto n!\) 的增长速度快于函数\footnote{在第 2.8 节中, 我们会给出一个非常简短的证明.} \(n \mapsto a^n\), 即
+        \[
+            \lim_{n \to \infty} \frac{a^n}{n!} = 0\ .
+        \]
+        \begin{proof}
+            固定 \(N \in \N\) 使得 \(N > |a|\), 于是
+            \[
+                \Bigl|\frac{a^n}{n!}\Bigr| = \prod_{k = 1}^n \frac{|a|}{k} = \frac{|a|^N}{N!} \prod_{k = N + 1}^n \frac{|a|}{k} \leq \frac{|a|^N}{N!} \Bigl(\frac{|a|}{N + 1}\Bigr)^{n - N}\ ,\quad n > N\ ,
+            \]
+            因此由 (1) 和注 \ref{rem:null-sequences}(3) 可知 \((a^n / n!)\) 是无穷小量.
+        \end{proof}
+        \item \(\displaystyle \lim_{n \to \infty} \sqrt[n]{n} = 1\).
+        \begin{proof}
+            任取 \(\varepsilon > 0\). 则由 (2) 可知数列 \(\bigl(n / (1 + \varepsilon)^n\bigr)\) 是无穷小量, 于是存在 \(N \in \N\) 使得
+            \[
+                \frac{n}{(1 + \varepsilon)^n} < 1\ ,\quad n \geq N\ ,
+            \]
+            因此
+            \[
+                1 \leq n < (1 + \varepsilon)^n\ ,\quad n \geq \max\{1, N\}\ .
+            \]
+            由注 \ref{rem:n-roots}(3) 可知 \(n\) 次方根函数是严格递增的, 于是
+            \[
+                1 \leq \sqrt[n]{n} < 1 + \varepsilon\ ,\quad n \geq \max\{1, N\}\ ,
+            \]
+            即 \(|\sqrt[n]{n} - 1| < \varepsilon\), 故 \(\lim \sqrt[n]{n} = 1\).
+        \end{proof}
+        \item \(\displaystyle \lim_{n \to \infty} \sqrt[n]{a} = 1\ (a > 0)\).
+        \begin{proof}
+            由 Archimedes 公理可知存在 \(N \in \N\) 使得 \(1 / N < a < N\), 于是
+            \[
+                \frac{1}{n} < a < n\ ,\quad n \geq N\ .
+            \]
+            由注 \ref{rem:n-roots}(3) 可知 \(n\) 次方根函数是严格递增的, 因此
+            \[
+                \frac{1}{\sqrt[n]{n}} = \sqrt[n]{\frac{1}{n}} < \sqrt[n]{a} < \sqrt[n]{n}\ ,\quad n \geq N\ ,
+            \]
+            由 (4) 和命题 \ref{prop:division-in-c} 可知 \(\lim 1 / \sqrt[n]{n} = \lim \sqrt[n]{n} = 1\), 故由夹逼定理可知 \(\lim \sqrt[n]{a} = 1\).
+        \end{proof}
+        \item 数列 \(\bigl((1 + 1 / n)^n\bigr)\) 收敛, 并称其极限
+        \[
+            e \coloneqq \lim_{n \to \infty} \Bigl(1 + \frac{1}{n}\Bigr)^n
+        \]
+        是 Euler 数或自然常数, 且 \(2 < e \leq 3\).
+        \begin{proof}
+            对于任意 \(n \in \N^\ast\), 令 \(e_n \coloneqq (1 + 1 / n)^n\). 由算术-几何平均值不等式可知
+            \[
+                e_n = 1 \cdot \Bigl(1 + \frac{1}{n}\Bigr)^n \leq \Bigl(\frac{1 + n (1 + 1 / n)}{n + 1}\Bigr)^{n + 1} = \Bigl(1 + \frac{1}{n + 1}\Bigr)^{n + 1} = e_{n + 1}\ ,
+            \]
+            因此数列 \((e_n)\) 是递增的, 故当 \(n \geq 2\) 时 \(2 = e_1 < e_n\). 由二项式定理可知
+            \[
+                e_n = \Bigl(1 + \frac{1}{n}\Bigr)^n = \sum_{k = 0}^n \binom{n}{k} \frac{1}{n^k} = 1 + \sum_{k = 1}^n \binom{n}{k} \frac{1}{n^k}\ ,
+            \]
+            其中当 \(1 \leq k \leq n\) 时
+            \[
+                \binom{n}{k} \frac{1}{n^k} = \frac{1}{k!} \frac{n (n - 1) \cdots (n - k + 1)}{n^k} \leq \frac{1}{k!} \leq \frac{1}{2^{k - 1}}\ ,
+            \]
+            因此由练习 \ref{ex:difference-of-powers-formula} 可知
+            \[
+                e_n \leq 1 + \sum_{k = 1}^n \frac{1}{2^{k - 1}} = 1 + \sum_{k = 0}^{n - 1} \frac{1}{2^k} = 1 + \frac{(1 / 2)^n - 1}{1 / 2 - 1} < 1 + \frac{1}{1 - 1 / 2} = 3\ .
+            \]
+            故由单调有界收敛定理可知 \((e_n)\) 收敛且 \(2 < e \leq 3\).
+        \end{proof}
     \end{enumerate}
+
+    数字 \(e\) 在分析中有着至关重要的作用. 它的值理论上可以由数列 \((e_n)\) 确定. 但不幸的是, 数列 \((e_n)\) 收敛的速度很慢. \(e\) 的值近似于\footnote{我们使用这种 ``十进制表示法'' 还有些过早. 关于这种表示数字的方法的完整讨论在第 2.7 节.}
+    \[
+        2.71828\ 18284\ 59045\ 23536\ \ldots
+    \]
+    将该值与 \((e_n)\) 的几个项进行比较,
+    \[
+        e_1 = 2\ ,\quad e_{10} = 2.59374 \ldots\ ,\quad e_{100} = 2.70481 \ldots\ ,\quad e_{1000} = 2.71692 \ldots\ ,
+    \]
+    我们看到, 即使 \(n = 1000\), \(e - e_n\) 的误差也有 \(0.0014 \ldots\) (见下一个例子).
+
+    \begin{enumerate}[start=7]
+        \item 我们可以用一个收敛速度快得多的数列的极限来表示 \(e\).
+        \[
+            e = \lim_{n \to \infty} \sum_{k = 0}^n \frac{1}{k!}\ .
+        \]
+        \begin{proof}
+            令 \(e'_n \coloneqq \sum_{k = 0}^n 1 / k!\). 显然 \((e'_n)\) 是递增的. (6) 的证明里表明了对于任意 \(n \in \N^\ast\) 都有 \(e_n \leq e'_n < 3\), 于是由单调有界收敛定理可知 \((e'_n)\) 收敛. 令 \(e' \coloneqq \lim e'_n\), 则由极限的保序性可知 \(e \leq e' \leq 3\). 于是只用证明 \(e' \leq e\). 固定 \(m \in \N^\ast\), 于是当 \(n \geq m\) 时, 有
+            \begin{align*}
+                e_n = \Bigl(1 + \frac{1}{n}\Bigr)^n = \sum_{k = 0}^n \binom{n}{k} \frac{1}{n^k} &\geq \sum_{k = 0}^m \binom{n}{k} \frac{1}{n^k}\\
+                &= 1 + \sum_{k = 1}^m \frac{1}{k!} \frac{n (n - 1) \cdots (n - k + 1)}{n^k}\\
+                &= 1 + \sum_{k = 1}^m \frac{1}{k!} \Bigl(1 - \frac{1}{n}\Bigr) \cdots \Bigl(1 - \frac{k - 1}{n}\Bigr)\ .
+            \end{align*}
+            令
+            \[
+                e'_{m, n} \coloneqq 1 + \sum_{k = 1}^m \frac{1}{k!} \Bigl(1 - \frac{1}{n}\Bigr) \cdots \Bigl(1 - \frac{k - 1}{n}\Bigr)\ ,\quad n \geq m\ ,
+            \]
+            则当 \(n \to \infty\) 时 \(e'_{m, n} \to e'_m\), 且当 \(n \geq m\) 时 \(e'_{m, n} \leq e_n\), 于是由极限的保序性可知 \(e'_m \leq e\). 而这对于任意 \(m \in \N^\ast\) 都成立, 于是 \(e\) 是 \((e'_n)\) 的上界, 由单调有界收敛定理可知 \(e'\) 是 \((e'_n)\) 的上确界, 因此 \(e' \leq e\).
+        \end{proof}
+    \end{enumerate}
+
+    正如我们提到的, 数列 \((e'_n)\) 收敛到 \(e\) 的速度比数列 \((e_n)\) 快得多. 实际上, 可以证明下面的误差估计 (见练习 \ref{ex:e-error-estimate}).
+    \[
+        0 < e - e'_n \leq \frac{1}{n n!}\ ,\quad n \in \N^\ast\ .
+    \]
+    当 \(n = 6\) 时, 就有 \(1 / (6!\, 6) = 0.00023 \ldots\), 这已经比 (6) 中 \(n = 1000\) 时的误差要小了.
 \end{example}
 
 \subsection{练习}
@@ -2006,7 +2119,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \[
         a = \sqrt[n]{a^n} \leq \sqrt[n]{a_1^n + \cdots + a_k^n} \leq \sqrt[n]{n a^n} = a \sqrt[n]{n}\ ,\quad n \in \N\ ,
     \]
-    注意到 \(\sqrt[n]{n} \to 1\), 因此由夹逼定理可知 \(\sqrt[n]{a_1^n + \cdots + a_k^n} \to a\).
+    由于 \(\sqrt[n]{n} \to 1\), 因此由夹逼定理可知 \(\sqrt[n]{a_1^n + \cdots + a_k^n} \to a\).
 \end{proof}
 
 \begin{exercise}\label{ex:e-limit-variant-1}
@@ -2106,11 +2219,11 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \[
         x_0 \geq a\ ,\quad x_{n + 1} \coloneqq \frac{x_n + a / x_n}{2}\ ,\quad n \in \N\ .
     \]
-    证明 \((x_n)\) 收敛到 \(\sqrt{a}\) \footnote{这个计算 \(\sqrt{a}\) 的过程被称为 Babylonia 算法或 Heron 算法. 数列 \((x_n)\) 将以极快的速度收敛到 \(\sqrt{a}\). 例如, 若 \(x_0 = a = 4\), 则
+    证明 \((x_n)\) 收敛到 \(\sqrt{a}\).\footnote{这个计算 \(\sqrt{a}\) 的过程被称为 Babylonia 算法或 Heron 算法. 数列 \((x_n)\) 将以极快的速度收敛到 \(\sqrt{a}\). 例如, 若 \(x_0 = a = 4\), 则
     \[
         x_1 = 2.5\ ,\quad x_2 = 2.05\ ,\quad x_3 = 2.006\ 09 \ldots\ ,\quad x_4 = 2.000\ 000\ 093 \ldots
     \]
-    注意到, 若 \(a\) 与 ``初始值'' \(x_0\) 都是有理数, 那么所有的 \(x_n\) 都将会是有理数. 在第 4.4 节, 我们会给出 Heron 算法的几何解释并估计其收敛速度.}.
+    注意到, 若 \(a\) 与 ``初始值'' \(x_0\) 都是有理数, 那么所有的 \(x_n\) 都将会是有理数. 在第 4.4 节, 我们会给出 Heron 算法的几何解释并估计其收敛速度.}
 \end{exercise}
 
 \begin{proof}
@@ -2209,19 +2322,42 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \[
         L_e = \lim x_{2 n + 2} = \lim \sqrt{x_{2 n + 1} x_{2 n}} = \sqrt{L_o L_e}\ ,
     \]
-    注意到 \(\inf_{n \in \N} x_n = x_0 > 0\), 因此 \(L_e > 0\) 且 \(L_o > 0\), 这说明 \(L_e = L_o\), 故 \((x_n)\) 收敛. 当 \(x_0 \geq x_1\) 时, 同理可得 \((x_n)\) 收敛.
+    注意到 \(x_0 > 0\) 是 \((x_n)\) 的下确界, 因此 \(L_e > 0\) 且 \(L_o > 0\), 这说明 \(L_e = L_o\), 故 \((x_n)\) 收敛. 当 \(x_0 \geq x_1\) 时, 同理可得 \((x_n)\) 收敛.
 \end{proof}
 
-\begin{exercise}
+\begin{exercise}\label{ex:e-error-estimate}
     \begin{enumerate}
         \item 证明如下误差估计.
         \[
             0 < e - \sum_{k = 0}^n \frac{1}{k!} < \frac{1}{n n!}\ ,\quad n \in \N^\ast\ .
         \]
-        \item 利用上面的不等式证明 \(e\) 是无理数.
+        (提示: 对于 \(n \in \N^\ast\). 令 \(y_m \coloneqq \sum_{k = n + 1}^{n + m} 1 / k!\). 证明 \(y_m \to e - \sum_{k = 0}^n 1 / k!\) 和 \((m + n)!\, y_m < \sum_{k = 1}^m (n + 1)^{1 - k}\).)
+        \item 利用上面的不等式证明 \(e\) 是无理数. (提示: 用反证法.)
     \end{enumerate}
-    (提示: (1). 令 \(y_m \coloneqq \sum_{k = n + 1}^{n + m} 1 / k!\ (n \in \N^\ast)\). 证明 \(y_m \to e - \sum_{k = 0}^n 1 / k!\) 和 \((m + n)!\, y_m < \sum_{k = 1}^m (n + 1)^{1 - k}\). (2). 用反证法.)
 \end{exercise}
+
+\begin{proof}
+    (1). 固定 \(n \in \N^\ast\), 令
+    \[
+        y_m \coloneqq \sum_{k = n + 1}^{n + m} \frac{1}{k!}\ ,\quad m \in \N^\ast\ .
+    \]
+    于是
+    \[
+        e = \lim_{m \to \infty} \sum_{k = 0}^m \frac{1}{k!} = \lim_{m \to \infty} \Bigl(\sum_{k = 0}^n \frac{1}{k!} + \sum_{k = n + 1}^{m} \frac{1}{k!}\Bigr) = \sum_{k = 0}^n \frac{1}{k!} + \lim_{m \to \infty} \sum_{k = n + 1}^{n + m} \frac{1}{k!} = \sum_{k = 0}^n \frac{1}{k!} + \lim_{m \to \infty} y_m\ ,
+    \]
+    因此 \(y_m \to e - \sum_{k = 0}^n 1 / k!\). 而
+    \[
+        y_m = \sum_{k = n + 1}^{n + m} \frac{1}{k!} = \sum_{k = 1}^m \frac{1}{(n + k)!} = \sum_{k = 1}^m \frac{1}{n!\, (n + 1) \cdots (n + k)} \leq \frac{1}{n!} \sum_{k = 1}^m \frac{1}{(n + 1)^k}\ ,
+    \]
+    其中
+    \[
+        \sum_{k = 1}^m \frac{1}{(n + 1)^k} = \frac{1}{n + 1} \frac{(n + 1)^{- m} - 1}{(n + 1)^{- 1} - 1} = \frac{1}{n} \Bigl(1 - \frac{1}{(n + 1)^m}\Bigr) < \frac{1}{n}\ ,
+    \]
+    因此 \(y_m < 1 / n n!\). 由极限的保序性可知
+    \[
+        e - \sum_{k = 0}^n \frac{1}{k!} \leq \frac{1}{n n!}\ .
+    \]
+\end{proof}
 
 \begin{exercise}\label{ex:fibonacci-numbers-rate-limit}
     递归定义实数列
@@ -2265,6 +2401,34 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     其中 \(g\) 是练习 \ref{ex:fibonacci-numbers-rate-limit} 中数列的极限.
 \end{exercise}
 
+\begin{proof}
+    令
+    \[
+        g_n \coloneqq \frac{f_{n + 1}}{f_n}\ ,\quad n \in \N^\ast\ .
+    \]
+    则
+    \[
+        g_n = \frac{f_{n + 1}}{f_n} = \frac{f_n + f_{n - 1}}{f_n} = 1 + \frac{f_{n - 1}}{f_n} = 1 + \frac{1}{g_{n - 1}}\ ,\quad n \geq 2\ .
+    \]
+    显然 \((g_n)\) 以 \(1\) 为下界 \(2\) 为上界, 故 \((g_n)\) 有界. 计算 \(g_n\) 的前几项可得 \(g_2 \geq g_4\) 且 \(g_1 \leq g_3\). 假设 \(g_{2 k + 2} \geq g_{2 k + 4}\) 且 \(g_{2 k + 1} \leq g_{2 k + 3}\), 则
+    \[
+        g_{2 k + 5} - g_{2 k + 3} = 1 + \frac{1}{g_{2 k + 4}} - 1 - \frac{1}{g_{2 k + 2}} \geq 0\ ,
+    \]
+    即 \(g_{2 k + 3} \leq g_{2 k + 5}\), 于是
+    \[
+        g_{2 k + 6} - g_{2 k + 4} = 1 + \frac{1}{g_{2 k + 5}} - 1 - \frac{1}{g_{2 k + 3}} \leq 0\ ,
+    \]
+    即 \(g_{2 k + 4} \geq g_{2 k + 6}\). 因此由数学归纳法可得
+    \[
+        g_{2 n + 2} \geq g_{2 n + 4}\ ,\quad g_{2 n + 1} \leq g_{2 n + 3}\ ,\quad n \in \N\ ,
+    \]
+    故 \((g_{2 n})\) 是递减的, \((g_{2 n + 1})\) 是递增的. 由单调有界收敛定理可得 \((g_{2 n})\) 和 \((g_{2 n + 1})\) 收敛. 设 \(g_{2 n} \to g\), 于是
+    \[
+        g = \lim g_{2 n + 2} = \lim \Bigl(1 + \frac{1}{1 + 1 / g_{2 n}}\Bigr) = \lim \Bigl(1 + \frac{g_{2 n}}{g_{2 n} + 1}\Bigr) = 1 + \frac{g}{g + 1}\ ,
+    \]
+    解得 \(g = (1 \pm \sqrt{5}) / 2\), 而 \((g_n)\) 下界为 \(1\), 故 \(g = (1 + \sqrt{5}) / 2\). 类似的, 可得 \((g_{2 n + 1})\) 收敛到 \((1 + \sqrt{5}) / 2\). 于是 \((g_n)\) 收敛到 \((1 + \sqrt{5}) / 2\).
+\end{proof}
+
 \begin{exercise}
     设
     \[
@@ -2272,3 +2436,57 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \]
     证明 \((x_n)\) 收敛并计算其极限. (提示: 求出 \(x_n - x_{n + 1}\) 的表达式.)
 \end{exercise}
+
+\iffalse
+\begin{proof}
+    计算 \(x_n\) 相邻两项的差可得差的递推公式
+    \[
+        x_{n + 1} - x_n = \frac{2}{3} x_n + \frac{1}{3} x_{n - 1} - x_n = \frac{1}{3} (x_{n - 1} - x_n) = \frac{1}{9} (x_{n - 1} - x_{n - 2})\ ,\quad n \geq 2\ .
+    \]
+    计算 \(x_n\) 的前几项可得 \(1 \leq x_1 \leq x_3 \leq x_2 \leq x_0 \leq 5\). 假设 \(1 \leq x_{2 k + 1} \leq x_{2 k + 3} \leq x_{2 k + 2} \leq x_{2 k} \leq 5\), 于是
+    \[
+        x_{2 k + 4} - x_{2 k + 2} = \frac{2}{3} x_{2 k + 3} + \frac{1}{3} x_{2 k + 2} - x_{2 k + 2} = \frac{2}{3} (x_{2 k + 3} - x_{2 k + 2}) \leq 0\ ,
+    \]
+    即 \(x_{2 k + 4} \leq x_{2 k + 2} \leq 5\).
+    \[
+        x_{2 k + 5} - x_{2 k + 3} = \frac{2}{3} x_{2 k + 4} + \frac{1}{3} x_{2 k + 3} - x_{2 k + 3} = \frac{2}{3} (x_{2 k + 4} - x_{2 k + 3}) = \frac{2}{9} (x_{2 k + 2} - x_{2 k + 3}) \geq 0\ ,
+    \]
+    即 \(1 \leq x_{2 k + 3} \leq x_{2 k + 5}\). 而
+    \[
+        x_{2 k + 5} - x_{2 k + 4} = \frac{1}{9} (x_{2 k + 3} - x_{2 k + 2}) \leq 0\ ,
+    \]
+    于是 \(1 \leq x_{2 k + 3} \leq x_{2 k + 5} \leq x_{2 k + 4} \leq x_{2 k + 2} \leq 5\), 因此由数学归纳法可得
+    \[
+        1 \leq x_{2 n + 1} \leq x_{2 n + 3} \leq x_{2 n + 2} \leq x_{2 n} \leq 5\ ,\quad n \in \N^\ast\ ,
+    \]
+    故 \((x_{2 n})\) 是递减且有界的, \((x_{2 n + 1})\) 是递增且有界的. 由单调有界收敛定理可得 \((x_{2 n})\) 和 \((x_{2 n + 1})\) 收敛. 设 \(x_{2 n} \to L_e\), \(x_{2 n + 1} \to L_o\). 于是
+    \[
+        L_e = \lim x_{2 n + 2} = \lim \Bigl(\frac{2}{3} x_{2 n + 1} + \frac{1}{3} x_{2 n}\Bigr) = \frac{2}{3} L_o + \frac{1}{3} L_e\ ,
+    \]
+    因此 \(L_e = L_o\), 故 \((x_n)\) 收敛.
+\end{proof}
+\fi
+
+\begin{proof}
+    令
+    \[
+        d_n \coloneqq x_n - x_{n + 1}\ ,\quad n \in \N\ .
+    \]
+    注意到
+    \[
+        d_{n + 1} = x_{n + 1} - x_{n + 2} = x_{n + 1} - \frac{2}{3} x_{n + 1} - \frac{1}{3} x_n = \frac{1}{3} (x_{n + 1} - x_n) = - \frac{1}{3} d_{n}\ ,
+    \]
+    于是
+    \[
+        d_n = \Bigl(- \frac{1}{3}\Bigr)^n d_0 = 4 \Bigl(- \frac{1}{3}\Bigr)^n\ ,
+    \]
+    而
+    \[
+        \sum_{k = 0}^{n - 1} d_k = d_0 + d_1 + \cdots + d_{n - 1} = (x_0 - x_1) + (x_1 - x_2) + \cdots + (x_{n - 1} - x_n) = x_0 - x_n\ ,
+    \]
+    因此
+    \[
+        x_n = x_0 - \sum_{k = 0}^{n - 1} d_k = 5 - 4 \sum_{k = 0}^{n - 1} \Bigl(- \frac{1}{3}\Bigr)^k = 5 - 4 \frac{(- 1 / 3)^n - 1}{- 1 / 3 - 1} = 2 + 3 \Bigl(- \frac{1}{3}\Bigr)^n\ ,\quad n \in \N^\ast\ .
+    \]
+    由于 \((- 1 / 3)^n \to 0\), 故 \(x_n \to 2\).
+\end{proof}

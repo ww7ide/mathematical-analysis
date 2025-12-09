@@ -89,8 +89,10 @@ Section 4 Monotones Sequences
 
           Exercises                             12  8, 25
 
+          Exercises                             12  9, 25
+
 Section 5 Infinite Limits
-          Convergence to Infinity               12  8, 25
+          Convergence to Infinity
           The Limit Superior and Limit Inferior
 
 Section 6 Completeness
