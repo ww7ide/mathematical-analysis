@@ -43,7 +43,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{definition}
 
 \begin{definition}[数列]
-    \(\K\) 中的序列称为数列. 进一步, 将 \(\K\) 中的所有数列记作 \(s \coloneqq s(\K) \coloneqq \K^\N\), 于是 \(s\) 构成了 \(\K\)-向量空间 (见例 \ref{eg:vector-spaces}.5). 最后, \(\R\) 中的数列称为实数列, \(\C\) 中的数列称为复数列.
+    \(\K\) 中的序列称为数列. 进一步, 将 \(\K\) 中的所有数列记作 \(s \coloneqq s(\K) \coloneqq \K^\N\), 于是 \(s\) 构成了 \(\K\)-向量空间 (见例 \ref{eg:vector-spaces}(5)). 最后, \(\R\) 中的数列称为实数列, \(\C\) 中的数列称为复数列.
 \end{definition}
 
 \begin{remark}
@@ -137,7 +137,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
     \begin{enumerate}[start=2]
         \item 设 \((X, d)\) 是度量空间, \(Y\) 是 \(X\) 的非空子集. 则 \(d\) 在 \(Y \times Y\) 上的限制 \(d_Y \coloneqq d|_{Y \times Y}\) 是 \(Y\) 上的度量, 称为诱导度量. 进一步, 称 \((Y, d_Y)\) 是 \((X, d)\) 的子空间. 在不会引起混淆的情况下, 我们往往直接写 \(d\), 而不特别区分 \(d_Y\).
-        \item \(\C\) 的任意非空子集, 在从 \(\C\) 的自然度量诱导出来的度量之下, 都是度量空间. 以这种方式在 \(\R\) 上得到的度量, 正好就是在例 \ref{eg:metric}.1 中定义的那个自然度量.
+        \item \(\C\) 的任意非空子集, 在从 \(\C\) 的自然度量诱导出来的度量之下, 都是度量空间. 以这种方式在 \(\R\) 上得到的度量, 正好就是在例 \ref{eg:metric}(1) 中定义的那个自然度量.
         \item 设 \(X\) 是非空集合. 则函数
         \[
             d \colon X \times X \to \R\ ,\quad (x, y) \mapsto
@@ -319,7 +319,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
                 (x_n^1, \ldots, x_n^m) = x_n \in \prod_{j = 1}^m \B_{X_j}(a^j, \varepsilon) = \B_X(a, \varepsilon)\ ,\quad n \geq N\ .
             \]
 
-            (见例 \ref{eg:metric}.5).
+            (见例 \ref{eg:metric}(5)).
         \end{proof}
     \end{enumerate}
 \end{example}
@@ -418,7 +418,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{example}
 
 \begin{proof}
-    令 \(\psi_1(k) \coloneqq k^m\), \(\psi_2(k) \coloneqq m^k\). 由于 \(\psi_i \colon \N^\ast \to \N^\ast,\ i = 1, 2\) 是严格递增的, 因此 \((k^{- m})\) 和 \((m^{- k})\) 是 \((1 / n)\) 的子数列. 于是由例 \ref{eg:ez-convergent-sequence}.1 和 命题 \ref{prop:convergent-sequence-to-subsequence} 可得.
+    令 \(\psi_1(k) \coloneqq k^m\), \(\psi_2(k) \coloneqq m^k\). 由于 \(\psi_i \colon \N^\ast \to \N^\ast,\ i = 1, 2\) 是严格递增的, 因此 \((k^{- m})\) 和 \((m^{- k})\) 是 \((1 / n)\) 的子数列. 于是由例 \ref{eg:ez-convergent-sequence}(1) 和 命题 \ref{prop:convergent-sequence-to-subsequence} 可得.
 \end{proof}
 
 下面的命题是对聚点的进一步刻画.
@@ -457,7 +457,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{exercise}
 
 \begin{exercise}
-    证明例 \ref{eg:metric}.5 的断言.
+    证明例 \ref{eg:metric}(5) 的断言.
 \end{exercise}
 
 \begin{exercise}
@@ -616,7 +616,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \[
         \lim \colon c \to \K\ ,\quad (x_n) \mapsto \lim x_n
     \]
-    是线性的. 显然 \(\ker \lim = c_0\), 于是, 由例 \ref{eg:vector-spaces}.3 可知, \(c_0\) 是 \(c\) 的子空间.
+    是线性的. 显然 \(\ker \lim = c_0\), 于是, 由例 \ref{eg:vector-spaces}(3) 可知, \(c_0\) 是 \(c\) 的子空间.
 \end{remark}
 
 下面的命题表明, 对于收敛数列, 我们可以 ``逐项'' 相乘.
@@ -644,19 +644,19 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 \begin{remark}\label{rem:c-is-algebra}
     \begin{enumerate}
-        \item 命题 \ref{prop:multiplication-in-c}.1 中, 关于序列 \((y_n)\) 有界的假设不能去除.
+        \item 命题 \ref{prop:multiplication-in-c}(1) 中, 关于序列 \((y_n)\) 有界的假设不能去除.
         \begin{proof}
             设 \(x_n \coloneqq 1 / n\), \(y_n \coloneqq n^2\). 则 \((x_n)\) 是无穷小量, 但 \((x_n y_n)\) 发散.
         \end{proof}
-        \item 由例 \ref{eg:algebras}.2 可知 \(s\) 是 \(\K\)-代数. 于是, 结合注 \ref{rem:c-is-vector-space} 和命题 \ref{prop:multiplication-in-c}.2 可以得到: \(c\) 是 \(s\) 的子代数且函数
+        \item 由例 \ref{eg:algebras}(2) 可知 \(s\) 是 \(\K\)-代数. 于是, 结合注 \ref{rem:c-is-vector-space} 和命题 \ref{prop:multiplication-in-c}(2) 可以得到: \(c\) 是 \(s\) 的子代数且函数
         \[
             \lim \colon c \to \K\ ,\quad (x_n) \mapsto \lim x_n
         \]
-        是代数同态. 最后, 由命题 \ref{prop:convergent-sequence-is-bounded} 和命题 \ref{prop:multiplication-in-c}.1 可知 \(c_0\) 也是 \(c\) 的理想.
+        是代数同态. 最后, 由命题 \ref{prop:convergent-sequence-is-bounded} 和命题 \ref{prop:multiplication-in-c}(1) 可知 \(c_0\) 也是 \(c\) 的理想.
     \end{enumerate}
 \end{remark}
 
-下面的命题和注 \ref{rem:c-is-algebra}.2 表明, 商数列的极限是分子的极限除以分母的极限, 若这些极限存在的话.
+下面的命题和注 \ref{rem:c-is-algebra}(2) 表明, 商数列的极限是分子的极限除以分母的极限, 若这些极限存在的话.
 
 \begin{proposition}\label{prop:division-in-c}
     设 \((x_n)\) 是 \(\K\) 中的收敛数列且 \(\lim x_n = a \neq 0\). 则 \((x_n)\) 的几乎所有项都非零且 \(\lim 1 / x_n = 1 / a\).
@@ -671,7 +671,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \[
         \Bigl|\frac{1}{x_n} - \frac{1}{a}\Bigr| = \frac{|x_n - a|}{|a|\, |x_n|} < \frac{2}{|a|^2} |x_n - a|\ ,\quad n \geq N\ ,
     \]
-    由于 \((x_n)\) 收敛到 \(a\), 因此 \((x_n - a)\) 是无穷小量, 进一步, \(\bigl(2\, |x_n - a| \big/ |a|^2\bigr)\) 是无穷小量. 于是由注 \ref{rem:null-sequences}.3 可得 \((1 / x_n - 1 / a)\) 是无穷小量, 故 \(\lim 1 / x_n = 1 / a\).
+    由于 \((x_n)\) 收敛到 \(a\), 因此 \((x_n - a)\) 是无穷小量, 进一步, \(\bigl(2\, |x_n - a| \big/ |a|^2\bigr)\) 是无穷小量. 于是由注 \ref{rem:null-sequences}(3) 可得 \((1 / x_n - 1 / a)\) 是无穷小量, 故 \(\lim 1 / x_n = 1 / a\).
 \end{proof}
 
 \subsection{比较审敛法}
@@ -715,7 +715,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 \subsection{复数列}
 
-若 \((x_n)\) 是 \(\R\) 中的收敛数列且 \(\lim x_n = a\), 则 \(\lim |x_n| = |a|\). 实际上, 若 \((x_n)\) 是无穷小量, 则是注 \ref{rem:null-sequences}.1 的情况. 若 \(a > 0\), 则 \((x_n)\) 的几乎所有项都为正 (见练习 2.2.\ref{ex:limits-preserve-sign}), 于是 \(\lim |x_n| = \lim x_n = a = |a|\). 最后, 若 \(a < 0\), 则 \((x_n)\) 的几乎所有项都为负, 于是
+若 \((x_n)\) 是 \(\R\) 中的收敛数列且 \(\lim x_n = a\), 则 \(\lim |x_n| = |a|\). 实际上, 若 \((x_n)\) 是无穷小量, 则是注 \ref{rem:null-sequences}(1) 的情况. 若 \(a > 0\), 则 \((x_n)\) 的几乎所有项都为正 (见练习 2.2.\ref{ex:limits-preserve-sign}), 于是 \(\lim |x_n| = \lim x_n = a = |a|\). 最后, 若 \(a < 0\), 则 \((x_n)\) 的几乎所有项都为负, 于是
 \[
     \lim |x_n| = \lim(- x_n) = - \lim x_n = - a = |a|\ .
 \]
@@ -905,7 +905,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{proof}
 
 \begin{exercise}
-    设 \(\K^m\ (m \in \N^\ast)\) 是赋予了积度量 (见例 \ref{eg:metric}.5) 的度量空间,
+    设 \(\K^m\ (m \in \N^\ast)\) 是赋予了积度量 (见例 \ref{eg:metric}(5)) 的度量空间,
     \[
         s(\K^m) \coloneqq (\K^m)^\N\ ,\quad c(\K^m) \coloneqq \{\, (x_n) \in s(\K^m) \;;\; (x_n)\ \text{收敛} \,\}\ .
     \]
@@ -917,7 +917,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
             \lim \colon c(\K^m) \to \K^m\ ,\quad (x_n) \mapsto \lim x_n
         \]
         是线性的.
-        \item 设 \((\lambda_n) \in c(\K)\), \((x_n) \in c(\K^m)\) 且 \(\lim \lambda_n = \alpha\), \(\lim x_n = a\). 则 \(\lim \lambda_n x_n = \alpha a \in \K^m\) (提示: 例 \ref{eg:ez-convergent-sequence}.5).
+        \item 设 \((\lambda_n) \in c(\K)\), \((x_n) \in c(\K^m)\) 且 \(\lim \lambda_n = \alpha\), \(\lim x_n = a\). 则 \(\lim \lambda_n x_n = \alpha a \in \K^m\) (提示: 例 \ref{eg:ez-convergent-sequence}(5)).
     \end{enumerate}
 \end{exercise}
 
@@ -1019,7 +1019,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 \section{赋范向量空间}
 
-本节我们将考察向量空间上的度量. 当然, 我们希望这些度量与向量空间的结构是相容的, 因此我们先从向量空间 \(\R^2\) 入手, 在这个空间里我们已经有了距离的概念. 具体地说, 如果我们用 \(\|x\|\) 表示 \(\R^2\) 中向量 \(x\) 的长度, 那么两点 \(x, y \in \R^2\) 之间的距离就是 \(\|x - y\|\). 我们将在之后看到, 这确实在 \(\R^2\) 上定义了一个度量 (见注 \ref{rem:norms}.1). 除了与度量之间的这种关系外, 函数 \(x \mapsto \|x\|\) 对于向量空间结构还满足一些特殊的性质:
+本节我们将考察向量空间上的度量. 当然, 我们希望这些度量与向量空间的结构是相容的, 因此我们先从向量空间 \(\R^2\) 入手, 在这个空间里我们已经有了距离的概念. 具体地说, 如果我们用 \(\|x\|\) 表示 \(\R^2\) 中向量 \(x\) 的长度, 那么两点 \(x, y \in \R^2\) 之间的距离就是 \(\|x - y\|\). 我们将在之后看到, 这确实在 \(\R^2\) 上定义了一个度量 (见注 \ref{rem:norms}(1)). 除了与度量之间的这种关系外, 函数 \(x \mapsto \|x\|\) 对于向量空间结构还满足一些特殊的性质:
 
 首先我们注意到, \(\R^2\) 中任一向量的长度都是非负的, 也就是说, 对于任意 \(x \in \R^2\) 都有 \(\|x\| \geq 0\), 并且长度为零的向量仅有零向量.
 
@@ -1089,7 +1089,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
                 \|x - y\| = d(x, y) \geq |d(x, 0) - d(0, y)| = \bigl|\|x\| - \|y\|\bigr|\ ,\quad x, y \in E\ .
             \]
         \end{proof}
-        \item 因为注 \ref{rem:norms}.1, 故第 2.1 节中关于度量空间的全部命题同样对 \(E\) 成立. 特别的, ``邻域'', ``聚点'' 和 ``收敛性'' 在 \(E\) 上是良定义的. 例如, \(E\) 中的序列 \((x_n)\) 收敛到 \(x\) 的含义是:
+        \item 因为注 \ref{rem:norms}(1), 故第 2.1 节中关于度量空间的全部命题同样对 \(E\) 成立. 特别的, ``邻域'', ``聚点'' 和 ``收敛性'' 在 \(E\) 上是良定义的. 例如, \(E\) 中的序列 \((x_n)\) 收敛到 \(x\) 的含义是:
         \[
             x_n \to x \iff \forall \varepsilon > 0,\ \exists N \in \N,\ \forall n \geq N : \|x_n - x\| < \varepsilon.
         \]
@@ -1127,7 +1127,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \begin{enumerate}
         \item \(X \subseteq E\) 有界, 当且仅当存在 \(r > 0\) 使得 \(X \subseteq r \B\), 即对于任意 \(x \in X\) 都有 \(\|x\| < r\).
         \item 若 \(X\) 和 \(Y\) 是 \(E\) 的有界非空子集, 则 \(X \cup Y\), \(X + Y\) 和 \(\lambda X\ (\lambda \in \K)\) 也是有界的.
-        \item 例 \ref{eg:metric}.4 表明, 在每个向量空间 \(V\) 上, 都存在度量使得 \(V\) 有界. 但是, 若 \(V\) 不是零空间, 则 \hyperref[ax:norm]{\((\mathrm N_2)\)} 蕴含了在 \(V\) 上不存在具有这种性质的范数.
+        \item 例 \ref{eg:metric}(4) 表明, 在每个向量空间 \(V\) 上, 都存在度量使得 \(V\) 有界. 但是, 若 \(V\) 不是零空间, 则 \hyperref[ax:norm]{\((\mathrm N_2)\)} 蕴含了在 \(V\) 上不存在具有这种性质的范数.
     \end{enumerate}
 \end{remark}
 
@@ -1150,7 +1150,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \[
             \|x\|_\infty \coloneqq \max_{1 \leq j \leq m} \|x_j\|_j\ ,\quad x \in E
         \]
-        是积向量空间 \(E\) 上的范数, 称为积范数. 当 \(d_j\) 是 \(\|\!\cdot\!\|_j\) 在 \(E_j\) 上诱导的度量时, 则 \(\|\!\cdot\!\|_\infty\) 在 \(E\) 上诱导的度量与例 \ref{eg:metric}.5 中的积度量是一致的.
+        是积向量空间 \(E\) 上的范数, 称为积范数. 当 \(d_j\) 是 \(\|\!\cdot\!\|_j\) 在 \(E_j\) 上诱导的度量时, 则 \(\|\!\cdot\!\|_\infty\) 在 \(E\) 上诱导的度量与例 \ref{eg:metric}(5) 中的积度量是一致的.
         \begin{proof}
             显然 \hyperref[ax:norm]{\((\mathrm N_1)\)} 成立.
             \[
@@ -1200,7 +1200,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \end{enumerate}
 \end{remark}
 
-注 \ref{rem:bounded-and-not-bounded-functions}.2 表明, 当 \(E\) 是非平凡向量空间时, \(\|\!\cdot\!\|_\infty\) 未必是向量空间 \(E^X\) 上的范数. 因此我们应该做出如下定义.
+注 \ref{rem:bounded-and-not-bounded-functions}(2) 表明, 当 \(E\) 是非平凡向量空间时, \(\|\!\cdot\!\|_\infty\) 未必是向量空间 \(E^X\) 上的范数. 因此我们应该做出如下定义.
 
 \begin{definition}[有界函数空间]
     称
@@ -1215,7 +1215,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{proposition}
 
 \begin{proof}
-    由注 \ref{rem:bounded-set-in-normed-vector-spaces}.2 可知 \(B(X, E)\) 是 \(E^X\) 的子空间. 由注 \ref{rem:bounded-and-not-bounded-functions}.1 可知 \(\|\!\cdot\!\|_\infty\) 是良定义的,
+    由注 \ref{rem:bounded-set-in-normed-vector-spaces}(2) 可知 \(B(X, E)\) 是 \(E^X\) 的子空间. 由注 \ref{rem:bounded-and-not-bounded-functions}(1) 可知 \(\|\!\cdot\!\|_\infty\) 是良定义的,
     \[
         \|u\|_\infty = \sup_{x \in X} \|u(x)\| \geq 0\ ,\quad u \in B(X, E)\ ,
     \]
@@ -1250,7 +1250,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \[
             \bigl(B(X, E), \|\!\cdot\!\|_\infty\bigr) = (E^m, \|\!\cdot\!\|_\infty)\ ,
         \]
-        其中等式左边的 \(\|\!\cdot\!\|_\infty\) 是上确界范数, 等式右边的 \(\|\!\cdot\!\|_\infty\) 是例 \ref{eg:norms}.3 的积范数. 因此上确界范数的记号和积范数的记号是一致的, 而不会产生歧义.
+        其中等式左边的 \(\|\!\cdot\!\|_\infty\) 是上确界范数, 等式右边的 \(\|\!\cdot\!\|_\infty\) 是例 \ref{eg:norms}(3) 的积范数. 因此上确界范数的记号和积范数的记号是一致的, 而不会产生歧义.
     \end{enumerate}
 \end{remark}
 
@@ -1329,7 +1329,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{theorem}
 
 \begin{proof}
-    当 \(y = 0\) 时, 由注 \ref{rem:inner-product-property}.4 可知定理成立. 设 \(y \neq 0\). 对于任意 \(\alpha \in \K\) 有
+    当 \(y = 0\) 时, 由注 \ref{rem:inner-product-property}(4) 可知定理成立. 设 \(y \neq 0\). 对于任意 \(\alpha \in \K\) 有
     \[
         0 \leq \langle x - \alpha y, x - \alpha y \rangle = \langle x, x \rangle - 2 \Re \langle x, \alpha y \rangle + \langle \alpha y, \alpha y \rangle = \langle x, x \rangle - 2 \Re \overline \alpha \langle x, y \rangle + |\alpha|^2 \langle y, y \rangle\ ,
     \]
@@ -1549,7 +1549,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \[
             \C \to \R^2\ ,\quad x + i y \mapsto (x, y)\ ,
         \]
-        复数集 \(\C \coloneqq \R + i \R\) 可以与 \(\R^2\) 一一对应 (甚至可以与 Abel 群 \((\R^2, +)\) 一一对应, 见注 \ref{rem:complex-numbers-property}.3). 更一般的, 对于 \(\C^m\) 可以通过双射
+        复数集 \(\C \coloneqq \R + i \R\) 可以与 \(\R^2\) 一一对应 (甚至可以与 Abel 群 \((\R^2, +)\) 一一对应, 见注 \ref{rem:complex-numbers-property}(3)). 更一般的, 对于 \(\C^m\) 可以通过双射
         \[
             \C^m \to \R^{2 m}\ ,\quad (z_1, \ldots, z_m) = (x_1 + i y_1, \ldots, x_m + i y_m) \mapsto (x_1, y_1, \ldots, x_m, y_m)
         \]
@@ -1579,10 +1579,10 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{proposition}
 
 \begin{proof}
-    由例 \ref{eg:ez-convergent-sequence}.5 和注 \ref{rem:equivalent-norms}.6 可以直接得到.
+    由例 \ref{eg:ez-convergent-sequence}(5) 和注 \ref{rem:equivalent-norms}(6) 可以直接得到.
 \end{proof}
 
-命题 \ref{prop:componentwise-convergence-of-sequence} 常被称为序列 \((x_n)\) 的按分量收敛, 因此命题 \ref{prop:componentwise-convergence-of-sequence} 可以稍微不那么精确的表述为: 在 \(\K^m\) 中, 一个序列收敛当且仅当它按分量收敛. 于是, 原则上只研究 \(\K\) 中数列的收敛性就足够了---事实上, 由注 \ref{rem:equivalent-norms}.5, 只研究 \(\R\) 中数列的收敛性就已经足够. 不过, 出于许多原因 (读者在进一步的学习中会自己体会到), 在我们的论述中做出这样的 ``简化'' 几乎得不到什么实质性的好处.
+命题 \ref{prop:componentwise-convergence-of-sequence} 常被称为序列 \((x_n)\) 的按分量收敛, 因此命题 \ref{prop:componentwise-convergence-of-sequence} 可以稍微不那么精确的表述为: 在 \(\K^m\) 中, 一个序列收敛当且仅当它按分量收敛. 于是, 原则上只研究 \(\K\) 中数列的收敛性就足够了---事实上, 由注 \ref{rem:equivalent-norms}(5), 只研究 \(\R\) 中数列的收敛性就已经足够. 不过, 出于许多原因 (读者在进一步的学习中会自己体会到), 在我们的论述中做出这样的 ``简化'' 几乎得不到什么实质性的好处.
 
 \subsection{练习}
 
@@ -1623,7 +1623,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{proof}
 
 \begin{exercise}
-    证明注 \ref{rem:bounded-and-not-bounded-functions}.1 的断言.
+    证明注 \ref{rem:bounded-and-not-bounded-functions}(1) 的断言.
 \end{exercise}
 
 \begin{proof}
@@ -1908,7 +1908,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \[
         \K^{m \times n} \coloneqq \Funct\bigl(\{1, \ldots, m\} \times \{1, \ldots, n\}, \K\bigr)\ .
     \]
-    于是由例 \ref{eg:vector-spaces}.5 可知 \(\K^{m \times n}\) 是向量空间, 因此对于 \(\alpha \in \K\) 和 \(A, B \in \K^{m \times n}\) 有标量乘法 \(\alpha A\) 和矩阵加法 \(A + B\). 证明以下命题.
+    于是由例 \ref{eg:vector-spaces}(5) 可知 \(\K^{m \times n}\) 是向量空间, 因此对于 \(\alpha \in \K\) 和 \(A, B \in \K^{m \times n}\) 有标量乘法 \(\alpha A\) 和矩阵加法 \(A + B\). 证明以下命题.
     \begin{enumerate}
         \item 函数
         \[
@@ -2336,6 +2336,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \end{enumerate}
 \end{exercise}
 
+\iffalse
 \begin{proof}
     (1). 固定 \(n \in \N^\ast\), 令
     \[
@@ -2351,12 +2352,43 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \]
     其中
     \[
-        \sum_{k = 1}^m \frac{1}{(n + 1)^k} = \frac{1}{n + 1} \frac{(n + 1)^{- m} - 1}{(n + 1)^{- 1} - 1} = \frac{1}{n} \Bigl(1 - \frac{1}{(n + 1)^m}\Bigr) < \frac{1}{n}\ ,
+        \sum_{k = 1}^m \frac{1}{(n + 1)^k} = \frac{1}{n + 1} \frac{(n + 1)^{- m} - 1}{(n + 1)^{- 1} - 1} < \frac{1}{n + 1} \Bigl(1 + \frac{1}{n}\Bigr)
     \]
-    因此 \(y_m < 1 / n n!\). 由极限的保序性可知
+    因此
+    \[
+        y_m < \frac{1}{(n + 1) n!} \Bigl(1 + \frac{1}{n}\Bigr)\ .
+    \]
+    由极限的保序性可知
     \[
         e - \sum_{k = 0}^n \frac{1}{k!} \leq \frac{1}{n n!}\ .
     \]
+\end{proof}
+\fi
+
+\begin{proof}
+    (1). 令 \(e'_n \coloneqq \sum_{k = 0}^n 1 / k!\). 固定 \(n \in \N\), 于是对于任意 \(m \in \N^\ast\) 都有
+    \begin{align*}
+        e'_{n + m} - e'_n = \sum_{k = n + 1}^{n + m} \frac{1}{k!} = \sum_{k = 1}^m \frac{1}{(n + k)!} &= \sum_{k = 1}^m \frac{1}{(n + 1)!\, (n + 2) \cdots (n + k)}\\
+        &\leq \frac{1}{(n + 1)!} \sum_{k = 1}^m \frac{1}{(n + 2)^{k - 1}}\ ,
+    \end{align*}
+    其中
+    \[
+        \sum_{k = 1}^m \frac{1}{(n + 2)^{k - 1}} = \frac{(n + 2)^{- m} - 1}{(n + 2)^{-1} - 1} < \frac{1}{1 - 1 / (n + 2)} = \Bigl(1 + \frac{1}{n + 1}\Bigr)\ ,
+    \]
+    因此
+    \[
+        e'_{n + m} - e'_n < \frac{1}{(n + 1)!} \Bigl(1 + \frac{1}{n + 1}\Bigr)\ .
+    \]
+    令 \(m \to \infty\), 由极限的保序性可知
+    \[
+        e - e'_n = e - \sum_{k = 0}^n \frac{1}{k!} \leq \frac{1}{(n + 1)!} \Bigl(1 + \frac{1}{n + 1}\Bigr) < \frac{1}{(n + 1)!} \Bigl(1 + \frac{1}{n}\Bigr) = \frac{1}{n n!}\ ,\quad n \in \N^\ast\ .
+    \]
+
+    (2). 假设 \(e\) 是有理数. 令 \(e \coloneq p / q\ (p, q \in \N^\ast)\). 由 (1) 中的不等式可知当 \(n = 1\) 时有 \(e < 3\), 因此 \(2 < e < 3\). 这说明 \(e\) 不是整数, 因此 \(q \geq 2\). 再次使用 (1) 中的不等式有 \(e - e'_q < 1 / q q!\), 于是 \(q! (e - e'_q) < 1 / q \leq 1 / 2\), 这说明 \(q! (e - e'_q)\) 不是整数, 而
+    \[
+        q! (e - e'_q) = q! \Bigl(\frac{p}{q} - 1 - \frac{1}{1!} - \frac{1}{2!} - \cdots - \frac{1}{q!}\Bigr) = (q - 1)!\, p - q! - q! - (3 \cdot 4 \cdots q) - \cdots - 1 \in \Z\ ,
+    \]
+    矛盾. 故 \(e\) 是无理数.
 \end{proof}
 
 \begin{exercise}\label{ex:fibonacci-numbers-rate-limit}

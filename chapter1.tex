@@ -208,12 +208,12 @@
     设 \(R \coloneqq (R, +, \cdot)\) 是环.
     \begin{enumerate}
         \item 环 \(R\) 的加法群 \((R, +)\) 的单位元, 如例 \ref{eg:recursive-definition-for-power-and-factorial} 中一样, 记作 \(0_R\) 或 \(0\), 称为 \(R\) 的零元或加法单位元. 根据命题 \ref{prop:identity-element-is-unique} 可知, 若 \(0_R\) 或 \(1_R\) 存在, 则唯一.
-        \item 由注 \ref{rem:group's-property}.4 可知, 对于每个 \(a \in R\) 都有 \(- (- a) = a\).
-        \item 对于每一对 \(a, b \in R\), 由注 \ref{rem:group's-property}.3 可知, 方程 \(a + x = b\) 在 \(R\) 中有唯一的解 \(x\), 即 \(x = b - a \coloneqq b + (- a)\) (读作 \(b\) 减 \(a\)), 称为 \(a\) 与 \(b\) 的差.
+        \item 由注 \ref{rem:group's-property}(4) 可知, 对于每个 \(a \in R\) 都有 \(- (- a) = a\).
+        \item 对于每一对 \(a, b \in R\), 由注 \ref{rem:group's-property}(3) 可知, 方程 \(a + x = b\) 在 \(R\) 中有唯一的解 \(x\), 即 \(x = b - a \coloneqq b + (- a)\) (读作 \(b\) 减 \(a\)), 称为 \(a\) 与 \(b\) 的差.
         \item 对于任意 \(a \in R\), 有 \(0 a = a 0 = 0\) 且 \(- 0 = 0\). 进一步, 令 \(a \neq 0\), 若存在非零元 \(b \in R\) 使得 \(a b = 0\) 或 \(b a = 0\), 则称 \(a\) 是 \(R\) 的零因子. 若 \(R\) 是交换环且没有零因子, 即 \(a b = 0\) 蕴含 \(a = 0\) 或 \(b = 0\), 则称 \(R\) 是整环.
         \item 对于任意 \(a, b \in R\), 有 \(- a b \coloneqq - (a b) = a (- b) = (- a) b\) 且 \((- a) (- b) = a b\).
         \item 若 \(R\) 是含幺环, 则对于任意 \(a \in R\) 都有 \((- 1) a = - a\).
-        \item 由例 \ref{eg:recursive-definition-for-power-and-factorial} 可知, 对于任意 \(n \in \N\) 和 \(a \in R\), \(n \cdot a = n a\) 是良定义的且本例中的运算法则都成立. 特别的, \(0_\N \cdot a \coloneqq 0_R\). 又由注 \ref{rem:arithmetic-rules-in-rings}.4 有 \(0_R \cdot a = 0_R\), 因此把 \(0_\N\) 和 \(0_R\) 的下标省略也不会产生歧义. 类似的, 若 \(R\) 是含幺环, 则 \(1_\N \cdot a = 1_R \cdot a = a\).
+        \item 由例 \ref{eg:recursive-definition-for-power-and-factorial} 可知, 对于任意 \(n \in \N\) 和 \(a \in R\), \(n \cdot a = n a\) 是良定义的且本例中的运算法则都成立. 特别的, \(0_\N \cdot a \coloneqq 0_R\). 又由注 \ref{rem:arithmetic-rules-in-rings}(4) 有 \(0_R \cdot a = 0_R\), 因此把 \(0_\N\) 和 \(0_R\) 的下标省略也不会产生歧义. 类似的, 若 \(R\) 是含幺环, 则 \(1_\N \cdot a = 1_R \cdot a = a\).
     \end{enumerate}
 \end{remark}
 
@@ -234,7 +234,7 @@
             \item \(S\) 是 \((R, +)\) 的子群.
             \item \(S\) 对乘法封闭, 即 \(S \cdot S \subseteq S\).
         \end{enumerate}
-        则称 \(S\) 是 \(R\) 的子环. 显然, \(\{0\}\) 和 \(R\) 都是 \(R\) 的子环. 即便 \(R\) 是含幺环, \(S\) 却不一定含有幺元 (见例 \ref{eg:rings}.5). 不过, 若 \(1_R \in S\), 则 \(1_R\) 是 \(S\) 的幺元. 当然, 若 \(R\) 是交换环, 则 \(S\) 也是, 但反过来一般不成立.
+        则称 \(S\) 是 \(R\) 的子环. 显然, \(\{0\}\) 和 \(R\) 都是 \(R\) 的子环. 即便 \(R\) 是含幺环, \(S\) 却不一定含有幺元 (见例 \ref{eg:rings}(5)). 不过, 若 \(1_R \in S\), 则 \(1_R\) 是 \(S\) 的幺元. 当然, 若 \(R\) 是交换环, 则 \(S\) 也是, 但反过来一般不成立.
         \item 子环的交仍然是子环.
         \item 设 \(R\) 是非平凡的含幺环,
         \[
@@ -272,7 +272,7 @@
             \varphi \colon R \to R'\ ,\quad a \mapsto 0_{R'}
         \]
         是同态且 \(\ker \varphi = R\).
-        \item 设 \(R\) 和 \(R'\) 是含幺环, \(\varphi \colon R \to R'\) 是同态. 正如注 \ref{rem:ring-homomorphism}.2 所示, \(\varphi(1_R) = 1_{R'}\) 不一定成立. 这一问题可以看作是, 由于环对乘法这一运算并不构成群所导致的.
+        \item 设 \(R\) 和 \(R'\) 是含幺环, \(\varphi \colon R \to R'\) 是同态. 正如注 \ref{rem:ring-homomorphism}(2) 所示, \(\varphi(1_R) = 1_{R'}\) 不一定成立. 这一问题可以看作是, 由于环对乘法这一运算并不构成群所导致的.
     \end{enumerate}
 \end{remark}
 
@@ -324,7 +324,7 @@
     其中 \(p_n \coloneqq p(n)\) 称为 \(p\) 的第 \(n\) 项系数. 在这种情况下, 称 \(p \in R^\N\) 是 \(R\) 上的形式幂级数, 并记 \(R[\![X]\!] \coloneqq (R^\N, +, \cdot)\).
 \end{definition}
 
-下面的命题表明 \(R[\![X]\!]\) 是环. 注意, 这个环与例 \ref{eg:rings}.2 中介绍的函数环 \(R^\N\) 并不相同.
+下面的命题表明 \(R[\![X]\!]\) 是环. 注意, 这个环与例 \ref{eg:rings}(2) 中介绍的函数环 \(R^\N\) 并不相同.
 
 \begin{proposition}
     \(R[\![X]\!]\) 是含幺环, 称为 \(R\) 上的形式幂级数环. 若 \(R\) 是交换环, 则 \(R[\![X]\!]\) 也是.
@@ -604,7 +604,7 @@
             \item \(B\) 对向量乘法封闭, 即 \(B \otimes B \subseteq B\).
         \end{enumerate}
         则称 \(B\) 是 \(A\) 的子代数.
-        \item 设 \(X\) 是非空集合. 则 \(K^X\) 在定义例 \ref{eg:rings}.2 和例 \ref{eg:vector-spaces}.5 的运算后是含幺的交换 \(K\)-代数.
+        \item 设 \(X\) 是非空集合. 则 \(K^X\) 在定义例 \ref{eg:rings}(2) 和例 \ref{eg:vector-spaces}(5) 的运算后是含幺的交换 \(K\)-代数.
     \end{enumerate}
 \end{example}
 
