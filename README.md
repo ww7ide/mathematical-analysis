@@ -95,6 +95,8 @@ Section 5 Infinite Limits
           Convergence to Infinity               12 10, 25
           The Limit Superior and Limit Inferior
 
+          The Bolzano-Weierstrass Theorem       12 11, 25
+
 Section 6 Completeness
 Section 7 Series
 Section 8 Absolute Convergence

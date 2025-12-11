@@ -8,7 +8,7 @@
     "editor.fontSize": 18,
     "editor.minimap.renderCharacters": false,
     "editor.minimap.scale": 2,
-    "workbench.colorTheme": "Visual Studio Light",
+    "workbench.colorTheme": "Visual Studio Dark",
     "workbench.iconTheme": "vscode-icons",
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,

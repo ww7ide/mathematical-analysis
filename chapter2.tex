@@ -142,8 +142,8 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \[
             d \colon X \times X \to \R\ ,\quad (x, y) \mapsto
             \begin{cases}
-                & 1\ , & x \neq y\ , \\
-                & 0\ , & x = y\ ,
+                1\ , & x \neq y\ , \\
+                0\ , & x = y\ ,
             \end{cases}
         \]
         是 \(X\) 上的度量, 称为离散度量.
@@ -180,7 +180,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{proof}
 
 \begin{definition}[邻域]
-    设 \(X\) 是度量空间, \(U \subseteq X\), \(a \in X\). 若存在 \(r > 0\) 使得 \(\B(a, r) \subseteq U\), 则称 \(U\) 是 \(a\) 的邻域. 进一步, 将 \(a\) 的邻域的全体记作
+    设 \(X\) 是度量空间, \(U \subseteq X\), \(a \in X\). 若存在 \(r > 0\) 使得 \(\B(a, r) \subseteq U\), 则称 \(U\) 是 \(a\) 的邻域. 进一步, 称 \(a\) 的邻域的全体是 \(a\) 的邻域系, 记作
     \[
     \nbr(a) \coloneqq \{\, U \subseteq X \;;\; U\ \text{是}\ a\ \text{的邻域} \,\}\ .
     \]
@@ -189,7 +189,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \begin{example}
     设 \(X\) 是度量空间, \(a \in X\).
     \begin{enumerate}
-        \item 对于每个 \(\varepsilon > 0\), \(\B(a, \varepsilon)\) 和 \(\bar \B(a, \varepsilon)\) 都是 \(a\) 的邻域, 称为 \(a\) 的开 \(\varepsilon\)-邻域 和闭 \(\varepsilon\)-邻域.
+        \item 对于每个 \(\varepsilon > 0\), \(\B(a, \varepsilon)\) 和 \(\bar \B(a, \varepsilon)\) 都是 \(a\) 的邻域, 称为 \(a\) 的开 \(\varepsilon\)-邻域和闭 \(\varepsilon\)-邻域.
         \item 显然 \(X \in \nbr(a)\). 若 \(U_1, U_2 \in \nbr(a)\), 则 \(U_1 \cap U_2\) 和 \(U_1 \cup U_2\) 也是 \(a\) 的邻域. 任意包含了 \(a\) 的邻域的集合同样是 \(a\) 的邻域.
         \begin{proof}
             设 \(U_1, U_2 \in \nbr(a)\). 故存在 \(r_1, r_2 > 0\) 使得 \(\B(a, r_1) \in U_1\)  和 \(\B(a, r_2) \in U_2\). 令 \(r = \min\{r_1, r_2\}\), 于是
@@ -314,7 +314,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
             \]
             即当 \(n \geq N\) 时, 对于每个 \(j\) 都有 \(x_n^j \in \B_{X_j}(a^j, \varepsilon)\).
 
-            \(\impliedby\). 设对于每个 \(j\) 都有 \((x_n^j)\) 收敛到点 \(a^j\). 任取 \(\varepsilon > 0\), 对于每个 \(j\) 都存在 \(N_j \in \N\) 使得当 \(n \geq N_j\) 时 \(x_n^j \in \B_{X_j}(a^j, \varepsilon)\). 令 \(N = \max_{1 \leq j \leq m} N_j\), 于是
+            \(\impliedby\). 设对于每个 \(j \in \{1, \ldots, m\}\) 都有 \((x_n^j)\) 收敛到点 \(a^j\). 任取 \(\varepsilon > 0\), 则对于每个 \(j \in \{1, \ldots, m\}\), 存在 \(N_j \in \N\) 使得当 \(n \geq N_j\) 时 \(x_n^j \in \B_{X_j}(a^j, \varepsilon)\). 令 \(N = \max_{1 \leq j \leq m} N_j\), 于是
             \[
                 (x_n^1, \ldots, x_n^m) = x_n \in \prod_{j = 1}^m \B_{X_j}(a^j, \varepsilon) = \B_X(a, \varepsilon)\ ,\quad n \geq N\ .
             \]
@@ -494,8 +494,8 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \[
         d(m, n) \coloneqq
         \begin{cases}
-            & (m + n) / m n\ , & m \neq n\ , \\
-            & 0\ ,             & m = n\ ,
+            (m + n) / m n\ , & m \neq n\ , \\
+            0\ ,             & m = n\ ,
         \end{cases}
     \]
     证明 \((\N^\ast, d)\) 是度量空间, 对 \(n \in \N^\ast\) 描述 \(A_n \coloneqq \bar \B(n, 1 + 1 / n)\).
@@ -539,8 +539,8 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \[
         \delta(z, w) \coloneqq
         \begin{cases}
-            & |z - w|\ ,   & \text{若存在}\ \lambda > 0\ \text{使得}\ z = \lambda w\ , \\
-            & |z| + |w|\ , & \text{其余情况}\ .
+            |z - w|\ ,   & \text{若存在}\ \lambda > 0\ \text{使得}\ z = \lambda w\ , \\
+            |z| + |w|\ , & \text{其余情况}\ .
         \end{cases}
     \]
     证明 \(\delta\) 是 \(\C\) 上的度量, 称为 SNCF-度量.
@@ -982,7 +982,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{proof}
 
 \begin{exercise}\label{ex:null-sequences-always-smaller}
-    设 \((x_n)\) 是 \((0, \infty)\) 中的数列. 证明 \((1 / x_n)\) 是无穷小量, 当且仅当对于每个 \(K > 0\) 都存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(x_n > K\).
+    设 \((x_n)\) 是 \((0, \infty)\) 中的数列. 证明 \((1 / x_n)\) 是无穷小量, 当且仅当对于每个 \(K > 0\) 存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(x_n > K\).
 \end{exercise}
 
 \begin{proof}
@@ -992,7 +992,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \]
     即当 \(n \geq N\) 时 \(x_n > K\).
 
-    \(\impliedby\). 设对于每个 \(K > 0\) 都存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(x_n > K\). 任取 \(\varepsilon > 0\). 故存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(x_n > 1 / \varepsilon\), 即
+    \(\impliedby\). 设对于每个 \(K > 0\) 存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(x_n > K\). 任取 \(\varepsilon > 0\). 故存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(x_n > 1 / \varepsilon\), 即
     \[
         \frac{1}{x_n} = \Bigl|\frac{1}{x_n}\Bigr| < \varepsilon\ ,\quad n \geq N\ ,
     \]
@@ -1523,7 +1523,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \[
             \nbr_{E_1}(a) = \nbr_{E_2}(a)\ ,\quad a \in E\ .
         \]
-        也就是说, \(a\) 的邻域族只依赖于该范数的等价类. 等价的范数会产生同样的邻域族.
+        也就是说, \(a\) 的邻域系只依赖于该范数的等价类. 等价的范数会产生同样的邻域系.
         \begin{proof}
             由于 \(\|\!\cdot\!\|_1\) 和 \(\|\!\cdot\!\|_2\) 等价, 故存在 \(K \geq 1\) 使得
             \[
@@ -1736,7 +1736,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \[
         \|X^n - (a_k)\|_\infty < \frac{\varepsilon}{2}\ ,\quad n \geq N\ .
     \]
-    注意到 \((X^n) \in c_0^\N\), 因此对于任意 \(n \in \N\) 都有 \(X^n\) 是无穷小量. 任取 \(n \geq N\), 故存在 \(K \in \N\) 使得当 \(k \geq K\) 时 \(|X_k^n| < \varepsilon / 2\), 于是
+    注意到 \((X^n) \in c_0^\N\), 因此对于任意 \(n \in \N\) 都有 \(X^n\) 是无穷小量. 固定 \(n \geq N\). 则存在 \(K \in \N\) 使得当 \(k \geq K\) 时 \(|X_k^n| < \varepsilon / 2\), 于是
     \begin{align*}
         \frac{\varepsilon}{2} > \|X^n - (a_k)\|_\infty = \sup_{k \in \N} |X_k^n - a_k| \geq |X_k^n - a_k| \geq |a_k| - |X_k^n| > |a_k| - \frac{\varepsilon}{2}\ ,\quad k \geq K\ ,
     \end{align*}
@@ -1966,8 +1966,8 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \[
             \lim_{n \to \infty} a^n =
             \begin{cases}
-                & 0\ , & |a| < 1\ , \\
-                & 1\ , & a = 1\ .
+                0\ , & |a| < 1\ , \\
+                1\ , & a = 1\ .
             \end{cases}
         \]
         特别的, 若 \(|a| \geq 1\) 且 \(a \neq 1\), 则 \((a^n)\) 发散.
@@ -2522,3 +2522,164 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \]
     由于 \((- 1 / 3)^n \to 0\), 故 \(x_n \to 2\).
 \end{proof}
+
+\newpage
+
+\section{无穷极限}
+
+在扩展实数系 \(\bar \R\) 中, 将某些 \(\R\) 中的数列视为收敛到 \(+ \infty\) 或 \(- \infty\) 是很有用的. 为了建立这种扩展的极限概念, 只需为 \(\bar \R\) 中的元素 \(\pm \infty\) 定义恰当的邻域即可.
+
+\subsection{收敛到 \(\pm \infty\)}
+
+由于在 \(\bar \R\) 上没有合适\footnote{当然, 我们可以在 \(\bar \R\) 上定义各种度量, 但是到目前为止我们所定义的这些度量都不适合我们的目的.}的度量, 我们采用如下定义来扩展 \(\R\) 中的邻域系.
+
+\begin{definition}[无穷大的邻域]
+    设 \(U \subseteq \bar \R\). 若存在 \(K > 0\) 使得
+    \begin{enumerate}
+        \item \((K, \infty) \subseteq U\), 则称 \(U\) 是 \(\infty\) 的邻域.
+        \item \((- \infty, - K) \subseteq U\), 则称 \(U\) 是 \(- \infty\) 的邻域.
+    \end{enumerate}
+    进一步, 将 \(\pm \infty\) 的邻域系记作
+    \[
+        \nbr(\pm \infty) \coloneqq \{\, U \in \bar \R \;;\; U\ \text{是}\ \pm \infty\ \text{的邻域} \,\}\ .
+    \]
+\end{definition}
+
+\begin{definition}[在 \(\bar \R\) 中收敛]
+    设 \((x_n)\) 是 \(\R\) 中的数列. 称 \(\pm \infty\) 是 \((x_n)\) 的聚点, 若 \(\pm \infty\) 的任意邻域都包含了 \((x_n)\) 的无穷多项. 称 \((x_n)\) 收敛到 \(\pm \infty\) 或以 \(\pm \infty\) 为极限, 若 \(\pm \infty\) 的任意邻域都包含了 \((x_n)\) 的几乎所有项, 记作
+    \[
+        \lim_{n \to \infty} x_n = \pm \infty\quad \text{或}\quad x_n \to \pm \infty\quad (n \to \infty)\ .
+    \]
+    若存在 \(x \in \bar \R\) 使得 \(\lim x_n = x\), 则称 \((x_n)\) 在 \(\bar \R\) 中收敛, 否则称 \((x_n)\) 在 \(\bar \R\) 中发散.
+\end{definition}
+
+在这样的定义下, 任意在 \(\R\) 中收敛的数列也在 \(\bar \R\) 中收敛, 任意在 \(\bar \R\) 中发散的数列也在 \(\R\) 中发散. 换句话说, 存在在 \(\R\) 中发散但在 \(\bar \R\) 中收敛 (到 \(\pm \infty\)) 的数列. 这种情况下, 我们在度量空间中对收敛性的理解就不再适用了, 因此这种收敛性需要单独研究.
+
+\begin{example}
+    \begin{enumerate}
+        \item 设 \((x_n)\) 是 \(\R\) 中的数列. 则 \(x_n \to \infty\), 当且仅当对于任意 \(K > 0\) 存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(x_n > K\).
+        \item \(\lim_{n \to \infty} (n^2 - n) = \infty\), \(\lim_{n \to \infty} - 2^n = - \infty\).
+        \item 数列 \(\bigl((- n)^n\bigr)\) 有两个聚点, \(\infty\) 和 \(- \infty\), 因此在 \(\bar \R\) 中发散.
+    \end{enumerate}
+\end{example}
+
+\begin{proposition}
+    设 \((x_n)\) 是 \(\R\) 中的数列. 则
+    \[
+        \lim_{n \to \infty} \frac{1}{x_n} =
+        \begin{cases}
+            0\ ,        & \text{若}\ x_n \to \pm \infty\ , \\
+            \infty\ ,   & \text{若}\ x_n \to 0\ \text{且}\ (x_n)\ \text{的几乎所有项都为正}\ , \\
+            - \infty\ , & \text{若}\ x_n \to 0\ \text{且}\ (x_n)\ \text{的几乎所有项都为负}\ .
+        \end{cases}
+    \]
+\end{proposition}
+
+\begin{proof}
+    设 \(x_n \to \pm \infty\). 任取 \(\varepsilon > 0\). 则存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(|x_n| > 1 / \varepsilon\), 于是
+    \[
+        \Bigl|\frac{1}{x_n}\Bigr| = \frac{1}{|x_n|} < \varepsilon\ ,\quad n \geq N\ .
+    \]
+    因此 \(1 / x_n \to 0\).
+
+    设 \(x_n \to 0\) 且 \((x_n)\) 的几乎所有项都为正. 任取 \(K > 0\). 则存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(0 < x_n < 1 / K\), 于是
+    \[
+        \frac{1}{x_n} > K\ ,\quad n \geq N\ .
+    \]
+    因此 \(1 / x_n \to \infty\). 设 \(x_n \to 0\) 且 \((x_n)\) 的几乎所有项都为负. 类似可得 \(1 / x_n \to - \infty\).
+\end{proof}
+
+\begin{proposition}\label{prop:monotone-sequences-is-convergent-in-extR}
+    \(\R\) 中的每个单调数列 \((x_n)\) 都在 \(\bar \R\) 中收敛, 且
+    \[
+        \lim_{n \to \infty} x_n =
+        \begin{cases}
+            \sup\{\, x_n \;;\; n \in \N \,\}\ , & \text{若}\ (x_n)\ \text{是递增的}\ , \\
+            \inf\{\, x_n \;;\; n \in \N \,\}\ , & \text{若}\ (x_n)\ \text{是递减的}\ .
+        \end{cases}
+    \]
+\end{proposition}
+
+\begin{proof}
+    设 \((x_n)\) 是递增的. 若 \((x_n)\) 有界, 则由单调有界收敛定理可知 \(\lim x_n = \sup\{\, x_n \;;\; n \in \N \,\}\). 设 \((x_n)\) 无上界. 故对于任意 \(K > 0\) 存在 \(N \in \N\) 使得 \(x_N > K\). 而 \((x_n)\) 是递增的, 于是
+    \[
+        x_n \geq x_N > K\ ,\quad n \geq N\ .
+    \]
+    因此 \(\lim x_n = \infty = \sup\{\, x_n \;;\; n \in \N \,\}\). 当 \((x_n)\) 递减时, 类似可证.
+\end{proof}
+
+\subsection{上极限与下极限}
+
+设 \((x_n)\) 是 \(\R\) 中的数列. 我们可以定义两个新数列
+\[
+    y_n \coloneqq \sup_{k \geq n} x_k \coloneqq \sup\{\, x_k \;;\; k \geq n \,\}\ ,\quad z_n \coloneqq \inf_{k \geq n} x_k \coloneqq \inf\{\, x_k \;;\; k \geq n \,\}\ .
+\]
+显然, \((y_n)\) 是递减的, 而 \((z_n)\) 是递增的. 于是由命题 \ref{prop:monotone-sequences-is-convergent-in-extR} 可知, \((y_n)\) 和 \((z_n)\) 在 \(\bar \R\) 中收敛且
+\[
+    \lim_{n \to \infty} y_n = \inf_{n \in \N} \bigl(\sup_{k \geq n} x_k\bigr)\ ,\quad \lim_{n \to \infty} z_n = \sup_{n \in \N} \bigl(\inf_{k \geq n} x_k\bigr)\ .
+\]
+因此我们可以做出如下定义.
+
+\begin{definition}[上极限与下极限]
+    设 \((x_n)\) 是 \(\R\) 中的数列. 称
+    \[
+        \limsup_{n \to \infty} x_n \coloneqq \upperlim_{n \to \infty} x_n \coloneqq \inf_{n \in \N} \bigl(\sup_{k \geq n} x_k\bigr) = \lim_{n \to \infty} \bigl(\sup_{k \geq n} x_k\bigr)
+    \]
+    是 \((x_n)\) 的上极限,
+    \[
+        \liminf_{n \to \infty} x_n \coloneqq \underlim_{n \to \infty} x_n \coloneqq \sup_{n \in \N} \bigl(\inf_{k \geq n} x_k\bigr) = \lim_{n \to \infty} \bigl(\inf_{k \geq n} x_k\bigr)
+    \]
+    是 \((x_n)\) 的下极限.
+\end{definition}
+
+接下来我们会看到, 一个数列的上极限和下极限都是该数列的聚点.
+
+\begin{theorem}
+    \(\R\) 中的任意数列 \((x_n)\) 都有一个最小的聚点 \(x_\ast\) 和一个最大的聚点 \(x^\ast\) 且满足
+    \[
+        \liminf_{n \to \infty} x_n = x_\ast\ ,\quad \limsup_{n \to \infty} x_n = x^\ast\ .
+    \]
+\end{theorem}
+
+\begin{proof}
+    令 \(x^\ast \coloneqq \limsup x_n\), \(y_n \coloneqq \sup_{k \geq n} x_k\). 则 \((y_n)\) 是递减数列且
+    \[
+        x^\ast = \inf_{n \in \N} y_n\ .
+    \]
+    下面分三种情况证明 \(x^\ast\) 是 \((x_n)\) 最大的聚点.
+
+    假设 \(x^\ast = - \infty\). 则对于任意 \(K > 0\) 存在 \(n \in \N\) 使得
+    \[
+        - K > y_n = \sup_{k \geq n} x_k\ ,
+    \]
+    即当 \(k \geq n\) 时 \(x_k < - K\). 因此 \((x_n)\) 收敛到 \(- \infty\), 故 \(x^\ast\) 是 \((x_n)\) 唯一的聚点.
+
+    假设 \(x^\ast \in \R\). 由命题 \ref{prop:supremum-and-infimum-in-R} 可知, 对于每个 \(\xi > x^\ast\) 存在 \(n \in \N\) 使得 \(y_n < \xi\), 于是
+    \[
+        x_k \leq y_n < \xi\ ,\quad k \geq n\ .
+    \]
+    因此 \(\B(\xi, \xi - y_n)\) 里仅有 \((x_n)\) 的至多有限项, 故 \(\xi\) 不是 \((x_n)\) 的聚点, 这说明 \((x_n)\) 的聚点不会大于 \(x^\ast\). 只用证明 \(x^\ast\) 本身是 \((x_n)\) 的聚点. 任取 \(\varepsilon > 0\), \(m \in \N\). 注意到 \((y_n)\) 是递减的, 于是由命题 \ref{prop:supremum-and-infimum-in-R} 可知, 存在 \(n \geq m\) 使得
+    \[
+        x^\ast \leq \sup_{k \geq n} x_k = y_n < x^\ast + \varepsilon\ .
+    \]
+    再一次由命题 \ref{prop:supremum-and-infimum-in-R} 可知存在 \(k \geq n \geq m\) 使得
+    \[
+        x^\ast - \varepsilon < x_k \leq \sup_{k \geq n} x_k < x^\ast + \varepsilon\ ,
+    \]
+    因此 \(x^\ast\) 是 \((x_n)\) 的聚点.
+
+    假设 \(x^\ast = \infty\). 则对于任意 \(n \in \N\) 都有 \(y_n = \infty\). 任取 \(K > 0\), \(m \in \N\). 则
+    \[
+        \sup_{k \geq m} x_k = y_m = \infty\ ,
+    \]
+    于是存在 \(k \geq m\) 使得 \(x_k > K\), 因此 \(x^\ast\) 是 \((x_n)\) 的聚点, 显然也是最大的聚点.
+
+    类似可证 \(x_\ast \coloneqq \liminf x_n\) 是 \((x_n)\) 最小的聚点.
+\end{proof}
+
+\begin{example}
+    \begin{enumerate}
+        \item \(\displaystyle \limsup \frac{(- 1)^n n}{n + 1} = 1\), \(\displaystyle \liminf \frac{(- 1)^n n}{n + 1} = - 1\).
+        \item \(\limsup n^{(- 1)^n} = \infty\), \(\liminf n^{(- 1)^n} = 0\).
+    \end{enumerate}
+\end{example}
