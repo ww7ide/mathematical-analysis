@@ -2658,7 +2658,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \[
         x_k \leq y_n < \xi\ ,\quad k \geq n\ .
     \]
-    因此 \(\B(\xi, \xi - y_n)\) 里仅有 \((x_n)\) 的至多有限项, 故 \(\xi\) 不是 \((x_n)\) 的聚点, 这说明 \((x_n)\) 的聚点不会大于 \(x^\ast\). 只用证明 \(x^\ast\) 本身是 \((x_n)\) 的聚点. 任取 \(\varepsilon > 0\), \(m \in \N\). 注意到 \((y_n)\) 是递减的, 于是由命题 \ref{prop:supremum-and-infimum-in-R} 可知, 存在 \(n \geq m\) 使得
+    因此 \(\B(\xi, \xi - y_n)\) 里仅有 \((x_n)\) 的至多有限项, 故 \(\xi\) 不是 \((x_n)\) 的聚点, 这说明 \((x_n)\) 的聚点不会大于 \(x^\ast\). 只用证明 \(x^\ast\) 本身是 \((x_n)\) 的聚点. 任取 \(\varepsilon > 0\), \(m \in \N\). 由于 \((y_n)\) 是递减的, 于是由命题 \ref{prop:supremum-and-infimum-in-R} 可知, 存在 \(n \geq m\) 使得
     \[
         x^\ast \leq \sup_{k \geq n} x_k = y_n < x^\ast + \varepsilon\ .
     \]
@@ -2683,3 +2683,132 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \item \(\limsup n^{(- 1)^n} = \infty\), \(\liminf n^{(- 1)^n} = 0\).
     \end{enumerate}
 \end{example}
+
+\subsection{练习}
+
+\begin{exercise}
+    设 \((x_n)\) 是 \(\R\) 中的数列, \(x_\ast \coloneqq \liminf x_n\), \(x^\ast \coloneqq \limsup x_n\). 假设 \(x_\ast, x^\ast \in \R\). 证明对于任意 \(\varepsilon > 0\) 存在 \(N \in \N\) 使得
+    \[
+        x_\ast - \varepsilon < x_n < x^\ast + \varepsilon\ ,\quad n \geq N\ .
+    \]
+    在 \(x_\ast = - \infty\) 和 \(x^\ast = \infty\) 的情况下, 该命题需要修改什么?
+\end{exercise}
+
+\begin{proof}
+    任取 \(\varepsilon > 0\). 令 \(y_n \coloneqq \sup_{k \geq n} x_k\), \(z_n \coloneqq \inf_{k \geq n} x_k\). 则
+    \[
+        x_\ast = \sup_{n \in \N} z_n \leq \inf_{n \in \N} y_n = x^\ast\ .
+    \]
+    于是存在 \(m_1, m_2 \in \N\) 使得
+    \[
+        \sup_{k \geq m_1} x_k = y_{m_1} < x^\ast + \varepsilon\ ,\quad \inf_{k \geq m_2} x_k = z_{m_2} > x_\ast - \varepsilon\ .
+    \]
+    令 \(N \coloneqq \max\{m_1, m_2\}\), 因此
+    \[
+        x_\ast - \varepsilon < \inf_{k \geq m_2} x_k \leq x_k \leq \sup_{k \geq m_1} x_k < x^\ast + \varepsilon\ ,\quad k \geq N\ .
+    \]
+    若 \(x_\ast = - \infty\), \(x^\ast = \infty\), 则该命题平凡的成立.
+\end{proof}
+
+\begin{exercise}
+    设 \((x_n)\) 和 \((y_n)\) 是 \(\R\) 中的数列,
+    \[
+        x_\ast \coloneqq \liminf x_n\ ,\quad x^\ast \coloneqq \limsup x_n\ ,\quad y_\ast \coloneqq \liminf y_n\ ,\quad y^\ast \coloneqq \limsup y_n\ .
+    \]
+    证明以下命题.
+    \begin{enumerate}
+        \item \(\limsup (- x_n) = - x_\ast\).
+        \item 若 \((x_\ast, y_\ast), (x_\ast, y^\ast), (x^\ast, y^\ast) \notin \bigl\{(\infty, - \infty), (- \infty, \infty)\bigr\}\), 则
+        \[
+            x_\ast + y_\ast \leq \liminf (x_n + y_n) \leq x_\ast + y^\ast \leq \limsup (x_n + y_n) \leq x^\ast + y^\ast\ .
+        \]
+        \item 若 \((x_n)\) 和 \((y_n)\) 是非负数列且 \((x_\ast, y_\ast), (x_\ast, y^\ast), (x^\ast, y^\ast) \notin \bigl\{(0, \infty), (\infty, 0)\bigr\}\), 则
+        \[
+            0 \leq x_\ast y_\ast \leq \liminf x_n y_n \leq x_\ast y^\ast \leq \limsup x_n y_n \leq x^\ast y^\ast\ .
+        \]
+        \item 若 \((y_n)\) 收敛到 \(y \in \R\), 则
+        \[
+            \limsup (x_n + y_n) = x^\ast + y\ ,\quad \liminf (x_n + y_n) = x_\ast + y\ ,
+        \]
+        且
+        \[
+            \limsup x_n y_n =
+            \begin{cases}
+                x^\ast y\ , & y > 0\ , \\
+                x_\ast y\ , & y < 0\ .
+            \end{cases}
+        \]
+        \item 若对于任意 \(n \in \N\) 都有 \(x_n \leq y_n\), 则
+        \[
+            \liminf x_n \leq \liminf y_n\ ,\quad \limsup x_n \leq \limsup y_n\ .
+        \]
+    \end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    (1). 我们先证明对于任意非空集合 \(X \subseteq \R\) 都有
+    \[
+        \sup_{x \in X} (- x) = - \inf_{x \in X} x\ ,\quad \inf_{x \in X} (- x) = - \sup_{x \in X} x\ .
+    \]
+    令 \(y \coloneqq \sup_{x \in X} (- x)\). 则对于任意 \(x \in X\) 都有 \(- x \leq y\), 即 \(x \geq - y\), 因此 \(- y\) 是 \(X\) 的下界. 容易证明 \(- y\) 也是 \(X\) 的下确界, 于是 \(\sup (- X) = - \inf X\). 同理可得 \(\inf (- X) = - \sup X\). 因此
+    \[
+        \limsup (- x_n) = \inf_{n \in \N} \bigl(\sup_{k \geq n} (- x_k)\bigr) = \inf_{n \in \N} \bigl(- \inf_{k \geq n} x_k\bigr) = - \sup_{n \in \N} \bigl(\inf_{k \geq n} x_k\bigr) = - \liminf x_n = - x_\ast\ .
+    \]
+
+    (2). 由于
+    \[
+        \sup_{k \geq n} (x_k + y_k) \leq \sup_{k \geq n} x_k + \sup_{k \geq n} y_k\ ,\quad \inf_{k \geq n} (x_k + y_k) \geq \inf_{k \geq n} x_k + \inf_{k \geq n} y_k\ ,\quad n \in \N\ ,
+    \]
+    因此由极限的保序性可知
+    \begin{align*}
+        \limsup (x_n + y_n) \leq \lim \bigl(\sup_{k \geq n} x_k + \sup_{k \geq n} y_k\bigr) = \limsup x_n + \limsup y_n = x^\ast + y^\ast\ ,\\
+        \liminf (x_n + y_n) \geq \lim \bigl(\inf_{k \geq n} x_k + \inf_{k \geq n} y_k\bigr) = \liminf x_n + \liminf y_n = x_\ast + y_\ast\ .
+    \end{align*}
+    而
+    \begin{align*}
+        \sup_{k \geq n} (x_k + y_k) \geq \sup_{k \geq n} \bigl(y_k + \inf_{j \geq n} x_j\bigr) = \inf_{k \geq n} x_k + \sup_{k \geq n} y_k\ ,\quad n \in \N\ ,\\
+        \inf_{k \geq n} (x_k + y_k) \leq \inf_{k \geq n} \bigl(x_k + \sup_{j \geq n} y_j\bigr) = \inf_{k \geq n} x_k + \sup_{k \geq n} y_k\ ,\quad n \in \N\ ,
+    \end{align*}
+    因此由极限的保序性可知
+    \[
+        \liminf (x_n + y_n) \leq \lim \bigl(\inf_{k \geq n} x_k + \sup_{k \geq n} y_k\bigr) = \liminf x_n + \limsup y_n = x_\ast + y^\ast \leq \limsup (x_n + y_n)\ .
+    \]
+
+    (3). 由于 \((x_n)\) 和 \((y_n)\) 非负, 于是
+    \[
+        \sup_{k \geq n} x_k y_k \leq \sup_{k \geq n} x_k \sup_{k \geq n} y_k\ ,\quad \inf_{k \geq n} x_k y_k \geq \inf_{k \geq n} x_k \inf_{k \geq n} y_k\ ,\quad n \in \N\ ,
+    \]
+    因此由极限的保序性可知
+    \begin{align*}
+        \limsup x_n y_n \leq \lim \bigl(\sup_{k \geq n} x_k \sup_{k \geq n} y_k\bigr) = \limsup x_n \limsup y_n = x^\ast y^\ast\ ,\\
+        \liminf x_n y_n \geq \lim \bigl(\inf_{k \geq n} x_k \inf_{k \geq n} y_k\bigr) = \liminf x_n \liminf y_n = x_\ast y_\ast\ .
+    \end{align*}
+    而
+    \begin{align*}
+        \sup_{k \geq n} x_k y_k \geq \sup_{k \geq n} \bigl(y_k \inf_{j \geq n} x_j\bigr) = \inf_{k \geq n} x_k \sup_{k \geq n} y_k\ ,\quad n \in \N\ ,\\
+        \inf_{k \geq n} x_k y_k \leq \inf_{k \geq n} \bigl(x_k \sup_{j \geq n} y_j\bigr) = \inf_{k \geq n} x_k \sup_{k \geq n} y_k\ ,\quad n \in \N\ ,
+    \end{align*}
+    因此由极限的保序性可知
+    \[
+        \liminf x_n y_n \leq \lim \bigl(\inf_{k \geq n} x_k \sup_{k \geq n} y_k\bigr) = \liminf x_n \limsup y_n = x_\ast y^\ast \leq \limsup x_n y_n\ .
+    \]
+
+    (4). 由于 \((y_n)\) 收敛到 \(y\), 故 \(y = y_\ast = y^\ast\). 由 (2) 可知
+    \begin{align*}
+        x^\ast + y = x^\ast + y_\ast \leq \limsup (x_n + y_n) \leq x^\ast + y^\ast = x^\ast + y\ ,\\
+        x_\ast + y = x_\ast + y_\ast \leq \liminf (x_n + y_n) \leq x_\ast + y^\ast = x_\ast + y\ .
+    \end{align*}
+
+    设 \(y > 0\). 令 \(\alpha \coloneqq \limsup x_n y_n\). 先证明 \(\limsup x_n y_n \leq x^\ast y\). 由于 \(\alpha\) 是 \((x_n y_n)\) 的聚点, 故 \((x_n y_n)\) 存在子数列 \((x_{n_k} y_{n_k})\) 收敛到 \(\alpha\). 而 \(y_{n_k} \to y > 0\), 于是 \(x_{n_k} = x_{n_k} y_{n_k} / y_{n_k} \to \alpha / y\), 因此 \(\alpha / y\) 是 \((x_n)\) 的聚点. 注意到 \(x^\ast\) 是 \((x_n)\) 最大的聚点, 于是 \(\alpha / y \leq x^\ast\), 即 \(\alpha \leq x^\ast y\). 再证明 \(x^\ast y \leq \limsup x_n y_n\). 由于 \(x^\ast\) 是 \((x_n)\) 的聚点, 故 \((x_n)\) 存在子数列 \((x_{n_k})\) 收敛到 \(x^\ast\). 而 \(y_{n_k} \to y\), 于是 \(x_{n_k} y_{n_k} \to x^\ast y\), 因此 \(x^\ast y\) 是 \((x_n y_n)\) 的聚点. 注意到 \(\alpha\) 是 \((x_n y_n)\) 最大的聚点, 于是 \(x^\ast y \leq \alpha\).
+
+    设 \(y < 0\). 令 \(z_n \coloneqq - x_n\), \(z^\ast \coloneqq \limsup z_n = - \liminf x_n = - x_\ast\). 由于 \(- y_n \to - y > 0\), 于是
+    \[
+        \limsup x_n y_n = \limsup z_n (- y_n) = z^\ast (- y) = x_\ast y\ .
+    \]
+
+    (5). 先证明
+    \[
+        \inf_{k \geq n} x_k \leq \inf_{k \geq n} y_k\ ,\quad n \in \N\ .
+    \]
+    假设存在 \(n \in \N\) 使得 \(\inf_{k \geq n} x_k > \inf_{k \geq n} y_k\). 则存在 \(m \geq n\) 使得 \(y_m < \inf_{k \geq n} x_k\), 因此 \(y_m < x_m\), 矛盾. 于是由极限的保序性可知 \(\liminf x_n \leq \liminf y_n\). 同理可得 \(\limsup x_n \leq \limsup y_n\).
+\end{proof}
