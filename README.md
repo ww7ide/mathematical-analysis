@@ -99,6 +99,8 @@ Section 5 Infinite Limits
 
           Exercises                             12 12, 25
 
+          Exercises                             12 13, 25
+
 Section 6 Completeness
 Section 7 Series
 Section 8 Absolute Convergence

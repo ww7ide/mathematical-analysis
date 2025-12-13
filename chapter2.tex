@@ -403,11 +403,27 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{example}
 
 \begin{proposition}\label{prop:convergent-sequence-to-subsequence}
-    若序列 \((x_n)\) 收敛到点 \(a\), 则 \((x_n)\) 的每个子序列 \((x_{n_k})\) 也收敛且以 \(a\) 为极限.
+    序列 \((x_n)\) 收敛到点 \(a\), 当且仅当 \((x_n)\) 的每个子序列 \((x_{n_k})\) 都收敛且以 \(a\) 为极限.
 \end{proposition}
 
 \begin{proof}
-    任取 \(U \in \nbr(a)\). 则存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(x_n \in U\). 由子序列的定义可知, 对于任意 \(k \in \N\) 有 \(n_k \geq k\), 因此当 \(k \geq N\) 时 \(n_k \geq N\), 于是 \(x_{n_k} \in U\). 即 \((x_{n_k})\) 收敛到 \(a\).
+    \(\implies\). 设 \((x_n)\) 收敛到 \(a\). 任取 \(U \in \nbr(a)\). 则存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(x_n \in U\). 由子序列的定义可知, 对于任意 \(k \in \N\) 都有 \(n_k \geq k\), 因此当 \(k \geq N\) 时 \(n_k \geq N\), 于是 \(x_{n_k} \in U\). 即 \((x_{n_k})\) 收敛到 \(a\).
+
+    \(\impliedby\). 设 \((x_n)\) 的每个子序列 \((x_{n_k})\) 都收敛到 \(a\). 注意到原序列是自身的子序列, 因此显然成立.
+\end{proof}
+
+\begin{corollary}
+    序列 \((x_n)\) 收敛到点 \(a\), 当且仅当 \((x_n)\) 的奇序列 \((x_{2 n + 1})\) 和偶序列 \((x_{2 n})\) 都收敛且以 \(a\) 为极限.
+\end{corollary}
+
+\begin{proof}
+    \(\implies\). 设 \((x_n)\) 收敛到 \(a\). 由命题 \ref{prop:convergent-sequence-to-subsequence} 可知 \((x_{2 n + 1})\) 和 \((x_{2 n})\) 收敛到 \(a\).
+
+    \(\impliedby\). 设 \((x_{2 n + 1})\) 和 \((x_{2 n})\) 收敛到 \(a\). 任取 \(U \in \nbr(a)\). 则存在 \(M, N \in \N\) 使得
+    \[
+        x_{2 n + 1} \in U\ ,\quad x_{2 n} \in U\ ,\quad n \geq \max\{M, N\}\ ,
+    \]
+    于是当 \(n \geq 2 \max\{M, N\}\) 时 \(x_n \in U\). 即 \((x_n)\) 收敛到 \(a\).
 \end{proof}
 
 \begin{example}
@@ -2281,13 +2297,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \[
         y = \lim y_{n + 1} = \lim \frac{a (1 + y_n)}{1 + y_n + a} = \frac{a (1 + y)}{1 + y + a}\ ,
     \]
-    解得 \(y = L\) 或 \(y = - L - 1\), 而 \(- L - 1 < 0\), 因此 \(y = L\). 当 \(y_0 \leq L\) 时, 同理可得 \((y_n)\) 收敛到 \(L\). 类似的, 可得 \((z_n)\) 收敛到 \(L\).
-
-    任取 \(\varepsilon > 0\). 由于 \(\lim y_n = \lim z_n = L\), 故存在 \(M, N \in \N\) 使得当 \(n \geq \max\{M, N\}\) 时
-    \[
-        |y_n - L| = |x_{2 n} - L| < \varepsilon\ ,\quad |z_n - L| = |x_{2 n + 1} - L| < \varepsilon\ ,
-    \]
-    即当 \(n \geq 2 \max\{M, N\}\) 时 \(|x_n - L| < \varepsilon\), 故 \((x_n)\) 收敛到 \(L\).
+    解得 \(y = L\) 或 \(y = - L - 1\), 而 \(- L - 1 < 0\), 因此 \(y = L\). 当 \(y_0 \leq L\) 时, 同理可得 \((y_n)\) 收敛到 \(L\). 类似可得 \((z_n)\) 收敛到 \(L\). 故 \((x_n)\) 收敛到 \(L\).
 \end{proof}
 
 \begin{exercise}
@@ -2632,12 +2642,48 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     是 \((x_n)\) 的下极限.
 \end{definition}
 
+\begin{proposition}\label{prop:limit-superior-and-inferior-with-limits}
+    设 \((x_n)\) 是 \(\R\) 中的数列.
+    \begin{enumerate}
+        \item 若 \(\liminf x_n = \infty\), 则 \((x_n)\) 收敛到 \(\infty\).
+        \item 若 \(\limsup x_n = - \infty\), 则 \((x_n)\) 收敛到 \(- \infty\).
+        \item 若 \(\liminf x_n, \limsup x_n \in \R\), 则对于任意 \(\varepsilon > 0\) 存在 \(N \in \N\) 使得
+        \[
+            \liminf x_n - \varepsilon < x_n < \limsup x_n + \varepsilon\ ,\quad n \geq N\ .
+        \]
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    令
+    \[
+        x^\ast \coloneqq \limsup x_n\ ,\quad y_n \coloneqq \sup_{k \geq n} x_k\ ,\quad x_\ast \coloneqq \liminf x_n\ ,\quad z_n \coloneqq \inf_{k \geq n} x_k\ .
+    \]
+
+    (1). 由下极限的定义可知 \(x_\ast = \sup_{n \in \N} z_n = \infty\), 则对于任意 \(K > 0\) 存在 \(n \in \N\) 使得
+    \[
+        z_n = \inf_{k \geq n} x_k > K\ ,
+    \]
+    即当 \(k \geq n\) 时 \(x_k > K\). 因此 \((x_n)\) 收敛到 \(\infty\).
+
+    (2). 与 (1) 类似可证 \((x_n)\) 收敛到 \(- \infty\).
+
+    (3). 由下极限与上极限的定义可知 \(x_\ast = \sup_{n \in \N} z_n\) 且 \(x^\ast = \inf_{n \in \N} y_n\), 则由命题 \ref{prop:supremum-and-infimum-in-R} 可知, 存在 \(n, m \in \N\) 使得
+    \[
+        z_n = \inf_{k \geq n} x_k > x_\ast - \varepsilon\ ,\quad y_m = \sup_{k \geq m} x_k < x^\ast + \varepsilon\ ,
+    \]
+    即当 \(k \geq n\) 时 \(x_k > x_\ast - \varepsilon\), 当 \(k \geq m\) 时 \(x_k < x^\ast + \varepsilon\). 因此
+    \[
+        x_\ast - \varepsilon < x_k < x^\ast + \varepsilon\ ,\quad k \geq \max\{m, n\}\ .
+    \]
+\end{proof}
+
 接下来我们会看到, 一个数列的上极限和下极限都是该数列的聚点.
 
-\begin{theorem}
+\begin{theorem}\label{thm:limit-superior-and-inferior-with-cluster-point}
     \(\R\) 中的任意数列 \((x_n)\) 都有一个最小的聚点 \(x_\ast\) 和一个最大的聚点 \(x^\ast\) 且满足
     \[
-        \liminf_{n \to \infty} x_n = x_\ast\ ,\quad \limsup_{n \to \infty} x_n = x^\ast\ .
+        \liminf x_n = x_\ast\ ,\quad \limsup x_n = x^\ast\ .
     \]
 \end{theorem}
 
@@ -2648,11 +2694,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \]
     下面分三种情况证明 \(x^\ast\) 是 \((x_n)\) 最大的聚点.
 
-    假设 \(x^\ast = - \infty\). 则对于任意 \(K > 0\) 存在 \(n \in \N\) 使得
-    \[
-        - K > y_n = \sup_{k \geq n} x_k\ ,
-    \]
-    即当 \(k \geq n\) 时 \(x_k < - K\). 因此 \((x_n)\) 收敛到 \(- \infty\), 故 \(x^\ast\) 是 \((x_n)\) 唯一的聚点.
+    假设 \(x^\ast = - \infty\). 命题 \ref{prop:limit-superior-and-inferior-with-limits} 可知 \((x_n)\) 收敛到 \(- \infty\), 故 \(x^\ast\) 是 \((x_n)\) 唯一的聚点.
 
     假设 \(x^\ast \in \R\). 由命题 \ref{prop:supremum-and-infimum-in-R} 可知, 对于每个 \(\xi > x^\ast\) 存在 \(n \in \N\) 使得 \(y_n < \xi\), 于是
     \[
@@ -2683,6 +2725,25 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \item \(\limsup n^{(- 1)^n} = \infty\), \(\liminf n^{(- 1)^n} = 0\).
     \end{enumerate}
 \end{example}
+
+\begin{theorem}
+    设 \((x_n)\) 是 \(\R\) 中的数列. 则 \((x_n)\) 在 \(\bar \R\) 中收敛当且仅当
+    \[
+        \limsup x_n \leq \liminf x_n\ .
+    \]
+    进一步, 若 \((x_n)\) 收敛, 则
+    \[
+        \lim x_n = \liminf x_n = \limsup x_n\ .
+    \]
+\end{theorem}
+
+\begin{proof}
+    \(\implies\). 设 \((x_n)\) 收敛到 \(x \in \bar \R\). 则 \(x\) 是 \((x_n)\) 唯一的聚点, 因此由定理 \ref{thm:limit-superior-and-inferior-with-cluster-point} 可知 \(\limsup x_n \leq \liminf x_n\).
+
+    \(\impliedby\). 设 \(\limsup x_n \leq \liminf x_n\). 则由定理 \ref{thm:limit-superior-and-inferior-with-cluster-point} 可知 \(x \coloneqq \limsup x_n = \liminf x_n\) 是 \((x_n)\) 唯一的聚点. 若 \(x = \pm \infty\). 由命题 \ref{prop:limit-superior-and-inferior-with-limits} 可知 \((x_n)\) 收敛到 \(\pm \infty\). 若 \(x \in \R\). 任取 \(\varepsilon > 0\). 由命题 \ref{prop:limit-superior-and-inferior-with-limits} 可知存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(x - \varepsilon < x_n < x + \varepsilon\), 因此 \((x_n)\) 收敛到 \(x\).
+\end{proof}
+
+\subsection{Bolzano-Weierstrass 定理}
 
 \subsection{练习}
 
@@ -2811,4 +2872,120 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \inf_{k \geq n} x_k \leq \inf_{k \geq n} y_k\ ,\quad n \in \N\ .
     \]
     假设存在 \(n \in \N\) 使得 \(\inf_{k \geq n} x_k > \inf_{k \geq n} y_k\). 则存在 \(m \geq n\) 使得 \(y_m < \inf_{k \geq n} x_k\), 因此 \(y_m < x_m\), 矛盾. 于是由极限的保序性可知 \(\liminf x_n \leq \liminf y_n\). 同理可得 \(\limsup x_n \leq \limsup y_n\).
+\end{proof}
+
+\begin{exercise}
+    设 \(x_n \coloneqq 2^n \bigl(1 + (- 1)^n\bigr) + 1\). 求出以下内容.
+    \[
+        \begin{array}{lll}
+            \liminf x_n\ , & \liminf x_{n + 1} / x_n\ , & \liminf \sqrt[n]{x_n}\ , \\
+            \limsup x_n\ , & \limsup x_{n + 1} / x_n\ , & \limsup \sqrt[n]{x_n}\ .
+        \end{array}
+    \]
+\end{exercise}
+
+\begin{proof}
+    显然 \(\liminf x_n = 1\), \(\limsup x_n = \infty\).
+    \[
+        \frac{x_{n + 1}}{x_n} = \frac{2^{n + 1} \bigl(1 + (- 1)^{n + 1}\bigr) + 1}{2^n \bigl(1 + (- 1)^n\bigr) + 1}\ ,
+    \]
+    \(\liminf x_{n + 1} / x_n = 0\), \(\limsup x_{n + 1} / x_n = \infty\).
+    \[
+        \sqrt[n]{x_n} = \sqrt[n]{2^n \bigl(1 + (- 1)^n\bigr) + 1}\ ,
+    \]
+    \(\liminf \sqrt[n]{x_n} = 1\), \(\limsup \sqrt[n]{x_n} = 2\).
+\end{proof}
+
+\begin{exercise}
+    设 \((x_n)\) 是 \((0, \infty)\) 中的数列. 证明
+    \[
+        \liminf \frac{x_{n + 1}}{x_n} \leq \liminf \sqrt[n]{x_n} \leq \limsup \sqrt[n]{x_n} \leq \limsup \frac{x_{n + 1}}{x_n}\ .
+    \]
+    (提示: 若 \(q < \liminf x_{n + 1} / x_n\), 则对于任意 \(n \geq n(q)\) 都有 \(x_{n + 1} / x_n \geq q\).)
+\end{exercise}
+
+\begin{proof}
+    由上极限与下极限和聚点的关系可知 \(\liminf \sqrt[n]{x_n} \leq \limsup \sqrt[n]{x_n}\). 令
+    \[
+        a_n \coloneqq x_{n + 1} / x_n\ ,\quad a_\ast \coloneqq \liminf a_n\ ,\quad a^\ast \coloneqq \limsup a_n\ .
+    \]
+    先证明 \(a_\ast \leq \liminf \sqrt[n]{x_n}\). 若 \(a_\ast = 0\), 则显然成立. 设 \(a_\ast > 0\). 任取 \(0 < \varepsilon < a_\ast\). 则存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(a_n > a_\ast - \varepsilon\). 于是
+    \[
+        x_n = x_N \frac{x_{N + 1}}{x_N} \frac{x_{N + 2}}{x_{N + 1}} \cdots \frac{x_n}{x_{n - 1}} = x_N \prod_{j = N}^{n - 1} a_j > x_N \prod_{j = N}^{n - 1} (a_\ast - \varepsilon) = x_N (a_\ast - \varepsilon)^{n - N}\ ,\quad n \geq N\ ,
+    \]
+    则 \(\sqrt[n]{x_n} > \sqrt[n]{x_N} (a_\ast - \varepsilon)^{1 - N / n}\), 而\(\sqrt[n]{x_N} (a_\ast - \varepsilon)^{1 - N / n} \to a_\ast - \varepsilon\). 令 \(n \to \infty\), 由下极限的保序性可知
+    \[
+        \liminf \sqrt[n]{x_n} \geq \liminf \sqrt[n]{x_N} (a_\ast - \varepsilon)^{1 - N / n} = \lim \sqrt[n]{x_N} (a_\ast - \varepsilon)^{1 - N / n} = a_\ast - \varepsilon\ .
+    \]
+    令 \(\varepsilon \to 0\), 由极限的保序性可知 \(\liminf \sqrt[n]{x_n} \geq a_\ast\). 类似可证 \(\limsup \sqrt[n]{x_n} \leq a^\ast\).
+\end{proof}
+
+\begin{exercise}
+    \begin{enumerate}
+        \item 证明函数
+        \[
+            \varphi \colon \bar \R \to [- 1, 1]\ ,\quad x \mapsto \varphi(x) \coloneqq
+            \begin{cases}
+                - 1\ ,           & x = - \infty\ , \\
+                x / (1 + |x|)\ , & x \in \R\ , \\
+                1\ ,             & x = \infty
+            \end{cases}
+        \]
+        是严格递增的双射.
+        \item 证明函数
+        \[
+            d \colon \bar \R \times \bar \R \to \R\ ,\quad (x, y) \mapsto |\varphi(x) - \varphi(y)|
+        \]
+        是 \(\bar \R\) 上的度量.
+    \end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    (1). 先证明 \(\varphi\) 是严格递增的. 设 \(x_1, x_2 \in \R\) 且 \(x_1 < x_2\). 于是
+    \[
+        \varphi(x_1) - \varphi(x_2) = \frac{x_1}{1 + |x_1|} - \frac{x_2}{1 + |x_2|} = \frac{x_1 - x_2 + x_1 |x_2| - x_2 |x_1|}{(1 + |x_1|) (1 + |x_2|)}\ ,
+    \]
+    而 \(x_1 - x_2 < 0\) 且
+    \[
+        \begin{array}{ll}
+            x_1 |x_2| - x_2 |x_1| = - x_1 x_2 + x_2 x_1 = 0\ , & x_1 < x_2 \leq 0\ , \\
+            x_1 |x_2| - x_2 |x_1| = x_1 x_2 + x_2 x_1 = 2 x_1 x_2 \leq 0\ , & x_1 \leq 0 < x_2\ , \\
+            x_1 |x_2| - x_2 |x_1| = x_1 x_2 - x_2 x_1 = 0\ , & 0 < x_1 < x_2\ .
+        \end{array}
+    \]
+    因此 \(\varphi(x_1) < \varphi(x_2)\). 显然对于任意 \(x \in \R\) 都有 \(\varphi(- \infty) = - 1 < \varphi(x) < 1 = \varphi(\infty)\). 故 \(\varphi\) 是严格递增的. 下面证明 \(\varphi\) 是双射. 考虑函数
+    \[
+        \psi \colon [- 1, 1] \to \bar \R\ ,\quad y \mapsto \psi(y) \coloneqq
+        \begin{cases}
+            - \infty\ ,      & y = - 1\ , \\
+            y / (1 - |y|)\ , & y \in (- 1, 1)\ , \\
+            \infty\ ,        & y = 1\ .
+        \end{cases}
+    \]
+    不难验证 \(\psi \circ \varphi = \id_{\bar \R}\) 且 \(\varphi \circ \psi = \id_{[- 1, 1]}\), 因此 \(\varphi\) 是双射.
+
+    (2). 由于 \(\varphi\) 是单射, 故 \(\varphi(x) = \varphi(y)\) 当且仅当 \(x = y\), 即 \(d(x, y) = 0\) 当且仅当 \(x = y\), 因此 \((\mathrm M_1)\) 成立. 而 \((\mathrm M_2)\) 和 \((\mathrm M_3)\) 显然成立.
+\end{proof}
+
+\begin{exercise}
+    设数列
+    \[
+        (x_n) \coloneqq (0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, \ldots)\ ,\quad (y_n) \coloneqq (2, 1, 1, 0, 2, 1, 1, 0, 2, 1, 1, 0, \ldots)\ .
+    \]
+    求出以下内容.
+    \[
+        \begin{array}{lll}
+            \liminf x_n + \liminf y_n\ , & \liminf (x_n + y_n)\ , & \liminf x_n + \limsup y_n\ ,\\
+            \limsup x_n + \limsup y_n\ , & \limsup (x_n + y_n)\ . &
+        \end{array}
+    \]
+\end{exercise}
+
+\begin{proof}
+    \[
+        \begin{array}{lll}
+            \liminf x_n + \liminf y_n = 0\ , & \liminf (x_n + y_n) = 1\ , & \liminf x_n + \limsup y_n = 2\ ,\\
+            \limsup x_n + \limsup y_n = 4\ , & \limsup (x_n + y_n) = 3\ . &
+        \end{array}
+    \]
 \end{proof}
