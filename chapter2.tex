@@ -127,12 +127,12 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \]
         是 \(\K\) 上的度量, 称为自然度量.
         \begin{proof}
-            由命题 \ref{prop:abs-in-Q} 可以直接验证 \(|\!\cdot\!|\) 满足度量公理.
+            由命题 \ref{prop:abs-in-C} 可以直接验证 \(|\!\cdot\!|\) 满足度量公理.
         \end{proof}
     \end{enumerate}
 
     \begin{center}
-        \kaishu 除非另有说明, 否则默认 \(\K\) 是赋予了自然度量的度量空间.
+        \kaishu 除非另有说明, 否则默认 \(\K\) 是赋予了自然度量的度量空间.\footnote{注意, 在这样的约定下, 上文给出的关于开球和闭球的定义 (应用于 \(\K\)) 与第 1.11 节中给出的定义是一致的.}
     \end{center}
 
     \begin{enumerate}[start=2]
@@ -158,7 +158,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \end{enumerate}
 \end{example}
 
-度量公理的一个重要结论是反三角不等式 (见推论 \ref{cor:reversed-triangle-inequality-in-Q}).
+度量公理的一个重要结论是反三角不等式 (见推论 \ref{cor:reversed-triangle-inequality-in-C}).
 
 \begin{proposition}[反三角不等式]\label{prop:reversed-triangle-inequality-in-metric-space}
     设 \((X, d)\) 是度量空间. 则
@@ -209,7 +209,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \subsection{聚点}
 
 \begin{definition}[聚点]
-    称 \(a \in X\) 是 \((x_n)\) 的聚点, 若 \(a\) 的每个邻域都包含了 \((x_n)\) 的无穷多项.
+    若 \(a \in X\) 的任意邻域都包含了序列 \((x_n)\) 的无穷多项, 则称 \(a\) 是 \((x_n)\) 的聚点.
 \end{definition}
 
 在讨论一些具体例子之前, 先给出下面这个关于聚点的刻画会对之后的讨论很有帮助.
@@ -247,9 +247,9 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \subsection{收敛性}
 
 \begin{definition}[收敛]
-    称序列 \((x_n)\) 收敛, 若存在 \(a \in X\) 使得 \(a\) 的任意邻域都包含了 \((x_n)\) 的几乎所有项. 记作
+    若存在 \(a \in X\) 使得 \(a\) 的任意邻域都包含了序列 \((x_n)\) 的几乎所有项, 则称 \((x_n)\) 收敛, 记作\footnote{在不会引起混淆的情况下, 我们同样记作 \(\lim x_n = a\) 或 \(x_n \to a\).}
     \[
-        \lim_{n \to \infty} x_n = a\quad \text{或}\quad x_n \to a\quad (n \to \infty)\ ,
+        \lim_{n \to \infty} x_n = a\quad \text{或}\quad x_n \to a\quad (n \to \infty)\ .
     \]
     并称当 \(n\) 趋于无穷大时, \((x_n)\) 收敛到 \(a\) 或以 \(a\) 为极限. 若 \((x_n)\) 不收敛, 则称 \((x_n)\) 发散.
 \end{definition}
@@ -262,8 +262,8 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     以下命题是等价的.
     \begin{enumerate}
         \item \(\lim x_n = a\).
-        \item 对于任意 \(U \in \nbr(a)\), 存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(x_n \in U\).
-        \item 对于任意 \(\varepsilon > 0\), 存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(x_n \in \B(a, \varepsilon)\).
+        \item 对于任意 \(U \in \nbr(a)\), 存在\footnote{我们使用这样的符号来表示数字 \(N\), 是由于 \(N\) 通常依赖于 \(U\).} \(N \coloneqq N(U) \in \N\) 使得当 \(n \geq N\) 时 \(x_n \in U\).
+        \item 对于任意 \(\varepsilon > 0\), 存在\footnote{我们使用这样的符号来表示数字 \(N\), 是由于 \(N\) 通常依赖于 \(\varepsilon\).} \(N \coloneqq N(\varepsilon) \in \N\) 使得当 \(n \geq N\) 时 \(x_n \in \B(a, \varepsilon)\).
     \end{enumerate}
 \end{proposition}
 
@@ -306,7 +306,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \end{proof}
         \item 常序列 \((a, a, a, \ldots)\) 收敛到 \(a\).
         \item 实数列 \(\bigl((- 1)^n\bigr)\) 发散.
-        \item 设 \(X\) 是度量空间 \((X_j, d_j),\ 1 \leq j \leq m\) 的积空间. 则序列 \((x_n) = \bigl((x_n^1, \ldots, x_n^m)\bigr)\) 收敛到点 \(a \coloneqq (a^1, \ldots, a^m) \in X\) 当且仅当对于每个 \(j \in \{1, \ldots, m\}\) 都有序列 \((x_n^j)\) 收敛到点 \(a^j \in X_j\).
+        \item 设 \(X\) 是度量空间 \((X_j, d_j),\ 1 \leq j \leq m\) 的积空间. 则序列\footnote{在这之后, 对于 \(x \in X\) 和 \(1 \leq j \leq m\), 我们通常记 \(x^j \coloneqq \pr_j(x)\). 即使在 \(X_j = \K\) 的情况下, 根据上下文也能清晰的分辨出 \(x^j\) 是积空间中点的分量还是 \(x\) 的幂.} \((x_n) = \bigl((x_n^1, \ldots, x_n^m)\bigr)\) 收敛到点 \(a \coloneqq (a^1, \ldots, a^m) \in X\) 当且仅当对于每个 \(j \in \{1, \ldots, m\}\) 都有序列 \((x_n^j)\) 收敛到点 \(a^j \in X_j\).
         \begin{proof}
             \(\implies\). 设 \((x_n)\) 收敛到点 \(a\). 则任取 \(\varepsilon > 0\), 存在 \(N \in \N\) 使得
             \[
@@ -403,27 +403,11 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{example}
 
 \begin{proposition}\label{prop:convergent-sequence-to-subsequence}
-    序列 \((x_n)\) 收敛到点 \(a\), 当且仅当 \((x_n)\) 的每个子序列 \((x_{n_k})\) 都收敛且以 \(a\) 为极限.
+    若序列 \((x_n)\) 收敛到点 \(a\), 则 \((x_n)\) 的每个子序列 \((x_{n_k})\) 都收敛且以 \(a\) 为极限.
 \end{proposition}
 
 \begin{proof}
-    \(\implies\). 设 \((x_n)\) 收敛到 \(a\). 任取 \(U \in \nbr(a)\). 则存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(x_n \in U\). 由子序列的定义可知, 对于任意 \(k \in \N\) 都有 \(n_k \geq k\), 因此当 \(k \geq N\) 时 \(n_k \geq N\), 于是 \(x_{n_k} \in U\). 即 \((x_{n_k})\) 收敛到 \(a\).
-
-    \(\impliedby\). 设 \((x_n)\) 的每个子序列 \((x_{n_k})\) 都收敛到 \(a\). 注意到原序列是自身的子序列, 因此显然成立.
-\end{proof}
-
-\begin{corollary}
-    序列 \((x_n)\) 收敛到点 \(a\), 当且仅当 \((x_n)\) 的奇序列 \((x_{2 n + 1})\) 和偶序列 \((x_{2 n})\) 都收敛且以 \(a\) 为极限.
-\end{corollary}
-
-\begin{proof}
-    \(\implies\). 设 \((x_n)\) 收敛到 \(a\). 由命题 \ref{prop:convergent-sequence-to-subsequence} 可知 \((x_{2 n + 1})\) 和 \((x_{2 n})\) 收敛到 \(a\).
-
-    \(\impliedby\). 设 \((x_{2 n + 1})\) 和 \((x_{2 n})\) 收敛到 \(a\). 任取 \(U \in \nbr(a)\). 则存在 \(M, N \in \N\) 使得
-    \[
-        x_{2 n + 1} \in U\ ,\quad x_{2 n} \in U\ ,\quad n \geq \max\{M, N\}\ ,
-    \]
-    于是当 \(n \geq 2 \max\{M, N\}\) 时 \(x_n \in U\). 即 \((x_n)\) 收敛到 \(a\).
+    设 \((x_n)\) 收敛到 \(a\). 任取 \(U \in \nbr(a)\). 则存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(x_n \in U\). 由子序列的定义可知, 对于任意 \(k \in \N\) 都有 \(n_k \geq k\), 因此当 \(k \geq N\) 时 \(n_k \geq N\), 于是 \(x_{n_k} \in U\). 即 \((x_{n_k})\) 收敛到 \(a\).
 \end{proof}
 
 \begin{example}
@@ -439,7 +423,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 下面的命题是对聚点的进一步刻画.
 
-\begin{proposition}
+\begin{proposition}\label{prop:subsequence-converges-to-cluster-point}
     点 \(a\) 是序列 \((x_n)\) 的聚点, 当且仅当存在 \((x_n)\) 的子序列 \((x_{n_k})\) 收敛到 \(a\).
 \end{proposition}
 
@@ -477,7 +461,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{exercise}
 
 \begin{exercise}
-    证明数列 \((z_n)_{n \geq 1}\) 其中 \(z_n \coloneqq (1 - 1 / n)(1 + i)\) 收敛到 \(1 + i\).
+    设 \(z_n \coloneqq (1 - 1 / n)(1 + i)\). 证明数列 \((z_n)_{n \geq 1}\) 收敛到 \(1 + i\).
 \end{exercise}
 
 \begin{exercise}
@@ -494,9 +478,9 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{exercise}
 
 \begin{exercise}
-    对于每个 \(n \in \N\), 定义
+    定义
     \[
-        a_n \coloneqq n + \frac{1}{k} - \frac{k^2 + k - 2}{2}\ ,
+        a_n \coloneqq n + \frac{1}{k} - \frac{k^2 + k - 2}{2}\ ,\quad n \in \N\ ,
     \]
     其中 \(k \in \N^\ast\) 满足
     \[
@@ -518,7 +502,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{exercise}
 
 \begin{exercise}
-    设 \(X \coloneqq \{\, z \in \C \;;\; |z| \leq 3 \,\}\) 赋予了自然度量. 描述 \(\bar \B_X(0, 3)\) 和 \(\bar \B_X(2, 4)\), 并证明 \(\bar \B_X(2, 4) \subset \bar \B_X(0, 3)\).
+    设 \(X \coloneqq \{\, z \in \C \;;\; |z| \leq 3 \,\}\), 并赋予其自然度量. 描述 \(\bar \B_X(0, 3)\) 和 \(\bar \B_X(2, 4)\), 并证明 \(\bar \B_X(2, 4) \subset \bar \B_X(0, 3)\).
 \end{exercise}
 
 \begin{exercise}[等价度量]
@@ -559,12 +543,24 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
             |z| + |w|\ , & \text{其余情况}\ .
         \end{cases}
     \]
-    证明 \(\delta\) 是 \(\C\) 上的度量, 称为 SNCF-度量.
+    证明 \(\delta\) 是 \(\C\) 上的度量, 称为 SNCF-度量.\footnote{法国铁路系统 (SNCF) 的乘客注意到两个城市 (例如, Bordeaux 和 Lyon) 之间最快的路线通常要经过巴黎.}
 \end{exercise}
 
 \begin{exercise}
     设 \((x_n)\) 是 \(\C\) 中的数列且对于任意 \(n \in \N\) 有 \(\Re x_n = 0\). 证明, 若 \((x_n)\) 收敛到 \(x\), 则 \(\Re x = 0\).
 \end{exercise}
+
+\begin{exercise}
+    设 \((x_n)\) 是度量空间 \(X\) 中的序列. 若 \((x_n)\) 的子序列 \((x_{2 n + 1})\) 和 \((x_{2 n})\) 收敛到点 \(a\), 则 \((x_n)\) 也收敛且以 \(a\) 为极限.
+\end{exercise}
+
+\begin{proof}
+    任取 \(U \in \nbr(a)\). 则存在 \(M, N \in \N\) 使得
+    \[
+        x_{2 n + 1} \in U\ ,\quad x_{2 n} \in U\ ,\quad n \geq \max\{M, N\}\ ,
+    \]
+    于是当 \(n \geq 2 \max\{M, N\}\) 时 \(x_n \in U\). 即 \((x_n)\) 收敛到 \(a\).
+\end{proof}
 
 \newpage
 
@@ -1075,7 +1071,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \item (绝对齐次性) \(\|\lambda x\| = |\lambda|\, \|x\|\).
         \item (三角不等式) \(\|x + y\| \leq \|x\| + \|y\|\).
     \end{enumerate}
-    则称 \(\|\!\cdot\!\|\) 是 \(E\) 上的范数. 进一步, 称 \((E, \|\!\cdot\!\|)\) 是赋范向量空间.
+    则称 \(\|\!\cdot\!\|\) 是 \(E\) 上的范数. 进一步, 称 \((E, \|\!\cdot\!\|)\) 是赋范向量空间.\footnote{除非另有说明, 否则默认向量空间是 \(\K\)-向量空间.}
 \end{axiom}
 
 当范数在上下文中明确时, 我们把 \((E, \|\!\cdot\!\|)\) 简写为 \(E\).
@@ -1295,7 +1291,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \[
         \langle \cdot, \cdot \rangle \colon E \times E \to \K\ ,\quad (x, y) \mapsto \langle x, y \rangle\ .
     \]
-    若对于任意 \(\lambda, \mu \in \K\) 和 \(x, y, z \in E\) 都有
+    若对于任意 \(\lambda, \mu \in \K\) 和 \(x, y, z \in E\) 都有\footnote{若 \(\K = \R\), 则由命题 \ref{prop:computation-in-C} 可知对于任意 \(\alpha \in \R\) 都有 \(\overline \alpha \coloneqq \alpha\) 和 \(\Re \alpha \coloneqq \alpha\). 因此, 在如下定义中我们可以忽略共轭符号和 \(\Re\) 符号.}
     \begin{enumerate}[label={\((\mathrm{IP}_{\arabic*})\)}]
         \item (共轭对称性) \(\langle x, y \rangle = \overline{\langle y, x \rangle}\).
         \item (对第一个参数线性) \(\langle \lambda x + \mu y, z\rangle = \lambda \langle x, z \rangle + \mu \langle y, z \rangle\).
@@ -1318,7 +1314,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
             \langle x, \lambda y + \mu z \rangle = \overline \lambda \langle x, y \rangle + \overline \mu \langle x, z \rangle\ ,\quad \lambda, \mu \in \K\ ,\quad x, y, z \in E\ ,
         \]
         即对于每个固定的 \(x \in E\), 称函数 \(\langle x, \cdot \rangle \colon E \to \K\) 是共轭线性的. 同时 \hyperref[ax:inner-product]{\((\mathrm{IP}_2)\)} 表明对于每个固定的 \(x \in E\), 函数 \(\langle \cdot, x \rangle \colon E \to \K\) 是线性的, 此时称 \(\langle \cdot, \cdot \rangle\) 是半双线性形式. 当 \(\K = \R\) 时, \(\langle \cdot, x \rangle\) 和 \(\langle x, \cdot \rangle\) 都是线性的, 此时称 \(\langle \cdot, \cdot \rangle\) 是双线性形式. 最后 \hyperref[ax:inner-product]{\((\mathrm{IP}_3)\)} 表明 \(\langle \cdot, \cdot \rangle\) 是正定的. 在这样的定义下, 我们说: 当 \(E\) 是复向量空间时, 内积是 \(E\) 上正定且 Hermite 的半双线性形式. 当 \(E\) 是实向量空间时, 内积是 \(E\) 上正定且对称的双线性形式.
-        \item 对于任意 \( x, y \in E\) 都有
+        \item 对于任意 \(x, y \in E\) 都有\footnote{使用符号 \(\pm\) 和 \(\mp\) 可以将两个方程写成一个. 对于其中一个方程, 全程使用上面的符号 (\(+\) 或 \(-\)), 而对于另一个方程, 则全程使用下面的符号.}
         \[
             \langle x \pm y, x \pm y \rangle = \langle x, x \rangle \pm 2 \Re \langle x, y \rangle + \langle y, y \rangle\ .
         \]
@@ -1431,7 +1427,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 一个特别重要的例子是 \(\K^m\) 上的 Euclid 内积. 由于我们会非常频繁的与该内积打交道, 因此我们做出如下约定会很方便.
 
 \begin{center}
-    \kaishu 除非另有说明, 否则默认赋予 \(\K^m\) Euclid 内积和诱导范数
+    \kaishu 除非另有说明, 否则默认赋予 \(\K^m\) Euclid 内积和诱导范数\footnote{在 \(m = 1\) 时, 这个记号和 \(\K\) 中绝对值的记号 \(|\!\cdot\!|\) 是一致的, 这是因为对于任意 \(x, y \in \K^1 = \K\) 都有 \(\langle x, y \rangle = x \overline y\). 而这个记号和多重索引 \(\alpha \in \N^m\) 的长度记号 \(|\alpha|\) 是不一致的, 不过根据上下文能分辨出所要表达的是哪一种含义.}
     \[
         |x| \coloneqq \sqrt{\langle x, x \rangle} = \sqrt{\textstyle \sum_{j = 1}^m |x_j|^2}\ ,\quad x \in \K^m\ ,
     \]
@@ -1565,11 +1561,11 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \[
             \C \to \R^2\ ,\quad x + i y \mapsto (x, y)\ ,
         \]
-        复数集 \(\C \coloneqq \R + i \R\) 可以与 \(\R^2\) 一一对应 (甚至可以与 Abel 群 \((\R^2, +)\) 一一对应, 见注 \ref{rem:complex-numbers-property}(3)). 更一般的, 对于 \(\C^m\) 可以通过双射
+        复数集 \(\C \coloneqq \R + i \R\) 可以与 \(\R^2\) 等同 (甚至可以与 Abel 群 \((\R^2, +)\) 等同, 见注 \ref{rem:complex-numbers-property}(3)). 更一般的, 对于 \(\C^m\) 可以通过双射\footnote{我们强调, 复向量空间 \(\C^m\) 无法和实向量空间 \(\R^{2 m}\) 等同.}
         \[
             \C^m \to \R^{2 m}\ ,\quad (z_1, \ldots, z_m) = (x_1 + i y_1, \ldots, x_m + i y_m) \mapsto (x_1, y_1, \ldots, x_m, y_m)
         \]
-        与 \(\R^{2 m}\) 一一对应. 在这个典范映射下
+        与 \(\R^{2 m}\) 等同. 在这个典范映射下
         \[
             \B_{\C^m} = \B^{2 m} = \B_{\R^{2 m}}\ ,
         \]
@@ -2539,7 +2535,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 在扩展实数系 \(\bar \R\) 中, 将某些 \(\R\) 中的数列视为收敛到 \(+ \infty\) 或 \(- \infty\) 是很有用的. 为了建立这种扩展的极限概念, 只需为 \(\bar \R\) 中的元素 \(\pm \infty\) 定义恰当的邻域即可.
 
-\subsection{收敛到 \(\pm \infty\)}
+\subsection{收敛到无穷大}
 
 由于在 \(\bar \R\) 上没有合适\footnote{当然, 我们可以在 \(\bar \R\) 上定义各种度量, 但是到目前为止我们所定义的这些度量都不适合我们的目的.}的度量, 我们采用如下定义来扩展 \(\R\) 中的邻域系.
 
@@ -2555,8 +2551,12 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \]
 \end{definition}
 
-\begin{definition}[在 \(\bar \R\) 中收敛]
-    设 \((x_n)\) 是 \(\R\) 中的数列. 称 \(\pm \infty\) 是 \((x_n)\) 的聚点, 若 \(\pm \infty\) 的任意邻域都包含了 \((x_n)\) 的无穷多项. 称 \((x_n)\) 收敛到 \(\pm \infty\) 或以 \(\pm \infty\) 为极限, 若 \(\pm \infty\) 的任意邻域都包含了 \((x_n)\) 的几乎所有项, 记作
+\begin{definition}[无穷大作为聚点]
+    设 \((x_n)\) 是 \(\R\) 中的数列. 若 \(\pm \infty\) 的任意邻域都包含了 \((x_n)\) 的无穷多项, 则称 \(\pm \infty\) 是 \((x_n)\) 的聚点
+\end{definition}
+
+\begin{definition}[无穷大作为极限]
+    设 \((x_n)\) 是 \(\R\) 中的数列. 若 \(\pm \infty\) 的任意邻域都包含了 \((x_n)\) 的几乎所有项, 则称 \((x_n)\) 收敛到 \(\pm \infty\) 或以 \(\pm \infty\) 为极限, 记作
     \[
         \lim_{n \to \infty} x_n = \pm \infty\quad \text{或}\quad x_n \to \pm \infty\quad (n \to \infty)\ .
     \]
@@ -2642,42 +2642,6 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     是 \((x_n)\) 的下极限.
 \end{definition}
 
-\begin{proposition}\label{prop:limit-superior-and-inferior-with-limits}
-    设 \((x_n)\) 是 \(\R\) 中的数列.
-    \begin{enumerate}
-        \item 若 \(\liminf x_n = \infty\), 则 \((x_n)\) 收敛到 \(\infty\).
-        \item 若 \(\limsup x_n = - \infty\), 则 \((x_n)\) 收敛到 \(- \infty\).
-        \item 若 \(\liminf x_n, \limsup x_n \in \R\), 则对于任意 \(\varepsilon > 0\) 存在 \(N \in \N\) 使得
-        \[
-            \liminf x_n - \varepsilon < x_n < \limsup x_n + \varepsilon\ ,\quad n \geq N\ .
-        \]
-    \end{enumerate}
-\end{proposition}
-
-\begin{proof}
-    令
-    \[
-        x^\ast \coloneqq \limsup x_n\ ,\quad y_n \coloneqq \sup_{k \geq n} x_k\ ,\quad x_\ast \coloneqq \liminf x_n\ ,\quad z_n \coloneqq \inf_{k \geq n} x_k\ .
-    \]
-
-    (1). 由下极限的定义可知 \(x_\ast = \sup_{n \in \N} z_n = \infty\), 则对于任意 \(K > 0\) 存在 \(n \in \N\) 使得
-    \[
-        z_n = \inf_{k \geq n} x_k > K\ ,
-    \]
-    即当 \(k \geq n\) 时 \(x_k > K\). 因此 \((x_n)\) 收敛到 \(\infty\).
-
-    (2). 与 (1) 类似可证 \((x_n)\) 收敛到 \(- \infty\).
-
-    (3). 由下极限与上极限的定义可知 \(x_\ast = \sup_{n \in \N} z_n\) 且 \(x^\ast = \inf_{n \in \N} y_n\), 则由命题 \ref{prop:supremum-and-infimum-in-R} 可知, 存在 \(n, m \in \N\) 使得
-    \[
-        z_n = \inf_{k \geq n} x_k > x_\ast - \varepsilon\ ,\quad y_m = \sup_{k \geq m} x_k < x^\ast + \varepsilon\ ,
-    \]
-    即当 \(k \geq n\) 时 \(x_k > x_\ast - \varepsilon\), 当 \(k \geq m\) 时 \(x_k < x^\ast + \varepsilon\). 因此
-    \[
-        x_\ast - \varepsilon < x_k < x^\ast + \varepsilon\ ,\quad k \geq \max\{m, n\}\ .
-    \]
-\end{proof}
-
 接下来我们会看到, 一个数列的上极限和下极限都是该数列的聚点.
 
 \begin{theorem}\label{thm:limit-superior-and-inferior-with-cluster-point}
@@ -2694,13 +2658,17 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \]
     下面分三种情况证明 \(x^\ast\) 是 \((x_n)\) 最大的聚点.
 
-    假设 \(x^\ast = - \infty\). 命题 \ref{prop:limit-superior-and-inferior-with-limits} 可知 \((x_n)\) 收敛到 \(- \infty\), 故 \(x^\ast\) 是 \((x_n)\) 唯一的聚点.
+    假设 \(x^\ast = - \infty\). 则对于任意 \(K > 0\) 存在 \(n \in \N\) 使得
+    \[
+        \sup_{k \geq n} x_k = y_n < - K\ ,
+    \]
+    即当 \(k \geq n\) 时 \(x_k < - K\), 因此 \((x_n)\) 收敛到 \(- \infty\), 故 \(x^\ast\) 是 \((x_n)\) 唯一的聚点.
 
     假设 \(x^\ast \in \R\). 由命题 \ref{prop:supremum-and-infimum-in-R} 可知, 对于每个 \(\xi > x^\ast\) 存在 \(n \in \N\) 使得 \(y_n < \xi\), 于是
     \[
         x_k \leq y_n < \xi\ ,\quad k \geq n\ .
     \]
-    因此 \(\B(\xi, \xi - y_n)\) 里仅有 \((x_n)\) 的至多有限项, 故 \(\xi\) 不是 \((x_n)\) 的聚点, 这说明 \((x_n)\) 的聚点不会大于 \(x^\ast\). 只用证明 \(x^\ast\) 本身是 \((x_n)\) 的聚点. 任取 \(\varepsilon > 0\), \(m \in \N\). 由于 \((y_n)\) 是递减的, 于是由命题 \ref{prop:supremum-and-infimum-in-R} 可知, 存在 \(n \geq m\) 使得
+    因此 \(\B(\xi, \xi - y_n)\) 里仅有 \((x_n)\) 的至多有限项, 故 \(\xi\) 不是 \((x_n)\) 的聚点, 这说明 \((x_n)\) 的聚点不会大于 \(x^\ast\). 只用证明 \(x^\ast\) 本身是 \((x_n)\) 的聚点. 任取 \(\varepsilon > 0\), \(m \in \N\). 于是由命题 \ref{prop:supremum-and-infimum-in-R} 可知存在 \(n \in \N\) 使得 \(y_n < x^\ast + \varepsilon\). 而 \((y_n)\) 是递减的, 故存在 \(n \geq m\) 使得
     \[
         x^\ast \leq \sup_{k \geq n} x_k = y_n < x^\ast + \varepsilon\ .
     \]
@@ -2740,10 +2708,32 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \begin{proof}
     \(\implies\). 设 \((x_n)\) 收敛到 \(x \in \bar \R\). 则 \(x\) 是 \((x_n)\) 唯一的聚点, 因此由定理 \ref{thm:limit-superior-and-inferior-with-cluster-point} 可知 \(\limsup x_n \leq \liminf x_n\).
 
-    \(\impliedby\). 设 \(\limsup x_n \leq \liminf x_n\). 则由定理 \ref{thm:limit-superior-and-inferior-with-cluster-point} 可知 \(x \coloneqq \limsup x_n = \liminf x_n\) 是 \((x_n)\) 唯一的聚点. 若 \(x = \pm \infty\). 由命题 \ref{prop:limit-superior-and-inferior-with-limits} 可知 \((x_n)\) 收敛到 \(\pm \infty\). 若 \(x \in \R\). 任取 \(\varepsilon > 0\). 由命题 \ref{prop:limit-superior-and-inferior-with-limits} 可知存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(x - \varepsilon < x_n < x + \varepsilon\), 因此 \((x_n)\) 收敛到 \(x\).
+    \(\impliedby\). 设 \(\limsup x_n \leq \liminf x_n\). 则由定理 \ref{thm:limit-superior-and-inferior-with-cluster-point} 可知 \(x \coloneqq \limsup x_n = \liminf x_n\) 是 \((x_n)\) 唯一的聚点. 若 \(x = - \infty\). 则 \(\limsup x_n = - \infty\), 于是对于任意 \(K > 0\) 存在 \(n \in \N\) 使得当 \(k \geq n\) 时 \(x_k < - K\), 因此 \((x_n)\) 收敛到 \(- \infty\). 若 \(x = \infty\), 同理可得 \((x_n)\) 收敛到 \(\infty\).
+
+    若 \(x \in \R\). 任取 \(\varepsilon > 0\). 则 \(\liminf x_n = x\), 于是由命题 \ref{prop:supremum-and-infimum-in-R} 可知存在 \(m \in \N\) 使得当 \(k \geq m\) 时 \(x_k > x - \varepsilon\). 类似可得, 存在 \(n \in \N\) 使得当 \(k \geq n\) 时 \(x_k < x + \varepsilon\). 于是
+    \[
+        x - \varepsilon < x_k < x + \varepsilon\ ,\quad k \geq \max\{m, n\}\ ,
+    \]
+    因此 \((x_n)\) 收敛到 \(x\).
 \end{proof}
 
 \subsection{Bolzano-Weierstrass 定理}
+
+对于 \(\R\) 中的有界数列, 定理 \ref{thm:limit-superior-and-inferior-with-cluster-point} 称为 Bolzano-Weierstrass 定理.
+
+\begin{theorem}[Bolzano-Weierstrass 定理]
+    \(\K^m\) 中的每个有界序列都存在收敛子序列.
+\end{theorem}
+
+\begin{proof}
+    我们先考虑 \(\K = \R\) 的情况, 并通过数学归纳法证明该命题. 由定理 \ref{thm:limit-superior-and-inferior-with-cluster-point} 和命题 \ref{prop:subsequence-converges-to-cluster-point} 可知 \(m = 1\) 时成立. 对于 \(m\) 到 \(m + 1\) 的归纳步骤, 假设 \((z_n)\) 是 \(\R^{m + 1}\) 中的有界序列. 令 \(M \coloneqq \sup_{n \in \N} |z_n| \in [0, \infty)\). 由于 \(\R^{m + 1} = \R^m \times \R\), 我们可以将 \(z \in \R^{m + 1}\) 记作 \(z = (x, y)\) 其中 \(x \in \R^m\), \(y \in \R\). 因此 \(z_n = (x_n, y_n)\), 于是我们得到了 \(\R^m\) 中的序列 \((x_n)\) 和 \(\R\) 中的序列 \((y_n)\). 而
+    \[
+        \max\{|x_n|, |y_n|\} \leq \sqrt{|x_n|^2 + |y_n|^2} = |z_n| \leq M\ ,\quad n \in \N\ ,
+    \]
+    因此 \((x_n)\) 和 \((y_n)\) 都是有界的. 于是由归纳假设可知 \((x_n)\) 存在收敛子序列 \((x_{n_k})\), 设 \(x_{n_k} \to x\). 由于 \((y_n)\) 的子序列 \((y_{n_k})\) 也是有界的, 因此由归纳假设可知 \((y_{n_k})\) 存在收敛子序列 \((y_{n_{k_j}})\), 设 \(y_{n_{k_j}} \to y\). 由命题 \ref{prop:convergent-sequence-to-subsequence} 可知 \((x_{n_k})\) 的子序列 \((x_{n_{k_j}})\) 也收敛到 \(x\). 最后由命题 \ref{prop:componentwise-convergence-of-sequence} 可知 \((z_n) = \bigl((x_n, y_n)\bigr)\) 的子序列 \(\bigl((x_{n_{k_j}}, y_{n_{k_j}})\bigr)\) 收敛到 \((x, y)\).
+
+    对于 \(\K = \C\) 的情况. 使用注 \ref{rem:equivalent-norms}(5) 中 \(\C^m \to \R^{2 m}\) 的典范映射后, 即是 \(\K = \R\) 的情况.
+\end{proof}
 
 \subsection{练习}
 
@@ -2752,21 +2742,21 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \[
         x_\ast - \varepsilon < x_n < x^\ast + \varepsilon\ ,\quad n \geq N\ .
     \]
-    在 \(x_\ast = - \infty\) 和 \(x^\ast = \infty\) 的情况下, 该命题需要修改什么?
+    在 \(x_\ast = - \infty\) 和 \(x^\ast = \infty\) 的情况下, 该命题需要做出什么修改?
 \end{exercise}
 
 \begin{proof}
-    任取 \(\varepsilon > 0\). 令 \(y_n \coloneqq \sup_{k \geq n} x_k\), \(z_n \coloneqq \inf_{k \geq n} x_k\). 则
+    任取 \(\varepsilon > 0\). 令 \(y_n \coloneqq \sup_{k \geq n} x_k\), \(z_n \coloneqq \inf_{k \geq n} x_k\). 由下极限与上极限的定义可知
     \[
-        x_\ast = \sup_{n \in \N} z_n \leq \inf_{n \in \N} y_n = x^\ast\ .
+        x_\ast = \sup_{n \in \N} z_n\ ,\quad x^\ast = \inf_{n \in \N} y_n\ .
     \]
-    于是存在 \(m_1, m_2 \in \N\) 使得
+    于是存在 \(n, m \in \N\) 使得
     \[
-        \sup_{k \geq m_1} x_k = y_{m_1} < x^\ast + \varepsilon\ ,\quad \inf_{k \geq m_2} x_k = z_{m_2} > x_\ast - \varepsilon\ .
+        z_n = \inf_{k \geq n} x_k > x_\ast - \varepsilon\ ,\quad y_m = \sup_{k \geq m} x_k < x^\ast + \varepsilon\ ,
     \]
-    令 \(N \coloneqq \max\{m_1, m_2\}\), 因此
+    即当 \(k \geq n\) 时 \(x_k > x_\ast - \varepsilon\), 当 \(k \geq m\) 时 \(x_k < x^\ast + \varepsilon\). 因此
     \[
-        x_\ast - \varepsilon < \inf_{k \geq m_2} x_k \leq x_k \leq \sup_{k \geq m_1} x_k < x^\ast + \varepsilon\ ,\quad k \geq N\ .
+        x_\ast - \varepsilon < x_k < x^\ast + \varepsilon\ ,\quad k \geq \max\{m, n\}\ .
     \]
     若 \(x_\ast = - \infty\), \(x^\ast = \infty\), 则该命题平凡的成立.
 \end{proof}
