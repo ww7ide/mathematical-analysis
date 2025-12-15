@@ -132,7 +132,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \end{enumerate}
 
     \begin{center}
-        \kaishu 除非另有说明, 否则默认 \(\K\) 是赋予了自然度量的度量空间.\footnote{注意, 在这样的约定下, 上文给出的关于开球和闭球的定义 (应用于 \(\K\)) 与第 1.11 节中给出的定义是一致的.}
+        \textsl{除非另有说明, 否则默认 \(\K\) 是赋予了自然度量的度量空间.\footnote{注意, 在这样的约定下, 上文给出的关于开球和闭球的定义 (应用于 \(\K\)) 与第 1.11 节中给出的定义是一致的.}}
     \end{center}
 
     \begin{enumerate}[start=2]
@@ -203,7 +203,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{example}
 
 \begin{center}
-    \kaishu 在本节的其余部分里, 设 \(X \coloneqq (X, d)\) 是度量空间, \((x_n)\) 是 \(X\) 中的序列.
+    \textsl{在本节的其余部分里, 设 \(X \coloneqq (X, d)\) 是度量空间, \((x_n)\) 是 \(X\) 中的序列.}
 \end{center}
 
 \subsection{聚点}
@@ -430,11 +430,11 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \begin{proof}
     \(\implies\). 设 \(a\) 是 \((x_n)\) 的聚点. 下面递归构造序列 \((n_k)\),
     \[
-        n_0 \coloneqq 0\ ,\quad n_k \coloneqq \min\{\, m \in \N \;;\; m > n_{k - 1}\ \text{且}\ x_m \in \B(a, 1 / k) \,\}\ ,\quad k \in \N^\ast\ .
+        n_0 \coloneqq 0\ ,\quad n_k \coloneqq \min \bigl\{\, m \in \N \;;\; m > n_{k - 1}\ \text{且}\ x_m \in \B(a, 1 / k) \,\bigr\}\ ,\quad k \in \N^\ast\ .
     \]
     由于 \(a\) 是 \((x_n)\) 的聚点, 故
     \[
-        \{\, m \in \N \;;\; m \geq n_{k - 1}\ \text{且}\ x_m \in \B(a, 1 / k) \,\} \neq \varnothing\ ,\quad k \in \N^\ast\ ,
+        \bigl\{\, m \in \N \;;\; m \geq n_{k - 1}\ \text{且}\ x_m \in \B(a, 1 / k) \,\bigr\} \neq \varnothing\ ,\quad k \in \N^\ast\ ,
     \]
     由良序原理可知, 对于每个 \(k \in \N^\ast\), \(n_k\) 是良定义的. 于是 \((n_k)\) 是良定义且严格递增的. 任取 \(\varepsilon > 0\), 由推论 \ref{cor:archimedean-property-cor} 可知, 存在 \(K \in \N\) 使得 \(1 / K < \varepsilon\), 由 \(n_k\) 的定义可知
     \[
@@ -1103,7 +1103,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \end{proof}
         \item 因为注 \ref{rem:norms}(1), 故第 2.1 节中关于度量空间的全部命题同样对 \(E\) 成立. 特别的, ``邻域'', ``聚点'' 和 ``收敛性'' 在 \(E\) 上是良定义的. 例如, \(E\) 中的序列 \((x_n)\) 收敛到 \(x\) 的含义是:
         \[
-            x_n \to x \iff \forall \varepsilon > 0,\ \exists N \in \N,\ \forall n \geq N : \|x_n - x\| < \varepsilon.
+            x_n \to x \iff \forall\, \varepsilon > 0,\ \exists\, N \in \N,\ \forall\, n \geq N : \|x_n - x\| < \varepsilon.
         \]
         此外, 回顾第 2.2 节可以发现, 只要某个命题的证明中没有用到 \(\K\) 的域结构或序结构, 那么该命题同样适用于 \(E\) 中的序列. 特别的, 注 \ref{rem:null-sequences}, 命题 \ref{prop:addition-scalar-multiplication-in-c} 和命题 \ref{prop:sequence-convergence-then-abs-convergence} 在任意赋范向量空间中都成立.
     \end{enumerate}
@@ -1153,7 +1153,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \end{enumerate}
 
     \begin{center}
-        \kaishu 除非另有说明, 否则默认 \(\K\) 是赋予了上述范数的赋范向量空间.
+        \textsl{除非另有说明, 否则默认 \(\K\) 是赋予了上述范数的赋范向量空间.}
     \end{center}
 
     \begin{enumerate}[start=2]
@@ -1243,7 +1243,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{proof}
 
 \begin{center}
-    \kaishu 除非另有说明, 否则默认 \(B(X, E)\) 是从 \(X\) 到 \(E\) 且赋予上确界范数 \(\|\!\cdot\!\|_\infty\) 的有界函数空间.
+    \textsl{除非另有说明, 否则默认 \(B(X, E)\) 是从 \(X\) 到 \(E\) 且赋予上确界范数 \(\|\!\cdot\!\|_\infty\) 的有界函数空间.}
 \end{center}
 
 \begin{remark}
@@ -1409,7 +1409,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{proof}
 
 \begin{center}
-    \kaishu 除非另有说明, 否则默认内积空间 \(\bigl(E, \langle \cdot, \cdot \rangle\bigr)\) 是赋予了诱导范数的赋范向量空间.
+    \textsl{除非另有说明, 否则默认内积空间 \(\bigl(E, \langle \cdot, \cdot \rangle\bigr)\) 是赋予了诱导范数的赋范向量空间.}
 \end{center}
 
 由内积诱导的范数通常也被称为 Hilbert 范数. 利用该范数, 我们可以将定理 \ref{thm:cauchy-schwarz-inequality} 的 Cauchy-Schwarz 不等式改写为如下形式.
@@ -1427,11 +1427,11 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 一个特别重要的例子是 \(\K^m\) 上的 Euclid 内积. 由于我们会非常频繁的与该内积打交道, 因此我们做出如下约定会很方便.
 
 \begin{center}
-    \kaishu 除非另有说明, 否则默认赋予 \(\K^m\) Euclid 内积和诱导范数\footnote{在 \(m = 1\) 时, 这个记号和 \(\K\) 中绝对值的记号 \(|\!\cdot\!|\) 是一致的, 这是因为对于任意 \(x, y \in \K^1 = \K\) 都有 \(\langle x, y \rangle = x \overline y\). 而这个记号和多重索引 \(\alpha \in \N^m\) 的长度记号 \(|\alpha|\) 是不一致的, 不过根据上下文能分辨出所要表达的是哪一种含义.}
+    \textsl{除非另有说明, 否则默认赋予 \(\K^m\) Euclid 内积和诱导范数\footnote{在 \(m = 1\) 时, 这个记号和 \(\K\) 中绝对值的记号 \(|\!\cdot\!|\) 是一致的, 这是因为对于任意 \(x, y \in \K^1 = \K\) 都有 \(\langle x, y \rangle = x \overline y\). 而这个记号和多重索引 \(\alpha \in \N^m\) 的长度记号 \(|\alpha|\) 是不一致的, 不过根据上下文能分辨出所要表达的是哪一种含义.}
     \[
         |x| \coloneqq \sqrt{\langle x, x \rangle} = \sqrt{\textstyle \sum_{j = 1}^m |x_j|^2}\ ,\quad x \in \K^m\ ,
     \]
-    称为 Euclid 范数. 在实数的情况, 我们把 \(\langle x, y \rangle\) 记作 \(x \cdot y\).
+    称为 Euclid 范数. 在实数的情况, 我们把 \(\langle x, y \rangle\) 记作 \(x \cdot y\).}
 \end{center}
 
 现在我们在向量空间 \(\K^m\) 上有了两个范数, 即最大范数
@@ -2979,3 +2979,109 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \end{array}
     \]
 \end{proof}
+
+\newpage
+
+\section{完备性}
+
+\subsection{Cauchy 序列}
+
+\subsection{Banach 空间}
+
+\subsection{Cantor 的实数构造法}
+
+\subsection{练习}
+
+\begin{exercise}
+    设 \((\alpha, \beta) \in \R^2\), 定义
+    \[
+        x_k \coloneqq
+        \begin{cases}
+            (\alpha, \beta)\ , & k\ \text{是偶数}\ , \\
+            (\beta, \alpha)\ , & k\ \text{是奇数}\ ,
+        \end{cases}
+        \quad k \in \N
+    \]
+    和
+    \[
+        s_n \coloneqq \sum_{k = 1}^n k^{- 2} x_k\ ,\quad n \in \N^\ast\ .
+    \]
+    证明 \((s_n)\) 收敛.
+\end{exercise}
+
+\begin{proof}
+    任取 \(\varepsilon > 0\). 由 Archimedes 公理可知存在 \(N \in \N\) 使得 \(1 / N < \varepsilon / \sqrt{\alpha^2 + \beta^2}\). 则
+    \[
+        |s_n - s_m| = \Bigl|\sum_{k = m + 1}^n k^{- 2} x_k\Bigr| \leq \sum_{k = m + 1}^n |k^{- 2} x_k| = \sqrt{\alpha^2 + \beta^2} \sum_{k = m + 1}^n \frac{1}{k^2}\ ,\quad n > m \geq N\ ,
+    \]
+    其中
+    \[
+        \sum_{k = m + 1}^n \frac{1}{k^2} \leq \sum_{k = m + 1}^n \frac{1}{k (k - 1)} = \sum_{k = m + 1}^n \Bigl(\frac{1}{k - 1} - \frac{1}{k}\Bigr) = \frac{1}{m} - \frac{1}{n} \leq \frac{1}{m}\ ,
+    \]
+    于是
+    \[
+        |s_n - s_m| \leq \frac{\sqrt{\alpha^2 + \beta^2}}{m} < \varepsilon\ ,\quad n > m \geq N\ .
+    \]
+    因此 \((s_n)\) 是 Cauchy 序列, 而 \(\R^2\) 是 Banach 空间, 这说明 \((s_n)\) 收敛.
+\end{proof}
+
+\begin{exercise}
+    设 \((X, d)\) 是完备的度量空间, \((x_n)\) 是 \(X\) 中的序列. 假设存在 \(\alpha \in (0, 1)\) 使得
+    \[
+        d(x_{n + 1}, x_n) \leq \alpha d(x_n, x_{n - 1})\ ,\quad n \in \N^\ast\ .
+    \]
+    证明 \((x_n)\) 收敛.
+\end{exercise}
+
+\begin{proof}
+    任取 \(\varepsilon > 0\). 注意到
+    \[
+        d(x_{n + 1}, x_n) \leq \alpha d(x_n, x_{n - 1}) \leq \alpha^2 d(x_{n - 1}, x_{n - 2}) \leq \cdots \leq \alpha^n d(x_1, x_0)\ ,
+    \]
+    于是由三角不等式可得, 当 \(n > m\) 时
+    \[
+        d(x_n, x_m) \leq \sum_{k = m}^{n - 1} d(x_{k + 1}, x_k) \leq \sum_{k = m}^{n - 1} \alpha^k d(x_1, x_0) = d(x_1, x_0) \frac{\alpha^n - \alpha^m}{\alpha - 1} \leq d(x_1, x_0) \frac{\alpha^m}{1 - \alpha}\ .
+    \]
+    而 \(\alpha \in (0, 1)\), 因此 \(\alpha^m \to 0\). 故存在 \(N \in \N\) 使得
+    \[
+        d(x_n, x_m) \leq d(x_1, x_0) \frac{\alpha^m}{1 - \alpha} < \varepsilon\ ,\quad n > m \geq N\ ,
+    \]
+    因此 \((x_n)\) 是 Cauchy 序列, 而 \(X\) 是完备的, 故 \((x_n)\) 收敛.
+\end{proof}
+
+\begin{exercise}
+    证明 \(\R\) 中的每个数列都有单调子数列.
+\end{exercise}
+
+\begin{proof}
+    设 \((x_n)\) 是 \(\R\) 中的数列, 令
+    \[
+        E \coloneqq \{\, n \in \N \;;\; \text{对于任意}\ m > n\ \text{都有}\ x_m \leq x_n \,\}\ .
+    \]
+
+    若 \(E\) 中元素个数有限. 则我们递归的构造序列 \((n_k)\),
+    \[
+        n_0 \coloneqq \max E + 1\ ,\quad n_k \coloneqq \min\{\, m \in \N \;;\; m > n_{k - 1}\ \text{且}\ x_m > x_{n_{k - 1}} \,\}\ ,\quad k \in \N^\ast\ ,
+    \]
+    特别的, 若 \(E = \varnothing\), 则令 \(n_0 \coloneqq 0\). 于是由 \(E\) 的定义可知, 由于 \(n_{k - 1} \notin E\), 故存在 \(m > n_{k - 1}\) 使得 \(x_m > x_{n_{k - 1}}\), 因此
+    \[
+        \{\, m \in \N \;;\; m > n_{k - 1}\ \text{且}\ x_m > x_{n_{k - 1}} \,\} \neq \varnothing\ .
+    \]
+    由良序原理可知, 对于每个 \(k \in \N^\ast\), \(n_k\) 是良定义的, 于是 \((n_k)\) 是良定义且严格递增的. 进一步, \((x_{n_k})\) 是严格递增的.
+
+    若 \(E\) 中有无穷多个元素. 则我们同样递归的构造序列 \((n_k)\),
+    \[
+        n_0 \coloneqq \min E\ ,\quad E_1 \coloneqq E \!\setminus\! \{n_0\}\ ,\quad n_k \coloneqq \min E_k\ ,\quad E_{k + 1} \coloneqq E_k \!\setminus\! \{n_k\}\ ,\quad k \in \N^\ast\ . 
+    \]
+    显然 \((n_k)\) 是严格递增的, 于是由 \(E\) 的定义可知 \((x_{n_k})\) 是递减的.
+\end{proof}
+
+\begin{exercise}
+    证明以下命题 (见练习 \ref{ex:closed-sets-in-metric-spaces}).
+    \begin{enumerate}
+        \item 完备度量空间的每个闭子集都是完备度量空间 (赋予诱导度量).
+        \item Banach 空间的每个闭子空间都是 Banach 空间 (赋予诱导范数).
+        \item \(\ell_\infty\), \(c\) 和 \(c_0\) 都是 Banach 空间.
+        \item 设 \(M\) 是完备的度量空间, \(D \subseteq M\) 是完备的子空间 (赋予诱导度量). 则 \(D\) 是闭集.
+    \end{enumerate}
+\end{exercise}

@@ -2,21 +2,7 @@
 
 \section{逻辑基础}
 
-\newpage
-
 \section{集合}
-
-\subsection{基本概念}
-
-\subsection{幂集}
-
-\subsection{集合的运算}
-
-\subsection{Cartesian 积}
-
-\subsection{集族}
-
-\newpage
 
 \section{函数}
 
@@ -66,7 +52,91 @@
 
 \section{自然数}
 
+1888 年, R. Dedekind 出版了著作 \textsl{Was sind and was sollen die Zahlen?} (数是什么以及数应当是什么?) [Ded95], 系统阐述了自然数系统的集合论基础. 这一著作不仅是该领域发展的里程碑, 更是数学史上的高峰之一.
+
+从本节开始, 我们将以一个简单而 ``自然'' 的自然数公理系统为起点, 在后面的各节中逐步构造整数、有理数、实数, 最终完成复数的构造. 这种构造性的方法相较于 D. Hilbert 于 1899 年提出的公理化实数体系 (见 [Hil23]) 有一个优势, 即它使得整个数学体系能够从数理逻辑和公理化集合论中的少数几块基石出发逐步搭建而成.
+
 \subsection{Peano 公理}
+
+我们用 G. Peano 提出的公理系统来定义自然数, 这个公理系统形式化了这样一个思想: 给定任意自然数, 总存在一个更大的后继自然数.
+
+\begin{axiom}[自然数]\label{ax:natural-numbers}
+    设 \(\N\) 是集合, \(e \in \N\), 其上定义了函数
+    \[
+        \nu \colon \N \to \N^\ast \coloneqq \N \!\setminus\! \{e\}\ ,\quad n \mapsto \nu(n)\ .
+    \]
+    若
+    \begin{enumerate}[label={\((\mathrm N_{\arabic*})\)}]
+        \item \(\nu\) 是单射.
+        \item 设 \(N \subseteq \N\). 若 \(e \in N\) 且对于任意 \(n \in N\) 都有 \(\nu(n) \in N\), 则 \(N = \N\).
+    \end{enumerate}
+    则称 \((\N, e, \nu)\) 是 Peano 结构. 进一步, 称 \(\N\) 是自然数集, \(\N\) 中的元素是自然数.
+\end{axiom}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 称 \(\nu\) 是后继映射, 并称元素 \(\nu(n)\) 是 \(n\) 的后继. 元素 \(e\) 是唯一不是任何自然数后继的自然数, 因此函数 \(\nu\) 是满射, 再结合 \hyperref[ax:natural-numbers]{\((\mathrm N_1)\)}, 则 \(\nu\) 是双射.
+        \begin{proof}
+            令
+            \[
+                N \coloneqq \{\, n \in \N \;;\; \exists\, n' \in \N : \nu(n') = n \,\} \cup \{e\} = \im \nu \cup \{e\}\ .
+            \]
+            对于任意 \(n \in N\) 都有 \(\nu(n) \in \im \nu \subseteq N\), 而 \(e \in N\), 于是 \hyperref[ax:natural-numbers]{\((\mathrm N_2)\)} 蕴含了 \(N = \N\). 因此 \(\im \nu = N \!\setminus\! \{e\} = \N \!\setminus\! \{e\} = \N^\ast\), 这说明 \(\nu\) 是满射.
+        \end{proof}
+        \item 我们通常记
+        \[
+            0 \coloneqq e\ ,\quad 1 \coloneqq \nu(e)\ ,\quad 2 \coloneqq \nu\bigl(\nu(e)\bigr)\ ,\quad 3 \coloneqq \nu\bigl(\nu(\nu(e))\bigr)\ ,\quad \ldots
+        \]
+        \item 部分作者倾向于将自然数的起点定义为 \(1\) 而非 \(0\). 当然, 这样的定义在数学上没有本质的区别.
+        \item 公理 \hyperref[ax:natural-numbers]{\((\mathrm N_2)\)} 是数学归纳法的一种形式. 我们将在命题 \ref{prop:mathematical-induction} 和例 \ref{eg:mathematical-induction} 中对这一重要原理进行更详尽的讨论.
+    \end{enumerate}
+\end{remark}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 稍后我们将会看到, 在学校里所学的所有关于算术运算的知识, 都可以从 Peano 公理中推导出来. 尽管如此, 对于数学家来说, 仍会出现两个重要问题: (1) 是否存在一个系统 \((\N, 0, \nu)\) 满足 Peano 公理? 也就是说, 是否存在这样的自然数模型? (2) 如果存在, 有多少个这样的模型? 我们在此简要探讨这些问题.
+
+        为了简化讨论, 我们引入以下概念: \textsl{称集合 \(M\) 是无穷系统, 若存在单射函数 \(f \colon M \to M\) 使得 \(f(M) \subset M\).} 显然, 若自然数存在, 那么它们构成一个无穷系统. 这类系统的重要性体现在由 R. Dedekind 证明的以下定理中: \textsl{任何无穷系统都包含一个自然数模型 \((\N, 0, \nu)\).}
+
+        因此, 自然数的存在问题可以归结为无穷系统的存在问题. Dedekind 给出了这类系统的存在性的证明, 其中隐含的使用了 G. Frege 于 1893 年引入的 ``概括公理'': \textsl{对于集合的每个性质 \(E\), 集合
+        \[
+            M_E \coloneqq \{\, x \;;\; x\ \text{是满足性质}\ E\ \text{的集合} \,\}
+        \]
+        存在.} 在 1901 年, B. Russell 发现这一公理会导致矛盾, 即所谓的二律背反. Russell 为 \(E\) 选择了性质 ``\(x\) 是一个集合且 \(x\) 不是自身的元素''. 那么概括公理便保证了集合
+        \[
+            M \coloneqq \bigl\{\, x \;;\; (x\ \text{是集合}) \wedge (x \notin x) \,\bigr\}
+        \]
+        的存在. 这显然导致了矛盾
+        \[
+            M \in M \iff M \notin M\ .
+        \]
+        毫不意外的, 这样的二律背反动摇了集合论的基础. 进一步的研究表明, 这类集合论问题只在考虑 ``过大'' 的集合时才会出现. 为了避免 Russell 悖论, 我们可以区分两种类型的对象汇集: \textsl{类和集合.} 集合是特殊的 ``小'' 类. 如果一个类是集合, 那么它可以通过公理化方式描述. 于是概括公理变为: \textsl{对于集合的每个性质 \(E\), 类
+        \[
+            M_E \coloneqq \{\, x \;;\; x\ \text{是满足性质}\ E\ \text{的集合} \,\}
+        \]
+        存在.} 此时 \(M = \bigl\{\, x \;;\; (x\ \text{是集合}) \wedge (x \notin x) \,\bigr\}\) 是一个类而非集合, Russell 悖论便不再出现.
+
+        此外, 还需要一个独立的公理来得到以下我们已经多次使用过的事实: \textsl{对于任意集合 \(X\) 和集合的性质 \(E\),
+        \[
+            \bigl\{\, x \in X \;;\; E(x) \,\bigr\} \coloneqq \bigl\{\, x \;;\; (x \in X) \wedge E(x) \,\bigr\}\ \text{是集合}\ .
+        \]
+        } 关于这些问题的更完整讨论, 我们建议读者参阅相关文献 (例如 [FP85]).
+
+        Dedekind 的研究表明, 为了在公理化集合论的框架内证明自然数的存在性, 还需要无穷公理: \textsl{存在归纳集.} 这里, \textsl{称集合 \(N\) 是归纳集, 若 \(\varnothing \in N\) 且对于任意 \(n \in N\) 都有 \(n \cup \{n\} \in N\).} 考虑集合
+        \[
+            \N \coloneqq \bigcap \{\, m \;;\; m\ \text{是归纳集} \,\}
+        \]
+        和函数
+        \[
+            \nu \colon \N \to \N\ ,\quad n \mapsto n \cup \{n\}\ .
+        \]
+        最后, 令 \(0 \coloneqq \varnothing\). 可以证明, \(\N\) 本身是归纳集且 \((\N, 0, \nu)\) 满足 Peano 公理. 因此, \((\N, 0, \nu)\) 是一个自然数模型.
+
+        现在设 \((\N', 0', \nu')\) 是另一个自然数模型. 那么, 在集合论的框架内, 可以证明存在一个双射 \(\varphi \colon \N \to \N'\) 使得 \(\varphi(0) = 0'\) 且 \(\varphi \circ \nu = \nu' \circ \varphi\), 即 \(\varphi\) 是从 \((\N, 0, \nu)\) 到 \((\N', 0', \nu')\) 的同构. 因此, \textsl{自然数在同构意义下是唯一的.} 这样一来, 谈论自然数便是有意义的. 证明和细节可参见 [FP85].
+
+        \item 我们将上面的讨论限定在 \textsl{von Neumann-Bernays-G\"odel (NBG) 公理体系} 内进行, 该体系以 ``类'' 的概念为核心. 实际上, 这一概念完全可以避免使用. 例如, 同样广为接受的, \textsl{带有选择公理的 Zermelo-Fraenkel (ZFC) 公理体系} 便无需此概念. 值得庆幸的是, 可以证明这两个公理系统在以下意义上是等价的: 在两个系统中, 关于集合的相同命题都是可证明的.
+    \end{enumerate}
+\end{remark}
 
 \subsection{自然数的计算}
 
@@ -80,6 +150,22 @@
 
 \begin{proposition}[良序原理]\label{prop:well-ordering-principle}
     自然数集 \(\N\) 是良序的, 即 \(\N\) 的每个非空子集都包含一个最小元.
+\end{proposition}
+
+\begin{proposition}[算术基本定理]
+    
+\end{proposition}
+
+\begin{proposition}[数学归纳法]\label{prop:mathematical-induction}
+    
+\end{proposition}
+
+\begin{example}\label{eg:mathematical-induction}
+    
+\end{example}
+
+\begin{proposition}[完整归纳法]
+    
 \end{proposition}
 
 \subsection{递归定义}
