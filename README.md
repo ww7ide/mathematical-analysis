@@ -80,6 +80,7 @@ Section 6 Completeness
           Cauchy Sequences                      12 14, 25
           Banach Spaces
           Exercises                             12 15, 25
+          Exercises                             12 16, 25
 Section 7 Series
 Section 8 Absolute Convergence
 Section 9 Power Series
