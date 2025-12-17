@@ -1222,7 +1222,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     是从 \(X\) 到 \(E\) 的有界函数空间.
 \end{definition}
 
-\begin{proposition}
+\begin{proposition}\label{prop:bounded-function-space-is-normed-space}
     \(B(X, E)\) 是 \(E^X\) 的子空间且 \(\|\!\cdot\!\|_\infty\) 是 \(B(X, E)\) 上的范数, 称为上确界范数.
 \end{proposition}
 
@@ -1377,7 +1377,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     将定理 \ref{thm:cauchy-schwarz-inequality} 应用到赋予 Euclid 内积的 \(\K^m\) 上即可.
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}\label{thm:norm-induced-from-inner-produc}
     设 \(\bigl(E, \langle \cdot, \cdot \rangle\bigr)\) 是内积空间. 则
     \[
         \|x\| \coloneqq \sqrt{\langle x, x \rangle}\ ,\quad x \in E
@@ -1446,11 +1446,12 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \[
     |x|_1 \coloneqq \sum_{j = 1}^m |x_j|\ ,\quad x \in \K^m\ ,
 \]
-称为 1-范数. 验证这确实给出了一个范数是很容易的, 这里留给读者自己完成. 接下来的命题将通过再次应用 Cauchy-Schwarz 不等式, 证明 Euclid 范数与 \(|\!\cdot\!|_1\) 和 \(|\!\cdot\!|_\infty\) 是 ``可比较的''.
+称为 1-范数. 验证这确实定义了一个范数是很容易的, 这里留给读者自己完成. 接下来的命题将通过再次应用 Cauchy-Schwarz 不等式, 证明 Euclid 范数与 \(|\!\cdot\!|_1\) 和 \(|\!\cdot\!|_\infty\) 是 ``可比较的''.
 
 \begin{proposition}\label{prop:Lp-norms-are-equivalent}
+    设 \(m \in \N^\ast\). 则
     \[
-        |x|_\infty \leq |x| \leq \sqrt{m}\, |x|_\infty\ ,\quad \frac{1}{\sqrt{m}}\, |x|_1 \leq |x| \leq |x|_1\ ,\quad x \in \K^m\quad (m \in \N^\ast)\ .
+        |x|_\infty \leq |x| \leq \sqrt{m}\, |x|_\infty\ ,\quad \frac{1}{\sqrt{m}}\, |x|_1 \leq |x| \leq |x|_1\ ,\quad x \in \K^m\ .
     \]
 \end{proposition}
 
@@ -2226,7 +2227,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \]
 \end{proof}
 
-\begin{exercise}[Heron 算法]
+\begin{exercise}[Heron 算法]\label{ex:heron-method}
     设 \(a \in (0, \infty)\), 递归定义实数列
     \[
         x_0 \geq a\ ,\quad x_{n + 1} \coloneqq \frac{x_n + a / x_n}{2}\ ,\quad n \in \N\ .
@@ -2984,11 +2985,149 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 \section{完备性}
 
+在第 2.1 节中, 我们借助邻域的概念定义了收敛性. 在该定义中, 序列的极限会显式的出现, 因此原则上要证明一个序列收敛, 必须先知道其极限值是什么. 本节中, 我们将证明在某些 ``完备'' 空间中, 我们有可能在不预先知道极限的情况下判断序列是否收敛. 序列在这样的度量空间中收敛, 当且仅当它们是 Cauchy 序列. 这类序列是收敛性理论研究的重要工具. 此外, 它们也被用于 Cantor 的实数构造法中, 这一方法我们在第 1.10 节已提及, 并将在本节具体展开.
+
 \subsection{Cauchy 序列}
+
+\begin{center}
+    \textsl{在本小节中, 设 \(X \coloneqq (X, d)\) 是度量空间.}
+\end{center}
+
+\begin{definition}[Cauchy 序列]
+    称 \(X\) 中的序列 \((x_n)\) 是 Cauchy 序列, 若对于任意 \(\varepsilon > 0\) 存在 \(N \in \N\) 使得当 \(m, n \geq \N\) 时 \(d(x_n, x_m) < \varepsilon\).
+\end{definition}
+
+若 \((x_n)\) 是赋范向量空间 \(E\) 中的序列, 则 \((x_n)\) 是 Cauchy 序列当且仅当 \((x_n)\) 在诱导度量下是 Cauchy 序列. 值得注意的是, Cauchy 序列在 \(E\) 中具有 ``平移不变性'', 即若 \((x_n)\) 是 Cauchy 序列且 \(a\) 是 \(E\) 中的任意向量, 则 ``平移'' 后得到的序列 \((x_n + a)\) 同样也是 Cauchy 序列. 这表明 Cauchy 序列无法通过邻域来定义.
+
+\begin{proposition}\label{prop:convergent-sequence-is-cauchy-sequence}
+    每个收敛序列都是 Cauchy 序列.
+\end{proposition}
+
+\begin{proof}
+    设 \((x_n)\) 是 \(X\) 中的收敛序列且以 \(x\) 为极限. 任取\(\varepsilon > 0\). 则存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(d(x_n, x) < \varepsilon / 2\), 于是
+    \[
+        d(x_n, x_m) \leq d(x_n, x) + d(x_m, x) < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon\ ,\quad m, n \geq N\ ,
+    \]
+    因此 \((x_n)\) 是 Cauchy 序列.
+\end{proof}
+
+命题 \ref{prop:convergent-sequence-is-cauchy-sequence} 的逆命题不成立, 即存在度量空间其中的 Cauchy 序列不一定收敛.
+
+\begin{example}
+    递归定义数列
+    \[
+        x_0 \coloneqq 2\ ,\quad x_{n + 1} \coloneqq \frac{x_n + 2 / x_{n}}{2}\ ,\quad n \in \N\ .
+    \]
+    则 \((x_n)\) 是 \(\Q\) 中的 Cauchy 序列, 但在 \(\Q\) 中发散.
+\end{example}
+
+\begin{proof}
+    显然对于任意 \(n \in \N\) 都有 \(x_n \in \Q\). 进一步, 由练习 \ref{ex:heron-method} 可知 \((x_n)\) 收敛到 \(\sqrt{2} \in \R\), 因此由命题 \ref{prop:convergent-sequence-is-cauchy-sequence} 可知 \((x_n)\) 是 \(\R\) 中 Cauchy 序列, 于是也是 \(\Q\) 中的 Cauchy 序列. 注意到 \(\sqrt{2} \in \R \!\setminus\! \Q\), 因此由极限的唯一性可知 \((x_n)\) 在 \(\Q\) 中发散.
+\end{proof}
+
+\begin{proposition}\label{prop:cauchy-sequence-is-bounded}
+    每个 Cauchy 序列都是有界的.
+\end{proposition}
+
+\begin{proof}
+    设 \((x_n)\) 是 \(X\) 中 Cauchy 序列. 则存在 \(N \in \N\) 使得当 \(m, n \geq N\) 时 \(d(x_n, x_m) < 1\), 特别的, 当 \(n \geq N\) 时 \(d(x_n, x_N) < 1\). 令 \(M \coloneqq \max_{n < N} d(x_n, x_N)\), 于是
+    \[
+        d(x_n, x_N) < M + 1\ ,\quad n \in \N\ ,
+    \]
+    因此由例 \ref{eg:bounded-sets}(3) 可知 \((x_n)\) 有界.
+\end{proof}
+
+\begin{proposition}\label{prop:cauchy-sequence-with-subsequence}
+    若 Cauchy 序列存在收敛子序列, 则其自身也收敛.
+\end{proposition}
+
+\begin{proof}
+    设 \((x_n)\) 是 \(X\) 中的 Cauchy 序列, \((x_{n_k})\) 是其收敛子序列且以 \(x\) 为极限. 任取 \(\varepsilon > 0\). 则存在 \(N \in \N\) 使得当 \(m, n \geq N\) 时 \(d(x_n, x_m) < \varepsilon / 2\), 同样存在 \(K \in \N\) 使得当 \(k \geq K\) 时 \(d(x_{n_k}, x) < \varepsilon / 2\). 令 \(M \coloneqq \max\{N, K\}\) 于是
+    \[
+        d(x_n, x) \leq d(x_n, x_{n_M}) + d(x_{n_M}, x) < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon\ ,\quad n \geq M\ ,
+    \]
+    因此 \((x_n)\) 收敛到 \(x\).
+\end{proof}
 
 \subsection{Banach 空间}
 
+\begin{definition}[完备性]
+    称度量空间 \(X\) 是完备的, 若 \(X\) 中的任意 Cauchy 序列都收敛.
+\end{definition}
+
+\begin{definition}[Banach 空间]
+    称完备赋范向量空间是 Banach 空间.
+\end{definition}
+
+利用 Bolzano-Weierstrass 定理, 我们可以证明完备度量空间是存在的.
+
+\begin{theorem}\label{thm:Km-is-banach-space}
+    \(\K^m\) 是 Banach 空间.
+\end{theorem}
+
+\begin{proof}
+    我们已经在第 2.3 节中知道了 \(\K^m\) 是赋范向量空间, 因此只用证明完备性. 设 \((x_n)\) 是 \(\K^m\) 中的 Cauchy 序列. 于是由命题 \ref{prop:cauchy-sequence-is-bounded} 可知 \((x_n)\) 有界, 因此由 Bolzano-Weierstrass 定理可知 \((x_n)\) 存在收敛子序列, 最后由命题 \ref{prop:cauchy-sequence-with-subsequence} 可知 \((x_n)\) 收敛.
+\end{proof}
+
+\begin{theorem}
+    设 \(X\) 是非空集合, \((E, \|\!\cdot\!\|)\) 是 Banach 空间. 则 \(B(X, E)\) 也是 Banach 空间.
+\end{theorem}
+
+\begin{proof}
+    由命题 \ref{prop:bounded-function-space-is-normed-space} 可知 \(B(X, E)\) 是赋范向量空间, 因此只用证明完备性. 设 \((u_n)\) 是 \(B(X, E)\) 中的 Cauchy 序列. 任取 \(\varepsilon > 0\). 则存在 \(N \in \N\) 使得
+    \[
+        \|u_n(x) - u_m(x)\| \leq \|u_n - u_m\|_\infty < \varepsilon\ ,\quad m, n \geq N\ , \quad x \in X\ ,
+    \]
+    这说明对于任意 \(x \in X\), 序列 \(\bigl(u_n(x)\bigr)\) 是 Cauchy 序列. 于是由 \(E\) 的完备性可知, 存在 \(a_x \in E\) 使得当 \(n \to \infty\) 时 \(u_n(x) \to a_x\). 对于任意 \(x \in X\), 令 \(u(x) \coloneqq a_x\), 由极限的唯一性可知 \(a_x\) 是唯一的, 因此 \(u \in E^X\).
+
+    下面证明 \(u_n \to u \in B(X, E)\). 在上式中, 令 \(m \to \infty\) 可得
+    \[
+        \|u_n(x) - u(x)\| \leq \varepsilon\ ,\quad n \geq N\ ,\quad x \in X\ ,
+    \]
+    因此当 \(n \geq N\) 时 \(\|u_n - u\|_\infty \leq \varepsilon\), 故 \(u_n \to n\). 而
+    \[
+        \|u(x)\| - \|u_N(x)\| \leq \|u_N(x) - u(x)\| \leq \varepsilon\ ,\quad x \in X\ ,
+    \]
+    即
+    \[
+        \|u(x)\| \leq \varepsilon + \|u_N(x)\| \leq \varepsilon + \|u_N\|_\infty\ ,\quad x \in X\ ,
+    \]
+    于是 \(\|u\|_\infty \leq \varepsilon + \|u_N\|_\infty\), 因此 \(u \in B(X, E)\).
+\end{proof}
+
+根据上面两条定理, 我们可以直接得到如下推论.
+
+\begin{corollary}
+    设 \(X\) 是非空集合. 则 \(B(X, \K^m)\) 是 Banach 空间.
+\end{corollary}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 赋范向量空间 \(E\) 的完备性在更换等价范数后是不变的. 也就是说, 若 \(\|\!\cdot\!\|_1\) 和 \(\|\!\cdot\!\|_2\) 是 \(E\) 上的等价范数, 则 \((E, \|\!\cdot\!\|_1)\) 是完备的当且仅当 \((E, \|\!\cdot\!\|_2)\) 是完备的.
+        \item 向量空间 \(\K^m\) 在 \(|\!\cdot\!|_1\) 或 \(|\!\cdot\!|_\infty\) 范数下都是完备的. (我们将在第 3.3 节证明 \(\K^m\) 上的所有范数都是等价的.)
+        \item \textsl{称完备的内积空间 (见定理 \ref{thm:norm-induced-from-inner-produc}) 是 Hilbert 空间.} 特别的, 定理 \ref{thm:Km-is-banach-space} 表明 \(\K^m\) 是 Hilbert 空间.
+    \end{enumerate}
+\end{remark}
+
 \subsection{Cantor 的实数构造法}
+
+我们用实数 \(\R\) 的另一种构造方法来结束本节. 由于后续章节将不再使用这一构造, 读者在初次阅读本书时可跳过这部分内容.
+
+不难验证
+\[
+    \mathcal R \coloneqq \{\, r \in \Q^\N \;;\; r\ \text{是 Cauchy 序列} \,\}
+\]
+和
+\[
+    \mathbf c_0 \coloneqq \{\, r \in \Q^\N \;;\; r\ \text{是无穷小量} \,\}
+\]
+是良定义的.
+
+\begin{lemma}
+    \(\mathcal R\) 是 \(\Q^\N\) 的含 \(\overline 1\) 子环, 且 \(\mathbf c_0\) 是 \(\mathcal R\) 的非平凡真理想.
+\end{lemma}
+
+令 \(R\) 是环 \(\mathcal R\) 模去其理想 \(\mathbf c_0\) 所得的商环, 即 \(R \coloneqq \mathcal R / \mathbf c_0\).
 
 \subsection{练习}
 
@@ -3026,7 +3165,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{proof}
 
 \begin{exercise}
-    设 \((X, d)\) 是完备的度量空间, \((x_n)\) 是 \(X\) 中的序列. 假设存在 \(\alpha \in (0, 1)\) 使得
+    设 \((X, d)\) 是完备度量空间, \((x_n)\) 是 \(X\) 中的序列. 假设存在 \(\alpha \in (0, 1)\) 使得
     \[
         d(x_{n + 1}, x_n) \leq \alpha d(x_n, x_{n - 1})\ ,\quad n \in \N^\ast\ .
     \]
@@ -3082,7 +3221,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \item 完备度量空间的每个闭子集都是完备度量空间 (赋予诱导度量).
         \item Banach 空间的每个闭子空间都是 Banach 空间 (赋予诱导范数).
         \item \(\ell_\infty\), \(c\) 和 \(c_0\) 都是 Banach 空间.
-        \item 设 \(M\) 是完备的度量空间, \(D \subseteq M\) 是完备的子空间 (赋予诱导度量). 则 \(D\) 是闭集.
+        \item 设 \(M\) 是完备度量空间, \(D \subseteq M\) 是完备子空间 (赋予诱导度量). 则 \(D\) 是闭集.
     \end{enumerate}
 \end{exercise}
 
