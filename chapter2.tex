@@ -566,7 +566,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 \section{实数列与复数列}
 
-在本节中, 我们要推导出关于收敛数列计算的最重要的法则. 如果我们把这些数列看作向量空间 \(s = s(\K) = \K^\N\) 中的向量, 那么这些法则将证明所有收敛数列构成了 \(s\) 的子空间. 在实数列的情形下, 我们将利用 \(\R\) 的序结构来推导比较审敛法, 而这是研究 \(s(\R)\) 中数列收敛性的主要工具.
+在本节中, 我们要推导出关于收敛数列计算的最重要的法则. 如果我们把这些数列看作向量空间 \(s = s(\K) = \K^\N\) 中的向量, 那么这些法则将证明所有收敛数列构成了 \(s\) 的子空间. 在实数列的情形下, 我们将利用 \(\R\) 的序结构来推导比较判别法, 而这是研究 \(s(\R)\) 中数列收敛性的主要工具.
 
 \subsection{无穷小量}
 
@@ -686,7 +686,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     由于 \((x_n)\) 收敛到 \(a\), 因此 \((x_n - a)\) 是无穷小量, 进一步, \(\bigl(2\, |x_n - a| \big/ |a|^2\bigr)\) 是无穷小量. 于是由注 \ref{rem:null-sequences}(3) 可得 \((1 / x_n - 1 / a)\) 是无穷小量, 故 \(\lim 1 / x_n = 1 / a\).
 \end{proof}
 
-\subsection{比较审敛法}
+\subsection{比较判别法}
 
 接下来我们将研究收敛实数列与 \(\R\) 的序结构之间的关系. 我们将推导出夹逼定理---这是一种简单但非常有效的判定实数列极限的方法.
 
@@ -1262,7 +1262,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \[
             \bigl(B(X, E), \|\!\cdot\!\|_\infty\bigr) = (E^m, \|\!\cdot\!\|_\infty)\ ,
         \]
-        其中等式左边的 \(\|\!\cdot\!\|_\infty\) 是上确界范数, 等式右边的 \(\|\!\cdot\!\|_\infty\) 是例 \ref{eg:norms}(3) 的积范数. 因此上确界范数的记号和积范数的记号是一致的, 而不会产生歧义.
+        其中等式左边的 \(\|\!\cdot\!\|_\infty\) 是上确界范数, 等式右边的 \(\|\!\cdot\!\|_\infty\) 是例 \ref{eg:norms}(3) 中的积范数. 因此上确界范数的记号和积范数的记号是一致的, 而不会产生歧义.
     \end{enumerate}
 \end{remark}
 
@@ -1745,15 +1745,15 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{exercise}
 
 \begin{proof}
-    任取 \((X^n) \in c_0^\N\). 设 \(\lim X^n = (a_k) \in \ell_\infty\). 只用证明 \((a_k) \in c_0\), 即 \((a_k)\) 是无穷小量. 任取 \(\varepsilon > 0\), 故存在 \(N \in \N\) 使得
+    设 \((u_n) \in c_0^\N\) 且 \(u_n \to u \in \ell_\infty\). 只用证明 \(u \in c_0\). 任取 \(\varepsilon > 0\). 则存在 \(N \in \N\) 使得
     \[
-        \|X^n - (a_k)\|_\infty < \frac{\varepsilon}{2}\ ,\quad n \geq N\ .
+        |u(k)| - |u_n(k)| \leq |u_n(k) - u(k)| \leq \|u_n - u\|_\infty < \frac{\varepsilon}{2}\ ,\quad n \geq N\ ,\quad k \in \N\ .
     \]
-    注意到 \((X^n) \in c_0^\N\), 因此对于任意 \(n \in \N\) 都有 \(X^n\) 是无穷小量. 固定 \(n \geq N\). 则存在 \(K \in \N\) 使得当 \(k \geq K\) 时 \(|X_k^n| < \varepsilon / 2\), 于是
-    \begin{align*}
-        \frac{\varepsilon}{2} > \|X^n - (a_k)\|_\infty = \sup_{k \in \N} |X_k^n - a_k| \geq |X_k^n - a_k| \geq |a_k| - |X_k^n| > |a_k| - \frac{\varepsilon}{2}\ ,\quad k \geq K\ ,
-    \end{align*}
-    因此当 \(k \geq K\) 时 \(|a_k| < \varepsilon\), 故 \((a_k)\) 是无穷小量.
+    而 \(u_N \in c_0\), 故存在 \(M \in \N\) 使得当 \(k \geq M\) 时 \(|u_N(k)| < \varepsilon / 2\). 于是
+    \[
+        |u(k)| < \frac{\varepsilon}{2} + |u_N(k)| < \varepsilon\ ,\quad k \geq M\ ,
+    \]
+    因此 \(u \in c_0\).
 \end{proof}
 
 \begin{exercise}
@@ -1973,7 +1973,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 \subsection{一些重要极限}
 
-\begin{example}
+\begin{example}\label{eg:some-important-limits}
     \begin{enumerate}
         \item 设 \(a \in \K\). 则
         \[
@@ -3230,13 +3230,25 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
     (2). 证明与 (1) 类似.
 
-    (3).
+    (3). 由于 \(\ell_\infty = B(\N, \K)\), 因此 \(\ell_\infty\) 是 Banach 空间, 而 \(c_0\) 是 \(\ell_\infty\) 的闭子空间, 故 \(c_0\) 也是 Banach 空间. 只用证明 \(c\) 是 \(\ell_\infty\) 的闭子空间. 设 \((u_n) \in c^\N\) 且 \(u_n \to u \in \ell_\infty\). 任取 \(\varepsilon > 0\). 则存在 \(N \in \N\) 使得
+    \[
+        |u_n(k) - u(k)| \leq \|u_n - u\|_\infty < \frac{\varepsilon}{3}\ ,\quad n \geq N\ ,\quad k \in \N\ .
+    \]
+    而 \(u_N \in c\), 因此 \(u_N\) 是 Cauchy 序列, 于是存在 \(M \in \N\) 使得
+    \[
+        |u_N(n) - u_N(m)| < \frac{\varepsilon}{3}\ ,\quad m, n \geq M\ .
+    \]
+    因此由三角不等式可得
+    \[
+        |u(n) - u(m)| \leq |u(n) - u_N(n)| + |u_N(n) - u_N(m)| + |u_N(m) - u(m)| < \varepsilon\ ,\quad m, n \geq M\ ,
+    \]
+    故 \(u\) 是 Cauchy 序列, 由 \(\K\) 的完备性可知 \(u\) 收敛, 这说明 \(u \in c\).
 
     (4). 设 \((x_n)\) 是 \(D\) 中的序列且 \((x_n)\) 在 \(M\) 中收敛. 则 \((x_n)\) 是 Cauchy 序列, 而 \(D\) 是完备的, 因此 \((x_n)\) 在 \(D\) 中收敛, 于是 \(D\) 是闭集.
 \end{proof}
 
 \begin{exercise}
-    证明 \(R = \mathcal R \!\setminus\! \mathbf c_0\) 上的序 \(\leq\) 是传递的, 且与 \(R\) 的环结构相容.
+    证明 \(R = \mathcal R / \mathbf c_0\) 上的序 \(\leq\) 是传递的, 且与 \(R\) 的环结构相容.
 \end{exercise}
 
 \begin{exercise}
@@ -3280,3 +3292,132 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \]
     因此 \((x_n)\) 是有界的, 于是由单调有界收敛定理可知 \((x_n)\) 在 \(\R\) 中收敛. 而 \(\R\) 是完备的, 故 \((x_n)\) 是 \(\R\) 中的 Cauchy 序列. 由于 \(\Q\) 是 \(\R\) 的子空间 (赋予诱导度量), 于是由 Cauchy 序列的定义可知 \((x_n)\) 也是 \(\Q\) 中的 Cauchy 序列.
 \end{proof}
+
+\newpage
+
+\section{级数}
+
+目前, 我们有两种途径证明 Banach 空间 \((E, \|\!\cdot\!\|)\) 中的序列 \((x_n)\) 的收敛性. 要么先对 \((x_n)\) 的极限值 \(x\) 作出某种猜测, 然后直接证明 \(\|x_n - x\|\) 收敛到零, 要么证明 \((x_n)\) 是 Cauchy 序列, 进而利用 \(E\) 的完备性得出结论.
+
+在接下来的两节中, 我们将同时运用这两种方法来研究一类称为级数的特殊序列. 我们将看到, 级数所具有的简单递归结构会导出非常便捷的审敛法. 特别地, 我们将在任意 Banach 空间中讨论根值判别法与比值判别法, 并针对交错级数探讨 Leibniz 判别法.
+
+\subsection{级数的收敛性}
+
+\begin{definition}[级数]
+    设 \((x_k)\) 是赋范向量空间 \(E\) 中的序列, 定义 \(E\) 中的新序列
+    \[
+        s_n \coloneqq \sum_{k = 0}^n x_k\ ,\quad n \in \N\ .
+    \]
+    称 \((s_n)\) 是 \(E\) 中的级数, 记作 \(\sum x_k\). 并称 \(s_n\) 是级数 \(\sum x_k\) 的部分和, \(x_k\) 是级数 \(\sum x_k\) 的通项. 进一步, 称级数 \(\sum x_k\) 收敛, 若其部分和序列 \((s_n)\) 收敛, 并称 \((s_n)\) 的极限是级数 \(\sum x_k\) 的值, 记作\footnote{有时需要删除级数 \(\sum_k x_k\) 的前 \(m\) 项, 此时新级数记作 \(\sum_{k \geq m} x_k\) 或 \((s_n)_{n \geq m}\). 这经常发生在 \(x_0\) 未定义时 (例如, 若 \(x_k = 1 / k\)). 这时, \(\sum x_k\) 表示 \(\sum_{k \geq 1} x_k\).}
+    \[
+        \sum_{k = 0}^\infty x_k\ .
+    \]
+    最后, 称级数 \(\sum x_k\) 发散, 若其部分和序列 \((s_n)\) 在 \(E\) 中发散.
+\end{definition}
+
+由上面的定义不难得出, 级数无非是一种按如下方式递归定义的序列,
+\[
+    s_0 \coloneqq x_0\ ,\quad s_{n + 1} \coloneqq s_n + x_{n + 1}\ ,\quad n \in \N\ .
+\]
+
+\begin{example}
+    \begin{enumerate}
+        \item 级数 \(\sum 1 / k!\) 在 \(\R\) 中收敛. 由例 \ref{eg:some-important-limits}(7) 可知, 其收敛到 \(e\), 即 \(e = \sum_{k = 0}^\infty 1 / k!\).
+        \item 级数 \(\sum 1 / k^2\) 在 \(\R\) 中收敛.
+        \begin{proof}
+            显然其部分和数列 \((s_n)\) 是递增的, 由于
+            \[
+                s_n = \sum_{k = 1}^n \frac{1}{k^2} \leq 1 + \sum_{k = 2}^n \frac{1}{k (k - 1)} = 1 + \sum_{k = 2}^n \Bigl(\frac{1}{k - 1} - \frac{1}{k}\Bigr) = 2 - \frac{1}{n} \leq 2\ ,\quad n \geq 2\ ,
+            \]
+            因此 \((s_n)\) 是有界的. 于是由单调有界收敛定理可知该命题成立.
+        \end{proof}
+    \end{enumerate}
+\end{example}
+
+直观上能看出, 级数收敛仅当其通项构成无穷小量. 我们将在下面的命题中证明这个必要条件.
+
+\begin{proposition}\label{prop:necessary-criterion-of-convergent-series}
+    若级数 \(\sum x_k\) 收敛, 则 \((x_k)\) 是无穷小量.
+\end{proposition}
+
+\begin{proof}
+    设 \(\sum x_k\) 是收敛级数. 由命题 \ref{prop:convergent-sequence-is-cauchy-sequence} 可知, 其部分和序列 \((s_n)\) 是 Cauchy 序列. 任取 \(\varepsilon > 0\). 则存在 \(N \in \N\) 使得当 \(m, n \geq N\) 时 \(\|s_n - s_m\| < \varepsilon\). 特别的,
+    \[
+        \|s_{n + 1} - s_n\| = \Bigl\|\sum_{k = 0}^{n + 1} x_k - \sum_{k = 0}^n x_k\Bigr\| = \|x_{n + 1}\| < \varepsilon\ ,\quad n \geq N\ ,
+    \]
+    因此 \((x_n)\) 是无穷小量.
+\end{proof}
+
+\subsection{调和级数与几何级数}
+
+下面的例子表明命题 \ref{prop:necessary-criterion-of-convergent-series} 的逆命题不成立.
+
+\begin{example}
+    调和级数 \(\sum 1 / k\) 在 \(\R\) 中发散.
+\end{example}
+
+\begin{proof}
+    由于
+    \[
+        |s_{2 n} - s_n| = \sum_{k = n + 1}^{2 n} \frac{1}{k} \geq \sum_{k = n + 1}^{2 n} \frac{1}{2 n} = \frac{n}{2 n} = \frac{1}{2}\ ,\quad n \in \N^\ast\ ,
+    \]
+    这说明 \((s_n)\) 不是 Cauchy 序列. 因此由命题 \ref{prop:convergent-sequence-is-cauchy-sequence} 可知 \((s_n)\) 发散, 即调和级数发散.
+\end{proof}
+
+作为命题 \ref{prop:necessary-criterion-of-convergent-series} 的简单应用, 我们将给出几何级数 \(\sum a^k\) 收敛性态的完整描述.
+
+\begin{example}
+    设 \(a \in \K\), 则几何级数 \(\sum a^k\) 的值
+    \[
+        \sum_{k = 0}^\infty a^k = \frac{1}{1 - a}\ ,\quad |a| < 1\ .
+    \]
+    特别的, 若 \(|a| \geq 1\), 则几何级数发散.
+\end{example}
+
+\begin{proof}
+    由练习 \ref{ex:difference-of-powers-formula} 可知
+    \[
+        s_n = \sum_{k = 0}^n a^k = \frac{1 - a^{n + 1}}{1 - a}\ ,\quad n \in \N\ ,
+    \]
+    若 \(|a| < 1\), 则由例 \ref{eg:some-important-limits}(1) 可知 \(s_n \to 1 / (1 - a)\). 若 \(|a| \geq 1\), 则 \(|a|^k = |a^k| \geq 1\), 于是由命题 \ref{prop:necessary-criterion-of-convergent-series} 可知级数 \(\sum a^k\) 发散.
+\end{proof}
+
+\subsection{级数的运算}
+
+级数是特殊的序列, 因此适用于收敛序列的所有法则同样适用于级数. 特别地, \(\lim\) 函数的线性性质对级数也成立 (见第 2.2 节和注 \ref{rem:norms}(3)).
+
+\begin{proposition}
+    设 \(\sum a_k\) 和 \(\sum b_k\) 是赋范向量空间 \(E\) 中的收敛级数, \(\alpha \in \K\). 则
+    \begin{enumerate}
+        \item 级数 \(\sum (a_k + b_k)\) 收敛且
+        \[
+            \sum_{k = 0}^\infty (a_k + b_k) = \sum_{k = 0}^\infty a_k + \sum_{k = 0}^\infty b_k\ .
+        \]
+        \item 级数 \(\sum \alpha a_k\) 收敛且
+        \[
+            \sum_{k = 0}^\infty \alpha a_k = \alpha \sum_{k = 0}^\infty a_k\ .
+        \]
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    令
+    \[
+        s_n \coloneqq \sum_{k = 0}^n a_k\ ,\quad t_n \coloneqq \sum_{k = 0}^n b_k\ ,\quad n \in \N\ ,
+    \]
+    且 \(s_n \to s\), \(t_n \to t\). 于是由命题 \ref{prop:addition-scalar-multiplication-in-c} 和注 \ref{rem:norms}(3) 可知
+    \[
+        s_n + t_n = \sum_{k = 0}^n (a_k + b_k) \to s + t\ ,\quad \alpha s_n = \sum_{k = 0}^n \alpha a_k \to \alpha s\ .
+    \]
+\end{proof}
+
+\subsection{收敛性判别法}
+
+我们知道, Banach 空间中的序列收敛当且仅当其是 Cauchy 序列, 因此对于级数可以改写为如下形式.
+
+\begin{theorem}[Cauchy 条件]
+    Banach 空间 \((E, \|\!\cdot\!\|)\) 中的级数 \(\sum x_k\) 收敛, 当且仅当对于任意 \(\varepsilon > 0\) 存在 \(N \in \N\) 使得
+    \[
+        \Bigl\|\sum_{k = m + 1}^n x_k\Bigr\| < \varepsilon\ ,\quad n > m \geq N\ .
+    \]
+\end{theorem}
