@@ -1,4 +1,4 @@
-# 一年学完 Amann & Escher 的 Analysis I & II & III
+# Analysis I
 
 ## Chapter 1 Foundations
 
@@ -71,7 +71,7 @@ Section  4 Monotones Sequences
            Exercises                                 12  8, 25
            Exercises                                 12  9, 25
 Section  5 Infinite Limits
-           Convergence to Infinity                    12 10, 25
+           Convergence to Infinity                   12 10, 25
            The Limit Superior and Limit Inferior
            The Bolzano-Weierstrass Theorem           12 11, 25
            Exercises                                 12 12, 25
