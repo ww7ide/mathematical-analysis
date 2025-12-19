@@ -550,7 +550,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     设 \((x_n)\) 是 \(\C\) 中的数列且对于任意 \(n \in \N\) 有 \(\Re x_n = 0\). 证明, 若 \((x_n)\) 收敛到 \(x\), 则 \(\Re x = 0\).
 \end{exercise}
 
-\begin{exercise}
+\begin{exercise}\label{ex:even-and-odd-subsequence-converges}
     设 \((x_n)\) 是度量空间 \(X\) 中的序列. 若 \((x_n)\) 的子序列 \((x_{2 n + 1})\) 和 \((x_{2 n})\) 收敛到点 \(a\), 则 \((x_n)\) 也收敛且以 \(a\) 为极限.
 \end{exercise}
 
@@ -3415,9 +3415,204 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 我们知道, Banach 空间中的序列收敛当且仅当其是 Cauchy 序列, 因此对于级数可以改写为如下形式.
 
-\begin{theorem}[Cauchy 条件]
+\begin{theorem}[Cauchy 准则]
     Banach 空间 \((E, \|\!\cdot\!\|)\) 中的级数 \(\sum x_k\) 收敛, 当且仅当对于任意 \(\varepsilon > 0\) 存在 \(N \in \N\) 使得
     \[
         \Bigl\|\sum_{k = m + 1}^n x_k\Bigr\| < \varepsilon\ ,\quad n > m \geq N\ .
     \]
 \end{theorem}
+
+\begin{proof}
+    由 \(E\) 的完备性可知, \((s_n)\) 收敛当且仅当 \((s_n)\) 是 Cauchy 序列, 即对于任意 \(\varepsilon > 0\) 存在 \(N \in \N\) 使得
+    \[
+        \|s_n - s_m\| = \Bigl\|\sum_{k = m + 1}^n x_k\Bigr\| < \varepsilon\ ,\quad n > m \geq N\ .
+    \]
+\end{proof}
+
+对于具有非负通项的实数级数, 我们有如下一个简单的收敛性判别法.
+
+\begin{definition}[正项级数]
+    称 \(\R\) 中的级数 \(\sum x_k\) 是正项级数, 若对于任意 \(k \in \N\) 都有 \(x_k \geq 0\).
+\end{definition}
+
+\begin{theorem}\label{thm:nonnegative-series-convergence-criterion}
+    \(\R\) 中的正项级数 \(\sum x_k\) 收敛, 当且仅当 \((s_n)\) 有界. 进一步,
+    \[
+        \sum_{k = 0}^\infty x_k = \sup_{n \in \N} s_n\ .
+    \]
+\end{theorem}
+
+\begin{proof}
+    由于正项级数的部分和序列 \((s_n)\) 是递增的, 因此由单调有界收敛定理可知, \((s_n)\) 收敛当且仅当 \((s_n)\) 有界, 且 \(s_n \uparrow \sup_{n \in \N} s_n\).
+\end{proof}
+
+设 \(\sum x_k\) 是 \(\R\) 中的正项级数. 若其部分和序列是有界的, 则我们记 \(\sum x_k < \infty\). 在这样的记号下, 定理 \ref{thm:nonnegative-series-convergence-criterion} 可以写为
+\[
+    \sum x_k\ \text{收敛} \iff \sum x_k < \infty\ .
+\]
+
+\subsection{交错级数}
+
+\begin{definition}[交错级数]
+    称 \(\R\) 中的级数 \(\sum y_k\) 是交错级数, 若对于任意 \(y \in \N\) 都有 \(y_k\) 和 \(y_{k + 1}\) 的符号相反.
+\end{definition}
+
+一个交错级数总是能写成 \(\pm \sum (- 1)^k x_k\) 的形式, 其中 \(x_k \geq 0\).
+
+\begin{theorem}[Leibniz 准则]
+    \(\R\) 中的交错级数 \(\sum (- 1)^k x_k\) 收敛, 若 \(x_k \downarrow 0\).
+\end{theorem}
+
+\begin{proof}
+    由于 \((x_k)\) 是递减的, 于是
+    \[
+        s_{2 n + 2} - s_{2 n} = - x_{2 n + 1} + x_{2 n + 2} \leq 0\ ,\quad n \in \N\ ,
+    \]
+    因此序列 \((s_{2 n})\) 是递减的, 而
+    \[
+        s_{2 n + 3} - s_{2 n + 1} = x_{2 n + 2} - x_{2 n + 3} \geq 0\ ,\quad n \in \N\ ,
+    \]
+    因此序列 \((s_{2 n + 1})\) 是递增的. 由于 \(x_k \downarrow 0\), 因此 \((x_k)\) 的所有项都非负, 于是
+    \[
+        s_1 \leq s_{2 n + 1} = s_{2 n} - x_{2 n + 1} \leq s_{2 n} \leq s_0\ ,\quad n \in \N\ ,
+    \]
+    由单调有界收敛定理可知 \(s_{2 n}\) 和 \(s_{2 n + 1}\) 收敛. 令 \(s_{2 n} \to s\), \(s_{2 n + 1} \to t\), 于是
+    \[
+        s - t = \lim_{n \to \infty} (s_{2 n} - s_{2 n + 1}) = \lim_{n \to \infty} x_{2 n + 1} = 0\ ,
+    \]
+    因此 \(s = t\), 由练习 \ref{ex:even-and-odd-subsequence-converges} 可知 \((s_n)\) 收敛.
+\end{proof}
+
+\begin{corollary}\label{cor:alternating-series-error-estimate}
+    设 \(\sum (- 1)^k x_k\) 是 \(\R\) 中满足 Leibniz 准则且收敛到 \(s\) 的交错级数. 则
+    \[
+        |s - s_n| \leq x_{n + 1}\ ,\quad n \in \N\ .
+    \]
+\end{corollary}
+
+\begin{proof}
+    在 Leibniz 准则的证明中, 我们已经证明了
+    \[
+        \inf_{n \in \N} s_{2 n} = s = \sup_{n \in \N} s_{2 n + 1}\ .
+    \]
+    因此
+    \begin{align}\label{cor:alternating-series-error-estimate-even}
+        0 \leq s_{2 n} - s \leq s_{2 n} - s_{2 n + 1} = x_{2 n + 1}\ ,\quad n \in \N\ ,
+    \end{align}
+    且
+    \begin{align}\label{cor:alternating-series-error-estimate-odd}
+        0 \leq s - s_{2 n + 1} \leq s_{2 n + 2} - s_{2 n + 1} = x_{2 n + 2}\ ,\quad n \in \N\ .
+    \end{align}
+    结合 \eqref{cor:alternating-series-error-estimate-even} 和 \eqref{cor:alternating-series-error-estimate-odd} 可知, 对于任意 \(n \in \N\) 都有 \(|s - s_n| \leq x_{n + 1}\).
+\end{proof}
+
+推论 \ref{cor:alternating-series-error-estimate} 证明, 当交错级数的值被替换为第 \(n\) 项部分和时, 所产生的误差至多为 ``首个被省略的项'' 的绝对值. 此外, \eqref{cor:alternating-series-error-estimate-even} 和 \eqref{cor:alternating-series-error-estimate-odd} 表明, 第 \(n\) 项部分和何时小于或何时大于级数的值.
+
+\begin{example}
+    由 Leibniz 准则可知, 交错级数
+    \begin{enumerate}
+        \item \(\displaystyle \sum_{k = 1}^\infty \frac{(- 1)^{k + 1}}{k} = 1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \cdots\)
+        \item \(\displaystyle \sum_{k = 0}^\infty \frac{(- 1)^k}{2 k + 1} = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \cdots\)
+    \end{enumerate}
+    收敛. 它们的值分别是 \(\ln 2\) 与 \(\pi / 4\) (我们将在之后的章节证明).
+\end{example}
+
+\subsection{练习}
+
+\begin{exercise}
+    计算下列级数的值.
+    \[
+        1.\ \sum \frac{(- 1)^k}{2^k}\ ,\quad 2.\ \sum \frac{1}{4 k^2 - 1}\ .
+    \]
+\end{exercise}
+
+\begin{proof}
+    (1). 由于 \(|- 1 / 2| < 1\), 因此几何级数 \(\sum (- 1)^k / 2^k\) 收敛且
+    \[
+        \sum_{k = 0}^\infty \frac{(- 1)^k}{2^k} = \frac{1}{1 + 1/ 2} = \frac{2}{3}\ .
+    \]
+
+    (2). 对于任意 \(n \in \N\), 其部分和
+    \[
+        s_n = \sum_{k = 0}^n \frac{1}{4 k^2 - 1} = \sum_{k = 0}^n \frac{1}{(2 k + 1) (2 k - 1)} = \sum_{k = 0}^n \frac{1}{2} \Bigl(\frac{1}{2 k - 1} - \frac{1}{2 k + 1}\Bigr) = \frac{1}{2} \Bigl(- 1 - \frac{1}{2 n + 1}\Bigr)\ ,
+    \]
+    因此 \(s_n \to - 1 / 2\).
+\end{proof}
+
+\begin{exercise}
+    判断下列级数收敛还是发散.
+    \[
+        1.\ \sum \frac{\sqrt{k + 1} - \sqrt{k}}{\sqrt{k}}\ ,\quad 2.\ \sum (- 1)^k (\sqrt{k + 1} - \sqrt{k})\ ,\quad 3.\ \sum \frac{k!}{k^k}\ ,\quad 4.\ \sum \frac{(k + 1)^{k - 1}}{(- k)^k}\ .
+    \]
+\end{exercise}
+
+\begin{proof}
+    (1). 由于
+    \begin{align*}
+        |s_{2 n} - s_n| &= \sum_{k = n + 1}^{2 n} \frac{\sqrt{k + 1} - \sqrt{k}}{\sqrt{k}} = \sum_{k = n + 1}^{2 n} \frac{1}{\sqrt{k} (\sqrt{k + 1} + \sqrt{k})} = \sum_{k = n + 1}^{2 n} \frac{1}{\sqrt{k} \sqrt{k + 1} + k}\\
+        &\geq \sum_{k = n + 1}^{2 n} \frac{1}{k + 1 + k} \geq \sum_{k = n + 1}^{2 n} \frac{1}{3 k} \geq \sum_{k = n + 1}^{2 n} \frac{1}{6 n} = \frac{1}{6}\ ,\quad n \in \N^\ast\ ,
+    \end{align*}
+    因此 \((s_n)\) 不是 Cauchy 序列, 故 \((s_n)\) 发散.
+
+    (2). 由于
+    \[
+        \sqrt{k + 1} - \sqrt{k} = \frac{1}{\sqrt{k + 1} + \sqrt{k}} \downarrow 0\quad (k \to \infty)\ ,
+    \]
+    因此由 Leibniz 准则可知该交错级数收敛.
+
+    (3). 我们断言
+    \[
+        \frac{k!}{k^k} \leq \frac{1}{2^{k - 1}}\ ,\quad k \in \N^\ast\ .
+    \]
+    显然 \(k = 1\) 时成立. 假设 \(k! / k^k \leq 1 / 2^{k - 1}\). 于是
+    \[
+        \frac{(k + 1)!}{(k + 1)^{k + 1}} = \frac{k!}{(k + 1)^k} = \frac{k!}{k^k} \frac{k^k}{(k + 1)^k} \leq \frac{1}{2^{k - 1}} \frac{1}{(1 + 1 / k)^k}\ ,
+    \]
+    由二项式定理可知
+    \[
+        \Bigl(1 + \frac{1}{k}\Bigr)^k = \sum_{n = 0}^k \binom{k}{n} \frac{1}{k^n} = 1 + 1 + \binom{k}{2} \frac{1}{k^2} + \cdots \geq 2\ ,
+    \]
+    因此 \((k + 1)! / (k + 1)^{k + 1} \leq 1 / 2^k\). 由数学归纳法可知该断言成立. 于是
+    \[
+        s_n = \sum_{k = 1}^n \frac{k!}{k^k} \leq \sum_{k = 1}^n \frac{1}{2^{k - 1}} = \frac{1 - (1 / 2)^n}{1 - 1 / 2} < 2\ ,\quad n \in \N^\ast\ ,
+    \]
+    故 \((s_n)\) 是有界的, 而 \((s_n)\) 是正项级数, 因此 \((s_n)\) 收敛.
+
+    (4). 令 \(x_k \coloneqq (k + 1)^{k - 1} / k^k\), 故 \(\sum (k + 1)^{k - 1} / (- k)^k = \sum (- 1)^k x_k\) 是交错级数. 由于
+    \[
+        \frac{x_{k + 1}}{x_k} = \frac{(k + 2)^k}{(k + 1)^{k + 1}} \frac{k^k}{(k + 1)^{k - 1}} = \Bigl(\frac{k^2 + 2 k}{k^2 + 2 k + 1}\Bigr)^k \leq 1\ ,\quad k \in \N^\ast\ ,
+    \]
+    因此 \((x_k)\) 是递减的. 而
+    \[
+        x_k = \frac{(k + 1)^{k - 1}}{k^k} = \frac{1}{k + 1} \frac{(k + 1)^k}{k^k} = \frac{1}{k + 1} \Bigl(1 + \frac{1}{k}\Bigr)^k\ ,
+    \]
+    其中 \(1 / (k + 1) \to 0\), \((1 + 1 / k)^k \to e\), 故 \(x_k \downarrow 0\). 由 Leibniz 准则可知该交错级数收敛.
+\end{proof}
+
+\begin{exercise}
+    一只蜗牛以 \(5\, \mathrm{cm} / \mathrm h\) 的恒定速度在一条 \(1\, \mathrm m\) 长的橡皮筋上爬行. 在开始爬行后的每个小时结束时, 橡皮筋会被均匀拉伸额外的一米. 如果蜗牛从橡皮筋的左端开始爬行, 它是否能在有限时间内到达右端?
+\end{exercise}
+
+\begin{proof}
+    由于蜗牛爬行速度恒定, 而橡皮筋每小时结束都会均匀拉伸一米, 因此 \(0.05 / t\) 是蜗牛在第 \(t\) 小时爬行的距离所占橡皮筋长度的比例. 蜗牛要到达另一端, 只需要其每小时爬行的比例的和等于 \(1\) 即可. 于是问题变为了是否存在 \(t\) 使得
+    \[
+        \sum_{k = 1}^t \frac{0.05}{k} \geq 1\ ,
+    \]
+    即 \(\sum_{k = 1}^t 1 / k \geq 20\). 而调和级数发散, 因此存在 \(t \in \N\) 使得 \(\sum_{k = 1}^t 1 / k \geq 20\).
+\end{proof}
+
+\begin{exercise}
+    设 \(\sum a_k\) 是赋范向量空间 \(E\) 中的收敛级数. 定义
+    \[
+        r_n \coloneqq \sum_{k = n}^\infty a_k\ ,\quad n \in \N\ ,
+    \]
+    证明序列 \((r_n)\) 是无穷小量.
+\end{exercise}
+
+\begin{proof}
+    令 \(\sum a_k\) 收敛到 \(a\). 于是
+    \[
+        r_n = \sum_{k = n}^\infty a_k = \sum_{k = 0}^\infty a_k - \sum_{k = 0}^{n - 1} a_k = a - \sum_{k = 0}^{n - 1} a_k \to 0\quad (n \to \infty)\ ,
+    \]
+    因此 \((r_n)\) 是无穷小量.
+\end{proof}

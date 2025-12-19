@@ -91,6 +91,7 @@ Section  7 Series
            Decimal, Binary and Other Representations
                                      of Real Numbers
            The Uncountability of R
+           Exercises                                 12 19, 25
 Section  8 Absolute Convergence
 Section  9 Power Series
 ```
