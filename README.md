@@ -92,6 +92,7 @@ Section  7 Series
                                      of Real Numbers
            The Uncountability of R
            Exercises                                 12 19, 25
+           Exercises                                 12 20, 25
 Section  8 Absolute Convergence
 Section  9 Power Series
 ```

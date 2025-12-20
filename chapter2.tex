@@ -3496,26 +3496,104 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \inf_{n \in \N} s_{2 n} = s = \sup_{n \in \N} s_{2 n + 1}\ .
     \]
     因此
-    \begin{align}\label{cor:alternating-series-error-estimate-even}
+    \begin{align}\label{exp:alternating-series-error-estimate-even}
         0 \leq s_{2 n} - s \leq s_{2 n} - s_{2 n + 1} = x_{2 n + 1}\ ,\quad n \in \N\ ,
     \end{align}
     且
-    \begin{align}\label{cor:alternating-series-error-estimate-odd}
+    \begin{align}\label{exp:alternating-series-error-estimate-odd}
         0 \leq s - s_{2 n + 1} \leq s_{2 n + 2} - s_{2 n + 1} = x_{2 n + 2}\ ,\quad n \in \N\ .
     \end{align}
-    结合 \eqref{cor:alternating-series-error-estimate-even} 和 \eqref{cor:alternating-series-error-estimate-odd} 可知, 对于任意 \(n \in \N\) 都有 \(|s - s_n| \leq x_{n + 1}\).
+    结合 \eqref{exp:alternating-series-error-estimate-even} 和 \eqref{exp:alternating-series-error-estimate-odd} 可知, 对于任意 \(n \in \N\) 都有 \(|s - s_n| \leq x_{n + 1}\).
 \end{proof}
 
-推论 \ref{cor:alternating-series-error-estimate} 证明, 当交错级数的值被替换为第 \(n\) 项部分和时, 所产生的误差至多为 ``首个被省略的项'' 的绝对值. 此外, \eqref{cor:alternating-series-error-estimate-even} 和 \eqref{cor:alternating-series-error-estimate-odd} 表明, 第 \(n\) 项部分和何时小于或何时大于级数的值.
+推论 \ref{cor:alternating-series-error-estimate} 证明, 当交错级数的值被替换为第 \(n\) 项部分和时, 所产生的误差至多为 ``首个被省略的项'' 的绝对值. 此外, \eqref{exp:alternating-series-error-estimate-even} 和 \eqref{exp:alternating-series-error-estimate-odd} 表明, 第 \(n\) 项部分和何时小于或何时大于级数的值.
 
 \begin{example}
     由 Leibniz 准则可知, 交错级数
     \begin{enumerate}
-        \item \(\displaystyle \sum_{k = 1}^\infty \frac{(- 1)^{k + 1}}{k} = 1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \cdots\)
-        \item \(\displaystyle \sum_{k = 0}^\infty \frac{(- 1)^k}{2 k + 1} = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \cdots\)
+        \item \(\displaystyle \sum_{k = 1}^\infty \frac{(- 1)^{k + 1}}{k} = 1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + - \cdots\)
+        \item \(\displaystyle \sum_{k = 0}^\infty \frac{(- 1)^k}{2 k + 1} = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + - \cdots\)
     \end{enumerate}
     收敛. 它们的值分别是 \(\ln 2\) 与 \(\pi / 4\) (我们将在之后的章节证明).
 \end{example}
+
+\subsection{实数的十进制、二进制及其他进制表示}
+
+我们已证明有关级数的结论可用于论证, 通过小数展开表示实数的合理性. 例如, 有理数
+\[
+    24 + \frac{1}{10^1} + \frac{3}{10^2} + \frac{0}{10^3} + \frac{7}{10^4} + \frac{1}{10^5}
+\]
+有唯一的小数表示:
+\[
+    24.13071 \coloneqq 2 \cdot 10^1 + 4 \cdot 10^0 + \frac{1}{10^1} + \frac{3}{10^2} + \frac{0}{10^3} + \frac{7}{10^4} + \frac{1}{10^5}\ .
+\]
+我们同样还想弄清楚 ``无穷小数展开'' 的意义, 比如
+\[
+    7.52341043 \ldots
+\]
+当给定一个能够确定展开式中所有后续数字的算法时, 以下例子表明此类小数表示法需要被谨慎对待:
+\[
+    3.999 \ldots = 3 + \sum_{k = 1}^\infty \frac{9}{10^k} = 3 + 9 \sum_{k = 1}^\infty \frac{1}{10^k} = 3 + 9 \frac{1 / 10}{1 - 1 / 10} = 4\ .
+\]
+选择数字 \(10\) 作为上述表示法的 ``基数'' 可能有历史、文化或实用层面的考量, 但它并非基于任何数学上的考量. 举例而言, 我们同样可以考虑二进制表示法, 例如
+\[
+    101.10010 \ldots = 1 \cdot 2^2 + 0 \cdot 2^1 + 1 \cdot 2^0 + 1 \cdot 2^{- 1} + 0 \cdot 2^{- 2} + 0 \cdot 2^{- 3} + 1 \cdot 2^{- 4} + 0 \cdot 2^{- 5} + \cdots
+\]
+在下文中, 我们将使上述初步讨论更加精确.
+
+\begin{definition}[下取整函数]
+    称
+    \[
+        \lfloor \cdot \rfloor \colon \R \to \Z\ ,\quad x \mapsto \max\{\, k \in \Z \;;\; k \leq x \,\}
+    \]
+    是下取整函数.
+\end{definition}
+
+显然 \(\lfloor x \rfloor\) 表示不大于 \(x\) 的最大整数, 由良序原理可知 \(\lfloor \cdot \rfloor\) 是良定义的.
+
+\begin{definition}[基数]
+    设 \(g \in \N\) 且 \(g \geq 2\). 称集合 \(\{0, 1, \ldots, g - 1\}\) 中的 \(g\) 个元素是基数 \(g\) 数字.
+\end{definition}
+
+这里的数字 \(g\) 表示了在进制系统中有多少种不同的数字符号. 因此 \(\{0, 1\}\) 是二进制 (基数 \(2\)) 数字的集合, \(\{0, 1, 2\}\) 是三进制 (基数 \(3\)) 数字的集合, 以及 \(\{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}\) 是十进制 (基数 \(10\)) 数字的集合. 对于由基数 \(g\) 数字构成的任意数列 \((x_k)_{k \in \N^\ast}\), 即对于任意 \(k \in \N^\ast\) 都有 \(x_k \in \{0, 1, \ldots, g - 1\}\), 我们有不等式
+\[
+    0 \leq \sum_{k = 1}^n x_k g^{- k} \leq (g - 1) \sum_{k = 1}^\infty g^{- k} = 1\ ,\quad n \in \N^\ast\ .
+\]
+由定理 \ref{thm:nonnegative-series-convergence-criterion} 可知, 级数 \(\sum x_k g^{- k}\) 收敛且其值 \(x\) 满足 \(0 \leq x \leq 1\).
+
+\begin{definition}[基数 \(g\) 展开]
+    设 \((x_k)_{k \in \N^\ast}\) 是由基数 \(g\) 数字构成的数列, 令 \(x \coloneqq \sum_{k = 1}^\infty x_k g^{- k}\). 称级数 \(\sum x_k g^{- k}\) 是实数 \(x \in [0, 1]\) 的基数 \(g\) 展开.
+\end{definition}
+
+当 \(g = 2\)、\(g = 3\) 和 \(g = 10\) 时, 我们称 \(\sum x_k g^{- k}\) 是 \(x\) 的二进制展开、三进制展开和十进制展开. 当 \(g\) 在上下文中明确时, 我们通常将数字 \(x \in [0, 1]\) 的基数 \(g\) 展开记作
+\[
+    0.x_1 x_2 x_3 x_4 \ldots \coloneqq \sum_{k = 1}^\infty x_k g^{- k}\ .
+\]
+不难发现, 任意 \(m \in \N\) 都有如下形式\footnote{见练习 \ref{ex:base-g-expansion-of-natural-numbers}. 为了得到表示的唯一性, 我们需要忽略前导零. 例如, 我们将 \(0 \cdot 3^3 + 0 \cdot 3^2 + 1 \cdot 3^1 + 2 \cdot 3^0\) 和 \(1 \cdot 3^1 + 2 \cdot 3^0\) 视为 \(5\) 的同一三进制表示.}的唯一表示
+\[
+    m = \sum_{j = 0}^\ell y_j g^j\ ,\quad y_k \in \{0, 1, \ldots, g - 1\}\ ,\quad 0 \leq k \leq \ell\ .
+\]
+于是
+\[
+    x = m + \sum_{k = 1}^\infty x_k g^{- k} = \sum_{j = 0}^\ell y_j g^j + \sum_{k = 1}^\infty x_k g^{- k}
+\]
+是非负实数. 称上式的右边是 \(x\) 的基数 \(g\) 展开, 当 \(g\) 在上下文中明确时, 记作
+\[
+    y_\ell y_{\ell - 1} \ldots y_0. x_1 x_2 x_3 \ldots
+\]
+类似的, 称
+\[
+    - y_\ell y_{\ell - 1} \ldots y_0. x_1 x_2 x_3 \ldots
+\]
+是 \(- x\) 的基数 \(g\) 展开.
+
+\begin{definition}[循环节]
+    称实数 \(x \in [0, 1]\) 的基数 \(g\) 展开 \(\sum x_k g^{- k}\) 是循环的, 若存在 \(\ell \in \N\) 和 \(p \in \N^\ast\) 使得当 \(k \geq \ell\) 时 \(x_{k + p} = x_k\).
+\end{definition}
+
+\begin{theorem}
+    设 \(g \geq 2\). 则每个实数 \(x\) 都存在基数 \(g\) 展开. 若排除对于几乎所有 \(k \in \N\) 都有 \(x_k = g - 1\) 的展开, 则该展开是唯一的. 进一步, \(x\) 是有理数当且仅当 \(x\) 的基数 \(g\) 展开是循环的.
+\end{theorem}
 
 \subsection{练习}
 
@@ -3615,4 +3693,125 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         r_n = \sum_{k = n}^\infty a_k = \sum_{k = 0}^\infty a_k - \sum_{k = 0}^{n - 1} a_k = a - \sum_{k = 0}^{n - 1} a_k \to 0\quad (n \to \infty)\ ,
     \]
     因此 \((r_n)\) 是无穷小量.
+\end{proof}
+
+\begin{exercise}
+    设 \((x_k)\) 是递减数列且 \(\sum x_k\) 收敛. 证明 \((k x_k)\) 是无穷小量.
+\end{exercise}
+
+\begin{proof}
+    任取 \(\varepsilon > 0\). 由于 \(\sum x_k\) 收敛, 于是 \(x_k \downarrow 0\), 这说明 \((x_k)\) 的所有项都非负. 而 \((s_n)\) 是 Cauchy 序列, 因此存在 \(N \in \N\) 使得
+    \[
+        |n x_{2 n + 1}| \leq |n x_{2 n}| = \Bigl|\sum_{k = n + 1}^{2 n} x_{2 n}\Bigr| \leq \Bigl|\sum_{k = n + 1}^{2 n} x_k\Bigr| < \varepsilon\ ,\quad n \geq N\ ,
+    \]
+    故 \(2 n x_{2 n} \to 0\) 且 \((2 n + 1) x_{2 n + 1} = 2 n x_{2 n + 1} + x_{2 n + 1} \to 0\), 因此 \((k x_k)\) 是无穷小量.
+\end{proof}
+
+\begin{exercise}
+    设 \((x_k)\) 是 \([0, \infty)\) 中的数列. 证明
+    \[
+        \sum x_k < \infty \iff \sum \frac{x_k}{1 + x_k} < \infty\ .
+    \]
+\end{exercise}
+
+\begin{proof}
+    令
+    \[
+        s_n \coloneqq \sum_{k = 0}^n x_k\ ,\quad t_n \coloneqq \sum_{k = 0}^n \frac{x_k}{1 + x_k}\ ,\quad n \in \N\ .
+    \]
+
+    \(\implies\). 设 \(\sum x_k < \infty\). 于是
+    \[
+        \sum_{k = 0}^n \frac{x_k}{1 + x_k} \leq \sum_{k = 0}^n x_k \leq \sup_{n \in \N} s_n\ ,\quad n \in \N\ ,
+    \]
+    因此 \((t_n)\) 有界.
+
+    \(\impliedby\). 设 \(\sum x_k / (1 + x_k) < \infty\). 则 \(x_k / (1 + x_k) \to 0\). 先证明 \(x_k \to 0\). 由于 \(x / (1 + x)\) 是递增的. 假设 \(x_k \to a > 0\), 则存在 \(M \in \N\) 使得当 \(k \geq M\) 时 \(x_k > a / 2\), 于是
+    \[
+        \frac{x_k}{1 + x_k} \geq \frac{a / 2}{1 + a / 2} = \frac{a}{2 + a} > 0\ ,\quad k \geq M\ ,
+    \]
+    这与 \(x_k / (1 + x_k) \to 0\) 矛盾, 故 \(x_k \to 0\). 于是存在 \(N \in \N\) 使得当 \(k \geq N\) 时 \(x_k < 1\), 因此 \(x_k / (1 + x_k) > x_k / 2\), 即
+    \[
+        x_k < 2 \frac{x_k}{1 + x_k}\ ,\quad k \geq N\ .
+    \]
+    于是
+    \[
+        \sum_{k = 0}^n x_k = \sum_{k = 0}^N x_k + \sum_{k = N + 1}^n x_k \leq \sum_{k = 0}^N x_k + 2 \sum_{k = N + 1}^n \frac{x_k}{1 + x_k} \leq \sum_{k = 0}^N x_k + 2 \sup_{n \in \N} t_n\ ,\quad n \in \N\ ,
+    \]
+    而 \(\sum_{k = 0}^N x_k\) 是有限的, 因此 \((s_n)\) 有界.
+\end{proof}
+
+\begin{exercise}
+    设 \((d_k)\) 是 \([0, \infty)\) 中的数列且 \(\sum_{k = 0}^\infty d_k = \infty\).
+    \begin{enumerate}
+        \item 对于下列级数的收敛性可以得出什么结论?
+        \[
+            (a)\ \sum \frac{d_k}{1 + d_k}\ ,\quad (b)\ \sum \frac{d_k}{1 + k^2 d_k}\ .
+        \]
+        在这两种情形下, 关于数列 \((d_k)\) 的假设都是必要的吗? (提示: 分别考虑 \(\limsup d_k < \infty\) 和 \(\limsup d_k = \infty\) 的情况.)
+        \item 通过举例证明
+        \[
+            (a)\ \sum \frac{d_k}{1 + k d_k}\ ,\quad (b)\ \sum \frac{d_k}{1 + d_k^2}
+        \]
+        可能收敛也可能发散.
+    \end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    (1). 由于 \(\sum d_k\) 无界, 于是由上面的练习可知 \(\sum d_k / (1 + d_k)\) 无界, 即发散. 而
+    \[
+        \sum_{k = 0}^n \frac{d_k}{1 + k^2 d_k} = d_0 + \sum_{k = 1}^n \frac{d_k}{1 + k^2 d_k} \leq d_0 + \sum_{k = 1}^n \frac{d_k}{k^2 d_k} = d_0 + \sum_{k = 1}^n \frac{1}{k^2}\ ,\quad n \in \N\ ,
+    \]
+    注意当 \(d_k = 0\) 时 \(d_k / (1 + k^2 d_k) = 0 < 1 / k^2\), 因此该不等式成立, 而 \(\sum 1 / k^2\) 是有界的, 因此正项级数 \(\sum d_k / (1 + k^2 d_k)\) 有界, 故收敛. 对于 (a) 中的级数, 由于其有界性依赖于 \(\sum d_k\) 的有界性, 因此假设是有必要的. 而对于 (b) 中的级数, 只要 \((d_k)\) 是非负的, 那么不等式总是成立, 因此关于 \(\sum_{k = 0}^\infty d_k = \infty\) 的假设不是必要的.
+
+    (2). 考虑 \(d_k = 1 / k\), 此时 \(\sum_{k = 1}^\infty 1 / k = \infty\) 且
+    \[
+        \sum \frac{d_k}{1 + k d_k} = \sum \frac{1}{2 k}\ ,\quad \sum \frac{d_k}{1 + d_k^2} = \sum \frac{1}{k + 1 / k}
+    \]
+    发散. 考虑
+    \[
+        d_k =
+        \begin{cases}
+            1\ , & \text{若}\ k = 2^m\ (m \in \N)\ , \\
+            0\ , & \text{其余情况}\ ,
+        \end{cases}
+    \]
+    显然 \(\sum_{k = 0}^\infty d_k = \infty\), 而当 \(k \neq 2^m\) 时 \(d_k / (1 + k d_k) = 0\), 当 \(k = 2^m\) 时
+    \[
+        \frac{d_k}{1 + k d_k} = \frac{1}{1 + 2^m}\ ,
+    \]
+    因此
+    \[
+        \sum_{k = 0}^n \frac{d_k}{1 + k d_k} \leq \sum_{k = 0}^n \frac{1}{1 + 2^k} \leq \sum_{k = 0}^n \frac{1}{2^k} = \frac{1 - (1 / 2)^{n + 1}}{1 - 1 / 2} < 2\ ,\quad n \in \N\ ,
+    \]
+    故 \(\sum d_k / (1 + k d_k)\) 收敛. 考虑 \(d_k = k^2\), 显然 \(\sum_{k = 0}^\infty k^2 = \infty\), 由于
+    \[
+        \sum_{k = 0}^n \frac{d_k}{1 + d_k^2} = \sum_{k = 0}^n \frac{k^2}{1 + k^4} = \sum_{k = 1}^n \frac{1}{1 / k^2 + k^2} \leq \sum_{k = 1}^n \frac{1}{k^2}\ ,\quad n \in \N\ ,
+    \]
+    而 \(\sum 1 / k^2\) 有界, 因此 \(\sum d_k / (1 + d_k^2)\) 收敛.
+\end{proof}
+
+\begin{exercise}
+    设 \(s \coloneqq \sum_{k = 1}^\infty 1 / k^2\). 证明
+    \[
+        1 - \frac{1}{2^2} - \frac{1}{4^2} + \frac{1}{5^2} + \frac{1}{7^2} - \frac{1}{8^2} - \frac{1}{10^2} + + - - \cdots = \frac{4}{9} s\ .
+    \]
+\end{exercise}
+
+\begin{proof}
+    将上式记为 \(\sum x_k\). 由于
+    \begin{align*}
+        s = \sum_{k = 1}^\infty \frac{1}{k^2} &= 1 + \frac{1}{2^2} + \frac{1}{3^2} + \frac{1}{4^2} + \frac{1}{5^2} + \frac{1}{6^2} + \cdots\\
+        \frac{s}{4} = \sum_{k = 1}^\infty \frac{1}{(2 k)^2} &= \frac{1}{2^2} + \frac{1}{4^2} + \frac{1}{6^2} + \frac{1}{8^2} + \frac{1}{10^2} + \cdots\\
+        \frac{s}{9} = \sum_{k = 1}^\infty \frac{1}{(3 k)^2} &= \frac{1}{3^2} + \frac{1}{6^2} + \frac{1}{9^2} + \frac{1}{12^2} + \cdots\\
+        \frac{s}{36} = \sum_{k = 1}^\infty \frac{1}{(6 k)^2} &= \frac{1}{6^2} + \frac{1}{12^2} + \frac{1}{18^2} + \cdots
+    \end{align*}
+    注意到
+    \[
+        \sum_{k = 1}^{6 n} x_k = \sum_{k = 1}^{6 n} \frac{1}{k^2} - 2 \sum_{k = 1}^{3 n} \frac{1}{(2 k)^2} + \sum_{k = 1}^n \frac{1}{(6 k)^2} - \sum_{k = 1}^{2 n} \frac{1}{(3 k)^2} + \sum_{k = 1}^n \frac{1}{(6 k)^2}\ ,\quad n \in \N\ ,
+    \]
+    因此
+    \[
+        \sum_{k = 1}^\infty x_k = s - \frac{s}{2} + \frac{s}{36} - \frac{s}{9} + \frac{s}{36} = \frac{4}{9} s\ .
+    \]
 \end{proof}
