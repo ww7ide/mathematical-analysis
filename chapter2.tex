@@ -3366,7 +3366,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 作为命题 \ref{prop:necessary-criterion-of-convergent-series} 的简单应用, 我们将给出几何级数 \(\sum a^k\) 收敛性态的完整描述.
 
-\begin{example}
+\begin{example}\label{eg:geometric-series}
     设 \(a \in \K\), 则几何级数 \(\sum a^k\) 的值
     \[
         \sum_{k = 0}^\infty a^k = \frac{1}{1 - a}\ ,\quad |a| < 1\ .
@@ -3443,7 +3443,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{theorem}
 
 \begin{proof}
-    由于正项级数的部分和序列 \((s_n)\) 是递增的, 因此由单调有界收敛定理可知, \((s_n)\) 收敛当且仅当 \((s_n)\) 有界, 且 \(s_n \uparrow \sup_{n \in \N} s_n\).
+    显然正项级数的部分和序列 \((s_n)\) 是递增的, 因此由单调有界收敛定理可知, \((s_n)\) 收敛当且仅当 \((s_n)\) 有界, 且 \(s_n \uparrow \sup_{n \in \N} s_n\).
 \end{proof}
 
 设 \(\sum x_k\) 是 \(\R\) 中的正项级数. 若其部分和序列是有界的, 则我们记 \(\sum x_k < \infty\). 在这样的记号下, 定理 \ref{thm:nonnegative-series-convergence-criterion} 可以写为
@@ -3570,9 +3570,9 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     0.x_1 x_2 x_3 x_4 \ldots \coloneqq \sum_{k = 1}^\infty x_k g^{- k}\ .
 \]
 不难发现, 任意 \(m \in \N\) 都有如下形式\footnote{见练习 \ref{ex:base-g-expansion-of-natural-numbers}. 为了得到表示的唯一性, 我们需要忽略前导零. 例如, 我们将 \(0 \cdot 3^3 + 0 \cdot 3^2 + 1 \cdot 3^1 + 2 \cdot 3^0\) 和 \(1 \cdot 3^1 + 2 \cdot 3^0\) 视为 \(5\) 的同一三进制表示.}的唯一表示
-\[
+\begin{align}\label{exp:base-g-expansion-of-natural-numbers}
     m = \sum_{j = 0}^\ell y_j g^j\ ,\quad y_k \in \{0, 1, \ldots, g - 1\}\ ,\quad 0 \leq k \leq \ell\ .
-\]
+\end{align}
 于是
 \[
     x = m + \sum_{k = 1}^\infty x_k g^{- k} = \sum_{j = 0}^\ell y_j g^j + \sum_{k = 1}^\infty x_k g^{- k}
@@ -3815,3 +3815,140 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \sum_{k = 1}^\infty x_k = s - \frac{s}{2} + \frac{s}{36} - \frac{s}{9} + \frac{s}{36} = \frac{4}{9} s\ .
     \]
 \end{proof}
+
+\begin{exercise}
+    设 \((j, k) \in \N^2\), 定义
+    \[
+        x_{j k} \coloneqq
+        \begin{cases}
+            \frac{1}{j^2 - k^2}\ , & j \neq k\ , \\
+            0\ ,                   & j = k\ .
+        \end{cases}
+    \]
+    对于每个 \(j \in \N^\ast\), 计算级数 \(\sum_{k = 0}^\infty x_{j k}\) 的值. (提示: 适当的因式分解 \(x_{j k}\).)
+\end{exercise}
+
+\begin{proof}
+    由于 \(j = k\) 时 \(x_{j k} = 0\), 于是
+    \[
+        \sum_{k = 0}^n x_{j k} = \sum_{\substack{k = 0 \\ k \neq j}}^n \frac{1}{j^2 - k^2} = \frac{1}{2 j} \sum_{\substack{k = 0 \\ k \neq j}}^n \Bigl(\frac{1}{j - k} + \frac{1}{j + k}\Bigr)\ ,
+    \]
+    其中
+    \[
+        \sum_{\substack{k = 0 \\ k \neq j}}^n \Bigl(\frac{1}{j - k} + \frac{1}{j + k}\Bigr) = \sum_{k = 0}^{j - 1} \Bigl(\frac{1}{j - k} + \frac{1}{j + k}\Bigr) + \sum_{k = j + 1}^n \Bigl(\frac{1}{j - k} + \frac{1}{j + k}\Bigr)\ .
+    \]
+    我们先考虑 \(k < j\) 的部分,
+    \[
+        \sum_{k = 0}^{j - 1} \Bigl(\frac{1}{j - k} + \frac{1}{j + k}\Bigr) = \sum_{k = 0}^{j - 1} \frac{1}{j - k} + \sum_{k = 0}^{j - 1} \frac{1}{j + k} = \sum_{k = 1}^j \frac{1}{k} + \sum_{k = j}^{2 j - 1} \frac{1}{k} = \sum_{k = 1}^{2 j - 1} \frac{1}{k} + \frac{1}{j}\ ,
+    \]
+    而 \(k > j\) 的部分,
+    \[
+        \sum_{k = j + 1}^n \Bigl(\frac{1}{j - k} + \frac{1}{j + k}\Bigr) = \sum_{k = 1}^{n - j} \Bigl(- \frac{1}{k} + \frac{1}{2 j + k}\Bigr) = - \sum_{k = 1}^{n - j} \frac{1}{k} + \sum_{k = 1}^{n + j} \frac{1}{k} - \sum_{k = 1}^{2 j} \frac{1}{k} = \sum_{k = n - j + 1}^{n + j} \frac{1}{k} - \sum_{k = 1}^{2 j} \frac{1}{k}\ ,
+    \]
+    因此
+    \[
+        \sum_{\substack{k = 0 \\ k \neq j}}^n \Bigl(\frac{1}{j - k} + \frac{1}{j + k}\Bigr) = \sum_{k = 1}^{2 j - 1} \frac{1}{k} + \frac{1}{j} + \sum_{k = n - j + 1}^{n + j} \frac{1}{k} - \sum_{k = 1}^{2 j} \frac{1}{k} = \frac{1}{2 j} + \sum_{k = n - j + 1}^{n + j} \frac{1}{k}\ .
+    \]
+    不难证明当 \(n \to \infty\) 时 \(\sum_{k = n - j + 1}^{n + j} 1 / k \to 0\), 最后
+    \[
+        \sum_{k = 0}^\infty x_{j k} = \frac{1}{2 j} \sum_{\substack{k = 0 \\ k \neq j}}^\infty \Bigl(\frac{1}{j - k} + \frac{1}{j + k}\Bigr) = \frac{1}{4 j^2}\ .
+    \]
+\end{proof}
+
+\begin{exercise}
+    称级数 \(\sum c_k / k!\) 是 Cantor 级数, 若对于任意 \(k \in \N^\ast\) 都有 \(c_k \in \N\) 且 \(0 \leq c_{k + 1} \leq k\).
+    \begin{enumerate}
+        \item 证明每个非负实数 \(x\) 都能展开成 Cantor 级数, 即存在 Cantor 级数使得
+        \[
+            x = \sum_{k = 1}^\infty \frac{c_k}{k!}\ .
+        \]
+        进一步, 若对于几乎所有 \(k \in \N^\ast\) 都有 \(c_k \neq k - 1\), 则这种展开是唯一的.
+        \item 证明
+        \[
+            \sum_{k = n + 1}^\infty \frac{k - 1}{k!} = \frac{1}{n!}\ ,\quad n \in \N\ .
+        \]
+        \item 设 \(\sum c_k / k!\) 是 \(x \in [0, 1)\) 的 Cantor 级数展开. 证明 \(x\) 是有理数\footnote{比较练习 \ref{ex:e-error-estimate}(2).}当且仅当存在 \(k_0 \in \N^\ast\) 使得当 \(k \geq k_0\) 时 \(c_k = 0\).
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}[Cauchy 凝聚定理]\label{ex:cauchy-condensation-theorem}
+    设 \((x_k)\) 是 \([0, \infty)\) 中的递减数列. 则级数 \(\sum x_k\) 收敛当且仅当凝聚级数 \(\sum 2^k x_{2^k}\) 收敛.
+\end{exercise}
+
+\begin{proof}
+    由于 \((x_k)\) 是递减的, 因此
+    \[
+        2^k x_{2^{k + 1}} \leq \sum_{j = 2^k + 1}^{2^{k + 1}} x_j \leq 2^k x_{2^k}\ ,\quad k \in \N\ .
+    \]
+
+    \(\implies\). 设 \(\sum x_k\) 收敛. 于是
+    \[
+        \sum_{k = 0}^{n + 1} 2^k x_{2^k} = x_1 + \sum_{k = 0}^n 2^{k + 1} x_{2^{k + 1}} = x_1 + 2 \sum_{k = 0}^n 2^k x_{2^{k + 1}}\ ,\quad n \in \N\ ,
+    \]
+    其中
+    \[
+        \sum_{k = 0}^n 2^k x_{2^{k + 1}} \leq \sum_{k = 0}^n \sum_{j = 2^k + 1}^{2^{k + 1}} x_j = \sum_{j = 2}^{2^{n + 1}} x_j \leq \sum_{j = 0}^\infty x_j < \infty\ ,\quad n \in \N\ ,
+    \]
+    因此 \(\sum 2^k x_{2^k}\) 有界, 故 \(\sum 2^k x_{2^k}\) 收敛.
+
+    \(\impliedby\). 设 \(\sum 2^k x_{2^k}\) 收敛. 于是
+    \[
+        \sum_{j = 2}^n x_j \leq \sum_{j = 2}^{2^{n + 1}} x_j = \sum_{k = 0}^n \sum_{j = 2^k + 1}^{2^{k + 1}} x_j \leq \sum_{k = 0}^n 2^k x_{2^k} \leq \sum_{k = 0}^\infty 2^k x_{2^k} < \infty\ ,\quad n \in \N\ ,
+    \]
+    因此 \(\sum x_k\) 有界, 故 \(\sum x_k\) 收敛.
+\end{proof}
+
+\begin{exercise}
+    设 \(s \in \Q\). 证明级数 \(\sum 1 / k^s\) 收敛当且仅当 \(s > 1\). (提示: 练习 \ref{ex:cauchy-condensation-theorem} 和例 \ref{eg:geometric-series}.)
+\end{exercise}
+
+\begin{proof}
+    当 \(s \leq 0\) 时, 对于任意 \(k \in \N^\ast\) 都有 \(1 / k^s \geq 1\), 因此通项不趋于 \(0\), 故 \(\sum 1 / k^s\) 发散. 设 \(s > 0\). 则 \((1 / k^s)\) 是递减的非负数列, 于是由 Cauchy 凝聚定理可知, \(\sum 1 / k^s\) 收敛当且仅当
+    \[
+        \sum 2^k \frac{1}{2^{k s}} = \sum \frac{1}{2^{k s - k}} = \sum \Bigl(\frac{1}{2^{s - 1}}\Bigr)^k
+    \]
+    收敛. 而几何级数 \(\sum (1 / 2^{s - 1})^k\) 收敛当且仅当 \(|1 / 2^{s - 1}| < 1\), 即 \(s > 1\).
+\end{proof}
+
+\begin{exercise}
+    证明 \eqref{exp:base-g-expansion-of-natural-numbers} 的断言.
+\end{exercise}
+
+\begin{exercise}
+    定义
+    \[
+        x_n \coloneqq
+        \begin{cases}
+            n^{- 1}\ ,   & n\ \text{是奇数}\ , \\
+            - n^{- 2}\ , & n\ \text{是偶数}\ ,
+        \end{cases}
+        \quad n \in \N^\ast\ .
+    \]
+    证明 \(\sum x_k\) 发散. 为什么 Leibniz 准则不适用于此级数?
+\end{exercise}
+
+\begin{proof}
+    我们考虑部分和序列 \((s_n)\) 的子序列 \((s_{2 n})\), 由于
+    \[
+        s_{2 n} = \sum_{k = 1}^{2 n} x_k = \sum_{k = 1}^n \frac{1}{2 k - 1} - \sum_{k = 1}^n \frac{1}{(2 k)^2}\ ,\quad n \in \N^\ast\ ,
+    \]
+    其中 \(\sum 1 / (2 k)^2\) 有界, 但 \(\sum 1 / (2 k - 1)\) 是无界的, 因此 \((s_{2 n})\) 发散, 故 \((s_n)\) 发散. 令
+    \[
+        y_n \coloneqq
+        \begin{cases}
+            n^{- 1}\ ,   & n\ \text{是奇数}\ , \\
+            n^{- 2}\ , & n\ \text{是偶数}\ ,
+        \end{cases}
+        \quad n \in \N^\ast\ ,
+    \]
+    于是 \(\sum x_k = \sum (- 1)^{k + 1} y_k\). 而 \((y_k)\) 不是递减的, 因此不满足 Leibniz 准则的条件.
+\end{proof}
+
+\begin{exercise}
+    设 \((z_n)\) 是 \((0, \infty)\) 中的数列且 \(\liminf z_n = 0\). 证明存在 \((0, \infty)\) 中的无穷小量 \((x_n)\) 和 \((y_n)\) 使得
+    \begin{enumerate}
+        \item \(\sum x_n < \infty\) 且 \(\limsup x_n / z_n = \infty\). (提示: 对于每个 \(k \in \N^\ast\), 选取 \(n_k\) 使得 \(z_{n_k} < k^{- 3}\). 然后定义 \(x_{n_k} \coloneqq k^{- 2}\), 其余的 \(x_n \coloneqq n^{- 2}\).)
+        \item \(\sum y_n = \infty\) 且 \(\liminf y_n / z_n = 0\). (提示: 选取子数列 \((z_{n_k})\) 使得 \(\lim z_{n_k} = 0\). 然后定义 \(y_{n_k} \coloneqq z_{n_k}^2\), 其余的 \(y_n \coloneqq 1 / n\).)
+    \end{enumerate}
+    特别地, 对于任意收敛缓慢的无穷小量 \((z_n)\), 都存在一个收敛得足够快的无穷小量 \((x_n)\) 使得 \(\sum x_n < \infty\), 但 \((x_n)\) 却存在子数列 \((x_{n_k})\) 收敛到 \(0\) 的速度比 \((z_n)\) 的对应子数列 \((z_{n_k})\) 更慢. 反之, 对于任意收敛快速的无穷小量 \((z_n)\), 都存在一个收敛得足够慢的无穷小量 \((y_n)\) 使得 \(\sum y_n = \infty\), 但 \((y_n)\) 却存在子数列 \((y_{n_k})\) 收敛到 \(0\) 的速度比 \((z_n)\) 的对应子数列 \((z_{n_k})\) 更快.
+\end{exercise}
