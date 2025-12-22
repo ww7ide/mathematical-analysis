@@ -94,6 +94,9 @@ Section  7 Series
            Exercises                                 12 19, 25
            Exercises                                 12 20, 25
            Exercises                                 12 21, 25
+           Decimal, Binary and Other Representations 12 22, 25
+                                     of Real Numbers
+           The Uncountability of R
 Section  8 Absolute Convergence
 Section  9 Power Series
 ```
