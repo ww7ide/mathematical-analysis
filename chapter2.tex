@@ -3113,21 +3113,62 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 我们用实数 \(\R\) 的另一种构造方法来结束本节. 由于后续章节将不再使用这一构造, 读者在初次阅读本书时可跳过这部分内容.
 
-不难验证
+首先我们注意到, 利用推论 \ref{cor:archimedean-property-cor}, 将命题 \ref{prop:convergent-sequence-charact}(3)、无穷小量和柯西序列的定义以及相应证明中的 ``对于任意 \(\varepsilon > 0\)'' 替换为 ``对于任意 \(\varepsilon = 1 / N\ (N \in \N^\ast)\)'' 后, 本章所有关于序列的结论仍然成立.
+
+这使我们回到了仅构造出有理数时的情形. 定理 \ref{thm:Q-is-ordered-filed} 证明了 \((\Q, \leq)\) 是有序域, 因此由命题 \ref{prop:property-of-abs-in-ordered-filed} 可知, 赋予由绝对值 \(|\!\cdot\!|\) 诱导的度量后, \(\Q\) 是度量空间. 基于以上讨论,
 \[
     \mathcal R \coloneqq \{\, r \in \Q^\N \;;\; r\ \text{是 Cauchy 序列} \,\}
 \]
 和
 \[
-    \mathbf c_0 \coloneqq \{\, r \in \Q^\N \;;\; r\ \text{是无穷小量} \,\}
+    \bm c_0 \coloneqq \{\, r \in \Q^\N \;;\; r\ \text{是无穷小量} \,\}
 \]
-是良定义的.
+是良定义的集合. 进一步, 由命题 \ref{prop:convergent-sequence-is-cauchy-sequence} 可知 \(\bm c_0 \subseteq \mathcal R\).
+
+由例 \ref{eg:rings}(2) 可知 \(\Q^\N\) 是含幺的交换环. 我们将 \(\Q^\N\) 中的常数列记作 \(\overline a \coloneqq (a, a, \ldots)\). 则 \(\overline 1\) 是环 \(\Q^\N\) 的幺元. 由例 \ref{eg:partially-ordered-set}(3) 可知 \(\Q^\N\) 也是偏序集. 由于该偏序关系不是全序关系, 因此 \(\Q^\N\) 不是有序环.
 
 \begin{lemma}
-    \(\mathcal R\) 是 \(\Q^\N\) 的含 \(\overline 1\) 子环, 且 \(\mathbf c_0\) 是 \(\mathcal R\) 的非平凡真理想.
+    \(\mathcal R\) 是 \(\Q^\N\) 的含 \(\overline 1\) 子环, 且 \(\bm c_0\) 是 \(\mathcal R\) 的非平凡真理想.
 \end{lemma}
 
-令 \(R\) 是环 \(\mathcal R\) 模去其理想 \(\mathbf c_0\) 所得的商环, 即 \(R \coloneqq \mathcal R / \mathbf c_0\).
+根据练习 \ref{ex:ideal}, 我们知道 \(\mathcal R\) 无法成为域. 令 \(R\) 是 \(\mathcal R\) 模去其理想 \(\bm c_0\) 的商环, 即 \(R \coloneqq \mathcal R / \bm c_0\) (见练习 \ref{ex:ideal}). 我们定义函数
+\[
+    \Q \to R\ ,\quad a \mapsto [\overline a] = \overline a + \bm c_0\ ,
+\]
+其将每个有理数 \(a\) 映到 \(\mathcal R\) 中常数列 \(\overline a\) 的陪集 \([\overline a]\), 显然该函数是单射环同态. 因此通过将 \(\Q\) 视为该函数的像, 我们可以把 \(\Q\) 看作是 \(R\) 的子环.
+
+接下来, 我们定义 \(R\) 上的序. 我们称 \((r_n) \in \mathcal R\) 是严格正的, 若存在 \(N \in \N^\ast\) 和 \(n_0 \in \N\) 使得当 \(n \geq n_0\) 时 \(r_n > 1 / N\). 令 \(\mathcal P\) 是严格正 Cauchy 序列的全体, 即
+\[
+    \mathcal P \coloneqq \{\, r \in \mathcal R \;;\; r\ \text{是严格正的} \,\}\ .
+\]
+最后, 定义 \(R\) 上的关系 \(\leq\),
+\[
+    [r] \leq [s] \coloniff s - r \in \mathcal P \cup \bm c_0\ .
+\]
+
+\begin{lemma}
+    \((R, \leq)\) 是有序环, 且 \(\leq\) 诱导出 \(\Q\) 上的自然序.
+\end{lemma}
+
+\begin{proposition}
+    \(R\) 是域.
+\end{proposition}
+
+现在我们想证明 \(R\) 是序完备的. 不过在这之前, 我们还需要两个引理.
+
+\begin{lemma}
+    \(\Q\) 中每个递增且有上界的数列都是 Cauchy 序列. 类似的, \(\Q\) 中每个递减且有下界的数列都是 Cauchy 序列.
+\end{lemma}
+
+\begin{lemma}
+    \(R\) 中每个递增且有上界的序列 \((\rho_k)\) 都存在上确界 \(\sup\{\, \rho_k \;;\; k \in \N \,\}\). 类似的, \(R\) 中每个递减且有下界的序列 \((\rho_k)\) 都存在下确界 \(\inf\{\, \rho_k \;;\; k \in \N \,\}\).
+\end{lemma}
+
+为了完成 Cantor 的构造, 我们现在可以轻松证明 \(R\) 是 \(\Q\) 的序完备的有序扩张域. 于是, 由定理 \ref{thm:uniqueness-of-order-complete-extension-of-Q} 的唯一性断言可知, 我们再次构造出了实数.
+
+\begin{theorem}
+    \(R\) 是 \(\Q\) 的序完备的有序扩张域.
+\end{theorem}
 
 \subsection{练习}
 
@@ -3248,7 +3289,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{proof}
 
 \begin{exercise}
-    证明 \(R = \mathcal R / \mathbf c_0\) 上的序 \(\leq\) 是传递的, 且与 \(R\) 的环结构相容.
+    证明 \(R \coloneqq \mathcal R / \bm c_0\) 上的序 \(\leq\) 是传递的, 且与 \(R\) 的环结构相容.
 \end{exercise}
 
 \begin{exercise}
@@ -3592,7 +3633,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{definition}
 
 \begin{theorem}\label{thm:base-g-expansion-of-real-numbers}
-    设 \(g \geq 2\). 则每个实数 \(x\) 都存在基数 \(g\) 展开. 若排除对于几乎所有 \(k \in \N\) 都有 \(x_k = g - 1\) 的展开, 则该展开是唯一的. 进一步, \(x\) 是有理数当且仅当 \(x\) 的基数 \(g\) 展开是循环的.
+    设 \(g \geq 2\). 则每个实数 \(x\) 都存在基数 \(g\) 展开 \(\sum x_k g^{- k}\). 若排除对于几乎所有 \(k \in \N^\ast\) 都有 \(x_k = g - 1\) 的展开, 则该展开是唯一的. 进一步, \(x\) 是有理数当且仅当 \(x\) 的基数 \(g\) 展开是循环的.
 \end{theorem}
 
 \begin{proof}
@@ -3660,7 +3701,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \[
         (y_{k_0} - x_{k_0}) g^{- k_0} = \sum_{k = k_0 + 1}^\infty (x_k - y_k) g^{- k}\ .
     \]
-    不失一般性, 假设 \(x_{k_0} < y_{k_0}\), 因此 \(y_{k_0} - x_{k_0} \geq 1\). 由于对于任意 \(x_k\) 和 \(y_k\) 都有 \(x_k - y_k \leq g - 1\), 而我们已经排除了对于几乎所有 \(k\) 都有 \(x_k = g - 1\) 和 \(y_k = g - 1\) 的情况, 因此存在 \(k_1 > k_0\) 使得当 \(k \geq k_1\) 时 \(x_k - y_k < g - 1\). 于是
+    不失一般性, 假设 \(x_{k_0} < y_{k_0}\), 因此 \(y_{k_0} - x_{k_0} \geq 1\). 由于对于任意 \(k \in \N^\ast\) 都有 \(x_k \leq g - 1\), 而由条件可知我们已经排除了对于几乎所有 \(k\) 都有 \(x_k = g - 1\) 的情况, 因此存在 \(k_1 > k_0\) 使得当 \(k \geq k_1\) 时 \(x_k < g - 1\), 进一步 \(x_k - y_k < g - 1\). 于是
     \[
         g^{- k_0} \leq (y_{k_0} - x_{k_0}) g^{- k_0} = \sum_{k = k_0 + 1}^\infty (x_k - y_k) g^{- k} < (g - 1) \sum_{k = k_0 + 1}^\infty g^{- k} = g^{- k_0}\ ,
     \]
@@ -3990,7 +4031,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \begin{exercise}
     称级数 \(\sum c_k / k!\) 是 Cantor 级数, 若对于任意 \(k \in \N^\ast\) 都有 \(c_k \in \N\) 且 \(0 \leq c_{k + 1} \leq k\).
     \begin{enumerate}
-        \item 证明每个非负实数 \(x\) 都能展开成 Cantor 级数, 即存在 Cantor 级数使得
+        \item 证明每个非负实数 \(x\) 都能展开成 Cantor 级数, 即存在 Cantor 级数 \(\sum c_k / k!\) 使得
         \[
             x = \sum_{k = 1}^\infty \frac{c_k}{k!}\ .
         \]
@@ -4002,6 +4043,78 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \item 设 \(\sum c_k / k!\) 是 \(x \in [0, 1)\) 的 Cantor 级数展开. 证明 \(x\) 是有理数\footnote{比较练习 \ref{ex:e-error-estimate}(2).}当且仅当存在 \(k_0 \in \N^\ast\) 使得当 \(k \geq k_0\) 时 \(c_k = 0\).
     \end{enumerate}
 \end{exercise}
+
+\begin{proof}
+    (1). 设 \(x \in [0, \infty)\). 递归定义数列
+    \[
+        c_1 \coloneqq \lfloor x \rfloor\ ,\quad c_n \coloneqq \Bigl\lfloor n! \Bigl(x - \sum_{k = 1}^{n - 1} \frac{c_k}{k!}\Bigr) \Bigr\rfloor\ ,\quad n \geq 2\ .
+    \]
+    根据我们的构造, 显然对于任意 \(n \in \N^\ast\) 都有 \(c_n \in \N\). 我们先证明
+    \begin{align}\label{exp:cantor-series-expansion-of-real-numbers}
+        0 \leq x - \sum_{k = 1}^n \frac{c_k}{k!} < \frac{1}{n!}\ ,\quad n \in \N^\ast\ .
+    \end{align}
+    \(n = 1\) 时, 显然成立. 由于对于任意 \(x \in \R\) 都有 \(x - 1 < \lfloor x \rfloor \leq x\), 于是当 \(n \geq 2\) 时,
+    \begin{align*}
+        x - \sum_{k = 1}^n \frac{c_k}{k!} = x - \sum_{k = 1}^{n - 1} \frac{c_k}{k!} - \frac{c_n}{n!} &= x - \sum_{k = 1}^{n - 1} \frac{c_k}{k!} - \frac{\lfloor n!\, (x - \sum_{k = 1}^{n - 1} c_k / k!) \rfloor}{n!}\\
+        &\geq x - \sum_{k = 1}^{n - 1} \frac{c_k}{k!} - \frac{n!\, (x - \sum_{k = 1}^{n - 1} c_k / k!)}{n!} = 0
+    \end{align*}
+    且
+    \begin{align*}
+        x - \sum_{k = 1}^n \frac{c_k}{k!} = x - \sum_{k = 1}^{n - 1} \frac{c_k}{k!} - \frac{c_n}{n!} &= x - \sum_{k = 1}^{n - 1} \frac{c_k}{k!} - \frac{\lfloor n!\, (x - \sum_{k = 1}^{n - 1} c_k / k!) \rfloor}{n!}\\
+        &< x - \sum_{k = 1}^{n - 1} \frac{c_k}{k!} - \frac{n!\, (x - \sum_{k = 1}^{n - 1} c_k / k!) - 1}{n!} = \frac{1}{n!}\ .
+    \end{align*}
+    于是
+    \[
+        0 \leq c_{n + 1} = \Bigl\lfloor (n + 1)! \Bigl(x - \sum_{k = 1}^n \frac{c_k}{k!}\Bigr) \Bigr\rfloor \leq (n + 1)! \Bigl(x - \sum_{k = 1}^n \frac{c_k}{k!}\Bigr) < \frac{(n + 1)!}{n!} = n + 1\ ,\quad n \in \N^\ast\ ,
+    \]
+    而 \(c_{n + 1} \in \N\), 因此 \(0 \leq c_{n + 1} \leq n\), 故我们便证明了 \(\sum c_k / k!\) 是 Cantor 级数. 再次回到 \eqref{exp:cantor-series-expansion-of-real-numbers}, 由于 \(n \to \infty\) 时 \(1 / n! \to 0\), 因此由夹逼定理可知 \(\sum_{k = 1}^\infty c_k / k! = x\).
+
+    设 \(\sum d_k / k!\) 是另一 Cantor 级数且
+    \[
+        \sum_{k = 1}^\infty \frac{d_k}{k!} = \sum_{k = 1}^\infty \frac{c_k}{k!}\ .
+    \]
+    假设存在 \(k_0 \in \N^\ast\) 使得 \(c_{k_0} \neq d_{k_0}\) 且当 \(1 \leq k \leq k_0 - 1\) 时 \(c_k = d_k\). 于是
+    \[
+        \sum_{k = 1}^\infty \frac{c_k - d_k}{k!} = \frac{c_{k_0} - d_{k_0}}{k_0!} + \sum_{k = k_0 + 1}^\infty \frac{c_k - d_k}{k!} = 0\ ,
+    \]
+    即
+    \[
+        \frac{d_{k_0} - c_{k_0}}{k_0!} = \sum_{k = k_0 + 1}^\infty \frac{c_k - d_k}{k!}\ .
+    \]
+    不失一般性, 假设 \(c_{k_0} < d_{k_0}\), 因此 \(d_{k_0} - c_{k_0} \geq 1\). 由于对于任意 \(k \in \N^\ast\) 都有 \(c_k \leq k - 1\), 而由条件可知对于几乎所有 \(k\) 都有 \(c_k \neq k - 1\), 因此存在 \(k_1 > k_0\) 使得当 \(k \geq k_1\) 时 \(c_k < k - 1\), 进一步 \(c_k - d_k < k - 1\). 于是
+    \[
+        \frac{1}{k_0!} \leq \frac{(d_{k_0} - c_{k_0})}{k_0!} = \sum_{k = k_0 + 1}^\infty \frac{c_k - d_k}{k!} < \sum_{k = k_0 + 1}^\infty \frac{k - 1}{k!}\ ,
+    \]
+    其中
+    \[
+        \sum_{k = k_0 + 1}^n \frac{k - 1}{k!} = \sum_{k = k_0 + 1}^n \Bigl(\frac{1}{(k - 1)!} - \frac{1}{k!}\Bigr) = \frac{1}{k_0!} - \frac{1}{n!}\ ,\quad n \geq k_0 + 1\ ,
+    \]
+    因此
+    \[
+        \frac{1}{k_0!} < \sum_{k = k_0 + 1}^\infty \frac{k - 1}{k!} = \frac{1}{k_0!}\ ,
+    \]
+    矛盾.
+
+    (2). 在 (1) 中已证明.
+
+    (3). 设存在 \(k_0 \in \N^\ast\) 使得当 \(k \geq k_0\) 时 \(c_k = 0\). 于是
+    \[
+        x = \sum_{k = 1}^\infty \frac{c_k}{k!} = \sum_{k = 1}^{k_0 - 1}\frac{c_k}{k!} + \sum_{k = k_0}^\infty \frac{c_k}{k!} = \sum_{k = 1}^{k_0 - 1}\frac{c_k}{k!} \in \Q\ .
+    \]
+    设 \(x\) 是有理数. 则存在 \(p, q \in \N\) 使得 \(x = p / q\) 其中 \(p < q\). 由于 Cantor 级数展开是唯一的, 于是由 \eqref{exp:cantor-series-expansion-of-real-numbers} 可知
+    \[
+        0 \leq x - \sum_{k = 1}^q \frac{c_k}{k!} < \frac{1}{q!}\ ,
+    \]
+    进一步
+    \[
+        0 \leq q!\, x - \sum_{k = 1}^q \frac{q!}{k!} c_k < 1\ .
+    \]
+    由于 \(x = p / q\), 于是 \(q!\, x \in \N\), 而 \(c_k \in \N\), 因此 \(\sum_{k = 1}^q q!\, c_k / k! \in \N\), 故
+    \[
+        q!\, x - \sum_{k = 1}^q \frac{q!}{k!} c_k = 0\ ,
+    \]
+    即 \(x = \sum_{k = 1}^q c_k / k!\). 这说明当 \(k \geq q + 1\) 时 \(c_k = 0\).
+\end{proof}
 
 \begin{exercise}[Cauchy 凝聚定理]\label{ex:cauchy-condensation-theorem}
     设 \((x_k)\) 是 \([0, \infty)\) 中的递减数列. 则级数 \(\sum x_k\) 收敛当且仅当凝聚级数 \(\sum 2^k x_{2^k}\) 收敛.
@@ -4084,3 +4197,43 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \end{enumerate}
     特别地, 对于任意收敛缓慢的无穷小量 \((z_n)\), 都存在一个收敛得足够快的无穷小量 \((x_n)\) 使得 \(\sum x_n < \infty\), 但 \((x_n)\) 却存在子数列 \((x_{n_k})\) 收敛到 \(0\) 的速度比 \((z_n)\) 的对应子数列 \((z_{n_k})\) 更慢. 反之, 对于任意收敛快速的无穷小量 \((z_n)\), 都存在一个收敛得足够慢的无穷小量 \((y_n)\) 使得 \(\sum y_n = \infty\), 但 \((y_n)\) 却存在子数列 \((y_{n_k})\) 收敛到 \(0\) 的速度比 \((z_n)\) 的对应子数列 \((z_{n_k})\) 更快.
 \end{exercise}
+
+\begin{proof}
+    (1). 递归定义数列
+    \[
+        n_0 \coloneqq 0\ ,\quad n_k \coloneqq \min\{\, m \in \N \;;\; m > n_{k - 1}\ \text{且}\ z_m < k^{- 3} \,\}\ ,\quad k \in \N^\ast\ .
+    \]
+    由于 \(\liminf z_n = 0\), 因此 \(0\) 是 \((z_n)\) 的聚点, 故对于任意 \(k \in \N^\ast\) 和 \(n \in \N\) 存在 \(m > n\) 使得 \(z_m < k^{- 3}\), 这说明 \(n_k\) 是良定义的, 进一步 \((n_k)\) 是严格递增的. 下面我们通过 \((n_k)\) 构造数列
+    \[
+        x_n \coloneqq
+        \begin{cases}
+            k^{- 2}\ , & \text{若存在}\ k \in \N^\ast\ \text{使得}\ n = n_k\ , \\
+            n^{- 2}\ , & \text{其余情况}\ ,
+        \end{cases}
+        \quad n \in \N^\ast\ .
+    \]
+    显然 \((x_n)\) 是 \((0, \infty)\) 中的无穷小量且 \(\sum x_k < \infty\). 而由 \((x_n)\) 和 \((n_k)\) 的构造可知
+    \[
+        \frac{x_{n_k}}{z_{n_k}} = \frac{k^{- 2}}{z_{n_k}} > \frac{k^{- 2}}{k^{- 3}} = k\ ,\quad k \in \N^\ast\ ,
+    \]
+    因此由极限的保序性可知 \(\lim x_{n_k} / z_{n_k} \geq \infty\), 即 \(\lim x_{n_k} / z_{n_k} = \infty\), 故 \(\limsup x_n / z_n = \infty\).
+
+    (2). 由于 \(\liminf z_n = 0\), 因此 \((z_n)\) 存在子数列 \((z_{n_k})\) 收敛到 \(0\). 同样的, 我们通过 \((n_k)\) 构造数列
+    \[
+        y_n \coloneqq
+        \begin{cases}
+            z_{n_k}^2\ , & \text{若存在}\ k \in \N^\ast\ \text{使得}\ n = n_k\ , \\
+            1 / n\ ,     & \text{其余情况}\ ,
+        \end{cases}
+        \quad n \in \N^\ast\ .
+    \]
+    显然 \((y_n)\) 是 \((0, \infty)\) 中的无穷小量且 \(\sum y_k = \infty\). 而由 \((y_n)\) 的构造可知
+    \[
+        \lim \frac{y_{n_k}}{z_{n_k}} = \lim \frac{z_{n_k}^2}{z_{n_k}} = \lim z_{n_k} = 0\ ,
+    \]
+    因此 \(\liminf y_n / z_n = 0\).
+\end{proof}
+
+\newpage
+
+\section{绝对收敛}

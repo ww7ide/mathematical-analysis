@@ -26,6 +26,22 @@
 
 \subsection{序关系}
 
+\begin{remark}
+    
+\end{remark}
+
+\begin{example}\label{eg:partially-ordered-set}
+    
+\end{example}
+
+\begin{remark}
+    
+\end{remark}
+
+\begin{example}
+    
+\end{example}
+
 \begin{example}\label{eg:set-functions-monotone-and-bounded}
     
 \end{example}
@@ -418,6 +434,18 @@
 
 \subsection{有序域}
 
+\begin{proposition}
+    
+\end{proposition}
+
+\begin{proposition}\label{prop:property-of-abs-in-ordered-filed}
+    
+\end{proposition}
+
+\begin{corollary}
+    
+\end{corollary}
+
 \subsection{形式幂级数}
 
 \begin{definition}[形式幂级数]
@@ -462,6 +490,21 @@
     \end{enumerate}
 \end{exercise}
 
+\begin{exercise}\label{ex:ideal}
+    设 \(R\) 是含幺环. 称子环 \(I \subseteq R\) 是 \(R\) 的理想, 若 \(R I = I R = I\). 特别的, 称 \(R\) 的理想 \(I\) 是真理想, 若 \(I \subset R\). 证明以下命题.
+    \begin{enumerate}
+        \item 设 \(I\) 是环 \(R\) 的理想. 则 \(I\) 是真理想当且仅当 \(1 \notin I\).
+        \item 域 \(K\) 仅有两个理想: \(\{0\}\) 和 \(K\).
+        \item 设 \(\varphi \colon R \to R'\) 是环同态. 则 \(\ker \varphi\) 是 \(R\) 的理想.
+        \item 理想的交集仍然是理想.
+        \item 设 \(I\) 是环 \(R\) 的理想, \(R / I \coloneqq (R, +) / I\) 是商群, 其上定义了乘法运算
+        \[
+            \cdot \colon R / I \times R / I \to R / I\ ,\quad (a + I, b + I) \mapsto a b + I\ .
+        \]
+        则 \((R / I, +, \cdot)\) 是环, 且商同态 \(p \colon R \to R / I\) 是环同态. \textsl{称 \(R / I\) 是 \(R\) 模 \(I\) 的商环. 对于任意 \(a \in R\), 称 \(a + I\) 是 \(a\) 模 \(I\) 的陪集, 我们通常将 \(b \in a + I\) 记作 \(b \equiv a \pmod I\), 读作 \(b\) 与 \(a\) 模 \(I\) 同余.}
+    \end{enumerate}
+\end{exercise}
+
 \begin{exercise}\label{ex:inequality-on-ordered-ﬁeld}
     设 \(K\) 是有序域, \(a, b, c, d \in K\).
     \begin{enumerate}
@@ -483,6 +526,10 @@
     \(\Z\) 和 \(\Q\) 是可数集.
 \end{proposition}
 
+\begin{theorem}\label{thm:Q-is-ordered-filed}
+    \((\Q, \leq)\) 是有序域, 且 \(\leq\) 在 \(\N\) 上的限制是通常的序关系.
+\end{theorem}
+
 \subsection{多项式的有理零点}
 
 \subsection{平方根}
@@ -493,7 +540,11 @@
 
 \subsection{序完备性}
 
-\subsection{Dedekind 对实数的构造}
+\subsection{Dedekind 的实数构造法}
+
+\begin{theorem}\label{thm:uniqueness-of-order-complete-extension-of-Q}
+    在同构意义下, \(\Q\) 存在唯一的序完备的有序扩张域 \(\R\), 称为实数域.
+\end{theorem}
 
 \subsection{\(\R\) 上的自然序结构}
 
