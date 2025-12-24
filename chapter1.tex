@@ -206,10 +206,10 @@
 
 \begin{exercise}\label{ex:base-g-expansion-of-natural-numbers}
     设 \(g \in \N\) 且 \(g \geq 2\). 证明任意 \(n \in \N^\ast\) 都可以写成如下形式
-    \begin{align}\label{exp:base-g-expansion-of-natural-numbers}
+    \begin{align}\label{exp:base-g-expansion-of-natural-numbers-1}
         n = \sum_{j = 0}^\ell y_j g^j
     \end{align}
-    其中 \(y_k \in \{0, 1, \ldots, g - 1\}\ (0 \leq k \leq \ell)\) 且 \(y_\ell > 0\). 进一步, 表达式 \eqref{exp:base-g-expansion-of-natural-numbers} 是唯一的, 也就是说, 若 \(n = \sum_{j = 0}^m z_j g^j\) 其中 \(z_k \in \{0, 1, \ldots, g - 1\}\ (0 \leq k \leq m)\) 且 \(z_m > 0\), 则 \(\ell = m\) 且 \(y_k = z_k\ (0 \leq k \leq \ell)\).
+    其中 \(y_k \in \{0, 1, \ldots, g - 1\}\ (0 \leq k \leq \ell)\) 且 \(y_\ell > 0\). 进一步, 表达式 \eqref{exp:base-g-expansion-of-natural-numbers-1} 是唯一的, 也就是说, 若 \(n = \sum_{j = 0}^m z_j g^j\) 其中 \(z_k \in \{0, 1, \ldots, g - 1\}\ (0 \leq k \leq m)\) 且 \(z_m > 0\), 则 \(\ell = m\) 且 \(y_k = z_k\ (0 \leq k \leq \ell)\).
 \end{exercise}
 
 \newpage
@@ -704,7 +704,7 @@
         \[
             \ker T = \{\, v \in V \;;\; T v = 0 \,\} = T^{- 1} 0\ .
         \]
-        因此, \(T\) 是单射当且仅当其核是平凡的, 即 \(\ker T = \{0\}\) (见注 \ref{rem:group-homo} 的 1 和 4).
+        因此, \(T\) 是单射当且仅当其核是平凡的, 即 \(\ker T = \{0\}\) (见注 \ref{rem:group-homo} 的 (1) 和 (4)).
         \item 设 \(U\), \(V\) 和 \(W\) 是 \(K\)-向量空间. 则对于任意 \(S \in \Hom(U, V)\) 和 \(T \in \Hom(V, W)\) 都有 \(T \circ S \in \Hom(U, W)\).
         \item \(V\) 的自同构集合 \(\Aut(V)\), 即所有从 \(V\) 到自身的双射的线性映射所构成的集合, 是 \(V\) 的置换群的子群, 称为 \(V\) 的自同构群.
     \end{enumerate}

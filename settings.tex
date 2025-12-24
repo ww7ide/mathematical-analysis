@@ -1,25 +1,27 @@
 \usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
 \usepackage{amsthm}
 \usepackage{amsmath,mathtools}
 \usepackage{amssymb}
-\usepackage{mathtools}
 \usepackage{bm}
-\usepackage{enumitem}
-\usepackage{hyperref}
+\usepackage[per-mode=symbol]{siunitx}
 \usepackage{tikz}
+\usepackage{newpxmath}
 
 \newcommand{\ee}{e} % 自然常数
 \newcommand{\ii}{i} % 虚数单位
 \newcommand{\dd}{\mathop{}\! d} % 微分算子
-\newcommand{\K}{\mathbb K} % 数域
-\newcommand{\N}{\mathbb N} % 自然数集
-\newcommand{\Z}{\mathbb Z} % 整数集
-\newcommand{\Q}{\mathbb Q} % 有理数集
-\newcommand{\R}{\mathbb R} % 实数集
-\newcommand{\C}{\mathbb C} % 复数集
-\newcommand{\B}{\mathbb B} % 开球
-\newcommand{\E}{\mathbb E} % 期望
-\newcommand{\PP}{\mathbb P} % 概率
+\newcommand{\K}{\vvmathbb K} % 数域
+\newcommand{\N}{\vvmathbb N} % 自然数集
+\newcommand{\Z}{\vvmathbb Z} % 整数集
+\newcommand{\Q}{\vvmathbb Q} % 有理数集
+\newcommand{\R}{\vvmathbb R} % 实数集
+\newcommand{\C}{\vvmathbb C} % 复数集
+\newcommand{\B}{\vvmathbb B} % 开球
+\newcommand{\E}{\vvmathbb E} % 期望
+\newcommand{\PP}{\vvmathbb P} % 概率
 \newcommand{\power}{\mathcal P} % 幂集
 \newcommand{\topo}{\mathcal T} % 拓扑
 \newcommand{\nbr}{\mathcal N} % 邻域族
@@ -109,7 +111,7 @@
     \popQED\endtrivlist\@endpefalse
 }
 
-\definecolor{winered}{rgb}{0.5, 0, 0}
+\definecolor{winered}{RGB}{127.5, 0, 0}
 \hypersetup{
     breaklinks,
     unicode,
@@ -117,7 +119,7 @@
     bookmarksnumbered=true,
     bookmarksopen=true,
     colorlinks,
-    linkcolor=winered,
+    % linkcolor=winered,
     plainpages=false,
     pdfstartview=Fit,
     pdfborder={0 0 0}

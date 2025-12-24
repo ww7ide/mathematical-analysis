@@ -70,12 +70,12 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \end{enumerate}
 \end{remark}
 
-如果把复数列 \((z_n)_{n \geq 1}\) 的前几项画在复平面上, 其中 \(z_n \coloneqq (1 - 1 / n)(1 + i)\), 就会发现: 当 \(n\) 增大时, 这些点 \(z_n\) 会 ``任意接近'' \(z \coloneqq 1 + i\). 换句话说, 随着 \(n\) 的增大, \(z_n\) 到 \(z\) 的距离会变得 ``任意小''. 本节的目标, 就是把我们对于这类数列收敛的直观几何想法加以公理化, 使之能够推广应用到向量空间中的序列, 以及更抽象的集合中的序列上.
+如果把复数列 \((z_n)_{n \geq 1}\) 的前几项画在复平面上, 其中 \(z_n \coloneqq (1 - 1 / n)(1 + \ii)\), 就会发现: 当 \(n\) 增大时, 这些点 \(z_n\) 会 ``任意接近'' \(z \coloneqq 1 + \ii\). 换句话说, 随着 \(n\) 的增大, \(z_n\) 到 \(z\) 的距离会变得 ``任意小''. 本节的目标, 就是把我们对于这类数列收敛的直观几何想法加以公理化, 使之能够推广应用到向量空间中的序列, 以及更抽象的集合中的序列上.
 
 \begin{center}
     \begin{tikzpicture}
         \draw[->] (-0.5, 0) -- (4, 0) node[right] {\(\R\)};
-        \draw[->] (0, -0.5) -- (0, 4) node[above] {\(i \R\)};
+        \draw[->] (0, -0.5) -- (0, 4) node[above] {\(\ii \R\)};
         \fill (0, 0) circle (1.5pt) node[below right] {\(z_1\)};
         \fill (1.75, 1.75) circle (1.5pt) node[below right] {\(z_2\)};
         \fill (2.1, 2.1) circle (1.5pt) node[below right] {\(z_3\)};
@@ -230,7 +230,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \begin{example}
     \begin{enumerate}
         \item 实数列 \(\bigl((- 1)^n\bigr)\) 有两个聚点, \(1\) 和 \(- 1\).
-        \item 复数列 \((i^n)\) 有四个聚点, \(\pm 1\) 和 \(\pm i\).
+        \item 复数列 \((\ii^n)\) 有四个聚点, \(\pm 1\) 和 \(\pm \ii\).
         \item 常序列 \((x, x, x, \ldots)\) 有唯一的聚点 \(x\).
         \item 自然数序列 \((n)\) 没有聚点.
         \item 设 \(\varphi \colon \N \to \Q\) 是双射 (由命题 \ref{prop:Q-is-countable} 可知这样的函数存在). 定义序列 \((x_n)\), 其中 \(x_n \coloneqq \varphi(n),\ n \in \N\). 则每个实数都是 \((x_n)\) 的聚点.
@@ -285,9 +285,9 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \end{proof}
         \item 设复数列 \((z_n)\), 其中
         \[
-            z_n \coloneqq \frac{n + 2}{n + 1} + i \frac{2 n}{n + 2}\ ,
+            z_n \coloneqq \frac{n + 2}{n + 1} + \ii \frac{2 n}{n + 2}\ ,
         \]
-        则 \(\lim z_n = 1 + 2 i\).
+        则 \(\lim z_n = 1 + 2 \ii\).
         \begin{proof}
             任取 \(\varepsilon > 0\). 由推论 \ref{cor:archimedean-property-cor} 可知, 存在 \(N \in \N\) 使得 \(1 / N < \varepsilon / 8\), 此时有
             \[
@@ -299,10 +299,10 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
             \]
             于是
             \begin{align*}
-                |z_n - (1 + 2 i)| &= \Bigl|\frac{1}{n + 1} - i \frac{4}{n + 2}\Bigr| \\
+                |z_n - (1 + 2 \ii)| &= \Bigl|\frac{1}{n + 1} - \ii \frac{4}{n + 2}\Bigr| \\
                 &= \sqrt{\Bigl(\frac{1}{n + 1}\Bigr)^2 + \Bigl(- \frac{4}{n + 2}\Bigr)^2} < \sqrt{\frac{\varepsilon^2}{2} + \frac{\varepsilon^2}{2}} < \varepsilon\ ,\quad n \geq N\ ,
             \end{align*}
-            即当 \(n \geq N\) 时 \(z_n \in \B\bigl((1 + 2 i), \varepsilon\bigr)\).
+            即当 \(n \geq N\) 时 \(z_n \in \B\bigl((1 + 2 \ii), \varepsilon\bigr)\).
         \end{proof}
         \item 常序列 \((a, a, a, \ldots)\) 收敛到 \(a\).
         \item 实数列 \(\bigl((- 1)^n\bigr)\) 发散.
@@ -461,7 +461,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{exercise}
 
 \begin{exercise}
-    设 \(z_n \coloneqq (1 - 1 / n)(1 + i)\). 证明数列 \((z_n)_{n \geq 1}\) 收敛到 \(1 + i\).
+    设 \(z_n \coloneqq (1 - 1 / n)(1 + \ii)\). 证明数列 \((z_n)_{n \geq 1}\) 收敛到 \(1 + \ii\).
 \end{exercise}
 
 \begin{exercise}
@@ -471,7 +471,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \begin{exercise}
     找出复数列 \((z_n)\) 在下列情况下的全部聚点.
     \begin{enumerate}
-        \item \(z_n \coloneqq \bigl((1 + i) \big/ \sqrt{2}\bigr)^n\).
+        \item \(z_n \coloneqq \bigl((1 + \ii) \big/ \sqrt{2}\bigr)^n\).
         \item \(z_n \coloneqq \bigl(1 + (- 1)^n\bigr) (n + 1) n^{- 1} + (- 1)^n\).
         \item \(z_n \coloneqq (- 1)^n n / (n + 1)\).
     \end{enumerate}
@@ -647,7 +647,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         |x_n y_n| = |x_n|\, |y_n| < \frac{\varepsilon}{M} M = \varepsilon\ ,\quad n \geq N\ .
     \]
 
-    (2). 由于 \((x_n)\) 收敛到 \(a\), 故 \((x_n - a)\) 是无穷小量. 由命题 \ref{prop:convergent-sequence-is-bounded} 可知, \((y_n)\) 有界. 于是由 1 可得 \(\bigl((x_n - a) y_n\bigr)\) 是无穷小量, 同理可得 \(\bigl(a (y_n - b)\bigr)\) 是无穷小量. 由命题 \ref{prop:addition-scalar-multiplication-in-c} 可知
+    (2). 由于 \((x_n)\) 收敛到 \(a\), 故 \((x_n - a)\) 是无穷小量. 由命题 \ref{prop:convergent-sequence-is-bounded} 可知, \((y_n)\) 有界. 于是由 (1) 可得 \(\bigl((x_n - a) y_n\bigr)\) 是无穷小量, 同理可得 \(\bigl(a (y_n - b)\bigr)\) 是无穷小量. 由命题 \ref{prop:addition-scalar-multiplication-in-c} 可知
     \[
         \lim(x_n y_n - a b) = \lim\bigl((x_n - a) y_n + a (y_n - b)\bigr) = 0\ ,
     \]
@@ -756,7 +756,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \end{enumerate}
     此时有,
     \[
-        \lim x_n = \lim \Re x_n + i \lim \Im x_n\ .
+        \lim x_n = \lim \Re x_n + \ii \lim \Im x_n\ .
     \]
 \end{proposition}
 
@@ -769,10 +769,10 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
     (2) \(\implies\) (1). 设 \(\lim \Re x_n = a\), \(\lim \Im x_n = b\). 任取 \(\varepsilon > 0\). 故存在 \(M, N \in \N\) 使得当 \(n \geq M\) 时 \(|\Re x_n - a| < \varepsilon / \sqrt{2}\), 当 \(n \geq N\) 时 \(|\Im x_n - b| < \varepsilon / \sqrt{2}\), 于是
     \begin{align*}
-        |x_n - (a + i b)| &= |(\Re x_n - a) + i (\Im x_n - b)| \\
+        |x_n - (a + \ii b)| &= |(\Re x_n - a) + \ii (\Im x_n - b)| \\
         &= \sqrt{(\Re x_n - a)^2 + (\Im x_n - b)^2} < \sqrt{\frac{\varepsilon^2}{2} + \frac{\varepsilon^2}{2}} = \varepsilon\ ,\quad n \geq \max\{M, N\}\ ,
     \end{align*}
-    因此 \(x_n\) 收敛到 \(a + i b\).
+    因此 \(x_n\) 收敛到 \(a + \ii b\).
 \end{proof}
 
 我们用一些例子来说明上述命题, 以此结束本节.
@@ -786,11 +786,11 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
                 \lim \frac{n + 1}{n + 2} = \lim\Bigl(1 - \frac{1}{n + 2}\Bigr) = 1 - \lim \frac{1}{n + 2} = 1\ .
             \]
         \end{proof}
-        \item \(\displaystyle \lim_{n \to \infty} \Bigr(\frac{3 n}{(2 n + 1)^2} + i \frac{2 n^2}{n^2 + 1}\Bigl) = 2 i\).
+        \item \(\displaystyle \lim_{n \to \infty} \Bigr(\frac{3 n}{(2 n + 1)^2} + \ii \frac{2 n^2}{n^2 + 1}\Bigl) = 2 \ii\).
         \begin{proof}
             令
             \[
-                x_n \coloneqq \frac{3 n}{(2 n + 1)^2} + i \frac{2 n^2}{n^2 + 1}\ .
+                x_n \coloneqq \frac{3 n}{(2 n + 1)^2} + \ii \frac{2 n^2}{n^2 + 1}\ .
             \]
             其中
             \[
@@ -800,23 +800,23 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
             \[
                 \Im x_n = \frac{2 n^2}{n^2 + 1} = \frac{2}{1 + 1 / n^2}\ ,
             \]
-            而 \(\lim(1 + 1 / n^2) = 1\), 于是由命题 \ref{prop:addition-scalar-multiplication-in-c} 和命题 \ref{prop:division-in-c} 可知 \(\lim \Im x_n = 2\). 最后由 \ref{prop:convergence-of-real-and-imaginary-parts} 可得 \(\lim x_n = 2 i\).
+            而 \(\lim(1 + 1 / n^2) = 1\), 于是由命题 \ref{prop:addition-scalar-multiplication-in-c} 和命题 \ref{prop:division-in-c} 可知 \(\lim \Im x_n = 2\). 最后由 \ref{prop:convergence-of-real-and-imaginary-parts} 可得 \(\lim x_n = 2 \ii\).
         \end{proof}
-        \item \(\displaystyle \Bigl(\frac{i^n}{1 + i n}\Bigr)\) 是 \(\C\) 中的无穷小量.
+        \item \(\displaystyle \Bigl(\frac{\ii^n}{1 + \ii n}\Bigr)\) 是 \(\C\) 中的无穷小量.
         \begin{proof}
             令
             \[
-                x_n \coloneqq \frac{i^n}{1 + i n} = \frac{1}{n}\, \frac{i^n}{i + 1 / n}\ .
+                x_n \coloneqq \frac{\ii^n}{1 + \ii n} = \frac{1}{n}\, \frac{\ii^n}{\ii + 1 / n}\ .
             \]
             注意到
             \[
-                \Bigl|i + \frac{1}{n}\Bigr| = \sqrt{1 + \frac{1}{n^2}} \geq 1\ ,\quad n \in \N^\ast\ ,
+                \Bigl|\ii + \frac{1}{n}\Bigr| = \sqrt{1 + \frac{1}{n^2}} \geq 1\ ,\quad n \in \N^\ast\ ,
             \]
             于是
             \[
-                \Bigl|\frac{i^n}{i + 1 / n}\Bigr| = \frac{|i^n|}{|i + 1 / n|} = \frac{1}{|i + 1 / n|} \leq 1\ ,\quad n \in \N^\ast\ ,
+                \Bigl|\frac{\ii^n}{\ii + 1 / n}\Bigr| = \frac{|\ii^n|}{|\ii + 1 / n|} = \frac{1}{|\ii + 1 / n|} \leq 1\ ,\quad n \in \N^\ast\ ,
             \]
-            因此 \(\bigl(i^n \big/ (i + 1 / n)\bigr)\) 有界, 由命题 \ref{prop:multiplication-in-c} 可知 \((x_n)\) 是无穷小量.
+            因此 \(\bigl(\ii^n \big/ (\ii + 1 / n)\bigr)\) 有界, 由命题 \ref{prop:multiplication-in-c} 可知 \((x_n)\) 是无穷小量.
         \end{proof}
     \end{enumerate}
 \end{example}
@@ -919,7 +919,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \begin{exercise}
     设 \(\K^m\ (m \in \N^\ast)\) 是赋予了积度量 (见例 \ref{eg:metric}(5)) 的度量空间,
     \[
-        s(\K^m) \coloneqq (\K^m)^\N\ ,\quad c(\K^m) \coloneqq \{\, (x_n) \in s(\K^m) \;;\; (x_n)\ \text{收敛} \,\}\ .
+        s(\K^m) \coloneqq (\K^m)^\N\ ,\quad c(\K^m) \coloneqq \bigl\{\, (x_n) \in s(\K^m) \;;\; (x_n)\ \text{收敛} \,\bigr\}\ .
     \]
     证明
     \begin{enumerate}
@@ -1341,13 +1341,13 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{theorem}
 
 \begin{proof}
-    当 \(y = 0\) 时, 由注 \ref{rem:inner-product-property}(4) 可知定理成立. 设 \(y \neq 0\). 对于任意 \(\alpha \in \K\) 有
+    当 \(y = 0\) 时, 由注 \ref{rem:inner-product-property}(4) 可知该定理成立. 设 \(y \neq 0\). 由注 \ref{rem:inner-product-property} 的 (2) 和 (3) 可知
     \[
-        0 \leq \langle x - \alpha y, x - \alpha y \rangle = \langle x, x \rangle - 2 \Re \langle x, \alpha y \rangle + \langle \alpha y, \alpha y \rangle = \langle x, x \rangle - 2 \Re \overline \alpha \langle x, y \rangle + |\alpha|^2 \langle y, y \rangle\ ,
+        0 \leq \langle x - \alpha y, x - \alpha y \rangle = \langle x, x \rangle - 2 \Re \overline \alpha \langle x, y \rangle + |\alpha|^2 \langle y, y \rangle\ ,\quad \alpha \in \K\ ,
     \]
     令 \(\alpha \coloneqq \langle x, y \rangle / \langle y, y \rangle\), 于是
     \[
-        0 \leq \langle x, x \rangle - 2 \Re \frac{\overline{\langle x, y \rangle}}{\langle y, y \rangle} \langle x, y \rangle + \frac{|\langle x, y \rangle|^2}{\langle y, y \rangle^2} \langle y, y \rangle = \langle x, x \rangle - 2 \frac{|\langle x, y \rangle|^2}{\langle y, y \rangle} + \frac{|\langle x, y \rangle|^2}{\langle y, y \rangle} = \langle x, x \rangle - \frac{|\langle x, y \rangle|^2}{\langle y, y \rangle}\ ,
+        0 \leq \langle x, x \rangle - 2 \Re \frac{\overline{\langle x, y \rangle}}{\langle y, y \rangle} \langle x, y \rangle + \frac{|\langle x, y \rangle|^2}{\langle y, y \rangle^2} \langle y, y \rangle = \langle x, x \rangle - \frac{|\langle x, y \rangle|^2}{\langle y, y \rangle}\ ,
     \]
     即
     \[
@@ -1359,11 +1359,10 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         |\langle x, y \rangle|^2 < \langle x, x \rangle \langle y, y \rangle\ ,\quad x, y \in E\ .
     \]
 
-    设 \(x\) 和 \(y\) 线性相关. 则存在 \((\alpha, \beta) \in \K^2 \!\setminus\! \{0\}\) 使得 \(\alpha x + \beta y = 0\). 假设 \(\alpha \neq 0\), 则 \(x = - (\beta / \alpha) y\), 于是
+    设 \(x\) 和 \(y\) 线性相关. 则存在 \((\alpha, \beta) \in \K^2 \!\setminus\! \{0\}\) 使得 \(\alpha x + \beta y = 0\). 不失一般性, 设 \(\alpha \neq 0\), 则 \(x = - (\beta / \alpha) y\), 于是
     \[
-        |\langle x, y \rangle|^2 = \Bigl|\Bigl\langle - \frac{\beta}{\alpha} y, y \Bigr\rangle\Bigr|^2 = \Bigl|\frac{\beta}{\alpha}\Bigr|^2 \langle y, y \rangle^2 = \Bigl\langle - \frac{\beta}{\alpha} y, - \frac{\beta}{\alpha} y \Bigr\rangle \langle y, y \rangle = \langle x, x \rangle \langle y, y \rangle\ ,\quad x, y \in E\ ,
+        |\langle x, y \rangle|^2 = \Bigl|\Bigl\langle - \frac{\beta}{\alpha} y, y \Bigr\rangle\Bigr|^2 = \Bigl|\frac{\beta}{\alpha}\Bigr|^2 \langle y, y \rangle^2 = \Bigl\langle - \frac{\beta}{\alpha} y, - \frac{\beta}{\alpha} y \Bigr\rangle \langle y, y \rangle = \langle x, x \rangle \langle y, y \rangle\ ,\quad x, y \in E\ .
     \]
-    假设 \(\beta \neq 0\), 同理可得.
 \end{proof}
 
 \begin{corollary}[经典 Cauchy-Schwarz 不等式]\label{cor:classic-cauchy-schwarz-inequality}
@@ -1560,11 +1559,11 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \end{proof}
         \item 通过双射
         \[
-            \C \to \R^2\ ,\quad x + i y \mapsto (x, y)\ ,
+            \C \to \R^2\ ,\quad x + \ii y \mapsto (x, y)\ ,
         \]
-        复数集 \(\C \coloneqq \R + i \R\) 可以与 \(\R^2\) 等同 (甚至可以与 Abel 群 \((\R^2, +)\) 等同, 见注 \ref{rem:complex-numbers-property}(3)). 更一般的, 对于 \(\C^m\) 可以通过双射\footnote{我们强调, 复向量空间 \(\C^m\) 无法和实向量空间 \(\R^{2 m}\) 等同.}
+        复数集 \(\C \coloneqq \R + \ii \R\) 可以与 \(\R^2\) 等同 (甚至可以与 Abel 群 \((\R^2, +)\) 等同, 见注 \ref{rem:complex-numbers-property}(3)). 更一般的, 对于 \(\C^m\) 可以通过双射\footnote{我们强调, 复向量空间 \(\C^m\) 无法和实向量空间 \(\R^{2 m}\) 等同.}
         \[
-            \C^m \to \R^{2 m}\ ,\quad (z_1, \ldots, z_m) = (x_1 + i y_1, \ldots, x_m + i y_m) \mapsto (x_1, y_1, \ldots, x_m, y_m)
+            \C^m \to \R^{2 m}\ ,\quad (z_1, \ldots, z_m) = (x_1 + \ii y_1, \ldots, x_m + \ii y_m) \mapsto (x_1, y_1, \ldots, x_m, y_m)
         \]
         与 \(\R^{2 m}\) 等同. 在这个典范映射下
         \[
@@ -2057,9 +2056,9 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \end{proof}
         \item 数列 \(\bigl((1 + 1 / n)^n\bigr)\) 收敛, 并称其极限
         \[
-            e \coloneqq \lim_{n \to \infty} \Bigl(1 + \frac{1}{n}\Bigr)^n
+            \ee \coloneqq \lim_{n \to \infty} \Bigl(1 + \frac{1}{n}\Bigr)^n
         \]
-        是 Euler 数或自然常数, 且 \(2 < e \leq 3\).
+        是 Euler 数或自然常数, 且 \(2 < \ee \leq 3\).
         \begin{proof}
             对于任意 \(n \in \N^\ast\), 令 \(e_n \coloneqq (1 + 1 / n)^n\). 由算术-几何平均值不等式可知
             \[
@@ -2077,11 +2076,11 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
             \[
                 e_n \leq 1 + \sum_{k = 1}^n \frac{1}{2^{k - 1}} = 1 + \sum_{k = 0}^{n - 1} \frac{1}{2^k} = 1 + \frac{(1 / 2)^n - 1}{1 / 2 - 1} < 1 + \frac{1}{1 - 1 / 2} = 3\ .
             \]
-            故由单调有界收敛定理可知 \((e_n)\) 收敛且 \(2 < e \leq 3\).
+            故由单调有界收敛定理可知 \((e_n)\) 收敛且 \(2 < \ee \leq 3\).
         \end{proof}
     \end{enumerate}
 
-    数字 \(e\) 在分析中有着至关重要的作用. 它的值理论上可以由数列 \((e_n)\) 确定. 但不幸的是, 数列 \((e_n)\) 收敛的速度很慢. \(e\) 的值近似于\footnote{我们使用这种 ``十进制表示法'' 还有些过早. 关于这种表示数字的方法的完整讨论在第 2.7 节.}
+    数字 \(\ee\) 在分析中有着至关重要的作用. 它的值理论上可以由数列 \((e_n)\) 确定. 但不幸的是, 数列 \((e_n)\) 收敛的速度很慢. \(\ee\) 的值近似于\footnote{我们使用这种 ``十进制表示法'' 还有些过早. 关于这种表示数字的方法的完整讨论在第 2.7 节.}
     \[
         2.71828\ 18284\ 59045\ 23536\ \ldots
     \]
@@ -2089,15 +2088,15 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \[
         e_1 = 2\ ,\quad e_{10} = 2.59374 \ldots\ ,\quad e_{100} = 2.70481 \ldots\ ,\quad e_{1000} = 2.71692 \ldots\ ,
     \]
-    我们看到, 即使 \(n = 1000\), \(e - e_n\) 的误差也有 \(0.0014 \ldots\) (见下一个例子).
+    我们看到, 即使 \(n = 1000\), \(\ee - e_n\) 的误差也有 \(0.0014 \ldots\) (见下一个例子).
 
     \begin{enumerate}[start=7]
-        \item 我们可以用一个收敛速度快得多的数列的极限来表示 \(e\).
+        \item 我们可以用一个收敛速度快得多的数列的极限来表示 \(\ee\).
         \[
-            e = \lim_{n \to \infty} \sum_{k = 0}^n \frac{1}{k!}\ .
+            \ee = \lim_{n \to \infty} \sum_{k = 0}^n \frac{1}{k!}\ .
         \]
         \begin{proof}
-            令 \(e'_n \coloneqq \sum_{k = 0}^n 1 / k!\). 显然 \((e'_n)\) 是递增的. (6) 的证明里表明了对于任意 \(n \in \N^\ast\) 都有 \(e_n \leq e'_n < 3\), 于是由单调有界收敛定理可知 \((e'_n)\) 收敛. 令 \(e' \coloneqq \lim e'_n\), 则由极限的保序性可知 \(e \leq e' \leq 3\). 于是只用证明 \(e' \leq e\). 固定 \(m \in \N^\ast\), 于是当 \(n \geq m\) 时, 有
+            令 \(e'_n \coloneqq \sum_{k = 0}^n 1 / k!\). 显然 \((e'_n)\) 是递增的. (6) 的证明里表明了对于任意 \(n \in \N^\ast\) 都有 \(e_n \leq e'_n < 3\), 于是由单调有界收敛定理可知 \((e'_n)\) 收敛. 令 \(e' \coloneqq \lim e'_n\), 则由极限的保序性可知 \(\ee \leq e' \leq 3\). 于是只用证明 \(e' \leq \ee\). 固定 \(m \in \N^\ast\), 于是当 \(n \geq m\) 时, 有
             \begin{align*}
                 e_n = \Bigl(1 + \frac{1}{n}\Bigr)^n = \sum_{k = 0}^n \binom{n}{k} \frac{1}{n^k} &\geq \sum_{k = 0}^m \binom{n}{k} \frac{1}{n^k}\\
                 &= 1 + \sum_{k = 1}^m \frac{1}{k!} \frac{n (n - 1) \cdots (n - k + 1)}{n^k}\\
@@ -2107,13 +2106,13 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
             \[
                 e'_{m, n} \coloneqq 1 + \sum_{k = 1}^m \frac{1}{k!} \Bigl(1 - \frac{1}{n}\Bigr) \cdots \Bigl(1 - \frac{k - 1}{n}\Bigr)\ ,\quad n \geq m\ ,
             \]
-            则当 \(n \to \infty\) 时 \(e'_{m, n} \to e'_m\), 且当 \(n \geq m\) 时 \(e'_{m, n} \leq e_n\), 于是由极限的保序性可知 \(e'_m \leq e\). 而这对于任意 \(m \in \N^\ast\) 都成立, 于是 \(e\) 是 \((e'_n)\) 的上界, 由单调有界收敛定理可知 \(e'\) 是 \((e'_n)\) 的上确界, 因此 \(e' \leq e\).
+            则当 \(n \to \infty\) 时 \(e'_{m, n} \to e'_m\), 且当 \(n \geq m\) 时 \(e'_{m, n} \leq e_n\), 于是由极限的保序性可知 \(e'_m \leq \ee\). 而这对于任意 \(m \in \N^\ast\) 都成立, 于是 \(\ee\) 是 \((e'_n)\) 的上界, 由单调有界收敛定理可知 \(e'\) 是 \((e'_n)\) 的上确界, 因此 \(e' \leq \ee\).
         \end{proof}
     \end{enumerate}
 
-    正如我们提到的, 数列 \((e'_n)\) 收敛到 \(e\) 的速度比数列 \((e_n)\) 快得多. 实际上, 可以证明下面的误差估计 (见练习 \ref{ex:e-error-estimate}).
+    正如我们提到的, 数列 \((e'_n)\) 收敛到 \(\ee\) 的速度比数列 \((e_n)\) 快得多. 实际上, 可以证明下面的误差估计 (见练习 \ref{ex:e-error-estimate}).
     \[
-        0 < e - e'_n \leq \frac{1}{n n!}\ ,\quad n \in \N^\ast\ .
+        0 < \ee - e'_n \leq \frac{1}{n n!}\ ,\quad n \in \N^\ast\ .
     \]
     当 \(n = 6\) 时, 就有 \(1 / (6!\, 6) = 0.00023 \ldots\), 这已经比 (6) 中 \(n = 1000\) 时的误差要小了.
 \end{example}
@@ -2138,7 +2137,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \begin{exercise}\label{ex:e-limit-variant-1}
     证明
     \[
-        \lim_{n \to \infty} \Bigl(1 - \frac{1}{n}\Bigr)^n = \frac{1}{e}\ .
+        \lim_{n \to \infty} \Bigl(1 - \frac{1}{n}\Bigr)^n = \frac{1}{\ee}\ .
     \]
     (提示: 考虑 \(\lim (1 - 1 / n^2)^n = 1\) 并利用命题 \ref{prop:division-in-c}.)
 \end{exercise}
@@ -2148,13 +2147,13 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \[
         \Bigl(1 - \frac{1}{n}\Bigr)^{- n} = \Bigl(\frac{n}{n - 1}\Bigr)^n = \Bigl(1 + \frac{1}{n - 1}\Bigr)^n\ .
     \]
-    注意到 \(\bigl(1 + \frac{1}{n - 1}\bigr)^{n - 1} \to e\) 且 \(1 + \frac{1}{n - 1} \to 1\), 于是
+    注意到 \(\bigl(1 + \frac{1}{n - 1}\bigr)^{n - 1} \to \ee\) 且 \(1 + \frac{1}{n - 1} \to 1\), 于是
     \[
-        \Bigl(1 + \frac{1}{n - 1}\Bigr)^n = \Bigl(1 + \frac{1}{n - 1}\Bigr)^{n - 1} \Bigl(1 + \frac{1}{n - 1}\Bigr) \to e\ ,
+        \Bigl(1 + \frac{1}{n - 1}\Bigr)^n = \Bigl(1 + \frac{1}{n - 1}\Bigr)^{n - 1} \Bigl(1 + \frac{1}{n - 1}\Bigr) \to \ee\ ,
     \]
-    即 \((1 - 1 / n)^{- n} \to e\), 因此
+    即 \((1 - 1 / n)^{- n} \to \ee\), 因此
     \[
-        \lim_{n \to \infty} \Bigl(1 - \frac{1}{n}\Bigr)^n = \lim_{n \to \infty} \frac{1}{(1 - 1 / n)^{- n}} = \frac{1}{e}\ .
+        \lim_{n \to \infty} \Bigl(1 - \frac{1}{n}\Bigr)^n = \lim_{n \to \infty} \frac{1}{(1 - 1 / n)^{- n}} = \frac{1}{\ee}\ .
     \]
 \end{proof}
 
@@ -2182,7 +2181,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \begin{exercise}
     证明
     \[
-        \lim_{n \to \infty} \Bigl(1 + \frac{r}{n}\Bigr)^n = e^r\quad (r \in \Q)\ .
+        \lim_{n \to \infty} \Bigl(1 + \frac{r}{n}\Bigr)^n = \ee^r\quad (r \in \Q)\ .
     \]
     (提示: 分别考虑 \(r > 0\) 和 \(r < 0\) 的情况. 并利用练习 \ref{ex:e-limit-variant-1} 和练习 \ref{ex:sequence-power-equal-limit-power}.)
 \end{exercise}
@@ -2196,17 +2195,17 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \[
         \Bigl(1 + \frac{1}{t_n + 1}\Bigr)^{t_n} \leq \Bigl(1 + \frac{r}{n}\Bigr)^{t_n} \leq \Bigl(1 + \frac{r}{n}\Bigr)^{n / r} \leq \Bigl(1 + \frac{r}{n}\Bigr)^{t_n + 1} \leq \Bigl(1 + \frac{1}{t_n}\Bigr)^{t_n + 1}\ .
     \]
-    注意到当 \(n \to \infty\) 时, \(t_n \to \infty\), 于是 \((1 + 1 / t_n)^{t_n} \to e\), 因此
+    注意到当 \(n \to \infty\) 时, \(t_n \to \infty\), 于是 \((1 + 1 / t_n)^{t_n} \to \ee\), 因此
     \[
-        \Bigl(1 + \frac{1}{t_n}\Bigr)^{t_n + 1} = \Bigl(1 + \frac{1}{t_n}\Bigr)^{t_n} \Bigl(1 + \frac{1}{t_n}\Bigr) \to e\quad \text{且}\quad \Bigl(1 + \frac{1}{t_n + 1}\Bigr)^{t_n} = \frac{\bigl(1 + \frac{1}{t_n + 1}\bigr)^{t_n + 1}}{1 + \frac{1}{t_n + 1}} \to e\ .
+        \Bigl(1 + \frac{1}{t_n}\Bigr)^{t_n + 1} = \Bigl(1 + \frac{1}{t_n}\Bigr)^{t_n} \Bigl(1 + \frac{1}{t_n}\Bigr) \to \ee\quad \text{且}\quad \Bigl(1 + \frac{1}{t_n + 1}\Bigr)^{t_n} = \frac{\bigl(1 + \frac{1}{t_n + 1}\bigr)^{t_n + 1}}{1 + \frac{1}{t_n + 1}} \to \ee\ .
     \]
-    由夹逼定理可知 \((1 + r / n)^{n / r} \to e\), 故
+    由夹逼定理可知 \((1 + r / n)^{n / r} \to \ee\), 故
     \[
-        \lim_{n \to \infty} \Bigl(1 + \frac{r}{n}\Bigr)^n = \lim_{n \to \infty}\Bigl(1 + \frac{r}{n}\Bigr)^{\frac{n}{r} r} = e^r\ .
+        \lim_{n \to \infty} \Bigl(1 + \frac{r}{n}\Bigr)^n = \lim_{n \to \infty}\Bigl(1 + \frac{r}{n}\Bigr)^{\frac{n}{r} r} = \ee^r\ .
     \]
     令 \(r = p / q\ (p, q \in \N^\ast)\). 注意到 \(\bigl((1 + p / q n)^{q n / p}\bigr)\) 是 \(\bigl((1 + p / n)^{n / p}\bigr)\) 的子数列, 因此
     \[
-        \lim_{n \to \infty} \Bigl(1 + \frac{r}{n}\Bigr)^n = \lim_{n \to \infty}\Bigl(1 + \frac{p}{q n}\Bigr)^{\frac{q n}{p} \frac{p}{q}} = e^{p / q} = e^r\ .
+        \lim_{n \to \infty} \Bigl(1 + \frac{r}{n}\Bigr)^n = \lim_{n \to \infty}\Bigl(1 + \frac{p}{q n}\Bigr)^{\frac{q n}{p} \frac{p}{q}} = \ee^{p / q} = \ee^r\ .
     \]
 
     设 \(r < 0\). 令 \(s = - r > 0\). 于是
@@ -2217,13 +2216,13 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \[
         \Bigl(1 - \frac{s}{n}\Bigr)^{- n} = \Bigl(\frac{n}{n - s}\Bigr)^n = \Bigl(1 + \frac{s}{n - s}\Bigr)^n\ .
     \]
-    注意到 \(\bigl(1 + \frac{s}{n - s}\bigr)^{n - s} \to e^s\) 且 \(\bigl(1 + \frac{s}{n - s}\bigr)^s \to 1\), 于是
+    注意到 \(\bigl(1 + \frac{s}{n - s}\bigr)^{n - s} \to \ee^s\) 且 \(\bigl(1 + \frac{s}{n - s}\bigr)^s \to 1\), 于是
     \[
-        \Bigl(1 + \frac{s}{n - s}\Bigr)^n = \Bigl(1 + \frac{s}{n - s}\Bigr)^{n - s} \Bigl(1 + \frac{s}{n - s}\Bigr)^s \to e^s\ ,
+        \Bigl(1 + \frac{s}{n - s}\Bigr)^n = \Bigl(1 + \frac{s}{n - s}\Bigr)^{n - s} \Bigl(1 + \frac{s}{n - s}\Bigr)^s \to \ee^s\ ,
     \]
-    即 \((1 - s / n)^{- n} \to e^s\), 因此
+    即 \((1 - s / n)^{- n} \to \ee^s\), 因此
     \[
-        \lim_{n \to \infty} \Bigl(1 + \frac{r}{n}\Bigr)^n = \lim_{n \to \infty} \Bigl(1 - \frac{s}{n}\Bigr)^n = \lim_{n \to \infty} \frac{1}{(1 - s / n)^{- n}} = e^{- s} = e^r\ .
+        \lim_{n \to \infty} \Bigl(1 + \frac{r}{n}\Bigr)^n = \lim_{n \to \infty} \Bigl(1 - \frac{s}{n}\Bigr)^n = \lim_{n \to \infty} \frac{1}{(1 - s / n)^{- n}} = \ee^{- s} = \ee^r\ .
     \]
 \end{proof}
 
@@ -2336,10 +2335,10 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \begin{enumerate}
         \item 证明如下误差估计.
         \[
-            0 < e - \sum_{k = 0}^n \frac{1}{k!} < \frac{1}{n n!}\ ,\quad n \in \N^\ast\ .
+            0 < \ee - \sum_{k = 0}^n \frac{1}{k!} < \frac{1}{n n!}\ ,\quad n \in \N^\ast\ .
         \]
-        (提示: 对于 \(n \in \N^\ast\). 令 \(y_m \coloneqq \sum_{k = n + 1}^{n + m} 1 / k!\). 证明 \(y_m \to e - \sum_{k = 0}^n 1 / k!\) 和 \((m + n)!\, y_m < \sum_{k = 1}^m (n + 1)^{1 - k}\).)
-        \item 利用上面的不等式证明 \(e\) 是无理数. (提示: 用反证法.)
+        (提示: 对于 \(n \in \N^\ast\). 令 \(y_m \coloneqq \sum_{k = n + 1}^{n + m} 1 / k!\). 证明 \(y_m \to \ee - \sum_{k = 0}^n 1 / k!\) 和 \((m + n)!\, y_m < \sum_{k = 1}^m (n + 1)^{1 - k}\).)
+        \item 利用上面的不等式证明 \(\ee\) 是无理数. (提示: 用反证法.)
     \end{enumerate}
 \end{exercise}
 
@@ -2388,14 +2387,14 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \]
     令 \(m \to \infty\), 由极限的保序性可知
     \[
-        e - e'_n = e - \sum_{k = 0}^n \frac{1}{k!} \leq \frac{1}{(n + 1)!} \Bigl(1 + \frac{1}{n + 1}\Bigr) < \frac{1}{(n + 1)!} \Bigl(1 + \frac{1}{n}\Bigr) = \frac{1}{n n!}\ ,\quad n \in \N^\ast\ .
+        \ee - e'_n = \ee - \sum_{k = 0}^n \frac{1}{k!} \leq \frac{1}{(n + 1)!} \Bigl(1 + \frac{1}{n + 1}\Bigr) < \frac{1}{(n + 1)!} \Bigl(1 + \frac{1}{n}\Bigr) = \frac{1}{n n!}\ ,\quad n \in \N^\ast\ .
     \]
 
-    (2). 假设 \(e\) 是有理数. 令 \(e \coloneq p / q\ (p, q \in \N^\ast)\). 由 (1) 中的不等式可知当 \(n = 1\) 时有 \(e < 3\), 因此 \(2 < e < 3\). 这说明 \(e\) 不是整数, 因此 \(q \geq 2\). 再次使用 (1) 中的不等式有 \(e - e'_q < 1 / q q!\), 于是 \(q! (e - e'_q) < 1 / q \leq 1 / 2\), 这说明 \(q! (e - e'_q)\) 不是整数, 而
+    (2). 假设 \(\ee\) 是有理数. 令 \(\ee \coloneq p / q\ (p, q \in \N^\ast)\). 由 (1) 中的不等式可知当 \(n = 1\) 时有 \(\ee < 3\), 因此 \(2 < \ee < 3\). 这说明 \(\ee\) 不是整数, 因此 \(q \geq 2\). 再次使用 (1) 中的不等式有 \(\ee - e'_q < 1 / q q!\), 于是 \(q! (\ee - e'_q) < 1 / q \leq 1 / 2\), 这说明 \(q! (\ee - e'_q)\) 不是整数, 而
     \[
-        q! (e - e'_q) = q! \Bigl(\frac{p}{q} - 1 - \frac{1}{1!} - \frac{1}{2!} - \cdots - \frac{1}{q!}\Bigr) = (q - 1)!\, p - q! - q! - (3 \cdot 4 \cdots q) - \cdots - 1 \in \Z\ ,
+        q! (\ee - e'_q) = q! \Bigl(\frac{p}{q} - 1 - \frac{1}{1!} - \frac{1}{2!} - \cdots - \frac{1}{q!}\Bigr) = (q - 1)!\, p - q! - q! - (3 \cdot 4 \cdots q) - \cdots - 1 \in \Z\ ,
     \]
-    矛盾. 故 \(e\) 是无理数.
+    矛盾. 故 \(\ee\) 是无理数.
 \end{proof}
 
 \begin{exercise}\label{ex:fibonacci-numbers-rate-limit}
@@ -3363,7 +3362,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 \begin{example}
     \begin{enumerate}
-        \item 级数 \(\sum 1 / k!\) 在 \(\R\) 中收敛. 由例 \ref{eg:some-important-limits}(7) 可知, 其收敛到 \(e\), 即 \(e = \sum_{k = 0}^\infty 1 / k!\).
+        \item 级数 \(\sum 1 / k!\) 在 \(\R\) 中收敛. 由例 \ref{eg:some-important-limits}(7) 可知, 其收敛到 \(\ee\), 即 \(\ee = \sum_{k = 0}^\infty 1 / k!\).
         \item 级数 \(\sum 1 / k^2\) 在 \(\R\) 中收敛.
         \begin{proof}
             显然其部分和数列 \((s_n)\) 是递增的, 由于
@@ -3393,7 +3392,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 下面的例子表明命题 \ref{prop:necessary-criterion-of-convergent-series} 的逆命题不成立.
 
-\begin{example}
+\begin{example}\label{eg:harmonic-series}
     调和级数 \(\sum 1 / k\) 在 \(\R\) 中发散.
 \end{example}
 
@@ -3495,7 +3494,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \subsection{交错级数}
 
 \begin{definition}[交错级数]
-    称 \(\R\) 中的级数 \(\sum y_k\) 是交错级数, 若对于任意 \(y \in \N\) 都有 \(y_k\) 和 \(y_{k + 1}\) 的符号相反.
+    称 \(\R\) 中的级数 \(\sum y_k\) 是交错级数, 若对于任意 \(y \in \N\) 都有 \(y_k\) 和 \(y_{k + 1}\) 异号.
 \end{definition}
 
 一个交错级数总是能写成 \(\pm \sum (- 1)^k x_k\) 的形式, 其中 \(x_k \geq 0\).
@@ -3549,7 +3548,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 推论 \ref{cor:alternating-series-error-estimate} 证明, 当交错级数的值被替换为第 \(n\) 项部分和时, 所产生的误差至多为 ``首个被省略的项'' 的绝对值. 此外, \eqref{exp:alternating-series-error-estimate-even} 和 \eqref{exp:alternating-series-error-estimate-odd} 表明, 第 \(n\) 项部分和何时小于或何时大于级数的值.
 
-\begin{example}
+\begin{example}\label{eg:alternating-harmonic-series}
     由 Leibniz 准则可知, 交错级数
     \begin{enumerate}
         \item (交错调和级数) \(\displaystyle \sum_{k = 1}^\infty \frac{(- 1)^{k + 1}}{k} = 1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + - \cdots\)
@@ -3611,7 +3610,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     0.x_1 x_2 x_3 x_4 \ldots \coloneqq \sum_{k = 1}^\infty x_k g^{- k}\ .
 \]
 不难发现, 任意 \(m \in \N\) 都有如下形式\footnote{见练习 \ref{ex:base-g-expansion-of-natural-numbers}. 为了得到表示的唯一性, 我们需要忽略前导零. 例如, 我们将 \(0 \cdot 3^3 + 0 \cdot 3^2 + 1 \cdot 3^1 + 2 \cdot 3^0\) 和 \(1 \cdot 3^1 + 2 \cdot 3^0\) 视为 \(5\) 的同一三进制表示.}的唯一表示
-\begin{align}\label{exp:base-g-expansion-of-natural-numbers}
+\begin{align}\label{exp:base-g-expansion-of-natural-numbers-2}
     m = \sum_{j = 0}^\ell y_j g^j\ ,\quad y_k \in \{0, 1, \ldots, g - 1\}\ ,\quad 0 \leq k \leq \ell\ .
 \end{align}
 于是
@@ -3841,7 +3840,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{proof}
 
 \begin{exercise}
-    一只蜗牛以 \(5\, \mathrm{cm} / \mathrm h\) 的恒定速度在一条 \(1\, \mathrm m\) 长的橡皮筋上爬行. 在开始爬行后的每个小时结束时, 橡皮筋会被均匀拉伸额外的一米. 如果蜗牛从橡皮筋的左端开始爬行, 它是否能在有限时间内到达右端?
+    一只蜗牛以 \(\SI{5}{\centi\meter\per\hour}\) 的恒定速度在一条 \(\SI{1}{\meter}\) 长的橡皮筋上爬行. 在开始爬行后的每个小时结束时, 橡皮筋会被均匀拉伸额外的一米. 如果蜗牛从橡皮筋的左端开始爬行, 它是否能在有限时间内到达右端?
 \end{exercise}
 
 \begin{proof}
@@ -4156,7 +4155,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{proof}
 
 \begin{exercise}
-    证明 \eqref{exp:base-g-expansion-of-natural-numbers} 的断言.
+    证明 \eqref{exp:base-g-expansion-of-natural-numbers-2} 的断言.
 \end{exercise}
 
 \begin{exercise}
@@ -4237,3 +4236,51 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \newpage
 
 \section{绝对收敛}
+
+由于级数是一类特殊的序列, 因此我们为一般序列推导出的法则同样适用于级数. 另一方面, 级数的通项属于某个赋范向量空间, 我们可以利用这一事实推导出其他法则. 例如, 对于给定的级数 \(\sum x_k\), 我们可以研究级数 \(\sum \|x_k\|\). 尽管序列 \((y_n)\) 的收敛性蕴含了其范数序列 \((\|y_n\|)\) 的收敛性, 但级数 \(\sum x_k\) 的收敛性却并不蕴含 \(\sum \|x_k\|\) 的收敛性. 例如, 交错调和级数 \(\sum (- 1)^{k + 1} / k\) 与调和级数 \(\sum 1 / k\) 有着不同的收敛行为.
+
+此外, 我们也不应该期待结合律对 ``无穷多次'' 的加法仍然成立:
+\[
+    1 = 1 + (- 1 + 1) + (- 1 + 1) + \cdots = (1 - 1) + (1 - 1) + (1 - 1) + \cdots = 0\ .
+\]
+不过, 如果我们仅关注 \(\R\) 中收敛的正项级数, 或者更一般的, 关注通项的绝对值 (范数) 所构成的级数收敛的级数, 那么上述情况就会大大改善.
+
+\begin{center}
+    \textsl{在本节中, 设 \(\sum x_k\) 是 Banach 空间 \((E, \|\!\cdot\!\|)\) 中的级数.}
+\end{center}
+
+\begin{definition}[绝对收敛]
+    称级数 \(\sum x_k\) 绝对收敛, 若 \(\sum \|x_k\|\) 在 \(\R\) 中收敛, 即 \(\sum \|x_k\| < \infty\).
+\end{definition}
+
+以下命题说明了在该定义中使用 ``收敛'' 一词是合理的.
+
+\begin{proposition}\label{prop:absolutely-convergent-implies-convergent}
+    每个绝对收敛的级数都收敛.
+\end{proposition}
+
+\begin{proof}
+    设 \(\sum x_k\) 是 \(E\) 中绝对收敛的级数. 则 \(\sum \|x_k\|\) 在 \(\R\) 中收敛. 由 Cauchy 准则可知, 对于任意 \(\varepsilon > 0\) 存在 \(N \in \N\) 使得
+    \[
+        \Bigl\| \sum_{k = m + 1}^n x_k \Bigr\| \leq \sum_{k = m + 1}^n \|x_k\| < \varepsilon\ ,\quad n > m \geq N\ .
+    \]
+    于是级数 \(\sum x_k\) 同样满足 Cauchy 准则, 因此由 \(E\) 的完备性可知 \(\sum x_k\) 收敛.
+\end{proof}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 交错调和级数 \(\sum (- 1)^{k + 1} / k\) 表明命题 \ref{prop:absolutely-convergent-implies-convergent} 的逆命题不成立. 该级数收敛 (见例 \ref{eg:alternating-harmonic-series}(1)), 但其对应的绝对值级数, 调和级数 \(\sum 1 / k\) 发散 (见例 \ref{eg:harmonic-series}).
+        \item \textsl{称级数 \(\sum x_k\) 条件收敛, 若 \(\sum x_k\) 收敛而 \(\sum \|x_k\|\) 发散.} 交错调和级数条件收敛.
+        \item 对于每个绝对收敛级数 \(\sum x_k\), 我们有 ``一般的三角不等式'',
+        \[
+            \Bigl\| \sum_{k = 0}^\infty x_k \Bigr\| \leq \sum_{k = 0}^\infty \|x_k\|\ .
+        \]
+        \begin{proof}
+            由三角不等式可知
+            \[
+                \Bigl\| \sum_{k = 0}^n x_k \Bigr\| \leq \sum_{k = 0}^n \|x_k\|\ ,\quad n \in \N\ ,
+            \]
+            于是由极限的保序性、命题 \ref{prop:sequence-convergence-then-abs-convergence} 和注 \ref{rem:norms}(3) 可知该断言成立.
+        \end{proof}
+    \end{enumerate}
+\end{remark}

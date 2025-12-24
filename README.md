@@ -96,5 +96,7 @@ Section  7 Series
            Exercises                                 12 21, 25
            Exercises                                 12 22, 25
 Section  8 Absolute Convergence                      12 23, 25
+           Majorant, Root and Ratio Tests            12 24, 25
+           The Exponential Function
 Section  9 Power Series
 ```
