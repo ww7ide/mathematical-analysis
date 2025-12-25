@@ -613,7 +613,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         |(x_n + y_n) - (a + b)| \leq |x_n - a| + |y_n - b| < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon\ ,\quad n \geq \max\{M, N\}\ .
     \]
 
-    (2). 若 \(\alpha = 0\) 显然成立, 假设 \(\alpha \neq 0\). 则存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(|x_n - a| < \varepsilon / |\alpha|\). 于是
+    (2). 若 \(\alpha = 0\) 显然成立, 假设 \(\alpha \neq 0\). 则存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(|x_n - a| < \varepsilon \big/ |\alpha|\). 于是
     \[
         |\alpha x_n - \alpha a| = |\alpha|\, |x_n - a| < |\alpha| \frac{\varepsilon}{|\alpha|} = \varepsilon\ ,\quad n \geq N\ .
     \]
@@ -675,11 +675,11 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{proposition}
 
 \begin{proof}
-    存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(|x_n - a| < |a| / 2\). 由反三角不等式可得
+    存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(|x_n - a| < |a| \big/ 2\). 由反三角不等式可得
     \[
         |a| - |x_n| \leq \bigl||a| - |x_n|\bigr| \leq |x_n - a| < \frac{|a|}{2}\ ,\quad n \geq N\ ,
     \]
-    即当 \(n \geq N\) 时 \(|x_n| > |a| / 2 > 0\), 即 \((x_n)\) 的几乎所有项都非零. 而
+    即当 \(n \geq N\) 时 \(|x_n| > |a| \big/ 2 > 0\), 即 \((x_n)\) 的几乎所有项都非零. 而
     \[
         \Bigl|\frac{1}{x_n} - \frac{1}{a}\Bigr| = \frac{|x_n - a|}{|a|\, |x_n|} < \frac{2}{|a|^2} |x_n - a|\ ,\quad n \geq N\ ,
     \]
@@ -2001,7 +2001,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
             \lim_{n \to \infty} \frac{n^k}{a^n} = 0\ .
         \]
         \begin{proof}
-            令 \(\alpha \coloneqq 1 / |a| \in (0, 1)\), \(x_n \coloneqq n^k \alpha^n\). 于是
+            令 \(\alpha \coloneqq 1 \big/ |a| \in (0, 1)\), \(x_n \coloneqq n^k \alpha^n\). 于是
             \[
                 \frac{x_{n + 1}}{x_n} = \frac{(n + 1)^k \alpha^{n + 1}}{n^k \alpha^n} = \Bigl(1 + \frac{1}{n}\Bigr)^k \alpha\ ,\quad n \in \N^\ast\ ,
             \]
@@ -2694,7 +2694,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \end{enumerate}
 \end{example}
 
-\begin{theorem}
+\begin{theorem}\label{thm:limit-superior-and-inferior-with-limit}
     设 \((x_n)\) 是 \(\R\) 中的数列. 则 \((x_n)\) 在 \(\bar \R\) 中收敛当且仅当
     \[
         \limsup x_n \leq \liminf x_n\ .
@@ -2737,8 +2737,8 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 \subsection{练习}
 
-\begin{exercise}
-    设 \((x_n)\) 是 \(\R\) 中的数列, \(x_\ast \coloneqq \liminf x_n\), \(x^\ast \coloneqq \limsup x_n\). 假设 \(x_\ast, x^\ast \in \R\). 证明对于任意 \(\varepsilon > 0\) 存在 \(N \in \N\) 使得
+\begin{exercise}\label{ex:limit-superior-and-inferior-with-item-of-sequence}
+    设 \((x_n)\) 是 \(\R\) 中的数列, \(x_\ast \coloneqq \liminf x_n\), \(x^\ast \coloneqq \limsup x_n\). 假设 \(x_\ast, x^\ast \in \R\), 证明对于任意 \(\varepsilon > 0\) 存在 \(N \in \N\) 使得
     \[
         x_\ast - \varepsilon < x_n < x^\ast + \varepsilon\ ,\quad n \geq N\ .
     \]
@@ -2746,15 +2746,15 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{exercise}
 
 \begin{proof}
-    任取 \(\varepsilon > 0\). 令 \(y_n \coloneqq \sup_{k \geq n} x_k\), \(z_n \coloneqq \inf_{k \geq n} x_k\). 由下极限与上极限的定义可知
+    任取 \(\varepsilon > 0\). 令 \(y_n \coloneqq \sup_{k \geq n} x_k\), \(z_n \coloneqq \inf_{k \geq n} x_k\). 于是
     \[
         x_\ast = \sup_{n \in \N} z_n\ ,\quad x^\ast = \inf_{n \in \N} y_n\ .
     \]
-    于是存在 \(n, m \in \N\) 使得
+    因此存在 \(n, m \in \N\) 使得
     \[
         z_n = \inf_{k \geq n} x_k > x_\ast - \varepsilon\ ,\quad y_m = \sup_{k \geq m} x_k < x^\ast + \varepsilon\ ,
     \]
-    即当 \(k \geq n\) 时 \(x_k > x_\ast - \varepsilon\), 当 \(k \geq m\) 时 \(x_k < x^\ast + \varepsilon\). 因此
+    即当 \(k \geq n\) 时 \(x_k > x_\ast - \varepsilon\), 当 \(k \geq m\) 时 \(x_k < x^\ast + \varepsilon\). 故
     \[
         x_\ast - \varepsilon < x_k < x^\ast + \varepsilon\ ,\quad k \geq \max\{m, n\}\ .
     \]
@@ -2886,7 +2886,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \(\liminf \sqrt[n]{x_n} = 1\), \(\limsup \sqrt[n]{x_n} = 2\).
 \end{proof}
 
-\begin{exercise}
+\begin{exercise}\label{ex:limit-superior-and-inferior-with-root-and-ratio}
     设 \((x_n)\) 是 \((0, \infty)\) 中的数列. 证明
     \[
         \liminf \frac{x_{n + 1}}{x_n} \leq \liminf \sqrt[n]{x_n} \leq \limsup \sqrt[n]{x_n} \leq \limsup \frac{x_{n + 1}}{x_n}\ .
@@ -2895,7 +2895,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{exercise}
 
 \begin{proof}
-    由上极限与下极限和聚点的关系可知 \(\liminf \sqrt[n]{x_n} \leq \limsup \sqrt[n]{x_n}\). 令
+    显然 \(\liminf \sqrt[n]{x_n} \leq \limsup \sqrt[n]{x_n}\). 令
     \[
         a_n \coloneqq x_{n + 1} / x_n\ ,\quad a_\ast \coloneqq \liminf a_n\ ,\quad a^\ast \coloneqq \limsup a_n\ .
     \]
@@ -3360,7 +3360,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     s_0 \coloneqq x_0\ ,\quad s_{n + 1} \coloneqq s_n + x_{n + 1}\ ,\quad n \in \N\ .
 \]
 
-\begin{example}
+\begin{example}\label{eg:some-simple-convergent-series}
     \begin{enumerate}
         \item 级数 \(\sum 1 / k!\) 在 \(\R\) 中收敛. 由例 \ref{eg:some-important-limits}(7) 可知, 其收敛到 \(\ee\), 即 \(\ee = \sum_{k = 0}^\infty 1 / k!\).
         \item 级数 \(\sum 1 / k^2\) 在 \(\R\) 中收敛.
@@ -4284,3 +4284,140 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \end{proof}
     \end{enumerate}
 \end{remark}
+
+\subsection{比较、根值与比值判别法}
+
+绝对收敛在级数的研究中起着尤为重要的作用. 正因如此, 比较判别法至关重要, 因为它提供了一种简单而灵活的方法来证明一个级数是否绝对收敛.
+
+\begin{theorem}[比较判别法]
+    设 \(\sum x_k\) 是 \(E\) 中的级数, \(\sum a_k\) 是收敛的正项级数. 若存在 \(K \in \N\) 使得当 \(k \geq K\) 时 \(\|x_k\| \leq a_k\), 则 \(\sum x_k\) 绝对收敛.
+\end{theorem}
+
+\begin{proof}
+    由 Cauchy 准则可知, 对于任意 \(\varepsilon > 0\) 存在 \(N \in \N\) 使得
+    \[
+        \sum_{k = m + 1}^n \|x_k\| \leq \sum_{k = m + 1}^n a_k < \varepsilon\ ,\quad n > m \geq \max\{K, N\}\ .
+    \]
+    于是级数 \(\sum \|x_k\|\) 同样满足 Cauchy 准则, 因此由 \(E\) 的完备性可知 \(\sum \|x_k\|\) 收敛, 故 \(\sum x_k\) 绝对收敛.
+\end{proof}
+
+\begin{example}
+    \begin{enumerate}
+        \item 设 \(m \geq 2\). 则级数 \(\sum 1 / k^m\) 绝对收敛.
+        \begin{proof}
+            由于 \(m \geq 2\), 故对于任意 \(k \in \N^\ast\) 都有 \(1 / k^m \leq 1 / k^2\). 由例 \ref{eg:some-simple-convergent-series}(2) 可知 \(\sum 1 / k^2\) 收敛, 于是由比较判别法可知 \(\sum 1 / k^m\) 绝对收敛.
+        \end{proof}
+        \item 设 \(z \in \C\) 且 \(|z| < 1\). 则级数 \(\sum z^k\) 绝对收敛.
+        \begin{proof}
+            对于任意 \(k \in \N\) 我们有 \(|z^k| = |z|^k\). 由于 \(|z| < 1\), 于是由例 \ref{eg:geometric-series} 可知几何级数 \(\sum |z|^k\) 收敛, 因此由比较判别法可知 \(\sum z^k\) 绝对收敛.
+        \end{proof}
+    \end{enumerate}
+\end{example}
+
+利用比较判别法, 我们可以推导出其他用于判断级数收敛性的重要判别法. 首先从根值判别法开始, 这是判断任意 Banach 空间中级数绝对收敛的一个充分条件.
+
+\begin{theorem}[根值判别法]
+    设 \(\sum x_k\) 是 \(E\) 中的级数,
+    \[
+        \alpha \coloneqq \limsup \sqrt[k]{\|x_k\|}\ .
+    \]
+    \begin{enumerate}
+        \item 若 \(\alpha < 1\), 则 \(\sum x_k\) 绝对收敛.
+        \item 若 \(\alpha > 1\), 则 \(\sum x_k\) 发散.
+        \item 若 \(\alpha = 1\), 则 \(\sum x_k\) 可能收敛也可能发散.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    (1). 设 \(\alpha < 1\). 固定 \(q \in (\alpha, 1)\). 由练习 \ref{ex:limit-superior-and-inferior-with-item-of-sequence} 可知存在 \(K \in \N\) 使得当 \(k \geq K\) 时 \(\sqrt[k]{\|x_k\|} < q\), 即 \(\|x_k\| < q^k\). 而几何级数 \(\sum q^k\) 收敛, 于是由比较判别法可知 \(\sum x_k\) 绝对收敛.
+
+    (2). 设 \(\alpha > 1\). 由于 \(\alpha\) 是 \(\bigl(\sqrt[k]{\|x_k\|}\bigr)\) 的聚点, 故存在无穷多个 \(k \in \N\) 使得 \(\sqrt[k]{\|x_k\|} \geq 1\), 即 \(\|x_k\| \geq 1\). 因此 \((x_k)\) 不是无穷小量, 由命题 \ref{prop:necessary-criterion-of-convergent-series} 可知 \(\sum x_k\) 发散.
+
+    (3). 考虑调和级数与交错调和级数, 令 \(x_k \coloneqq 1 / k\), \(y_k \coloneqq (- 1)^{k + 1} / k\). 由例 \ref{eg:some-important-limits}(4) 和定理 \ref{thm:limit-superior-and-inferior-with-limit} 可知
+    \[
+        \limsup \sqrt[k]{|y_k|} = \limsup \sqrt[k]{|x_k|} = \limsup \frac{1}{\sqrt[k]{k}} = 1\ ,
+    \]
+    而 \(\sum x_k\) 发散, \(\sum y_k\) 收敛.
+\end{proof}
+
+上面证明中的核心思想是, 利用几何级数控制其增长速度. 这启发了另一实用的收敛性判别法, 比值判别法.
+
+\begin{theorem}[比值判别法]
+    设 \(\sum x_k\) 是 \(E\) 中的级数, 且存在 \(K_0 \in \N\) 使得当 \(k \geq K_0\) 时 \(x_k \neq 0\).
+    \begin{enumerate}
+        \item 若存在 \(q \in (0, 1)\) 和 \(K \geq K_0\) 使得
+        \[
+            \frac{\|x_{k + 1}\|}{\|x_k\|} \leq q\ ,\quad k \geq K\ ,
+        \]
+        则 \(\sum x_k\) 绝对收敛.
+        \item 若存在 \(K \geq K_0\) 使得
+        \[
+            \frac{\|x_{k + 1}\|}{\|x_k\|} \geq 1\ ,\quad k \geq K\ ,
+        \]
+        则 \(\sum x_k\) 发散.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    (1). 由于当 \(k \geq K\) 时 \(\|x_{k + 1}\| \leq q\, \|x_k\|\), 于是
+    \[
+        \|x_{K + 1}\| \leq q\, \|x_K\|\ ,\quad \|x_{K + 2}\| \leq q\, \|x_{K + 1}\| \leq q^2\, \|x_K\|\ ,\quad \ldots
+    \]
+    归纳可得
+    \[
+        \|x_k\| \leq q^{k - K}\, \|x_K\| = \frac{\|x_K\|}{q^K} q^k\ ,\quad k > K\ .
+    \]
+    令 \(c \coloneqq \|x_K\| \big/ q^K\). 由于几何级数 \(c \sum q^k\) 收敛, 因此由比较判别法可知 \(\sum x_k\) 绝对收敛.
+
+    (2). 由于当 \(k \geq K\) 时 \(\|x_{k + 1}\| \geq \|x_k\| > 0\), 这说明 \((x_k)\) 不是无穷小量, 由命题 \ref{prop:necessary-criterion-of-convergent-series} 可知 \(\sum x_k\) 发散.
+\end{proof}
+
+\begin{example}
+    \begin{enumerate}
+        \item 级数 \(\sum k^2 / 2^k\) 绝对收敛.
+        \begin{proof}
+            令 \(x_k \coloneqq k^2 / 2^k\). 于是
+            \[
+                \frac{|x_{k + 1}|}{|x_k|} = \frac{(k + 1)^2}{2^{k + 1}}\, \frac{2^k}{k^2} = \frac{1}{2} \Bigl(1 + \frac{1}{k}\Bigr)^2 \to \frac{1}{2}\quad (k \to \infty)\ ,
+            \]
+            因此存在 \(K \in \N\) 使得当 \(k \geq K\) 时 \(|x_{k + 1}| \big/ |x_k| \leq 3 / 4\), 故由比值判别法可知该断言成立.
+        \end{proof}
+        \item 级数
+        \[
+            \sum \Bigl(\frac{1}{2}\Bigr)^{k + (- 1)^k} = \frac{1}{2} + 1 + \frac{1}{8} + \frac{1}{4} + \frac{1}{32} + \frac{1}{16} + \cdots
+        \]
+        绝对收敛.
+        \begin{proof}
+            令 \(x_k \coloneqq (1 / 2)^{k + (- 1)^k}\). 于是
+            \[
+                \frac{|x_{k + 1}|}{|x_k|} =
+                \begin{cases}
+                    1 / 8\ , & k\ \text{是奇数}\ , \\
+                    2\ ,     & k\ \text{是偶数}\ ,
+                \end{cases}
+                \quad k \in \N\ ,
+            \]
+            我们注意到, 比值判别法的两个条件均不满足.\footnote{通常建议先尝试比值判别法, 即便该判别法失效, 根值判别法仍可能确定该级数的收敛性态 (见练习 \ref{ex:limit-superior-and-inferior-with-root-and-ratio}).} 尽管如此, 该级数仍然是收敛的. 由例 \ref{eg:some-important-limits}(5) 和定理 \ref{thm:limit-superior-and-inferior-with-limit} 可知
+            \[
+                \limsup \sqrt[k]{|x_k|} = \limsup \sqrt[k]{(1 / 2)^{k + (- 1)^k}} = \frac{1}{2} \limsup \sqrt[k]{(1 / 2)^{(- 1)^k}} = \frac{1}{2}\ ,
+            \]
+            于是由根值判别法可知该断言成立.
+        \end{proof}
+        \item 设 \(z \in \C\). 则级数 \(\sum z^k / k!\) 绝对收敛.\footnote{该断言再结合命题 \ref{prop:necessary-criterion-of-convergent-series}, 这给例 \ref{eg:some-important-limits}(3) 的断言提供了另一种证明.}
+        \begin{proof}
+            \(z = 0\) 时显然成立. 设 \(z \in \C^\ast\). 令 \(x_k \coloneqq z^k / k!\). 于是
+            \[
+                \frac{|x_{k + 1}|}{|x_k|} = \frac{|z^{k + 1}|}{(k + 1)!}\, \frac{k!}{|z^k|} = \frac{|z|}{k + 1} \leq \frac{1}{2}\ ,\quad k \geq 2\, |z|\ ,
+            \]
+            由比值判别法可知该断言成立.
+        \end{proof}
+    \end{enumerate}
+\end{example}
+
+\subsection{指数函数}
+
+通过上面的例子, 我们可以定义一个函数
+\[
+    \exp \colon \C \to \C\ ,\quad z \mapsto \sum_{k = 0}^\infty \frac{z^k}{k!}\ ,
+\]
+称为指数函数, 而级数 \(\sum z^k / k!\) 称为指数级数. 指数函数在整个数学领域中都极为重要, 之后我们将对它的性质进行深入研究. 我们首先注意到, 一个实数的指数函数值仍然是实数, 也就是说 \(\exp \R \subseteq \R\). 因此, 对于指数函数在 \(\R\) 上的限制, 我们仍然使用符号 \(\exp\).
