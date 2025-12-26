@@ -543,23 +543,23 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
             |z| + |w|\ , & \text{其余情况}\ .
         \end{cases}
     \]
-    证明 \(\delta\) 是 \(\C\) 上的度量, 称为 SNCF-度量.\footnote{法国铁路系统 (SNCF) 的乘客注意到两个城市 (例如, Bordeaux 和 Lyon) 之间最快的路线通常要经过巴黎.}
+    证明 \(\delta\) 是 \(\C\) 上的度量, 称为 SNCF-度量.\footnote{法国铁路系统 (SNCF) 的乘客注意到两个城市 (例如, Bordeaux 和 Lyon) 之间最快的路线通常要经过 Paris.}
 \end{exercise}
 
 \begin{exercise}
     设 \((x_n)\) 是 \(\C\) 中的数列且对于任意 \(n \in \N\) 有 \(\Re x_n = 0\). 证明, 若 \((x_n)\) 收敛到 \(x\), 则 \(\Re x = 0\).
 \end{exercise}
 
-\begin{exercise}\label{ex:even-and-odd-subsequence-converges}
-    设 \((x_n)\) 是度量空间 \(X\) 中的序列. 若 \((x_n)\) 的子序列 \((x_{2 n + 1})\) 和 \((x_{2 n})\) 收敛到点 \(a\), 则 \((x_n)\) 也收敛且以 \(a\) 为极限.
+\begin{exercise}\label{ex:subsequence-converges-to-sequence-converges}
+    设 \((x_n)\) 是度量空间 \(X\) 中的序列, \((x_{n_k^1}), \ldots, (x_{n_k^m})\) 是 \((x_n)\) 的子序列. 若 \((x_{n_k^1}), \ldots, (x_{n_k^m})\) 包含了 \((x_n)\) 的所有项且都收敛到 \(a\), 则 \((x_n)\) 也收敛且以 \(a\) 为极限.
 \end{exercise}
 
 \begin{proof}
-    任取 \(U \in \nbr(a)\). 则存在 \(M, N \in \N\) 使得
+    任取 \(U \in \nbr(a)\). 则存在 \(N_1, \ldots, N_m \in \N\) 使得
     \[
-        x_{2 n + 1} \in U\ ,\quad x_{2 n} \in U\ ,\quad n \geq \max\{M, N\}\ ,
+        x_{n_k^1} \in U\ ,\quad \ldots\ ,\quad x_{n_k^m} \in U\ ,\quad k \geq N \coloneqq \max\{N_1, \ldots, N_m\}\ .
     \]
-    于是当 \(n \geq 2 \max\{M, N\}\) 时 \(x_n \in U\). 即 \((x_n)\) 收敛到 \(a\).
+    令 \( M \coloneqq \max\{n_N^1, \ldots, n_N^m\}\). 由于 \((x_{n_k^1}), \ldots, (x_{n_k^m})\) 包含了 \((x_n)\) 的所有项, 且对于任意 \(j \in \{1, \ldots, m\}\) 都有 \(n_k^j\) 是严格递增的, 于是当 \(n \geq M\) 时存在 \(j \in \{1, \ldots, m\}\) 和 \(k \geq N\) 使得 \(x_n = x_{n_k^j} \in U\), 因此 \((x_n)\) 收敛到 \(a\).
 \end{proof}
 
 \newpage
@@ -3441,13 +3441,9 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{proposition}
 
 \begin{proof}
-    令
+    我们将 \(\sum a_k\) 和 \(\sum b_k\) 的部分和记为 \(s_n\) 和 \(t_n\), 令 \(s \coloneqq \lim s_n\), \(t \coloneqq \lim t_n\). 于是由命题 \ref{prop:addition-scalar-multiplication-in-c} 和注 \ref{rem:norms}(3) 可知, 当 \(n \to \infty\) 时
     \[
-        s_n \coloneqq \sum_{k = 0}^n a_k\ ,\quad t_n \coloneqq \sum_{k = 0}^n b_k\ ,\quad n \in \N\ ,
-    \]
-    且 \(s_n \to s\), \(t_n \to t\). 于是由命题 \ref{prop:addition-scalar-multiplication-in-c} 和注 \ref{rem:norms}(3) 可知
-    \[
-        s_n + t_n = \sum_{k = 0}^n (a_k + b_k) \to s + t\ ,\quad \alpha s_n = \sum_{k = 0}^n \alpha a_k \to \alpha s\ .
+        s_n + t_n = \sum_{k = 0}^n a_k + \sum_{k = 0}^n b_k = \sum_{k = 0}^n (a_k + b_k) \to s + t\ ,\quad \alpha s_n = \alpha \sum_{k = 0}^n a_k = \sum_{k = 0}^n \alpha a_k \to \alpha s\ .
     \]
 \end{proof}
 
@@ -3520,7 +3516,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \[
         s - t = \lim_{n \to \infty} (s_{2 n} - s_{2 n + 1}) = \lim_{n \to \infty} x_{2 n + 1} = 0\ ,
     \]
-    因此 \(s = t\), 由练习 \ref{ex:even-and-odd-subsequence-converges} 可知 \((s_n)\) 收敛.
+    因此 \(s = t\), 由练习 \ref{ex:subsequence-converges-to-sequence-converges} 可知 \((s_n)\) 收敛.
 \end{proof}
 
 \begin{corollary}\label{cor:alternating-series-error-estimate}
@@ -3851,7 +3847,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     即 \(\sum_{k = 1}^t 1 / k \geq 20\). 而调和级数发散, 因此存在 \(t \in \N\) 使得 \(\sum_{k = 1}^t 1 / k \geq 20\).
 \end{proof}
 
-\begin{exercise}
+\begin{exercise}\label{ex:rear-of-convergent-series-converges-to-0}
     设 \(\sum a_k\) 是赋范向量空间 \(E\) 中的收敛级数. 定义
     \[
         r_n \coloneqq \sum_{k = n}^\infty a_k\ ,\quad n \in \N\ ,
@@ -4267,7 +4263,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     于是级数 \(\sum x_k\) 同样满足 Cauchy 准则, 因此由 \(E\) 的完备性可知 \(\sum x_k\) 收敛.
 \end{proof}
 
-\begin{remark}
+\begin{remark}\label{rem:absolutely-and-conditionally-convergent}
     \begin{enumerate}
         \item 交错调和级数 \(\sum (- 1)^{k + 1} / k\) 表明命题 \ref{prop:absolutely-convergent-implies-convergent} 的逆命题不成立. 该级数收敛 (见例 \ref{eg:alternating-harmonic-series}(1)), 但其对应的绝对值级数, 调和级数 \(\sum 1 / k\) 发散 (见例 \ref{eg:harmonic-series}).
         \item \textsl{称级数 \(\sum x_k\) 条件收敛, 若 \(\sum x_k\) 收敛而 \(\sum \|x_k\|\) 发散.} 交错调和级数条件收敛.
@@ -4421,3 +4417,117 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \exp \colon \C \to \C\ ,\quad z \mapsto \sum_{k = 0}^\infty \frac{z^k}{k!}\ ,
 \]
 称为指数函数, 而级数 \(\sum z^k / k!\) 称为指数级数. 指数函数在整个数学领域中都极为重要, 之后我们将对它的性质进行深入研究. 我们首先注意到, 一个实数的指数函数值仍然是实数, 也就是说 \(\exp \R \subseteq \R\). 因此, 对于指数函数在 \(\R\) 上的限制, 我们仍然使用符号 \(\exp\).
+
+\subsection{级数的重排}
+
+\begin{definition}[重排]
+    设 \(\sigma \colon \N \to \N\) 是置换. 称级数 \(\sum x_{\sigma(k)}\) 是 \(\sum x_k\) 的重排.
+\end{definition}
+
+重排 \(\sum x_{\sigma(k)}\) 与原级数的求和项相同, 但求和顺序发生了改变. 若 \(\sigma\) 是 \(\N\) 的置换且对于几乎所有 \(k \in \N\) 都有 \(\sigma(k) = k\), 那么 \(\sum x_k\) 和 \(\sum x_{\sigma(k)}\) 有相同的收敛性态, 进一步, 在收敛时它们的值相同. 然而, 若对于无穷多个 \(k \in \N\) 都有 \(\sigma(k) \neq k\), 那么这样的结论就不成立了, 如下例所示.
+
+\begin{example}
+    设 \(x_k \coloneqq (- 1)^{k + 1} / k\). 证明存在置换 \(\sigma \colon \N^\ast \to \N^\ast\) 使得级数 \(\sum x_k\) 和重排 \(\sum x_{\sigma(k)}\) 的值不同.
+\end{example}
+
+\begin{proof}
+    定义函数
+    \[
+        \sigma(1) \coloneqq 1\ ,\quad \sigma(2) \coloneqq 2\ ,\quad \sigma(k) \coloneqq
+        \begin{cases}
+            k + k / 3\ ,       & \text{若}\ 3 \mid k\ , \\
+            k - (k - 1) / 3\ , & \text{若}\ 3 \mid (k - 1)\ , \\
+            k + (k - 2) / 3\ , & \text{若}\ 3 \mid (k - 2)\ ,
+        \end{cases}
+        \quad k \geq 3\ .
+    \]
+    容易验证 \(\sigma\) 是 \(\N^\ast\) 的置换. 因此
+    \[
+        \sum x_{\sigma(k)} = 1 - \frac{1}{2} - \frac{1}{4} + \frac{1}{3} - \frac{1}{6} - \frac{1}{8} + \frac{1}{5} - \frac{1}{10} - \frac{1}{12} + - - \cdots
+    \]
+    是交错级数
+    \[
+        \sum x_k = 1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + - \cdots
+    \]
+    的重排. 我们先证明该重排收敛. 我们将 \(\sum x_k\) 和 \(\sum x_{\sigma(k)}\) 的部分和记为 \(s_n\) 和 \(t_n\), 令 \(s \coloneqq \lim s_n\). 由于
+    \[
+        \sigma(3 n) = 4 n\ ,\quad \sigma(3 n - 1) = 4 n - 2\ ,\quad \sigma(3 n - 2) = 2 n - 1\ ,\quad n \in \N^\ast\ ,
+    \]
+    于是
+    \begin{align*}
+        t_{3 n} = \sum_{k = 0}^{3 n} \frac{(- 1)^{\sigma(k) + 1}}{\sigma(k)} &= 1 - \frac{1}{2} - \frac{1}{4} + \frac{1}{3} - \frac{1}{6} - \frac{1}{8} + - - \cdots + \frac{1}{2 n - 1} - \frac{1}{4 n - 2} - \frac{1}{4 n}\\
+        &= \Bigl(1 - \frac{1}{2} - \frac{1}{4}\Bigr) + \Bigl(\frac{1}{3} - \frac{1}{6} - \frac{1}{8}\Bigr) + \cdots + \Bigl(\frac{1}{2 n - 1} - \frac{1}{4 n - 2} - \frac{1}{4 n}\Bigr)\\
+        &= \Bigl(\frac{1}{2} - \frac{1}{4}\Bigr) + \Bigl(\frac{1}{6} - \frac{1}{8}\Bigr) + \cdots + \Bigl(\frac{1}{4 n - 2} - \frac{1}{4 n}\Bigr)\\
+        &= \frac{1}{2} \Bigl(1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + - \cdots + \frac{1}{2 n - 1} - \frac{1}{2 n}\Bigr)\\
+        &= \frac{1}{2} s_{2 n}\ ,
+    \end{align*}
+    因此 \((t_n)\) 的子数列 \((t_{3 n})\) 收敛到 \(s / 2\). 由于
+    \[
+        t_{3 n + 2} = t_{3 n + 1} - \frac{1}{4 n + 2} = t_{3 n} + \frac{1}{2 n + 1} - \frac{1}{4 n + 2} \to \frac{s}{2}\quad (n \to \infty)\ ,
+    \]
+    于是由练习 \ref{ex:subsequence-converges-to-sequence-converges} 可知 \((t_n)\) 也收敛到 \(s / 2\), 即 \(\sum x_{\sigma(k)}\) 的值是 \(s / 2\). 进一步, 由推论 \ref{cor:alternating-series-error-estimate} 可知 \(|s - 1| = |s - s_1| \leq 1 / 2\), 因此 \(s \neq 0\), 故 \(s / 2 \neq s\).
+\end{proof}
+
+上面的例子表明了, 交换律对 ``无穷多次'' 的加法不成立. 因此, 收敛级数无法被任意的重排而不改变其值.\footnote{见练习 \ref{ex:riemanns-rearrangement-theorem}} 不过, 下面的命题将证明, 对于绝对收敛级数, 其值在重排后是不变的.
+
+\begin{theorem}
+    设 \(\sum x_k\) 是绝对收敛级数. 则对于任意 \(\N\) 的置换 \(\sigma\) 都有 \(\sum x_{\sigma(k)}\) 绝对收敛且
+    \[
+        \sum_{k = 0}^\infty x_{\sigma(k)} = \sum_{k = 0}^\infty x_k\ .
+    \]
+\end{theorem}
+
+\iffalse
+\begin{proof}
+    任取 \(\varepsilon > 0\). 由于 \(\sum x_k\) 绝对收敛, 因此 \(\sum \|x_k\|\) 收敛, 由练习 \ref{ex:rear-of-convergent-series-converges-to-0} 可知, 存在 \(N \in \N\) 使得
+    \[
+        \sum_{k = N + 1}^\infty \|x_k\| < \varepsilon\ .
+    \]
+    设 \(\sigma\) 是 \(\N\) 的置换. 令 \(M \coloneqq \max\bigl\{ \sigma^{- 1}(0), \ldots, \sigma^{- 1}(N) \bigr\}\), 于是 \(\{0, \ldots, N\} \subseteq \bigl\{ \sigma(0), \ldots, \sigma(M) \bigr\}\). 因此
+    \[
+        \sum_{k = 0}^n \|x_{\sigma(k)}\| - \sum_{k = 0}^N \|x_k\| \leq \sum_{k = N + 1}^\infty \|x_k\| < \varepsilon\ ,\quad n \geq M\ ,
+    \]
+    由定理 \ref{thm:nonnegative-series-convergence-criterion} 可知 \(\sum x_{\sigma(k)}\) 绝对收敛. 另一方面, 由注 \ref{rem:absolutely-and-conditionally-convergent}(3) 可知, 当 \(n \geq M\) 时
+    \begin{align*}
+        \Bigl\| \sum_{k = 0}^n x_{\sigma(k)} - \sum_{k = 0}^\infty x_k \Bigr\| \leq \Bigl\| \sum_{k = 0}^n x_{\sigma(k)} - \sum_{k = 0}^N x_k \Bigr\| + \Bigl\| \sum_{k = 0}^N x_k - \sum_{k = 0}^\infty x_k \Bigr\|
+        \leq \sum_{k = N + 1}^\infty \|x_k\| + \sum_{k = N + 1}^\infty \|x_k\| < 2 \varepsilon\ ,
+    \end{align*}
+    因此
+    \[
+        \sum_{k = 0}^\infty x_{\sigma(k)} = \sum_{k = 0}^\infty x_k\ .
+    \]
+\end{proof}
+\fi
+
+\begin{proof}
+    设 \(\sigma\) 是 \(\N\) 的置换. 由于 \(\sum x_k\) 绝对收敛, 因此 \(\sum \|x_k\|\) 收敛, 于是
+    \[
+        \sum_{k = 0}^n \|x_{\sigma(k)}\| \leq \sum_{k = 0}^\infty \|x_k\|\ ,\quad n \in \N\ ,
+    \]
+    由定理 \ref{thm:nonnegative-series-convergence-criterion} 可知 \(\sum x_{\sigma(k)}\) 绝对收敛. 任取 \(\varepsilon > 0\). 由注 \ref{rem:absolutely-and-conditionally-convergent}(3) 和练习 \ref{ex:rear-of-convergent-series-converges-to-0} 可知, 存在 \(N \in \N\) 使得
+    \[
+        \Bigl\| \sum_{k = 0}^\infty x_k - \sum_{k = 0}^N x_k \Bigr\| = \Bigl\| \sum_{k = N + 1}^\infty x_k \Bigr\| \leq \sum_{k = N + 1}^\infty \|x_k\| < \frac{\varepsilon}{2}\ .
+    \]
+    令 \(M \coloneqq \max\bigl\{ \sigma^{- 1}(0), \ldots, \sigma^{- 1}(N) \bigr\}\), 于是 \(\{0, \ldots, N\} \subseteq \bigl\{ \sigma(0), \ldots, \sigma(M) \bigr\}\), 因此
+    \[
+        \Bigl\| \sum_{k = 0}^n x_{\sigma(k)} - \sum_{k = 0}^N x_k \Bigr\| \leq \sum_{k = N + 1}^\infty \|x_k\| < \frac{\varepsilon}{2}\ ,\quad n \geq M\ .
+    \]
+    于是
+    \[
+        \Bigl\| \sum_{k = 0}^n x_{\sigma(k)} - \sum_{k = 0}^\infty x_k \Bigr\| \leq \Bigl\| \sum_{k = 0}^n x_{\sigma(k)} - \sum_{k = 0}^N x_k \Bigr\| + \Bigl\| \sum_{k = 0}^N x_k - \sum_{k = 0}^\infty x_k \Bigr\| < \varepsilon\ ,\quad n \geq M\ ,
+    \]
+    这说明
+    \[
+        \sum_{k = 0}^\infty x_{\sigma(k)} = \sum_{k = 0}^\infty x_k\ .
+    \]
+\end{proof}
+
+\subsection{练习}
+
+\begin{exercise}[Riemann 重排定理]\label{ex:riemanns-rearrangement-theorem}
+    设 \(\sum x_k\) 是 \(\R\) 中的条件收敛级数. 则对于任意 \(s \in \R\) 存在 \(\N\) 的置换 \(\sigma\) 使得
+    \[
+        \sum_{k = 0}^\infty x_{\sigma(k)} = s\ .
+    \]
+    进一步, 存在 \(\N\) 的置换 \(\tau\) 使得 \(\sum x_{\tau(k)}\) 发散.
+\end{exercise}

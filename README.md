@@ -99,5 +99,6 @@ Section  8 Absolute Convergence                      12 23, 25
            Majorant, Root and Ratio Tests            12 24, 25
            The Exponential Function
            Rearrangements of Series                  12 25, 25
+           Double Series                             12 26, 25
 Section  9 Power Series
 ```
