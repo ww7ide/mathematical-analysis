@@ -14,30 +14,30 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 为了内容的完整性, 也为了读者整体 (数学) 素养的培养, 我们在第 2.6 节中给出 Cantor 关于 ``序完备的有序域存在性'' 的证明, 这个证明是通过对 \(\Q\) 进行 ``完备化'' 而得到的.
 
-在本章余下的各节中, 我们将讨论级数的收敛性. 在第 2.7 节里, 我们会学习级数的基本性质, 并讨论若干最重要的例子. 这样一来, 我们就能够研究实数的十进制表示以及其他形式的表示, 从而证明实数集是不可数集.
+在本章余下的各节中, 我们将讨论级数的收敛性. 在第 2.7 节里, 我们会学习级数的基本性质, 并讨论若干最重要的例子. 这样一来, 我们就能够研究实数的十进制表示以及其他形式的表示, 从而证明实数集是不可数的.
 
-在所有收敛级数当中, 绝对收敛的级数具有尤为重要的地位. 绝对收敛往往比较容易判别, 这类级数在运算与处理上也相对简单. 此外, 在实际应用中许多重要的级数都是绝对收敛的. 对于本章最后一节将要引入和研究的幂级数, 这一点尤为明显. 其中最重要的例子是指数级数, 它的重要性将在后续章节中逐渐显现出来.
+在所有收敛级数当中, 绝对收敛的级数具有尤为重要的地位. 绝对收敛往往比较容易判别, 这类级数在运算与处理上也相对简单. 此外, 在实际应用中许多重要的级数都是绝对收敛的, 这一点对于本章最后一节引入和研究的幂级数尤为明显. 而绝对收敛级数中最重要的例子是指数级数, 它的重要性将在后续章节中逐渐显现出来.
 
 \newpage
 
 \section{序列的收敛性}
 
-在本节中, 我们考虑定义在自然数集上的函数, 因此这类函数只会取到可数多个值. 对这样的函数 \(\varphi \colon \N \to X\), 我们特别关心的是它在 ``当 \(n\) 趋于无穷大时'' 各个取值 \(\varphi(n)\) 的行为. 由于我们实际上只能对 \(\varphi\) 进行有限次求值, 也就是说, 我们永远不可能真正 ``到达无穷大'', 因此必须发展出一些方法, 使我们能够对 ``靠近无穷远处'' 的无穷多个函数值建立命题并加以证明. 这样的方法就构成了收敛序列的理论, 本节将对其进行介绍.
+在本节中, 我们考虑定义在自然数集上的函数, 因此这类函数只会取到可数多个值. 对这样的函数 \(\varphi \colon \N \to X\), 我们特别关心的是它在 ``当 \(n\) 趋于无穷大时'', 各个取值 \(\varphi(n)\) 的行为. 由于我们实际上只能对 \(\varphi\) 进行有限次求值, 也就是说, 我们永远不可能真正 ``到达无穷大'', 因此必须发展出一些方法, 使我们能够对 ``靠近无穷远处'' 的无穷多个函数值建立命题并加以证明. 这样的方法就构成了收敛序列的理论, 本节将对其进行介绍.
 
 \subsection{序列}
 
 \begin{definition}[序列]
     设 \(X\) 是集合. 称函数
     \[
-        \varphi \colon \N \to X
+        x \colon \N \to X
     \]
     是 \(X\) 中的序列, 记作
     \[
-        (x_n)\ ,\quad (x_n)_{n \in \N}\quad \text{或}\quad (x_0, x_1, x_2, \ldots)\ ,
+        (x_n)\ ,\quad (x_n)_{n \in \N}\quad \text{或}\quad (x_0, x_1, x_2, \ldots)\ .
     \]
     并称
     \[
-        x_n \coloneqq \varphi(n)
+        x_n \coloneqq x(n)
     \]
     是序列的第 \(n\) 项.
 \end{definition}
@@ -48,25 +48,25 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 \begin{remark}
     \begin{enumerate}
-        \item 区分序列 \((x_n)\) 和它的像 \(\{\, x_n \;;\; n \in \N \,\}\) 是很重要的. 例如, 若对于任意 \(n\) 有 \(x_n = x\), 也就是说 \((x_n)\) 是一个常序列, 此时 \((x_n) = (x, x, x, \ldots)\), 而 \(\{\, x_n \;;\; n \in \N \,\}\) 是单点集 \(\{x\}\).
-        \item 设 \((x_n)\) 是 \(X\) 中的序列, \(E\) 是某个性质. 称 \(E\) 对 \((x_n)\) 的几乎所有项都成立, 若存在 \(m \in \N\) 使得当 \(n \geq m\) 时命题 \(E(x_n)\) 都成立. 也就是说, 除了至多有限多个 \(x_n\) 以外, \(E\) 对其余所有 \(x_n\) 都成立. 当然, \(E\) 也可以对若干个 (甚至全部) \(n < m\) 的项成立. 若存在 \(N \subseteq \N\) 满足 \(|N| = \aleph_0\) 且 \(E(x_n)\) 对于所有 \(n \in N\) 都成立, 则称 \(E\) 对 \((x_n)\) 的无穷多项都成立. 例如, 实数列
+        \item 区分序列 \((x_n)\) 和它的像 \(\{\, x_n \;;\; n \in \N \,\}\) 是很重要的. 例如, 若对于任意 \(n \in \N\) 都有 \(x_n = x\), 也就是说 \((x_n)\) 是一个常值序列, 此时 \((x_n) = (x, x, x, \ldots)\), 而 \(\{\, x_n \;;\; n \in \N \,\}\) 是单点集 \(\{x\}\).
+        \item 设 \((x_n)\) 是 \(X\) 中的序列, \(E\) 是某个性质. 称 \(E\) 对 \((x_n)\) 的几乎所有项都成立, 若存在 \(N \in \N\) 使得当 \(n \geq N\) 时命题 \(E(x_n)\) 成立. 也就是说, 除了至多有限多个 \(x_n\) 以外, \(E\) 对其余所有 \(x_n\) 都成立. 当然, \(E\) 也可以对若干个 (甚至全部) \(n < m\) 的项成立. 称 \(E\) 对 \((x_n)\) 的无穷多项都成立, 若存在 \(N \subseteq \N\) 使得 \(|N| = \aleph_0\) 且对于任意 \(n \in N\) 命题 \(E(x_n)\) 成立. 例如, 实数列
         \[
             \Bigl(- 5, 4, - 3, 2, - 1, 0, - \frac{1}{2}, \frac{1}{3}, - \frac{1}{4}, \frac{1}{5}, \ldots, - \frac{1}{2 n}, \frac{1}{2 n + 1}, \ldots\Bigr)
         \]
         有无穷多个正项, 无穷多个负项, 并且对于几乎所有项都有其绝对值小于 \(1\).
         \item 对于任意 \(m \in \N^\ast\), 函数
         \[
-            \psi \colon m + \N \to X
+            x \colon m + \N \to X
         \]
         也称为 \(X\) 中的序列。也就是说,
         \[
-            (x_j)_{j \geq m} = (x_m, x_{m + 1}, x_{m + 2}, \ldots)
+            (x_n)_{n \geq m} = (x_m, x_{m + 1}, x_{m + 2}, \ldots)
         \]
         是 \(X\) 中的序列, 尽管其下标不是从 \(0\) 开始. 这种约定是合理的, 因为通过映射
         \[
             \N \to m + \N\ ,\quad n \mapsto m + n
         \]
-        对下标进行 ``重新编号'' 之后, 这个 ``平移后的序列'' \((x_j)_{j \geq m}\) 就可以与通常意义下的序列 \((x_{m + k})_{k \in \N} \in X^{\N}\) 对应起来.
+        对下标进行 ``重新编号'' 之后, 这个 ``平移后的序列'' \((x_n)_{n \geq m}\) 就可以与通常意义下的序列 \((x_{m + n})_{n \in \N}\) 对应起来.
     \end{enumerate}
 \end{remark}
 
@@ -231,7 +231,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \begin{enumerate}
         \item 实数列 \(\bigl((- 1)^n\bigr)\) 有两个聚点, \(1\) 和 \(- 1\).
         \item 复数列 \((\ii^n)\) 有四个聚点, \(\pm 1\) 和 \(\pm \ii\).
-        \item 常序列 \((x, x, x, \ldots)\) 有唯一的聚点 \(x\).
+        \item 常值序列 \((x, x, x, \ldots)\) 有唯一的聚点 \(x\).
         \item 自然数序列 \((n)\) 没有聚点.
         \item 设 \(\varphi \colon \N \to \Q\) 是双射 (由命题 \ref{prop:Q-is-countable} 可知这样的函数存在). 定义序列 \((x_n)\), 其中 \(x_n \coloneqq \varphi(n),\ n \in \N\). 则每个实数都是 \((x_n)\) 的聚点.
         \begin{proof}
@@ -304,7 +304,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
             \end{align*}
             即当 \(n \geq N\) 时 \(z_n \in \B\bigl((1 + 2 \ii), \varepsilon\bigr)\).
         \end{proof}
-        \item 常序列 \((a, a, a, \ldots)\) 收敛到 \(a\).
+        \item 常值序列 \((a, a, a, \ldots)\) 收敛到 \(a\).
         \item 实数列 \(\bigl((- 1)^n\bigr)\) 发散.
         \item 设 \(X\) 是度量空间 \((X_j, d_j),\ 1 \leq j \leq m\) 的积空间. 则序列\footnote{在这之后, 对于 \(x \in X\) 和 \(1 \leq j \leq m\), 我们通常记 \(x^j \coloneqq \pr_j(x)\). 即使在 \(X_j = \K\) 的情况下, 根据上下文也能清晰的分辨出 \(x^j\) 是积空间中点的分量还是 \(x\) 的幂.} \((x_n) = \bigl((x_n^1, \ldots, x_n^m)\bigr)\) 收敛到点 \(a \coloneqq (a^1, \ldots, a^m) \in X\) 当且仅当对于每个 \(j \in \{1, \ldots, m\}\) 都有序列 \((x_n^j)\) 收敛到点 \(a^j \in X_j\).
         \begin{proof}
@@ -727,7 +727,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 \subsection{复数列}
 
-若 \((x_n)\) 是 \(\R\) 中的收敛数列且 \(\lim x_n = a\), 则 \(\lim |x_n| = |a|\). 实际上, 若 \((x_n)\) 是无穷小量, 则是注 \ref{rem:null-sequences}(1) 的情况. 若 \(a > 0\), 则 \((x_n)\) 的几乎所有项都为正 (见练习 2.2.\ref{ex:limits-preserve-sign}), 于是 \(\lim |x_n| = \lim x_n = a = |a|\). 最后, 若 \(a < 0\), 则 \((x_n)\) 的几乎所有项都为负, 于是
+若 \((x_n)\) 是 \(\R\) 中的收敛数列且 \(\lim x_n = a\), 则 \(\lim |x_n| = |a|\). 实际上, 若 \((x_n)\) 是无穷小量, 则是注 \ref{rem:null-sequences}(1) 的情况. 若 \(a > 0\), 则 \((x_n)\) 的几乎所有项都为正 (见练习 \ref{ex:limits-preserve-sign}), 于是 \(\lim |x_n| = \lim x_n = a = |a|\). 最后, 若 \(a < 0\), 则 \((x_n)\) 的几乎所有项都为负, 于是
 \[
     \lim |x_n| = \lim(- x_n) = - \lim x_n = - a = |a|\ .
 \]
@@ -956,7 +956,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \[
         x_n - x = (y_n - y) \sum_{k = 0}^{q - 1} y_n^k y^{q - 1 - k}\ ,
     \]
-    见练习 1.8.\ref{ex:difference-of-powers-formula}.)
+    见练习 \ref{ex:difference-of-powers-formula}.)
 \end{exercise}
 
 \begin{proof}
@@ -1016,7 +1016,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \[
         x_n \coloneqq \sum_{k = 0}^n (a_k + 1 / a_k)\ ,\quad n \in \N\ .
     \]
-    证明 \((1 / x_n)\) 是无穷小量. (提示: 当 \(a > 0\) 时 \(a + 1 / a \geq 2\) (见练习 1.8.\ref{ex:inequality-on-ordered-ﬁeld}), 然后利用练习 2.2.\ref{ex:null-sequences-always-smaller}.)
+    证明 \((1 / x_n)\) 是无穷小量. (提示: 当 \(a > 0\) 时 \(a + 1 / a \geq 2\) (见练习 \ref{ex:inequality-on-ordered-ﬁeld}), 然后利用练习 \ref{ex:null-sequences-always-smaller}.)
 \end{exercise}
 
 \begin{proof}
@@ -3124,7 +3124,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \]
 是良定义的集合. 进一步, 由命题 \ref{prop:convergent-sequence-is-cauchy-sequence} 可知 \(\bm c_0 \subseteq \mathcal R\).
 
-由例 \ref{eg:rings}(2) 可知 \(\Q^\N\) 是含幺的交换环. 我们将 \(\Q^\N\) 中的常数列记作 \(\overline a \coloneqq (a, a, \ldots)\). 则 \(\overline 1\) 是环 \(\Q^\N\) 的幺元. 由例 \ref{eg:partially-ordered-set}(3) 可知 \(\Q^\N\) 也是偏序集. 由于该偏序关系不是全序关系, 因此 \(\Q^\N\) 不是有序环.
+由例 \ref{eg:rings}(2) 可知 \(\Q^\N\) 是含幺的交换环. 我们将 \(\Q^\N\) 中的常值数列记作 \(\overline a \coloneqq (a, a, \ldots)\). 则 \(\overline 1\) 是环 \(\Q^\N\) 的幺元. 由例 \ref{eg:partially-ordered-set}(3) 可知 \(\Q^\N\) 也是偏序集. 由于该偏序关系不是全序关系, 因此 \(\Q^\N\) 不是有序环.
 
 \begin{lemma}
     \(\mathcal R\) 是 \(\Q^\N\) 的含 \(\overline 1\) 子环, 且 \(\bm c_0\) 是 \(\mathcal R\) 的非平凡真理想.
@@ -3134,7 +3134,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \[
     \Q \to R\ ,\quad a \mapsto [\overline a] = \overline a + \bm c_0\ ,
 \]
-其将每个有理数 \(a\) 映到 \(\mathcal R\) 中常数列 \(\overline a\) 的陪集 \([\overline a]\), 显然该函数是单射环同态. 因此通过将 \(\Q\) 视为该函数的像, 我们可以把 \(\Q\) 看作是 \(R\) 的子环.
+其将每个有理数 \(a\) 映到 \(\mathcal R\) 中常值数列 \(\overline a\) 的陪集 \([\overline a]\), 显然该函数是单射环同态. 因此通过将 \(\Q\) 视为该函数的像, 我们可以把 \(\Q\) 看作是 \(R\) 的子环.
 
 接下来, 我们定义 \(R\) 上的序. 我们称 \((r_n) \in \mathcal R\) 是严格正的, 若存在 \(N \in \N^\ast\) 和 \(n_0 \in \N\) 使得当 \(n \geq n_0\) 时 \(r_n > 1 / N\). 令 \(\mathcal P\) 是严格正 Cauchy 序列的全体, 即
 \[
@@ -4470,34 +4470,12 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 上面的例子表明了, 交换律对 ``无穷多次'' 的加法不成立. 因此, 收敛级数无法被任意的重排而不改变其值.\footnote{见练习 \ref{ex:riemanns-rearrangement-theorem}} 不过, 下面的命题将证明, 对于绝对收敛级数, 其值在重排后是不变的.
 
-\begin{theorem}
+\begin{theorem}\label{thm:rearrangement-theorem}
     设 \(\sum x_k\) 是绝对收敛级数. 则对于任意 \(\N\) 的置换 \(\sigma\) 都有 \(\sum x_{\sigma(k)}\) 绝对收敛且
     \[
         \sum_{k = 0}^\infty x_{\sigma(k)} = \sum_{k = 0}^\infty x_k\ .
     \]
 \end{theorem}
-
-\iffalse
-\begin{proof}
-    任取 \(\varepsilon > 0\). 由于 \(\sum x_k\) 绝对收敛, 因此 \(\sum \|x_k\|\) 收敛, 由练习 \ref{ex:rear-of-convergent-series-converges-to-0} 可知, 存在 \(N \in \N\) 使得
-    \[
-        \sum_{k = N + 1}^\infty \|x_k\| < \varepsilon\ .
-    \]
-    设 \(\sigma\) 是 \(\N\) 的置换. 令 \(M \coloneqq \max\bigl\{ \sigma^{- 1}(0), \ldots, \sigma^{- 1}(N) \bigr\}\), 于是 \(\{0, \ldots, N\} \subseteq \bigl\{ \sigma(0), \ldots, \sigma(M) \bigr\}\). 因此
-    \[
-        \sum_{k = 0}^n \|x_{\sigma(k)}\| - \sum_{k = 0}^N \|x_k\| \leq \sum_{k = N + 1}^\infty \|x_k\| < \varepsilon\ ,\quad n \geq M\ ,
-    \]
-    由定理 \ref{thm:nonnegative-series-convergence-criterion} 可知 \(\sum x_{\sigma(k)}\) 绝对收敛. 另一方面, 由注 \ref{rem:absolutely-and-conditionally-convergent}(3) 可知, 当 \(n \geq M\) 时
-    \begin{align*}
-        \Bigl\| \sum_{k = 0}^n x_{\sigma(k)} - \sum_{k = 0}^\infty x_k \Bigr\| \leq \Bigl\| \sum_{k = 0}^n x_{\sigma(k)} - \sum_{k = 0}^N x_k \Bigr\| + \Bigl\| \sum_{k = 0}^N x_k - \sum_{k = 0}^\infty x_k \Bigr\|
-        \leq \sum_{k = N + 1}^\infty \|x_k\| + \sum_{k = N + 1}^\infty \|x_k\| < 2 \varepsilon\ ,
-    \end{align*}
-    因此
-    \[
-        \sum_{k = 0}^\infty x_{\sigma(k)} = \sum_{k = 0}^\infty x_k\ .
-    \]
-\end{proof}
-\fi
 
 \begin{proof}
     设 \(\sigma\) 是 \(\N\) 的置换. 由于 \(\sum x_k\) 绝对收敛, 因此 \(\sum \|x_k\|\) 收敛, 于是
@@ -4516,10 +4494,101 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \[
         \Bigl\| \sum_{k = 0}^n x_{\sigma(k)} - \sum_{k = 0}^\infty x_k \Bigr\| \leq \Bigl\| \sum_{k = 0}^n x_{\sigma(k)} - \sum_{k = 0}^N x_k \Bigr\| + \Bigl\| \sum_{k = 0}^N x_k - \sum_{k = 0}^\infty x_k \Bigr\| < \varepsilon\ ,\quad n \geq M\ ,
     \]
-    这说明
+    这说明 \(\sum_{k = 0}^\infty x_{\sigma(k)} = \sum_{k = 0}^\infty x_k\).
+\end{proof}
+
+\subsection{二重级数}
+
+作为重排定理的一个应用, 我们考虑 Banach 空间 \(E\) 中的二重级数 \(\sum x_{j k}\). 于是我们有函数 \(x \colon \N \times \N \to E\), 如同在第 2.1 节中那样, 我们将 \(x(j, k)\) 记作 \(x_{j k}\). 函数 \(x\) 可以表示成一个双无穷数组
+\[
+    \begin{matrix}
+        x_{0 0} & x_{0 1} & x_{0 2} & x_{0 3} & \cdots \\
+        x_{1 0} & x_{1 1} & x_{1 2} & x_{1 3} & \cdots \\
+        x_{2 0} & x_{2 1} & x_{2 2} & x_{2 3} & \cdots \\
+        x_{3 0} & x_{3 1} & x_{3 2} & x_{3 3} & \cdots \\
+        \vdots  & \vdots  & \vdots  & \vdots  & \ddots
+    \end{matrix}
+\]
+该数组中的元素可以用多种方式进行求和, 即存在许多不同的排列顺序可以将这些元素排成一个级数. 但目前尚不清楚在什么条件下这样的级数会收敛, 以及这些级数的值在多大程度上与排列方式的选择无关.
+
+\begin{center}
+    \textsl{在本节的其余部分里, 设 \(\sum x_{j k}\) 是 Banach 空间 \((E, \|\!\cdot\!\|)\) 中的二重级数.}
+\end{center}
+
+由命题 \ref{prop:finite-product-of-countable-set-is-countable} 可知 \(\N \times \N\) 是可数的, 也就是说, 存在从 \(\N\) 到 \(\N \times \N\) 的双射. 这启发我们进行如下定义.
+
+\begin{definition}[可求和]
+    设 \(\alpha \colon \N \to \N \times \N\) 是双射. 称级数 \(\sum x_{\alpha(n)}\) 是二重级数 \(\sum x_{j k}\) 的排列. 固定 \(j \in \N\) (或 \(k \in \N\)), 称 \(\sum_k x_{j k}\) (或 \(\sum_j x_{j k}\)) 是 \(\sum x_{j k}\) 的第 \(j\) 项行级数 (第 \(k\) 项列级数). 进一步, 若 \(\sum x_{j k}\) 的每个行级数 (或列级数) 都收敛, 则称 \(\sum_j \sum_{k = 0}^\infty x_{j k}\) (或 \(\sum_k \sum_{j = 0}^\infty x_{j k}\)) 是行和级数 (或列和级数). 最后, 称二重级数 \(\sum x_{j k}\) 是可求和的,\footnote{我们仅定义了行级数与列级数的收敛性, 以及二重级数的任意排列的收敛性. 对于二重级数 \(\sum x_{j k}\) 本身, 我们并没有定义其收敛性. 需要注意的是, 在考虑行和级数与列和级数之前, 我们必须先证明每个行级数与列级数的收敛性.} 若
     \[
-        \sum_{k = 0}^\infty x_{\sigma(k)} = \sum_{k = 0}^\infty x_k\ .
+        \sup_{n \in \N} \sum_{j, k = 0}^n \|x_{j k}\| < \infty\ .
     \]
+\end{definition}
+
+\begin{theorem}[二重级数定理]
+    设 \(\sum x_{j k}\) 是可求和的二重级数. 则
+    \begin{enumerate}
+        \item \(\sum x_{j k}\) 的每个排列 \(\sum x_{\alpha(n)}\) 都绝对收敛, 且 \(\sum x_{\alpha(n)}\) 的值 \(s\) 与 \(\alpha\) 的选择无关.
+        \item 行和级数 \(\sum_j \sum_{k = 0}^\infty x_{j k}\) 与列和级数 \(\sum_k \sum_{j = 0}^\infty x_{j k}\) 绝对收敛, 且
+        \[
+            \sum_{j = 0}^\infty \sum_{k = 0}^\infty x_{j k} = \sum_{k = 0}^\infty \sum_{j = 0}^\infty x_{j k} = s\ .
+        \]
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    令
+    \[
+        M \coloneqq \sup_{n \in \N} \sum_{j, k = 0}^n \|x_{j k}\| < \infty\ .
+    \]
+
+    (1). 设 \(\alpha \colon \N \to \N \times \N\) 是双射. 于是对于任意 \(N \in \N\) 存在 \(K \in \N\) 使得
+    \[
+        \bigl\{ \alpha(0), \ldots, \alpha(N) \bigr\} \subseteq \bigl\{ (0, 0), \ldots, (0, K), (1, 0), \ldots, (1, K), \ldots, (K, 0), \ldots, (K, K) \bigr\}\ ,
+    \]
+    因此
+    \[
+        \sum_{n = 0}^N \|x_{\alpha(n)}\| \leq \sum_{j, k = 0}^K \|x_{j k}\| \leq M\ ,
+    \]
+    由定理 \ref{thm:nonnegative-series-convergence-criterion} 可知 \(\sum x_{\alpha(n)}\) 绝对收敛. 设 \(\beta \colon \N \to \N \times \N\) 是另一双射. 于是 \(\sigma \coloneqq \alpha^{- 1} \circ \beta\) 是 \(\N\) 的置换, 因此由定理 \ref{thm:rearrangement-theorem} 可知
+    \[
+        \sum_{n = 0}^\infty x_{\alpha(n)} = \sum_{n = 0}^\infty x_{\alpha(\sigma(n))} = \sum_{n = 0}^\infty x_{\beta(n)}\ .
+    \]
+
+    (2). 首先, 注意到对于任意 \(j \in \N\)都有
+    \[
+        \sum_{k = 0}^n \|x_{j k}\| \leq \sum_{j, k = 0}^n \|x_{j k}\| \leq M\ ,\quad n \geq j\ ,
+    \]
+    由定理 \ref{thm:nonnegative-series-convergence-criterion} 可知 \(\sum x_{j k}\) 的每个行级数都绝对收敛, 因此行和级数 \(\sum_j \sum_{k = 0}^\infty x_{j k}\) 是良定义的. 接下来, 我们证明行和级数绝对收敛. 对于任意 \(m \in \N\), 考虑不等式
+    \[
+        \sum_{j = 0}^n \Bigl\|\sum_{k = 0}^m x_{j k} \Bigr\| \leq \sum_{j = 0}^n \sum_{k = 0}^m \|x_{j k}\| \leq \sum_{j, k = 0}^m \|x_{j k}\| \leq M\ ,\quad n \leq m\ ,
+    \]
+    令 \(m \to \infty\) 可得
+    \[
+        \sum_{j = 0}^n \Bigl\|\sum_{k = 0}^\infty x_{j k} \Bigr\| \leq M\ ,\quad n \in \N\ ,
+    \]
+    再一次, 由定理 \ref{thm:nonnegative-series-convergence-criterion} 可知 \(\sum_j \sum_{k = 0}^\infty x_{j k}\) 绝对收敛. 同理可得列和级数 \(\sum_k \sum_{j = 0}^\infty x_{j k}\) 绝对收敛.
+
+    设 \(\alpha \colon \N \to \N \times \N\) 是双射. 令 \(s \coloneqq \sum_{n = 0}^\infty x_{\alpha(n)}\). 任取 \(\varepsilon > 0\). 由注 \ref{rem:absolutely-and-conditionally-convergent}(3) 和练习 \ref{ex:rear-of-convergent-series-converges-to-0} 可知, 存在 \(N \in \N\) 使得
+    \[
+        \Bigl\| s - \sum_{n = 0}^N x_{\alpha(n)} \Bigr\| = \Bigl\| \sum_{n = N + 1}^\infty x_{\alpha(n)} \Bigr\| \leq \sum_{n = N + 1}^\infty \|x_{\alpha(n)}\| < \frac{\varepsilon}{2}\ .
+    \]
+    同样的, 存在 \(K \in \N\) 使得
+    \[
+        \bigl\{ \alpha(0), \ldots, \alpha(N) \bigr\} \subseteq \bigl\{ (0, 0), \ldots, (0, K), (1, 0), \ldots, (1, K), \ldots, (K, 0), \ldots, (K, K) \bigr\}\ ,
+    \]
+    于是
+    \[
+        \Bigl\| \sum_{j = 0}^n \sum_{k = 0}^m x_{j k} - \sum_{k = 0}^N x_{\alpha(k)} \Bigr\| \leq \sum_{k = N + 1}^\infty \|x_{\alpha(k)}\| < \frac{\varepsilon}{2}\ ,\quad m, n \geq K\ ,
+    \]
+    令 \(m \to \infty\) 可得
+    \[
+        \Bigl\| \sum_{j = 0}^n \sum_{k = 0}^\infty x_{j k} - \sum_{k = 0}^N x_{\alpha(k)} \Bigr\| < \frac{\varepsilon}{2}\ ,\quad n \geq K\ .
+    \]
+    最后
+    \[
+        \Bigl\| \sum_{j = 0}^n \sum_{k = 0}^\infty x_{j k} - s \Bigr\| \leq \Bigl\| \sum_{j = 0}^n \sum_{k = 0}^\infty x_{j k} - \sum_{k = 0}^N x_{\alpha(k)} \Bigr\| + \Bigl\| \sum_{k = 0}^N x_{\alpha(k)} - s \Bigr\| < \varepsilon\ ,\quad n \geq K\ ,
+    \]
+    这说明 \(\sum_{j = 0}^\infty \sum_{k = 0}^\infty x_{j k} = s\). 同理可得 \(\sum_{k = 0}^\infty \sum_{j = 0}^\infty x_{j k} = s\).
 \end{proof}
 
 \subsection{练习}

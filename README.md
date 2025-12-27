@@ -100,5 +100,6 @@ Section  8 Absolute Convergence                      12 23, 25
            The Exponential Function
            Rearrangements of Series                  12 25, 25
            Double Series                             12 26, 25
+           Cauchy Products                           12 27, 25
 Section  9 Power Series
 ```

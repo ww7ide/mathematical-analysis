@@ -82,7 +82,27 @@
     }
 }
 
-\theoremstyle{plain}
+\newtheoremstyle{my_def}
+                {\thm@preskip}
+                {\thm@postskip}
+                {\slshape}
+                {}
+                {\bfseries}
+                {\@addpunct{.}}
+                {\thm@headsep}
+                {}
+\newtheoremstyle{my_rem}
+                {\thm@preskip}
+                {\thm@postskip}
+                {}
+                {}
+                {\bfseries}
+                {\@addpunct{.}}
+                {\thm@headsep}
+                {}
+
+% \theoremstyle{plain}
+\theoremstyle{my_def}
 \newtheorem{definition}{定义}[section] % def
 \newtheorem{axiom}[definition]{公理} % ax
 
@@ -91,22 +111,20 @@
 \newtheorem{lemma}[proposition]{引理} % lem
 \newtheorem{corollary}[proposition]{推论} % cor
 
-\newtheorem{hypothesis}{猜想}
-
-\theoremstyle{definition}
+% \theoremstyle{definition}
+\theoremstyle{my_rem}
 \newtheorem{remark}[proposition]{注} % rem
 \newtheorem{example}[proposition]{例} % eg
 \newtheorem{exercise}{}[section] % ex
-\renewcommand{\theexercise}{\arabic{exercise}}
+% \renewcommand{\theexercise}{\arabic{exercise}}
 
-\renewenvironment{proof}[1][\proofname]{
-    \par
+\renewenvironment{proof}[1][\proofname]{\par
     \pushQED{\qed}
-    \normalfont
-    \topsep6\p@\@plus6\p@\relax
+    \normalfont \topsep6\p@\@plus6\p@\relax
     \trivlist
-    \item[\hskip\labelsep{\bfseries#1}\@addpunct{.}]
-    \ignorespaces
+    \item\relax
+        {\bfseries
+        #1\@addpunct{.}}\hspace\labelsep\ignorespaces
 }{
     \popQED\endtrivlist\@endpefalse
 }
