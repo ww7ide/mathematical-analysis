@@ -3984,7 +3984,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \]
 \end{proof}
 
-\begin{exercise}
+\begin{exercise}\label{ex:preliminary-discussion-of-double-series}
     设 \((j, k) \in \N^2\), 定义
     \[
         x_{j k} \coloneqq
@@ -4658,7 +4658,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     (2). 令 \(x_k \coloneqq (1 - a^{2 k}) / (1 + a^{2 k})\). 当 \(a = 1, - 1\) 时, 对于任意 \(k \in \N\) 都有 \(x_k = 0\), 因此该级数绝对收敛. 当 \(- 1 < a < 1\) 时, \(x_k \to 1\), 因此该级数发散. 当 \(a < - 1\) 或 \(a > 1\) 时, \(x_k \to - 1\), 因此该级数发散.
 \end{proof}
 
-\begin{exercise}
+\begin{exercise}\label{ex:lemma-of-riemanns-rearrangement-theorem}
     设 \(\sum x_k\) 是 \(\R\) 中的条件收敛级数. 证明级数\footnote{设 \(x \in \R\). 定义 \(x^+ \coloneqq \max\{x, 0\}\), \(x^- \coloneqq \max\{- x, 0\}\).} \(\sum x_k^+\) 和 \(\sum x_k^-\) 发散.
 \end{exercise}
 
@@ -4683,5 +4683,73 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \[
         \sum_{k = 0}^\infty x_{\sigma(k)} = s\ .
     \]
-    进一步, 存在 \(\N\) 的置换 \(\tau\) 使得 \(\sum x_{\tau(k)}\) 发散.
+    进一步, 存在 \(\N\) 的置换 \(\tau\) 使得 \(\sum x_{\tau(k)}\) 发散. (提示: 利用练习 \ref{ex:lemma-of-riemanns-rearrangement-theorem}, 并通过适当组合级数 \(\sum x_k^+\) 和 \(\sum x_k^-\) 的部分和, 从上方和下方逼近 \(s \in \R\).)
+\end{exercise}
+
+\begin{proof}
+    若 \(\sum x_k\) 的某些项为零, 则我们可以随意修改这些项的位置而不改变其收敛性与值. 假设 \(\sum x_k\) 的所有项均不为零. 则 \(\sum x_k^+\) 表示了 \(\sum x_k\) 所有正项所构成级数, \(\sum x_k^-\) 表示了 \(\sum x_k\) 所有负项的绝对值所构成的级数. 设 \(s \in \R\). 由于 \(\sum x_k^+\) 和 \(\sum x_k^-\) 发散, 因此由良序原理可知
+    \[
+        N_0 \coloneqq \min \Bigl\{\, N \in \N \;;\; \sum_{j = 0}^{N} x_j^+ > s \,\Bigr\}\ ,\quad M_0 \coloneqq \min \Bigl\{\, M \in \N \;;\; \sum_{j = 0}^{N_0} x_j^+ - \sum_{j = 0}^M x_j^- \leq s \,\Bigr\}
+    \]
+    是良定义的, 于是对于任意 \(k \in \N^\ast\),
+    \begin{align*}
+        N_k &\coloneqq \min \Bigl\{\, N \in \N \;;\; N > N_{k - 1}\ \text{且}\ \sum_{j = 0}^{N_0} x_j^+ - \sum_{j = 0}^{M_0} x_j^- + - \cdots + \sum_{j = N_{k - 1} + 1}^N x_j^+ > s \,\Bigr\}\ ,\\
+        M_k &\coloneqq \min \Bigl\{\, M \in \N \;;\; M > M_{k - 1}\ \text{且}\ \sum_{j = 0}^{N_0} x_j^+ - \sum_{j = 0}^{M_0} x_j^- + - \cdots + \sum_{j = N_{k - 1} + 1}^{N_k} x_j^+ - \sum_{j = M_{k - 1} + 1}^M x_j^- \leq s \,\Bigr\}
+    \end{align*}
+    是良定义的. 至此, 我们构造出了 \(\sum x_k\) 的重排, 记作 \(\sum x_{\sigma(k)}\). 任取 \(\varepsilon > 0\). 注意到 \(x_k \to 0\), 因此 \(x_k^+ \to 0\) 且 \(x_k^- \to 0\), 故存在 \(k \in \N\) 使得当 \(n \geq N_k\) 时 \(x_n^+ < \varepsilon\), 当 \(n \geq M_k\) 时 \(x_n^- < \varepsilon\). 结合我们的构造, 于是
+    \[
+        s - \varepsilon < \sum_{k = 0}^{n} x_{\sigma(k)} < s + \varepsilon\ ,\quad n \geq N_k + M_k\ ,
+    \]
+    这说明 \(\sum_{k = 0}^\infty x_{\sigma(k)} = s\).
+
+    同样的, 由于 \(\sum x_k^+\) 发散, 因此由良序原理可知
+    \[
+        N_0 \coloneqq \min \Bigl\{\, N \in \N \;;\; \sum_{j = 0}^N x_j^+ - x_0^- > 0 \,\Bigr\}
+    \]
+    是良定义的, 于是
+    \[
+        N_k \coloneqq \min \Bigl\{\, N \in \N \;;\; N > N_{k - 1}\ \text{且}\ \sum_{j = 0}^{N_0} x_j^+ - x_0^- + - \cdots + \sum_{j = N_{k - 1} + 1}^N x_j^+ - x_k^- > k \,\Bigr\}\ ,\quad k \in \N^\ast
+    \]
+    是良定义的. 于是, 我们构造出了 \(\sum x_k\) 的重排, 记作 \(\sum x_{\tau(k)}\). 不难验证 \(\sum_{k = 0}^\infty x_{\tau(k)} = \infty\).
+\end{proof}
+
+\begin{exercise}
+    设 \((j, k) \in \N^2\), 定义
+    \[
+        x_{j k} \coloneqq
+        \begin{cases}
+            \frac{1}{j^2 - k^2}\ , & j \neq k\ , \\
+            0\ ,                   & j = k\ .
+        \end{cases}
+    \]
+    证明二重级数 \(\sum x_{j k}\) 不可求和. (提示: 利用练习 \ref{ex:preliminary-discussion-of-double-series}, 计算行和级数与列和级数的值.)
+\end{exercise}
+
+\begin{proof}
+    我们已经计算过 \(\sum x_{j k}\) 的行级数
+    \[
+        \sum_{k = 0}^\infty x_{j k} = \frac{1}{4 j^2}\ ,\quad j \in \N^\ast\ .
+    \]
+    类似可得, \(\sum x_{j k}\) 的列级数
+    \[
+        \sum_{j = 0}^\infty x_{j k} = - \frac{1}{4 k^2}\ ,\quad k \in \N^\ast\ .
+    \]
+    由于行和级数 \(\sum_{j = 0}^\infty \sum_{k = 0}^\infty x_{j k} > 0\), 而列和级数 \(\sum_{k = 0}^\infty \sum_{j = 0}^\infty x_{j k} < 0\), 因此 \(\sum x_{j k}\) 不可求和.
+\end{proof}
+
+\begin{exercise}
+    定义
+    \[
+        \ell_1 \coloneqq \ell_1(\K) \coloneqq \Bigl\{\, (x_k) \in s \;;\; \sum x_k\ \text{绝对收敛} \,\Bigr\}\ .
+    \]
+    进一步,
+    \[
+        \|(x_k)\|_1 \coloneqq \sum_{k = 0}^\infty |x_k|\ ,\quad (x_k) \in \ell_1\ .
+    \]
+    证明以下命题.
+    \begin{enumerate}
+        \item \((\ell_1, \|\!\cdot\!\|_1)\) 是 Banach 空间.
+        \item \(\ell_1\) 是 \(\ell_\infty\) 的子空间且 \(\|\!\cdot\!\|_\infty \leq \|\!\cdot\!\|_1\).
+        \item \(\ell_\infty\) 在 \(\ell_1\) 上诱导的范数与 \(\ell_1\)-范数不是等价的.
+    \end{enumerate}
 \end{exercise}
