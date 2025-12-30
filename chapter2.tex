@@ -4593,6 +4593,73 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 \subsection{Cauchy 乘积}
 
+当两个级数相乘时, 二重级数会自然出现. 若 \(\sum x_j\) 和 \(\sum y_k\) 是 \(\K\) 中的级数, 则将它们的通项相乘可得如下的双无穷数组
+\[
+    \begin{matrix}
+        x_0 y_0 & x_0 y_1 & x_0 y_2 & x_0 y_3 & \cdots \\
+        x_1 y_0 & x_1 y_1 & x_1 y_2 & x_1 y_3 & \cdots \\
+        x_2 y_0 & x_2 y_1 & x_2 y_2 & x_2 y_3 & \cdots \\
+        x_3 y_0 & x_3 y_1 & x_3 y_2 & x_3 y_3 & \cdots \\
+        \vdots  & \vdots  & \vdots  & \vdots  & \ddots
+    \end{matrix}
+\]
+基于该数组, 我们可以定义第 \(n\) 项对角线和
+\[
+    z_n \coloneqq \sum_{k = 0}^n x_k y_{n - k}\ ,\quad n \in \N\ ,
+\]
+如下所示,
+\begin{center}
+    \begin{tikzpicture}
+        \node at (0, 4.5) {\(z_0\)};
+        \node at (0, 4) {\(x_0 y_0\)};
+
+        \node at (1, 4.5) {\(z_1\)};
+        \node at (1, 4) {\(x_0 y_1\)};
+        \node at (0, 3) {\(x_1 y_0\)};
+        \draw[->] (0.7, 3.7) to (0.3, 3.3);
+
+        \node at (2, 4.5) {\(z_2\)};
+        \node at (2, 4) {\(x_0 y_2\)};
+        \node at (1, 3) {\(x_1 y_1\)};
+        \node at (0, 2) {\(x_2 y_0\)};
+        \draw[->] (1.7, 3.7) to (1.3, 3.3);
+        \draw[->] (0.7, 2.7) to (0.3, 2.3);
+
+        \node at (3, 4.5) {\(z_3\)};
+        \node at (4, 4.5) {\(\cdots\)};
+        \node at (3, 4) {\(x_0 y_3\)};
+        \node at (4, 4) {\(\cdots\)};
+        \node at (3, 3.5) {\(\vdots\)};
+        \node at (2, 3) {\(x_1 y_2\)};
+        \node at (2, 2.5) {\(\vdots\)};
+        \node at (1, 2) {\(x_2 y_1\)};
+        \node at (1, 1.5) {\(\vdots\)};
+        \node at (0, 1) {\(x_3 y_0\)};
+        \node at (0, 0.5) {\(\vdots\)};
+        \draw[->] (2.7, 3.7) to (2.3, 3.3);
+        \draw[->] (1.7, 2.7) to (1.3, 2.3);
+        \draw[->] (0.7, 1.7) to (0.3, 1.3);
+    \end{tikzpicture}
+\end{center}
+在第 1.6 节中, 我们知道这样的对角线给出了一个从 \(\N\) 到 \(\N \times \N\) 的双射, 因此 \(\sum z_n\) 是二重级数 \(\sum x_j y_k\) 的排列, 称为 Cauchy 乘积, 有时也称为离散卷积.
+
+\begin{definition}[Cauchy 乘积]
+    设 \(\sum x_j\) 和 \(\sum y_k\) 是 \(\K\) 中的级数. 称二重级数 \(\sum x_j y_k\) 的排列
+    \[
+        \sum z_n = \sum_n \sum_{k = 0}^n x_k y_{n - k}
+    \]
+    是 \(\sum x_j\) 和 \(\sum y_k\) 的 Cauchy 乘积.
+\end{definition}
+
+要利用 \(\sum x_j\) 和 \(\sum y_k\) 的 Cauchy 乘积, 必须确保二重级数 \(\sum x_j y_k\) 是可求和的. 为此一个简单的充分条件是 \(\sum x_j\) 和 \(\sum y_k\) 绝对收敛.
+
+\begin{theorem}[Cauchy 乘积定理]
+    设 \(\sum x_j\) 和 \(\sum y_k\) 是 \(\K\) 中的绝对收敛级数. 则 \(\sum x_j\) 和 \(\sum y_k\) 的 Cauchy 乘积绝对收敛且
+    \[
+        \Bigl(\sum_{j = 0}^\infty x_j\Bigr) \Bigl(\sum_{k = 0}^\infty y_k\Bigr) = \sum_{n = 0}^\infty \sum_{k = 0}^n x_k y_{n - k}\ .
+    \]
+\end{theorem}
+
 \subsection{练习}
 
 \begin{exercise}
@@ -4750,6 +4817,121 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \begin{enumerate}
         \item \((\ell_1, \|\!\cdot\!\|_1)\) 是 Banach 空间.
         \item \(\ell_1\) 是 \(\ell_\infty\) 的子空间且 \(\|\!\cdot\!\|_\infty \leq \|\!\cdot\!\|_1\).
-        \item \(\ell_\infty\) 在 \(\ell_1\) 上诱导的范数与 \(\ell_1\)-范数不是等价的.
+        \item \(\|\!\cdot\!\|_\infty\) 与 \(\|\!\cdot\!\|_1\) 不是等价的.
     \end{enumerate}
 \end{exercise}
+
+\begin{proof}
+    (1). 容易验证 \(\|\!\cdot\!\|_1\) 是 \(\ell_1\) 上的范数. 设 \((u_n) \in \ell_1^\N\) 是 Cauchy 序列. 则对于任意 \(\varepsilon > 0\) 存在 \(N \in \N\) 使得
+    \[
+        |u_n(k) - u_m(k)| \leq \sum_{j = 0}^\infty |u_n(j) - u_m(j)| = \|u_n - u_m\|_1 < \varepsilon\ ,\quad m, n \geq N\ ,\quad k \in \N\ ,
+    \]
+    这说明对于任意 \(k \in \N\), 序列 \(\bigl(u_n(k)\bigr)\) 是 Cauchy 序列. 于是由 \(\K\) 的完备性可知, 存在 \(a_k \in \K\) 使得当 \(n \to \infty\) 时 \(u_n(k) \to a_k\). 对于任意 \(k \in \N\), 令 \(u(k) \coloneqq a_k\), 由极限的唯一性可知 \(a_k\) 是唯一的, 因此 \(u \in s\). 下面证明 \(u_n \to u \in \ell_1\). 特别的,
+    \[
+        \sum_{k = 0}^\ell |u_n(k) - u_m(k)| \leq \sum_{k = 0}^\infty |u_n(k) - u_m(k)| < \varepsilon\ ,\quad m, n \geq N\ ,\quad \ell \in \N\ ,
+    \]
+    令 \(m \to \infty\) 可得
+    \[
+        \sum_{k = 0}^\ell |u_n(k) - u(k)| \leq \varepsilon\ ,\quad n \geq N\ ,\quad \ell \in \N\ ,
+    \]
+    再令 \(\ell \to \infty\) 可得
+    \[
+        \sum_{k = 0}^\infty |u_n(k) - u(k)| = \|u_n - u\|_1 \leq \varepsilon\ ,\quad n \geq N\ ,
+    \]
+    因此 \(u_n \to u\). 而由反三角不等式可知
+    \[
+        \sum_{k = 0}^m |u(k)| - \sum_{k = 0}^m |u_N(k)| \leq \sum_{k = 0}^m |u_N(k) - u(k)| \leq \varepsilon\ ,\quad m \in \N\ ,
+    \]
+    即
+    \[
+        \sum_{k = 0}^m |u(k)| \leq \varepsilon + \sum_{k = 0}^\infty |u_N(k)| < \infty\ ,\quad m \in \N\ ,
+    \]
+    因此 \(\sum u(k)\) 绝对收敛, 于是 \(u \in \ell_1\).
+
+    (2). 显然 \(\ell_1\) 是 \(\ell_\infty\) 的子空间. 设 \((x_k) \in \ell_1\). 由于
+    \[
+        |x_k| \leq \sum_{j = 0}^\infty |x_j|\ ,\quad k \in \N\ ,
+    \]
+    因此
+    \[
+        \|(x_k)\|_\infty = \sup_{k \in \N} |x_k| \leq \sum_{k = 0}^\infty |x_k| = \|(x_k)\|_1\ .
+    \]
+
+    (3). 假设 \(\|\!\cdot\!\|_\infty\) 与 \(\|\!\cdot\!\|_1\) 等价. 则存在 \(K \geq 1\) 使得 \(\|\!\cdot\!\|_1 \leq K\, \|\!\cdot\!\|_\infty\). 定义
+    \[
+        x_k \coloneqq
+        \begin{cases}
+            1\ , & k \leq \lfloor K \rfloor\ , \\
+            0\ , & k > \lfloor K \rfloor\ ,
+        \end{cases}
+        \quad k \in \N\ .
+    \]
+    显然 \((x_k) \in \ell_1\), 而
+    \[
+         K\, \|(x_k)\|_\infty = K < \lfloor K \rfloor + 1 = \|(x_k)\|_1\ ,
+    \]
+    矛盾.
+\end{proof}
+
+\begin{exercise}
+    设 \(\sum x_k\), \(\sum y_k\) 和 \(\sum z_k\) 是 \((0, \infty)\) 中的级数, 且 \(\sum y_k < \infty\), \(\sum z_k = \infty\). 证明以下命题.
+    \begin{enumerate}
+        \item 若存在 \(K \in \N\) 使得
+        \[
+            \frac{x_{k + 1}}{x_k} \leq \frac{y_{k + 1}}{y_k}\ ,\quad k \geq K\ ,
+        \]
+        则 \(\sum x_k\) 收敛.
+        \item 若存在 \(K \in \N\) 使得
+        \[
+            \frac{x_{k + 1}}{x_k} \geq \frac{z_{k + 1}}{z_k}\ ,\quad k \geq K\ ,
+        \]
+        则 \(\sum x_k\) 发散.
+    \end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    (1). 由假设可知
+    \[
+        x_{K + 1} \leq x_K \frac{y_{K + 1}}{y_K}\ ,\quad x_{K + 2} \leq x_{K + 1} \frac{y_{K + 2}}{y_{K + 1}} \leq x_K \frac{y_{K + 2}}{y_K}\ ,\quad \ldots
+    \]
+    归纳可得当 \(k > K\) 时 \(x_k \leq y_k x_K / y_K\). 于是
+    \[
+        \sum_{k = 0}^n x_k = \sum_{k = 0}^K x_k + \sum_{k = K + 1}^n x_k \leq \sum_{k = 0}^K x_k + \frac{x_K}{y_K} \sum_{k = K + 1}^n y_k\ ,\quad n \geq K + 1\ ,
+    \]
+    由于 \(\sum y_k\) 有界, 因此 \(\sum x_k\) 有界, 故 \(\sum x_k\) 收敛.
+
+    (2). 由假设可知
+    \[
+        x_{K + 1} \geq x_K \frac{z_{K + 1}}{z_K}\ ,\quad x_{K + 2} \geq x_{K + 1} \frac{z_{K + 2}}{z_{K + 1}} \geq x_K \frac{z_{K + 2}}{z_K}\ ,\quad \ldots
+    \]
+    归纳可得当 \(k > K\) 时 \(x_k \geq z_k x_K / z_K\). 于是
+    \[
+        \sum_{k = 0}^n x_k \geq \sum_{k = K + 1}^n x_k \geq \frac{x_K}{z_K} \sum_{k = K + 1}^n z_k\ ,\quad n \geq K + 1\ ,
+    \]
+    由于 \(\sum z_k\) 无界, 因此 \(\sum x_k\) 无界, 故 \(\sum x_k\) 发散.
+\end{proof}
+
+\begin{exercise}
+    判断下列级数收敛还是发散.
+    \[
+        1.\ \sum \frac{(- 1)^{k + 1}}{3 k + (- 1)^k k}\ ,\quad 2.\ \sum \frac{(- 1)^{k + 1}}{3 k + 6 (- 1)^k}\ .
+    \]
+\end{exercise}
+
+\begin{proof}
+    (1). 我们将该级数的部分和记为 \(s_n\). 由于
+    \[
+        s_{2 n} = \sum_{k = 1}^{2 n} \frac{(- 1)^{k + 1}}{3 k + (- 1)^k k} = \sum_{k = 1}^n \Bigl(\frac{1}{4 k - 2} - \frac{1}{8 k}\Bigr) = \sum_{k = 1}^n \frac{4 k + 2}{8 k (4 k - 2)} > \sum_{k = 1}^n \frac{1}{8 k}\ ,\quad n \in \N^\ast\ ,
+    \]
+    而 \(\sum 1 / k\) 发散, 因此 \(s_{2 n} \to \infty\), 于是 \(s_{2 n + 1} = s_{2 n} + 1 / (4 n + 2) \to \infty\), 故 \((s_n)\) 发散.
+
+    (2). 我们将该级数的部分和记为 \(s_n\). 由于
+    \[
+        s_{2 n - 1} = \sum_{k = 0}^{2 n - 1} \frac{(- 1)^{k + 1}}{3 k + 6 (- 1)^k} = \sum_{k = 0}^{n - 1} \Bigl(\frac{- 1}{6 k + 6} + \frac{1}{6 k - 3}\Bigr) = \sum_{k = 0}^{n - 1} \frac{1}{(2 k + 2) (2 k - 1)} < \sum_{k = 1}^n \frac{1}{k^2}\ ,\quad n \in \N^\ast\ ,
+    \]
+    而 \(\sum 1 / k^2\) 收敛, 因此由单调有界收敛定理可知 \((s_{2 n - 1})\) 收敛, 于是
+    \[
+        \lim s_{2 n} = \lim \Bigl(s_{2 n - 1} - \frac{1}{6 n + 6}\Bigr) = \lim s_{2 n - 1}\ ,
+    \]
+    故 \((s_n)\) 收敛.
+\end{proof}
