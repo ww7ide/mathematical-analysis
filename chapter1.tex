@@ -462,10 +462,10 @@
         (p + q)_n \coloneqq p_n + q_n\ ,\quad n \in \N\ ,\quad p, q \in R^\N\ ,
     \]
     并通过卷积定义乘法运算
-    \[
-    (p \cdot q)_n \coloneqq \sum_{j = 0}^n p_j q_{n - j} = p_0 q_n + p_1 q_{n - 1} + \cdots + p_n q_0\ ,\quad n \in \N\ ,\quad p, q \in R^\N\ ,
-    \]
-    其中 \(p_n \coloneqq p(n)\) 称为 \(p\) 的第 \(n\) 项系数. 在这种情况下, 称 \(p \in R^\N\) 是 \(R\) 上的形式幂级数, 并记 \(R[\![X]\!] \coloneqq (R^\N, +, \cdot)\).
+    \begin{align}\label{exp:product-of-formal-power-series}
+        (p \cdot q)_n \coloneqq \sum_{j = 0}^n p_j q_{n - j} = p_0 q_n + p_1 q_{n - 1} + \cdots + p_n q_0\ ,\quad n \in \N\ ,\quad p, q \in R^\N\ ,
+    \end{align}
+    其中 \(p_n \coloneqq p(n)\) 称为 \(p\) 的第 \(n\) 项系数. 称 \(p \in R[\![X]\!] \coloneqq (R^\N, +, \cdot)\) 是 \(R\) 上的形式幂级数.
 \end{definition}
 
 下面的命题表明 \(R[\![X]\!]\) 是环. 注意, 这个环与例 \ref{eg:rings}(2) 中介绍的函数环 \(R^\N\) 并不相同.

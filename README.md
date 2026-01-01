@@ -106,4 +106,5 @@ Section  8 Absolute Convergence                      12 23, 25
            Exercises                                 12 30, 25
            Exercises                                 12 31, 25
 Section  9 Power Series
+           The Radius of Convergence                  1  1, 26
 ```
