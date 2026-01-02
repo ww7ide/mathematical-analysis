@@ -5103,3 +5103,149 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \varepsilon > \frac{1}{x} > \frac{1}{2^x} > \frac{1}{e^x} = \exp(- x)\ ,\quad \frac{1}{\varepsilon} < x < 2^x < e^x = \exp x\ .
     \]
 \end{proof}
+
+\section{幂级数}
+
+我们接下来研究形式幂级数在何种条件下可视为良定义的函数. 正如我们在注 \ref{rem:polynomial-functions}(5) 中看到的, 对于一个不是多项式的幂级数, 这本质上是级数的收敛性问题.
+
+\begin{definition}[幂级数函数]
+    设
+    \[
+        a \coloneqq \sum a_k X^k \in \K [\![X]\!]\ .
+    \]
+    则对于任意 \(x \in \K\) 都有 \(\sum a_k x^k\) 是 \(\K\) 中的级数. 当 \(\sum a_k x^k\) 收敛时, 称其值是 (形式) 幂级数 \(\sum a_k X^k\) 在 \(x\) 处的值, 记作 \(\underline a(x)\). 进一步, 令
+    \[
+        \dom \underline a \coloneqq \Bigl\{\, x \in \K \;;\; \sum a_k x^k\ \text{收敛} \,\Bigr\}\ .
+    \]
+    则函数
+    \[
+        \underline a \colon \dom \underline a \to \K\ ,\quad x \mapsto \sum_{k = 0}^\infty a_k x^k
+    \]
+    是良定义的, 称为幂级数函数.
+\end{definition}
+
+注意到, 对于任意 \(a \in \K [\![X]\!]\) 都有 \(0 \in \dom \underline a\). 下面的例子将证明以下情况
+\[
+    \dom \underline a = \K\ ,\quad \{0\} \subset \dom \underline a \subset \K\ ,\quad \dom \underline a = \{0\}
+\]
+都可能发生.
+
+\begin{example}
+    \begin{enumerate}
+        \item 设 \(a \in \K[X] \subseteq \K[\![X]\!]\), 即对于几乎所有 \(k \in \N\) 都有 \(a_k = 0\). 于是 \(\dom \underline a = \K\) 且 \(\underline a\) 与第 1.8 节中介绍的多项式函数是一致的.
+        \item 对于任意 \(x \in \C\), 指数级数 \(\sum x^k / k!\) 绝对收敛. 因此对于幂级数
+        \[
+            a \coloneqq \sum \frac{1}{k!} X^k \in \C[\![X]\!]\ ,
+        \]
+        我们有 \(\dom \underline a = \C\) 且 \(\underline a = \exp\).
+        \item 由例 \ref{eg:geometric-series} 可知, 对于任意 \(x \in \B_\K\), 几何级数 \(\sum x^k\) 绝对收敛, 若 \(x \notin \B_\K\), 则 \(\sum x^k\) 发散. 因此对于几何级数
+        \[
+            a \coloneqq \sum X^k \in \K[\![X]\!]\ ,
+        \]
+         我们有 \(\dom \underline a = \B_\K\), 且对于任意 \(x \in \dom \underline a\) 都有 \(\underline a(x) = 1 / (1 - x)\).
+         \item 对于任意 \(x \in \K^\ast\), 级数 \(\sum k!\, x^k\) 发散. 令 \(a \coloneqq \sum k!\, X^k \in \K[\![X]\!]\), 于是 \(\dom \underline a = \{0\}\).
+         \begin{proof}
+            设 \(x \in \K^\ast\). 令 \(x_k \coloneqq k!\, x^k\). 于是
+            \[
+                \frac{|x_{k + 1}|}{|x_k|} = \frac{(k + 1)!\, |x|^{k + 1}}{k!\, |x|^k} = (k + 1)\, |x| \to \infty\quad (k \to \infty)\ ,
+            \]
+            因此存在 \(K \in \N\) 使得当 \(k \geq K\) 时 \(|x_{k + 1}| \big/ |x_k| \geq 1\), 由比值判别法可知 \(\sum k!\, x^k\) 发散.
+         \end{proof}
+    \end{enumerate}
+\end{example}
+
+\subsection{收敛半径}
+
+对于幂级数而言, 上一节中的收敛性判别法可以用一种特别有用的形式来表示.
+
+\begin{theorem}\label{thm:radius-of-convergence}
+    设幂级数 \(a \coloneqq \sum a_k X^k \in \K[\![X]\!]\). 则存在唯一的 \(\rho \in [0, \infty]\) 满足
+    \begin{enumerate}
+        \item 当 \(|x| < \rho\) 时级数 \(\sum a_k x^k\) 绝对收敛, 当 \(|x| > \rho\) 时级数 \(\sum a_k x^k\) 发散.
+        \item Cauchy-Hadamard 公式成立\footnote{当然, 这里我们使用了第 1.10 节中关于扩展实数系 \(\bar \R\) 的约定.}
+        \[
+            \rho = \frac{1}{\limsup \sqrt[k]{|a_k|}}\ .
+        \]
+    \end{enumerate}
+    特别的, 称 \(\rho \in [0, \infty]\) 是 \(a\) 的收敛半径, 并称 \(\rho \B_\K\) 是 \(a\) 的收敛圆盘.
+\end{theorem}
+
+\begin{proof}
+    令
+    \[
+        \rho \coloneqq \frac{1}{\limsup \sqrt[k]{|a_k|}}\ .
+    \]
+    于是 \(\rho \in [0, \infty]\) 且
+    \[
+        \limsup_{k \to \infty} \sqrt[k]{|a_k x^k|} = |x| \limsup_{k \to \infty} \sqrt[k]{|a_k|} = \frac{|x|}{\rho}\ .
+    \]
+    由根值判别法可知该定理成立.
+\end{proof}
+
+\begin{corollary}
+    设幂级数 \(a \coloneqq \sum a_k X^k \in \K[\![X]\!]\). 则 \(\rho \B_\K \subseteq \dom \underline a \subseteq \rho \bar \B_\K\).\footnote{在注 \ref{rem:boundary-of-disk-of-convergence} 中我们将看到, 一般情况下, \(\rho \B_\K\) 是 \(\dom \underline a\) 的真子集.} 特别的, 幂级数 \(a\) 在其收敛圆盘上表示函数 \(\underline a\).
+\end{corollary}
+
+对于某些幂级数, 比值判别法同样能用于确定其收敛半径.
+
+\begin{proposition}\label{prop:ratio-test-of-radius-of-convergence}
+    设幂级数 \(a \coloneqq \sum a_k X^k \in \K[\![X]\!]\). 若
+    \[
+        \rho \coloneqq \lim \Bigl|\frac{a_k}{a_{k + 1}}\Bigr| \in \bar \R\ ,
+    \]
+    则 \(\rho\) 是 \(a\) 的收敛半径.
+\end{proposition}
+
+\begin{proof}
+    由于
+    \[
+        \lim_{k \to \infty} \Bigl|\frac{a_{k + 1} x^{k + 1}}{a_k x^k}\Bigr| = |x| \lim_{k \to \infty} \Bigl|\frac{a_{k + 1}}{a_k}\Bigr| = \frac{|x|}{\rho}\ .
+    \]
+    若 \(x, y \in \K\) 使得 \(|x| < \rho\) 且 \(|y| > \rho\), 于是由比值判别法可知级数 \(\sum a_k x^k\) 绝对收敛, 级数 \(\sum a_k y^k\) 发散. 因此由定理 \ref{thm:radius-of-convergence} 可知 \(\rho\) 是 \(a\) 的收敛半径.
+\end{proof}
+
+\begin{example}
+    \begin{enumerate}
+        \item 指数级数 \(\sum (1 / k!) X^k\) 的收敛半径是 \(\infty\).
+        \begin{proof}
+            令 \(a_k \coloneqq 1 / k!\). 由于
+            \[
+                \frac{|a_k|}{|a_{k + 1}|} = \frac{1 / k!}{1 / (k + 1)!} = k + 1 \to \infty\quad (k \to \infty)\ ,
+            \]
+            由命题 \ref{prop:ratio-test-of-radius-of-convergence} 可知该断言成立.
+        \end{proof}
+        \item 设 \(m \in \Q\). 则幂级数 \(\sum k^m X^k \in \K[\![X]\!]\) 的收敛半径是 \(1\).
+        \begin{proof}
+            令 \(a_k \coloneqq k^m\). 由于
+            \[
+                \frac{|a_k|}{|a_{k + 1}|} = \frac{k^m}{(k + 1)^m} = \Bigl(1 - \frac{1}{k + 1}\Bigr)^m \to 1\quad (k \to \infty)\ ,
+            \]
+            由命题 \ref{prop:ratio-test-of-radius-of-convergence} 可知该断言成立.
+        \end{proof}
+        \item 幂级数
+        \[
+            a \coloneqq \sum \frac{1}{k!} X^{k^2} = 1 + X + \frac{1}{2!} X^4 + \frac{1}{3!} X^9 + \cdots \in \K[\![X]\!]
+        \]
+        的收敛半径是 \(1\).\footnote{注意, 命题 \ref{prop:ratio-test-of-radius-of-convergence} 在此处失效了. 为什么?}
+        \begin{proof}
+            \(a\) 的系数 \(a_k\) 满足
+            \[
+                a_k =
+                \begin{cases}
+                    1 / j!\ , & \text{存在}\ j \in \N\ \text{使得}\ j^2 = k\ , \\
+                    0\ ,      & \text{其余情况}\ ,
+                \end{cases}
+                \quad k \in \N\ .
+            \]
+            由于 \(1 \leq j! \leq j^j\), 于是由注 \ref{rem:n-roots}(3) 和练习 \ref{ex:ratio-power-of-real-numbers} 可知
+            \[
+                1 \leq \sqrt[j^2]{j!} \leq \sqrt[j^2]{j^j} = \sqrt[j]{j}\ ,\quad j \in \N^\ast\ ,
+            \]
+            而 \(\lim \sqrt[j]{j} = 1\). 最后由夹逼定理可知 \(\limsup \sqrt[k]{|a_k|} = \lim \sqrt[j^2]{j!} = 1\).
+        \end{proof}
+    \end{enumerate}
+\end{example}
+
+\begin{remark}\label{rem:boundary-of-disk-of-convergence}
+    
+\end{remark}
