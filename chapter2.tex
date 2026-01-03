@@ -3426,7 +3426,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 级数是特殊的序列, 因此适用于收敛序列的所有法则同样适用于级数. 特别地, \(\lim\) 函数的线性性质对级数也成立 (见第 2.2 节和注 \ref{rem:norms}(3)).
 
-\begin{proposition}
+\begin{proposition}\label{prop:calculating-with-series}
     设 \(\sum a_k\) 和 \(\sum b_k\) 是赋范向量空间 \(E\) 中的收敛级数, \(\alpha \in \K\). 则
     \begin{enumerate}
         \item 级数 \(\sum (a_k + b_k)\) 收敛且
@@ -3795,7 +3795,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \begin{proof}
     (1). 由于
     \begin{align*}
-        |s_{2 n} - s_n| &= \sum_{k = n + 1}^{2 n} \frac{\sqrt{k + 1} - \sqrt{k}}{\sqrt{k}} = \sum_{k = n + 1}^{2 n} \frac{1}{\sqrt{k} (\sqrt{k + 1} + \sqrt{k})} = \sum_{k = n + 1}^{2 n} \frac{1}{\sqrt{k} \sqrt{k + 1} + k}\\
+        |s_{2 n} - s_n| &= \sum_{k = n + 1}^{2 n} \frac{\sqrt{k + 1} - \sqrt{k}}{\sqrt{k}} = \sum_{k = n + 1}^{2 n} \frac{1}{\sqrt{k} (\sqrt{k + 1} + \sqrt{k})} = \sum_{k = n + 1}^{2 n} \frac{1}{\sqrt{k}\, \sqrt{k + 1} + k}\\
         &\geq \sum_{k = n + 1}^{2 n} \frac{1}{k + 1 + k} \geq \sum_{k = n + 1}^{2 n} \frac{1}{3 k} \geq \sum_{k = n + 1}^{2 n} \frac{1}{6 n} = \frac{1}{6}\ ,\quad n \in \N^\ast\ ,
     \end{align*}
     因此 \((s_n)\) 不是 Cauchy 序列, 故 \((s_n)\) 发散.
@@ -3812,7 +3812,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \]
     显然 \(k = 1\) 时成立. 假设 \(k! / k^k \leq 1 / 2^{k - 1}\). 于是
     \[
-        \frac{(k + 1)!}{(k + 1)^{k + 1}} = \frac{k!}{(k + 1)^k} = \frac{k!}{k^k} \frac{k^k}{(k + 1)^k} \leq \frac{1}{2^{k - 1}} \frac{1}{(1 + 1 / k)^k}\ ,
+        \frac{(k + 1)!}{(k + 1)^{k + 1}} = \frac{k!}{(k + 1)^k} = \frac{k!}{k^k}\, \frac{k^k}{(k + 1)^k} \leq \frac{1}{2^{k - 1}}\, \frac{1}{(1 + 1 / k)^k}\ ,
     \]
     由二项式定理可知
     \[
@@ -3826,11 +3826,11 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
     (4). 令 \(x_k \coloneqq (k + 1)^{k - 1} / k^k\), 故 \(\sum (k + 1)^{k - 1} / (- k)^k = \sum (- 1)^k x_k\) 是交错级数. 由于
     \[
-        \frac{x_{k + 1}}{x_k} = \frac{(k + 2)^k}{(k + 1)^{k + 1}} \frac{k^k}{(k + 1)^{k - 1}} = \Bigl(\frac{k^2 + 2 k}{k^2 + 2 k + 1}\Bigr)^k \leq 1\ ,\quad k \in \N^\ast\ ,
+        \frac{x_{k + 1}}{x_k} = \frac{(k + 2)^k}{(k + 1)^{k + 1}}\, \frac{k^k}{(k + 1)^{k - 1}} = \Bigl(\frac{k^2 + 2 k}{k^2 + 2 k + 1}\Bigr)^k \leq 1\ ,\quad k \in \N^\ast\ ,
     \]
     因此 \((x_k)\) 是递减的. 而
     \[
-        x_k = \frac{(k + 1)^{k - 1}}{k^k} = \frac{1}{k + 1} \frac{(k + 1)^k}{k^k} = \frac{1}{k + 1} \Bigl(1 + \frac{1}{k}\Bigr)^k\ ,
+        x_k = \frac{(k + 1)^{k - 1}}{k^k} = \frac{1}{k + 1}\, \frac{(k + 1)^k}{k^k} = \frac{1}{k + 1} \Bigl(1 + \frac{1}{k}\Bigr)^k\ ,
     \]
     其中 \(1 / (k + 1) \to 0\), \((1 + 1 / k)^k \to e\), 故 \(x_k \downarrow 0\). 由 Leibniz 准则可知该交错级数收敛.
 \end{proof}
@@ -5204,7 +5204,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     若 \(x, y \in \K\) 使得 \(|x| < \rho\) 且 \(|y| > \rho\), 于是由比值判别法可知级数 \(\sum a_k x^k\) 绝对收敛, 级数 \(\sum a_k y^k\) 发散. 因此由定理 \ref{thm:radius-of-convergence} 可知 \(\rho\) 是 \(a\) 的收敛半径.
 \end{proof}
 
-\begin{example}
+\begin{example}\label{eg:radius-of-convergence}
     \begin{enumerate}
         \item 指数级数 \(\sum (1 / k!) X^k\) 的收敛半径是 \(\infty\).
         \begin{proof}
@@ -5247,5 +5247,142 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{example}
 
 \begin{remark}\label{rem:boundary-of-disk-of-convergence}
-    
+    没有一般的命题能描述幂级数在其收敛圆盘的 ``边界'' 上, 即 \(\{\, x \in \K \;;\; |x| = \rho \,\}\) 上的收敛性. 我们通过在例 \ref{eg:radius-of-convergence}(2) 中令 \(m = 0, - 1, - 2\) 时得到的幂级数来验证这一点, 即
+    \[
+        1.\ \sum X^k\ ,\quad 2.\ \sum \frac{1}{k} X^k\ ,\quad 3.\ \sum \frac{1}{k^2} X^k\ .
+    \]
+    这些幂级数的收敛半径 \(\rho = 1\). 但在收敛圆盘的边界上, 却有着不同的收敛性态.
+    \begin{enumerate}
+        \item 由例 \ref{eg:geometric-series} 可知, 对于任意 \(x \in \K\), 若 \(|x| = 1\) 则几何级数 \(\sum x^k\) 发散. 因此, 此时 \(\dom \underline a = \B_\K\).
+        \item 由 Leibniz 准则可知, 级数 \(\sum (- 1)^k / k\) 在 \(\R\) 中条件收敛. 另一方面, 在例 \ref{eg:harmonic-series} 中, 我们看到了调和级数 \(\sum 1 / k\) 发散. 因此我们有 \(- 1 \in \dom \underline a\) 但 \(1 \notin \dom \underline a\).
+        \item 令 \(x \in \K\) 且 \(|x| = 1\). 于是由例 \ref{eg:some-simple-convergent-series}(2) 可知 \(\sum x^k / k^2\) 绝对收敛. 因此 \(\dom \underline a = \bar \B_\K\).
+    \end{enumerate}
 \end{remark}
+
+\subsection{幂级数的运算}
+
+在第 1.8 节中我们看到, 当加法定义为 ``逐项相加'' 且乘法定义为卷积时, \(\K[\![X]\!]\) 构成了环. 下面的命题将证明这些运算与幂级数函数的加法和乘法是相容的.
+
+\begin{proposition}
+    设幂级数 \(a \coloneqq \sum a_k X^k\) 和 \(b \coloneqq \sum b_k X^k\), 其收敛半径分别是 \(\rho_a\) 和 \(\rho_b\). 令 \(\rho \coloneqq \min\{\rho_a, \rho_b\}\). 则对于任意 \(x \in \K\), 若 \(|x| < \rho\) 则
+    \begin{align*}
+        \sum_{k = 0}^\infty a_k x^k + \sum_{k = 0}^\infty b_k x^k &= \sum_{k = 0}^\infty (a_k + b_k) x^k\ , \\
+        \Bigl(\sum_{k = 0}^\infty a_k x^k\Bigr) \Bigl(\sum_{k = 0}^\infty b_k x^k\Bigr) &= \sum_{k = 0}^\infty \Bigl(\sum_{j = 0}^k a_j b_{k - j}\Bigr) x^k\ .
+    \end{align*}
+    特别的, 幂级数 \(a + b\) 和 \(a \cdot b\) 的收敛半径 \(\rho_{a + b}\) 和 \(\rho_{a \cdot b}\) 满足 \(\rho_{a + b}, \rho_{a \cdot b} \geq \rho\).
+\end{proposition}
+
+\begin{proof}
+    由定理 \ref{thm:radius-of-convergence}、命题 \ref{prop:calculating-with-series} 和 Cauchy 乘积定理可知该命题成立.
+\end{proof}
+
+\subsection{练习}
+
+\begin{exercise}
+    当 \(a_k\) 由以下式子给出时, 计算幂级数 \(\sum a_k X^k\) 的收敛半径.
+    \[
+        1.\ \frac{\sqrt{k 2^k}}{(k + 1)^6}\ ,\quad 2.\ (- 1)^k \frac{k!}{k^k}\ ,\quad 3.\ \frac{1}{\sqrt{1 + k^2}}\ ,\quad 4.\ \frac{1}{\sqrt{k!}}\ ,\quad 5.\ \frac{1}{k^k}\ ,\quad 6.\ \Bigl(1 + \frac{1}{k^2}\Bigr)^k\ .
+    \]
+\end{exercise}
+
+\begin{proof}
+    (1). 由于
+    \[
+        \limsup \sqrt[k]{|a_k|} = \limsup \frac{\sqrt[2 k]{k 2^k}}{\sqrt[k]{(k + 1)^6}} = \sqrt{2} \limsup \frac{\sqrt[2 k]{k}}{\sqrt[k]{(k + 1)^6}} = \sqrt{2}\ ,
+    \]
+    因此 \(\rho = 1 / \sqrt{2}\).
+
+    (2). 由于
+    \[
+        \frac{|a_k|}{|a_{k + 1}|} = \frac{k!}{k^k}\, \frac{(k + 1)^{k + 1}}{(k + 1)!} = \Bigl(1 + \frac{1}{k}\Bigr)^k \to e\ ,
+    \]
+    因此 \(\rho = e\).
+
+    (3). 由于
+    \[
+        \limsup \sqrt[k]{|a_k|} = \limsup \frac{1}{\sqrt[2 k]{1 + k^2}} = 1\ ,
+    \]
+    因此 \(\rho = 1\).
+
+    (4). 由于
+    \[
+        \frac{|a_k|}{|a_{k + 1}|} = \frac{\sqrt{(k + 1)!}}{\sqrt{k!}} = \sqrt{k + 1} \to \infty\ ,
+    \]
+    因此 \(\rho = \infty\).
+
+    (5). 由于
+    \[
+        \frac{|a_k|}{|a_{k + 1}|} = \frac{(k + 1)^{k + 1}}{k^k} = (k + 1) \Bigl(1 + \frac{1}{k}\Bigr)^k \to \infty\ ,
+    \]
+    因此 \(\rho = \infty\).
+
+    (6). 由于
+    \[
+        \limsup \sqrt[k]{|a_k|} = \limsup \Bigl(1 + \frac{1}{k^2}\Bigr) = 1\ ,
+    \]
+    因此 \(\rho = 1\).
+\end{proof}
+
+\begin{exercise}
+    证明幂级数 \(a \coloneqq \sum (1 + k) X^k\) 的收敛半径是 \(1\), 且对于任意 \(|z| < 1\) 都有 \(\underline a(z) = (1 - z)^{- 2}\).
+\end{exercise}
+
+\begin{proof}
+    由于
+    \[
+        \frac{|a_k|}{|a_{k + 1}|} = \frac{k + 1}{k + 2} \to 1\ ,
+    \]
+    因此 \(\rho = 1\). 设 \(|z| < 1\). 令
+    \[
+        s \coloneqq \sum_{k = 0}^\infty (1 + k) z^k\ .
+    \]
+    于是
+    \[
+        (1 - z) s = (1 - z) \sum_{k = 0}^\infty (1 + k) z^k = \sum_{k = 0}^\infty z^k + \sum_{k = 0}^\infty k z^k - \sum_{k = 0}^\infty (1 + k) z^{k + 1} = \sum_{k = 0}^\infty z^k = \frac{1}{1 - z}\ ,
+    \]
+    因此 \(s = (1 - z)^{- 2}\).
+\end{proof}
+
+\begin{exercise}
+    设幂级数 \(\sum a_k X^k \in \K[\![X]\!]\) 的收敛半径 \(\rho > 0\). 证明幂级数 \(\sum (k + 1) a_{k + 1} X^k\) 的收敛半径也是 \(\rho\).
+\end{exercise}
+
+\begin{proof}
+    由于 \(\sum a_k X^k\) 的收敛半径是 \(\rho\), 于是
+    \[
+        \limsup \sqrt[k]{|(k + 1) a_{k + 1}|} = \limsup \sqrt[k]{k + 1}\, \sqrt[k]{|a_{k + 1}|} = \limsup \sqrt[k]{|a_{k + 1}|} = \frac{1}{\rho}\ ,
+    \]
+    因此 \(\sum (k + 1) a_{k + 1} X^k\) 的收敛半径也是 \(\rho\).
+\end{proof}
+
+\begin{exercise}
+    设 \(\sum a_k\) 是 \((0, \infty)\) 中的发散级数使得 \(\sum a_k X^k\) 的收敛半径是 \(1\), 定义
+    \[
+        f_n \coloneqq \sum_{k = 0}^\infty a_k \Bigl(1 - \frac{1}{n}\Bigr)^k\ ,\quad n \in \N^\ast\ .
+    \]
+    证明数列 \((f_n)\) 收敛到 \(\infty\). (提示: 使用 Bernoulli 不等式给形如 \(1 - (1 - 1 / n)^m\) 的项估计一个上界.)
+\end{exercise}
+
+\begin{proof}
+    由于 \(\sum a_k\) 是 \((0, \infty)\) 中的发散级数, 因此对于任意 \(M > 0\) 存在 \(m \in \N\) 使得
+    \[
+        \sum_{k = 0}^m a_k > 2 M\ .
+    \]
+    另一方面, 由 Bernoulli 不等式可得
+    \[
+        \Bigl(1 - \frac{1}{n}\Bigr)^m \geq 1 - \frac{m}{n} \geq \frac{1}{2}\ ,\quad n \geq 2 m\ .
+    \]
+    于是
+    \[
+        f_n = \sum_{k = 0}^\infty a_k \Bigl(1 - \frac{1}{n}\Bigr)^k \geq \sum_{k = 0}^m a_k \Bigl(1 - \frac{1}{n}\Bigr)^k \geq \sum_{k = 0}^m a_k \Bigl(1 - \frac{1}{n}\Bigr)^m \geq \frac{1}{2} \sum_{k = 0}^m a_k > M\ ,\quad n \geq 2 m\ ,
+    \]
+    因此 \(f_n\) 收敛到 \(\infty\).
+\end{proof}
+
+\begin{exercise}
+    设 \((a_k)\) 是 \(\K\) 中的数列满足
+    \[
+        0 < \liminf |a_k| \leq \limsup |a_k| < \infty\ .
+    \]
+    确定 \(\sum a_k X^k\) 的收敛半径.
+\end{exercise}
