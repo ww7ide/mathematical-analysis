@@ -112,4 +112,5 @@ Section  9 Power Series
            The Uniqueness of Power Series
                           Representations
            Exercises                                  1  3, 26
+           Exercises                                  1  4, 26
 ```

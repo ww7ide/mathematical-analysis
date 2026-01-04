@@ -5276,6 +5276,18 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     由定理 \ref{thm:radius-of-convergence}、命题 \ref{prop:calculating-with-series} 和 Cauchy 乘积定理可知该命题成立.
 \end{proof}
 
+\subsection{幂级数展开的唯一性}
+
+设 \(p \in \K[X]\). 在注 \ref{rem:linear-factors}(3) 中我们证明了, 若 \(p\) 至少有 \(\deg p + 1\) 个零点, 则 \(p\) 是零多项式. 下面的定理表明幂级数也有类似的结论.
+
+\begin{theorem}
+    设幂级数 \(a \coloneqq \sum a_k X^k \in \K[\![X]\!]\) 的收敛半径 \(\rho > 0\). 若存在无穷小量 \((y_j)\) 使得
+    \[
+        0 < |y_j| < \rho\quad \text{且}\quad \underline a(y_j) = \sum_{k = 0}^\infty a_k y_j^k = 0\ ,\quad j \in \N\ ,
+    \]
+    则对于任意 \(k \in \N\) 都有 \(a_k = 0\), 即 \(a = 0\).
+\end{theorem}
+
 \subsection{练习}
 
 \begin{exercise}
@@ -5386,3 +5398,64 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \]
     确定 \(\sum a_k X^k\) 的收敛半径.
 \end{exercise}
+
+\begin{proof}
+    令 \(a^\ast \coloneqq \limsup |a_k|\), \(a_\ast \coloneqq \liminf |a_k|\). 任取 \(\varepsilon \in (0, a_\ast)\). 于是存在 \(K \in \N\) 使得
+    \[
+        a_\ast - \varepsilon < |a_k| < a^\ast + \varepsilon\ ,\quad k \geq K\ .
+    \]
+    进一步,
+    \[
+        \sqrt[k]{a_\ast - \varepsilon} < \sqrt[k]{|a_k|} < \sqrt[k]{a^\ast + \varepsilon}\ ,\quad k \geq K\ .
+    \]
+    而当 \(k \to \infty\) 时 \(\sqrt[k]{a_\ast - \varepsilon} \to 1\) 且 \(\sqrt[k]{a^\ast + \varepsilon} \to 1\), 由夹逼定理可知 \(\sqrt[k]{|a_k|} \to 1\), 因此 \(\sum a_k X^k\) 的收敛半径是 \(1\).
+\end{proof}
+
+\begin{exercise}
+    设幂级数 \(\sum a_k X^k\) 其中对于任意 \(k \in \N\) 都有 \(a_k \neq 0\). 证明其收敛半径 \(\rho\) 满足
+    \[
+        \liminf \Bigl|\frac{a_k}{a_{k + 1}}\Bigr| \leq \rho \leq \limsup \Bigl|\frac{a_k}{a_{k + 1}}\Bigr|\ .
+    \]
+\end{exercise}
+
+\begin{proof}
+    由于
+    \[
+        \liminf \Bigl|\frac{a_{k + 1}}{a_k}\Bigr| \leq \liminf \sqrt[k]{|a_k|} \leq \limsup \sqrt[k]{|a_k|} = \frac{1}{\rho} \leq \limsup \Bigl|\frac{a_{k + 1}}{a_k}\Bigr|\ ,
+    \]
+    因此
+    \[
+        \liminf \Bigl|\frac{a_k}{a_{k + 1}}\Bigr| = \frac{1}{\limsup |a_{k + 1} / a_k|} \leq \rho \leq \frac{1}{\liminf |a_{k + 1} / a_k|} = \limsup \Bigl|\frac{a_k}{a_{k + 1}}\Bigr|\ .
+    \]
+\end{proof}
+
+\begin{exercise}
+    \textsl{称向量空间 \(E\) 的子集 \(D\) 是关于 \(0\) 对称的, 若对于任意 \(x \in D\) 都有 \(- x \in D\). 进一步, 设 \(D\) 是对称的, 称函数 \(f \colon D \to E\) 是偶函数 (或奇函数), 若对于任意 \(x \in D\) 都有 \(f(x) = f(- x)\) (或 \(f(x) = - f(- x)\)).} 现在设函数 \(f \colon \K \to \K\) 可以在以 \(0\) 为中心的某个圆盘上展开成幂级数. 这个幂级数的系数需要满足什么条件, 才能决定 \(f\) 是偶函数还是奇函数?
+\end{exercise}
+
+\begin{proof}
+    设 \(f\) 在 \(\rho \B_\K\) 上的幂级数展开是 \(\sum a_k X^k\). 特别的, 该展开是唯一的. 则 \(f\) 是偶函数当且仅当
+    \[
+        \sum_{k = 0}^\infty a_k x^k = f(x) = f(- x) = \sum_{k = 0}^\infty a_k (- x)^k = \sum_{k = 0}^\infty (- 1)^k a_k x^k\ ,\quad x \in \rho \B_\K\ ,
+    \]
+    即当 \(k\) 是奇数时 \(a_k = 0\). 而 \(f\) 是奇函数当且仅当
+    \[
+        \sum_{k = 0}^\infty a_k x^k = f(x) = - f(- x) = - \sum_{k = 0}^\infty a_k (- x)^k = \sum_{k = 0}^\infty (- 1)^{k + 1} a_k x^k\ ,\quad x \in \rho \B_\K\ ,
+    \]
+    即当 \(k\) 是偶数时 \(a_k = 0\).
+\end{proof}
+
+\begin{exercise}
+    设幂级数 \(a, b \in \K[\![X]\!]\), 其收敛半径分别是 \(\rho_a\) 和 \(\rho_b\). 通过举例证明幂级数 \(a + b\) 和 \(a b\) 的收敛半径 \(\rho_{a + b} > \max\{\rho_a, \rho_b\}\) 和 \(\rho_{a b} > \max\{\rho_a, \rho_b\}\) 是可能的.
+\end{exercise}
+
+\begin{proof}
+    考虑
+    \[
+        a \coloneqq \sum X^k\ ,\quad b \coloneqq \sum \Bigl(\frac{1}{2^k} - 1\Bigr) X^k\ ,
+    \]
+    显然 \(\rho_a = \rho_b = 1\). 而 \(a + b = \sum (1 / 2^k) X^k\), 因此
+    \[
+        \rho_{a + b} = \lim \Bigl| \frac{1 / 2^k}{1 / 2^{k + 1}} \Bigr| = 2 > 1 = \max\{\rho_a, \rho_b\}\ .
+    \]
+\end{proof}
