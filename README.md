@@ -113,4 +113,5 @@ Section  9 Power Series
                           Representations
            Exercises                                  1  3, 26
            Exercises                                  1  4, 26
+           Exercises                                  1  5, 26
 ```

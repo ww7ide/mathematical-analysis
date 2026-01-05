@@ -2427,7 +2427,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     解得 \(y = (1 \pm \sqrt{5}) / 2\), 而 \((y_n)\) 下界为 \(1\), 故 \(y = (1 + \sqrt{5}) / 2\). 类似的, 可得 \((z_n)\) 收敛到 \((1 + \sqrt{5}) / 2\). 于是 \((x_n)\) 收敛到 \((1 + \sqrt{5}) / 2\).
 \end{proof}
 
-\begin{exercise}
+\begin{exercise}\label{ex:fibonacci-sequence}
     递归定义实数列
     \[
         f_0 \coloneqq 0\ ,\quad f_1 \coloneqq 1\ ,\quad f_{n + 1} \coloneqq f_n + f_{n - 1}\ ,\quad n \in \N^\ast\ ,
@@ -5263,7 +5263,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 在第 1.8 节中我们看到, 当加法定义为 ``逐项相加'' 且乘法定义为卷积时, \(\K[\![X]\!]\) 构成了环. 下面的命题将证明这些运算与幂级数函数的加法和乘法是相容的.
 
-\begin{proposition}
+\begin{proposition}\label{prop:calculating-with-power-series}
     设幂级数 \(a \coloneqq \sum a_k X^k\) 和 \(b \coloneqq \sum b_k X^k\), 其收敛半径分别是 \(\rho_a\) 和 \(\rho_b\). 令 \(\rho \coloneqq \min\{\rho_a, \rho_b\}\). 则对于任意 \(x \in \K\), 若 \(|x| < \rho\) 则
     \begin{align*}
         \sum_{k = 0}^\infty a_k x^k + \sum_{k = 0}^\infty b_k x^k &= \sum_{k = 0}^\infty (a_k + b_k) x^k\ , \\
@@ -5280,13 +5280,71 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
 设 \(p \in \K[X]\). 在注 \ref{rem:linear-factors}(3) 中我们证明了, 若 \(p\) 至少有 \(\deg p + 1\) 个零点, 则 \(p\) 是零多项式. 下面的定理表明幂级数也有类似的结论.
 
-\begin{theorem}
+\begin{theorem}\label{thm:zero-power-series}
     设幂级数 \(a \coloneqq \sum a_k X^k \in \K[\![X]\!]\) 的收敛半径 \(\rho > 0\). 若存在无穷小量 \((y_j)\) 使得
     \[
         0 < |y_j| < \rho\quad \text{且}\quad \underline a(y_j) = \sum_{k = 0}^\infty a_k y_j^k = 0\ ,\quad j \in \N\ ,
     \]
     则对于任意 \(k \in \N\) 都有 \(a_k = 0\), 即 \(a = 0\).
 \end{theorem}
+
+\begin{proof}
+    对于任意 \(n \in \N\), 我们对 \(\sum_{k \geq n} a_k X^k\) 进行估计. 任取 \(r \in (0, \rho)\) 和 \(x \in r \bar \B_\K\). 由于 \(a\) 在 \(\rho \B_\K\) 上绝对收敛, 于是
+    \[
+        \Bigl| \sum_{k = n}^\infty a_k x^k \Bigr| \leq \sum_{k = n}^\infty |a_k|\, |x|^k = |x|^n \sum_{k = n}^\infty |a_k|\, |x|^{k - n} = |x|^n \sum_{k = 0}^\infty |a_{k + n}|\, |x|^k \leq |x|^n \sum_{k = 0}^\infty |a_{k + n}|\, r^k\ .
+    \]
+    令
+    \[
+        C_{r, n} \coloneqq \sum_{k = 0}^\infty |a_{k + n}|\, r^k \in [0, \infty)\ .
+    \]
+    因此对于任意 \(r \in (0, \rho)\) 和 \(n \in \N\) 都有
+    \[
+        \Bigl| \sum_{k = n}^\infty a_k x^k \Bigr| \leq C_{r, n}\, |x|^n\ ,\quad x \in r \bar \B_\K\ .
+    \]
+    由于 \((y_j)\) 是无穷小量, 因此存在 \(r \in (0, \rho)\) 使得对于任意 \(j \in \N\) 都有 \(y_j \in r \bar \B_\K\). 假设存在 \(k \in \N\) 使得 \(a_k \neq 0\). 由良序原理可知, 存在最小的 \(k_0 \in \N\) 使得 \(a_{k_0} \neq 0\). 于是
+    \[
+        |\underline a(x) - a_{k_0} x^{k_0}| = \Bigl| \sum_{k = k_0 + 1}^\infty a_k x^k \Bigr| \leq C_{r, k_0 + 1}\, |x|^{k_0 + 1}\ ,\quad x \in r \bar \B_\K\ .
+    \]
+    进一步,
+    \[
+        |\underline a(y_j) - a_{k_0} y_j^{k_0}| = |a_{k_0} y_j^{k_0}| \leq C_{r, k_0 + 1}\, |y_j|^{k_0 + 1}\ ,\quad j \in \N\ ,
+    \]
+    即 \(|a_{k_0}| \leq C_{r, k_0 + 1}\, |y_j|\). 但是 \(y_j \to 0\), 由推论 \ref{cor:archimedean-property-cor} 可知 \(a_{k_0} = 0\), 矛盾.
+\end{proof}
+
+\begin{corollary}[幂级数恒等定理]
+    设幂级数 \(a, b \in \K[\![X]\!]\), 其收敛半径分别是 \(\rho_a\) 和 \(\rho_b\). 若存在无穷小量 \((y_j)\) 使得
+    \[
+        0 < |y_j| < \min\{\rho_a, \rho_b\}\quad \text{且}\quad \underline a(y_j) = \underline b(y_j)\ ,\quad j \in \N\ ,
+    \]
+    则对于任意 \(k \in \N\) 都有 \(a_k = b_k\), 即 \(a = b\).
+\end{corollary}
+
+\begin{proof}
+    由命题 \ref{prop:calculating-with-power-series} 和定理 \ref{thm:zero-power-series} 可以直接得到.
+\end{proof}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 若幂级数 \(a \coloneqq \sum a_k X^k\) 的收敛半径为正, 于是由幂级数恒等定理可知, 在收敛圆盘上, \(a\) 的系数 \(a_k\) 由 \(\underline a\) 唯一确定. 换句话说, 若函数 \(f \colon \dom f \subseteq \K \to \K\) 能够在以原点为中心的某个圆盘上用幂级数表示, 即展开成幂级数, 那么该幂级数是唯一的.
+        \item 幂级数 \(a \coloneqq \sum a_k X^k\) 在其收敛圆盘 \(\rho \B_\K\) 上对应的函数 \(\underline a\), 在任意闭球 \(r \bar \B_\K\) 上均有界, 其中 \(r \in (0, \rho)\). 进一步,
+        \[
+            \sup_{|x| \leq r} |\underline a(x)| \leq \sum_{k = 0}^\infty |a_k|\, r^k\ .
+        \]
+        \begin{proof}
+            由于 \(a\) 在 \(\rho \B_\K\) 上绝对收敛, 于是
+            \[
+                |\underline a(x)| = \Bigl| \sum_{k = 0}^\infty a_k x^k \Bigr| \leq \sum_{k =0}^\infty |a_k|\, |x|^k \leq \sum_{k = 0}^\infty |a_k|\, r^k\ ,\quad x \in r \bar \B_\K\ .
+            \]
+        \end{proof}
+        \item 在第 3.6 节中, 我们将研究具有无穷多个零点的非零幂级数. 因此, 定理 \ref{thm:zero-power-series} 中 ``\((y_j)\) 是无穷小量'' 的这一假设不能省略.
+        \item 设实幂级数 \(a \coloneqq \sum a_k X^k \in \R[\![X]\!]\). 由于 \(\R[\![X]\!] \subseteq \C[\![X]\!]\), 因此 \(a\) 同样能被视为复幂级数. 若我们将 \(a \in \C[\![X]\!]\) 对应的幂级数函数记作 \(\underline a_\C\), 则 \(\underline a_\C \supseteq \underline a\), 即 \(\underline a_\C\) 是 \(\underline a\) 的延拓. 由定理 \ref{thm:radius-of-convergence} 可知, \(a\) 的收敛半径 \(\rho\) 与 \(a\) 被视为实幂级数还是复幂级数是无关的. 于是
+        \[
+            (- \rho, \rho) = \dom \underline a \cap \rho \B_\C \subseteq \rho \B_\C \subseteq \dom \underline a_\C\ .
+        \]
+        因此, 事实上我们只用考虑复幂级数就足够了.
+    \end{enumerate}
+\end{remark}
 
 \subsection{练习}
 
@@ -5446,7 +5504,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{proof}
 
 \begin{exercise}
-    设幂级数 \(a, b \in \K[\![X]\!]\), 其收敛半径分别是 \(\rho_a\) 和 \(\rho_b\). 通过举例证明幂级数 \(a + b\) 和 \(a b\) 的收敛半径 \(\rho_{a + b} > \max\{\rho_a, \rho_b\}\) 和 \(\rho_{a b} > \max\{\rho_a, \rho_b\}\) 是可能的.
+    设 \(a, b \in \K[\![X]\!]\), 其收敛半径分别是 \(\rho_a\) 和 \(\rho_b\). 通过举例证明幂级数 \(a + b\) 和 \(a b\) 的收敛半径 \(\rho_{a + b} > \max\{\rho_a, \rho_b\}\) 和 \(\rho_{a b} > \max\{\rho_a, \rho_b\}\) 是可能的.
 \end{exercise}
 
 \begin{proof}
@@ -5458,4 +5516,75 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \[
         \rho_{a + b} = \lim \Bigl| \frac{1 / 2^k}{1 / 2^{k + 1}} \Bigr| = 2 > 1 = \max\{\rho_a, \rho_b\}\ .
     \]
+\end{proof}
+
+\begin{exercise}
+    设 \(a \coloneqq \sum a_k X^k \in \C[\![X]\!]\) 其中 \(a_0 = 1\).
+    \begin{enumerate}
+        \item 证明存在 \(b \coloneqq \sum b_k X^k \in \C[\![X]\!]\) 使得 \(a b = 1 \in \C[\![X]\!]\). 提供一个可以递归计算系数 \(b_k\) 的算法.
+        \item 若 \(a\) 的收敛半径 \(\rho_a > 0\), 证明 \(b\) 的收敛半径 \(\rho_b > 0\).
+    \end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    (1). 定义
+    \[
+        b_0 \coloneqq 1\ ,\quad b_k \coloneqq - \sum_{j = 1}^k a_j b_{k - j}\ ,\quad k \in \N^\ast\ .
+    \]
+    于是
+    \[
+        a b = \sum_k \Bigl(\sum_{j = 0}^k a_j b_{k - j}\Bigr) X^k\ ,
+    \]
+    注意到
+    \[
+        \sum_{j = 0}^k a_j b_{k - j} = a_0 b_k + \sum_{j = 1}^k a_j b_{k - j} = - \sum_{j = 1}^k a_j b_{k - j} + \sum_{j = 1}^k a_j b_{k - j} = 0\ ,\quad k \in \N^\ast\ ,
+    \]
+    因此 \(a b = a_0 b_0 = 1\).
+
+    (2). 设 \(x_0 \in (0, \rho_a)\). 由于 \(\sum a_k x_0^k\) 绝对收敛, 令
+    \[
+        M \coloneqq \sum_{k = 1}^\infty |a_k| x_0^k\ ,\quad x \coloneqq \min \Bigl\{\frac{x_0}{2}, \frac{x_0}{2 M}\Bigr\}\ .
+    \]
+    于是
+    \[
+        |\underline a(x) - 1| = \Bigl|\sum_{k = 1}^\infty a_k x^k\Bigr| \leq \sum_{k = 1}^\infty |a_k| x^k = \sum_{k = 1}^\infty |a_k| x_0^k \Bigl(\frac{x}{x_0}\Bigr)^k \leq \frac{x}{x_0} \sum_{k = 1}^\infty |a_k| x_0^k = \frac{x}{x_0} M \leq \frac{1}{2}\ .
+    \]
+    进一步,
+    \[
+        |\underline a(x)| \geq 1 - |\underline a(x) - 1| \geq \frac{1}{2} > 0\ .
+    \]
+    因此
+    \[
+        |\underline b(x)| = \frac{1}{|\underline a(x)|} \in \R\ ,
+    \]
+    这说明 \(\rho_b \geq x > 0\).
+\end{proof}
+
+\begin{exercise}
+    设 \(f \coloneqq \sum f_k X^k \in \C[\![X]\!]\) 满足 \((1 - X - X^2) f = 1 \in \C[\![X]\!]\).
+    \begin{enumerate}
+        \item 证明 \(f\) 的系数满足
+        \[
+            f_0 = 1\ ,\quad f_1 = 1\ ,\quad f_{k + 1} = f_k + f_{k - 1}\ ,\quad k \in \N^\ast\ ,
+        \]
+        即 \((f_k)\) 是 Fibonacci 数列 (见练习 \ref{ex:fibonacci-sequence}).
+        \item \(f\) 的收敛半径是多少?
+    \end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    (1). 令 \(a \coloneqq 1 - X - X^2 \in \C[\![X]\!]\). 由于 \(a f = 1\), 于是
+    \[
+        f_0 = 1\ ,\quad f_k = - \sum_{j = 1}^k a_j f_{k - j}\ ,\quad k \in \N^\ast\ .
+    \]
+    特别的, \(f_1 = - a_1 f_0 = 1\). 而对于任意 \(k \geq 3\) 都有 \(a_k = 0\), 因此
+    \[
+        f_{k + 1} = - \sum_{j = 1}^{k + 1} a_j f_{k + 1 - j} = - (a_1 f_k + a_2 f_{k - 1}) = f_k + f_{k - 1}\ ,\quad k \in \N^\ast\ .
+    \]
+
+    (2). 由于
+    \[
+        \lim \frac{f_{k + 1}}{f_k} = \frac{1 + \sqrt{5}}{2}\ ,
+    \]
+    因此 \(\rho = 2 / (1 + \sqrt{5})\).
 \end{proof}
