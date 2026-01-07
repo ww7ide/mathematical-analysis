@@ -116,6 +116,8 @@ Section  9 Power Series                                               1  1, 26
 ## Chapter 3  Continuous Functions
 
 ```
-Section  1 Continuity                         1  6, 26
+Section  1 Continuity                                           1  6, 26
            Elementary Properties and Examples
+           Sequential Continuity                                1  7, 26
+           Addition and Multiplication of Continuous Functions
 ```
