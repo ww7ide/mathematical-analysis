@@ -81,7 +81,7 @@
             \node at (3.6,-0.2) {\(f(x_0)\)};
         \end{tikzpicture}
     \end{center}
-    进一步, 称 \(f\) 是连续的, 若 \(f\) 在 \(X\) 中的每一点处都连续. 并称 \(f\) 是不连续的, 若 \(f\) 在 \(X\) 中至少一点处不连续. 最后, 将从 \(X\) 到 \(Y\) 的连续函数的全体记作
+    进一步, 称 \(f\) 连续, 若 \(f\) 在 \(X\) 中的每一点处都连续. 并称 \(f\) 不连续, 若 \(f\) 在 \(X\) 中至少一点处不连续. 最后, 将从 \(X\) 到 \(Y\) 的连续函数的全体记作
     \[
         C(X, Y) \coloneqq \{\, f \in Y^X \;;\; f\ \text{连续} \,\}\ .
     \]
@@ -167,3 +167,212 @@
     \end{tikzpicture}
 \end{center}
 则 \(f\) 在 \(x_0\) 处连续, 这是因为对于任意 \(\varepsilon > 0\) 存在 \(\delta > 0\) 使得 \(U \coloneqq (x_0 - \delta, x_0 + \delta)\) 的像 \(f(U) \subseteq V \coloneqq \bigl(f(x_0) - \varepsilon, f(x_0) + \varepsilon\bigr)\). 另一方面, 不存在 \(\delta > 0\) 使得对于任意 \(x \in (x_1, x_1 + \delta)\) 都有 \(|f(x) - f(x_1)| < \varepsilon_1\), 因此 \(f\) 在 \(x_1\) 处不连续.
+
+\begin{example}
+    设 \(X\) 和 \(Y\) 是度量空间.
+    \begin{enumerate}
+        \item 平方根函数
+        \[
+            \R^+ \to \R^+\ ,\quad x \mapsto \sqrt{x}
+        \]
+        是连续的.
+        \item 下取整函数
+        \[
+            \lfloor \cdot \rfloor \colon \R \to \Z\ ,\quad x \mapsto \max\{\, k \in \Z \;;\; k \leq x \,\}
+        \]
+        在 \(x_0 \in \R \!\setminus\! \Z\) 处连续, 在 \(x_0 \in \Z\) 处不连续.
+        \item \textsl{Dirichlet 函数
+        \[
+            f \colon \R \to \R\ ,\quad x \mapsto
+            \begin{cases}
+                1\ , & x \in \Q\ , \\
+                0\ , & x \in \R \!\setminus\! \Q
+            \end{cases}
+        \]
+        } 无处连续, 即 \(f\) 在每个 \(x_0 \in \R\) 处都不连续.
+        \item 设函数 \(f \colon X \to \R\) 在 \(x_0 \in X\) 处连续且 \(f(x_0) > 0\). 则存在 \(x_0\) 的邻域 \(U\) 使得对于任意 \(x \in U\) 都有 \(f(x) > 0\).
+        \item \textsl{称函数 \(f \colon X \to Y\) 在 Lipschitz 常数 \(\alpha > 0\) 下 Lipschitz 连续, 若
+        \[
+            d_Y \big(f(x), f(y)\big) \leq \alpha d_X(x, y)\ ,\quad x, y \in X\ .
+        \]
+        } 每个 Lipschitz 连续函数都是连续的.
+        \item 任意常值函数
+        \[
+            X \to Y\ ,\quad x \mapsto y_0
+        \]
+        都是 Lipschitz 连续的.
+        \item 恒等映射
+        \[
+            \id \colon X \to X\ ,\quad x \mapsto x
+        \]
+        是 Lipschitz 连续的.
+        \item 设 \(\prod_j E_j\) 是赋范向量空间 \(E_1, \ldots, E_m\) 的积空间 (见例 \ref{eg:norms}(3)). 则典范投影
+        \[
+            \pr_k \colon \prod_{j = 1}^m E_j \to E_k\ ,\quad x = (x_1, \ldots, x_m) \mapsto x_k\ ,\quad 1 \leq k \leq m
+        \]
+        是 Lipschitz 连续的. 特别的, 投影 \(\pr_k \colon \K^m \to \K\) 是 Lipschitz 连续的.
+        \item \(\C\) 上的函数
+        \[
+            z \mapsto \Re z\ ,\quad z \mapsto \Im z\quad \text{和}\quad z \mapsto \overline z
+        \]
+        是 Lipschitz 连续的.
+        \item 设 \((E, \|\!\cdot\!\|)\) 是赋范向量空间. 则范数
+        \[
+            \|\!\cdot\!\| \colon E \to \R\ ,\quad x \mapsto \|x\|
+        \]
+        是 Lipschitz 连续的.
+        \item 设函数 \(f \colon X \to Y\) 在 \(x_0 \in A \subseteq X\) 处连续, 并赋予 \(A\) 诱导度量. 则 \(f|_A\) 在 \(x_0\) 处连续.
+        \item \textsl{设 \(M\) 是 \(X\) 的非空子集, \(x \in X\). 称
+        \[
+            d(x, M) \coloneqq \inf_{y \in M} d(x, y)
+        \]
+        是从 \(x\) 到 \(M\) 的距离.} 则距离函数
+        \[
+            d(\cdot, M) \colon X \to \R\ ,\quad x \mapsto d(x, M)
+        \]
+        是 Lipschitz 连续的.
+        \item 设 \(\bigl(E, \langle \cdot, \cdot \rangle\bigr)\) 是内积空间. 则内积
+        \[
+             \langle \cdot, \cdot \rangle \colon E \times E \to \K\ ,\quad (x, y) \mapsto \langle x, y \rangle
+        \]
+        是连续的.
+        \item 设 \(E\) 和 \(F\) 是赋范向量空间. 则函数 \(f \colon X \subseteq E \to F\) 在 \(x_0 \in X\) 处的连续性与 \(E\) 和 \(F\) 上等价范数的选择无关.
+        \item \textsl{称函数 \(f \colon X \to Y\) 是等距映射, 若
+        \[
+            d_Y \bigl(f(x), f(y)\bigr) = d_X(x, y)\ ,\quad x, y \in X\ ,
+        \]
+        即 \(f\) ``保持距离不变''.} 显然, 等距映射是 Lipschitz 连续的且是从 \(X\) 到其像 \(f(X)\) 的双射. 若 \(T \colon E \to F\) 是赋范向量空间之间的线性映射, 则 \(T\) 是等距的当且仅当对于任意 \(x \in E\) 都有 \(\|T x\|_F = \|x\|_E\). 进一步, 若 \(T\) 是满射, 则 \(T\) 是从 \(E\) 到 \(F\) 的等距同构, 且 \(T^{- 1}\) 也是等距的.
+    \end{enumerate}
+\end{example}
+
+\subsection{练习}
+
+\begin{exercise}
+    设
+    \[
+        \zigzag \colon \R \to \R\ ,\quad x \mapsto |\lfloor x + 1 / 2 \rfloor - x|\ .
+    \]
+    画出函数 \(\zigzag\) 的图像并证明以下命题.
+    \begin{enumerate}
+        \item 若 \(|x| \leq 1 / 2\), 则 \(\zigzag x = |x|\).
+        \item 若 \(x \in \R\) 且 \(n \in \Z\), 则 \(\zigzag(x + n) = \zigzag x\).
+        \item \(\zigzag\) 是连续的.
+    \end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[->] (-5,0) -- (7,0) node[right] {\(\R\)};
+            \draw[->] (0,-1) -- (0,3) node[above] {\(\R\)};
+
+            \draw[thick] (-4,0) -- (-2,2);
+            \node at (-4,0) [below]{\(-1\)};
+
+            \draw[thick] (-2,2) -- (0,0);
+            \draw[dashed] (-2,2) -- (-2,0) node[below] {\(- 1 / 2\)};
+
+            \draw[thick] (0,0) -- (2,2);
+            \draw[dashed] (2,2) -- (2,0) node[below] {\(1 / 2\)};
+
+            \draw[thick] (2,2) -- (4,0);
+            \node at (4,0) [below]{\(1\)};
+
+            \draw[thick] (4,0) -- (6,2);
+            \draw[dashed] (6,2) -- (6,0) node[below] {\(3 / 2\)};
+
+            \draw[dashed] (-2,2) -- (6,2);
+            \node at (-0.4,2.4) {\(1 / 2\)};
+        \end{tikzpicture}
+    \end{center}
+
+    (1) 和 (2) 易证.
+
+    (3). 由于当 \(x \in \R \!\setminus\! \Z\) 时 \(\lfloor \cdot \rfloor\) 是连续的, 而连续函数的加法与复合是连续的, 因此当 \(x \in \R \!\setminus\! \Z\) 时 \(\zigzag\) 是连续的. 只用证明当 \(x \in \Z\) 时 \(\zigzag\) 是连续的. 设 \(x_0 \in \Z\). 注意到 \(\zigzag x_0 = |\lfloor x_0 + 1 / 2 \rfloor - x_0| = |x_0 - x_0| = 0\). 任取 \(\varepsilon > 0\). 令 \(\delta \coloneqq \min\{\varepsilon, 1 / 2\}\). 于是对于任意 \(x \in (x_0 - \delta, x_0 + \delta)\) 存在 \(|r| < \delta\) 使得 \(x = x_0 + r\), 因此
+    \[
+        |\zigzag x - \zigzag x_0| = \zigzag x = \zigzag(x_0 + r) = \zigzag r = |r| < \delta \leq \varepsilon\ ,
+    \]
+    故 \(\zigzag\) 在 \(x_0\) 处连续.
+\end{proof}
+
+\begin{exercise}
+    设 \(q \in \Q\). 证明函数
+    \[
+        (0, \infty) \to (0, \infty)\ ,\quad x \mapsto x^q
+    \]
+    是连续的.\footnote{在第 3.6 节中, 我们将研究函数 \(x \mapsto x^q\) 更一般的情况.} (提示: 见练习 \ref{ex:sequence-power-equal-limit-power}.)
+\end{exercise}
+
+\begin{proof}
+    设 \((x_n)\) 是 \((0, \infty)\) 中的序列且 \(x_n \to x \in (0, \infty)\). 由于 \(\lim (x_n)^q = x^q\), 因此 \(x \mapsto x^q\) 是序列连续的, 于是 \(x \mapsto x^q\) 是连续的.
+\end{proof}
+
+\begin{exercise}
+    设
+    \[
+        \varphi \colon \R \to (- 1, 1)\ ,\quad x \mapsto \frac{x}{1 + |x|}\ .
+    \]
+    证明 \(\varphi\) 是双射, 且 \(\varphi\) 和 \(\varphi^{- 1}\) 是连续的.
+\end{exercise}
+
+\begin{proof}
+    定义
+    \[
+        \psi \colon (- 1, 1) \to \R\ ,\quad y \mapsto \frac{y}{1 - |y|}\ .
+    \]
+    不难验证 \(\psi \circ \varphi = \id_\R\) 且 \(\varphi \circ \psi = \id_{(- 1, 1)}\), 因此 \(\varphi\) 是双射且 \(\varphi^{- 1} = \psi\). 而连续函数的加法与除法是连续的, 因此 \(\varphi\) 和 \(\psi\) 是连续的.
+\end{proof}
+
+\begin{exercise}
+    证明或证伪函数
+    \[
+        f \colon \Q \to \R\ ,\quad x \mapsto
+        \begin{cases}
+            0\ , & x < \sqrt{2}\ , \\
+            1\ , & x > \sqrt{2}
+        \end{cases}
+    \]
+    是连续的.
+\end{exercise}
+
+\begin{proof}
+    设 \((x_n)\) 是 \(\Q\) 中的序列且 \(x_n \to x \in \Q\). 假设 \(x < \sqrt{2}\). 则存在 \(\varepsilon > 0\) 使得 \(x + \varepsilon < \sqrt{2}\), 于是存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(x_n < x+ \varepsilon < \sqrt{2}\). 因此当 \(n \geq N\) 时 \(f(x_n) = 0\), 这说明 \(f(x_n) \to f(x) = 0\). 假设 \(x > \sqrt{2}\). 同理可得 \(f(x_n) \to f(x) = 1\). 因此 \(f\) 是序列连续的, 故 \(f\) 是连续的.
+\end{proof}
+
+\begin{exercise}
+    \textsl{设 \(d_1\) 和 \(d_2\) 是 \(X\) 上的度量, 记 \(X_1 \coloneqq (X, d_1)\), \(X_2 \coloneqq (X, d_2)\). 若对于任意 \(x \in X\) 都有 \(\nbr_{X_2}(x) \subseteq \nbr_{X_1}(x)\), 即每个点在 \(d_1\) 下拥有的邻域比在 \(d_2\) 下更多, 则称 \(d_1\) 比 \(d_2\) 更强, 或 \(d_2\) 比 \(d_1\) 更弱.} 证明以下命题.
+    \begin{enumerate}
+        \item \(d_1\) 比 \(d_2\) 更强当且仅当恒等映射
+        \[
+            i \colon X_1 \to X_2\ ,\quad x \mapsto x
+        \]
+        是连续的.
+        \item \(d_1\) 和 \(d_2\) 等价当且仅当 \(d_1\) 比 \(d_2\) 更强且更弱, 即对于任意 \(x \in X\) 都有 \(\nbr_{X_1}(x) = \nbr_{X_2}(x)\).
+    \end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    (1). \(\implies\). 设 \(d_1\) 比 \(d_2\) 更强, \(x \in X\). 任取 \(V \in \nbr_{X_2}(x)\). 由于 \(\nbr_{X_2}(x) \subseteq \nbr_{X_1}(x)\), 于是 \(U \coloneqq V \in \nbr_{X_1}(x)\), 而 \(i(U) = U \subseteq V\), 因此 \(i\) 是连续的.
+
+    \(\impliedby\). 设 \(i\) 是连续的, \(x \in X\). 任取 \(V \in \nbr_{X_2}(x)\). 于是存在 \(U \in \nbr_{X_1}(x)\) 使得 \(i(U) = U \subseteq V\), 因此 \(V \in \nbr_{X_1}(x)\). 进一步, \(\nbr_{X_2}(x) \subseteq \nbr_{X_1}(x)\).
+
+    (2). \(\implies\). 设 \(d_1\) 和 \(d_2\) 等价, \(x \in X\). 任取 \(U \in \nbr_{X_1}(x)\). 由邻域和等价度量的定义可知, 存在 \(r_1, r_2 > 0\) 使得 \(\B_{X_2}(x, r_2) \subseteq \B_{X_1}(x, r_1) \subseteq U\), 因此 \(U \in \nbr_{X_2}(x)\). 于是 \(\nbr_{X_1}(x) \subseteq \nbr_{X_2}(x)\). 同理可得 \(\nbr_{X_2}(x) \subseteq \nbr_{X_1}(x)\).
+
+    \(\impliedby\). 设对于任意 \(x \in X\) 都有 \(\nbr_{X_1}(x) = \nbr_{X_2}(x)\). 任取 \(x \in X\) 和 \(\varepsilon > 0\). 由于 \(\B_{X_2}(x, \varepsilon) \in \nbr_{X_2}(x) = \nbr_{X_1}(x)\), 于是存在 \(r_1 > 0\) 使得 \(\B_{X_1}(x, r_1) \subseteq \B_{X_2}(x, \varepsilon)\). 同理可得, 存在 \(r_2 > 0\) 使得 \(\B_{X_2}(x, r_2) \subseteq \B_{X_1}(x, \varepsilon)\). 因此 \(d_1\) 和 \(d_2\) 等价.
+\end{proof}
+
+\begin{exercise}
+    设 \(f \colon \R \to \R\) 是加法群 \((\R, +)\) 上的连续\footnote{可以证明 \((\R, +)\) 上存在不连续的群自同态.}群自同态. 证明 \(f\) 是线性的. (提示: 证明对于任意 \(r \in \Q\) 和 \(x \in \R\) 都有 \(f(r x) = r f(x)\), 并利用命题 \ref{prop:Q-density-in-R}.)
+\end{exercise}
+
+\begin{proof}
+    设 \(r \coloneqq p / q \in \Q\). 由于 \(f\) 是群同态, 于是
+    \[
+        f(x) = f \Bigl(q \cdot \frac{x}{q}\Bigr) = f \Bigl(\underbrace{\frac{x}{q} + \cdots + \frac{x}{q}}_{q\, \text{个}}\Bigr) = q f \Bigl(\frac{x}{q}\Bigr)\ ,\quad x \in \R\ ,
+    \]
+    因此 \(f(x / q) = f(x) / q\). 进一步,
+    \[
+        f(r x) = f \Bigl(\underbrace{\frac{x}{q} + \cdots + \frac{x}{q}}_{p\, \text{个}}\Bigr) = p f \Bigl(\frac{x}{q}\Bigr) = \frac{p}{q} f(x) = r f(x)\ ,\quad x \in \R\ .
+    \]
+    设 \(\alpha, x \in R\). 考虑 \(\R\) 中的序列 \((\alpha - 1 / n)\) 和 \((\alpha + 1 / n)\). 由有理数的稠密性可知, 对于任意 \(n \in \N^\ast\) 存在 \(r_n \in \Q\) 使得 \(\alpha - 1 / n \leq r_n \leq \alpha + 1 / n\), 显然有理数列 \(r_n \to \alpha\). 进一步, \(r_n x \to \alpha x\) 且 \(r_n f(x) \to \alpha f(x)\). 而 \(f\) 连续, 因此 \(f\) 序列连续, 于是 \(f(r_n x) = r_n f(x) \to f(\alpha x)\). 由极限的唯一性可知 \(f(\alpha x) = \alpha f(x)\).
+\end{proof}

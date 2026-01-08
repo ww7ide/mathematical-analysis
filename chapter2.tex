@@ -151,7 +151,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \[
             d(x, y) \coloneqq \max_{1 \leq j \leq m} d_j(x_j, y_j)\ ,\quad x, y \in X
         \]
-        是 \(X\) 上的度量, 称为积度量. 进一步, 称 \((X, d)\) 是 \((X_j, d_j)\) 的积空间. 可以验证, 对于任意 \(a \in X\) 和 \(r > 0\) 都有
+        是 \(X\) 上的度量, 称为积度量. 进一步, 称 \((X, d)\) 是 \((X_j, d_j),\ 1 \leq j \leq m\) 的积空间. 可以验证, 对于任意 \(a \in X\) 和 \(r > 0\) 都有
         \[
             \B_X(a, r) = \prod_{j = 1}^m \B_{X_j}(a_j, r)\ ,\quad \bar \B_X(a, r) = \prod_{j = 1}^m \bar \B_{X_j}(a_j, r)\ .
         \]
@@ -1162,7 +1162,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \[
             \|x\|_\infty \coloneqq \max_{1 \leq j \leq m} \|x_j\|_j\ ,\quad x \in E
         \]
-        是积向量空间 \(E\) 上的范数, 称为积范数. 当 \(d_j\) 是 \(\|\!\cdot\!\|_j\) 在 \(E_j\) 上诱导的度量时, 则 \(\|\!\cdot\!\|_\infty\) 在 \(E\) 上诱导的度量与例 \ref{eg:metric}(5) 中的积度量是一致的.
+        是 \(E\) 上的范数, 称为积范数. 进一步, 称 \((E, \|\!\cdot\!\|_\infty)\) 是 \((E_j, \|\!\cdot\!\|_j),\ 1 \leq j \leq m\) 的积空间. 当 \(d_j\) 是 \(\|\!\cdot\!\|_j\) 在 \(E_j\) 上诱导的度量时, 则 \(\|\!\cdot\!\|_\infty\) 在 \(E\) 上诱导的度量与例 \ref{eg:metric}(5) 中的积度量是一致的.
         \begin{proof}
             显然 \hyperref[ax:norm]{\((\mathrm N_1)\)} 成立.
             \[
@@ -2933,14 +2933,14 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \begin{proof}
     (1). 先证明 \(\varphi\) 是严格递增的. 设 \(x_1, x_2 \in \R\) 且 \(x_1 < x_2\). 于是
     \[
-        \varphi(x_1) - \varphi(x_2) = \frac{x_1}{1 + |x_1|} - \frac{x_2}{1 + |x_2|} = \frac{x_1 - x_2 + x_1 |x_2| - x_2 |x_1|}{(1 + |x_1|) (1 + |x_2|)}\ ,
+        \varphi(x_1) - \varphi(x_2) = \frac{x_1}{1 + |x_1|} - \frac{x_2}{1 + |x_2|} = \frac{x_1 - x_2 + x_1\, |x_2| - x_2\, |x_1|}{(1 + |x_1|) (1 + |x_2|)}\ ,
     \]
     而 \(x_1 - x_2 < 0\) 且
     \[
         \begin{array}{ll}
-            x_1 |x_2| - x_2 |x_1| = - x_1 x_2 + x_2 x_1 = 0\ , & x_1 < x_2 \leq 0\ , \\
-            x_1 |x_2| - x_2 |x_1| = x_1 x_2 + x_2 x_1 = 2 x_1 x_2 \leq 0\ , & x_1 \leq 0 < x_2\ , \\
-            x_1 |x_2| - x_2 |x_1| = x_1 x_2 - x_2 x_1 = 0\ , & 0 < x_1 < x_2\ .
+            x_1\, |x_2| - x_2\, |x_1| = - x_1 x_2 + x_2 x_1 = 0\ , & x_1 < x_2 \leq 0\ , \\
+            x_1\, |x_2| - x_2\, |x_1| = x_1 x_2 + x_2 x_1 = 2 x_1 x_2 \leq 0\ , & x_1 \leq 0 < x_2\ , \\
+            x_1\, |x_2| - x_2\, |x_1| = x_1 x_2 - x_2 x_1 = 0\ , & 0 < x_1 < x_2\ .
         \end{array}
     \]
     因此 \(\varphi(x_1) < \varphi(x_2)\). 显然对于任意 \(x \in \R\) 都有 \(\varphi(- \infty) = - 1 < \varphi(x) < 1 = \varphi(\infty)\). 故 \(\varphi\) 是严格递增的. 下面证明 \(\varphi\) 是双射. 考虑函数

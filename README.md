@@ -120,4 +120,6 @@ Section  1 Continuity                                           1  6, 26
            Elementary Properties and Examples
            Sequential Continuity                                1  7, 26
            Addition and Multiplication of Continuous Functions
+           One-Sided Continuity                                 1  8, 26
+           Exercises
 ```
