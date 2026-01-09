@@ -122,4 +122,5 @@ Section  1 Continuity                                           1  6, 26
            Addition and Multiplication of Continuous Functions
            One-Sided Continuity                                 1  8, 26
            Exercises
+           Exercises                                            1  9, 26
 ```

@@ -176,11 +176,34 @@
             \R^+ \to \R^+\ ,\quad x \mapsto \sqrt{x}
         \]
         是连续的.
+        \begin{proof}
+            设 \(x_0 \in \R^+\). 任取 \(\varepsilon > 0\). 若 \(x_0 = 0\). 令 \(\delta \coloneqq \varepsilon^2\). 于是
+            \[
+                \bigl|\sqrt{x} - \sqrt{x_0}\bigr| = \sqrt{x} < \varepsilon\ ,\quad x \in [0, \delta)\ .
+            \]
+            若 \(x_0 > 0\). 令 \(\delta \coloneqq \min \bigl\{\varepsilon \sqrt{x_0}, x_0\bigr\}\). 于是
+            \[
+                \bigl|\sqrt{x} - \sqrt{x_0}\bigr| = \Bigl|\frac{x - x_0}{\sqrt{x} + \sqrt{x_0}}\Bigr| < \frac{|x - x_0|}{\sqrt{x_0}} \leq \varepsilon\ ,\quad x \in (x_0 - \delta, x_0 + \delta)\ .
+            \]
+        \end{proof}
         \item 下取整函数
         \[
             \lfloor \cdot \rfloor \colon \R \to \Z\ ,\quad x \mapsto \max\{\, k \in \Z \;;\; k \leq x \,\}
         \]
         在 \(x_0 \in \R \!\setminus\! \Z\) 处连续, 在 \(x_0 \in \Z\) 处不连续.
+        \begin{proof}
+            设 \(x_0 \in \R \!\setminus\! \Z\). 则存在唯一的 \(k \in \Z\) 使得 \(k < x_0 < k + 1\). 令 \(\delta \coloneqq \min\{x_0 - k, k + 1 - x_0\}\). 于是
+            \[
+                \bigl|\lfloor x \rfloor - \lfloor x_0 \rfloor\bigr| = 0\ ,\quad x \in (x_0 - \delta, x_0 + \delta)\ ,
+            \]
+            因此 \(\lfloor \cdot \rfloor\) 在 \(x_0\) 处连续.
+
+            设 \(x_0 \in \Z\). 由于
+            \[
+                \bigl|\lfloor x \rfloor - \lfloor x_0 \rfloor\bigr| = \lfloor x_0 \rfloor - \lfloor x \rfloor \geq 1\ ,\quad x < x_0\ ,
+            \]
+            因此对于任意 \(\delta > 0\) 存在 \(x \in (x_0 - \delta, x_0 + \delta)\) 使得 \(\bigl|\lfloor x \rfloor - \lfloor x_0 \rfloor\bigr| \geq 1\). 这说明 \(\lfloor \cdot \rfloor\) 在 \(x_0\) 处不连续.
+        \end{proof}
         \item \textsl{Dirichlet 函数
         \[
             f \colon \R \to \R\ ,\quad x \mapsto
@@ -190,7 +213,10 @@
             \end{cases}
         \]
         } 无处连续, 即 \(f\) 在每个 \(x_0 \in \R\) 处都不连续.
-        \item 设函数 \(f \colon X \to \R\) 在 \(x_0 \in X\) 处连续且 \(f(x_0) > 0\). 则存在 \(x_0\) 的邻域 \(U\) 使得对于任意 \(x \in U\) 都有 \(f(x) > 0\).
+        \begin{proof}
+            设 \(x_0 \in \R\). 由于有理数 \(\Q\) 和无理数 \(\R \!\setminus\! \Q\) 在 \(\R\) 中稠密 (见命题 \ref{prop:Q-density-in-R} 和命题 \ref{prop:irQ-density-in-R}), 于是对于任意 \(x_0\) 的邻域 \(U\) 存在 \(x \in U\) 使得 \(|f(x) - f(x_0)| = 1\), 因此 \(f\) 在 \(x_0\) 处不连续.
+        \end{proof}
+        \item 设 \(f \colon X \to \R\) 在 \(x_0 \in X\) 处连续且 \(f(x_0) > 0\). 则存在 \(x_0\) 的邻域 \(U\) 使得对于任意 \(x \in U\) 都有 \(f(x) > 0\).
         \item \textsl{称函数 \(f \colon X \to Y\) 在 Lipschitz 常数 \(\alpha > 0\) 下 Lipschitz 连续, 若
         \[
             d_Y \big(f(x), f(y)\big) \leq \alpha d_X(x, y)\ ,\quad x, y \in X\ .
@@ -221,7 +247,7 @@
             \|\!\cdot\!\| \colon E \to \R\ ,\quad x \mapsto \|x\|
         \]
         是 Lipschitz 连续的.
-        \item 设函数 \(f \colon X \to Y\) 在 \(x_0 \in A \subseteq X\) 处连续, 并赋予 \(A\) 诱导度量. 则 \(f|_A\) 在 \(x_0\) 处连续.
+        \item 设 \(f \colon X \to Y\) 在 \(x_0 \in A \subseteq X\) 处连续, 并赋予 \(A\) 诱导度量. 则 \(f|_A\) 在 \(x_0\) 处连续.
         \item \textsl{设 \(M\) 是 \(X\) 的非空子集, \(x \in X\). 称
         \[
             d(x, M) \coloneqq \inf_{y \in M} d(x, y)
@@ -374,5 +400,117 @@
     \[
         f(r x) = f \Bigl(\underbrace{\frac{x}{q} + \cdots + \frac{x}{q}}_{p\, \text{个}}\Bigr) = p f \Bigl(\frac{x}{q}\Bigr) = \frac{p}{q} f(x) = r f(x)\ ,\quad x \in \R\ .
     \]
-    设 \(\alpha, x \in R\). 考虑 \(\R\) 中的序列 \((\alpha - 1 / n)\) 和 \((\alpha + 1 / n)\). 由有理数的稠密性可知, 对于任意 \(n \in \N^\ast\) 存在 \(r_n \in \Q\) 使得 \(\alpha - 1 / n \leq r_n \leq \alpha + 1 / n\), 显然有理数列 \(r_n \to \alpha\). 进一步, \(r_n x \to \alpha x\) 且 \(r_n f(x) \to \alpha f(x)\). 而 \(f\) 连续, 因此 \(f\) 序列连续, 于是 \(f(r_n x) = r_n f(x) \to f(\alpha x)\). 由极限的唯一性可知 \(f(\alpha x) = \alpha f(x)\).
+    设 \(\alpha, x \in R\). 考虑 \(\R\) 中的序列 \((\alpha - 1 / n)\) 和 \((\alpha + 1 / n)\). 由有理数的稠密性可知, 对于任意 \(n \in \N^\ast\) 存在 \(\alpha_n \in \Q\) 使得 \(\alpha - 1 / n \leq \alpha_n \leq \alpha + 1 / n\), 显然 \(\alpha_n \to \alpha\). 进一步, \(\alpha_n x \to \alpha x\) 且 \(\alpha_n f(x) \to \alpha f(x)\). 而 \(f\) 连续, 因此 \(f\) 序列连续, 于是 \(f(\alpha_n x) = \alpha_n f(x) \to f(\alpha x)\). 由极限的唯一性可知 \(f(\alpha x) = \alpha f(x)\).
+\end{proof}
+
+\begin{exercise}
+    设
+    \[
+        f \colon \R \to \R\ ,\quad x \mapsto
+        \begin{cases}
+            - 1\ ,   & x \geq 1\ , \\
+            1 / n\ , & 1 / (n + 1) \leq x < 1 / n\ ,\quad n \in \N^\ast\ , \\
+            0\ ,     & x \leq 0\ .
+        \end{cases}
+    \]
+    \(f\) 在何处连续? 左连续? 右连续?
+\end{exercise}
+
+\begin{proof}
+    考虑序列 \((1 - 1 / n)\). 显然 \(1 - 1 / n \to 1\), 而
+    \[
+        \frac{1}{2} \leq 1 - \frac{1}{n} < 1\ ,\quad n \geq 2\ .
+    \]
+    于是当 \(n \geq 2\) 时 \(f(1 - 1 / n) = 1\), 因此 \(f(1 - 1 / n) \to 1 \neq f(1)\), 故 \(f\) 在 \(1\) 处不是左连续的.
+
+    设 \((x_n)\) 是 \([0, 1)\) 中的序列且 \(x_n \to 0\). 任取 \(\varepsilon > 0\). 于是存在 \(N \in \N\) 使得
+    \[
+        x_n < \frac{1}{N} < \varepsilon\ ,\quad n \geq N\ .
+    \]
+    进一步,
+    \[
+        |f(x_n)| = f(x_n) \leq \frac{1}{N} < \varepsilon\ ,\quad n \geq N\ .
+    \]
+    因此 \(f(x_n) \to f(0) = 0\), 这说明 \(f\) 在 \(0\) 处右连续.
+
+    现在考虑 \(f\) 在 \((0, 1)\) 上的连续性. 设 \(x_0 \coloneqq 1 / (n + 1) \in (0, 1)\) 其中 \(n \in \N^\ast\). 令 \(\varepsilon \coloneqq 1 / n^2\). 显然对于任意 \(\delta > 0\) 存在 \(x \in (x_0 - \delta, x_0)\) 使得
+    \[
+        \frac{1}{n + 2} \leq x < x_0 = \frac{1}{n + 1}\ .
+    \]
+    进一步,
+    \[
+        |f(x) - f(x_0)| = \Bigl|\frac{1}{n + 2} - \frac{1}{n + 1}\Bigr| = \frac{1}{(n + 1)(n + 2)} > \frac{1}{n^2} = \varepsilon\ .
+    \]
+    因此 \(f\) 在 \(x_0\) 处不是左连续的. 设 \(x_0 \in (0, 1)\) 且 \(x_0 \neq 1 / (n + 1)\). 于是存在 \(n \in \N\) 使得 \(1 / (n + 1) < x_0 < 1 / n\). 令 \(\delta \coloneqq \min\{x_0 - 1 / (n + 1), 1 / n - x_0\}\). 于是
+    \[
+        |f(x) - f(x_0)| = \frac{1}{n} - \frac{1}{n} = 0\ ,\quad x \in (x_0 - \delta, x_0 + \delta)\ ,
+    \]
+    因此 \(f\) 在 \(x_0\) 处连续.
+\end{proof}
+
+\begin{exercise}
+    设 \(X\) 是度量空间, \(f, g \in \R^X\) 在 \(x_0 \in X\) 处连续. 证明或证伪
+    \[
+        |f|\ ,\quad f^+ \coloneqq 0 \vee f\ ,\quad f^- \coloneqq 0 \vee (- f)\ ,\quad f \vee g\ ,\quad f \wedge g
+    \]
+    在 \(x_0\) 处连续.
+\end{exercise}
+
+\begin{exercise}
+    设
+    \[
+        f \colon \R \to \R\ ,\quad x \mapsto
+        \begin{cases}
+            1\ ,   & x \in \Q\ , \\
+            - 1\ , & x \in \R \!\setminus\! \Q\ ,
+        \end{cases}
+        \quad g \colon \R \to \R\ ,\quad x \mapsto
+        \begin{cases}
+            x\ ,   & x \in \Q\ , \\
+            - x\ , & x \in \R \!\setminus\! \Q\ .
+        \end{cases}
+    \]
+    函数 \(f\), \(g\), \(|f|\), \(|g|\) 和 \(f \cdot g\) 在何处连续?
+\end{exercise}
+
+\begin{proof}
+    显然 \(f\) 无处连续. 而常值函数 \(|f| \colon x \mapsto 1\) 与恒等映射 \(f \cdot g \colon x \mapsto x\) 连续. 注意到,
+    \[
+        |g|(x) = |g(x)| = |x|\ ,\quad x \in \R\ ,
+    \]
+    因此绝对值函数 \(|g|\) 连续. 任取 \(\varepsilon > 0\). 由于
+    \[
+        |g(x) - g(0)| = |g(x)| = |x| < \varepsilon\ ,\quad x \in (- \varepsilon, \varepsilon)\ ,
+    \]
+    因此 \(g\) 在 \(0\) 处连续. 显然 \(g\) 在 \(\R \!\setminus\! \{0\}\) 上不连续.
+\end{proof}
+
+\begin{exercise}
+    证明 \textsl{Thomae 函数
+    \[
+        f \colon \R \to \R\ ,\quad x \mapsto
+        \begin{cases}
+            1 / n\ , & x \in \Q\ \text{且}\ x = m / n\ \text{是既约分数}\ , \\
+            0\ ,     & x \in \R \!\setminus\! \Q\ .
+        \end{cases}
+    \]
+    } 在每个无理数点连续, 但在每个有理数点不连续.\footnote{可以证明不存在函数 \(f \colon \R \to \R\) 满足: \(f\) 在每个有理数点连续, 但在每个无理数点不连续.}
+\end{exercise}
+
+\begin{proof}
+    设 \(x = m / n \in \Q\). 由无理数的稠密性可知, 对于任意 \(n \in \N^\ast\) 存在 \(x_n \in \R \!\setminus\! \Q\) 使得 \(x - 1 / n \leq x_n \leq x + 1 / n\), 显然 \(x_n \to x\). 而 \(f(x_n) \to 0 \neq f(x)\), 因此 \(f\) 在 \(x\) 处不连续.
+
+    设 \(x \in \R \!\setminus\! \Q\). 任取 \(\varepsilon > 0\). 显然集合 \(A \coloneqq \{\, n \in \N^\ast \;;\; n \leq 1 / \varepsilon \,\}\) 是有限的. 于是对于任意 \(n \in A\) 存在 \(m \in \Z\) 使得
+    \[
+        \frac{m}{n} < x < \frac{m + 1}{n}\ .
+    \]
+    令 \(\delta_n \coloneqq \min\{x - m / n, (m + 1) / n - x\}\). 因此对于任意 \(m \in \Z\) 都有 \(m / n \notin (x - \delta_n, x + \delta_n)\). 进一步, 令 \(\delta \coloneqq \min_{n \in A} \delta_n\). 于是
+    \[
+        \frac{m}{n} \notin (x - \delta, x + \delta)\ ,\quad n \in A\ ,\quad m \in \Z\ .
+    \]
+    这说明 \((x - \delta, x + \delta)\) 中不存在分母小于或等于 \(1 / \varepsilon\) 的有理数, 因此
+    \[
+        |f(y) - f(x)| = f(y) = \frac{1}{n} < \varepsilon\ ,\quad y = m / n \in (x - \delta, x + \delta)\ ,
+    \]
+    故 \(f\) 在 \(x\) 处连续.
 \end{proof}
