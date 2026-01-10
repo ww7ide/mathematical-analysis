@@ -1359,7 +1359,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         |\langle x, y \rangle|^2 < \langle x, x \rangle \langle y, y \rangle\ ,\quad x, y \in E\ .
     \]
 
-    设 \(x\) 和 \(y\) 线性相关. 则存在 \((\alpha, \beta) \in \K^2 \!\setminus\! \{0\}\) 使得 \(\alpha x + \beta y = 0\). 不失一般性, 设 \(\alpha \neq 0\), 则 \(x = - (\beta / \alpha) y\), 于是
+    设 \(x\) 和 \(y\) 线性相关. 则存在 \((\alpha, \beta) \in \K^2 \backslash \{0\}\) 使得 \(\alpha x + \beta y = 0\). 不失一般性, 设 \(\alpha \neq 0\), 则 \(x = - (\beta / \alpha) y\), 于是
     \[
         |\langle x, y \rangle|^2 = \Bigl|\Bigl\langle - \frac{\beta}{\alpha} y, y \Bigr\rangle\Bigr|^2 = \Bigl|\frac{\beta}{\alpha}\Bigr|^2 \langle y, y \rangle^2 = \Bigl\langle - \frac{\beta}{\alpha} y, - \frac{\beta}{\alpha} y \Bigr\rangle \langle y, y \rangle = \langle x, x \rangle \langle y, y \rangle\ ,\quad x, y \in E\ .
     \]
@@ -1681,7 +1681,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \begin{exercise}
     设 \(\bigl(E, \langle \cdot, \cdot \rangle\bigr)\) 是实内积空间. 证明不等式
     \[
-        (\|x\| + \|y\|) \frac{\langle x, y \rangle}{\|x\|\, \|y\|} \leq \|x + y\| \leq \|x\| + \|y\|\ ,\quad x, y \in E \!\setminus\! \{0\}\ .
+        (\|x\| + \|y\|) \frac{\langle x, y \rangle}{\|x\|\, \|y\|} \leq \|x + y\| \leq \|x\| + \|y\|\ ,\quad x, y \in E \backslash \{0\}\ .
     \]
     什么时候等号成立? (提示: 将第一个不等式两边同时平方.)
 \end{exercise}
@@ -3021,7 +3021,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{example}
 
 \begin{proof}
-    显然对于任意 \(n \in \N\) 都有 \(x_n \in \Q\). 进一步, 由练习 \ref{ex:heron-method} 可知 \((x_n)\) 收敛到 \(\sqrt{2} \in \R\), 因此由命题 \ref{prop:convergent-sequence-is-cauchy-sequence} 可知 \((x_n)\) 是 \(\R\) 中 Cauchy 序列, 于是也是 \(\Q\) 中的 Cauchy 序列. 注意到 \(\sqrt{2} \in \R \!\setminus\! \Q\), 因此由极限的唯一性可知 \((x_n)\) 在 \(\Q\) 中发散.
+    显然对于任意 \(n \in \N\) 都有 \(x_n \in \Q\). 进一步, 由练习 \ref{ex:heron-method} 可知 \((x_n)\) 收敛到 \(\sqrt{2} \in \R\), 因此由命题 \ref{prop:convergent-sequence-is-cauchy-sequence} 可知 \((x_n)\) 是 \(\R\) 中 Cauchy 序列, 于是也是 \(\Q\) 中的 Cauchy 序列. 注意到 \(\sqrt{2} \in \R \backslash \Q\), 因此由极限的唯一性可知 \((x_n)\) 在 \(\Q\) 中发散.
 \end{proof}
 
 \begin{proposition}\label{prop:cauchy-sequence-is-bounded}
@@ -3250,7 +3250,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 
     若 \(E\) 中有无穷多个元素. 则我们同样递归的构造序列 \((n_k)\),
     \[
-        n_0 \coloneqq \min E\ ,\quad E_1 \coloneqq E \!\setminus\! \{n_0\}\ ,\quad n_k \coloneqq \min E_k\ ,\quad E_{k + 1} \coloneqq E_k \!\setminus\! \{n_k\}\ ,\quad k \in \N^\ast\ . 
+        n_0 \coloneqq \min E\ ,\quad E_1 \coloneqq E \backslash \{n_0\}\ ,\quad n_k \coloneqq \min E_k\ ,\quad E_{k + 1} \coloneqq E_k \backslash \{n_k\}\ ,\quad k \in \N^\ast\ . 
     \]
     显然 \((n_k)\) 是严格递增的, 于是由 \(E\) 的定义可知 \((x_{n_k})\) 是递减的.
 \end{proof}
@@ -3758,7 +3758,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \begin{proof}
     假设 \(\R\) 是可数的. 于是由命题 \ref{prop:subset-of-countable-set-is-countable} 可知区间 \([0, 1) \subseteq \R\) 是可数的. 由定理 \ref{thm:base-g-expansion-of-real-numbers} 可知, 在排除尾随 \(2\) 的展开后, 任意 \(x \in [0, 1)\) 都有唯一的三进制展开, 于是再次由命题 \ref{prop:subset-of-countable-set-is-countable} 可知
     \[
-        X \coloneqq \{\, x \in (0, 1) \;;\; x\ \text{的三进制展开不含}\ 2 \,\} \subseteq [0, 1)
+        X \coloneqq \bigl\{\, x \in (0, 1) \;;\; x\ \text{的三进制展开不含}\ 2 \,\bigr\} \subseteq [0, 1)
     \]
     是可数的. 显然 \(X\) 与 \(\{0, 1\}^\N\) 是等势的, 因此 \(\{0, 1\}^\N\) 是可数的, 这与命题 \ref{prop:infinite-product-of-countable-set-is-uncountable} 矛盾.
 \end{proof}

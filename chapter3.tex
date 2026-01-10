@@ -190,9 +190,9 @@
         \[
             \lfloor \cdot \rfloor \colon \R \to \Z\ ,\quad x \mapsto \max\{\, k \in \Z \;;\; k \leq x \,\}
         \]
-        在 \(x_0 \in \R \!\setminus\! \Z\) 处连续, 在 \(x_0 \in \Z\) 处不连续.
+        在 \(x_0 \in \R \backslash \Z\) 处连续, 在 \(x_0 \in \Z\) 处不连续.
         \begin{proof}
-            设 \(x_0 \in \R \!\setminus\! \Z\). 则存在唯一的 \(k \in \Z\) 使得 \(k < x_0 < k + 1\). 令 \(\delta \coloneqq \min\{x_0 - k, k + 1 - x_0\}\). 于是
+            设 \(x_0 \in \R \backslash \Z\). 则存在唯一的 \(k \in \Z\) 使得 \(k < x_0 < k + 1\). 令 \(\delta \coloneqq \min\{x_0 - k, k + 1 - x_0\}\). 于是
             \[
                 \bigl|\lfloor x \rfloor - \lfloor x_0 \rfloor\bigr| = 0\ ,\quad x \in (x_0 - \delta, x_0 + \delta)\ ,
             \]
@@ -209,19 +209,33 @@
             f \colon \R \to \R\ ,\quad x \mapsto
             \begin{cases}
                 1\ , & x \in \Q\ , \\
-                0\ , & x \in \R \!\setminus\! \Q
+                0\ , & x \in \R \backslash \Q
             \end{cases}
         \]
         } 无处连续, 即 \(f\) 在每个 \(x_0 \in \R\) 处都不连续.
         \begin{proof}
-            设 \(x_0 \in \R\). 由于有理数 \(\Q\) 和无理数 \(\R \!\setminus\! \Q\) 在 \(\R\) 中稠密 (见命题 \ref{prop:Q-density-in-R} 和命题 \ref{prop:irQ-density-in-R}), 于是对于任意 \(x_0\) 的邻域 \(U\) 存在 \(x \in U\) 使得 \(|f(x) - f(x_0)| = 1\), 因此 \(f\) 在 \(x_0\) 处不连续.
+            设 \(x_0 \in \R\). 由于有理数 \(\Q\) 和无理数 \(\R \backslash \Q\) 在 \(\R\) 中稠密 (见命题 \ref{prop:Q-density-in-R} 和命题 \ref{prop:irQ-density-in-R}), 于是对于任意 \(x_0\) 的邻域 \(U\) 存在 \(x \in U\) 使得 \(|f(x) - f(x_0)| = 1\), 因此 \(f\) 在 \(x_0\) 处不连续.
         \end{proof}
         \item 设 \(f \colon X \to \R\) 在 \(x_0 \in X\) 处连续且 \(f(x_0) > 0\). 则存在 \(x_0\) 的邻域 \(U\) 使得对于任意 \(x \in U\) 都有 \(f(x) > 0\).
+        \begin{proof}
+            令 \(\varepsilon \coloneqq f(x_0)\). 于是存在 \(x_0\) 的邻域 \(U\) 使得
+            \[
+                f(x_0) - f(x) \leq |f(x) - f(x_0)| < \varepsilon\ ,\quad x \in U\ ,
+            \]
+            因此对于任意 \(x \in U\) 都有 \(f(x) > f(x_0) - \varepsilon = 0\).
+        \end{proof}
         \item \textsl{称函数 \(f \colon X \to Y\) 在 Lipschitz 常数 \(\alpha > 0\) 下 Lipschitz 连续, 若
         \[
             d_Y \big(f(x), f(y)\big) \leq \alpha d_X(x, y)\ ,\quad x, y \in X\ .
         \]
         } 每个 Lipschitz 连续函数都是连续的.
+        \begin{proof}
+            设 \(x_0 \in X\). 任取 \(\varepsilon > 0\). 令 \(\delta \coloneqq \varepsilon / \alpha\). 于是
+            \[
+                d_Y \big(f(x), f(x_0)\big) \leq \alpha d_X(x, x_0) < \alpha \delta = \varepsilon\ ,\quad x \in \B_X(x_0, \delta)\ ,
+            \]
+            因此 \(f\) 在 \(x_0\) 处连续. 注意到, 在这种情况下, \(\delta\) 的选择与 \(x_0\) 无关.
+        \end{proof}
         \item 任意常值函数
         \[
             X \to Y\ ,\quad x \mapsto y_0
@@ -237,17 +251,39 @@
             \pr_k \colon \prod_{j = 1}^m E_j \to E_k\ ,\quad x = (x_1, \ldots, x_m) \mapsto x_k\ ,\quad 1 \leq k \leq m
         \]
         是 Lipschitz 连续的. 特别的, 投影 \(\pr_k \colon \K^m \to \K\) 是 Lipschitz 连续的.
+        \begin{proof}
+            设 \(x, y \in \prod_j E_j\). 于是
+            \[
+                \|\pr_k(x) - \pr_k(y)\|_k = \|x_k - y_k\|_k \leq \|x - y\|_\infty\ ,
+            \]
+            因此 \(\pr_k\) 是 Lipschitz 连续的.
+        \end{proof}
         \item \(\C\) 上的函数
         \[
             z \mapsto \Re z\ ,\quad z \mapsto \Im z\quad \text{和}\quad z \mapsto \overline z
         \]
         是 Lipschitz 连续的.
+        \begin{proof}
+            由命题 \ref{prop:abs-in-C} 可得
+            \[
+                \max \bigl\{|\Re z - \Re w|, |\Im z - \Im w|\bigr\} \leq |z - w| = |\overline z - \overline w|\ ,\quad z, w \in \C\ .
+            \]
+        \end{proof}
         \item 设 \((E, \|\!\cdot\!\|)\) 是赋范向量空间. 则范数
         \[
             \|\!\cdot\!\| \colon E \to \R\ ,\quad x \mapsto \|x\|
         \]
         是 Lipschitz 连续的.
+        \begin{proof}
+            由反三角不等式可得
+            \[
+                \bigl|\|x\| - \|y\|\bigr| \leq \|x - y\|\ ,\quad x, y \in E\ .
+            \]
+        \end{proof}
         \item 设 \(f \colon X \to Y\) 在 \(x_0 \in A \subseteq X\) 处连续, 并赋予 \(A\) 诱导度量. 则 \(f|_A\) 在 \(x_0\) 处连续.
+        \begin{proof}
+            由 \(f\) 的连续性和诱导度量的定义直接可得.
+        \end{proof}
         \item \textsl{设 \(M\) 是 \(X\) 的非空子集, \(x \in X\). 称
         \[
             d(x, M) \coloneqq \inf_{y \in M} d(x, y)
@@ -257,11 +293,41 @@
             d(\cdot, M) \colon X \to \R\ ,\quad x \mapsto d(x, M)
         \]
         是 Lipschitz 连续的.
+        \begin{proof}
+            设 \(x, y \in X\). 由三角不等式和 \(d(\cdot, M)\) 的定义可得
+            \[
+                d(x, M) \leq d(x, m) \leq d(x, y) + d(y, m)\ ,\quad m \in M\ .
+            \]
+            进一步,
+            \[
+                d(x, M) \leq d(x, y) + d(y, M)\ .
+            \]
+            将 \(x\) 和 \(y\) 互换位置并结合该不等式可得
+            \[
+                |d(x, M) - d(y, M)| \leq d(x, y)\ .
+            \]
+        \end{proof}
         \item 设 \(\bigl(E, \langle \cdot, \cdot \rangle\bigr)\) 是内积空间. 则内积
         \[
              \langle \cdot, \cdot \rangle \colon E \times E \to \K\ ,\quad (x, y) \mapsto \langle x, y \rangle
         \]
         是连续的.
+        \begin{proof}
+            设 \((x_0, y_0) \in E \times E\). 任取 \(\varepsilon > 0\). 由三角不等式和 Cauchy-Schwarz 不等式可得
+            \begin{align*}
+                |\langle x, y \rangle - \langle x_0, y_0 \rangle| &\leq |\langle x, y \rangle - \langle x_0, y \rangle| + |\langle x_0, y \rangle - \langle x_0, y_0 \rangle|\\
+                &= |\langle x - x_0, y \rangle| + |\langle x_0, y - y_0 \rangle|\\
+                &\leq \|x - x_0\|\, \|y\| + \|x_0\|\, \|y - y_0\|\\
+                &\leq d\bigl((x, y), (x_0, y_0)\bigr) \|y\| + d\bigl((x, y), (x_0, y_0)\bigr) \|x_0\|\\
+                &= d\bigl((x, y), (x_0, y_0)\bigr) (\|y\| + \|x_0\|)\\
+                &\leq d\bigl((x, y), (x_0, y_0)\bigr) (\|x_0\| + \|y_0\| + \|y - y_0\|)\ ,\quad (x, y) \in E \times E\ ,
+            \end{align*}
+            其中 \(d\) 是积度量. 令 \(M \coloneqq \|x_0\| + \|y_0\|\), \(\delta \coloneqq \min \bigl\{1, \varepsilon / (M + 1) \bigr\}\). 于是
+            \[
+                |\langle x, y \rangle - \langle x_0, y_0 \rangle| < \delta (M + \delta) \leq \frac{\varepsilon}{M + 1} (M + 1) = \varepsilon\ ,\quad (x, y) \in \B_{E \times E} \bigl((x_0, y_0), \delta\bigr)\ .
+            \]
+            因此 \(\langle \cdot, \cdot \rangle\) 在 \((x_0, y_0)\) 处连续.
+        \end{proof}
         \item 设 \(E\) 和 \(F\) 是赋范向量空间. 则函数 \(f \colon X \subseteq E \to F\) 在 \(x_0 \in X\) 处的连续性与 \(E\) 和 \(F\) 上等价范数的选择无关.
         \item \textsl{称函数 \(f \colon X \to Y\) 是等距映射, 若
         \[
@@ -270,6 +336,8 @@
         即 \(f\) ``保持距离不变''.} 显然, 等距映射是 Lipschitz 连续的且是从 \(X\) 到其像 \(f(X)\) 的双射. 若 \(T \colon E \to F\) 是赋范向量空间之间的线性映射, 则 \(T\) 是等距的当且仅当对于任意 \(x \in E\) 都有 \(\|T x\|_F = \|x\|_E\). 进一步, 若 \(T\) 是满射, 则 \(T\) 是从 \(E\) 到 \(F\) 的等距同构, 且 \(T^{- 1}\) 也是等距的.
     \end{enumerate}
 \end{example}
+
+\subsection{序列连续性}
 
 \subsection{练习}
 
@@ -314,9 +382,17 @@
 
     (1) 和 (2) 易证.
 
-    (3). 由于当 \(x \in \R \!\setminus\! \Z\) 时 \(\lfloor \cdot \rfloor\) 是连续的, 而连续函数的加法与复合是连续的, 因此当 \(x \in \R \!\setminus\! \Z\) 时 \(\zigzag\) 是连续的. 只用证明当 \(x \in \Z\) 时 \(\zigzag\) 是连续的. 设 \(x_0 \in \Z\). 注意到 \(\zigzag x_0 = |\lfloor x_0 + 1 / 2 \rfloor - x_0| = |x_0 - x_0| = 0\). 任取 \(\varepsilon > 0\). 令 \(\delta \coloneqq \min\{\varepsilon, 1 / 2\}\). 于是对于任意 \(x \in (x_0 - \delta, x_0 + \delta)\) 存在 \(|r| < \delta\) 使得 \(x = x_0 + r\), 因此
+    (3). 设 \(x_0 \in \R\), \(n \in \Z\). 由于当 \(x_0 \neq n + 1 / 2\) 时, \(\lfloor x + 1 / 2 \rfloor\) 在 \(x_0\) 处连续. 而连续函数的和与复合是连续的, 因此当 \(x_0 \neq n + 1 / 2\) 时, \(\zigzag\) 在 \(x_0\) 处连续. 而当 \(x_0 = n + 1 / 2\) 时,
     \[
-        |\zigzag x - \zigzag x_0| = \zigzag x = \zigzag(x_0 + r) = \zigzag r = |r| < \delta \leq \varepsilon\ ,
+        \zigzag x_0 = \zigzag \Bigl(n + \frac{1}{2}\Bigr) = \zigzag \frac{1}{2} = \frac{1}{2}\ .
+    \]
+    任取 \(\varepsilon > 0\). 令 \(\delta \coloneqq \min\{\varepsilon, 1 / 2\}\). 于是对于任意 \(x \in (x_0 - \delta, x_0 + \delta)\) 存在 \(|r| < \delta\) 使得 \(x = x_0 + r\), 此时
+    \[
+        \zigzag x = \zigzag(x_0 + r) = \zigzag\Big(\frac{1}{2} + r\Big) = \frac{1}{2} - |r|\ .
+    \]
+    因此
+    \[
+        |\zigzag x - \zigzag x_0| = \Bigl|\frac{1}{2} - |r| - \frac{1}{2}\Bigr| = |r| < \delta \leq \varepsilon\ ,\quad x \in (x_0 - \delta, x_0 + \delta)\ ,
     \]
     故 \(\zigzag\) 在 \(x_0\) 处连续.
 \end{proof}
@@ -330,7 +406,7 @@
 \end{exercise}
 
 \begin{proof}
-    设 \((x_n)\) 是 \((0, \infty)\) 中的序列且 \(x_n \to x \in (0, \infty)\). 由于 \(\lim (x_n)^q = x^q\), 因此 \(x \mapsto x^q\) 是序列连续的, 于是 \(x \mapsto x^q\) 是连续的.
+    设 \((x_n)\) 是 \((0, \infty)\) 中的序列且 \(x_n \to x \in (0, \infty)\). 由于 \((x_n)^q \to x^q\), 因此 \(x \mapsto x^q\) 是序列连续的, 于是 \(x \mapsto x^q\) 是连续的.
 \end{proof}
 
 \begin{exercise}
@@ -346,7 +422,7 @@
     \[
         \psi \colon (- 1, 1) \to \R\ ,\quad y \mapsto \frac{y}{1 - |y|}\ .
     \]
-    不难验证 \(\psi \circ \varphi = \id_\R\) 且 \(\varphi \circ \psi = \id_{(- 1, 1)}\), 因此 \(\varphi\) 是双射且 \(\varphi^{- 1} = \psi\). 而连续函数的加法与除法是连续的, 因此 \(\varphi\) 和 \(\psi\) 是连续的.
+    不难验证 \(\psi \circ \varphi = \id_\R\) 且 \(\varphi \circ \psi = \id_{(- 1, 1)}\), 因此 \(\varphi\) 是双射且 \(\varphi^{- 1} = \psi\). 而连续函数的商是连续的, 因此 \(\varphi\) 和 \(\psi\) 是连续的.
 \end{proof}
 
 \begin{exercise}
@@ -462,12 +538,12 @@
         f \colon \R \to \R\ ,\quad x \mapsto
         \begin{cases}
             1\ ,   & x \in \Q\ , \\
-            - 1\ , & x \in \R \!\setminus\! \Q\ ,
+            - 1\ , & x \in \R \backslash \Q\ ,
         \end{cases}
         \quad g \colon \R \to \R\ ,\quad x \mapsto
         \begin{cases}
             x\ ,   & x \in \Q\ , \\
-            - x\ , & x \in \R \!\setminus\! \Q\ .
+            - x\ , & x \in \R \backslash \Q\ .
         \end{cases}
     \]
     函数 \(f\), \(g\), \(|f|\), \(|g|\) 和 \(f \cdot g\) 在何处连续?
@@ -482,7 +558,7 @@
     \[
         |g(x) - g(0)| = |g(x)| = |x| < \varepsilon\ ,\quad x \in (- \varepsilon, \varepsilon)\ ,
     \]
-    因此 \(g\) 在 \(0\) 处连续. 显然 \(g\) 在 \(\R \!\setminus\! \{0\}\) 上不连续.
+    因此 \(g\) 在 \(0\) 处连续. 显然 \(g\) 在 \(\R \backslash \{0\}\) 上不连续.
 \end{proof}
 
 \begin{exercise}
@@ -491,16 +567,16 @@
         f \colon \R \to \R\ ,\quad x \mapsto
         \begin{cases}
             1 / n\ , & x \in \Q\ \text{且}\ x = m / n\ \text{是既约分数}\ , \\
-            0\ ,     & x \in \R \!\setminus\! \Q\ .
+            0\ ,     & x \in \R \backslash \Q\ .
         \end{cases}
     \]
     } 在每个无理数点连续, 但在每个有理数点不连续.\footnote{可以证明不存在函数 \(f \colon \R \to \R\) 满足: \(f\) 在每个有理数点连续, 但在每个无理数点不连续.}
 \end{exercise}
 
 \begin{proof}
-    设 \(x = m / n \in \Q\). 由无理数的稠密性可知, 对于任意 \(n \in \N^\ast\) 存在 \(x_n \in \R \!\setminus\! \Q\) 使得 \(x - 1 / n \leq x_n \leq x + 1 / n\), 显然 \(x_n \to x\). 而 \(f(x_n) \to 0 \neq f(x)\), 因此 \(f\) 在 \(x\) 处不连续.
+    设 \(x = m / n \in \Q\). 由无理数的稠密性可知, 对于任意 \(n \in \N^\ast\) 存在 \(x_n \in \R \backslash \Q\) 使得 \(x - 1 / n \leq x_n \leq x + 1 / n\), 显然 \(x_n \to x\). 而 \(f(x_n) \to 0 \neq f(x)\), 因此 \(f\) 在 \(x\) 处不连续.
 
-    设 \(x \in \R \!\setminus\! \Q\). 任取 \(\varepsilon > 0\). 显然集合 \(A \coloneqq \{\, n \in \N^\ast \;;\; n \leq 1 / \varepsilon \,\}\) 是有限的. 于是对于任意 \(n \in A\) 存在 \(m \in \Z\) 使得
+    设 \(x \in \R \backslash \Q\). 任取 \(\varepsilon > 0\). 显然集合 \(A \coloneqq \{\, n \in \N^\ast \;;\; n \leq 1 / \varepsilon \,\}\) 是有限的. 于是对于任意 \(n \in A\) 存在 \(m \in \Z\) 使得
     \[
         \frac{m}{n} < x < \frac{m + 1}{n}\ .
     \]
@@ -514,3 +590,61 @@
     \]
     故 \(f\) 在 \(x\) 处连续.
 \end{proof}
+
+\begin{exercise}
+    考虑函数
+    \[
+        f \colon \R^2 \to \R\ ,\quad (x, y) \mapsto
+        \begin{cases}
+            xy / (x^2 + y^2)\ , & (x, y) \neq (0, 0)\ , \\
+            0\ ,                & (x, y) = (0, 0)\ .
+        \end{cases}
+    \]
+    固定 \(x_0 \in \R\), 定义
+    \[
+        f_1 \colon \R \to \R\ ,\quad x \mapsto f(x, x_0)\ ,\quad f_2 \colon \R \to \R\ ,\quad x \mapsto f(x_0, x)\ .
+    \]
+    证明以下命题.
+    \begin{enumerate}
+        \item \(f_1\) 和 \(f_2\) 是连续的.
+        \item \(f\) 在 \(\R^2 \big\backslash \bigl\{(0, 0)\bigr\}\) 上连续, 在 \((0, 0)\) 处不连续.
+    \end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    (1). 当 \(x_0 = 0\) 时, 常值函数 \(f_1 \colon x \mapsto 0\) 连续. 当 \(x_0 \neq 0\) 时, 由于连续函数的商是连续的, 因此 \(f_1 \colon x \mapsto x x_0 / (x^2 + x_0^2)\) 连续. 同理可得 \(f_2\) 连续.
+
+    (2). 由于投影 \(\pr_1\) 和 \(\pr_2\) 是连续的, 而
+    \[
+        f(x) = \frac{\pr_1(x) \pr_2(x)}{\bigl(\pr_1(x)\bigr)^2 + \bigl(\pr_2(x)\bigr)^2}\ ,\quad x \in \R^2 \big\backslash \bigl\{(0, 0)\bigr\}\ ,
+    \]
+    因此 \(f\) 在 \(\R^2 \big\backslash \bigl\{(0, 0)\bigr\}\) 上连续. 另一方面, 考虑序列 \(\bigl((1 / n, 1 / n)\bigr)\). 显然 \((1 / n, 1 / n) \to (0, 0)\), 而
+    \[
+        f\Bigl(\frac{1}{n}, \frac{1}{n}\Bigr) = \frac{1 / n^2}{1 / n^2 + 1 / n^2} = \frac{1}{2} \to \frac{1}{2} \neq f(0, 0)\ ,
+    \]
+    因此 \(f\) 在 \((0, 0)\) 处不连续.
+\end{proof}
+
+\begin{exercise}
+    证明从 \(\K^n\) 到 \(\K^m\) 的任意线性映射都是 Lipschitz 连续的.
+\end{exercise}
+
+\begin{proof}
+    设 \(f \in \Hom(\K^n, \K^m)\). 由于
+    \[
+        |f(x)|_1 = \Bigl|f \Bigl(\sum_{j = 1}^n x_j e_j\Bigr)\Bigr|_1 = \Bigl|\sum_{j = 1}^n x_j f(e_j)\Bigr|_1 \leq \sum_{j = 1}^n |x_j|\, |f(e_j)|_1\ ,\quad x \in \K^n\ .
+    \]
+    令 \(M \coloneqq \max_{1 \leq j \leq n} |f(e_j)|_1\). 于是
+    \[
+        |f(x)|_1 \leq M \sum_{j = 1}^n |x_j| = M\, |x|_1\ ,\quad x \in \K^n\ ,
+    \]
+    因此
+    \[
+        |f(x) - f(y)|_1 = |f(x - y)|_1 \leq M\, |x - y|_1\ ,\quad x, y \in \K^n\ ,
+    \]
+    这说明 \(f\) 是 Lipschitz 连续的.
+\end{proof}
+
+\begin{exercise}
+    设 \(V\) 和 \(W\) 是赋范向量空间, \(f \colon V \to W\) 是从 \((V, +)\) 到 \((W, +)\) 的连续群同态. 证明 \(f\) 是线性的.
+\end{exercise}

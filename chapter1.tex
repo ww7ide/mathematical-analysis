@@ -79,7 +79,7 @@
 \begin{axiom}[自然数]\label{ax:natural-numbers}
     设 \(\N\) 是集合, \(e \in \N\), 其上定义了函数
     \[
-        \nu \colon \N \to \N^\ast \coloneqq \N \!\setminus\! \{e\}\ ,\quad n \mapsto \nu(n)\ .
+        \nu \colon \N \to \N^\ast \coloneqq \N \backslash \{e\}\ ,\quad n \mapsto \nu(n)\ .
     \]
     若
     \begin{enumerate}[label={\((\mathrm N_{\arabic*})\)}]
@@ -97,7 +97,7 @@
             \[
                 N \coloneqq \{\, n \in \N \;;\; \exists\, n' \in \N : \nu(n') = n \,\} \cup \{e\} = \im \nu \cup \{e\}\ .
             \]
-            对于任意 \(n \in N\) 都有 \(\nu(n) \in \im \nu \subseteq N\), 而 \(e \in N\), 于是 \hyperref[ax:natural-numbers]{\((\mathrm N_2)\)} 蕴含了 \(N = \N\). 因此 \(\im \nu = N \!\setminus\! \{e\} = \N \!\setminus\! \{e\} = \N^\ast\), 这说明 \(\nu\) 是满射.
+            对于任意 \(n \in N\) 都有 \(\nu(n) \in \im \nu \subseteq N\), 而 \(e \in N\), 于是 \hyperref[ax:natural-numbers]{\((\mathrm N_2)\)} 蕴含了 \(N = \N\). 因此 \(\im \nu = N \backslash \{e\} = \N \backslash \{e\} = \N^\ast\), 这说明 \(\nu\) 是满射.
         \end{proof}
         \item 我们通常记
         \[
@@ -375,7 +375,7 @@
         则 \(S\) 是 \(R^\N\) 的子环且不含幺元.
         \item 设 \(X\) 是集合, 在 \(\power(X)\) 上定义对称差
         \[
-            A \vartriangle B \coloneqq (A \cup B) \!\setminus\! (A \cap B) = (A \!\setminus\! B) \cup (B \!\setminus\! A)\ ,\quad A, B \in \power(X)\ .
+            A \vartriangle B \coloneqq (A \cup B) \backslash (A \cap B) = (A \backslash B) \cup (B \backslash A)\ ,\quad A, B \in \power(X)\ .
         \]
         则 \(\bigl(\power(X), \vartriangle, \cap\bigr)\) 是含幺的交换环.
     \end{enumerate}
@@ -435,7 +435,7 @@
     若
     \begin{enumerate}[label={\((\mathrm F_{\arabic*})\)}]
         \item \((K, +, \times)\) 是含幺的交换环.
-        \item \(\bigl(K \!\setminus\! \{0\}, \times\bigr)\) 是 Abel 群.
+        \item \(\bigl(K \backslash \{0\}, \times\bigr)\) 是 Abel 群.
     \end{enumerate}
     则称 \((K, +, \times)\) 是域.
 \end{axiom}
@@ -601,7 +601,7 @@
 \subsection{无理数在 \(\R\) 中的稠密性}
 
 \begin{proposition}\label{prop:irQ-density-in-R}
-    对于任意 \(a, b \in \R\) 使得 \(a < b\), 存在 \(\xi \in \R \!\setminus\! \Q\) 使得 \(a < \xi < b\).
+    对于任意 \(a, b \in \R\) 使得 \(a < b\), 存在 \(\xi \in \R \backslash \Q\) 使得 \(a < \xi < b\).
 \end{proposition}
 
 \subsection{区间}
