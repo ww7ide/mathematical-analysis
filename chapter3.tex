@@ -23,7 +23,7 @@
 \subsection{基本性质与例子}
 
 \begin{definition}[连续性]
-    设 \(f \colon X \to Y\) 是度量空间 \((X, d_X)\) 和 \((Y, d_Y)\) 之间的函数. 称 \(f\) 在 \(x_0 \in X\) 处连续, 若对于任意 \(f(x_0)\) 的邻域 \(V \subseteq Y\) 存在 \(x_0\) 的邻域 \(U \subseteq X\) 使得 \(f(U) \subseteq V\). 并称 \(f\) 在 \(x_0\) 处不连续, 若 \(f\) 不在 \(x_0\) 处连续.
+    设 \(f \colon X \to Y\) 是度量空间 \(X\) 和 \(Y\) 之间的函数. 称 \(f\) 在 \(x_0 \in X\) 处连续, 若对于任意 \(f(x_0)\) 的邻域 \(V \subseteq Y\) 存在 \(x_0\) 的邻域 \(U \subseteq X\) 使得 \(f(U) \subseteq V\). 并称 \(f\) 在 \(x_0\) 处不连续, 若 \(f\) 不在 \(x_0\) 处连续.
     \begin{center}
         \begin{tikzpicture}[scale=1.1]
             % ---------- X ----------
@@ -171,11 +171,7 @@
 \begin{example}
     设 \(X\) 和 \(Y\) 是度量空间.
     \begin{enumerate}
-        \item 平方根函数
-        \[
-            \R^+ \to \R^+\ ,\quad x \mapsto \sqrt{x}
-        \]
-        是连续的.
+        \item 平方根函数 \(\R^+ \to \R^+,\ x \mapsto \sqrt{x}\) 是连续的.
         \begin{proof}
             设 \(x_0 \in \R^+\). 任取 \(\varepsilon > 0\). 若 \(x_0 = 0\). 令 \(\delta \coloneqq \varepsilon^2\). 于是
             \[
@@ -186,11 +182,7 @@
                 \bigl|\sqrt{x} - \sqrt{x_0}\bigr| = \Bigl|\frac{x - x_0}{\sqrt{x} + \sqrt{x_0}}\Bigr| < \frac{|x - x_0|}{\sqrt{x_0}} \leq \varepsilon\ ,\quad x \in (x_0 - \delta, x_0 + \delta)\ .
             \]
         \end{proof}
-        \item 下取整函数
-        \[
-            \lfloor \cdot \rfloor \colon \R \to \Z\ ,\quad x \mapsto \max\{\, k \in \Z \;;\; k \leq x \,\}
-        \]
-        在 \(x_0 \in \R \backslash \Z\) 处连续, 在 \(x_0 \in \Z\) 处不连续.
+        \item 下取整函数 \(\lfloor \cdot \rfloor \colon \R \to \Z,\ x \mapsto \max\{\, k \in \Z \;;\; k \leq x \,\}\) 在 \(x_0 \in \R \backslash \Z\) 处连续, 在 \(x_0 \in \Z\) 处不连续.
         \begin{proof}
             设 \(x_0 \in \R \backslash \Z\). 则存在唯一的 \(k \in \Z\) 使得 \(k < x_0 < k + 1\). 令 \(\delta \coloneqq \min\{x_0 - k, k + 1 - x_0\}\). 于是
             \[
@@ -236,16 +228,8 @@
             \]
             因此 \(f\) 在 \(x_0\) 处连续. 注意到, 在这种情况下, \(\delta\) 的选择与 \(x_0\) 无关.
         \end{proof}
-        \item 任意常值函数
-        \[
-            X \to Y\ ,\quad x \mapsto y_0
-        \]
-        都是 Lipschitz 连续的.
-        \item 恒等映射
-        \[
-            \id \colon X \to X\ ,\quad x \mapsto x
-        \]
-        是 Lipschitz 连续的.
+        \item 任意常值函数 \(X \to Y,\ x \mapsto y_0 \) 都是 Lipschitz 连续的.
+        \item 恒等映射 \(\id \colon X \to X,\ x \mapsto x\) 是 Lipschitz 连续的.
         \item 设 \(\prod_j E_j\) 是赋范向量空间 \(E_1, \ldots, E_m\) 的积空间 (见例 \ref{eg:norms}(3)). 则典范投影
         \[
             \pr_k \colon \prod_{j = 1}^m E_j \to E_k\ ,\quad x = (x_1, \ldots, x_m) \mapsto x_k\ ,\quad 1 \leq k \leq m
@@ -258,22 +242,14 @@
             \]
             因此 \(\pr_k\) 是 Lipschitz 连续的.
         \end{proof}
-        \item \(\C\) 上的函数
-        \[
-            z \mapsto \Re z\ ,\quad z \mapsto \Im z\quad \text{和}\quad z \mapsto \overline z
-        \]
-        是 Lipschitz 连续的.
+        \item \(\C\) 上的函数 \(z \mapsto \Re z\), \(z \mapsto \Im z\) 和 \(z \mapsto \overline z\) 是 Lipschitz 连续的.
         \begin{proof}
             由命题 \ref{prop:abs-in-C} 可得
             \[
                 \max \bigl\{|\Re z - \Re w|, |\Im z - \Im w|\bigr\} \leq |z - w| = |\overline z - \overline w|\ ,\quad z, w \in \C\ .
             \]
         \end{proof}
-        \item 设 \((E, \|\!\cdot\!\|)\) 是赋范向量空间. 则范数
-        \[
-            \|\!\cdot\!\| \colon E \to \R\ ,\quad x \mapsto \|x\|
-        \]
-        是 Lipschitz 连续的.
+        \item 设 \((E, \|\!\cdot\!\|)\) 是赋范向量空间. 则范数 \(\|\!\cdot\!\|\) 是 Lipschitz 连续的.
         \begin{proof}
             由反三角不等式可得
             \[
@@ -307,19 +283,14 @@
                 |d(x, M) - d(y, M)| \leq d(x, y)\ .
             \]
         \end{proof}
-        \item 设 \(\bigl(E, \langle \cdot, \cdot \rangle\bigr)\) 是内积空间. 则内积
-        \[
-             \langle \cdot, \cdot \rangle \colon E \times E \to \K\ ,\quad (x, y) \mapsto \langle x, y \rangle
-        \]
-        是连续的.
+        \item 设 \(\bigl(E, \langle \cdot, \cdot \rangle\bigr)\) 是内积空间. 则内积 \(\langle \cdot, \cdot \rangle\) 是连续的.
         \begin{proof}
             设 \((x_0, y_0) \in E \times E\). 任取 \(\varepsilon > 0\). 由三角不等式和 Cauchy-Schwarz 不等式可得
             \begin{align*}
                 |\langle x, y \rangle - \langle x_0, y_0 \rangle| &\leq |\langle x, y \rangle - \langle x_0, y \rangle| + |\langle x_0, y \rangle - \langle x_0, y_0 \rangle|\\
                 &= |\langle x - x_0, y \rangle| + |\langle x_0, y - y_0 \rangle|\\
                 &\leq \|x - x_0\|\, \|y\| + \|x_0\|\, \|y - y_0\|\\
-                &\leq d\bigl((x, y), (x_0, y_0)\bigr) \|y\| + d\bigl((x, y), (x_0, y_0)\bigr) \|x_0\|\\
-                &= d\bigl((x, y), (x_0, y_0)\bigr) (\|y\| + \|x_0\|)\\
+                &\leq d\bigl((x, y), (x_0, y_0)\bigr)\, \|y\| + d\bigl((x, y), (x_0, y_0)\bigr)\, \|x_0\|\\
                 &\leq d\bigl((x, y), (x_0, y_0)\bigr) (\|x_0\| + \|y_0\| + \|y - y_0\|)\ ,\quad (x, y) \in E \times E\ ,
             \end{align*}
             其中 \(d\) 是积度量. 令 \(M \coloneqq \|x_0\| + \|y_0\|\), \(\delta \coloneqq \min \bigl\{1, \varepsilon / (M + 1) \bigr\}\). 于是
@@ -338,6 +309,73 @@
 \end{example}
 
 \subsection{序列连续性}
+
+邻域是连续性与序列收敛性定义中的核心概念. 这启发我们可以使用序列来定义函数的连续性.
+
+\begin{definition}[序列连续性]
+    设 \(f \colon X \to Y\) 是度量空间 \(X\) 和 \(Y\) 之间的函数. 称 \(f\) 在 \(x \in X\) 处序列连续, 若对于任意 \(X\) 中的序列 \((x_n)\) 都有当 \(\lim x_n = x\) 时 \(\lim f(x_n) = f(x)\).
+\end{definition}
+
+\begin{theorem}\label{thm:sequence-criterion}
+    度量空间之间的函数 \(f \colon X \to Y\) 在 \(x \in X\) 处连续, 当且仅当 \(f\) 在 \(x\) 处序列连续.
+\end{theorem}
+
+\begin{proof}
+    \(\implies\). 设 \((x_n)\) 是 \(X\) 中的序列且 \(x_n \to x\). 任取 \(f(x)\) 的邻域 \(V\). 由于 \(f\) 在 \(x\) 处连续, 于是存在 \(x\) 的邻域 \(U\) 使得 \(f(U) \subseteq V\). 而 \(x_n \to x\), 因此存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(x_n \in U\). 进一步, 当 \(n \geq N\) 时 \(f(x_n) \in f(U) \subseteq V\). 这说明 \(f(x_n) \to f(x)\).
+
+    \(\impliedby\). 设 \(f\) 在 \(x\) 处序列连续, 但在 \(x\) 处不连续. 于是存在 \(f(x)\) 的邻域 \(V\) 使得对于任意 \(x\) 的邻域 \(U\) 都有 \(f(U) \cap V^c \neq \varnothing\). 特别的,
+    \[
+        f\bigl(\B(x, 1 / n)\bigr) \cap V^c \neq \varnothing\ ,\quad n \in \N^\ast\ .
+    \]
+    因此对于任意 \(n \in \N^\ast\) 存在 \(x_n \in \B(x, 1 / n)\) 使得 \(f(x_n) \notin V\). 根据构造可知 \((x_n)\) 收敛到 \(x\), 但 \(\bigl(f(x_n)\bigr)\) 无法收敛到 \(f(x)\), 这与 \(f\) 的序列连续性矛盾.
+\end{proof}
+
+设 \(f \colon X \to Y\) 是度量空间之间的连续函数. 则对于任意 \(X\) 中的收敛序列 \((x_n)\) 我们有
+\[
+    \lim f(x_n) = f(\lim x_n)\ .
+\]
+因此我们可以说 ``连续函数与极限运算相容''.
+
+\subsection{连续函数的运算}
+
+定理 \ref{thm:sequence-criterion} 允许我们将关于收敛序列的结论应用于连续函数上. 为此, 首先引入若干定义是有帮助的.
+
+\begin{definition}[函数的运算]
+    设 \(M\) 是任意集合, \(F\) 是向量空间,
+    \[
+        f \colon \dom f \subseteq M \to F\ ,\quad g \colon \dom g \subseteq M \to F\ .
+    \]
+    定义
+    \[
+        f + g \colon \dom f \cap \dom g \to F\ ,\quad x \mapsto f(x) + g(x)\ ,
+    \]
+    称为 \(f\) 与 \(g\) 的和. 类似的, 对于 \(\lambda \in \K\), 定义\footnote{当 \(f\) 和 \(g\) 定义在整个 \(M\) 上时, \(f + g\) 与 \(\lambda f\) 的定义与例 \ref{eg:vector-spaces}(5) 中的定义是一致的.}
+    \[
+        \lambda f \colon \dom f \to F\ ,\quad x \mapsto \lambda f(x)\ .
+    \]
+    最后, 当 \(F = \K\) 时, 定义
+    \[
+        f \cdot g \colon \dom f \cap \dom g \to F\ ,\quad x \mapsto f(x) \cdot g(x)\ ,
+    \]
+    称为 \(f\) 与 \(g\) 的积,
+    \[
+        f / g \colon \dom f \cap \{\, x \in \dom g \;;\; g(x) \neq 0 \,\} \to F\ ,\quad x \mapsto f(x) / g(x)\ ,
+    \]
+    称为 \(f\) 与 \(g\) 的商.
+\end{definition}
+
+\begin{proposition}
+    设 \(X\) 是度量空间, \(F\) 是赋范向量空间,
+    \[
+        f \colon \dom f \subseteq X \to F\ ,\quad g \colon \dom g \subseteq X \to F
+    \]
+    在 \(x_0 \in \dom f \cap \dom g\) 处连续.
+    \begin{enumerate}
+        \item \(f + g\) 和 \(\lambda f\) 在 \(x_0\) 处连续.
+        \item 若 \(F = \K\), 则 \(f \cdot g\) 在 \(x_0\) 处连续.
+        \item 若 \(F = \K\) 且 \(g(x_0) \neq 0\), 则 \(f / g\) 在 \(x_0\) 处连续.
+    \end{enumerate}
+\end{proposition}
 
 \subsection{练习}
 
@@ -382,7 +420,7 @@
 
     (1) 和 (2) 易证.
 
-    (3). 设 \(x_0 \in \R\), \(n \in \Z\). 由于当 \(x_0 \neq n + 1 / 2\) 时, \(\lfloor x + 1 / 2 \rfloor\) 在 \(x_0\) 处连续. 而连续函数的和与复合是连续的, 因此当 \(x_0 \neq n + 1 / 2\) 时, \(\zigzag\) 在 \(x_0\) 处连续. 而当 \(x_0 = n + 1 / 2\) 时,
+    (3). 设 \(x_0 \in \R\), \(n \in \Z\). 由于当 \(x_0 \neq n + 1 / 2\) 时, \(x \mapsto \lfloor x + 1 / 2 \rfloor\) 在 \(x_0\) 处连续. 而连续函数的和与复合是连续的, 因此当 \(x_0 \neq n + 1 / 2\) 时, \(\zigzag\) 在 \(x_0\) 处连续. 而当 \(x_0 = n + 1 / 2\) 时,
     \[
         \zigzag x_0 = \zigzag \Bigl(n + \frac{1}{2}\Bigr) = \zigzag \frac{1}{2} = \frac{1}{2}\ .
     \]
@@ -468,7 +506,7 @@
 \end{exercise}
 
 \begin{proof}
-    设 \(r \coloneqq p / q \in \Q\). 由于 \(f\) 是群同态, 于是
+    设 \(r = p / q \in \Q\). 由于 \(f\) 是群同态, 于是
     \[
         f(x) = f \Bigl(q \cdot \frac{x}{q}\Bigr) = f \Bigl(\underbrace{\frac{x}{q} + \cdots + \frac{x}{q}}_{q\, \text{个}}\Bigr) = q f \Bigl(\frac{x}{q}\Bigr)\ ,\quad x \in \R\ ,
     \]
@@ -476,7 +514,7 @@
     \[
         f(r x) = f \Bigl(\underbrace{\frac{x}{q} + \cdots + \frac{x}{q}}_{p\, \text{个}}\Bigr) = p f \Bigl(\frac{x}{q}\Bigr) = \frac{p}{q} f(x) = r f(x)\ ,\quad x \in \R\ .
     \]
-    设 \(\alpha, x \in R\). 考虑 \(\R\) 中的序列 \((\alpha - 1 / n)\) 和 \((\alpha + 1 / n)\). 由有理数的稠密性可知, 对于任意 \(n \in \N^\ast\) 存在 \(\alpha_n \in \Q\) 使得 \(\alpha - 1 / n \leq \alpha_n \leq \alpha + 1 / n\), 显然 \(\alpha_n \to \alpha\). 进一步, \(\alpha_n x \to \alpha x\) 且 \(\alpha_n f(x) \to \alpha f(x)\). 而 \(f\) 连续, 因此 \(f\) 序列连续, 于是 \(f(\alpha_n x) = \alpha_n f(x) \to f(\alpha x)\). 由极限的唯一性可知 \(f(\alpha x) = \alpha f(x)\).
+    设 \(\alpha, x \in \R\). 考虑 \(\R\) 中的序列 \((\alpha - 1 / n)\) 和 \((\alpha + 1 / n)\). 由有理数的稠密性可知, 对于任意 \(n \in \N^\ast\) 存在 \(\alpha_n \in \Q\) 使得 \(\alpha - 1 / n \leq \alpha_n \leq \alpha + 1 / n\), 显然 \(\alpha_n \to \alpha\). 进一步, \(\alpha_n x \to \alpha x\) 且 \(\alpha_n f(x) \to \alpha f(x)\). 而 \(f\) 连续, 因此 \(f\) 序列连续, 于是 \(f(\alpha_n x) = \alpha_n f(x) \to f(\alpha x)\). 由极限的唯一性可知 \(f(\alpha x) = \alpha f(x)\).
 \end{proof}
 
 \begin{exercise}
@@ -517,7 +555,7 @@
     \[
         |f(x) - f(x_0)| = \Bigl|\frac{1}{n + 2} - \frac{1}{n + 1}\Bigr| = \frac{1}{(n + 1)(n + 2)} > \frac{1}{n^2} = \varepsilon\ .
     \]
-    因此 \(f\) 在 \(x_0\) 处不是左连续的. 设 \(x_0 \in (0, 1)\) 且 \(x_0 \neq 1 / (n + 1)\). 于是存在 \(n \in \N\) 使得 \(1 / (n + 1) < x_0 < 1 / n\). 令 \(\delta \coloneqq \min\{x_0 - 1 / (n + 1), 1 / n - x_0\}\). 于是
+    因此 \(f\) 在 \(x_0\) 处不是左连续的. 设 \(x_0 \in (0, 1)\) 且 \(x_0 \neq 1 / (n + 1)\). 于是存在 \(n \in \N\) 使得 \(1 / (n + 1) < x_0 < 1 / n\). 令 \(\delta \coloneqq \min \bigl\{x_0 - 1 / (n + 1), 1 / n - x_0\bigr\}\). 于是
     \[
         |f(x) - f(x_0)| = \frac{1}{n} - \frac{1}{n} = 0\ ,\quad x \in (x_0 - \delta, x_0 + \delta)\ ,
     \]
@@ -567,7 +605,7 @@
         f \colon \R \to \R\ ,\quad x \mapsto
         \begin{cases}
             1 / n\ , & x \in \Q\ \text{且}\ x = m / n\ \text{是既约分数}\ , \\
-            0\ ,     & x \in \R \backslash \Q\ .
+            0\ ,     & x \in \R \backslash \Q
         \end{cases}
     \]
     } 在每个无理数点连续, 但在每个有理数点不连续.\footnote{可以证明不存在函数 \(f \colon \R \to \R\) 满足: \(f\) 在每个有理数点连续, 但在每个无理数点不连续.}
@@ -580,7 +618,7 @@
     \[
         \frac{m}{n} < x < \frac{m + 1}{n}\ .
     \]
-    令 \(\delta_n \coloneqq \min\{x - m / n, (m + 1) / n - x\}\). 因此对于任意 \(m \in \Z\) 都有 \(m / n \notin (x - \delta_n, x + \delta_n)\). 进一步, 令 \(\delta \coloneqq \min_{n \in A} \delta_n\). 于是
+    令 \(\delta_n \coloneqq \min \bigl\{x - m / n, (m + 1) / n - x\bigr\}\). 因此对于任意 \(m \in \Z\) 都有 \(m / n \notin (x - \delta_n, x + \delta_n)\). 进一步, 令 \(\delta \coloneqq \min_{n \in A} \delta_n\). 于是
     \[
         \frac{m}{n} \notin (x - \delta, x + \delta)\ ,\quad n \in A\ ,\quad m \in \Z\ .
     \]
@@ -647,4 +685,110 @@
 
 \begin{exercise}
     设 \(V\) 和 \(W\) 是赋范向量空间, \(f \colon V \to W\) 是从 \((V, +)\) 到 \((W, +)\) 的连续群同态. 证明 \(f\) 是线性的.
+\end{exercise}
+
+\begin{proof}
+    当 \(\K = \R\) 时, 类似可得
+    \[
+        f(\alpha x) = \alpha f(x)\ ,\quad \alpha \in \R\ ,\quad x \in V\ .
+    \]
+    于是当 \(\K = \C\) 时,
+    \[
+        f(\alpha x) = f\bigl((\Re \alpha + \ii \Im \alpha) x\bigr) = \Re \alpha \cdot f(x) + \ii \Im \alpha \cdot f(x) = \alpha f(x)\ ,\quad \alpha \in \C\ ,\quad x \in V\ .
+    \]
+\end{proof}
+
+\begin{exercise}
+    设 \(\bigl(E, \langle \cdot, \cdot \rangle\bigr)\) 是内积空间, \(x_0 \in E\). 证明函数
+    \[
+         E \to \K\ ,\quad x \mapsto \langle x, x_0 \rangle\ ,\quad E \to \K\ ,\quad x \mapsto \langle x_0, x \rangle
+    \]
+    是连续的.
+\end{exercise}
+
+\begin{proof}
+    设 \(y \in E\). 任取 \(\varepsilon > 0\). 令 \(\delta \coloneqq \varepsilon \big/ \|x_0\|\). 于是由 Cauchy-Schwarz 不等式可得
+    \[
+        |\langle x, x_0 \rangle - \langle y, x_0 \rangle| = |\langle x - y, x_0 \rangle| \leq \|x - y\|\, \|x_0\| < \varepsilon\ ,\quad x \in \B(y, \delta)\ ,
+    \]
+    因此 \(x \mapsto \langle x, x_0 \rangle\) 在 \(y\) 处连续. 同理可得 \(x \mapsto \langle x_0, x \rangle\) 连续.
+\end{proof}
+
+\begin{exercise}
+    设 \(A \in \End(\K^n)\). 证明函数
+    \[
+        \K^n \to \K\ ,\quad x \mapsto \langle A x, x \rangle
+    \]
+    是连续的.
+\end{exercise}
+
+\begin{proof}
+    设 \(x_0 \in \K^n\). 任取 \(\varepsilon > 0\). 由三角不等式和 Cauchy-Schwarz 不等式可得
+    \begin{align*}
+        |\langle A x, x \rangle - \langle A x_0, x_0 \rangle| &\leq |\langle A x, x \rangle - \langle A x_0, x \rangle| + |\langle A x_0, x \rangle - \langle A x_0, x_0 \rangle|\\
+        &= |\langle A x - A x_0, x \rangle| + |\langle A x_0, x - x_0 \rangle|\\
+        &\leq |A x - A x_0|\, |x| + |A x_0|\, |x - x_0|\\
+        &\leq |A x - A x_0|\, (|x_0| + |x - x_0|) + |A x_0|\, |x - x_0|\ ,\quad x \in \K^n\ .
+    \end{align*}
+    由于 \(A\) 是 Lipschitz 连续的, 因此存在 \(\alpha > 0\) 使得对于任意 \(x \in \K^n\) 都有 \(|A x - A x_0| \leq \alpha\, |x - x_0|\). 令 \(M \coloneqq \max\{\alpha, |x_0|, |A x_0|\}\), \(\delta \coloneqq \min \bigl\{1, \varepsilon / M (M + 2)\bigr\}\). 于是
+    \[
+        |\langle A x, x \rangle - \langle A x_0, x_0 \rangle| < \delta M (M + \delta + 1) \leq \frac{\varepsilon M}{M (M + 2)} (M + 2) = \varepsilon\ ,\quad x \in \B(x_0, \delta)\ .
+    \]
+    因此 \(x \mapsto \langle A x, x \rangle\) 在 \(x_0\) 处连续.
+\end{proof}
+
+\begin{exercise}
+    设 \(n \in \N^\ast\). 证明 \textsl{\(\K^{n \times n}\) 中矩阵的行列式函数 (见练习 \ref{ex:sign-on-symmetric-group})
+    \[
+        \det \colon \K^{n \times n} \to \K\ ,\quad A = [a_{j k}] \mapsto \sum_{\sigma \in \mathsf S_n} (\sign \sigma) a_{1 \sigma(1)} \cdots a_{n \sigma(n)}
+    \]
+    } 是连续的 (见练习 \ref{ex:norm-of-matrix}). (提示: 利用双射
+    \[
+        \K^{m \times n} \to \K^{m n}\ ,\quad
+        \begin{bmatrix}
+            a_{1 1} & \cdots & a_{1 n} \\
+            \vdots  & \ddots & \vdots  \\
+            a_{m 1} & \cdots & a_{m n}
+        \end{bmatrix}
+        \mapsto (a_{1 1}, \ldots, a_{1 n}, \ldots, a_{m 1}, \ldots, a_{m n})
+    \]
+    定义 \(\K^{m \times n}\) 上的自然拓扑.)
+\end{exercise}
+
+\begin{proof}
+    定义
+    \[
+        \Phi \colon \K^{n \times n} \to \K^{n^2}\ ,\quad
+        \begin{bmatrix}
+            a_{1 1} & \cdots & a_{1 n} \\
+            \vdots  & \ddots & \vdots  \\
+            a_{n 1} & \cdots & a_{n n}
+        \end{bmatrix}
+        \mapsto (a_{1 1}, \ldots, a_{1 n}, \ldots, a_{n 1}, \ldots, a_{n n})\ .
+    \]
+    设 \(A, B \in \K^{n \times n}\). 由于
+    \[
+        |\Phi(A) - \Phi(B)| = |(a_{1 1} - b_{1 1}, \ldots, a_{n n} - b_{n n})| = \Bigl(\sum_{j = 1}^n \sum_{k = 1}^n |a_{j k} - b_{j k}|^2\Bigr)^{1 / 2} = \|A - B\|_F\ ,
+    \]
+    因此 \(\Phi\) 是 Lipschitz 连续的. 定义
+    \[
+        \widetilde \det \colon \K^{n^2} \to \K\ ,\quad a = (a_{1 1}, \ldots, a_{1 n}, \ldots, a_{n 1}, \ldots, a_{n n}) \mapsto \sum_{\sigma \in \mathsf S_n} (\sign \sigma) a_{1 \sigma(1)} \cdots a_{n \sigma(n)}\ .
+    \]
+    显然 \(\det = \widetilde \det \circ \Phi\). 由于连续函数的复合是连续的, 因此只用证明 \(\widetilde \det\) 是连续的. 对于任意 \(\sigma \in \mathsf S_n\), 由于 \(\sign \sigma = \pm 1\) 且投影 \(\pr_{j k}\) 是连续的, 于是其积 \(f_\sigma \coloneqq (\sign \sigma) \pr_{1 \sigma(1)} \cdots \pr_{n \sigma(n)}\) 是连续的. 进一步, 其和
+    \[
+        \sum_{\sigma \in \mathsf S_n} f_\sigma = \widetilde \det
+    \]
+    是连续的.
+\end{proof}
+
+\begin{exercise}
+    \textsl{设 \(f \colon X \to Y\) 是度量空间之间的函数, \(x \in X\). 称函数
+    \[
+        \omega_f(x, \cdot) \colon (0, \infty) \to \R\ ,\quad \delta \mapsto \sup_{y, z \in \B_X(x, \delta)} d_Y\bigl(f(y), f(z)\bigr)
+    \]
+    是 \(f\) 在 \(x\) 处的连续模.} 定义
+    \[
+        \omega_f(x) \coloneqq \inf_{\delta > 0} \omega_f(x, \delta)\ ,\quad x \in X\ .
+    \]
+    证明 \(f\) 在 \(x\) 处连续当且仅当 \(\omega_f(x) = 0\).
 \end{exercise}

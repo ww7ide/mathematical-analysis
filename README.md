@@ -124,4 +124,5 @@ Section  1 Continuity                                           1  6, 26
            Exercises
            Exercises                                            1  9, 26
            Exercises                                            1 10, 26
+           Exercises                                            1 11, 26
 ```

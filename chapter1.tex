@@ -551,6 +551,22 @@
 
 \subsection{平方根}
 
+\subsection{练习}
+
+\begin{exercise}\label{ex:sign-on-symmetric-group}
+    \textsl{在对称群 \(\mathsf S_n\) 上定义符号函数
+    \[
+        \sign \sigma \coloneqq \prod_{1 \leq j < k \leq n} \frac{\sigma(j) - \sigma(k)}{j - k}\ ,\quad \sigma \in \mathsf S_n\ .
+    \]
+    } 证明以下命题.
+    \begin{enumerate}
+        \item \(\sign \mathsf S_n \subseteq \{\pm 1\}\).
+        \item 对于任意 \(\sigma, \tau \in \mathsf S_n\) 都有 \(\sign (\sigma \circ \tau) = \sign \sigma \cdot \sign \tau\). 也就是说, \(\sign\) 是从 \(\mathsf S_n\) 到乘法群 \(\bigl(\{\pm 1\}, \cdot\bigr)\) 的同态. \textsl{该同态的核称为交错群 \(\mathsf A_n \coloneqq \{\, \sigma \in \mathsf S_n \;;\; \sign \sigma = 1 \,\}\). 进一步, \(\mathsf A_n\) 中的置换称为偶置换, \(\mathsf S_n \backslash \mathsf A_n\) 中的置换称为奇置换.}
+        \item 当 \(n \geq 2\) 时 \(\mathsf A_n\) 的阶是 \(n! / 2\), 当 \(n = 1\) 时 \(\mathsf A_n\) 的阶是 \(1\).
+        \item 当 \(n \geq 2\) 时 \(\sign\) 是满射.
+    \end{enumerate}
+\end{exercise}
+
 \newpage
 
 \section{实数}
