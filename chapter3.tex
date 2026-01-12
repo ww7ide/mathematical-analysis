@@ -168,7 +168,7 @@
 \end{center}
 则 \(f\) 在 \(x_0\) 处连续, 这是因为对于任意 \(\varepsilon > 0\) 存在 \(\delta > 0\) 使得 \(U \coloneqq (x_0 - \delta, x_0 + \delta)\) 的像 \(f(U) \subseteq V \coloneqq \bigl(f(x_0) - \varepsilon, f(x_0) + \varepsilon\bigr)\). 另一方面, 不存在 \(\delta > 0\) 使得对于任意 \(x \in (x_1, x_1 + \delta)\) 都有 \(|f(x) - f(x_1)| < \varepsilon_1\), 因此 \(f\) 在 \(x_1\) 处不连续.
 
-\begin{example}
+\begin{example}\label{eg:continuous-function}
     设 \(X\) 和 \(Y\) 是度量空间.
     \begin{enumerate}
         \item 平方根函数 \(\R^+ \to \R^+,\ x \mapsto \sqrt{x}\) 是连续的.
@@ -364,7 +364,7 @@
     称为 \(f\) 与 \(g\) 的商.
 \end{definition}
 
-\begin{proposition}
+\begin{proposition}\label{prop:calculating-with-continuous-functions}
     设 \(X\) 是度量空间, \(F\) 是赋范向量空间,
     \[
         f \colon \dom f \subseteq X \to F\ ,\quad g \colon \dom g \subseteq X \to F
@@ -376,6 +376,52 @@
         \item 若 \(F = \K\) 且 \(g(x_0) \neq 0\), 则 \(f / g\) 在 \(x_0\) 处连续.
     \end{enumerate}
 \end{proposition}
+
+\begin{proof}
+    由定理 \ref{thm:sequence-criterion}、命题 \ref{prop:addition-scalar-multiplication-in-c}、命题 \ref{prop:multiplication-in-c}、命题 \ref{prop:division-in-c}、例 \ref{eg:continuous-function}(4) 和注 \ref{rem:norms}(3) 可得.
+\end{proof}
+
+\begin{corollary}\label{cor:polynomial-is-continuous}
+    \begin{enumerate}
+        \item 设 \(p, q \in \K[X]\) 且 \(q \neq 0\). 则有理函数 \(r = p / q\) 是连续的.
+        \item 多元多项式 \(p \in \K[X_1, \ldots, X_n]\) 是连续的.
+        \item 设 \(X\) 是度量空间, \(F\) 是赋范向量空间. 则 \(C(X, F)\) 是 \(F^X\) 的子空间, 称为从 \(X\) 到 \(F\) 的连续函数的向量空间\footnote{在不会引起混淆的情况下, 我们通常将 \(C(X, \K)\) 记作 \(C(X)\).}.
+    \end{enumerate}
+\end{corollary}
+
+\begin{proof}
+    由命题 \ref{prop:calculating-with-continuous-functions} 和例 \ref{eg:continuous-function}(8) 可得.
+\end{proof}
+
+\begin{proposition}
+    设幂级数 \(a \coloneqq \sum a_k X^k \in \K[\![X]\!]\) 的收敛半径 \(\rho > 0\). 则 \(a\) 对应的幂级数函数 \(\underline a\) 在 \(\rho \B_\K\) 上连续.
+\end{proposition}
+
+\begin{proof}
+    设 \(x_0 \in \rho \B_\C\). 任取 \(\varepsilon > 0\) 和 \(|x_0| < r < \rho\). 由定理 \ref{thm:radius-of-convergence} 可知级数 \(\sum |a_k|\, r^k\) 收敛, 于是由练习 \ref{ex:rear-of-convergent-series-converges-to-0} 可知存在 \(K \in \N\) 使得
+    \[
+        \sum_{k = K + 1}^\infty |a_k|\, r^k < \frac{\varepsilon}{4}\ .
+    \]
+    于是对于任意 \(|x| \leq r\) 都有
+    \begin{align*}
+        |\underline a(x) - \underline a(x_0)| &= \Bigl| \sum_{k = 0}^\infty a_k x^k - \sum_{k = 0}^\infty a_k x_0^k \Bigr|\\
+        &\leq \Bigl| \sum_{k = 0}^K a_k x^k - \sum_{k = 0}^K a_k x_0^k \Bigr| + \sum_{k = K + 1}^\infty |a_k|\, |x|^k + \sum_{k = K + 1}^\infty |a_k|\, |x_0|^k\\
+        &\leq \Bigl| \sum_{k = 0}^K a_k x^k - \sum_{k = 0}^K a_k x_0^k \Bigr| + 2 \sum_{k = K + 1}^\infty |a_k|\, r^k\ .
+    \end{align*}
+    令
+    \[
+        p \coloneqq \sum_{k = 0}^K a_k X^k \in \C[X]\ .
+    \]
+    由推论 \ref{cor:polynomial-is-continuous} 可知 \(p\) 是连续的, 因此存在 \(\delta \in (0, r - |x_0|)\) 使得
+    \[
+        |p(x) - p(x_0)| < \frac{\varepsilon}{2}\ ,\quad |x - x_0| < \delta\ .
+    \]
+    由于 \(\B_\C(x_0, \delta) \subseteq \rho \B_\C\), 因此当 \(|x - x_0| < \delta\) 时 \(|\underline a(x) - \underline a(x_0)| < \varepsilon\).
+\end{proof}
+
+\begin{theorem}
+    设 \(X\), \(Y\) 和 \(Z\) 是度量空间, \(f \colon X \to Y\) 在 \(x \in X\) 处连续, \(g \colon Y \to Z\) 在 \(f(x) \in Y\) 处连续. 则 \(g \circ f \colon X \to Z\) 在 \(x\) 处连续.
+\end{theorem}
 
 \subsection{练习}
 
@@ -436,11 +482,7 @@
 \end{proof}
 
 \begin{exercise}
-    设 \(q \in \Q\). 证明函数
-    \[
-        (0, \infty) \to (0, \infty)\ ,\quad x \mapsto x^q
-    \]
-    是连续的.\footnote{在第 3.6 节中, 我们将研究函数 \(x \mapsto x^q\) 更一般的情况.} (提示: 见练习 \ref{ex:sequence-power-equal-limit-power}.)
+    设 \(q \in \Q\). 证明函数 \((0, \infty) \to (0, \infty),\ x \mapsto x^q\) 是连续的.\footnote{在第 3.6 节中, 我们将研究函数 \(x \mapsto x^q\) 更一般的情况.} (提示: 见练习 \ref{ex:sequence-power-equal-limit-power}.)
 \end{exercise}
 
 \begin{proof}
@@ -569,6 +611,18 @@
     \]
     在 \(x_0\) 处连续.
 \end{exercise}
+
+\begin{proof}
+    由于连续函数的复合是连续的, 因此 \(|f| = |\!\cdot\!| \circ f\) 在 \(x_0\) 处连续.
+
+    下面考虑 \(f^+\) 的连续性. 若 \(f(x_0) > 0\), 于是存在 \(x_0\) 的邻域 \(U\) 使得当 \(x \in U\) 时 \(f(x) > 0\), 此时 \(f^+|_U = f|_U\), 因此 \(f^+\) 在 \(x_0\) 处连续. 若 \(f(x_0) < 0\), 于是存在 \(x_0\) 的邻域 \(U\) 使得当 \(x \in U\) 时 \(f(x) < 0\), 此时常值函数 \(f^+|_U \colon x \mapsto 0\) 在 \(x_0\) 处连续, 因此 \(f^+\) 在 \(x_0\) 处连续. 若 \(f(x_0) = 0\), 注意到, 此时对于任意 \(x_0\) 的邻域 \(U\) 都有 \(f^+(U) \subseteq f(U)\). 由于 \(f\) 在 \(x_0\) 处连续, 于是对于任意 \(f(x_0) = f^+(x_0)\) 的邻域 \(V\) 存在 \(x_0\) 的邻域 \(U\) 使得 \(f^+(U) \subseteq f(U) \subseteq V\), 因此 \(f^+\) 在 \(x_0\) 处连续.
+
+    类似可得 \(f^-\) 在 \(x_0\) 处连续.
+
+    不失一般性, 假设 \(f(x_0) > g(x_0)\). 于是存在 \(x_0\) 的邻域 \(U\) 使得当 \(x \in U\) 时 \(f(x) > g(x)\), 此时 \((f \vee g)|_U = f|_U\), 因此 \(f \vee g\) 在 \(x_0\) 处连续. 若 \(f(x_0) = g(x_0)\), 注意到, 此时对于任意 \(x_0\) 的邻域 \(U\) 都有 \((f \vee g)(U) \subseteq f(U) \cup g(U)\). 由于 \(f\) 和 \(g\) 在 \(x_0\) 处连续, 于是对于任意 \(f(x_0) = g(x_0) = (f \vee g)(x_0)\) 的邻域 \(V\) 存在 \(x_0\) 的邻域 \(U\) 使得 \(f(U) \subseteq V\) 且 \(g(U) \subseteq V\). 进一步, \((f \vee g)(U) \subseteq f(U) \cup g(U) \subseteq V\), 因此 \(f \vee g\) 在 \(x_0\) 处连续.
+
+    类似可得 \(f \wedge g\) 在 \(x_0\) 处连续.
+\end{proof}
 
 \begin{exercise}
     设
@@ -792,3 +846,48 @@
     \]
     证明 \(f\) 在 \(x\) 处连续当且仅当 \(\omega_f(x) = 0\).
 \end{exercise}
+
+\begin{proof}
+    \(\implies\). 设 \(f\) 在 \(x\) 处连续. 于是对于任意 \(\varepsilon > 0\) 存在 \(\delta > 0\) 使得
+    \[
+        d_Y \bigl(f(y), f(x)\bigr) < \frac{\varepsilon}{2}\ ,\quad y \in \B_X(x, \delta)\ ,
+    \]
+    因此由三角不等式可得
+    \[
+        d_Y \bigl(f(y), f(z)\bigr) \leq d_Y \bigl(f(y), f(x)\bigr) + d_Y \bigl(f(x), f(z)\bigr) < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon\ ,\quad y, z \in \B_X(x, \delta)\ .
+    \]
+    这说明对于任意 \(\varepsilon > 0\) 存在 \(\delta > 0\) 使得
+    \[
+        \omega_f(x, \delta) = \sup_{y, z \in \B_X(x, \delta)} d_Y\bigl(f(y), f(z)\bigr) < \varepsilon\ ,
+    \]
+    即
+    \[
+        \omega_f(x) = \inf_{\delta > 0} \omega_f(x, \delta) = 0\ .
+    \]
+
+    \(\impliedby\). 设 \(\omega_f(x) = 0\). 任取 \(\varepsilon > 0\). 于是存在 \(\delta > 0\) 使得
+    \[
+        \omega_f(x, \delta) = \sup_{y, z \in \B_X(x, \delta)} d_Y\bigl(f(y), f(z)\bigr) < \varepsilon\ .
+    \]
+    特别的,
+    \[
+        d_Y\bigl(f(y), f(x)\bigr) < \varepsilon\ ,\quad y \in \B_X(x, \delta)\ ,
+    \]
+    这说明 \(f\) 在 \(x\) 处连续.
+\end{proof}
+
+\begin{exercise}
+    证明平方根函数 \(w \colon \R^+ \to \R^+,\ x \mapsto \sqrt{x}\) 是连续但不是 Lipschitz 连续的, 并证明当 \(a > 0\) 时 \(w|_{[a, \infty)}\) 是 Lipschitz 连续的.
+\end{exercise}
+
+\begin{proof}
+    假设 \(w\) 是 Lipschitz 连续的, 于是存在 \(\alpha > 0\) 使得对于任意 \(x, y \in \R^+\) 都有 \(|\sqrt{x} - \sqrt{y}| \leq \alpha\, |x - y|\). 令 \(\beta \coloneqq \max\{2, \alpha\}\). 由于当 \(x = 1 / \beta^4\) 时,
+    \[
+        |\sqrt{x}| = \frac{1}{\beta^2} > \frac{1}{\beta^3} = \beta x \geq \alpha x\ ,
+    \]
+    矛盾. 因此 \(w\) 不是 Lipschitz 连续的. 另一方面, 令 \(\alpha \coloneqq 1 / 2 \sqrt{a}\). 由于
+    \[
+        |\sqrt{x} - \sqrt{y}| = \frac{|x - y|}{\sqrt{x} + \sqrt{y}} \leq \frac{|x - y|}{\sqrt{a} + \sqrt{a}} = \alpha\, |x - y|\ ,\quad x, y \in [a, \infty)\ ,
+    \]
+    因此 \(w|_{[a, \infty)}\) 是 Lipschitz 连续的.
+\end{proof}
