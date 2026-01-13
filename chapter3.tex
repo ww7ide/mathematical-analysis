@@ -393,7 +393,7 @@
     由命题 \ref{prop:calculating-with-continuous-functions} 和例 \ref{eg:continuous-function}(8) 可得.
 \end{proof}
 
-\begin{proposition}
+\begin{proposition}\label{prop:continuity-of-power-series}
     设幂级数 \(a \coloneqq \sum a_k X^k \in \K[\![X]\!]\) 的收敛半径 \(\rho > 0\). 则 \(a\) 对应的幂级数函数 \(\underline a\) 在 \(\rho \B_\K\) 上连续.
 \end{proposition}
 
@@ -419,9 +419,75 @@
     由于 \(\B_\C(x_0, \delta) \subseteq \rho \B_\C\), 因此当 \(|x - x_0| < \delta\) 时 \(|\underline a(x) - \underline a(x_0)| < \varepsilon\).
 \end{proof}
 
-\begin{theorem}
+下面这个重要的定理常常为证明某些函数的连续性提供一种简单的方法. 我们将在该定理之后的例子中对此加以说明.
+
+\begin{theorem}\label{thm:continuity-of-compositions}
     设 \(X\), \(Y\) 和 \(Z\) 是度量空间, \(f \colon X \to Y\) 在 \(x \in X\) 处连续, \(g \colon Y \to Z\) 在 \(f(x) \in Y\) 处连续. 则 \(g \circ f \colon X \to Z\) 在 \(x\) 处连续.
 \end{theorem}
+
+\begin{proof}
+    设 \(W\) 是 \(g \circ f(x) = g\bigl(f(x)\bigr)\) 的邻域. 由于 \(g\) 在 \(f(x)\) 处连续, 于是存在 \(f(x)\) 的邻域 \(V\) 使得 \(g(V) \subseteq W\). 而 \(f\) 在 \(x\) 处连续, 于是存在 \(x\) 的邻域 \(U\) 使得 \(f(U) \subseteq V\). 因此
+    \[
+        g \circ f(U) = g\bigl(f(U)\bigr) \subseteq g(V) \subseteq W\ ,
+    \]
+    这说明 \(g \circ f\) 在 \(x\) 处连续.
+\end{proof}
+
+\begin{example}
+    设 \(X\) 是度量空间, \(E\) 是赋范向量空间.
+    \begin{enumerate}
+        \item 设 \(f \colon X \to E\) 是连续的. 则 \(f\) 的范数 \(\|f\| \colon X \to \R,\ x \mapsto \|f(x)\|\) 是连续的.
+        \begin{proof}
+            由例 \ref{eg:continuous-function}(10) 可知 \(\|\!\cdot\!\| \colon E \to \R\) 是 Lipschitz 连续的. 因此由定理 \ref{thm:continuity-of-compositions} 可知 \(\|f\| = \|\!\cdot\!\| \circ f\) 是连续的.
+        \end{proof}
+        \item 设 \(g \colon \R \to X\) 是连续的. 则函数 \(\widehat g \colon E \to X,\ x \mapsto g(\|x\|)\) 是连续的.
+        \begin{proof}
+            注意到 \(\widehat g = g \circ \|\!\cdot\!\|\) 是连续函数的复合.
+        \end{proof}
+        \item 定理 \ref{thm:continuity-of-compositions} 的逆命题不成立. 即 \(g \circ f\) 的连续性并不蕴含 \(f\) 或 \(g\) 是连续的.
+        \begin{proof}
+            令 \(Z \coloneqq [- 3 / 2, - 1 / 2] \cup (1 / 2, 3 / 2]\), \(I \coloneqq [- 1, 1]\). 定义函数
+            \[
+                f \colon Z \to \R\ ,\quad x \mapsto
+                \begin{cases}
+                    x + 1 / 2\ , & x \in [- 3 / 2, - 1 / 2]\ , \\
+                    x - 1 / 2\ , & x \in (1 / 2, 3 / 2]
+                \end{cases}
+            \]
+            和
+            \[
+                g \colon I \to \R\ ,\quad y \mapsto
+                \begin{cases}
+                    y - 1 / 2\ , & x \in [- 1, 0]\ , \\
+                    y + 1 / 2\ , & x \in (0, 1]\ .
+                \end{cases}
+            \]
+            不难验证 \(f\) 是连续的, \(g\) 在 \(0\) 处不连续. 而 \(f \circ g = \id_I\) 和 \(g \circ f = \id_Z\) 都是连续的.
+        \end{proof}
+        \item 函数 \(f \colon \R \to \R,\ x \mapsto 1 \big/ \sqrt{1 + x^2}\) 是连续的.
+        \begin{proof}
+            由推论 \ref{cor:polynomial-is-continuous}(1)、例 \ref{eg:continuous-function}(1)、定理 \ref{thm:continuity-of-compositions} 和命题 \ref{prop:calculating-with-continuous-functions}(3) 可得.
+        \end{proof}
+        \item 指数函数 \(\exp \colon \C \to \C\) 是连续的.
+        \begin{proof}
+            由例 \ref{eg:radius-of-convergence}(1) 和命题 \ref{prop:continuity-of-power-series} 可得.
+        \end{proof}
+    \end{enumerate}
+\end{example}
+
+\begin{proposition}
+    设 \(X\) 是度量空间, \(f_1, \ldots, f_m \in \K^X\). 则函数 \(f \coloneqq (f_1, \ldots, f_m) \colon X \to \K^m\) 在 \(x \in X\) 处连续, 当且仅当对于每个 \(k\) 都有 \(f_k\) 在 \(x\) 处连续. 特别的, \(f \colon X \to \C\) 在 \(x \in X\) 处连续当且仅当 \(\Re f\) 和 \(\Im f\) 在 \(x\) 处连续.
+\end{proposition}
+
+\begin{proof}
+    设 \((x_n)\) 是 \(X\) 中的序列且 \(x_n \to x\). 由命题 \ref{prop:componentwise-convergence-of-sequence} 可知
+    \[
+        f(x_n) \to f(x) \iff f_k(x_n) \to f_k(x)\ ,\quad k = 1, \ldots, m\ .
+    \]
+    于是由定理 \ref{thm:sequence-criterion} 可知该命题成立.
+\end{proof}
+
+\subsection{单侧连续性}
 
 \subsection{练习}
 
@@ -605,7 +671,19 @@
 \end{proof}
 
 \begin{exercise}
-    设 \(X\) 是度量空间, \(f, g \in \R^X\) 在 \(x_0 \in X\) 处连续. 证明或证伪
+    \textsl{设 \(M\) 是任意集合,
+    \[
+        f \colon \dom f \subseteq M \to \R\ ,\quad g \colon \dom g \subseteq M \to \R\ .
+    \]
+    定义
+    \[
+        f \vee g \colon \dom f \cap \dom g \to \R\ ,\quad x \mapsto \max \bigl\{f(x), g(x)\bigr\}\ ,
+    \]
+    称为 \(f\) 与 \(g\) 的逐点最大,
+    \[
+        f \wedge g \colon \dom f \cap \dom g \to \R\ ,\quad x \mapsto \min \bigl\{f(x), g(x)\bigr\}\ ,
+    \]
+    称为 \(f\) 与 \(g\) 的逐点最小.} 设 \(X\) 是度量空间, \(f, g \in \R^X\) 在 \(x_0 \in X\) 处连续. 证明或证伪
     \[
         |f|\ ,\quad f^+ \coloneqq 0 \vee f\ ,\quad f^- \coloneqq 0 \vee (- f)\ ,\quad f \vee g\ ,\quad f \wedge g
     \]

@@ -126,4 +126,7 @@ Section  1 Continuity                                           1  6, 26
            Exercises                                            1 10, 26
            Exercises                                            1 11, 26
            Exercises                                            1 12, 26
+Section  2 The Fundamentals of Topology                         1 13, 26
+           Open Sets
+           Closed Sets
 ```
