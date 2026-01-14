@@ -129,4 +129,9 @@ Section  1 Continuity                                           1  6, 26
 Section  2 The Fundamentals of Topology                         1 13, 26
            Open Sets
            Closed Sets
+           The Closure of a Set                                 1 14, 26
+           The Interior of a Set
+           The Boundary of a Set
+           The Hausdorﬀ Condition
+           Examples
 ```
