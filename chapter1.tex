@@ -4,6 +4,44 @@
 
 \section{集合}
 
+\begin{definition}[空集]
+    设集合 \(X\). 称集合
+    \[
+        \emptyset_X \coloneqq \{\, x \in X \;;\; x \neq x \,\}
+    \]
+    是 \(X\) 的空子集.
+\end{definition}
+
+\begin{remark}\label{rem:emptyset}
+    \begin{enumerate}
+        \item 设性质 \(E\). 则
+        \[
+            x \in \emptyset_X \implies E(x)\ ,\quad x \in X\ ,
+        \]
+        即空集具有所有性质.
+        \item 设集合 \(X\) 和 \(Y\). 则 \(\emptyset_X = \emptyset_Y\), 即空集是唯一的. 该集合是任意集合的子集, 记作 \(\emptyset\).
+    \end{enumerate}
+\end{remark}
+
+\begin{proposition}\label{prop:operations-of-family-of-sets}
+    设 \(\{\, A_\alpha \;;\; \alpha \in \mathsf A \,\}\) 和 \(\{\, B_\beta \;;\; \beta \in \mathsf B \,\}\) 是集合 \(X\) 的子集族. 则
+    \begin{enumerate}
+        \item 结合性
+        \[
+            \Bigl(\bigcap_\alpha A_\alpha\Bigr) \cap \Bigl(\bigcap_\beta B_\beta\Bigr) = \bigcap_{(\alpha, \beta)} A_\alpha \cap B_\beta\ ,\quad \Bigl(\bigcup_\alpha A_\alpha\Bigr) \cup \Bigl(\bigcup_\beta B_\beta\Bigr) = \bigcup_{(\alpha, \beta)} A_\alpha \cup B_\beta\ .
+        \]
+        \item 分配性
+        \[
+            \Bigl(\bigcap_\alpha A_\alpha\Bigr) \cup \Bigl(\bigcap_\beta B_\beta\Bigr) = \bigcap_{(\alpha, \beta)} A_\alpha \cup B_\beta\ ,\quad \Bigl(\bigcup_\alpha A_\alpha\Bigr) \cap \Bigl(\bigcup_\beta B_\beta\Bigr) = \bigcup_{(\alpha, \beta)} A_\alpha \cap B_\beta\ .
+        \]
+        \item de Morgan 律
+        \[
+            \Bigl(\bigcap_\alpha A_\alpha\Bigr)^c = \bigcup_\alpha A_\alpha^c\ ,\quad \Bigl(\bigcup_\alpha A_\alpha\Bigr)^c = \bigcap_\alpha A_\alpha^c\ .
+        \]
+    \end{enumerate}
+    其中 \((\alpha, \beta)\) 属于索引集 \(\mathsf A \times \mathsf B\).
+\end{proposition}
+
 \section{函数}
 
 \subsection{简单例子}
@@ -138,7 +176,7 @@
         \]
         } 关于这些问题的更完整讨论, 我们建议读者参阅相关文献 (例如 [FP85]).
 
-        Dedekind 的研究表明, 为了在公理化集合论的框架内证明自然数的存在性, 还需要无穷公理: \textsl{存在归纳集.} 这里, \textsl{称集合 \(N\) 是归纳集, 若 \(\varnothing \in N\) 且对于任意 \(n \in N\) 都有 \(n \cup \{n\} \in N\).} 考虑集合
+        Dedekind 的研究表明, 为了在公理化集合论的框架内证明自然数的存在性, 还需要无穷公理: \textsl{存在归纳集.} 这里, \textsl{称集合 \(N\) 是归纳集, 若 \(\emptyset \in N\) 且对于任意 \(n \in N\) 都有 \(n \cup \{n\} \in N\).} 考虑集合
         \[
             \N \coloneqq \bigcap \{\, m \;;\; m\ \text{是归纳集} \,\}
         \]
@@ -146,7 +184,7 @@
         \[
             \nu \colon \N \to \N\ ,\quad n \mapsto n \cup \{n\}\ .
         \]
-        最后, 令 \(0 \coloneqq \varnothing\). 可以证明, \(\N\) 本身是归纳集且 \((\N, 0, \nu)\) 满足 Peano 公理. 因此, \((\N, 0, \nu)\) 是一个自然数模型.
+        最后, 令 \(0 \coloneqq \emptyset\). 可以证明, \(\N\) 本身是归纳集且 \((\N, 0, \nu)\) 满足 Peano 公理. 因此, \((\N, 0, \nu)\) 是一个自然数模型.
 
         现在设 \((\N', 0', \nu')\) 是另一个自然数模型. 那么, 在集合论的框架内, 可以证明存在一个双射 \(\varphi \colon \N \to \N'\) 使得 \(\varphi(0) = 0'\) 且 \(\varphi \circ \nu = \nu' \circ \varphi\), 即 \(\varphi\) 是从 \((\N, 0, \nu)\) 到 \((\N', 0', \nu')\) 的同构. 因此, \textsl{自然数在同构意义下是唯一的.} 这样一来, 谈论自然数便是有意义的. 证明和细节可参见 [FP85].
 

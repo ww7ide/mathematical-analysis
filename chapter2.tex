@@ -338,7 +338,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \begin{enumerate}
         \item 对于任意 \(a \in X\) 和 \(r > 0\), \(\B(a, r)\) 和 \(\bar \B(a, r)\) 在 \(X\) 中有界.
         \item 有界集合的每个子集都是有界的. 有界集合的有限并是有界的.
-        \item 集合 \(Y \subseteq X\) 在 \(X\) 中有界, 当且仅当存在 \(x \in X\) 和 \(r > 0\) 使得 \(Y \subseteq \B_X(x, r)\). 若 \(Y \neq \varnothing\), 则存在 \(x \in Y\) 也满足该性质.
+        \item 集合 \(Y \subseteq X\) 在 \(X\) 中有界, 当且仅当存在 \(x \in X\) 和 \(r > 0\) 使得 \(Y \subseteq \B_X(x, r)\). 若 \(Y \neq \emptyset\), 则存在 \(x \in Y\) 也满足该性质.
         \item 有界区间是有界的.
         \item 集合 \(Y \subseteq \K\) 有界, 当且仅当存在 \(M > 0\) 使得对于任意 \(y \in Y\) 都有 \(|y| \leq M\).
     \end{enumerate}
@@ -446,7 +446,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \]
     由于 \(a\) 是 \((x_n)\) 的聚点, 故
     \[
-        \bigl\{\, m \in \N \;;\; m \geq n_{k - 1}\ \text{且}\ x_m \in \B(a, 1 / k) \,\bigr\} \neq \varnothing\ ,\quad k \in \N^\ast\ ,
+        \bigl\{\, m \in \N \;;\; m \geq n_{k - 1}\ \text{且}\ x_m \in \B(a, 1 / k) \,\bigr\} \neq \emptyset\ ,\quad k \in \N^\ast\ ,
     \]
     由良序原理可知, 对于每个 \(k \in \N^\ast\), \(n_k\) 是良定义的. 于是 \((n_k)\) 是良定义且严格递增的. 任取 \(\varepsilon > 0\), 由推论 \ref{cor:archimedean-property-cor} 可知, 存在 \(K \in \N\) 使得 \(1 / K < \varepsilon\), 由 \(n_k\) 的定义可知
     \[
@@ -1531,7 +1531,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
             \B_\infty^m = \underbrace{\B_\infty^1 \times \cdots \times \B_\infty^1}_{m} = (-1, 1)^m\ ,
         \]
         但是对于 \(\B^m\) 和 \(\B_1^m\), 则不存在类似的表达方式.
-        \item 设 \(E\) 是向量空间, \(\|\!\cdot\!\|_1\) 和 \(\|\!\cdot\!\|_2\) 是 \(E\) 上的等价范数, 记 \(E_1 \coloneqq (E, \|\!\cdot\!\|_1),\ E_2 \coloneqq (E, \|\!\cdot\!\|_2)\). 则
+        \item 设 \(\|\!\cdot\!\|_1\) 和 \(\|\!\cdot\!\|_2\) 是向量空间 \(E\) 上的等价范数, 记 \(E_1 \coloneqq (E, \|\!\cdot\!\|_1),\ E_2 \coloneqq (E, \|\!\cdot\!\|_2)\). 则
         \[
             \nbr_{E_1}(a) = \nbr_{E_2}(a)\ ,\quad a \in E\ .
         \]
@@ -3242,9 +3242,9 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \[
         n_0 \coloneqq \max E + 1\ ,\quad n_k \coloneqq \min\{\, m \in \N \;;\; m > n_{k - 1}\ \text{且}\ x_m > x_{n_{k - 1}} \,\}\ ,\quad k \in \N^\ast\ ,
     \]
-    特别的, 若 \(E = \varnothing\), 则令 \(n_0 \coloneqq 0\). 于是由 \(E\) 的定义可知, 由于 \(n_{k - 1} \notin E\), 故存在 \(m > n_{k - 1}\) 使得 \(x_m > x_{n_{k - 1}}\), 因此
+    特别的, 若 \(E = \emptyset\), 则令 \(n_0 \coloneqq 0\). 于是由 \(E\) 的定义可知, 由于 \(n_{k - 1} \notin E\), 故存在 \(m > n_{k - 1}\) 使得 \(x_m > x_{n_{k - 1}}\), 因此
     \[
-        \{\, m \in \N \;;\; m > n_{k - 1}\ \text{且}\ x_m > x_{n_{k - 1}} \,\} \neq \varnothing\ .
+        \{\, m \in \N \;;\; m > n_{k - 1}\ \text{且}\ x_m > x_{n_{k - 1}} \,\} \neq \emptyset\ .
     \]
     由良序原理可知, 对于每个 \(k \in \N^\ast\), \(n_k\) 是良定义的, 于是 \((n_k)\) 是良定义且严格递增的. 进一步, \((x_{n_k})\) 是严格递增的.
 

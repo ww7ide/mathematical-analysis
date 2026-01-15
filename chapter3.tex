@@ -323,9 +323,9 @@
 \begin{proof}
     \(\implies\). 设 \((x_n)\) 是 \(X\) 中的序列且 \(x_n \to x\). 任取 \(f(x)\) 的邻域 \(V\). 由于 \(f\) 在 \(x\) 处连续, 于是存在 \(x\) 的邻域 \(U\) 使得 \(f(U) \subseteq V\). 而 \(x_n \to x\), 因此存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(x_n \in U\). 进一步, 当 \(n \geq N\) 时 \(f(x_n) \in f(U) \subseteq V\). 这说明 \(f(x_n) \to f(x)\).
 
-    \(\impliedby\). 设 \(f\) 在 \(x\) 处序列连续, 但在 \(x\) 处不连续. 于是存在 \(f(x)\) 的邻域 \(V\) 使得对于任意 \(x\) 的邻域 \(U\) 都有 \(f(U) \cap V^c \neq \varnothing\). 特别的,
+    \(\impliedby\). 设 \(f\) 在 \(x\) 处序列连续, 但在 \(x\) 处不连续. 于是存在 \(f(x)\) 的邻域 \(V\) 使得对于任意 \(x\) 的邻域 \(U\) 都有 \(f(U) \cap V^c \neq \emptyset\). 特别的,
     \[
-        f\bigl(\B(x, 1 / n)\bigr) \cap V^c \neq \varnothing\ ,\quad n \in \N^\ast\ .
+        f\bigl(\B(x, 1 / n)\bigr) \cap V^c \neq \emptyset\ ,\quad n \in \N^\ast\ .
     \]
     因此对于任意 \(n \in \N^\ast\) 存在 \(x_n \in \B(x, 1 / n)\) 使得 \(f(x_n) \notin V\). 根据构造可知 \((x_n)\) 收敛到 \(x\), 但 \(\bigl(f(x_n)\bigr)\) 无法收敛到 \(f(x)\), 这与 \(f\) 的序列连续性矛盾.
 \end{proof}
@@ -1035,9 +1035,160 @@
 
 为了更深入的理解连续函数, 本节我们介绍拓扑空间中的一些基本概念. 其中主要结果是定理 \ref{thm:the-preimage-of-each-open-set-is-open}, 其将连续函数刻画为拓扑空间之间 ``保持拓扑结构'' 的函数.
 
+\begin{center}
+    \textsl{在本节中, 设 \(X \coloneqq (X, d)\) 度量空间.}
+\end{center}
+
 \subsection{开集}
 
+\begin{definition}[内点]
+    称 \(a \in X\) 是 \(A \subseteq X\) 的内点, 若存在 \(U \in \nbr(a)\) 使得 \(U \subseteq A\).
+\end{definition}
+
+\begin{definition}[开集]
+    称 \(A \subseteq X\) 是开集, 若 \(A\) 的每个点都是内点.
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 显然, \(a\) 是 \(A\) 的内点当且仅当存在 \(\varepsilon > 0\) 使得 \(\B(a, \varepsilon) \subseteq A\).
+        \item \(A\) 是开集当且仅当 \(A\) 是其每个点的邻域.
+    \end{enumerate}
+\end{remark}
+
+\begin{example}\label{eg:open-ball-is-open}
+    开球 \(\B(a, r)\) 是开的.
+\end{example}
+
+\begin{proof}
+    设 \(x_0 \in \B(a, r)\). 令 \(s \coloneqq d(x_0, a)\). 于是 \(\varepsilon \coloneqq r - s > 0\). 由三角不等式可得
+    \[
+        d(x, a) \leq d(x, x_0) + d(x_0, a) < \varepsilon + s = r\ ,\quad x \in \B(x_0, \varepsilon)\ .
+    \]
+    因此 \(\B(x_0, \varepsilon) \subseteq \B(a, r)\), 这说明 \(x_0\) 是 \(\B(a, r)\) 的内点.
+    \begin{center}
+        \begin{tikzpicture}
+            \filldraw[fill=gray!20, draw=black] (2,2) -- (2,-2) -- (-2,-2) -- (-2, 2) -- cycle;
+            \fill (0,0) circle (1.5pt);
+            \node at (0,-0.3) {\(a\)};
+            \draw[dashed] (0,0) -- (-2,0);
+            \node at (-1,0.2) {\(r\)};
+
+            \filldraw[fill=gray!50, draw=black] (2,1.8) -- (2,0.2) -- (0.4,0.2) -- (0.4,1.8) -- cycle;
+            \fill (1.2,1) circle (1.5pt);
+            \node at (1.2,0.7) {\(x_0\)};
+            \draw[dashed] (1.2,1) -- (2,1);
+            \node at (1.6,1.2) {\(\varepsilon\)};
+
+            \draw[dashed] (1.2,1) -- (0,1);
+            \draw[dashed] (0,1) -- (0,0);
+            \node at (0.2,1.2) {\(s\)};
+        \end{tikzpicture}
+    \end{center}
+\end{proof}
+
+\begin{remark}\label{rem:open-set}
+    \begin{enumerate}
+        \item ``内点'' 和 ``开集'' 的概念依赖于所处的度量空间 \(X\). 有时为了明确这一点, 我们会说 ``\(a\) 是 \(A\) 关于 \(X\) 的内点'' 或 ``\(A\) 在 \(X\) 中是开的''. 例如, \(\R\) 中的开球, 即开区间 \(J\), 根据上面的例子可知 \(J\) 在 \(\R\) 中是开的. 然而, 如果我们将 \(\R\) 嵌入到 \(\R^2\) 中进行考虑, 那么 \(J\) 在 \(\R^2\) 中就不是开的.
+        \item 设 \(\|\!\cdot\!\|_1\) 和 \(\|\!\cdot\!\|_2\) 是向量空间 \(X\) 上的等价范数. 于是, 由注 \ref{rem:equivalent-norms}(4) 可知
+        \[
+            A\ \text{在}\ (X, \|\!\cdot\!\|_1)\ \text{中是开的} \iff A\ \text{在}\ (X, \|\!\cdot\!\|_2)\ \text{中是开的}\ .
+        \]
+        因此, 若 \(A\) 关于某个范数是开的, 那么其关于所有等价范数都是开的.
+        \item 由例 \ref{eg:open-ball-is-open} 可知度量空间中的每个点都有开邻域.
+    \end{enumerate}
+\end{remark}
+
+\begin{proposition}\label{prop:property-of-open-set}
+    设 \(\topo \coloneqq \{\, O \subseteq X \;;\; O\ \text{是开的} \,\}\) 是开集族. 则
+    \begin{enumerate}
+        \item \(\emptyset, X \in \topo\).
+        \item 对于任意 \(\mathscr O \subseteq \topo\) 都有 \(\bigcup \mathscr O \in \topo\). 即开集的任意并是开的.
+        \item 对于任意 \(O_0, \ldots, O_n \in \topo\) 都有 \(\bigcap_{k = 0}^n O_k \in \topo\). 即开集的有限交是开的.
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    (1). 显然 \(X \in \topo\). 由注 \ref{rem:emptyset}(1) 可知 \(\emptyset\) 是开的.
+
+    (2). 设 \(\mathscr O \subseteq \topo\). 任取 \(x \in \bigcup \mathscr O\). 于是存在 \(O \in \mathscr O\) 使得 \(x \in O\), 由于 \(O\) 是开的, 因此存在 \(x\) 的邻域 \(U\) 使得 \(U \subseteq O \subseteq \bigcup \mathscr O\), 这说明 \(\bigcup \mathscr O\) 是开的.
+
+    (3). 设 \(O_0, \ldots, O_n \in \topo\). 任取 \(x \in \bigcap_{k = 0}^n O_k\). 于是对于任意 \(k = 0, \ldots, n\) 存在 \(\varepsilon_k > 0\) 使得 \(\B(x, \varepsilon_k) \subseteq O_k\). 令 \(\varepsilon \coloneqq \min\{\varepsilon_0, \ldots, \varepsilon_n\}\). 由于对于每个 \(k\) 都有 \(\B(x, \varepsilon) \subseteq \B(x, \varepsilon_k) \subseteq O_k\), 因此 \(\B(x, \varepsilon) \subseteq \bigcap_{k = 0}^n O_k\), 这说明 \(\bigcap_{k = 0}^n O_k\) 是开的.
+\end{proof}
+
+命题 \ref{prop:property-of-open-set} 涉及集合运算 \(\bigcup\) 和 \(\bigcap\), 但不涉及度量. 这启发我们可以将度量空间中的这些概念进行如下推广.
+
+\begin{axiom}[拓扑]
+    设 \(M\) 是集合, \(\topo \subseteq \power(M)\). 若
+    \begin{enumerate}[label={\((\mathrm T_{\arabic*})\)}]
+        \item \(\emptyset, M \in \topo\).
+        \item 对于任意 \(\mathscr O \subseteq \topo\) 都有 \(\bigcup \mathscr O \in \topo\).
+        \item 对于任意 \(O_0, \ldots, O_n \in \topo\) 都有 \(\bigcap_{k = 0}^n O_k \in \topo\).
+    \end{enumerate}
+    则称 \(\topo\) 是 \(M\) 上的拓扑, 并称 \(\topo\) 中的元素是开集. 进一步, 称 \((M, \topo)\) 是拓扑空间.
+\end{axiom}
+
+\begin{remark}
+    \begin{enumerate}
+        \item \textsl{设 \(\topo\) 是命题 \ref{prop:property-of-open-set} 中的集族. 称 \(\topo\) 是 \(X\) 上由度量 \(d\) 诱导的拓扑. 若 \(X\) 是赋范向量空间且赋予范数诱导的度量, 则称 \(\topo\) 是范数拓扑.}
+        \item 设 \(\|\!\cdot\!\|_1\) 和 \(\|\!\cdot\!\|_2\) 是向量空间 \(X\) 上的等价范数, \(\topo_{\|\cdot\|_1}\) 和 \(\topo_{\|\cdot\|_2}\) 是由 \((X, \|\!\cdot\!\|_1)\) 和 \((X, \|\!\cdot\!\|_2)\) 诱导的范数拓扑. 于是由注 \ref{rem:open-set}(2) 可知 \(\topo_{\|\cdot\|_1}\) 和 \(\topo_{\|\cdot\|_2}\) 是一致的, 即等价范数诱导相同的拓扑.
+    \end{enumerate}
+\end{remark}
+
 \subsection{闭集}
+
+\begin{definition}[闭集]
+    称 \(A \subseteq X\) 是闭集, 若 \(A^c\) 是开集.\footnote{注意, \(A\) 不是开的并不蕴含 \(A\) 是闭的. 例如, \([0, 1)\) 在 \(\R\) 中既不开也不闭.}
+\end{definition}
+
+\begin{proposition}\label{prop:property-of-closed-set}
+    \begin{enumerate}
+        \item \(\emptyset\) 和 \(X\) 是闭的.
+        \item 闭集的任意交是闭的.
+        \item 闭集的有限并是闭的.
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    由命题 \ref{prop:property-of-open-set} 和命题 \ref{prop:operations-of-family-of-sets}(3) 易得.
+\end{proof}
+
+\begin{remark}
+    \begin{enumerate}
+        \item 开集的无穷交不一定是开的.
+        \begin{proof}
+            例如 \(\bigcap_{n = 1}^\infty \B(0, 1 / n) = \{0\}\) 在 \(\R\) 中是闭的.
+        \end{proof}
+        \item 闭集的无穷并不一定是闭的.
+        \begin{proof}
+            例如 \(\bigcup_{n = 1}^\infty \bigl(\B(0, 1 / n)\bigr)^c = \R^\ast\) 在 \(\R\) 中是开的.
+        \end{proof}
+    \end{enumerate}
+\end{remark}
+
+\begin{definition}[闭包点]
+    称 \(x \in X\) 是 \(A \subseteq X\) 的闭包点, 若对于任意 \(U \in \nbr(x)\) 都有 \(U \cap A \neq \emptyset\). 进一步, 将 \(A\) 的闭包点的全体记作
+    \[
+        \overline A \coloneqq \{\, x \in X \;;\; x\ \text{是}\ A\ \text{的闭包点} \,\}\ .
+    \]
+\end{definition}
+
+\begin{definition}[极限点]
+    称 \(x \in X\) 是 \(A \subseteq X\) 的极限点, 若对于任意 \(U \in \nbr(x)\) 都有 \((U \cap A) \backslash \{x\} \neq \emptyset\). 进一步, 将 \(A\) 的极限点的全体记作
+    \[
+        A' \coloneqq \{\, x \in X \;;\; x\ \text{是}\ A\ \text{的极限点} \,\}\ .
+    \]
+\end{definition}
+
+显然, \(A\) 中的元素和 \(A\) 的极限点都是 \(A\) 的闭包点. 实际上, \(\overline A = A \cup A'\).
+
+\begin{proposition}
+    设 \(A \subseteq X\). 则
+    \begin{enumerate}
+        \item \(A \subseteq \overline A\).
+        \item \(A = \overline A\) 当且仅当 \(A\) 是闭的.
+    \end{enumerate}
+\end{proposition}
 
 \subsection{集合的闭包}
 

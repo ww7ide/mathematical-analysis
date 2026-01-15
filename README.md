@@ -134,4 +134,5 @@ Section  2 The Fundamentals of Topology                         1 13, 26
            The Boundary of a Set
            The Hausdorﬀ Condition
            Examples
+           A Characterization of Continuous Functions           1 15, 26
 ```
