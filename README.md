@@ -135,4 +135,5 @@ Section  2 The Fundamentals of Topology                         1 13, 26
            The Hausdorﬀ Condition
            Examples
            A Characterization of Continuous Functions           1 15, 26
+           Continuous Extensions                                1 16, 26
 ```

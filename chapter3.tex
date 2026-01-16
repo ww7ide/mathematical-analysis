@@ -1042,7 +1042,10 @@
 \subsection{开集}
 
 \begin{definition}[内点]
-    称 \(a \in X\) 是 \(A \subseteq X\) 的内点, 若存在 \(U \in \nbr(a)\) 使得 \(U \subseteq A\).
+    称 \(a \in X\) 是 \(A \subseteq X\) 的内点, 若存在 \(U \in \nbr(a)\) 使得 \(U \subseteq A\). 进一步, 将 \(A\) 的内点的全体记作
+    \[
+        \mathring A \coloneqq \{\, a \in X \;;\; a\ \text{是}\ A\ \text{的内点} \,\}\ .
+    \]
 \end{definition}
 
 \begin{definition}[开集]
@@ -1174,27 +1177,164 @@
 \end{definition}
 
 \begin{definition}[极限点]
-    称 \(x \in X\) 是 \(A \subseteq X\) 的极限点, 若对于任意 \(U \in \nbr(x)\) 都有 \((U \cap A) \backslash \{x\} \neq \emptyset\). 进一步, 将 \(A\) 的极限点的全体记作
+    称 \(x \in X\) 是 \(A \subseteq X\) 的极限点, 若对于任意 \(U \in \nbr(x)\) 都有 \(U \cap \bigl(A \backslash \{x\}\bigr) \neq \emptyset\). 进一步, 将 \(A\) 的极限点的全体记作
     \[
         A' \coloneqq \{\, x \in X \;;\; x\ \text{是}\ A\ \text{的极限点} \,\}\ .
     \]
 \end{definition}
 
-显然, \(A\) 中的元素和 \(A\) 的极限点都是 \(A\) 的闭包点. 实际上, \(\overline A = A \cup A'\).
+显然 \(A \subseteq \overline A\) 且 \(A' \subseteq \overline A\). 实际上, 我们有 \(\overline A = A \cup A'\).
+
+\begin{proposition}\label{prop:closed-set-and-accumulation-point}
+    设 \(A \subseteq X\). 则 \(A = \overline A\) 当且仅当 \(A\) 是闭的.
+\end{proposition}
+
+\begin{proof}
+    \(\implies\). 设 \(x \in A^c = (\overline A)^c\). 由于 \(x\) 不是 \(A\) 的闭包点, 故存在 \(U \in \nbr(x)\) 使得 \(U \cap A = \emptyset\). 因此 \(U \subseteq A^c\), 也就是说 \(x\) 是 \(A^c\) 的内点. 这说明 \(A^c\) 是开的, \(A\) 是闭的.
+
+    \(\impliedby\). 设 \(x \in A^c\). 由于 \(A^c\) 是开的, 故存在 \(U \in \nbr(x)\) 使得 \(U \subseteq A^c\). 于是 \(U \cap A = \emptyset\), 也就是说 \(x\) 不是 \(A\) 的闭包点, 即 \(x \in (\overline A)^c\). 因此 \(A^c \subseteq (\overline A)^c\), 即 \(\overline A \subseteq A\). 结合 (1) 可得 \(A = \overline A\).
+\end{proof}
+
+集合 \(A\) 的极限点 \(x\) 可以被 \(A\) 中 \(x\) 以外的点任意 ``逼近''. 特别的, \(A\) 的极限点是 \(A\) 中某些序列的极限.
+
+\begin{proposition}\label{prop:charact-of-limit-point-via-sequence}
+    \(x \in X\) 是 \(A \subseteq X\) 的极限点当且仅当存在 \(A \backslash \{x\}\) 中的序列 \((x_n)\) 收敛到 \(x\).
+\end{proposition}
+
+\begin{proof}
+    \(\implies\). 由于 \(x\) 是 \(A\) 的极限点, 因此对于任意 \(n \in \N^\ast\) 存在 \(x_n \in A \backslash \{x\}\) 使得 \(x_n \in \B(x, 1 / n)\). 于是 \((x_n)\) 是 \(A \backslash \{x\}\) 中的序列且 \(x_n \to x\).
+
+    \(\impliedby\). 设 \((x_n)\) 是 \(A \backslash \{x\}\) 中的序列且 \(x_n \to x\). 于是对于任意 \(U \in \nbr(x)\) 存在 \(n \in \N\) 使得 \(x_n \in U\), 因此 \(x_n \in U \cap \bigl(A \backslash \{x\}\bigr)\), 这说明 \(x\) 是 \(A\) 的极限点.
+\end{proof}
+
+\begin{corollary}\label{prop:charact-of-accumulation-point-via-sequence}
+    \(x \in X\) 是 \(A \subseteq X\) 的闭包点当且仅当存在 \(A\) 中的序列 \((x_n)\) 收敛到 \(x\).
+\end{corollary}
+
+\begin{proof}
+    若 \(x\) 是极限点, 由命题 \ref{prop:charact-of-limit-point-via-sequence} 可得. 若 \(x\) 是闭包点但不是极限点, 于是存在 \(U \in \nbr(x)\) 使得 \(U \cap A = \{x\}\). 因此 \(x \in A\) 且常值序列 \((x, x, \ldots)\) 收敛到 \(x\).
+\end{proof}
+
+现在我们可以通过收敛序列来刻画闭集.
 
 \begin{proposition}
-    设 \(A \subseteq X\). 则
+    设 \(A \subseteq X\). 则以下命题是等价的.
     \begin{enumerate}
-        \item \(A \subseteq \overline A\).
-        \item \(A = \overline A\) 当且仅当 \(A\) 是闭的.
+        \item \(A\) 是闭的.
+        \item \(A' \subseteq A\).
+        \item 若 \((x_n)\) 是 \(A\) 中的序列且 \((x_n)\) 在 \(X\) 中收敛, 则 \(\lim x_n \in A\).
     \end{enumerate}
 \end{proposition}
 
+\begin{proof}
+    \((1) \implies (2)\). 由于 \(A\) 是闭的, 于是由命题 \ref{prop:closed-set-and-accumulation-point} 可知 \(A = \overline A\), 因此 \(A' \subseteq \overline A = A\).
+
+    \((2) \implies (3)\). 设 \((x_n)\) 是 \(A\) 中的序列且 \(x_n \to x \in X\). 由推论 \ref{prop:charact-of-accumulation-point-via-sequence} 可知 \(x\) 是 \(A\) 的闭包点. 若 \(x\) 是极限点, 于是 \(x \in A' \subseteq A\). 若 \(x\) 不是极限点, 于是存在 \(U \in \nbr(x)\) 使得 \(U \cap A = \{x\}\), 因此 \(x \in A\).
+
+    \((3) \implies (1)\). 设 \(x \in \overline A\). 由推论 \ref{prop:charact-of-accumulation-point-via-sequence} 可知存在 \(A\) 中的序列 \((x_n)\) 收敛到 \(x\), 由假设可知 \(x \in A\). 因此 \(\overline A \subseteq A\), 由命题 \ref{prop:closed-set-and-accumulation-point} 可知 \(A\) 是闭的.
+\end{proof}
+
 \subsection{集合的闭包}
+
+\begin{definition}[闭包]
+    设 \(A \subseteq X\). 定义
+    \[
+        \closure(A) \coloneqq \closure_X(A) \coloneqq \bigcap \{\, B \subseteq X \;;\; A \subseteq B\ \text{且}\ B\ \text{是闭的} \,\}\ ,
+    \]
+    称为 \(A\) 的闭包.
+\end{definition}
+
+由于 \(X\) 是闭的且包含 \(A\), 因此 \(A\) 的闭包是良定义的. 由命题 \ref{prop:property-of-closed-set}(2) 可知 \(\closure(A)\) 是闭的. 由于 \(A \subseteq \closure(A)\), 因此 \(A\) 的闭包是包含 \(A\) 的最小的闭集. 也就是说, 任意包含 \(A\) 的闭集, 同样包含 \(\closure(A)\).
+
+我们将在下面的命题证明 \(A\) 的闭包就是 \(A\) 的闭包点的全体, 即 \(\overline A = \closure(A)\).
+
+\begin{proposition}\label{prop:closure-and-accumulation-point}
+    设 \(A \subseteq X\). 则 \(\overline A = \closure(A)\).
+\end{proposition}
+
+\begin{proof}
+    先证明 \(\overline A \subseteq \closure(A)\). 若 \(\closure(A) = X\), 则显然成立. 设 \(\closure(A) \neq X\) 且 \(x \in \bigl(\closure(A)\bigr)^c\). 由于 \(\bigl(\closure(A)\bigr)^c\) 是开的, 故存在 \(U \in \nbr(x)\) 使得 \(U \subseteq \bigl(\closure(A)\bigr)^c\), 于是 \(U \cap \closure(A) = \emptyset\). 而 \(A \subseteq \closure(A)\), 因此 \(U \cap A = \emptyset\), 故 \(x\) 不是 \(A\) 的闭包点, 即 \(x \in (\overline A)^c\). 这说明 \(\bigl(\closure(A)\bigr)^c \subseteq (\overline A)^c\), 即 \(\overline A \subseteq \closure(A)\).
+
+    再证明 \(\closure(A) \subseteq \overline A\). 同样的, 若 \(\overline A = X\), 则显然成立. 设 \(\overline A \neq X\) 且 \(x \in (\overline A)^c\). 于是存在 \(x\) 的开邻域 \(U\) 使得 \(U \cap A = \emptyset\), 即 \(A \subseteq U^c\). 而 \(U^c\) 是闭的, 由闭包的最小性可知 \(\closure(A) \subseteq U^c\), 因此 \(x \in U \subseteq \bigl(\closure(A)\bigr)^c\). 这说明 \((\overline A)^c \subseteq \bigl(\closure(A)\bigr)^c\), 即 \(\closure(A) \subseteq \overline A\).
+\end{proof}
+
+利用 \(\overline A\) 是包含 \(A\) 的最小的闭集这一事实可以的得到一些简单的结论.
+
+\begin{corollary}
+    设 \(A, B \subseteq X\).
+    \begin{enumerate}
+        \item 若 \(A \subseteq B\), 则 \(\overline A \subseteq \overline B\).
+        \item \(\overline{\overline A} = \overline A\).
+        \item \(\overline{A \cup B} = \overline A \cup \overline B\).
+    \end{enumerate}
+\end{corollary}
+
+\begin{proof}
+    (1) 和 (2) 由命题 \ref{prop:closure-and-accumulation-point} 直接可得.
+
+    (3). 由命题 \ref{prop:property-of-closed-set}(3) 可知 \(\overline A \cup \overline B\) 是闭的, 而 \(A \cup B \subseteq \overline A \cup \overline B\), 因此由命题 \ref{prop:closure-and-accumulation-point} 可知 \(\overline{A \cup B} \subseteq \overline A \cup \overline B\). 另一方面, \(\overline{A \cup B}\) 也是闭的. 由于 \(A \subseteq \overline{A \cup B}\) 且 \(B \subseteq \overline{A \cup B}\), 于是 \(\overline A \subseteq \overline{A \cup B}\) 且 \(\overline B \subseteq \overline{A \cup B}\), 因此 \(\overline A \cup \overline B \subseteq \overline{A \cup B}\).
+\end{proof}
+
+该推论说明了函数 \(h \colon \power(X) \to \power(X),\ A \mapsto \overline A\) 是递增且幂等的, 即 \(h \circ h = h\).
 
 \subsection{集合的内部}
 
+闭集、闭包点以及闭包之间的关系, 在开集的情形下也有相对应的结论, 我们将在本小节中对此进行探讨.
+
+\begin{definition}[内部]
+    设 \(A \subseteq X\). 定义
+    \[
+        \interior(A) \coloneqq \interior_X(A) \coloneqq \bigcup \{\, O \subseteq X \;;\; O \subseteq A\ \text{且}\ O\ \text{是开的} \,\}\ ,
+    \]
+    称为 \(A\) 的内部.
+\end{definition}
+
+显然 \(\interior(A)\) 是 \(A\) 的子集, 且由命题 \ref{prop:property-of-open-set}(2) 可知 \(\interior(A)\) 是开的. 因此 \(\interior(A)\) 是 \(A\) 的最大的开子集. 于是对应于命题 \ref{prop:closure-and-accumulation-point}, 我们有以下命题.
+
+\begin{proposition}
+    设 \(A \subseteq X\). 则 \(\mathring A = \interior(A)\).
+\end{proposition}
+
+\begin{proof}
+    设 \(a \in \mathring A\). 于是存在 \(a\) 的开邻域 \(U\) 使得 \(U \subseteq A\), 由内部的最大性可知 \(a \in U \subseteq \interior(A)\), 这说明 \(\mathring A \subseteq \interior(A)\).
+
+    设 \(a \in \interior(A)\). 于是存在开集 \(O \subseteq A\) 使得 \(a \in O\). 由于 \(a\) 是 \(O\) 的内点, 故存在 \(U \in \nbr(a)\) 使得 \(U \subseteq O \subseteq A\). 因此 \(a\) 也是 \(A\) 的内点, 即 \(a \in \mathring A\), 这说明 \(\interior(A) \subseteq \mathring A\).
+\end{proof}
+
+通过该命题可以直接得到以下结论.
+
+\begin{corollary}
+    设 \(A, B \subseteq X\).
+    \begin{enumerate}
+        \item 若 \(A \subseteq B\), 则 \(\mathring A \subseteq \mathring B\).
+        \item \(\mathring{\mathring A} = \mathring A\).
+        \item \(A\) 是开的当且仅当 \(A = \mathring A\).
+    \end{enumerate}
+\end{corollary}
+
+类似于闭包的情形, 函数 \(\power(X) \to \power(X),\ A \mapsto \mathring A\) 是递增且幂等的.
+
 \subsection{集合的边界}
+
+直观上, 我们认为平面上一个圆盘的边界就是包围它的圆周. 利用开集和闭集的概念, 可以使这一关于边界的直观理解变得精确.
+
+\begin{definition}[边界]
+    设 \(A \subseteq X\). 称 \(\partial A \coloneqq \overline A \backslash \mathring A\) 是 \(A\) 的 (拓扑) 边界.
+\end{definition}
+
+例如, \(X\) 的边界是空集, 即 \(\partial X = \emptyset\).
+
+\begin{proposition}
+    设 \(A \subseteq X\).
+    \begin{enumerate}
+        \item \(\partial A\) 是闭的.
+        \item \(x \in \partial A\) 当且仅当 \(x\) 的任意邻域都与 \(A\) 和 \(A^c\) 交集非空.
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    由 \(\partial A = \overline A \cap (\mathring A)^c\) 可得.
+\end{proof}
 
 \subsection{Hausdorff 条件}
 
