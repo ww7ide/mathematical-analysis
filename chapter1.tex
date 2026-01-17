@@ -56,6 +56,21 @@
 
 \subsection{集值函数}
 
+\begin{proposition}\label{prop:property-of-set-valued-function}
+    设函数 \(f \colon X \to Y\), \(\{\, A_\alpha \;;\; \alpha \in \mathsf A \,\}\) 是 \(X\) 的子集族, \(\{\, B_\beta \;;\; \beta \in \mathsf B \,\}\) 是 \(Y\) 的子集族.
+    \begin{enumerate}
+        \item \(A \subseteq B \subseteq X \implies f(A) \subseteq f(B)\).
+        \item \(f \bigl(\bigcup_\alpha A_\alpha\bigr) = \bigcup_\alpha f(A_\alpha)\).
+        \item \(f \bigl(\bigcap_\alpha A_\alpha\bigr) \subseteq \bigcap_\alpha f(A_\alpha)\).
+        \item \(A \subseteq X \implies f(X) \backslash f(A) \subseteq f(A^c)\).
+        \item \(A \subseteq B \subseteq Y \implies f^{- 1}(A) \subseteq f^{- 1}(B)\).
+        \item \(f^{- 1} \bigl(\bigcup_\beta B_\beta\bigr) = \bigcup_\beta f^{- 1}(B_\beta)\).
+        \item \(f^{- 1} \bigl(\bigcap_\beta B_\beta\bigr) = \bigcap_\beta f^{- 1}(B_\beta)\).
+        \item \(A \subseteq Y \implies \bigl(f^{- 1}(A)\bigr)^c = f^{- 1}(A^c)\).
+    \end{enumerate}
+    若 \(g \colon Y \to Z\) 是另一函数, 则 \((g \circ f)^{- 1} = f^{- 1} \circ g^{- 1}\).
+\end{proposition}
+
 \newpage
 
 \section{关系与运算}

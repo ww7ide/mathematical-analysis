@@ -1217,7 +1217,7 @@
 
 现在我们可以通过收敛序列来刻画闭集.
 
-\begin{proposition}
+\begin{proposition}\label{prop:charact-of-closed-set-via-sequence}
     设 \(A \subseteq X\). 则以下命题是等价的.
     \begin{enumerate}
         \item \(A\) 是闭的.
@@ -1324,7 +1324,7 @@
 
 例如, \(X\) 的边界是空集, 即 \(\partial X = \emptyset\).
 
-\begin{proposition}
+\begin{proposition}\label{prop:property-of-boundary}
     设 \(A \subseteq X\).
     \begin{enumerate}
         \item \(\partial A\) 是闭的.
@@ -1338,12 +1338,140 @@
 
 \subsection{Hausdorff 条件}
 
+下面的命题表明, 在度量空间中, 任意两个不同的点都可以被无交的邻域分离.
+
+\begin{proposition}[Hausdorff 条件]\label{prop:hausdorff-condition}
+    设 \(x, y \in X\) 且 \(x \neq y\). 则存在 \(U \in \nbr(x)\) 和 \(V \in \nbr(y)\) 使得 \(U \cap V = \emptyset\).
+\end{proposition}
+
+\begin{proof}
+    由于 \(x \neq y\). 因此 \(\varepsilon \coloneqq d(x, y) / 2 > 0\). 令 \(U \coloneqq \B(x, \varepsilon)\), \(V \coloneqq \B(y, \varepsilon)\). 假设 \(U \cap V \neq \emptyset\), 则存在 \(z \in U \cap V\), 于是由三角不等式可得
+    \[
+        2 \varepsilon = d(x, y) \leq d(x, z) + d(z, y) < \varepsilon + \varepsilon = 2 \varepsilon\ ,
+    \]
+    矛盾. 因此 \(U \cap V = \emptyset\).
+\end{proof}
+
+命题 \ref{prop:hausdorff-condition} 的断言称为 Hausdorff 条件. 我们本质上是利用度量来证明了该条件. 实际上, 确实存在一些 (非度量的) 拓扑空间不满足命题 \ref{prop:hausdorff-condition}. 这样的拓扑空间的一个简单例子可见练习 \ref{ex:topological-space-which-not-hausdorff}.
+
+Hausdorff 条件的一个简单推论是
+\[
+    \bigcap \nbr(x) = \{x\}\ ,\quad x \in X\ ,
+\]
+这意味着存在足够多的邻域来区分度量空间中的点.
+
+\begin{corollary}
+    度量空间中的任意单点集都是闭的.\footnote{这同样也是命题 \ref{prop:charact-of-closed-set-via-sequence}(3) 的推论.}
+\end{corollary}
+
+\begin{proof}
+    设 \(x \in X\). 若 \(X = \{x\}\), 由命题 \ref{prop:property-of-closed-set}(1) 可得. 设 \(y \in \{x\}^c\). 于是由命题 \ref{prop:hausdorff-condition} 可知存在 \(U \in \nbr(x)\) 和 \(V \in \nbr(y)\) 使得 \(U \cap V = \emptyset\), 故 \(V \subseteq U^c \subseteq \{x\}^c\), 因此 \(\{x\}^c\) 是开的.
+\end{proof}
+
 \subsection{例子}
+
+我们通过一些例子来说明这些新概念, 特别的, 这些例子表明之前定义的 ``开区间''、``闭区间''、``开球'' 和 ``闭球'' 等概念与在本小节中定义的拓扑概念是一致的.
+
+\begin{example}\label{eg:topological-concepts}
+    \begin{enumerate}
+        \item 开区间 \((a, b) \subseteq \R\) 在 \(\R\) 中是开的.
+        \item 闭区间 \([a, b] \subseteq \R\) 在 \(\R\) 中是闭的.
+        \item 设区间 \(I \subseteq \R\), \(a \coloneqq \inf I\), \(b \coloneqq \sup I\). 则
+        \[
+            \partial I =
+            \begin{cases}
+                \emptyset\ , & I = \R\ \text{或}\ I = \emptyset\ , \\
+                \{a\}\ ,     & a \in \R\ \text{且}\ b = \infty\ , \\
+                \{b\}\ ,     & b \in \R\ \text{且}\ a = - \infty\ , \\
+                \{a, b\}\ ,  & - \infty < a < b < \infty\ , \\
+                \{a\}\ ,     & a = b \in \R\ .
+            \end{cases}
+        \]
+        \item 闭球 \(\bar \B(x, r)\) 是闭的.
+        \begin{proof}
+            若 \(X = \bar \B(x, r)\), 则显然成立. 设 \(y \in \bigl(\bar \B(x, r)\bigr)^c\). 于是 \(\varepsilon \coloneqq d(x, y) - r > 0\), 由反三角不等式可得
+            \[
+                d(z, x) \geq d(x, y) - d(y, z) > d(x, y) - \varepsilon = r\ ,\quad z \in \B(y, \varepsilon)\ ,
+            \]
+            因此 \(\B(y, \varepsilon) \subseteq \bigl(\bar \B(x, r)\bigr)^c\). 这说明 \(\bigl(\bar \B(x, r)\bigr)^c\) 是开的.
+        \end{proof}
+        \item 在度量空间中, 对于任意 \(r \geq 0\) 都有 \(\overline{\B(x, r)} \subseteq \bar \B(x, r)\). 特别的, 在赋范向量空间中\footnote{存在度量空间使得 \(\overline{\B(x, r)} \subset \bar \B(x, r)\), 如练习 \ref{ex:topology-induced-from-discrete-metric} 所示.}, 当 \(r > 0\) 时 \(\overline{\B(x, r)} = \bar \B(x, r)\).
+        \begin{proof}
+            由例 \ref{eg:topological-concepts}(4) 和命题 \ref{prop:closure-and-accumulation-point} 可知第一个断言成立.
+
+            设 \(X\) 是赋范向量空间且 \(r > 0\). 只用证明 \(\bar \B(x, r) \subseteq \overline{\B(x, r)}\). 假设 \(\overline{\B(x, r)} \subset \bar \B(x, r)\). 于是存在 \(y \in \bar \B(x, r) \backslash \overline{\B(x, r)}\). 注意到 \(d(x, y) = \|x - y\| = r > 0\), 故 \(x \neq y\). 对于任意 \(\varepsilon \in (0, 1)\), 定义
+            \[
+                x_\varepsilon \coloneqq x + (1 - \varepsilon) (y - x) = \varepsilon x + (1 - \varepsilon) y\ ,
+            \]
+            则 \(\|x - x_\varepsilon\| = (1 - \varepsilon) \|x - y\| = (1 - \varepsilon) r < r\) 且 \(\|y - x_\varepsilon\| = \varepsilon\, \|x - y\| = \varepsilon r\). 令 \((\varepsilon_k)\) 是 \((0, 1)\) 中的无穷小量. 于是 \((x_{\varepsilon_k})\) 是 \(\B(x, r)\) 中的序列且 \(x_{\varepsilon_k} \to y\). 由命题 \ref{prop:charact-of-accumulation-point-via-sequence} 可知 \(y\) 是 \(\B(x, r)\) 的闭包点, 因此 \(y \in \overline{\B(x, r)}\), 矛盾.
+            \begin{center}
+                \begin{tikzpicture}
+                    \draw (0, 0) circle ({sqrt(2)});
+                    \fill (0,0) circle (1.5pt);
+                    \node at (0.3,0) {\(x\)};
+                    \draw (0,0) -- (-1,1);
+                    \fill (-1,1) circle (1.5pt);
+                    \node at (-1.2,1.2) {\(y\)};
+                    \fill (-0.7,0.7) circle (1.5pt);
+                    \node at (-0.3,0.7) {\(x_\varepsilon\)};
+                \end{tikzpicture}
+            \end{center}
+        \end{proof}
+        \item 在赋范向量空间 \(X\) 中, 当 \(r > 0\) 时
+        \[
+            \partial \B(x, r) = \partial \bar \B(x, r) = \{\, y \in X \;;\; \|x - y\| = r \,\}\ .
+        \]
+        \begin{proof}
+            由例 \ref{eg:topological-concepts}(5) 可得.
+        \end{proof}
+        \item \textsl{\(n\)-维球面 \(S^n \coloneqq \{\, x \in \R^{n + 1} \;;\; |x| = 1 \,\}\)} 在 \(\R^{n + 1}\) 中是闭的.
+        \begin{proof}
+            由于 \(S^n = \partial \B^{n + 1}\), 于是由命题 \ref{prop:property-of-boundary}(1) 可得.
+        \end{proof}
+    \end{enumerate}
+\end{example}
 
 \subsection{连续函数的刻画}
 
+现在, 我们给出本节的主要结果.
+
 \begin{theorem}\label{thm:the-preimage-of-each-open-set-is-open}
-    
+    设 \(f \colon X \to Y\) 是度量空间之间的函数. 则以下命题是等价的.
+    \begin{enumerate}
+        \item \(f\) 是连续的.
+        \item 对于任意 \(Y\) 中的开集 \(O\) 都有 \(f^{- 1}(O)\) 在 \(X\) 中是开的.
+        \item 对于任意 \(Y\) 中的闭集 \(A\) 都有 \(f^{- 1}(A)\) 在 \(X\) 中是闭的.
+    \end{enumerate}
 \end{theorem}
 
+\begin{proof}
+    \((1) \implies (2)\). 设 \(O \subseteq Y\) 是开的. 若 \(f^{- 1}(O) = \emptyset\), 则由命题 \ref{prop:property-of-open-set}(1) 可得. 若 \(f^{- 1}(O) \neq \emptyset\), 于是由 \(f\) 的连续性可知, 对于任意 \(x \in f^{- 1}(O)\) 存在 \(x\) 的开邻域 \(U_x\) 使得 \(f(U_x) \subseteq O\), 即 \(U_x \subseteq f^{- 1}(O)\). 因此
+    \[
+        \bigcup_{x \in f^{- 1}(O)} U_x = f^{- 1}(O)\ ,
+    \]
+    由例 \ref{eg:open-ball-is-open} 和命题 \ref{prop:property-of-open-set}(2) 可知 \(f^{- 1}(O)\) 在 \(X\) 中是开的.
+
+    \((2) \implies (3)\). 设 \(A \subseteq Y\) 是闭的. 于是 \(A^c\) 在 \(Y\) 中是开的. 根据假设和命题 \ref{prop:property-of-set-valued-function}(8) 可知 \(f^{- 1}(A^c) = \bigl(f^{- 1}(A)\bigr)^c\) 在 \(X\) 中是开的, 因此 \(f^{- 1}(A)\) 在 \(X\) 中是闭的.
+
+    \((3) \implies (1)\). 设 \(x \in X\), \(V\) 是 \(f(x)\) 的邻域. 于是存在开球 \(O\) 使得 \(f(x) \in O \subseteq V\), 由命题 \ref{eg:open-ball-is-open} 可知 \(O\) 在 \(Y\) 中是开的, 因此 \(O^c\) 在 \(Y\) 中是闭的. 根据假设和命题 \ref{prop:property-of-set-valued-function}(8) 可知 \(f^{- 1}(O^c) = \bigl(f^{- 1}(O)\bigr)^c\) 在 \(X\) 中是闭的, 故 \(U \coloneqq f^{- 1}(O)\) 在 \(X\) 中是开的. 由于 \(x \in U\), 因此 \(U\) 是 \(x\) 的邻域且 \(f(U) = O \subseteq V\), 这说明 \(f\) 在 \(x\) 处连续.
+\end{proof}
+
 \subsection{连续扩张}
+
+\subsection{练习}
+
+\begin{exercise}\label{ex:topology-induced-from-discrete-metric}
+    设 \(X\) 是非空集合, \(d\) 是 \(X\) 上的离散度量. 证明以下命题.
+    \begin{enumerate}
+        \item \(X\) 的每个子集都是开的, 即 \(\power(X)\) 是 \((X, d)\) 的拓扑.
+        \item 一般情况下, \(\bar \B(x, r) = \overline{\B(x, r)}\) 不成立.
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}\label{ex:topological-space-which-not-hausdorff}
+    设 \(X \coloneqq \{1, 2, 3, 4, 5\}\),
+    \[
+        \topo \coloneqq \bigl\{ \emptyset, X, \{1\}, \{3, 4\}, \{1, 3, 4\}, \{2, 3, 4, 5\} \bigr\}\ .
+    \]
+    证明 \((X, \topo)\) 是拓扑空间并确定 \(\{2, 4, 5\}\) 的闭包.
+\end{exercise}
