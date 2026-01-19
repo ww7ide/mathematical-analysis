@@ -517,7 +517,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     设 \(X \coloneqq \{\, z \in \C \;;\; |z| \leq 3 \,\}\), 并赋予其自然度量. 描述 \(\bar \B_X(0, 3)\) 和 \(\bar \B_X(2, 4)\), 并证明 \(\bar \B_X(2, 4) \subset \bar \B_X(0, 3)\).
 \end{exercise}
 
-\begin{exercise}[等价度量]
+\begin{exercise}[等价度量]\label{ex:equivalent-metric}
     集合 \(X\) 上的度量 \(d_1\) 和 \(d_2\) 被称为等价度量, 若对于每个 \(x \in X\) 和 \(\varepsilon > 0\), 存在 \(r_1, r_2 > 0\) 使得
     \[
         \B_1(x, r_1) \subseteq \B_2(x, \varepsilon)\ ,\quad \B_2(x, r_2) \subseteq \B_1(x, \varepsilon)\ ,
@@ -1024,7 +1024,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \[
         x_n = \sum_{k = 0}^n (a_k + 1 / a_k) \geq \sum_{k = 0}^n 2 = 2 n + 2\ ,\quad n \in \N\ ,
     \]
-    由 Archimedes 公理可知, 存在 \(N \in \N\) 使得 \(2 N + 2 > K\), 于是当 \(n \geq N\) 时 \(x_n \geq 2 n + 2 > K\), 于是 \((1 / x_n)\) 是无穷小量.
+    由 Archimedes 性质可知, 存在 \(N \in \N\) 使得 \(2 N + 2 > K\), 于是当 \(n \geq N\) 时 \(x_n \geq 2 n + 2 > K\), 于是 \((1 / x_n)\) 是无穷小量.
 \end{proof}
 
 \newpage
@@ -2044,7 +2044,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
         \end{proof}
         \item \(\displaystyle \lim_{n \to \infty} \sqrt[n]{a} = 1\ (a > 0)\).
         \begin{proof}
-            由 Archimedes 公理可知存在 \(N \in \N\) 使得 \(1 / N < a < N\), 于是
+            由 Archimedes 性质可知存在 \(N \in \N\) 使得 \(1 / N < a < N\), 于是
             \[
                 \frac{1}{n} < a < n\ ,\quad n \geq N\ .
             \]
@@ -3189,7 +3189,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
 \end{exercise}
 
 \begin{proof}
-    任取 \(\varepsilon > 0\). 由 Archimedes 公理可知存在 \(N \in \N\) 使得 \(1 / N < \varepsilon / \sqrt{\alpha^2 + \beta^2}\). 则
+    任取 \(\varepsilon > 0\). 由 Archimedes 性质可知存在 \(N \in \N\) 使得 \(1 / N < \varepsilon / \sqrt{\alpha^2 + \beta^2}\). 则
     \[
         |s_n - s_m| = \Bigl|\sum_{k = m + 1}^n k^{- 2} x_k\Bigr| \leq \sum_{k = m + 1}^n |k^{- 2} x_k| = \sqrt{\alpha^2 + \beta^2} \sum_{k = m + 1}^n \frac{1}{k^2}\ ,\quad n > m \geq N\ ,
     \]
@@ -5098,7 +5098,7 @@ Banach 空间在分析中无处不在, 因此在本书的叙述中居于核心�
     \]
     由于 \(z > 0\), 因此 \(\exp z > 1\), 即 \(\exp y > \exp x\).
 
-    (3). 任取 \(\varepsilon > 0\). 由 Archimedes 公理可知, 存在 \(x \in \N\) 使得 \(x > 1 / \varepsilon\), 于是
+    (3). 任取 \(\varepsilon > 0\). 由 Archimedes 性质可知, 存在 \(x \in \N\) 使得 \(x > 1 / \varepsilon\), 于是
     \[
         \varepsilon > \frac{1}{x} > \frac{1}{2^x} > \frac{1}{e^x} = \exp(- x)\ ,\quad \frac{1}{\varepsilon} < x < 2^x < e^x = \exp x\ .
     \]

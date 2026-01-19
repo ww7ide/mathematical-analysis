@@ -1520,18 +1520,30 @@ Hausdorff 条件的一个简单推论是
     \]
 \end{definition}
 
-\begin{remark}
+\begin{remark}\label{rem:charact-of-limit-of-function}
     \begin{enumerate}
         \item \(\lim_{x \to a} f(x) = y\) 当且仅当对于任意 \(y\) 的邻域 \(V\) 存在 \(a\) 在 \(X\) 中的邻域 \(U\) 使得 \(f(U \cap D) \subseteq V\).
+        \begin{proof}
+            \(\implies\). 假设存在 \(y\) 的邻域 \(V\) 使得对于任意 \(a\) 在 \(X\) 中的邻域 \(U\) 都有 \(f(U \cap D) \nsubseteq V\). 特别的,
+            \[
+                f\bigl(\B_X(a, 1 / n) \cap D\bigr) \cap V^c \neq \emptyset\ ,\quad n \in \N^\ast\ .
+            \]
+            于是对于任意 \(n \in \N^\ast\) 存在 \(x_n \in \B_X(a, 1 / n) \cap D\) 使得 \(f(x_n) \notin V\). 显然 \((x_n)\) 收敛到 \(a\), 而 \(\bigl(f(x_n)\bigr)\) 无法收敛到 \(y\), 矛盾.
+
+            \(\impliedby\). 设 \((x_n)\) 是 \(D \backslash \{a\}\) 中的序列且 \(x_n \to a\), \(V\) 是 \(y\) 的邻域. 由假设可知, 存在 \(a\) 的邻域 \(U\) 使得 \(f(U \cap D) \subseteq V\). 由于 \(x_n \to a\), 于是存在 \(N \in \N\) 使得当 \(n \geq N\) 时 \(x_n \in U \cap D\). 因此当 \(n \geq N\) 时 \(f(x_n) \in V\), 这说明 \(f(x_n) \to y\).
+        \end{proof}
         \item 若 \(a \in D\), 则
         \[
             \lim_{x \to a} f(x) = f(a) \iff f\ \text{在}\ a\ \text{处连续}\ .
         \]
+        \begin{proof}
+            由注 \ref{rem:charact-of-limit-of-function}(1) 可得.
+        \end{proof}
     \end{enumerate}
 \end{remark}
 
 \begin{proposition}
-    设 \(f \colon D \subseteq X \to Y\) 是度量空间之间的函数, \(a \in X\) 是 \(D\) 的极限点且 \(a \notin D\). 若存在 \(y \in Y\) 使得 \(\lim_{x \to a} f(x) = y\), 则
+    设 \(f \colon D \subseteq X \to Y\) 是度量空间之间的连续函数, \(a \in X\) 是 \(D\) 的极限点且 \(a \notin D\). 若存在 \(y \in Y\) 使得 \(\lim_{x \to a} f(x) = y\), 则
     \[
         \overline f \colon D \cup \{a\} \to Y\ ,\quad x \mapsto
         \begin{cases}
@@ -1541,6 +1553,10 @@ Hausdorff 条件的一个简单推论是
     \]
     是 \(f\) 在 \(D \cup \{a\}\) 上的连续扩张.
 \end{proposition}
+
+\begin{proof}
+    只用证明 \(\overline f \colon D \cup \{a\} \to Y\) 在 \(a\) 处连续. 这由注 \ref{rem:charact-of-limit-of-function}(2) 立刻可得.
+\end{proof}
 
 \subsection{练习}
 
@@ -1631,10 +1647,90 @@ Hausdorff 条件的一个简单推论是
     (2). 设 \((x_k) = \bigl((x_k^1, \ldots, x_k^n)\bigr)\) 是 \(\prod_j A_j\) 中的序列且 \(x_k \to x = (x^1, \ldots, x^n) \in \prod_j X_j\). 由于对于任意 \(j\) 都有 \(A_j\) 在 \(X_j\) 中是闭的, 故 \(x_k^j \to x^j \in A_j\), 因此 \(x \in \prod_j A_j\). 这说明 \(\prod_j A_j\) 是闭的.
 \end{proof}
 
+\begin{exercise}
+    设函数 \(h \colon \power(X) \to \power(X)\) 满足
+    \begin{enumerate}
+        \item \(h(\emptyset) = \emptyset\).
+        \item 对于任意 \(A \in \power(X)\) 都有 \(A \subseteq h(A)\).
+        \item 对于任意 \(A, B \in \power(X)\) 都有 \(h(A \cup B) = h(A) \cup h(B)\).
+        \item \(h \circ h = h\).
+    \end{enumerate}
+    证明以下命题.
+    \begin{enumerate}
+        \item 令 \(\topo_h \coloneqq \bigl\{\, A^c \in \power(X) \;;\; h(A) = A \,\bigr\}\). 则 \((X, \topo_h)\) 是拓扑空间.
+        \item 给定拓扑空间 \((X, \topo)\), 找到满足上述性质的函数 \(h \colon \power(X) \to \power(X)\) 且 \(\topo_h = \topo\).
+    \end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    (1). 由于 \(h(\emptyset) = \emptyset\), 因此 \(X \backslash \emptyset = X \in \topo_h\). 另一方面, 由于对于任意 \(A \in \power(X)\) 都有 \(A \subseteq h(A)\), 于是 \(X \subseteq h(X) \subseteq X\), 因此 \(h(X) = X\), 这说明 \(X \backslash X = \emptyset \in \topo_h\).
+
+    设 \(\{A_\alpha^c\} \subseteq \topo_h\). 由于 \(\bigcup_\alpha A_\alpha^c = \bigl(\bigcap_\alpha A_\alpha\bigr)^c\), 而
+    \[
+        \bigcap_\alpha A_\alpha \subseteq h\Bigl(\bigcap_\alpha A_\alpha\Bigr) \subseteq \bigcap_\alpha h(A_\alpha) = \bigcap_\alpha A_\alpha\ ,
+    \]
+    因此 \(h\bigl(\bigcap_\alpha A_\alpha\bigr) = \bigcap_\alpha A_\alpha\), 这说明 \(\bigcup_\alpha A_\alpha^c \in \topo_h\).
+
+    设 \(A_0^c, \ldots, A_n^c \in \topo_h\). 由于 \(\bigcap_{k = 0}^n A_k^c = \bigl(\bigcup_{k = 0}^n A_k\bigr)^c\), 而
+    \[
+        h\Bigl(\bigcup_{k = 0}^n A_k\Bigr) = \bigcup_{k = 0}^n h(A_k) = \bigcup_{k = 0}^n A_k\ ,
+    \]
+    因此 \(\bigcap_{k = 0}^n A_k^c \in \topo_h\).
+
+    (2). 不难验证闭包 \(h \colon \power(X) \to \power(X),\ A \mapsto \overline A\) 满足上述性质且 \(\topo_h = \topo\).
+\end{proof}
+
+\begin{exercise}
+    设 \(X\) 是度量空间, \(A, B \subseteq X\). 证明或证伪 \(\mathring{(A \cup B)} = \mathring A \cup \mathring B\) 和 \(\mathring{(A \cap B)} = \mathring A \cap \mathring B\).
+\end{exercise}
+
+\begin{proof}
+    (1). 考虑集合 \(A \coloneqq (- 1, 0]\), \(B \coloneqq [0, 1)\). 由于 \(\mathring A \cup \mathring B = (- 1, 0) \cup (0, 1)\), 而 \(\mathring{(A \cup B)} = (- 1, 1)\), 因此 \(\mathring A \cup \mathring B \neq \mathring{(A \cup B)}\). 事实上, 仅有 \(\mathring A \cup \mathring B \subseteq \mathring{(A \cup B)}\) 成立. 由于 \(\mathring A \subseteq A \subseteq A \cup B\) 且 \(\mathring B \subseteq B \subseteq A \cup B\), 因此 \(\mathring A \cup \mathring B \subseteq A \cup B\). 于是由内部的最大性可知 \(\mathring A \cup \mathring B \subseteq \mathring{(A \cup B)}\).
+
+    (2). 先证明 \(\mathring{(A \cap B)} \subseteq \mathring A \cap \mathring B\). 由于 \(\mathring{(A \cap B)} \subseteq A \cap B \subseteq A\) 且 \(\mathring{(A \cap B)} \subseteq A \cap B \subseteq B\), 同样的, 由内部的最大性可知 \(\mathring{(A \cap B)} \subseteq \mathring A\) 且 \(\mathring{(A \cap B)} \subseteq \mathring B\), 因此 \(\mathring{(A \cap B)} \subseteq \mathring A \cap \mathring B\).
+
+    再证明 \(\mathring A \cap \mathring B \subseteq \mathring{(A \cap B)}\). 由于 \(\mathring A \subseteq A\) 且 \(\mathring B \subseteq B\), 于是 \(\mathring A \cap \mathring B \subseteq A \cap B\), 再一次, 由内部的最大性可知 \(\mathring A \cap \mathring B \subseteq \mathring{(A \cap B)}\).
+\end{proof}
+
+\begin{exercise}
+    考虑 \(\R\) 上的度量 \(\delta(x, y) \coloneqq |x - y| \big/ (1 + |x - y|)\) (见练习 \ref{ex:equivalent-metric}). 证明对于任意 \(k \in \N\) 集合 \(A_k \coloneqq [k, \infty)\) 在 \((\R, \delta)\) 中是闭且有界的. 进一步, 对于任意 \(n \in \N\) 都有 \(\bigcap_{k = 0}^n A_k \neq \emptyset\) 且 \(\bigcap_{k = 0}^\infty A_k = \emptyset\).
+\end{exercise}
+
+\begin{proof}
+    设 \(x \in (- \infty, k)\). 令 \(d\) 是 \(\R\) 上的自然度量. 由于 \(\delta\) 与 \(d\) 是等价的, 因此 \(\nbr_{(\R, \delta)}(x) = \nbr_{(\R, d)}(x)\). 而 \((- \infty, k)\) 在 \((\R, d)\) 中是开的, 于是存在 \(U \in \nbr_{(\R, d)}(x) = \nbr_{(\R, \delta)}(x)\) 使得 \(U \subseteq (- \infty, k)\). 这说明 \(x\) 是 \((- \infty, k)\) 关于 \((\R, \delta)\) 的内点, 因此 \((- \infty, k)\) 在 \((\R, \delta)\) 中是开的, 即 \(A_k = [k, \infty)\) 在 \((\R, \delta)\) 中是闭的. 注意到
+    \[
+        \delta(x, y) = \frac{|x - y|}{1 + |x - y|} < 1\ ,\quad x, y \in A_k\ ,
+    \]
+    因此 \(A_k\) 在 \((\R, \delta)\) 中是有界的.
+
+    显然 \(\bigcap_{k = 0}^n A_k = [n, \infty) \neq \emptyset\). 假设 \(\bigcap_{k = 0}^\infty A_k \neq \emptyset\). 于是存在 \(x \in \bigcap_{k = 0}^\infty A_k\), 由 Archimedes 性质可知存在 \(n \in \N\) 使得 \(n > x\), 因此 \(x \notin [n, \infty) \cap \bigcap_{k = n + 1}^\infty A_k = \bigcap_{k = 0}^\infty A_k\), 矛盾.
+\end{proof}
+
 \begin{exercise}\label{ex:topological-space-which-not-hausdorff}
     设 \(X \coloneqq \{1, 2, 3, 4, 5\}\),
     \[
         \topo \coloneqq \bigl\{ \emptyset, X, \{1\}, \{3, 4\}, \{1, 3, 4\}, \{2, 3, 4, 5\} \bigr\}\ .
     \]
     证明 \((X, \topo)\) 是拓扑空间并确定 \(\{2, 4, 5\}\) 的闭包.
+\end{exercise}
+
+\begin{proof}
+    不难验证 \(\topo\) 对任意并和有限交封闭, 因此 \((X, \topo)\) 是拓扑空间. 注意到 \(\{1\} \in \nbr(1)\) 且 \(\{1\} \cap \{2, 4, 5\} = \emptyset\), 因此 \(1\) 不是 \(\{2, 4, 5\}\) 的闭包点. 而对于任意 \(U \in \nbr(3)\) 都有 \(4 \in U \cap \{2, 4, 5\}\), 因此 \(3\) 是 \(\{2, 4, 5\}\) 的闭包点, 故 \(\{2, 4, 5\}\) 的闭包是 \(\{2, 3, 4, 5\}\).
+\end{proof}
+
+\begin{exercise}
+    设 \(\topo_1\) 和 \(\topo_2\) 是集合 \(X\) 上的拓扑. 证明或证伪 \(\topo_1 \cup \topo_2\) 和 \(\topo_1 \cap \topo_2\) 是 \(X\) 上的拓扑.
+\end{exercise}
+
+\begin{proof}
+    考虑集合 \(X \coloneqq \{a, b, c\}\), \(\topo_1 \coloneqq \bigl\{\emptyset, X, \{a\}, \{b\}, \{a, b\}\bigr\}\), \(\topo_2 \coloneqq \bigl\{\emptyset, X, \{a\}, \{c\}, \{a, c\}\bigr\}\). 不难验证 \(\topo_1\) 和 \(\topo_2\) 是 \(X\) 上的拓扑. 由于 \(\{b\}, \{c\} \in \topo_1 \cup \topo_2\), 而 \(\{b\} \cup \{c\} = \{b, c\} \notin \topo_1 \cup \topo_2\), 因此 \(\topo_1 \cup \topo_2\) 不是 \(X\) 上的拓扑.
+
+    显然 \(\emptyset, X \in \topo_1 \cap \topo_2\). 设 \(\mathscr O \subseteq \topo_1 \cap \topo_2\). 由于 \(\mathscr O \subseteq \topo_1\) 且 \(\mathscr O \subseteq \topo_2\), 于是 \(\bigcup \mathscr O \in \topo_1\) 且 \(\bigcup \mathscr O \in \topo_2\), 因此 \(\bigcup \mathscr O \in \topo_1 \cap \topo_2\). 设 \(O_0, \ldots, O_n \in \topo_1 \cap \topo_2\). 由于 \(O_0, \ldots, O_n \in \topo_1\) 且 \(O_0, \ldots, O_n \in \topo_2\), 于是 \(\bigcap_{k = 0}^n O_k \in \topo_1\) 且 \(\bigcap_{k = 0}^n O_k \in \topo_2\), 因此 \(\bigcap_{k = 0}^n O_k \in \topo_1 \cap \topo_2\).
+\end{proof}
+
+\begin{exercise}
+    设 \(X\) 和 \(Y\) 是度量空间. 证明
+    \[
+        f \colon X \to Y\ \text{是连续的} \iff f(\overline A) \subseteq \overline{f(A)}\ ,\quad A \subseteq X\ .
+    \]
 \end{exercise}
