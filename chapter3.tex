@@ -23,71 +23,70 @@
 \subsection{基本性质与例子}
 
 \begin{definition}[连续性]
-    设 \(f \colon X \to Y\) 是度量空间 \(X\) 和 \(Y\) 之间的函数. 称 \(f\) 在 \(x_0 \in X\) 处连续, 若对于任意 \(f(x_0)\) 的邻域 \(V\) 存在 \(x_0\) 的邻域 \(U\) 使得 \(f(U) \subseteq V\). 并称 \(f\) 在 \(x_0\) 处不连续, 若 \(f\) 不在 \(x_0\) 处连续.
-    \begin{center}
-        \begin{tikzpicture}[scale=1.1]
-            % ---------- X ----------
-            \draw[fill=gray!40, draw=none]
-                plot[smooth cycle]
-                coordinates {
-                (-4,1.2) (-3.5,2.3) (-2.2,2.6) (-1.2,1.8)
-                (-0.8,0.6) (-1.4,-0.8) (-2.6,-1.2)
-                (-3.6,-0.6)
-                };
-            \node at (-3,1.8) {\(X\)};
-            % ---------- U ----------
-            \draw[fill=white, draw=black]
-            plot[smooth cycle]
-                coordinates {
-                (-3.2,0.6) (-2.6,1.3) (-1.8,1.2)
-                (-1.6,0.4) (-2.0,-0.4) (-2.8,-0.3)
-                };
-            \node at (-2,0.2) {\(U\)};
-            % ---------- x0 ----------
-            \fill (-2.6,0.4) circle (1.5pt);
-            \node[left] at (-2.6,0.4) {\(x_0\)};
-            % ---------- f ----------
-            \draw[->, thick] (-0.4,0.5) -- (1.5,0.5);
-            \node at (0.55,0.9) {\(f\)};
-            % ---------- Y ----------
-            \draw[fill=gray!40, draw=none]
-                plot[smooth cycle]
-                coordinates {
-                (2.0,1.0) (3.0,2.4) (4.6,2.1)
-                (5.4,0.8) (5.0,-1.2)
-                (3.6,-1.6) (2.2,-0.6)
-                };
-            \node at (4.5,-1) {\(Y\)};
-            % ---------- V ----------
-            \draw[fill=gray!20, draw=none]
-                plot[smooth cycle]
-                coordinates {
-                (2.1,0.6) (2.5,1.5) (3.4,2)
-                (4.6,1.4) (4.8,0.2)
-                (4.0,-0.8) (2.8,-0.4)
-                };
-            \node at (2.7,1.1) {\(V\)};
-            % ---------- f(U) ----------
-            \draw[fill=white, draw=black]
-                plot[smooth cycle]
-                coordinates {
-                (3,0.7) (3.4,1.5) (4.3,1.4)
-                (4.6,0.2) (4.0,-0.6)
-                (2.8,-0.4)
-                };
-            \node at (3.8,1) {\(f(U)\)};
-            % ---------- f(x0) ----------
-            \fill (3,-0.3) circle (1.5pt);
-            \node at (3.6,-0.2) {\(f(x_0)\)};
-        \end{tikzpicture}
-    \end{center}
-    进一步, 称 \(f\) 连续, 若 \(f\) 在 \(X\) 中的每一点处都连续. 并称 \(f\) 不连续, 若 \(f\) 在 \(X\) 中至少一点处不连续. 最后, 将从 \(X\) 到 \(Y\) 的连续函数的全体记作
+    设 \(f \colon X \to Y\) 是度量空间 \(X\) 和 \(Y\) 之间的函数. 称 \(f\) 在 \(x_0 \in X\) 处连续, 若对于任意 \(f(x_0)\) 的邻域 \(V\) 存在 \(x_0\) 的邻域 \(U\) 使得 \(f(U) \subseteq V\). 进一步, 称 \(f\) 是连续的, 若 \(f\) 在 \(X\) 中的每一点处都连续. 并称 \(f\) 是不连续的, 若 \(f\) 在 \(X\) 中至少一点处不连续. 最后, 将从 \(X\) 到 \(Y\) 的连续函数的全体记作
     \[
-        C(X, Y) \coloneqq \{\, f \in Y^X \;;\; f\ \text{连续} \,\}\ .
+        C(X, Y) \coloneqq \{\, f \in Y^X \;;\; f\ \text{是连续的} \,\}\ .
     \]
 \end{definition}
 
 因此要证明 \(f\) 在 \(x_0\) 处连续, 应该假设给定 \(f(x_0)\) 的任意邻域 \(V\), 然后证明存在 \(x_0\) 的邻域 \(U\) 使得 \(f(U) \subseteq V\), 即对于任意 \(x \in U\) 都有 \(f(x) \in V\).
+\begin{center}
+    \begin{tikzpicture}[scale=1.1]
+        % ---------- X ----------
+        \draw[fill=gray!40, draw=none]
+            plot[smooth cycle]
+            coordinates {
+            (-4,1.2) (-3.5,2.3) (-2.2,2.6) (-1.2,1.8)
+            (-0.8,0.6) (-1.4,-0.8) (-2.6,-1.2)
+            (-3.6,-0.6)
+            };
+        \node at (-3,1.8) {\(X\)};
+        % ---------- U ----------
+        \draw[fill=white, draw=black]
+        plot[smooth cycle]
+            coordinates {
+            (-3.2,0.6) (-2.6,1.3) (-1.8,1.2)
+            (-1.6,0.4) (-2.0,-0.4) (-2.8,-0.3)
+            };
+        \node at (-2,0.2) {\(U\)};
+        % ---------- x0 ----------
+        \fill (-2.6,0.4) circle (1.5pt);
+        \node[left] at (-2.6,0.4) {\(x_0\)};
+        % ---------- f ----------
+        \draw[->, thick] (-0.4,0.5) -- (1.5,0.5);
+        \node at (0.55,0.9) {\(f\)};
+        % ---------- Y ----------
+        \draw[fill=gray!40, draw=none]
+            plot[smooth cycle]
+            coordinates {
+            (2.0,1.0) (3.0,2.4) (4.6,2.1)
+            (5.4,0.8) (5.0,-1.2)
+            (3.6,-1.6) (2.2,-0.6)
+            };
+        \node at (4.5,-1) {\(Y\)};
+        % ---------- V ----------
+        \draw[fill=gray!20, draw=none]
+            plot[smooth cycle]
+            coordinates {
+            (2.1,0.6) (2.5,1.5) (3.4,2)
+            (4.6,1.4) (4.8,0.2)
+            (4.0,-0.8) (2.8,-0.4)
+            };
+        \node at (2.7,1.1) {\(V\)};
+        % ---------- f(U) ----------
+        \draw[fill=white, draw=black]
+            plot[smooth cycle]
+            coordinates {
+            (3,0.7) (3.4,1.5) (4.3,1.4)
+            (4.6,0.2) (4.0,-0.6)
+            (2.8,-0.4)
+            };
+        \node at (3.8,1) {\(f(U)\)};
+        % ---------- f(x0) ----------
+        \fill (3,-0.3) circle (1.5pt);
+        \node at (3.6,-0.2) {\(f(x_0)\)};
+    \end{tikzpicture}
+\end{center}
 
 连续性的定义使用了邻域的概念, 因而相当简单. 但在具体问题中, 以下等价刻画往往更为实用.
 
@@ -549,12 +548,12 @@
 \begin{proof}
     \((1) \implies (2)\). 这是显然的.
 
-    \((2) \implies (1)\). 任取 \(\varepsilon > 0\). 由于 \(f\) 在 \(x_0\) 处的左右连续性可知, 存在 \(\delta_1, \delta_2 > 0\) 使得当 \(x \in X \cap (x_0 - \delta_1, x_0]\) 时 \(d\bigl(f(x), f(x_0)\bigr) < \varepsilon\) 且当 \(x \in X \cap [x_0, x_0 + \delta_2)\) 时 \(d\bigl(f(x), f(x_0)\bigr) < \varepsilon\). 令 \(\delta \coloneqq \min\{\delta_1, \delta_2\}\). 于是当 \(x \in X \cap (x_0 - \delta, x_0 + \delta)\) 时 \(d\bigl(f(x), f(x_0)\bigr) < \varepsilon\), 因此 \(f\) 在 \(x_0\) 处连续.
+    \((2) \implies (1)\). 任取 \(\varepsilon > 0\). 由 \(f\) 在 \(x_0\) 处的左右连续性可知, 存在 \(\delta_1, \delta_2 > 0\) 使得当 \(x \in X \cap (x_0 - \delta_1, x_0]\) 时 \(d\bigl(f(x), f(x_0)\bigr) < \varepsilon\) 且当 \(x \in X \cap [x_0, x_0 + \delta_2)\) 时 \(d\bigl(f(x), f(x_0)\bigr) < \varepsilon\). 令 \(\delta \coloneqq \min\{\delta_1, \delta_2\}\). 于是当 \(x \in X \cap (x_0 - \delta, x_0 + \delta)\) 时 \(d\bigl(f(x), f(x_0)\bigr) < \varepsilon\), 因此 \(f\) 在 \(x_0\) 处连续.
 \end{proof}
 
 \subsection{练习}
 
-\begin{exercise}
+\begin{exercise}\label{ex:zigzag}
     设
     \[
         \zigzag \colon \R \to \R\ ,\quad x \mapsto |\lfloor x + 1 / 2 \rfloor - x|\ .
@@ -569,9 +568,9 @@
 
 \begin{proof}
     \begin{center}
-        \begin{tikzpicture}
+        \begin{tikzpicture}[scale=0.8]
             \draw[->] (-5,0) -- (7,0) node[right] {\(\R\)};
-            \draw[->] (0,-1) -- (0,3) node[above] {\(\R\)};
+            \draw[->] (0,-0.5) -- (0,3) node[above] {\(\R\)};
 
             \draw[thick] (-4,0) -- (-2,2);
             \node at (-4,0) [below]{\(-1\)};
@@ -588,8 +587,8 @@
             \draw[thick] (4,0) -- (6,2);
             \draw[dashed] (6,2) -- (6,0) node[below] {\(3 / 2\)};
 
-            \draw[dashed] (-2,2) -- (6,2);
-            \node at (-0.4,2.4) {\(1 / 2\)};
+            \draw[dashed] (-5,2) -- (7,2);
+            \node at (-0.5,2.4) {\(1 / 2\)};
         \end{tikzpicture}
     \end{center}
 
@@ -1522,9 +1521,9 @@ Hausdorff 条件的一个简单推论是
 
 \begin{remark}\label{rem:charact-of-limit-of-function}
     \begin{enumerate}
-        \item \(\lim_{x \to a} f(x) = y\) 当且仅当对于任意 \(y\) 的邻域 \(V\) 存在 \(a\) 在 \(X\) 中的邻域 \(U\) 使得 \(f(U \cap D) \subseteq V\).
+        \item \(\lim_{x \to a} f(x) = y\) 当且仅当对于任意 \(V \in \nbr(y)\) 存在 \(U \in \nbr(a)\) 使得 \(f(U \cap D) \subseteq V\).
         \begin{proof}
-            \(\implies\). 假设存在 \(y\) 的邻域 \(V\) 使得对于任意 \(a\) 在 \(X\) 中的邻域 \(U\) 都有 \(f(U \cap D) \nsubseteq V\). 特别的,
+            \(\implies\). 假设存在 \(y\) 的邻域 \(V\) 使得对于任意 \(a\) 的邻域 \(U\) 都有 \(f(U \cap D) \nsubseteq V\). 特别的,
             \[
                 f\bigl(\B_X(a, 1 / n) \cap D\bigr) \cap V^c \neq \emptyset\ ,\quad n \in \N^\ast\ .
             \]
@@ -1734,3 +1733,59 @@ Hausdorff 条件的一个简单推论是
         f \colon X \to Y\ \text{是连续的} \iff f(\overline A) \subseteq \overline{f(A)}\ ,\quad A \subseteq X\ .
     \]
 \end{exercise}
+
+\begin{proof}
+    \(\implies\). 设 \(A \subseteq X\). 由于 \(f\) 是连续的, 因此 \(U \coloneqq f^{- 1}\bigl(\overline{f(A)}\bigr)\) 是闭的且 \(A \subseteq U\). 于是由闭包的最小性可知 \(\overline A \subseteq U\), 因此 \(f(\overline A) \subseteq f(U) = \overline{f(A)}\).
+
+    \(\impliedby\). 设 \(V \subseteq Y\) 是闭的. 令 \(U \coloneqq f^{- 1}(V)\). 由假设可知 \(f(\overline U) \subseteq \overline{f(U)} = \overline V = V\), 于是 \(\overline U \subseteq f^{- 1}\bigl(f(\overline U)\bigr) \subseteq f^{- 1}(V) = U\). 这说明 \(U\) 是闭的, 因此 \(f\) 是连续的.
+\end{proof}
+
+\begin{exercise}
+    设 \(X\) 和 \(Y\) 是度量空间, \(A, B \subseteq X\) 是闭的, \(g \colon A \to Y\) 和 \(h \colon B \to Y\) 是连续函数且当 \(A \cap B \neq \emptyset\) 时 \(g|_{A \cap B} = h|_{A \cap B}\). 证明函数
+    \[
+        f \colon A \cup B \to Y\ ,\quad x \mapsto
+        \begin{cases}
+            g(x)\ , & x \in A\ , \\
+            h(x)\ , & x \in B
+        \end{cases}
+    \]
+    是连续的.
+\end{exercise}
+
+\begin{proof}
+    设 \(M \subseteq Y\) 是闭的. 由 \(g\) 和 \(h\) 的连续性可知, \(g^{- 1}(M)\) 在 \(A\) 中是闭的且 \(h^{- 1}(M)\) 在 \(B\) 中是闭的. 于是存在 \(X\) 中的闭集 \(U\) 和 \(V\) 使得 \(g^{- 1}(M) = U \cap A\) 且 \(h^{- 1}(M) = V \cap B\). 而 \(A\) 和 \(B\) 在 \(X\) 中是闭的, 因此
+    \[
+        f^{- 1}(M) = g^{- 1}(M) \cup h^{- 1}(M) = (U \cap A) \cup (V \cap B)
+    \]
+    在 \(X\) 中是闭的, 这说明 \(f\) 是连续的.
+\end{proof}
+
+\begin{exercise}
+    \textsl{称度量空间 \((X, d)\) 和 \((Y, \delta)\) 之间的函数 \(f \colon X \to Y\) 是开的, 若 \(f(\topo_d) \subseteq \topo_\delta\), 即若开集的像是开的. 称 \(f\) 是闭的, 若对于任意 \(X\) 中的闭集 \(A\) 都有 \(f(A)\) 在 \(Y\) 中是闭的.} 设 \(d\) 是 \(\R\) 上的自然度量, \(\delta\) 是 \(\R\) 上的离散度量. 证明以下命题.
+    \begin{enumerate}
+        \item \(\id \colon (\R, d) \to (\R, \delta)\) 是即开又闭的, 但不连续.
+        \item \(\id \colon (\R, \delta) \to (\R, d)\) 是连续的, 但既不开也不闭.
+    \end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    (1). 不难验证 \((\R, \delta)\) 的每个子集都是即开又闭的. 因此 \((\R, d)\) 中的任意开集或闭集在 \(\id\) 下的像在 \((\R, \delta)\) 中都是开的或闭的, 这说明 \(\id\) 是即开又闭的. 由于 \(\{0\}\) 是 \((\R, \delta)\) 中的开集, 但是 \(\id^{- 1}\bigl(\{0\}\bigr) = \{0\}\) 在 \((\R, d)\) 中不是开的, 因此 \(\id\) 不是连续的.
+
+    (2). 同样的, 由于 \((\R, \delta)\) 的每个子集都是即开又闭的, 因此 \((\R, d)\) 中的任意开集在 \(\id\) 下的原像在 \((\R, \delta)\) 中都是开的, 这说明 \(\id\) 是连续的. 由于 \(\{0\}\) 是 \((\R, \delta)\) 中的开集, 但是 \(\id\bigl(\{0\}\bigr) = \{0\}\) 在 \((\R, d)\) 中不是开的, 因此 \(\id\) 不是开的. 另一方面, 由于 \((0, 1)\) 是 \((\R, \delta)\) 中的闭集, 但是 \(\id\bigl((0, 1)\bigr) = (0, 1)\) 在 \((\R, d)\) 中不是闭的, 因此 \(\id\) 不是闭的.
+\end{proof}
+
+\begin{exercise}
+    设 \(f \colon \R \to \R,\ x \mapsto \exp x \cdot \zigzag x\) (见练习 \ref{ex:zigzag}). 则 \(f\) 是连续的, 但既不开也不闭. (提示: 考虑练习 \ref{ex:property-of-expansion-function} 并确定 \(f\bigl((- \infty, 0)\bigr)\) 和 \(f \bigl(\{\, - (2 n + 1) / 2 \;;\; n \in \N \,\}\bigr)\).)
+\end{exercise}
+
+\begin{proof}
+    由于 \(\exp\) 和 \(\zigzag\) 是连续的, 因此连续函数的积 \(f = \exp \cdot \zigzag\) 是连续的.
+
+    考虑 \(A \coloneqq (- \infty, 0)\). 显然 \(A\) 是开的. 由于对于任意 \(x \in \R\) 都有 \(\exp x > 0\) 且 \(\zigzag x \geq 0\), 因此对于任意 \(x \in \R\) 都有 \(f(x) \geq 0\), 即 \(f(\R) \subseteq [0, \infty)\). 而 \(f(- 1) = 0 \in f(A)\), 于是对于任意 \(r > 0\) 都有 \(\B(0, r) \nsubseteq f(A)\), 这说明 \(0\) 不是 \(f(A)\) 的内点, 故 \(f(A)\) 不是开的.
+
+    考虑 \(A \coloneqq \bigl\{\, - (2 n + 1) / 2 \;;\; n \in \N \,\bigr\}\). 不难验证 \(A\) 是闭的. 注意到,
+    \[
+        f\Bigl(- \frac{(2 n + 1)}{2}\Bigr) = \exp\Bigl(- n - \frac{1}{2}\Bigr) \zigzag\Bigl(- n - \frac{1}{2}\Bigr) = \frac{1}{2 e^{n + 1 / 2}}\ ,\quad n \in \N\ .
+    \]
+    于是 \(f\bigl(- (2 n + 1) / 2\bigr) \to 0\), 这说明 \(0\) 是 \(f(A)\) 的极限点, 而 \(0 \notin f(A)\), 因此 \(f(A)\) 不是闭的.
+\end{proof}

@@ -1,41 +1,48 @@
 \usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{multicol}
+
 \usepackage{amsthm}
 \usepackage{amsmath,mathtools}
 \usepackage{amssymb}
-\usepackage{mathtools}
-\usepackage{enumitem}
-\usepackage{hyperref}
+\usepackage{bm}
+\usepackage[per-mode=symbol]{siunitx}
 \usepackage{tikz}
+\usepackage{newtxmath}
 
 \newcommand{\ee}{e} % 自然常数
 \newcommand{\ii}{i} % 虚数单位
 \newcommand{\dd}{\mathop{}\! d} % 微分算子
-\newcommand{\K}{\mathbb K} % 数域
-\newcommand{\N}{\mathbb N} % 自然数集
-\newcommand{\Z}{\mathbb Z} % 整数集
-\newcommand{\Q}{\mathbb Q} % 有理数集
-\newcommand{\R}{\mathbb R} % 实数集
-\newcommand{\C}{\mathbb C} % 复数集
-\newcommand{\B}{\mathbb B} % 开球
-\newcommand{\E}{\mathbb E} % 期望
-\newcommand{\PP}{\mathbb P} % 概率
+\newcommand{\K}{\vvmathbb K} % 数域
+\newcommand{\N}{\vvmathbb N} % 自然数集
+\newcommand{\Z}{\vvmathbb Z} % 整数集
+\newcommand{\Q}{\vvmathbb Q} % 有理数集
+\newcommand{\R}{\vvmathbb R} % 实数集
+\newcommand{\C}{\vvmathbb C} % 复数集
+\newcommand{\B}{\vvmathbb B} % 开球
+\newcommand{\E}{\vvmathbb E} % 期望
+\newcommand{\PP}{\vvmathbb P} % 概率
 \newcommand{\power}{\mathcal P} % 幂集
-\newcommand{\topo}{\mathcal T} % 拓扑
-\newcommand{\nbr}{\mathcal N} % 邻域族
-\newcommand{\onbr}{\mathcal O} % 开邻域族
-\newcommand{\cnbr}{\mathcal F} % 闭邻域族
-\newcommand{\basis}{\mathcal B} % 拓扑基
-\newcommand{\subbasis}{\mathcal S} % 拓扑子基
+\newcommand{\topo}{\mathscr T} % 拓扑
+\newcommand{\nbr}{\mathscr N} % 邻域族
 \newcommand{\mat}{\bm} % 矩阵和向量
 \newcommand{\pto}{\xlongrightarrow{p}} % 依概率收敛
 \newcommand{\dto}{\xlongrightarrow{d}} % 依分布收敛
+\newcommand{\coloniff}{:\iff} % 当且仅当的定义
 \renewcommand{\implies}{\Longrightarrow} % 蕴含
 \renewcommand{\impliedby}{\Longleftarrow} % 被蕴含
 \renewcommand{\iff}{\Longleftrightarrow} % 等价
+\DeclareMathOperator{\dom}{dom} % 定义域
 \DeclareMathOperator{\im}{im} % 像
 \DeclareMathOperator{\ran}{ran} % 值域
 \DeclareMathOperator{\id}{id} % 恒同映射
+\DeclareMathOperator{\pr}{pr} % 投影
+\DeclareMathOperator{\sign}{sign} % 符号
 \DeclareMathOperator{\diam}{diam} % 集合的直径
+\DeclareMathOperator{\zigzag}{zigzag} % zigzag
+\DeclareMathOperator{\closure}{cl} % 闭包
+\DeclareMathOperator{\interior}{int} % 内部
 \DeclareMathOperator{\vol}{vol} % 体积
 \DeclareMathOperator{\supp}{supp} % 支撑集
 \DeclareMathOperator{\nullity}{null} % 零化度
@@ -57,12 +64,12 @@
 \DeclareMathOperator{\Iso}{Iso} % 同构
 \DeclareMathOperator{\Aut}{Aut} % 自同构
 \DeclareMathOperator{\Span}{span} % 张成
-\DeclareMathOperator*{\overlim}{\overline{\lim}} % 上极限
+\DeclareMathOperator*{\upperlim}{\overline{\lim}} % 上极限
 \DeclareMathOperator*{\underlim}{\underline{\lim}} % 下极限
 \renewenvironment{cases}{
-    \left\{\begin{matrix}
+    \left\{\begin{array}{cl}
 }{
-    \end{matrix}\right.
+    \end{array}\right.
 }
 
 %=============================================
@@ -108,7 +115,6 @@
         format=\large\bfseries\color{structurecolor}
     }
 }
-\setcounter{secnumdepth}{1}
 % Cover Styles ===============================
 % 需要的宏包
 \RequirePackage{geometry}
@@ -249,7 +255,7 @@
         colframe=main,
         colback=main!5,
         colbacktitle=main,
-        fontupper=\itshape,
+        fontupper=\slshape,
         % borderline west={2pt}{0pt}{main},
     },
     propstyle/.style={
@@ -257,7 +263,7 @@
         colframe=third,
         colback=third!5,
         colbacktitle=third,
-        fontupper=\itshape,
+        fontupper=\slshape,
         % borderline west={2pt}{0pt}{third},
     },
     thmstyle/.style={
@@ -265,7 +271,7 @@
         colframe=second,
         colback=second!5,
         colbacktitle=second,
-        fontupper=\itshape,
+        fontupper=\slshape,
         % borderline west={2pt}{0pt}{second},
     }
 }
@@ -313,17 +319,14 @@
 \newtheorem{remark}{注}[section]
 \newtheorem{example}[remark]{例}
 \newtheorem{exercise}{}[section]
-\renewcommand{\theexercise}{\arabic{exercise}}
 % 证明样式
-\renewenvironment{proof}[1][\proofname]{
-    \par
+\renewenvironment{proof}[1][\proofname]{\par
     \pushQED{\qed}
-    \normalfont
-    \topsep6\p@\@plus6\p@\relax
+    \normalfont \topsep6\p@\@plus6\p@\relax
     \trivlist
-    \item[\hskip\labelsep{\bfseries\textcolor{second}{#1}}]
-    % \item[\hskip\labelsep{\bfseries#1}\@addpunct{.}]
-    \ignorespaces
+    \item\relax
+        {\bfseries
+        \textcolor{second}{#1\@addpunct{.}}}\hspace\labelsep\ignorespaces
 }{
     \popQED\endtrivlist\@endpefalse
 }
@@ -332,14 +335,14 @@
 \hypersetup{
     breaklinks,
     unicode,
-    linktoc=all,
+    linktoc=page,
     bookmarksnumbered=true,
     bookmarksopen=true,
     % pdfkeywords={ElegantBook},
     colorlinks,
-    linkcolor=winered,
-    citecolor=winered,
-    urlcolor=winered,
+    % linkcolor=winered,
+    % citecolor=winered,
+    % urlcolor=winered,
     plainpages=false,
     pdfstartview=FitH,
     pdfborder={0 0 0},
