@@ -1557,6 +1557,68 @@ Hausdorff 条件的一个简单推论是
     只用证明 \(\overline f \colon D \cup \{a\} \to Y\) 在 \(a\) 处连续. 这由注 \ref{rem:charact-of-limit-of-function}(2) 立刻可得.
 \end{proof}
 
+在 \(X = \R\) 这一特殊情况下, 我们可以定义单侧极限.
+
+\begin{definition}[单侧极限]
+    设 \(f \colon D \subseteq \R \to Y\) 是度量空间之间的函数, \(a \in \R\) 是 \(D \cap (- \infty, a]\) (或 \(D \cap [a, \infty)\)) 的极限点. 若存在 \(y \in Y\) 使得对于任意 \(D \cap (- \infty, a)\) (或 \(D \cap (a, \infty)\)) 中的序列 \((x_n)\) 都有当 \(\lim x_n = a\) 时 \(\lim f(x_n) = y\), 则记作\footnote{在不会引起混淆的情况下, 我们同样记作 \(f(a^-) \coloneqq \lim_{x \to a^-} f(x)\) 和 \(f(a^+) \coloneqq \lim_{x \to a^+} f(x)\).}
+    \[
+        \lim_{x \to a^-} f(x) = y\quad (\text{或}\ \lim_{x \to a^+} f(x) = y)\ .
+    \]
+\end{definition}
+
+\begin{example}
+    \begin{enumerate}
+        \item 设 \(n \in \N^\ast\), \(X \coloneqq Y \coloneqq \R\), \(D \coloneqq \R \backslash \{1\}\). 则
+        \[
+            \lim_{x \to 1} \frac{x^n - 1}{x - 1} = n\ .
+        \]
+        \begin{proof}
+            由练习 \ref{ex:difference-of-powers-formula}(2) 可得
+            \[
+                \frac{x^n - 1}{x - 1} = 1 + x + x^2 + \cdots + x^{n - 1}\ .
+            \]
+            于是该命题由推论 \ref{cor:polynomial-is-continuous}(1) 和注 \ref{rem:charact-of-limit-of-function}(2) 可得.
+        \end{proof}
+        \item \(X \coloneqq Y \coloneqq \C\), \(D \coloneqq \C^\ast\). 则
+        \[
+            \lim_{z \to 0} \frac{\exp z - 1}{z} = 1\ .
+        \]
+        \begin{proof}
+            由指数函数的定义 \(\exp z = \sum z^k / k!\) 可得
+            \[
+                \frac{\exp z - 1}{z} - 1 = \frac{1}{z} \sum_{k = 2}^\infty \frac{z^k}{k!} = \frac{z}{2} \Bigl(1 + \frac{z}{3} + \frac{z^2}{3 \cdot 4} + \frac{z^3}{3 \cdot 4 \cdot 5} + \cdots\Bigr)\ .
+            \]
+            于是对于任意 \(z \in \C^\ast\) 且 \(|z| < 1\), 由三角不等式和例 \ref{eg:geometric-series} 可得
+            \[
+                \Bigl|\frac{\exp z - 1}{z} - 1\Bigr| \leq \frac{|z|}{2} (1 + |z| + |z|^2 + |z|^3 + \cdots) = \frac{|z|}{2 (1 - |z|)}\ .
+            \]
+            由于 \(|z| \big/ 2 (1 - |z|)\) 在 \(z = 0\) 处连续, 因此由注 \ref{rem:charact-of-limit-of-function}(2) 可得
+            \[
+                \lim_{z \to 0} \frac{|z|}{2 (1 - |z|)} = 0\ ,
+            \]
+            该命题由夹逼定理可得.
+        \end{proof}
+        \item 设 \(D \coloneqq X \coloneqq Y \coloneqq \R\). 则
+        \[
+            \lim_{x \to \infty} x^n =
+            \begin{cases}
+                1\ ,      & n = 0\ , \\
+                \infty\ , & n \in \N^\ast\ ,
+            \end{cases}
+        \]
+        且
+        \[
+            \lim_{x \to - \infty} x^n =
+            \begin{cases}
+                1\ ,        & n = 0\ , \\
+                \infty\ ,   & n \in 2 \N^\ast\ , \\
+                - \infty\ , & n \in 2 \N + 1\ .
+            \end{cases}
+        \]
+        \item 由于 \(\lim_{x \to 0^-} 1 / x = - \infty\) 且 \(\lim_{x \to 0^+} 1 / x = \infty\), 因此函数 \(\R^\ast \to \R,\ x \mapsto 1 / x\) 在 \(\R\) 上无法被扩张成连续函数.
+    \end{enumerate}
+\end{example}
+
 \subsection{练习}
 
 \begin{exercise}
@@ -1740,7 +1802,7 @@ Hausdorff 条件的一个简单推论是
     \(\impliedby\). 设 \(V \subseteq Y\) 是闭的. 令 \(U \coloneqq f^{- 1}(V)\). 由假设可知 \(f(\overline U) \subseteq \overline{f(U)} = \overline V = V\), 于是 \(\overline U \subseteq f^{- 1}\bigl(f(\overline U)\bigr) \subseteq f^{- 1}(V) = U\). 这说明 \(U\) 是闭的, 因此 \(f\) 是连续的.
 \end{proof}
 
-\begin{exercise}
+\begin{exercise}[粘接引理]
     设 \(X\) 和 \(Y\) 是度量空间, \(A, B \subseteq X\) 是闭的, \(g \colon A \to Y\) 和 \(h \colon B \to Y\) 是连续函数且当 \(A \cap B \neq \emptyset\) 时 \(g|_{A \cap B} = h|_{A \cap B}\). 证明函数
     \[
         f \colon A \cup B \to Y\ ,\quad x \mapsto
@@ -1789,3 +1851,31 @@ Hausdorff 条件的一个简单推论是
     \]
     于是 \(f\bigl(- (2 n + 1) / 2\bigr) \to 0\), 这说明 \(0\) 是 \(f(A)\) 的极限点, 而 \(0 \notin f(A)\), 因此 \(f(A)\) 不是闭的.
 \end{proof}
+
+\begin{exercise}
+    证明函数
+    \[
+        f \colon [0, 2] \to [0, 2]\ ,\quad x \mapsto
+        \begin{cases}
+            0\ ,     & x \in [0, 1]\ , \\
+            x - 1\ , & x \in (1, 2]
+        \end{cases}
+    \]
+    是连续且闭的, 但不是开的.
+\end{exercise}
+
+\begin{proof}
+    显然 \(g \colon x \mapsto 0\) 在闭集 \([0, 1]\) 上是连续的, \(h \colon x \mapsto x - 1\) 在闭集 \([1, 2]\) 上是连续的, 且 \(g(1) = h(1)\), 因此由粘接引理可知 \(f\) 是连续的.
+\end{proof}
+
+\begin{exercise}
+    设 \(S^1 \coloneqq \bigl\{\, (x, y) \in \R^2 \;;\; x^2 + y^2 = 1 \,\bigr\}\) 是 \(\R^2\) 中的单位圆周, 并赋予自然度量. 证明函数
+    \[
+        f \colon S^1 \to [0, 2)\ ,\quad (x, y) \mapsto
+        \begin{cases}
+            0\ ,     & y > 0\ , \\
+            1 + x\ , & y \leq 0
+        \end{cases}
+    \]
+    是闭的, 但既不连续也不开.
+\end{exercise}
