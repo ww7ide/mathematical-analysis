@@ -1864,10 +1864,6 @@ Hausdorff 条件的一个简单推论是
     是连续且闭的, 但不是开的.
 \end{exercise}
 
-\begin{proof}
-    显然 \(g \colon x \mapsto 0\) 在闭集 \([0, 1]\) 上是连续的, \(h \colon x \mapsto x - 1\) 在闭集 \([1, 2]\) 上是连续的, 且 \(g(1) = h(1)\), 因此由粘接引理可知 \(f\) 是连续的.
-\end{proof}
-
 \begin{exercise}
     设 \(S^1 \coloneqq \bigl\{\, (x, y) \in \R^2 \;;\; x^2 + y^2 = 1 \,\bigr\}\) 是 \(\R^2\) 中的单位圆周, 并赋予自然度量. 证明函数
     \[
@@ -1879,3 +1875,23 @@ Hausdorff 条件的一个简单推论是
     \]
     是闭的, 但既不连续也不开.
 \end{exercise}
+
+\begin{exercise}
+    设 \(X\) 和 \(Y\) 是度量空间,
+    \[
+        p \colon X \times Y \to X\ ,\quad (x, y) \mapsto x
+    \]
+    是到 \(X\) 上的典范投影. 则 \(p\) 是连续且开的, 但一般情况下不是闭的.
+\end{exercise}
+
+\begin{proof}
+    设 \(O\) 是 \(X\) 中的开集, \((x, y) \in p^{- 1}(O) = O \times Y\). 由于 \(O\) 是开的, 故存在 \(U \in \nbr(x)\) 使得 \(U \subseteq O\). 于是 \(U \times Y\) 是 \((x, y)\) 的邻域且 \(U \times Y \subseteq O \times Y\), 这说明 \((x, y)\) 是 \(O \times Y\) 的内点, 因此 \(O \times Y\) 是开的.
+
+    设 \(U \times V\) 是 \(X \times Y\) 中的开集, \(x \in p(U \times V) = U\). 任取 \(y \in V\), 由于 \((x, y) \in U \times V\) 且 \(U \times V\) 是开的, 故存在 \(r > 0\) 使得
+    \[
+        \B\bigl((x, y), r\bigr) = \B_X(x, r) \times \B_Y(y, r) \subseteq U \times V\ ,
+    \]
+    于是 \(\B_X(x, r) \subseteq U\). 这说明 \(x\) 是 \(U\) 的内点, 因此 \(U\) 是开的.
+
+    考虑 \(X \coloneqq Y \coloneqq \R\), \(A \coloneqq \bigl\{\, (x, y) \in \R^2 \;;\; x y = 1 \,\bigr\}\). \(A\) 在 \(\R^2\) 中是闭的, 但 \(p(A) = \R^\ast\) 在 \(\R\) 中不是闭的.
+\end{proof}

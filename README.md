@@ -141,5 +141,4 @@ Section  2 The Fundamentals of Topology                         1 13, 26
            Exercises                                            1 18, 26
            Exercises                                            1 19, 26
            Exercises                                            1 20, 26
-           Exercises                                            1 21, 26
 ```
